@@ -39,7 +39,7 @@ class _OutfitsScreenState extends State<OutfitsScreen>
   static const Map<String, List<String>> _slots = {
     'head': [
       'hat', 'cap', 'crown', 'bow', 'headphones', 'flower', 'party', 'santa',
-      'wizard', 'ninja', 'samurai', 'pirate', 'astronaut', 'halo', 'horns', 'catears',
+      'wizard', 'ninja', 'samurai', 'pirate', 'astronaut', 'halo', 'horns', 'catears', 'beanie', 'pumpkin',
     ],
     'eyes': ['glasses', 'sunglasses', 'mask', 'visor'],
     'neck': ['scarf', 'bowtie', 'cape', 'tie'],
@@ -63,6 +63,8 @@ class _OutfitsScreenState extends State<OutfitsScreen>
     'halo': tr('Нимб', en: 'Halo', uz: 'Nur halqasi'),
     'horns': tr('Рожки', en: 'Horns', uz: 'Shoxlar'),
     'catears': tr('Кошачьи ушки', en: 'Cat ears', uz: 'Mushuk quloqlari'),
+    'beanie': tr('Вязаная шапка', en: 'Beanie', uz: 'Toʻqima qalpoq'),
+    'pumpkin': tr('Тыква', en: 'Pumpkin', uz: 'Qovoq'),
     'glasses': tr('Очки', en: 'Glasses', uz: 'Koʻzoynak'),
     'sunglasses': tr('Солнечные очки', en: 'Sunglasses', uz: 'Quyosh koʻzoynagi'),
     'mask': tr('Маска героя', en: 'Hero mask', uz: 'Qahramon niqobi'),
@@ -98,6 +100,8 @@ class _OutfitsScreenState extends State<OutfitsScreen>
     'astronaut': Icons.rocket_launch_outlined,
     'halo': Icons.radio_button_unchecked,
     'horns': Icons.whatshot_outlined,
+    'beanie': Icons.checkroom_outlined,
+    'pumpkin': Icons.sports_basketball_outlined,
     'catears': Icons.pets_outlined,
     'glasses': Icons.visibility_outlined,
     'sunglasses': Icons.wb_sunny_outlined,

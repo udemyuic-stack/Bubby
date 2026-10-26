@@ -181,6 +181,8 @@ class BuddyService : Service() {
             "size" -> h.post { if (kotlin.math.abs(sizePref() - liveSize) > 0.001f) applySize() }
             "game_chips" -> h.post { refreshChips() }
             "hotword" -> h.post { hotStop(); hotPausedUntil = 0L; hotKick() }
+            "badge" -> h.post { buddy.badgeOn = prefs.getBoolean("badge", true) }
+            "state_glow" -> h.post { buddy.stateGlow = prefs.getBoolean("state_glow", true) }
             "quiet" -> h.post { applyHidden(); refreshNotif() }
             "autohide" -> h.post { fsPollRestart() }
             "lang" -> h.post { refreshNotif(); updateDesc() }
@@ -362,6 +364,8 @@ class BuddyService : Service() {
         } catch (_: Exception) {}
         buddy.outfit = Outfits.parse(prefs.getString("outfit", "").orEmpty())
         buddy.species = prefs.getString("species", "cat").orEmpty()
+        buddy.badgeOn = prefs.getBoolean("badge", true)
+        buddy.stateGlow = prefs.getBoolean("state_glow", true)
         prefs.registerOnSharedPreferenceChangeListener(prefListener)
         h.post(clock)
         tiltStart()
@@ -379,7 +383,20 @@ class BuddyService : Service() {
     } catch (_: Exception) { resources.displayMetrics.widthPixels }
     private fun islandW() = minOf(dp(300), screenW() - dp(32))
     private fun imm() = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
-    private fun setMode(m: String) { mode = m; buddy.mood = m; buddy.calm = calm() }   // calm: lets BuddyView run idle behaviours
+    private fun setMode(m: String) {
+        mode = m; buddy.mood = m; buddy.calm = calm()   // calm: lets BuddyView run idle behaviours
+        if (badgeHold == null) buddy.badge = when (m) { "think" -> "think"; "listen" -> "listen"; else -> "" }
+    }
+
+    // a short-lived badge (error, limit, done, approval) wins over the one that follows the mode
+    private var badgeHold: Runnable? = null
+    private fun flashBadge(kind: String, ms: Long) {
+        badgeHold?.let { h.removeCallbacks(it) }
+        buddy.badge = kind
+        val r = Runnable { badgeHold = null; buddy.badge = when (mode) { "think" -> "think"; "listen" -> "listen"; else -> "" } }
+        badgeHold = r
+        h.postDelayed(r, ms)
+    }
     private fun micOk() = checkSelfPermission(Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED
     private fun voiceOn() = prefs.getBoolean("voice", true) && micOk()
     private fun ttsOn() = prefs.getBoolean("tts", true)
@@ -1345,6 +1362,7 @@ class BuddyService : Service() {
             status.text = Moods.label(this, emo)
             setWave(WaveView.NONE)
             setMode(emo)
+            if (reply.actions.length() > 0) flashBadge("done", 2200L)
             h.postDelayed({ if (mode == emo) setMode(baseMood()) }, 6000)
             val errors = ArrayList<String>()
             var hadSticker = false
@@ -1469,6 +1487,8 @@ class BuddyService : Service() {
 
     private fun showError(raw: String, retry: (() -> Unit)? = null) {
         val (msg, kind) = friendly(raw)
+        val lr = raw.lowercase()
+        flashBadge(if ("http 429" in lr || "лимит" in lr) "limit" else "error", 5000L)
         h.removeCallbacks(closeTask)
         if (!expanded) style(true)
         status.text = t("Ошибка", "Error", "Xato"); hide(input); setAnswer(msg, false); show(answer)
@@ -1572,6 +1592,7 @@ class BuddyService : Service() {
         h.removeCallbacks(closeTask)
         voice.stopListening()
         pendingRun = run; pendingLeft = seconds; pendingPrompt = prompt
+        flashBadge("approval", seconds * 1000L + 500L)
         choiceActive = true; errorPinned = false
         style(true)
         setWave(WaveView.NONE)
@@ -1639,6 +1660,7 @@ class BuddyService : Service() {
         h.removeCallbacks(closeTask)
         voice.stopListening()
         choicePrompt = prompt; choiceOpts = options; choiceActive = true
+        flashBadge("approval", 15_000L)
         errorPinned = false
         style(true)
         setWave(WaveView.NONE)

@@ -14,7 +14,7 @@ import kotlin.math.sin
 object Outfits {
     val SLOTS: Map<String, List<String>> = linkedMapOf(
         "head" to listOf("hat", "cap", "crown", "bow", "headphones", "flower", "party", "santa",
-            "wizard", "ninja", "samurai", "pirate", "astronaut", "halo", "horns", "catears"),
+            "wizard", "ninja", "samurai", "pirate", "astronaut", "halo", "horns", "catears", "beanie", "pumpkin"),
         "eyes" to listOf("glasses", "sunglasses", "mask", "visor"),
         "neck" to listOf("scarf", "bowtie", "cape", "tie"),
         "aura" to listOf("fire", "ice", "lightning", "hearts", "sakura", "stars"),
@@ -26,7 +26,7 @@ object Outfits {
         "headphones" to "Наушники", "flower" to "Цветок", "party" to "Колпак", "santa" to "Шапка Санты",
         "wizard" to "Колпак волшебника", "ninja" to "Повязка ниндзя", "samurai" to "Шлем самурая",
         "pirate" to "Шляпа пирата", "astronaut" to "Шлем космонавта", "halo" to "Нимб",
-        "horns" to "Рожки", "catears" to "Кошачьи ушки",
+        "horns" to "Рожки", "catears" to "Кошачьи ушки", "beanie" to "Вязаная шапка", "pumpkin" to "Тыква",
         "glasses" to "Очки", "sunglasses" to "Солнечные очки", "mask" to "Маска героя", "visor" to "Кибер-визор",
         "scarf" to "Шарф", "bowtie" to "Бабочка", "cape" to "Плащ", "tie" to "Галстук",
         "fire" to "Огонь", "ice" to "Лёд", "lightning" to "Молния", "hearts" to "Сердечки",
@@ -88,7 +88,7 @@ object Outfits {
     private val G_SAKURA = glowShader(0xFFB7D0)
     private val G_HALO = glowShader(0xFFE066)
     private val HEADS = arrayOf("hat", "cap", "crown", "bow", "party", "santa", "wizard", "ninja",
-        "samurai", "pirate", "halo", "horns", "catears")
+        "samurai", "pirate", "halo", "horns", "catears", "beanie", "pumpkin")
 
     /** Soft additive-looking glow disc (unit shader scaled to rx,ry). */
     private fun glowDisc(cv: Canvas, sh: Shader, cx: Float, cy: Float, rx: Float, ry: Float, a: Int) {
@@ -253,6 +253,8 @@ object Outfits {
         if ("halo" in items) halo(cv, p, t)
         if ("horns" in items) horns(cv, p)
         if ("catears" in items) catears(cv, p)
+        if ("beanie" in items) beanie(cv, p)
+        if ("pumpkin" in items) pumpkin(cv, p)
         cv.restore()
         cv.save(); cv.translate(bodyX, bodyY)
         if ("astronaut" in items) astronaut(cv, p, t)
@@ -349,6 +351,29 @@ object Outfits {
         fill(p, 0xFFFFC83D.toInt())
         cv.drawCircle(-4f, -56f, 2.2f, p); cv.drawCircle(4f, -59f, 2.2f, p); cv.drawCircle(-1f, -63f, 1.8f, p)
         ball(cv, p, 0f, -69f, 3.6f, 0xFFFF5C8A.toInt())
+    }
+
+    private fun beanie(cv: Canvas, p: Paint) {
+        path.reset()
+        path.moveTo(-22f, -49f)
+        path.cubicTo(-22f, -65f, -9f, -71f, 0f, -71f)
+        path.cubicTo(9f, -71f, 22f, -65f, 22f, -49f)
+        path.close()
+        shape(cv, p, 0xFF3F7FD9.toInt())
+        box(cv, p, -24f, -57f, 24f, -47f, 4f, 0xFF2F63B5.toInt())   // folded rim
+        line(p, 0x55FFFFFF, 1.3f)
+        for (i in -3..3) cv.drawLine(i * 6.2f, -55.5f, i * 6.2f, -48.5f, p)
+        ball(cv, p, 0f, -72f, 4.6f, 0xFFFFFFFF.toInt())              // pompom
+    }
+
+    private fun pumpkin(cv: Canvas, p: Paint) {
+        ball(cv, p, -9f, -58f, 9.5f, 0xFFF08A24.toInt())
+        ball(cv, p, 9f, -58f, 9.5f, 0xFFF08A24.toInt())
+        ball(cv, p, 0f, -59f, 10.5f, 0xFFF5A04A.toInt())
+        box(cv, p, -2.2f, -73f, 2.6f, -65f, 1.6f, 0xFF4E8F3A.toInt())  // stem
+        path.reset()                                                  // a small leaf
+        path.moveTo(2.6f, -69f); path.quadTo(9f, -75f, 12f, -69f); path.quadTo(7f, -66f, 2.6f, -69f); path.close()
+        shape(cv, p, 0xFF6BBF59.toInt())
     }
 
     private fun santa(cv: Canvas, p: Paint) {

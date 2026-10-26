@@ -39,6 +39,8 @@ class Settings {
     this.screenAgent = true,
     this.deviceReactions = true,
     this.stickersOnEvents = true,
+    this.statusBadge = true,
+    this.stateGlow = true,
   });
 
   final String key;
@@ -67,6 +69,8 @@ class Settings {
   final bool screenAgent;
   final bool deviceReactions;
   final bool stickersOnEvents;
+  final bool statusBadge;
+  final bool stateGlow;
 
   /// True when at least one non-empty AI key is saved.
   bool get hasKeys => keys.any((k) => k.trim().isNotEmpty);
@@ -101,6 +105,8 @@ class Settings {
         screenAgent: (m['screenAgent'] as bool?) ?? true,
         deviceReactions: (m['deviceReactions'] as bool?) ?? true,
         stickersOnEvents: (m['stickersOnEvents'] as bool?) ?? true,
+        statusBadge: (m['statusBadge'] as bool?) ?? true,
+        stateGlow: (m['stateGlow'] as bool?) ?? true,
       );
 
   Map<String, Object?> toMap() => {

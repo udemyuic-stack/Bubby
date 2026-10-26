@@ -158,6 +158,83 @@ class BuddyView(c: Context) : View(c) {
         set(v) { field = v; kick() }
     private var glowCol = 0xFF7B4FD6.toInt()
     private var glowShader: Shader? = null
+
+    /** What Bubby is doing, shown as a small badge on the head: "", think, search, listen, approval, limit, error or done. */
+    var badge: String = ""
+        set(v) { if (field != v) { field = v; kick() } }
+    var badgeOn: Boolean = true
+        set(v) { field = v; kick() }
+    /** Soft halo in the colour of the badge state. */
+    var stateGlow: Boolean = true
+        set(v) { field = v; kick() }
+    private var sgCol = 0
+    private var sgShader: Shader? = null
+
+    private fun badgeColor(k: String): Int = when (k) {
+        "think" -> 0xFF7B4FD6.toInt()
+        "search" -> 0xFF14B8A6.toInt()
+        "listen" -> 0xFF2E9BE6.toInt()
+        "done" -> 0xFF2FBF71.toInt()
+        "error" -> 0xFFE5484D.toInt()
+        else -> 0xFFF2A33A.toInt()   // approval, limit
+    }
+
+    private fun drawStateGlow(cv: Canvas) {
+        val c = badgeColor(badge)
+        if (c != sgCol || sgShader == null) {
+            sgCol = c
+            val rr = Color.red(c); val gg = Color.green(c); val bb = Color.blue(c)
+            sgShader = RadialGradient(0f, 0f, 1f,
+                intArrayOf(Color.argb(0x78, rr, gg, bb), Color.argb(0x30, rr, gg, bb), Color.argb(0, rr, gg, bb)),
+                floatArrayOf(0f, 0.55f, 1f), Shader.TileMode.CLAMP)
+        }
+        gp.shader = sgShader; gp.alpha = 255
+        cv.save(); cv.translate(0f, -30f); cv.scale(34f, 34f)
+        cv.drawCircle(0f, 0f, 1f, gp)
+        cv.restore()
+    }
+
+    /** A pill with moving dots while thinking or searching, otherwise a round badge with a small sign. */
+    private fun drawBadge(cv: Canvas, t: Float) {
+        val k = badge
+        val col = badgeColor(k)
+        val white = 0xFFFFFFFF.toInt()
+        val ring = 0xFF1B1530.toInt()
+        val cx = -21f; val cy = -49f
+        if (k == "think" || k == "search") {
+            r.set(cx - 10f, cy - 5.6f, cx + 10f, cy + 5.6f)
+            fill(ring); cv.drawRoundRect(r, 5.6f, 5.6f, p)
+            r.set(cx - 8.6f, cy - 4.2f, cx + 8.6f, cy + 4.2f)
+            fill(col); cv.drawRoundRect(r, 4.2f, 4.2f, p)
+            for (i in -1..1) {
+                fill(white)
+                p.alpha = (255 * (0.45f + 0.55f * abs(sin(t * 5f - i * 0.9f)))).toInt()
+                cv.drawCircle(cx + i * 5f, cy, 1.5f, p)
+            }
+            p.alpha = 255
+            return
+        }
+        val pulse = 1f + 0.06f * sin(t * 5f)
+        fill(ring); cv.drawCircle(cx, cy, 6.8f * pulse, p)
+        fill(col); cv.drawCircle(cx, cy, 5.2f * pulse, p)
+        when (k) {
+            "error" -> {
+                line(white, 1.8f)
+                cv.drawLine(cx - 2f, cy - 2f, cx + 2f, cy + 2f, p); cv.drawLine(cx - 2f, cy + 2f, cx + 2f, cy - 2f, p)
+            }
+            "done" -> {
+                line(white, 1.9f); path.reset()
+                path.moveTo(cx - 2.4f, cy + 0.2f); path.lineTo(cx - 0.6f, cy + 2.1f); path.lineTo(cx + 2.6f, cy - 1.9f)
+                cv.drawPath(path, p)
+            }
+            "listen" -> { fill(white); cv.drawCircle(cx, cy, 1.9f, p) }
+            else -> {   // approval, limit: an exclamation mark
+                fill(white)
+                r.set(cx - 0.95f, cy - 3.3f, cx + 0.95f, cy + 0.9f); cv.drawRoundRect(r, 0.95f, 0.95f, p)
+                cv.drawCircle(cx, cy + 2.7f, 1.05f, p)
+            }
+        }
+    }
     private var shadowShader: Shader? = null
     private val gp = Paint(Paint.ANTI_ALIAS_FLAG)
     private var grabStart = 0L
@@ -1285,6 +1362,7 @@ class BuddyView(c: Context) : View(c) {
             cv.drawCircle(0f, 0f, 1f, gp)
             cv.restore()
         }
+        if (stateGlow && badge.isNotEmpty() && !glow) drawStateGlow(cv)
         // contact shadow: squashes and fades with the jump, slides opposite to the tilt
         val j = (-dy / 12f).coerceIn(0f, 1f)
         val shk = 1f - 0.3f * j
@@ -1622,6 +1700,7 @@ class BuddyView(c: Context) : View(c) {
         extras(cv, t, if (petT in 0L..2500L && em == "pet") petT else -1L,
             if (grabT >= 0L) grabT else -1L, if (wakeT in 0L..1500L) wakeT else -1L)
         Outfits.draw(cv, p, outfit, em, t)
+        if (badgeOn && badge.isNotEmpty()) drawBadge(cv, t)
         cv.restore()
     }
 }

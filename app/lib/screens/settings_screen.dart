@@ -68,6 +68,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
   bool _screenAgent = true;
   bool _deviceReactions = true;
   bool _stickersOnEvents = true;
+  bool _statusBadge = true;
+  bool _stateGlow = true;
   bool _readNotifs = false;
   bool _quiet = false;
   bool _autohide = true;
@@ -113,6 +115,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
         _screenAgent = s.screenAgent;
         _deviceReactions = s.deviceReactions;
         _stickersOnEvents = s.stickersOnEvents;
+        _statusBadge = s.statusBadge;
+        _stateGlow = s.stateGlow;
         _readNotifs = s.readNotifs;
         _quiet = s.quiet;
         _autohide = s.autohide;
@@ -641,6 +645,28 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           final d = v ?? 4;
                           setState(() => _messageDelay = d);
                           _save('messageDelay', d);
+                        },
+                      ),
+                    ]),
+                    _group(2, tr('Вид Bubby', en: 'Bubby look', uz: 'Bubby koʻrinishi'), Icons.palette_rounded, [
+                      BuddySwitchTile(
+                        contentPadding: EdgeInsets.zero,
+                        title: Text(tr('Значок состояния', en: 'Status badge', uz: 'Holat belgisi')),
+                        subtitle: Text(tr('Маленький значок на голове: думает, слушает, ждёт подтверждения, лимит, ошибка, готово', en: 'A small badge on the head: thinking, listening, waiting for approval, limit reached, error, done', uz: 'Boshdagi kichik belgi: oʻylayapti, tinglayapti, tasdiq kutyapti, limit tugadi, xato, tayyor')),
+                        value: _statusBadge,
+                        onChanged: (v) {
+                          setState(() => _statusBadge = v);
+                          _save('statusBadge', v);
+                        },
+                      ),
+                      BuddySwitchTile(
+                        contentPadding: EdgeInsets.zero,
+                        title: Text(tr('Цветное свечение', en: 'Coloured glow', uz: 'Rangli nur')),
+                        subtitle: Text(tr('Мягкое свечение цвета текущего состояния вокруг Bubby', en: 'A soft glow around Bubby in the colour of the current state', uz: 'Bubby atrofida hozirgi holat rangidagi yumshoq nur')),
+                        value: _stateGlow,
+                        onChanged: (v) {
+                          setState(() => _stateGlow = v);
+                          _save('stateGlow', v);
                         },
                       ),
                     ]),

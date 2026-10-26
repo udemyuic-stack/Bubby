@@ -56,6 +56,8 @@ class NativeChannel(private val act: Activity) : MethodChannel.MethodCallHandler
                 "screenAgent" to prefs.getBoolean("screen_agent", true),
                 "deviceReactions" to prefs.getBoolean("device_reactions", true),
                 "stickersOnEvents" to prefs.getBoolean("stickers_on_events", true),
+                "statusBadge" to prefs.getBoolean("badge", true),
+                "stateGlow" to prefs.getBoolean("state_glow", true),
                 "running" to BuddyService.running))
             "saveSettings" -> {
                 val e = prefs.edit()
@@ -77,6 +79,8 @@ class NativeChannel(private val act: Activity) : MethodChannel.MethodCallHandler
                 call.argument<Boolean>("screenAgent")?.let { e.putBoolean("screen_agent", it) }
                 call.argument<Boolean>("deviceReactions")?.let { e.putBoolean("device_reactions", it) }
                 call.argument<Boolean>("stickersOnEvents")?.let { e.putBoolean("stickers_on_events", it) }
+                call.argument<Boolean>("statusBadge")?.let { e.putBoolean("badge", it) }
+                call.argument<Boolean>("stateGlow")?.let { e.putBoolean("state_glow", it) }
                 call.argument<Boolean>("hotword")?.let { e.putBoolean("hotword", it) }
                 call.argument<Boolean>("stickerAuto")?.let { e.putBoolean("sticker_auto", it) }
                 call.argument<Boolean>("autostart")?.let { e.putBoolean("autostart", it) }

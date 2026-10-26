@@ -170,7 +170,7 @@ class Brain(private val ctx: Context) {
         return out
     }
 
-    private val obsActions = setOf("web_search", "screen_text", "briefing", "notifications", "now_playing", "list_read", "phone_status")
+    private val obsActions = setOf("web_search", "screen_text", "briefing", "notifications", "now_playing", "list_read", "phone_status", "weather", "currency", "calc", "convert")
 
     /** Short description of an action for the stored history, e.g. "open_app YouTube". */
     private fun brief(a: JSONObject): String {
@@ -279,6 +279,10 @@ class Brain(private val ctx: Context) {
                 if (!BuddyNotifications.isEnabled(ctx)) "Notification access is off, so you cannot read notifications. Tell the user to enable notification access in the Bubby app (More > All permissions). Do not use notifications again."
                 else "Latest notifications:\n" + BuddyNotifications.summaryForAi() + "\nNow answer the user using these. Do not use notifications again."
             "playing" -> "Now playing: " + (MediaControl.nowPlaying(ctx) ?: "nothing is playing") + "\nNow answer the user. Do not use now_playing again."
+            "info" -> {
+                val a = JSONObject(obs.second)
+                "Result of ${a.optString("do")}:\n" + InfoTools.run(ctx, a) + "\nNow answer the user briefly, in their language, using exactly these numbers. Do not repeat this action."
+            }
             "phone" -> "Phone status:\n" + PhoneControls.status(ctx) + "\nNow answer the user briefly using only what they asked about. Do not use phone_status again."
             else -> {
                 val items = ListStore.items(ctx, obs.second)
@@ -318,6 +322,7 @@ class Brain(private val ctx: Context) {
                 "notifications" -> return "notifications" to ""
                 "now_playing" -> return "playing" to ""
                 "phone_status" -> return "phone" to ""
+                "weather", "currency", "calc", "convert" -> return "info" to a.toString()
                 "list_read" -> return "list" to jsStr(a, "list").trim()
             }
         }
@@ -553,7 +558,7 @@ private const val ACTIONS = """{"do":"alarm","hour":7,"minute":30,"label":""} (2
 {"do":"video","q":"what to watch"} finds the video on YouTube and starts PLAYING it (not just a results page); {"do":"message","app":"sms|whatsapp|telegram","to":"contact or number","text":"..."} SENDS the message by itself after a short cancel countdown the user can tap; announce it naturally («Отправляю Алишеру: …» / "Sending to Alisher: …" / "Alisherga yuboryapman: …"), never claim it was delivered; if the recipient or the text is unclear, ask instead of guessing
 {"do":"screenshot"} {"do":"power_menu"} {"do":"brightness","percent":50}; {"do":"screen_text"} reads what is on the phone screen: send it ALONE with an empty say, you get the visible texts next turn and then can tap_text / scroll / type_text / answer (use it for "what is on my screen", "tap the Play button", "open the second result")
 {"do":"list_add","list":"shopping","item":"milk"} (or "items":[...]) {"do":"list_remove","list":"","item":""} {"do":"list_clear","list":""} {"do":"notification_reply","text":""} replies to the newest notification
-Observations (send ALONE with empty say, you get the data next turn): {"do":"briefing"} morning briefing; {"do":"notifications"} latest notifications; {"do":"now_playing"}; {"do":"phone_status"} battery, charging, storage, memory, network, do-not-disturb, volume, brightness; {"do":"list_read","list":"shopping"}
+Observations (send ALONE with empty say, you get the data next turn): {"do":"briefing"} morning briefing; {"do":"notifications"} latest notifications; {"do":"now_playing"}; {"do":"phone_status"} battery, charging, storage, memory, network, do-not-disturb, volume, brightness; {"do":"weather","city":"Tashkent"} live weather now + 3 days (empty city = where the phone is); {"do":"currency","amount":100,"from":"USD","to":"UZS"} live exchange rate (3-letter codes); {"do":"calc","expr":"12*(3+4)/5"} exact arithmetic: use it for EVERY calculation instead of computing in your head (percent: 200*15/100; sqrt sin cos tan log ln abs, pi e); {"do":"convert","value":5,"from":"km","to":"mi"} units of length, mass, volume, speed, area, time, data and temperature (news and other fresh facts: web_search); {"do":"list_read","list":"shopping"}
 Set "more":true when you must SEE the result of your actions before continuing (multi-step tasks such as opening an app and then searching or tapping inside it). Do at most 3 actions per step; after each step you get the screen text; set more:false in your last step with a short spoken confirmation.
 {"do":"set_mode","mode":"study|normal"} {"do":"set_persona","text":"funny and cheerful"} (empty text = back to normal)"""
 

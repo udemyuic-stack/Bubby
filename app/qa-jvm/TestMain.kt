@@ -322,8 +322,25 @@ fun apps() {
     check("alias in sentence", pk("ютуб пожалуйста") == "com.google.android.youtube", "${pk("ютуб пожалуйста")}")
 }
 
+fun mathTools() {
+    fun c(e: String) = try { MathTools.fmt(MathTools.calc(e)) } catch (x: Exception) { "ERR" }
+    check("calc add", c("2+2") == "4")
+    check("calc precedence", c("2+3*4") == "14")
+    check("calc parens", c("12*(3+4)/5") == "16.8")
+    check("calc -2^2", c("-2^2") == "-4")
+    check("calc float", c("0.1+0.2") == "0.3")
+    check("calc sqrt", c("sqrt(144)") == "12")
+    check("calc div0", c("1/0") == "ERR")
+    check("calc garbage", c("2+*3") == "ERR")
+    check("convert km mi", MathTools.convert(5.0, "km", "mi") == "5 km = 3.106855961 mi")
+    check("convert C F", MathTools.convert(100.0, "C", "F") == "100 °C = 212 °F")
+    check("convert ru", MathTools.convert(10.0, "км", "миль") == "10 km = 6.213711922 mi")
+    check("convert uz", MathTools.convert(2.0, "soat", "daqiqa") == "2 h = 120 min")
+    check("convert mixed", try { MathTools.convert(1.0, "kg", "km"); false } catch (x: IllegalArgumentException) { true })
+}
+
 fun main() {
-    quick(); contacts(); apps(); if (System.getenv("PROBE") != null) probe()
+    quick(); contacts(); apps(); mathTools(); if (System.getenv("PROBE") != null) probe()
     println("RESULT: $pass passed, $fail failed (${pass + fail} assertions)")
     if (fail > 0) System.exit(1)
 }

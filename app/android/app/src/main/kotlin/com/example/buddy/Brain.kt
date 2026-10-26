@@ -18,6 +18,34 @@ class Brain(private val ctx: Context) {
     private val history = JSONArray()
     private val prefs get() = ctx.getSharedPreferences("buddy", Context.MODE_PRIVATE)
 
+    // the last 8 messages survive a restart of the app or the service, so Bubby keeps the thread of the conversation
+    init {
+        try {
+            val saved = JSONArray(prefs.getString("brain_history", "[]") ?: "[]")
+            for (i in 0 until saved.length()) {
+                val m = saved.optJSONObject(i) ?: continue
+                val role = m.optString("role")
+                val content = m.optString("content")
+                if ((role == "user" || role == "assistant") && content.isNotEmpty())
+                    history.put(JSONObject().put("role", role).put("content", content))
+            }
+            while (history.length() > 0 && history.getJSONObject(0).optString("role") != "user") history.remove(0)
+        } catch (_: Exception) {
+        }
+    }
+
+    private fun saveHistory() {
+        try {
+            val out = JSONArray()
+            for (i in maxOf(0, history.length() - 8) until history.length()) {
+                val m = history.optJSONObject(i) ?: continue
+                out.put(JSONObject().put("role", m.optString("role")).put("content", m.optString("content").take(600)))
+            }
+            prefs.edit().putString("brain_history", out.toString()).apply()
+        } catch (_: Exception) {
+        }
+    }
+
     /** Extra live context (tasks, calendar) appended to the system prompt on every request. */
     var extraContext: () -> String = { "" }
 
@@ -228,6 +256,7 @@ class Brain(private val ctx: Context) {
             history.put(JSONObject().put("role", "user").put("content", text))
             val keep = result.say.ifBlank { "ok" } + if (did.isEmpty()) "" else " (did: ${did.take(12).joinToString(", ")})"
             history.put(JSONObject().put("role", "assistant").put("content", keep))
+            saveHistory()
             return result
         } catch (e: Throwable) {
             while (history.length() > mark) history.remove(history.length() - 1)

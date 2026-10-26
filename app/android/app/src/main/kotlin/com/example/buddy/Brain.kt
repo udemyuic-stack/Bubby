@@ -108,17 +108,21 @@ class Brain(private val ctx: Context) {
     }
 
     /** Actions an injected instruction could abuse; only run after untrusted data when the user's own words ask for them. */
-    private val sensitiveOps = setOf("message", "call", "brightness", "delete_task", "notification_reply")
+    private val sensitiveOps = setOf("message", "call", "brightness", "delete_task", "notification_reply", "dnd", "screen_timeout")
     private val reAskMessage = Regex("отправ|напиш|смс|сообщен|вацап|ватсап|телеграм|ответь|send|message|sms|whatsapp|telegram|\\btext\\b|\\bwrite\\b|\\breply\\b|yubor|yoz\\b|yozing|xabar|javob", RegexOption.IGNORE_CASE)
     private val reAskCall = Regex("позвон|набер|звони|вызови|call|dial|\\bring\\b|qo'?ng'?iroq|qo.ng.iroq|telefon\\s*qil", RegexOption.IGNORE_CASE)
     private val reAskDelete = Regex("удал|убери|delete|remove|o'?chir|o.chir", RegexOption.IGNORE_CASE)
     private val reAskBright = Regex("яркост|brightness|yorqinlik|yorug", RegexOption.IGNORE_CASE)
+    private val reAskDnd = Regex("беспоко|тишин|dnd|disturb|silent|bezovta|jim", RegexOption.IGNORE_CASE)
+    private val reAskTimeout = Regex("экран|screen|display|timeout|таймаут|ekran|o'?chib|засып|sleep", RegexOption.IGNORE_CASE)
 
     private fun userAsks(op: String, text: String): Boolean = when (op) {
         "message", "notification_reply" -> reAskMessage.containsMatchIn(text)
         "call" -> reAskCall.containsMatchIn(text)
         "delete_task" -> reAskDelete.containsMatchIn(text)
         "brightness" -> reAskBright.containsMatchIn(text)
+        "dnd" -> reAskDnd.containsMatchIn(text)
+        "screen_timeout" -> reAskTimeout.containsMatchIn(text)
         else -> true
     }
 
@@ -138,7 +142,7 @@ class Brain(private val ctx: Context) {
         return out
     }
 
-    private val obsActions = setOf("web_search", "screen_text", "briefing", "notifications", "now_playing", "list_read")
+    private val obsActions = setOf("web_search", "screen_text", "briefing", "notifications", "now_playing", "list_read", "phone_status")
 
     /** Short description of an action for the stored history, e.g. "open_app YouTube". */
     private fun brief(a: JSONObject): String {
@@ -246,6 +250,7 @@ class Brain(private val ctx: Context) {
                 if (!BuddyNotifications.isEnabled(ctx)) "Notification access is off, so you cannot read notifications. Tell the user to enable notification access in the Bubby app (More > All permissions). Do not use notifications again."
                 else "Latest notifications:\n" + BuddyNotifications.summaryForAi() + "\nNow answer the user using these. Do not use notifications again."
             "playing" -> "Now playing: " + (MediaControl.nowPlaying(ctx) ?: "nothing is playing") + "\nNow answer the user. Do not use now_playing again."
+            "phone" -> "Phone status:\n" + PhoneControls.status(ctx) + "\nNow answer the user briefly using only what they asked about. Do not use phone_status again."
             else -> {
                 val items = ListStore.items(ctx, obs.second)
                 "List \"${obs.second.ifBlank { ListStore.DEFAULT }}\": " + (if (items.isEmpty()) "(empty)" else items.joinToString("; ")) + "\nNow answer the user. Do not use list_read again."
@@ -283,6 +288,7 @@ class Brain(private val ctx: Context) {
                 "briefing" -> return "briefing" to ""
                 "notifications" -> return "notifications" to ""
                 "now_playing" -> return "playing" to ""
+                "phone_status" -> return "phone" to ""
                 "list_read" -> return "list" to jsStr(a, "list").trim()
             }
         }
@@ -513,7 +519,8 @@ private const val ACTIONS = """{"do":"alarm","hour":7,"minute":30,"label":""} (2
 {"do":"open_app","name":""} {"do":"open_url","url":"https://..."} {"do":"maps","q":""}
 {"do":"call","to":"contact or number"} {"do":"answer_call"} {"do":"end_call"} {"do":"speaker","on":true}
 {"do":"volume","dir":"up|down"} or {"do":"volume","percent":50}; {"do":"flashlight","on":true}
-{"do":"back"} {"do":"home"} {"do":"recents"} {"do":"notification_shade"} (pulls down the shade) {"do":"quick_settings"} {"do":"lock"} {"do":"scroll","dir":"up|down|left|right"} {"do":"tap_text","text":""} {"do":"type_text","text":"","submit":true} {"do":"tap_node","index":3} (number from the screen text) {"do":"press_enter"} {"do":"settings","panel":"wifi|bluetooth|volume"}
+{"do":"dnd","on":true} turns Do Not Disturb on/off; {"do":"screen_timeout","seconds":60} sets how long the screen stays on; {"do":"find_phone","on":true} rings the alarm loudly for 30 s so the phone can be found (on:false stops it)
+{"do":"back"} {"do":"home"} {"do":"recents"} {"do":"notification_shade"} (pulls down the shade) {"do":"quick_settings"} {"do":"lock"} {"do":"scroll","dir":"up|down|left|right"} {"do":"tap_text","text":""} {"do":"type_text","text":"","submit":true} {"do":"tap_node","index":3} (number from the screen text) {"do":"press_enter"} {"do":"settings","panel":"wifi|bluetooth|volume|airplane|battery|storage|display|location"} (Android lets apps only open these screens, not flip wifi/bluetooth/airplane themselves: open the panel and say so)
 {"do":"add_task","title":"","due":"yyyy-MM-dd HH:mm","notes":""} {"do":"done_task","title":""} {"do":"delete_task","title":""} {"do":"add_event","title":"","start":"yyyy-MM-dd HH:mm","end":"yyyy-MM-dd HH:mm","location":""}
 {"do":"outfit","item":"<item or costume>","on":true}: items hat cap crown bow headphones flower party santa wizard ninja samurai pirate astronaut halo horns catears glasses sunglasses mask visor scarf bowtie cape tie fire ice lightning hearts sakura stars wand sword umbrella lollipop; costumes ninja wizard samurai superhero pirate astronaut fire_mage ice_queen angel devil; "none" removes everything
 {"do":"sticker","mood":"love","caption":"1-3 words","share":false} shows a sticker of yourself INSIDE your reply: use it OFTEN as your reaction (greetings, thanks, jokes, praise, comfort, goodbye, surprise); set "share":true only if the user asks to send/share it to someone {"do":"species","name":"cat|dog|bunny|bear|panda|fox|frog|penguin|capybara|hamster|owl|duck|pig|koala|lion|tiger"} (map the user's words in any language) {"do":"size","value":"bigger|smaller|normal|0.15-6.0"} {"do":"move","where":"top|bottom|left|right|center|bottom_left|bottom_right|top_left|top_right|status_left|status_right"} (status_left = in the status bar just right of the clock, status_right = in the status bar left of the system icons; use them when the user says "next to the clock", "at the very top", or complains it blocks a video) {"do":"quiet","on":true} (hide yourself completely so a movie is not disturbed; on:false shows you again)
@@ -521,7 +528,7 @@ private const val ACTIONS = """{"do":"alarm","hour":7,"minute":30,"label":""} (2
 {"do":"video","q":"what to watch"} finds the video on YouTube and starts PLAYING it (not just a results page); {"do":"message","app":"sms|whatsapp|telegram","to":"contact or number","text":"..."} SENDS the message by itself after a short cancel countdown the user can tap; announce it naturally («Отправляю Алишеру: …» / "Sending to Alisher: …" / "Alisherga yuboryapman: …"), never claim it was delivered; if the recipient or the text is unclear, ask instead of guessing
 {"do":"screenshot"} {"do":"power_menu"} {"do":"brightness","percent":50}; {"do":"screen_text"} reads what is on the phone screen: send it ALONE with an empty say, you get the visible texts next turn and then can tap_text / scroll / type_text / answer (use it for "what is on my screen", "tap the Play button", "open the second result")
 {"do":"list_add","list":"shopping","item":"milk"} (or "items":[...]) {"do":"list_remove","list":"","item":""} {"do":"list_clear","list":""} {"do":"notification_reply","text":""} replies to the newest notification
-Observations (send ALONE with empty say, you get the data next turn): {"do":"briefing"} morning briefing; {"do":"notifications"} latest notifications; {"do":"now_playing"}; {"do":"list_read","list":"shopping"}
+Observations (send ALONE with empty say, you get the data next turn): {"do":"briefing"} morning briefing; {"do":"notifications"} latest notifications; {"do":"now_playing"}; {"do":"phone_status"} battery, charging, storage, memory, network, do-not-disturb, volume, brightness; {"do":"list_read","list":"shopping"}
 Set "more":true when you must SEE the result of your actions before continuing (multi-step tasks such as opening an app and then searching or tapping inside it). Do at most 3 actions per step; after each step you get the screen text; set more:false in your last step with a short spoken confirmation.
 {"do":"set_mode","mode":"study|normal"} {"do":"set_persona","text":"funny and cheerful"} (empty text = back to normal)"""
 

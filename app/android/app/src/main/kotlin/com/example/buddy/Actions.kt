@@ -113,6 +113,9 @@ class Actions(private val ctx: Context) {
             }
             "volume" -> volume(a)
             "flashlight" -> flashlight(a.optBoolean("on", true))
+            "dnd" -> PhoneControls.dnd(ctx, a.optBoolean("on", true))
+            "screen_timeout" -> PhoneControls.screenTimeout(ctx, a.optInt("seconds", 0))
+            "find_phone" -> PhoneControls.findPhone(ctx, a.optBoolean("on", true))
             "back" -> global(AccessibilityService.GLOBAL_ACTION_BACK)
             "home" -> global(AccessibilityService.GLOBAL_ACTION_HOME)
             "recents" -> global(AccessibilityService.GLOBAL_ACTION_RECENTS)
@@ -778,6 +781,11 @@ class Actions(private val ctx: Context) {
         val i = when (panel) {
             "wifi" -> if (Build.VERSION.SDK_INT >= 29) Intent(Settings.Panel.ACTION_INTERNET_CONNECTIVITY) else Intent(Settings.ACTION_WIFI_SETTINGS)
             "bluetooth" -> Intent(Settings.ACTION_BLUETOOTH_SETTINGS)
+            "airplane" -> Intent(Settings.ACTION_AIRPLANE_MODE_SETTINGS)
+            "battery" -> Intent(Settings.ACTION_BATTERY_SAVER_SETTINGS)
+            "storage" -> Intent(Settings.ACTION_INTERNAL_STORAGE_SETTINGS)
+            "display" -> Intent(Settings.ACTION_DISPLAY_SETTINGS)
+            "location" -> Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
             "volume" -> if (Build.VERSION.SDK_INT >= 29) Intent(Settings.Panel.ACTION_VOLUME) else Intent(Settings.ACTION_SOUND_SETTINGS)
             else -> Intent(Settings.ACTION_SETTINGS)
         }

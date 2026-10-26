@@ -84,6 +84,21 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".ui.UiActivity"
+            android:label="Bubby UI"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@style/UiTheme"
+            android:enableOnBackInvokedCallback="false"
+            android:windowSoftInputMode="adjustResize"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|screenLayout|density|fontScale">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
         <service android:name=".BuddyService" android:exported="false"
             android:foregroundServiceType="specialUse|microphone">
             <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"

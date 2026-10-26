@@ -57,7 +57,7 @@ object Briefing {
         return sb.toString().trim()
     }
 
-    private fun lastLocation(ctx: Context): Location? {
+    internal fun lastLocation(ctx: Context): Location? {
         if (ctx.checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) return null
         return try {
             val lm = ctx.getSystemService(Context.LOCATION_SERVICE) as LocationManager
@@ -101,7 +101,7 @@ object Briefing {
         }
     }
 
-    private fun wmo(code: Int): String = when (code) {
+    internal fun wmo(code: Int): String = when (code) {
         0 -> "clear sky"
         1, 2 -> "partly cloudy"
         3 -> "overcast"

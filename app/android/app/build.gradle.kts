@@ -7,9 +7,15 @@ plugins {
 // One ABI per APK keeps the download small. Default is 64-bit ARM. For 32-bit ARM run
 // `flutter build apk --release --target-platform android-arm` (Flutter passes that as the
 // `target-platform` property), or force it with `-Pbuddy.abi=armeabi-v7a`.
+// `android-x64` builds an x86_64 APK that only exists for emulator smoke tests in CI.
+val allAbis = listOf("arm64-v8a", "armeabi-v7a", "x86_64")
 val buddyAbi: String = (project.findProperty("buddy.abi") as String?)
-    ?: if ((project.findProperty("target-platform") as String?)?.split(",")?.map { it.trim() } == listOf("android-arm")) "armeabi-v7a" else "arm64-v8a"
-require(buddyAbi in listOf("arm64-v8a", "armeabi-v7a")) { "buddy.abi must be arm64-v8a or armeabi-v7a, got $buddyAbi" }
+    ?: when ((project.findProperty("target-platform") as String?)?.split(",")?.map { it.trim() }) {
+        listOf("android-arm") -> "armeabi-v7a"
+        listOf("android-x64") -> "x86_64"
+        else -> "arm64-v8a"
+    }
+require(buddyAbi in allAbis) { "buddy.abi must be one of $allAbis, got $buddyAbi" }
 
 android {
     namespace = "com.example.buddy"
@@ -18,8 +24,7 @@ android {
     packaging {
         // real phones only: drop every native library that is not for the chosen ABI
         jniLibs {
-            excludes += listOf("**/x86_64/*.so", "**/x86/*.so") +
-                listOf("arm64-v8a", "armeabi-v7a").filter { it != buddyAbi }.map { "**/$it/*.so" }
+            excludes += listOf("**/x86/*.so") + allAbis.filter { it != buddyAbi }.map { "**/$it/*.so" }
         }
         resources {
             excludes += listOf(
@@ -49,7 +54,7 @@ android {
         // is added automatically by Flutter. (https://developer.android.com/studio/build/configure-apk-splits#configure-APK-versions)
         // You can force using the value of versionCode by specifying the `-P force-version-code-ignoring-abi=true`
         // flag during build.
-        // phones only: x86 libraries from dependencies (LiteRT-LM) would add ~26 MB
+        // phones only: one ABI per APK
         ndk { abiFilters += listOf(buddyAbi) }
         versionCode = flutter.versionCode
         versionName = flutter.versionName
@@ -71,10 +76,6 @@ kotlin {
     compilerOptions {
         jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
     }
-}
-
-dependencies {
-    implementation("com.google.ai.edge.litertlm:litertlm-android:0.18.1")
 }
 
 flutter {

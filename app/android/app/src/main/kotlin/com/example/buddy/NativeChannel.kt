@@ -50,8 +50,6 @@ class NativeChannel(private val act: Activity) : MethodChannel.MethodCallHandler
                 "musicMood" to prefs.getBoolean("music_mood", true),
                 "species" to prefs.getString("species", "cat"),
                 "size" to prefs.getFloat("size", 1f).toDouble(),
-                "provider" to prefs.getString("provider", "cloud"),
-                "gemmaModel" to prefs.getString("gemma_model", "e2b"),
                 "outfit" to prefs.getString("outfit", ""),
                 "lastCrash" to prefs.getString("last_crash", ""),
                 "messageDelay" to prefs.getInt("message_delay", 4),
@@ -72,8 +70,6 @@ class NativeChannel(private val act: Activity) : MethodChannel.MethodCallHandler
                 }
                 call.argument<String>("lang")?.let { e.putString("lang", it) }
                 call.argument<String>("persona")?.let { e.putString("persona", it.trim()) }
-                call.argument<String>("provider")?.let { e.putString("provider", it) }
-                call.argument<String>("gemmaModel")?.let { e.putString("gemma_model", it) }
                 call.argument<String>("outfit")?.let { e.putString("outfit", it) }
                 call.argument<Double>("size")?.let { e.putFloat("size", it.toFloat().coerceIn(0.15f, 6f)) }
                 call.argument<String>("musicApp")?.let { e.putString("music_app", it) }
@@ -215,10 +211,6 @@ class NativeChannel(private val act: Activity) : MethodChannel.MethodCallHandler
                 val err = Actions(act).run(JSONObject().put("do", "music").put("q", call.argument<String>("q").orEmpty()))
                 if (err == null) r.success(true) else r.error("FAILED", err, null)
             }
-            "modelStatus" -> r.success(ModelStore.status(act))
-            "modelDownload" -> { ModelStore.start(act, call.argument<String>("id").orEmpty()); r.success(true) }
-            "modelCancel" -> { ModelStore.cancel(act); r.success(true) }
-            "modelDelete" -> { ModelStore.delete(act, call.argument<String>("id").orEmpty()); r.success(true) }
             "renderSticker" -> r.success(Stickers.png(act,
                 call.argument<String>("mood") ?: "happy", call.argument<String>("caption").orEmpty()))
             "shareSticker" -> {

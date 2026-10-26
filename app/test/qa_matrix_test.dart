@@ -8,7 +8,6 @@ import 'package:buddy/screens/ai_setup_screen.dart';
 import 'package:buddy/screens/calendar_screen.dart';
 import 'package:buddy/screens/fun_screen.dart';
 import 'package:buddy/screens/home_screen.dart';
-import 'package:buddy/screens/model_screen.dart';
 import 'package:buddy/screens/more_screen.dart';
 import 'package:buddy/screens/music_screen.dart';
 import 'package:buddy/screens/outfits_screen.dart';
@@ -36,7 +35,6 @@ class Fake {
     },
     this.testOk = true,
     this.testMessage = '',
-    this.modelState = 'none',
   });
 
   final bool running;
@@ -46,7 +44,6 @@ class Fake {
   final Map<String, bool> perms;
   final bool testOk;
   final String testMessage;
-  final String modelState;
 
   /// User-authored / third-party data that is allowed to be Cyrillic in any UI language.
   static const userData = <String>[
@@ -70,8 +67,6 @@ class Fake {
           'keys': keys,
           'lang': 'auto',
           'running': running,
-          'provider': 'cloud',
-          'gemmaModel': 'e2b',
           'persona': 'Весёлый',
           'outfit': '',
           'lastCrash': '',
@@ -124,13 +119,6 @@ class Fake {
         return <String, Object?>{'ignoring': false};
       case 'renderSticker':
         return Uint8List(0);
-      case 'modelStatus':
-        return <String, Object?>{
-          'e2b': {'state': modelState, 'done': 500000000, 'total': 2000000000},
-          'e4b': {'state': 'none', 'done': 0, 'total': 0},
-          'ramGb': 6.0,
-          'freeGb': 12.5,
-        };
       case 'agentStatus':
         return <String, Object?>{
           'paired': paired,
@@ -283,12 +271,6 @@ void main() {
     Scenario('outfits', () => const OutfitsScreen()),
     Scenario('fun', () => const FunScreen()),
     Scenario('music', () => const MusicScreen()),
-    Scenario('model', () => const ModelScreen()),
-    Scenario(
-      'model-downloading',
-      () => const ModelScreen(),
-      Fake(modelState: 'downloading'),
-    ),
     Scenario('agents-paired', () => const AgentsScreen(), Fake(paired: true)),
     Scenario(
       'agents-unpaired',

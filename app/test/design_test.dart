@@ -23,8 +23,6 @@ Future<Object?> _fake(MethodCall call) async {
         'voice': true,
         'persona': 'Весёлый',
         'running': true,
-        'provider': 'cloud',
-        'gemmaModel': 'e2b',
         'outfit': '',
         'lastCrash': '',
       };

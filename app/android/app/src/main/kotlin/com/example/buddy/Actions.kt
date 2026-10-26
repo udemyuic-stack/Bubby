@@ -113,6 +113,11 @@ class Actions(private val ctx: Context) {
             }
             "volume" -> volume(a)
             "flashlight" -> flashlight(a.optBoolean("on", true))
+            "email" -> email(a)
+            "auto_reply" -> AutoReply.set(ctx, a.optBoolean("on", true), s(a, "mode").lowercase(), a.optInt("hours", 2), s(a, "text"))
+            "dnd" -> PhoneControls.dnd(ctx, a.optBoolean("on", true))
+            "screen_timeout" -> PhoneControls.screenTimeout(ctx, a.optInt("seconds", 0))
+            "find_phone" -> PhoneControls.findPhone(ctx, a.optBoolean("on", true))
             "back" -> global(AccessibilityService.GLOBAL_ACTION_BACK)
             "home" -> global(AccessibilityService.GLOBAL_ACTION_HOME)
             "recents" -> global(AccessibilityService.GLOBAL_ACTION_RECENTS)
@@ -466,6 +471,45 @@ class Actions(private val ctx: Context) {
         return null
     }
 
+    /** Opens a ready email draft in the mail app; the user reads it and taps Send (Android cannot send email silently). */
+    private fun email(a: JSONObject): String? {
+        val to = s(a, "to")
+        val subject = s(a, "subject")
+        val body = s(a, "body")
+        if (to.isEmpty() || to.contains('@')) { composeEmail(to, subject, body); return null }
+        if (!granted(Manifest.permission.READ_CONTACTS)) return tr("Нет доступа к контактам", "No access to contacts", "Kontaktlarga ruxsat yo'q")
+        Thread {
+            val c = try { Mail.find(ctx, to) } catch (_: Throwable) { emptyList() }
+            main.post {
+                try {
+                    when {
+                        c.isEmpty() -> asyncError(tr("Не нашёл почту контакта: $to", "No email address found for $to", "$to uchun email topilmadi"))
+                        c.size == 1 || c[0].score - c[1].score >= 10 -> composeEmail(c[0].address, subject, body)
+                        else -> choice(
+                            tr("Кому написать?", "Who should I write to?", "Kimga yozay?"),
+                            c.map {
+                                "${it.name} (${it.address})" to JSONObject().put("do", "email").put("to", it.address)
+                                    .put("subject", subject).put("body", body)
+                            }
+                        )
+                    }
+                } catch (_: Exception) {
+                    asyncError(tr("Не получилось открыть почту", "Could not open the mail app", "Pochta ilovasini ochib bo'lmadi"))
+                }
+            }
+        }.start()
+        return null
+    }
+
+    private fun composeEmail(to: String, subject: String, body: String) {
+        val i = Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:")).apply {
+            if (to.isNotEmpty()) putExtra(Intent.EXTRA_EMAIL, arrayOf(to))
+            putExtra(Intent.EXTRA_SUBJECT, subject)
+            putExtra(Intent.EXTRA_TEXT, body)
+        }
+        start(i)
+    }
+
     /** Main thread. Rate limit, then countdown (if configured) and send. */
     private fun proceed(app: String, number: String, name: String, text: String, force: Int = 0, aliveAtCall: Boolean = true) {
         if (rateLimited()) { asyncError(rateMsg()); return }
@@ -778,6 +822,11 @@ class Actions(private val ctx: Context) {
         val i = when (panel) {
             "wifi" -> if (Build.VERSION.SDK_INT >= 29) Intent(Settings.Panel.ACTION_INTERNET_CONNECTIVITY) else Intent(Settings.ACTION_WIFI_SETTINGS)
             "bluetooth" -> Intent(Settings.ACTION_BLUETOOTH_SETTINGS)
+            "airplane" -> Intent(Settings.ACTION_AIRPLANE_MODE_SETTINGS)
+            "battery" -> Intent(Settings.ACTION_BATTERY_SAVER_SETTINGS)
+            "storage" -> Intent(Settings.ACTION_INTERNAL_STORAGE_SETTINGS)
+            "display" -> Intent(Settings.ACTION_DISPLAY_SETTINGS)
+            "location" -> Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
             "volume" -> if (Build.VERSION.SDK_INT >= 29) Intent(Settings.Panel.ACTION_VOLUME) else Intent(Settings.ACTION_SOUND_SETTINGS)
             else -> Intent(Settings.ACTION_SETTINGS)
         }

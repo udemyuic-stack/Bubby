@@ -8,7 +8,6 @@ import '../widgets/widgets.dart';
 import 'agents_screen.dart';
 import 'ai_setup_screen.dart';
 import 'fun_screen.dart';
-import 'model_screen.dart';
 import 'music_screen.dart';
 import 'outfits_screen.dart';
 
@@ -84,9 +83,6 @@ class _MoreScreenState extends State<MoreScreen> with WidgetsBindingObserver {
           tr('Свой бесплатный ключ и запасные подключения', en: 'Your own free key and backup connections', uz: 'O\'zingizning bepul kalitingiz va zaxira ulanishlar'), BuddyColors.violet,
           () => _open(const AiSetupScreen())),
       if (_paired) agentsItem,
-      _MenuItem(Icons.memory_rounded, tr('Модель на телефоне', en: 'Model on the phone', uz: 'Telefondagi model'),
-          tr('Gemma прямо на устройстве, без интернета', en: 'Gemma right on the device, no internet', uz: 'Gemma to\'g\'ridan-to\'g\'ri telefonda, internetsiz'), BuddyColors.teal,
-          () => _open(const ModelScreen())),
       _MenuItem(Icons.music_note_rounded, tr('Музыка', en: 'Music', uz: 'Musiqa'),
           tr('Музыка по настроению и выбор приложения', en: 'Music for your mood and app choice', uz: 'Kayfiyatga mos musiqa va ilova tanlash'), BuddyColors.sky,
           () => _open(const MusicScreen())),

@@ -33,6 +33,8 @@ class DragLayout(c: Context) : LinearLayout(c) {
     private val slop = ViewConfiguration.get(c).scaledTouchSlop
     private val petRange = 40f * u
     private val petStep = 5f * u
+    private val dragStart = 20f * u   // a straight move this long is a drag, not the start of a rub
+    private var remX = 0f; private var remY = 0f   // sub-pixel remainders so slow drags do not lag behind the finger
     private var sx = 0f; private var sy = 0f
     private var lx = 0f; private var ly = 0f
     private var dragging = false
@@ -97,10 +99,16 @@ class DragLayout(c: Context) : LinearLayout(c) {
                 return
             }
         }
-        // while petting is still possible, the drag waits for 40 dp of travel; the window then catches up in one go
-        val threshold = if (petOk) max(slop.toFloat(), petRange) else slop.toFloat()
+        // a rub turns back on itself, a drag does not: once the finger has reversed, wait up to 40 dp to be sure it is a rub;
+        // while it keeps going one way, start the drag after a short move (the window then catches up with the finger)
+        val threshold = when {
+            !petOk -> slop.toFloat()
+            ax.rev > 0 || ay.rev > 0 -> max(slop.toFloat(), petRange)
+            else -> max(slop.toFloat(), dragStart)
+        }
         if (dist > threshold) {
             dragging = true
+            remX = 0f; remY = 0f
             if (!petOk) { lx = e.rawX; ly = e.rawY }
             onDragStart()
         }
@@ -141,7 +149,9 @@ class DragLayout(c: Context) : LinearLayout(c) {
         when (e.actionMasked) {
             MotionEvent.ACTION_MOVE -> {
                 if (dragging) {
-                    onDrag(e.rawX - lx, e.rawY - ly); lx = e.rawX; ly = e.rawY
+                    remX += e.rawX - lx; remY += e.rawY - ly; lx = e.rawX; ly = e.rawY
+                    val ix = remX.toInt(); val iy = remY.toInt()
+                    if (ix != 0 || iy != 0) { remX -= ix; remY -= iy; onDrag(ix.toFloat(), iy.toFloat()) }
                 } else if (petting) {
                     val now = SystemClock.uptimeMillis()
                     if (now - lastPet >= 3000) { lastPet = now; onPet() }

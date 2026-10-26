@@ -17,7 +17,6 @@ Future<Object?> _fake(MethodCall call) async {
         'key': 'AIzaSyExampleKey',
         'lang': 'ru',
         'running': true,
-        'provider': 'cloud',
         'lastCrash': '',
       };
     case 'permissionsStatus':

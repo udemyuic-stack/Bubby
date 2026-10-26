@@ -322,8 +322,46 @@ fun apps() {
     check("alias in sentence", pk("ютуб пожалуйста") == "com.google.android.youtube", "${pk("ютуб пожалуйста")}")
 }
 
+fun mathTools() {
+    fun c(e: String) = try { MathTools.fmt(MathTools.calc(e)) } catch (x: Exception) { "ERR" }
+    check("calc add", c("2+2") == "4")
+    check("calc precedence", c("2+3*4") == "14")
+    check("calc parens", c("12*(3+4)/5") == "16.8")
+    check("calc -2^2", c("-2^2") == "-4")
+    check("calc float", c("0.1+0.2") == "0.3")
+    check("calc sqrt", c("sqrt(144)") == "12")
+    check("calc div0", c("1/0") == "ERR")
+    check("calc garbage", c("2+*3") == "ERR")
+    check("convert km mi", MathTools.convert(5.0, "km", "mi") == "5 km = 3.106855961 mi")
+    check("convert C F", MathTools.convert(100.0, "C", "F") == "100 °C = 212 °F")
+    check("convert ru", MathTools.convert(10.0, "км", "миль") == "10 km = 6.213711922 mi")
+    check("convert uz", MathTools.convert(2.0, "soat", "daqiqa") == "2 h = 120 min")
+    check("convert mixed", try { MathTools.convert(1.0, "kg", "km"); false } catch (x: IllegalArgumentException) { true })
+}
+
+fun comms() {
+    val now = 1_000_000_000L
+    val on = ReplyRules.until(now, 2)
+    fun rep(until: Long = on, canReply: Boolean = true, msg: Boolean = true, group: Boolean = false, num: Boolean = false, last: Long? = null) =
+        ReplyRules.shouldReply(until, now, canReply, msg, group, num, last)
+    check("autoreply private message", rep())
+    check("autoreply off", !rep(until = 0))
+    check("autoreply expired", !rep(until = now - 1))
+    check("autoreply no reply button", !rep(canReply = false))
+    check("autoreply group", !rep(group = true))
+    check("autoreply unknown number", !rep(num = true))
+    check("autoreply cooldown", !rep(last = now - 10 * 60_000L))
+    check("autoreply after cooldown", rep(last = now - 61 * 60_000L))
+    check("autoreply max 12h", ReplyRules.until(now, 99) == now + 12 * 3_600_000L)
+    val rows = listOf("Alisher Karimov" to "a@mail.uz", "Alisher Valiyev" to "v@gmail.com", "Dilnoza" to "d@mail.ru", "Бобур" to "b@gmail.com")
+    check("mail unique name", Mail.rank(rows, "Dilnoza").map { it.address } == listOf("d@mail.ru"))
+    check("mail two matches", Mail.rank(rows, "Alisher").size == 2)
+    check("mail cyrillic vs latin", Mail.rank(rows, "Bobur").firstOrNull()?.address == "b@gmail.com")
+    check("mail no match", Mail.rank(rows, "Zafar").isEmpty())
+}
+
 fun main() {
-    quick(); contacts(); apps(); if (System.getenv("PROBE") != null) probe()
+    quick(); contacts(); apps(); mathTools(); comms(); if (System.getenv("PROBE") != null) probe()
     println("RESULT: $pass passed, $fail failed (${pass + fail} assertions)")
     if (fail > 0) System.exit(1)
 }

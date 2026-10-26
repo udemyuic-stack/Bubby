@@ -13,6 +13,8 @@ import com.example.buddy.R
 import com.example.buddy.Tr
 import java.util.Calendar
 
+private val TAB_NAMES = listOf("home", "tasks", "calendar", "settings", "more")
+
 /** The whole app UI: five tabs and a stack of pushed screens, built with plain Views. */
 class UiActivity : Activity() {
     private lateinit var host: FrameLayout
@@ -45,8 +47,11 @@ class UiActivity : Activity() {
         }
         setContentView(host)
         setBars()
-        showTab(0)
-        intent?.getStringExtra("open")?.let { openByName(it) }
+        // `--es open <name>` (used by the CI screenshots) starts straight on that tab or screen
+        val open = intent?.getStringExtra("open")
+        val first = TAB_NAMES.indexOf(open)
+        showTab(if (first >= 0) first else if (open != null) 1 else 0)
+        if (open != null && first < 0) openByName(open)
     }
 
     /** Older versions could download a 2.6-3.7 GB on-device model; it is gone now, so free that space once. */
@@ -68,8 +73,7 @@ class UiActivity : Activity() {
     /** Opens a tab or a screen by name (used by the CI screenshots: `am start --es open settings`). */
     fun openByName(name: String) {
         while (stack.isNotEmpty()) { val (_, v) = stack.removeAt(stack.size - 1); host.removeView(v) }
-        val tabNames = listOf("home", "tasks", "calendar", "settings", "more")
-        val i = tabNames.indexOf(name)
+        val i = TAB_NAMES.indexOf(name)
         if (i >= 0) { showTab(i); return }
         Screens.create(name, this)?.let { push(it) }
     }

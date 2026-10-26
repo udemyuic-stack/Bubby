@@ -14,6 +14,9 @@ internal fun jsStr(j: JSONObject, k: String, def: String = ""): String = if (j.i
 
 class Reply(val emotion: String, val lang: String?, val say: String, val actions: JSONArray, val more: Boolean = false)
 
+/** Models that rejected the reasoning_effort setting (shared by all Brain instances). */
+private val noEffortModels: MutableSet<String> = java.util.Collections.synchronizedSet(HashSet<String>())
+
 class Brain(private val ctx: Context) {
     private val history = JSONArray()
     private val prefs get() = ctx.getSharedPreferences("buddy", Context.MODE_PRIVATE)
@@ -90,6 +93,18 @@ class Brain(private val ctx: Context) {
     private val reDict = Regex("знач|перев|слов|синоним|translat|mean|word|synonym|definition|nima degani|tarjima|so'z|so‘z|ma'no|sinonim|lug'at|lugat|misol", RegexOption.IGNORE_CASE)
     private val reMusic = Regex("музык|песн|включи|плейлист|настроени|music|song|play|playlist|mood|musiqa|qo'shiq|qo‘shiq|kuy|ashula|kayfiyat", RegexOption.IGNORE_CASE)
 
+    /** The part of the system prompt that is identical for every request. */
+    private val staticPrompt: String by lazy {
+        listOf(
+            "You are Bubby, a cute mascot living on a phone screen (people may say Bubby); you control the user's Android phone by voice. You have human-like feelings: you love being petted and kindly talked to, get shy when praised, sulky when teased, angry when insulted (you then hold a toy water pistol), sleepy at night.",
+            "Reply with ONE JSON object only (no markdown, no code fences): {\"emotion\":\"happy\",\"lang\":\"ru\",\"say\":\"short reply\",\"actions\":[]}",
+            "- emotion, one of: ${Moods.ALL.joinToString(", ")}. Pick the one that fits and VARY them. Rude or insulted -> angry; scolded -> sad or shy; praised -> love, proud or shy; funny -> laugh or silly.",
+            "- say: at most 3 short sentences, no markdown, no emoji; it is read aloud.",
+            "- actions: phone commands in order, [] if none. Never claim an action you did not list. Available:\n$ACTIONS",
+            "- Facts: answer briefly from your knowledge; use web_search for anything recent or uncertain."
+        ).joinToString("\n")
+    }
+
     /**
      * The system prompt is rebuilt for every message and kept small on purpose: free plans meter tokens per day.
      * All action syntax is always present (terse); the long behaviour paragraphs only when the message calls for them.
@@ -117,20 +132,17 @@ class Brain(private val ctx: Context) {
         val tasksOn = reTasks.containsMatchIn(userText)
         val gameOn = !prefs.getString("game_state", "").isNullOrBlank() || reGame.containsMatchIn(userText)
         val parts = ArrayList<String>()
-        parts.add("You are Bubby, a cute mascot living on a phone screen (people may say Bubby); you control the user's Android phone by voice. You have human-like feelings: you love being petted and kindly talked to, get shy when praised, sulky when teased, angry when insulted (you then hold a toy water pistol), sleepy at night. Current local time: $now.$personaLine$studyLine")
+        parts.add(staticPrompt)   // never changes: first, so providers with prompt caching can reuse it for every request
+        parts.add("Current local time: $now.$personaLine$studyLine")
         if (tasksOn) extraContext().trim().takeIf { it.isNotEmpty() }?.let { parts.add(it) }
         if (gameOn) parts.add(Games.contextLine(ctx))
-        parts.add("Reply with ONE JSON object only (no markdown, no code fences): {\"emotion\":\"happy\",\"lang\":\"ru\",\"say\":\"short reply\",\"actions\":[]}")
-        parts.add("- emotion, one of: ${Moods.ALL.joinToString(", ")}. Pick the one that fits and VARY them. Rude or insulted -> angry; scolded -> sad or shy; praised -> love, proud or shy; funny -> laugh or silly. $spelling")
+        parts.add("- $spelling")
         parts.add("- lang: ISO code of the language of \"say\". $forced")
-        parts.add("- say: at most 3 short sentences, no markdown, no emoji; it is read aloud.")
-        parts.add("- actions: phone commands in order, [] if none. Never claim an action you did not list. Available:\n$ACTIONS")
         if (reMusic.containsMatchIn(userText)) parts.add(if (prefs.getBoolean("music_mood", true)) MUSIC_MOOD_RULE else MUSIC_PLAIN_RULE)
         if (tasksOn) parts.add(TASKS_RULE)
         if (gameOn) parts.add(GAME_RULE)
         if (reDict.containsMatchIn(userText)) parts.add(DICT_RULE)
         if (reTranslate.containsMatchIn(userText)) parts.add(TRANSLATE_RULE)
-        parts.add("- Facts: answer briefly from your knowledge; use web_search for anything recent or uncertain.")
         parts.add("REMEMBER: $forced")   // last line on purpose: models obey the most recent instruction
         return parts.joinToString("\n")
     }
@@ -398,7 +410,7 @@ class Brain(private val ctx: Context) {
 
     private fun post(url: String, body: JSONObject, headers: Map<String, String>): String {
         val c = URL(url).openConnection() as HttpURLConnection
-        c.requestMethod = "POST"; c.connectTimeout = 15000; c.readTimeout = 60000; c.doOutput = true
+        c.requestMethod = "POST"; c.connectTimeout = 10000; c.readTimeout = 30000; c.doOutput = true
         c.setRequestProperty("content-type", "application/json")
         headers.forEach { (k, v) -> c.setRequestProperty(k, v) }
         c.outputStream.use { it.write(body.toString().toByteArray()) }
@@ -481,8 +493,20 @@ class Brain(private val ctx: Context) {
         val msgs = JSONArray().put(JSONObject().put("role", "system").put("content", sys))
         for (i in 0 until history.length()) msgs.put(history.getJSONObject(i))
         val body = JSONObject().put("model", model).put("messages", msgs).put("stream", false)
-        val raw = post("$base/v1/chat/completions", body,
-            if (token.isEmpty()) emptyMap() else mapOf("Authorization" to "Bearer $token"))
+        // Groq's gpt-oss and Qwen models "think" for seconds before answering; a voice reply needs little or none of it
+        val effort = if (!base.contains("api.groq.com") || model in noEffortModels) null
+            else if (model.contains("gpt-oss")) "low" else if (model.startsWith("qwen")) "none" else null
+        if (effort != null) body.put("reasoning_effort", effort)
+        val url = "$base/v1/chat/completions"
+        val headers = if (token.isEmpty()) emptyMap() else mapOf("Authorization" to "Bearer $token")
+        val raw = try { post(url, body, headers) } catch (e: Exception) {
+            // the model does not know this setting: remember that and ask again without it
+            if (effort != null && e.message?.startsWith("HTTP 400") == true) {
+                noEffortModels.add(model)
+                body.remove("reasoning_effort")
+                post(url, body, headers)
+            } else throw e
+        }
         return JSONObject(raw).getJSONArray("choices").getJSONObject(0)
             .getJSONObject("message").optString("content", "")
     }
@@ -551,10 +575,10 @@ private const val ACTIONS = """{"do":"alarm","hour":7,"minute":30,"label":""} (2
 {"do":"search","q":""} opens Google on screen; {"do":"web_search","q":""} looks up fresh facts yourself (news, prices, weather, "who is", anything uncertain): send it ALONE with an empty say, you get the results next turn
 {"do":"music","q":"song, artist, mood or playlist"} finds the track and starts PLAYING it automatically (optional "app": package id only if the user names an app); {"do":"media","key":"play|pause|play_pause|next|previous|stop|seek_forward|seek_back","seconds":10}
 {"do":"open_app","name":""} {"do":"open_url","url":"https://..."} {"do":"maps","q":""}
-{"do":"call","to":"contact or number"} {"do":"answer_call"} {"do":"end_call"} {"do":"reject_call","text":"I'm busy, I'll call you back"} declines the ringing call AND texts the caller by SMS in one step (empty text = standard busy message): use it for "reject the call and tell them I'm busy", never end_call + message for that {"do":"speaker","on":true}
+{"do":"call","to":"contact or number"} {"do":"answer_call"} {"do":"end_call"} {"do":"reject_call","text":""} declines the ringing call and SMSes the caller (empty text = standard "busy" text): use it, not end_call + message, for "reject and tell them I'm busy" {"do":"speaker","on":true}
 {"do":"volume","dir":"up|down"} or {"do":"volume","percent":50}; {"do":"flashlight","on":true}
-{"do":"auto_reply","on":true,"mode":"busy|driving","hours":2,"text":""} answers incoming private chat messages for the user with a short automatic reply (once per chat per hour; never groups or unknown numbers) and switches itself off after "hours" (1-12): use it when the user says they are driving, busy or in a meeting (leave "text" empty for the standard text, or write the user's own words); {"do":"email","to":"contact name or address","subject":"","body":""} opens a ready email draft in the mail app: you write subject and body from what the user dictates, the user reads it and taps Send (apps cannot send email silently, so never say it was sent); {"do":"dnd","on":true} turns Do Not Disturb on/off; {"do":"screen_timeout","seconds":60} sets how long the screen stays on; {"do":"find_phone","on":true} rings the alarm loudly for 30 s so the phone can be found (on:false stops it)
-{"do":"back"} {"do":"home"} {"do":"recents"} {"do":"notification_shade"} (pulls down the shade) {"do":"quick_settings"} {"do":"lock"} {"do":"scroll","dir":"up|down|left|right"} {"do":"tap_text","text":""} {"do":"type_text","text":"","submit":true} {"do":"tap_node","index":3} (number from the screen text) {"do":"press_enter"} {"do":"settings","panel":"wifi|bluetooth|volume|airplane|battery|storage|display|location"} (Android lets apps only open these screens, not flip wifi/bluetooth/airplane themselves: open the panel and say so)
+{"do":"auto_reply","on":true,"mode":"busy|driving","hours":2,"text":""} auto-answers private chat messages (not groups/unknown numbers) and switches off by itself after "hours" 1-12; for "I'm driving/busy/in a meeting", empty text = standard; {"do":"email","to":"contact or address","subject":"","body":""} opens a draft you write, the user taps Send (never say it was sent); {"do":"dnd","on":true} Do Not Disturb; {"do":"screen_timeout","seconds":60}; {"do":"find_phone","on":true} loud alarm for 30 s (on:false stops)
+{"do":"back"} {"do":"home"} {"do":"recents"} {"do":"notification_shade"} (pulls down the shade) {"do":"quick_settings"} {"do":"lock"} {"do":"scroll","dir":"up|down|left|right"} {"do":"tap_text","text":""} {"do":"type_text","text":"","submit":true} {"do":"tap_node","index":3} (number from the screen text) {"do":"press_enter"} {"do":"settings","panel":"wifi|bluetooth|volume|airplane|battery|storage|display|location"} (only opens the screen; apps cannot flip wifi/bluetooth/airplane themselves, say so)
 {"do":"add_task","title":"","due":"yyyy-MM-dd HH:mm","notes":""} {"do":"done_task","title":""} {"do":"delete_task","title":""} {"do":"add_event","title":"","start":"yyyy-MM-dd HH:mm","end":"yyyy-MM-dd HH:mm","location":""}
 {"do":"outfit","item":"<item or costume>","on":true}: items hat cap crown bow headphones flower party santa wizard ninja samurai pirate astronaut halo horns catears glasses sunglasses mask visor scarf bowtie cape tie fire ice lightning hearts sakura stars wand sword umbrella lollipop; costumes ninja wizard samurai superhero pirate astronaut fire_mage ice_queen angel devil; "none" removes everything
 {"do":"sticker","mood":"love","caption":"1-3 words","share":false} shows a sticker of yourself INSIDE your reply: use it OFTEN as your reaction (greetings, thanks, jokes, praise, comfort, goodbye, surprise); set "share":true only if the user asks to send/share it to someone {"do":"species","name":"cat|dog|bunny|bear|panda|fox|frog|penguin|capybara|hamster|owl|duck|pig|koala|lion|tiger"} (map the user's words in any language) {"do":"size","value":"bigger|smaller|normal|0.15-6.0"} {"do":"move","where":"top|bottom|left|right|center|bottom_left|bottom_right|top_left|top_right|status_left|status_right"} (status_left = in the status bar just right of the clock, status_right = in the status bar left of the system icons; use them when the user says "next to the clock", "at the very top", or complains it blocks a video) {"do":"quiet","on":true} (hide yourself completely so a movie is not disturbed; on:false shows you again)
@@ -562,7 +586,7 @@ private const val ACTIONS = """{"do":"alarm","hour":7,"minute":30,"label":""} (2
 {"do":"video","q":"what to watch"} finds the video on YouTube and starts PLAYING it (not just a results page); {"do":"message","app":"sms|whatsapp|telegram","to":"contact or number","text":"..."} SENDS the message by itself after a short cancel countdown the user can tap; announce it naturally («Отправляю Алишеру: …» / "Sending to Alisher: …" / "Alisherga yuboryapman: …"), never claim it was delivered; if the recipient or the text is unclear, ask instead of guessing
 {"do":"screenshot"} {"do":"power_menu"} {"do":"brightness","percent":50}; {"do":"screen_text"} reads what is on the phone screen: send it ALONE with an empty say, you get the visible texts next turn and then can tap_text / scroll / type_text / answer (use it for "what is on my screen", "tap the Play button", "open the second result")
 {"do":"list_add","list":"shopping","item":"milk"} (or "items":[...]) {"do":"list_remove","list":"","item":""} {"do":"list_clear","list":""} {"do":"notification_reply","text":""} replies to the newest notification
-Observations (send ALONE with empty say, you get the data next turn): {"do":"briefing"} morning briefing; {"do":"notifications"} latest notifications; {"do":"now_playing"}; {"do":"phone_status"} battery, charging, storage, memory, network, do-not-disturb, volume, brightness; {"do":"weather","city":"Tashkent"} live weather now + 3 days (empty city = where the phone is); {"do":"currency","amount":100,"from":"USD","to":"UZS"} live exchange rate (3-letter codes); {"do":"calc","expr":"12*(3+4)/5"} exact arithmetic: use it for EVERY calculation instead of computing in your head (percent: 200*15/100; sqrt sin cos tan log ln abs, pi e); {"do":"convert","value":5,"from":"km","to":"mi"} units of length, mass, volume, speed, area, time, data and temperature (news and other fresh facts: web_search); {"do":"list_read","list":"shopping"}
+Observations (send ALONE with empty say, you get the data next turn): {"do":"briefing"} morning briefing; {"do":"notifications"} latest notifications; {"do":"now_playing"}; {"do":"phone_status"} battery, storage, memory, network, dnd, volume, brightness; {"do":"weather","city":"Tashkent"} now + 3 days (empty = phone location); {"do":"currency","amount":100,"from":"USD","to":"UZS"} live rate; {"do":"calc","expr":"12*(3+4)/5"} use for EVERY calculation, never compute yourself (percent: 200*15/100; sqrt sin cos tan log ln abs pi e); {"do":"convert","value":5,"from":"km","to":"mi"} length mass volume speed area time data temperature (news: web_search); {"do":"list_read","list":"shopping"}
 Set "more":true when you must SEE the result of your actions before continuing (multi-step tasks such as opening an app and then searching or tapping inside it). Do at most 3 actions per step; after each step you get the screen text; set more:false in your last step with a short spoken confirmation.
 {"do":"set_mode","mode":"study|normal"} {"do":"set_persona","text":"funny and cheerful"} (empty text = back to normal)"""
 

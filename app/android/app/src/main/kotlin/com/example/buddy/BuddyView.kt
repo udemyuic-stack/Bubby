@@ -159,6 +159,9 @@ class BuddyView(c: Context) : View(c) {
     private var glowCol = 0xFF7B4FD6.toInt()
     private var glowShader: Shader? = null
 
+    /** True for a view that is never attached to a window and is only drawn into a bitmap (stickers, previews). */
+    var offscreen: Boolean = false
+
     /** What Bubby is doing, shown as a small badge on the head: "", think, search, listen, approval, limit, error or done. */
     var badge: String = ""
         set(v) { if (field != v) { field = v; kick() } }
@@ -1219,7 +1222,7 @@ class BuddyView(c: Context) : View(c) {
     }
 
     override fun onDraw(cv: Canvas) {
-        if (!isAttachedToWindow) return
+        if (!isAttachedToWindow && !offscreen) return
         val now = SystemClock.uptimeMillis()
         val t = now / 1000f
         val dtS = if (lastMs == 0L) 0.016f else ((now - lastMs) / 1000f).coerceIn(0f, 0.1f)
@@ -1252,7 +1255,7 @@ class BuddyView(c: Context) : View(c) {
         val mf =if (mk != 0) ((now - mStart).toFloat() / mDur).coerceIn(0f, 1f) else 0f
         val env = if (mk >= 4) sin(mf * 3.1415927f) else minOf(1f, minOf(mf, 1f - mf) * 6f)
 
-        if (em != lastEm) { if (blend >= 1f) startBlend(); lastEm = em }
+        if (em != lastEm) { if (blend >= 1f && !offscreen) startBlend(); lastEm = em }   // a single frame has nothing to blend from
         var b = 1f
         if (blend < 1f) {
             blend = ((now - blendStart) / 220f).coerceIn(0f, 1f)

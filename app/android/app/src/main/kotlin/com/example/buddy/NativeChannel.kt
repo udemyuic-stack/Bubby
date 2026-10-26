@@ -215,6 +215,16 @@ class NativeChannel(private val act: Activity) : MethodChannel.MethodCallHandler
                 val err = Actions(act).run(JSONObject().put("do", "music").put("q", call.argument<String>("q").orEmpty()))
                 if (err == null) r.success(true) else r.error("FAILED", err, null)
             }
+            "renderPreview" -> {
+                val mood = call.argument<String>("mood") ?: "happy"
+                // drawing the mascot takes a moment: do it off the UI thread so the screen stays smooth
+                Thread {
+                    val out = try { Stickers.previewPng(act, mood) } catch (e: Throwable) { null }
+                    android.os.Handler(android.os.Looper.getMainLooper()).post {
+                        if (out != null) r.success(out) else r.error("FAILED", "preview failed", null)
+                    }
+                }.start()
+            }
             "renderSticker" -> r.success(Stickers.png(act,
                 call.argument<String>("mood") ?: "happy", call.argument<String>("caption").orEmpty()))
             "shareSticker" -> {

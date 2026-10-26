@@ -415,6 +415,12 @@ class Native {
   static Future<void> deleteEvent(int id) =>
       _call<bool>('deleteEvent', {'id': id});
 
+  /// A small picture of the mascot with the current pet and outfit, drawn off the UI thread.
+  static Future<Uint8List> renderPreview([String mood = 'happy']) async {
+    final b = await _call<Uint8List>('renderPreview', {'mood': mood});
+    return b ?? Uint8List(0);
+  }
+
   static Future<Uint8List> renderSticker(String mood, [String caption = '']) async {
     final b = await _call<Uint8List>(
       'renderSticker',

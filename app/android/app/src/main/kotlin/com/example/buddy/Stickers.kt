@@ -71,6 +71,15 @@ object Stickers {
         return out
     }
 
+    /** Small plain picture of the mascot for the outfit screen: no border, no caption, a fraction of the sticker's cost. */
+    fun previewPng(ctx: Context, mood: String): ByteArray {
+        val art = renderArt(ctx, if (mood in Moods.KNOWN) mood else "happy", Outfits.parse(prefOutfit(ctx)), 3.5f)
+        val bos = ByteArrayOutputStream()
+        art.compress(Bitmap.CompressFormat.PNG, 90, bos)
+        art.recycle()
+        return bos.toByteArray()
+    }
+
     fun png(ctx: Context, mood: String, caption: String): ByteArray {
         val bmp = render(ctx, mood, caption, Outfits.parse(prefOutfit(ctx)))
         val bos = ByteArrayOutputStream()
@@ -108,10 +117,11 @@ object Stickers {
         ctx.getSharedPreferences("buddy", Context.MODE_PRIVATE).getString("outfit", "") ?: ""
 
     // draws the mascot at a high fixed scale and crops to its visible bounds
-    private fun renderArt(ctx: Context, mood: String, outfit: Set<String>): Bitmap {
+    private fun renderArt(ctx: Context, mood: String, outfit: Set<String>, scale: Float = 7f): Bitmap {
         val v = BuddyView(ctx)
+        v.offscreen = true
         val dens = ctx.resources.displayMetrics.density
-        v.scaleF = 7f / dens
+        v.scaleF = scale / dens
         v.mood = mood
         v.outfit = outfit
         v.species = ctx.getSharedPreferences("buddy", Context.MODE_PRIVATE).getString("species", "cat").orEmpty()
@@ -120,7 +130,7 @@ object Stickers {
         val h = max(1, v.measuredHeight)
         v.layout(0, 0, w, h)
 
-        val pad = 200
+        val pad = (200 * scale / 7f).toInt()
         val big = Bitmap.createBitmap(w + 2 * pad, h + 2 * pad, Bitmap.Config.ARGB_8888)
         val c = Canvas(big)
         c.translate(pad.toFloat(), pad.toFloat())

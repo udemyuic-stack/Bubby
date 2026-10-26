@@ -200,12 +200,26 @@ class _OutfitsScreenState extends State<OutfitsScreen>
     }
   }
 
+  bool _refreshing = false;
+  bool _refreshAgain = false;
+
+  /// Redraws the preview. Taps that arrive while a picture is being drawn are merged into one more redraw.
   Future<void> _refresh() async {
+    if (_refreshing) {
+      _refreshAgain = true;
+      return;
+    }
+    _refreshing = true;
     try {
-      final b = await Native.renderSticker('happy');
-      if (mounted) setState(() => _preview = b);
+      do {
+        _refreshAgain = false;
+        final b = await Native.renderPreview('happy');
+        if (mounted && !_refreshAgain) setState(() => _preview = b);
+      } while (_refreshAgain && mounted);
     } on NativeException {
       // preview is optional
+    } finally {
+      _refreshing = false;
     }
   }
 

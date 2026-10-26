@@ -73,6 +73,7 @@ Future<Object?> _fake(MethodCall call) async {
       ];
     case 'batteryStatus':
       return <String, Object?>{'ignoring': false};
+    case 'renderPreview':
     case 'renderSticker':
       return Uint8List(0);
     default:

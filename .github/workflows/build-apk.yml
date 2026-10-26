@@ -84,6 +84,6 @@ jobs:
           git checkout --orphan ci-shots-tmp
           git rm -rf . > /dev/null 2>&1 || true
           cp /tmp/shots/* .
-          git add -f ./*.png ./*.txt
+          git add -f ./*.png ./*.txt ./*.xml
           git commit -q -m "screenshots for ${GITHUB_SHA}"
           git push -f origin HEAD:ci-screenshots

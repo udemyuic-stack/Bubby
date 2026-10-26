@@ -1,6 +1,6 @@
 # buddy
 
-Claude Buddy voice mascot
+Bubby voice mascot
 
 ## Getting Started
 

@@ -1,9 +1,3 @@
-# third-party reference code and old experiments (not ours to republish)
-ref-coucou/
-src-zip/
-apk-zip/
-ClaudeBuddy/
-
 # built APKs and previews
 *.apk
 buby-icon-1024.png

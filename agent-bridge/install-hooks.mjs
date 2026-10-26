@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Adds (or with --uninstall removes) Claude Buddy's hook entries in ~/.claude/settings.json.
+// Adds (or with --uninstall removes) Bubby's hook entries in ~/.claude/settings.json.
 // Never overwrites the file blindly: prints the diff, applies only with --yes after a dated backup.
 import fs from "node:fs";
 import os from "node:os";

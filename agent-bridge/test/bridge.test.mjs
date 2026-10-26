@@ -25,7 +25,7 @@ const start = async (extra = {}) => {
 const phoneFor = (b, token, extra) => fakePhone({ host: b.host, port: b.port, fp: b.fp, token, ...extra });
 
 const runHook = (dir, payload, env = {}) => new Promise((resolve) => {
-  const p = spawn(process.execPath, [HOOK], { env: { ...process.env, CLAUDE_BUDDY_DIR: dir, ...env } });
+  const p = spawn(process.execPath, [HOOK], { env: { ...process.env, BUBBY_DIR: dir, ...env } });
   let out = "";
   p.stdout.on("data", (d) => (out += d));
   p.on("close", (code) => resolve({ code, out }));
@@ -182,7 +182,7 @@ test("hook gives up after its wait limit with no output", async () => {
   const { b, dir, token } = await start();
   const phone = await phoneFor(b, token);
   await phone.wait((m) => m.type === "welcome");
-  const { code, out } = await runHook(dir, perm("ls"), { CLAUDE_BUDDY_HOOK_WAIT_MS: "300" });
+  const { code, out } = await runHook(dir, perm("ls"), { BUBBY_HOOK_WAIT_MS: "300" });
   assert.equal(code, 0);
   assert.equal(out, "");
   phone.close();

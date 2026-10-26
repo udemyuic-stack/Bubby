@@ -19,7 +19,7 @@ object WebSearch {
         if (q.isEmpty()) throw Exception(t("пустой запрос", "empty query", "bo'sh so'rov"))
         val c = URL("https://html.duckduckgo.com/html/?q=" + URLEncoder.encode(q, "UTF-8")).openConnection() as HttpURLConnection
         c.connectTimeout = 8000; c.readTimeout = 8000
-        c.setRequestProperty("User-Agent", "Mozilla/5.0 (Linux; Android 14) ClaudeBuddy")
+        c.setRequestProperty("User-Agent", "Mozilla/5.0 (Linux; Android 14) Bubby")
         if (c.responseCode !in 200..299) throw Exception(t("поиск недоступен (HTTP ${c.responseCode})", "search unavailable (HTTP ${c.responseCode})", "qidiruv mavjud emas (HTTP ${c.responseCode})"))
         val html = c.inputStream.bufferedReader().use { it.readText() }
         val titles = link.findAll(html).map { clean(it.groupValues[1]) }.toList()

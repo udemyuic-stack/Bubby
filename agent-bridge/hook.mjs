@@ -20,7 +20,7 @@ export function buildEnvelope(payload) {
 
 export function decisionOutput(decision) {
   if (decision === "allow") return { hookSpecificOutput: { hookEventName: "PermissionRequest", decision: { behavior: "allow" } } };
-  if (decision === "deny") return { hookSpecificOutput: { hookEventName: "PermissionRequest", decision: { behavior: "deny", message: "Denied from the phone (Claude Buddy)" } } };
+  if (decision === "deny") return { hookSpecificOutput: { hookEventName: "PermissionRequest", decision: { behavior: "deny", message: "Denied from the phone (Bubby)" } } };
   return null;
 }
 
@@ -32,7 +32,7 @@ async function main() {
   const env = buildEnvelope(payload);
   if (!env) return;
   const waits = env.event === "PermissionRequest";
-  const waitMs = Number(process.env.CLAUDE_BUDDY_HOOK_WAIT_MS) || HOOK_WAIT_MS;
+  const waitMs = Number(process.env.BUBBY_HOOK_WAIT_MS) || HOOK_WAIT_MS;
   await new Promise((done) => {
     const c = net.connect(sockPath());
     let buf = "";

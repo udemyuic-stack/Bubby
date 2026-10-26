@@ -230,7 +230,7 @@ class ModelDownloadService : Service() {
             c.instanceFollowRedirects = false
             c.connectTimeout = 15000
             c.readTimeout = 30000
-            c.setRequestProperty("User-Agent", "ClaudeBuddy/1.0")
+            c.setRequestProperty("User-Agent", "Bubby/1.0")
             c.setRequestProperty("Accept-Encoding", "identity")
             if (offset > 0) c.setRequestProperty("Range", "bytes=$offset-")
             val code = c.responseCode

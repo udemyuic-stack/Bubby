@@ -14,7 +14,7 @@ export function ensureCert(dir) {
     try {
       execFileSync("openssl", [
         "req", "-x509", "-newkey", "ec", "-pkeyopt", "ec_paramgen_curve:prime256v1", "-nodes",
-        "-keyout", keyPath, "-out", certPath, "-days", "3650", "-subj", "/CN=claude-buddy-bridge",
+        "-keyout", keyPath, "-out", certPath, "-days", "3650", "-subj", "/CN=bubby-bridge",
       ], { stdio: "ignore" });
     } catch (e) {
       fs.rmSync(keyPath, { force: true });

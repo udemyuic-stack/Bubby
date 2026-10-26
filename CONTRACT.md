@@ -1,14 +1,14 @@
-# ClaudeBuddy (Flutter) — build contract
+# Bubby (Flutter) — build contract
 
-Project: `claude_buddy` (Flutter app, Android only).
+Project: `app` (Flutter app, Android only).
 Toolchain (no spaces in paths, already installed by the lead):
 ```
 export JAVA_HOME=<JDK 17 path>
 export ANDROID_HOME=<Android SDK path>
 export PATH=<Flutter SDK>/bin:$JAVA_HOME/bin:$PATH
 ```
-Kotlin package: `com.example.buddy`, in `claude_buddy/android/app/src/main/kotlin/com/example/buddy/`.
-Dart: `claude_buddy/lib/`. UI language of the app: Russian. No third-party Dart packages (SDK only).
+Kotlin package: `com.example.buddy`, in `app/android/app/src/main/kotlin/com/example/buddy/`.
+Dart: `app/lib/`. UI language of the app: Russian. No third-party Dart packages (SDK only).
 
 ## Architecture
 Flutter = app UI (setup, settings, tasks, calendar). Native Kotlin = the always-on mascot:
@@ -26,7 +26,7 @@ Settings, tasks and the overlay live in native SharedPreferences file `buddy`.
 | tasks | `TaskStore.kt`, `Reminders.kt` (incl. `ReminderReceiver`, `BootReceiver`), `CalendarStore.kt` |
 | flutter | everything under `lib/`, `pubspec.yaml` assets section |
 
-Manifest needs from non-lead owners: write them to `claude_buddy/MANIFEST_NEEDS_<owner>.md`
+Manifest needs from non-lead owners: write them to `app/MANIFEST_NEEDS_<owner>.md`
 (permissions, `<service>`/`<receiver>` blocks, `<queries>`), the lead merges them.
 
 ## Kotlin interfaces (exact signatures)
@@ -161,7 +161,7 @@ New MethodChannel methods (lead implements in NativeChannel, flutter calls): `mo
 `saveSettings` accepts `provider`, `gemmaModel`, `outfit`. Tell users: Gemma needs 4 GB+ RAM (E2B) / 6 GB+ (E4B).
 
 ## PHASE 3 addendum — "Agents": watch coding agents (Claude Code) and approve from the phone, like the coucou project
-Protocol: read `ref-coucou/coucou/docs/ANDROID_LINK.md` (protocol v1: TLS+pinned self-signed cert, newline JSON, pairing link `coucou://pair?...`, hello/welcome/sessions/approval/decision/ping). We implement protocol v1 ourselves in our own code (coucou's code is MIT; the Mochi character, name, icon and sounds are NOT ours to use — never copy them; we use our own scheme name too: pairing links may be `coucou://pair?...` for interop but our UI says "Claude Buddy"). Reference implementations to LEARN from (MIT, give a one-line attribution comment where you adapt): `ref-coucou/coucou/android/app/` (Kotlin client), `ref-coucou/coucou/android/tools/dev-desktop.mjs` (Node stand-in desktop), `ref-coucou/coucou/windows/src-tauri/src/phone_link/` (Rust server), `ref-coucou/coucou/windows/hook/` (how Claude Code hooks reach the app).
+Protocol: read `ref-coucou/coucou/docs/ANDROID_LINK.md` (protocol v1: TLS+pinned self-signed cert, newline JSON, pairing link `coucou://pair?...`, hello/welcome/sessions/approval/decision/ping). We implement protocol v1 ourselves in our own code (coucou's code is MIT; the Mochi character, name, icon and sounds are NOT ours to use — never copy them; we use our own scheme name too: pairing links may be `coucou://pair?...` for interop but our UI says "Bubby"). Reference implementations to LEARN from (MIT, give a one-line attribution comment where you adapt): `ref-coucou/coucou/android/app/` (Kotlin client), `ref-coucou/coucou/android/tools/dev-desktop.mjs` (Node stand-in desktop), `ref-coucou/coucou/windows/src-tauri/src/phone_link/` (Rust server), `ref-coucou/coucou/windows/hook/` (how Claude Code hooks reach the app).
 Owners: `agentlink` (Kotlin): `AgentLink.kt`, `PairingStore.kt`, `ConfirmActivity.kt`, `ApprovalCard.kt` in the Kotlin dir; `bridge` (Node, no npm deps): everything under `agent-bridge/`; `flutter`: `lib/screens/agents_screen.dart` + native.dart additions.
 Kotlin interface (agentlink owner designs details; lead wires them): 
 ```kotlin
@@ -176,10 +176,10 @@ object ApprovalCard { fun build(ctx: Context, a: Approval, locked: Boolean, onAl
 class ConfirmActivity : Activity  // transparent; KeyguardManager.createConfirmDeviceCredentialIntent; result delivered through a static callback; Allow is refused when the phone has no screen lock
 ```
 New MethodChannel methods (lead implements, flutter calls): `agentPair{link}`→`{ok:bool, name:String?, error:String?}`, `agentUnpair`, `agentStatus`→`{paired:bool, desktop:String?, connected:bool, sessions:[{pillId,agent,state,statusText,stepIndex,stepCount}]}`.
-Bridge (Node ≥ 18, macOS/Linux, zero npm dependencies): `bridge.mjs` = the desktop side of protocol v1 (TLS server on a configurable port bound to the LAN interface, self-signed cert generated once with the system `openssl` into `~/.claude-buddy/`, one token per pairing, pairing link printed in the terminal, `--revoke`), session state kept from Claude Code hook events, `approval` sent to the phone when a Claude Code `PermissionRequest` is pending and the phone's `decision` returned to the waiting hook; `hook.mjs` = the command Claude Code runs for hooks (reads the hook JSON on stdin, talks to the bridge over a unix socket in `~/.claude-buddy/`, never blocks Claude: if the bridge is not running or no answer within 110 s it exits 0 printing nothing so Claude's normal prompt appears), `install-hooks.mjs` (prints the exact diff to `~/.claude/settings.json`, writes a dated backup, merges only our entries, applies only with `--yes`; `--uninstall`), `README.md` (setup in Russian: start bridge, pair, install hooks), tests with a fake phone client (`node --test`). Command text sent to the phone: full up to 500 chars, else cut + `truncated:true`; fingerprint = lowercase hex SHA-256 of pillId, sessionId, tool, command, inputKey joined by U+001F. Never send prompts, outputs, file contents, or full paths. Check Claude Code's current hooks documentation (https://docs.claude.com/en/docs/claude-code/hooks) for the exact `PermissionRequest`/`Notification`/`Stop`/`PreToolUse` input and output JSON, and use WebFetch if available.
+Bridge (Node ≥ 18, macOS/Linux, zero npm dependencies): `bridge.mjs` = the desktop side of protocol v1 (TLS server on a configurable port bound to the LAN interface, self-signed cert generated once with the system `openssl` into `~/.bubby/`, one token per pairing, pairing link printed in the terminal, `--revoke`), session state kept from Claude Code hook events, `approval` sent to the phone when a Claude Code `PermissionRequest` is pending and the phone's `decision` returned to the waiting hook; `hook.mjs` = the command Claude Code runs for hooks (reads the hook JSON on stdin, talks to the bridge over a unix socket in `~/.bubby/`, never blocks Claude: if the bridge is not running or no answer within 110 s it exits 0 printing nothing so Claude's normal prompt appears), `install-hooks.mjs` (prints the exact diff to `~/.claude/settings.json`, writes a dated backup, merges only our entries, applies only with `--yes`; `--uninstall`), `README.md` (setup in Russian: start bridge, pair, install hooks), tests with a fake phone client (`node --test`). Command text sent to the phone: full up to 500 chars, else cut + `truncated:true`; fingerprint = lowercase hex SHA-256 of pillId, sessionId, tool, command, inputKey joined by U+001F. Never send prompts, outputs, file contents, or full paths. Check Claude Code's current hooks documentation (https://docs.claude.com/en/docs/claude-code/hooks) for the exact `PermissionRequest`/`Notification`/`Stop`/`PreToolUse` input and output JSON, and use WebFetch if available.
 
 ## Rules
 - Match the surrounding code style: short, no comment noise, comments only for non-obvious why.
 - No new Gradle dependencies in Kotlin (plain Android framework APIs). `minSdk 26`, `targetSdk 34`, Kotlin 1.9+.
-- Verify: Dart → `flutter analyze` (in `claude_buddy`). Kotlin → the lead builds; double-check API levels, imports, nullability by reading carefully, and run `kotlinc`-style review yourself if tools exist.
+- Verify: Dart → `flutter analyze` (in `app`). Kotlin → the lead builds; double-check API levels, imports, nullability by reading carefully, and run `kotlinc`-style review yourself if tools exist.
 - Report when done: files written, any interface deviation, manifest needs. Under 150 words.

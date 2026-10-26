@@ -11,7 +11,7 @@ export const APPROVAL_TIMEOUT_MS = 115_000;
 export const PILL_ID = "integration_claude";
 export const AGENT = "Claude Code";
 
-export const buddyDir = () => process.env.CLAUDE_BUDDY_DIR || path.join(os.homedir(), ".claude-buddy");
+export const buddyDir = () => process.env.BUBBY_DIR || path.join(os.homedir(), ".bubby");
 export const sockPath = (dir = buddyDir()) => path.join(dir, "hook.sock");
 
 export function ensureDir(dir) {

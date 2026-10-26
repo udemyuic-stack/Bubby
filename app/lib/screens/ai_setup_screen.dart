@@ -1346,7 +1346,8 @@ const String _groqBase = 'https://api.groq.com/openai';
 
 String _shortModel(String id) => id.contains('/') ? id.split('/').last : id;
 
-List<String> _pickGroqModels(List<String> all) {
+@visibleForTesting
+List<String> pickGroqModels(List<String> all) {
   final ids = all.toSet().toList();
   final out = <String>[];
   void add(String? m) {
@@ -1360,10 +1361,13 @@ List<String> _pickGroqModels(List<String> all) {
     return null;
   }
 
-  add(first((m) => m.startsWith('openai/gpt-oss-120b')));
   final qwen = ids.where((m) => m.startsWith('qwen/')).toList()
     ..sort((a, b) => b.compareTo(a));
-  add(qwen.isEmpty ? null : qwen.first);
+  final newestQwen = qwen.isEmpty ? null : qwen.first;
+  // Qwen is trained on many more languages than gpt-oss: with the app in Uzbek it goes first
+  if (currentLang == 'uz') add(newestQwen);
+  add(first((m) => m.startsWith('openai/gpt-oss-120b')));
+  add(newestQwen);
   add(first((m) => m.startsWith('openai/gpt-oss-20b')));
   if (out.length < 3) {
     int size(String m) {
@@ -1511,7 +1515,7 @@ class _GroqCardState extends State<_GroqCard> {
         );
         return;
       }
-      final chosen = _pickGroqModels(lr.models);
+      final chosen = pickGroqModels(lr.models);
       if (chosen.isEmpty) {
         setState(
           () => _error = tr(

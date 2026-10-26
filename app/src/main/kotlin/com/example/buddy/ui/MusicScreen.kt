@@ -82,7 +82,7 @@ class MusicScreen(act: UiActivity) : Screen(act) {
                         background = ctx.rounded(P.alpha(m.color, 40), 14f)
                         add(ctx.icon(m.icon, m.color, 24), WRAP, WRAP)
                     }, ctx.dp(44), ctx.dp(44), end = 10)
-                    add(ctx.text(label(m), T.Label).apply { maxLines = 1; ellipsize = android.text.TextUtils.TruncateAt.END }, 0, WRAP, 1f)
+                    add(ctx.text(label(m), T.Label).apply { maxLines = 2 }, 0, WRAP, 1f)
                 })
             }, 0, WRAP, 1f, end = if (m === pair.first()) 10 else 0, bottom = 10)
             c.add(row, MATCH, WRAP)

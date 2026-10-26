@@ -72,6 +72,7 @@ fun Context.col(pad: Int = 0, block: LinearLayout.() -> Unit = {}): LinearLayout
 
 fun Context.row(gravity: Int = Gravity.CENTER_VERTICAL, block: LinearLayout.() -> Unit = {}): LinearLayout = LinearLayout(this).apply {
     orientation = LinearLayout.HORIZONTAL
+    isBaselineAligned = false
     this.gravity = gravity
     block()
 }

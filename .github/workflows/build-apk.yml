@@ -52,6 +52,7 @@ jobs:
           api-level: 33
           arch: x86_64
           target: default
+          profile: Nexus 4
           ram-size: 2048M
           emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim -camera-back none -camera-front none
           disable-animations: true

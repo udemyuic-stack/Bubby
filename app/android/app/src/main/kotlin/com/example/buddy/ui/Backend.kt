@@ -132,6 +132,20 @@ object Backend {
     }
 
     /** Moves the mascot ("status_right", "status_left", "top_right"...). The service reacts to the pref. */
+    /** Short name of an AI connection spec for summaries: "Groq", "Anthropic"... */
+    fun aiTitle(ctx: Context, spec: String): String {
+        val s = spec.trim()
+        if (s.startsWith("AIza")) return "Google Gemini"
+        if (s.startsWith("sk-ant")) return "Anthropic"
+        val p = s.split('|')
+        if (p.size >= 2) return when {
+            p[0].contains("openrouter.ai") -> "OpenRouter"
+            p[0].contains("groq.com") -> "Groq"
+            else -> Tr.t(ctx, "Свой сервер", "Custom server", "O'z serveringiz")
+        }
+        return Tr.t(ctx, "ИИ-ключ", "AI key", "AI kaliti")
+    }
+
     fun dockTo(ctx: Context, where: String) {
         val e = prefs(ctx).edit().putString("dock", where + ":" + System.currentTimeMillis())
         if (where.startsWith("status_")) e.putString("status_dock", where) else e.remove("status_dock")
@@ -164,3 +178,38 @@ fun Backend.setTaskDone(ctx: Context, id: String, done: Boolean) {
     if (done) com.example.buddy.Reminders.cancel(ctx, id)
     else store.all().firstOrNull { it.id == id }?.let { com.example.buddy.Reminders.schedule(ctx, it) }
 }
+
+// ---- games, stickers, agents ------------------------------------------------------------------------------------------
+
+/** Asks the floating mascot to start a game; returns an error text or null. */
+fun Backend.startGame(ctx: Context, name: String): String? {
+    if (!android.provider.Settings.canDrawOverlays(ctx)) return Tr.t(ctx, "Нужно разрешение «Поверх других окон»", "The \"Display over other apps\" permission is required", "\"Boshqa oynalar ustida ko'rsatish\" ruxsati kerak")
+    ctx.startForegroundService(android.content.Intent(ctx, BuddyService::class.java).setAction(BuddyService.ACTION_ASK)
+        .putExtra("text", Tr.t(ctx, "Давай сыграем: $name", "Let's play: $name", "Keling, o'ynaymiz: $name")))
+    return null
+}
+
+class AgentInfo(val paired: Boolean, val desktop: String, val connected: Boolean, val sessions: List<com.example.buddy.AgentSession>)
+
+fun Backend.agentStatus(ctx: Context): AgentInfo {
+    val link = com.example.buddy.PairingStore(ctx).load()
+    return AgentInfo(link != null, BuddyService.agentDesktop ?: link?.name.orEmpty(), BuddyService.agentConnected, BuddyService.agentSessions)
+}
+
+private fun reloadAgents(ctx: Context) {
+    if (BuddyService.running)
+        ctx.startService(android.content.Intent(ctx, BuddyService::class.java).setAction(BuddyService.ACTION_AGENT_RELOAD))
+}
+
+/** Pairs with the computer; returns an error text or null. */
+fun Backend.agentPair(ctx: Context, raw: String): String? {
+    val link = com.example.buddy.parsePairLink(raw.trim()) ?: return Tr.t(ctx, "Неверная ссылка", "Invalid link", "Havola noto'g'ri")
+    try { com.example.buddy.PairingStore(ctx).save(link) } catch (e: Exception) {
+        return Tr.t(ctx, "Не удалось сохранить ключ: ${e.message}", "Could not save the key: ${e.message}", "Kalitni saqlab bo'lmadi: ${e.message}")
+    }
+    reloadAgents(ctx)
+    return null
+}
+
+fun Backend.agentUnpair(ctx: Context) { com.example.buddy.PairingStore(ctx).clear(); reloadAgents(ctx) }
+

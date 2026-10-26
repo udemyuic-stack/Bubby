@@ -11,5 +11,3 @@ abstract class Placeholder(act: UiActivity, private val name: String) : Screen(a
     }
 }
 
-class SettingsScreen(act: UiActivity) : Placeholder(act, "Settings")
-class MoreScreen(act: UiActivity) : Placeholder(act, "More")

@@ -49,7 +49,6 @@ abstract class Screen(val act: UiActivity) {
             val button = ctx.row(Gravity.CENTER) {
                 background = ctx.gradient(intArrayOf(P.primary, P.mix(P.primary, P.rose, 0.35f)), 28f)
                 setPadding(ctx.dp(20), 0, ctx.dp(22), 0)
-                elevation = ctx.dpf(6f)
                 add(ctx.icon(R.drawable.ic_add, P.onPrimary, 24), WRAP, WRAP, end = 8)
                 add(ctx.text(f.first, T.Label, P.onPrimary).apply { textSize = 15f }, WRAP, WRAP)
                 press { f.second() }

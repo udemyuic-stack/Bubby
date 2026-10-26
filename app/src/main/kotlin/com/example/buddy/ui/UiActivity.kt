@@ -181,16 +181,15 @@ class UiActivity : Activity() {
         page.setPadding(0, insetTop, 0, insetBottom)
         host.addView(page, FrameLayout.LayoutParams(MATCH, MATCH))
         stack += s to page
-        page.alpha = 0f
-        page.translationX = dp(40).toFloat()
-        page.animate().alpha(1f).translationX(0f).setDuration(220).start()
+        page.translationX = dp(60).toFloat()
+        page.animate().translationX(0f).setDuration(200).start()
         s.onShow()
     }
 
     fun pop() {
         if (stack.isEmpty()) return
         val (_, page) = stack.removeAt(stack.size - 1)
-        page.animate().alpha(0f).translationX(dp(40).toFloat()).setDuration(160).withEndAction { host.removeView(page) }.start()
+        page.animate().translationX(dp(60).toFloat()).setDuration(150).withEndAction { host.removeView(page) }.start()
         (stack.lastOrNull()?.first ?: tabs[tab]).onShow()
     }
 

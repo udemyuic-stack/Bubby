@@ -1,17 +1,8 @@
-# buddy
+# Bubby app
 
-Bubby voice mascot
+Plain Kotlin Android app: the floating mascot service plus the settings UI. See the repository README for the layout and
+build steps, and `docs/KOTLIN-MIGRATION.md` for how the UI was moved off Flutter.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Adding a screen: create `ui/XxxScreen.kt` (a `Screen` with `title()` and `render(c)`), register its name in
+`ui/Screens.kt`, open it with `act.open("name")`. Strings go through `Tr.t(ctx, ru, en, uz)`; icons are vector drawables
+in `res/drawable/ic_*.xml`.

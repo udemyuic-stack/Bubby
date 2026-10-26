@@ -9,22 +9,25 @@ Every user connects their **own free AI key** (Groq first; OpenRouter, Gemini, A
 server also work) and Bubby falls back automatically between connections. Keys stay on the phone.
 
 ## Layout
-- `app/` – the Flutter app (UI) plus the native Kotlin overlay service (`android/app/src/main/kotlin/com/example/buddy/`).
+- `app/` – the Android app, plain Kotlin on the Android framework (no Flutter, no AndroidX, no third-party libraries).
+  - `app/src/main/kotlin/com/example/buddy/` – the always-on overlay mascot (`BuddyService`, `BuddyView`), the AI harness
+    (`Brain`, `Actions`, `QuickIntent`) and the stores.
+  - `app/src/main/kotlin/com/example/buddy/ui/` – the app screens (`UiActivity` with tabs, `Screens` registry, one file per screen).
 - `agent-bridge/` – Node bridge that lets you approve Claude Code permission requests from the phone.
 - `ollama-gateway/` – token-protected proxy for a local Ollama (optional).
 - `app/qa-jvm/` – JVM tests for the offline command grammar and contact matching.
-- `CONTRACT.md` – the interface contract used while the parts were built in parallel.
+- `CONTRACT.md` – the interface contract used while the parts were built in parallel (historical).
 - `docs/GROQ-KEY-GUIDE.md` – user guide for getting a free Groq key (uz/ru).
 
 ## Build
 ```
-export JAVA_HOME=<JDK 17 with jlink> ANDROID_HOME=<Android SDK>
+export JAVA_HOME=<JDK 17> ANDROID_HOME=<Android SDK>
 cd app
-flutter build apk --release --target-platform android-arm64   # 64-bit phones (default ABI)
-flutter build apk --release --target-platform android-arm     # 32-bit phones
+gradle assembleRelease        # Gradle 9.3.1; output: app/build/outputs/apk/release/app-release.apk
 ```
-Each APK contains one ABI only. The `Build APK` GitHub Actions workflow builds both and uploads them as artifacts.
-Tests: `flutter test` (widget matrix: 3 languages x light/dark x text scale x screen width) and `app/qa-jvm/run.sh`.
+There is no native code, so the one APK runs on 32-bit ARM, 64-bit ARM and x86 phones alike.
+The `Build APK` GitHub Actions workflow builds it (artifact `bubby`), installs it on an emulator, opens every screen and
+pushes screenshots to the `ci-screenshots` branch. JVM tests: `app/qa-jvm/run.sh`.
 
 ## Notes
 - The character art is drawn in code; no third-party artwork is used. The agent-bridge protocol idea comes from the

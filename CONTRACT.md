@@ -1,3 +1,6 @@
+> **Historical.** This contract described the Flutter + Kotlin split. The UI has since moved to Kotlin (see
+> `docs/KOTLIN-MIGRATION.md`); there is no MethodChannel or Dart code any more. The Kotlin feature descriptions below are still accurate.
+
 # Bubby (Flutter) — build contract
 
 Project: `app` (Flutter app, Android only).

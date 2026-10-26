@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # Runs inside the emulator: install, launch, wait, keep the log. Never aborts early so the log is always saved.
-APK=app/build/app/outputs/flutter-apk/app-release.apk
+APK=bubby.apk
 adb install -r "$APK"
 adb logcat -c
-timeout 60 adb shell am start -n com.example.buddy/.MainActivity
+timeout 60 adb shell am start -n com.example.buddy/.ui.UiActivity
 for i in 1 2 3 4 5 6; do
   sleep 5
   adb shell pidof com.example.buddy > /tmp/pid.txt 2>&1 && echo "t+$((i*5))s running: $(cat /tmp/pid.txt)" || echo "t+$((i*5))s NOT running"

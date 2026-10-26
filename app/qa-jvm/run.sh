@@ -4,7 +4,7 @@ set -e
 export JAVA_HOME=/Users/jamoliddin/dev-tools/jdk17/Contents/Home ANDROID_HOME=/Users/jamoliddin/dev-tools/android-sdk
 export PATH=$JAVA_HOME/bin:$PATH
 HERE="$(cd "$(dirname "$0")" && pwd)"
-SRC="$HERE/../android/app/src/main/kotlin/com/example/buddy"
+SRC="$HERE/../src/main/kotlin/com/example/buddy"
 G=~/.gradle/caches/modules-2/files-2.1
 j() { find $G -name "$1" | grep -v sources | head -1; }
 CP="$(j kotlin-compiler-embeddable-2.4.0.jar):$(j kotlin-stdlib-2.4.0.jar):$(j kotlin-script-runtime-2.4.0.jar):$(j kotlin-reflect-1.6.10.jar):$(j kotlin-daemon-embeddable-2.4.0.jar):$(j trove4j-1.0.20200330.jar):$(j annotations-13.0.jar):$(j kotlinx-coroutines-core-jvm-1.8.0.jar)"

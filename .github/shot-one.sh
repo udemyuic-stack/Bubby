@@ -9,9 +9,9 @@ adb install -r bubby.apk
 adb logcat -c
 ( "$ADB" logcat -v threadtime > "shots/$SCREEN-live.txt" 2>&1 & )
 if [ "$SCREEN" = home ]; then
-  timeout 60 "$ADB" shell am start -W -n com.example.buddy/.ui.UiActivity > "shots/$SCREEN-start.txt" 2>&1
+  timeout 60 "$ADB" shell am start -W -n com.example.buddy/.ui.UiActivity --ez static true > "shots/$SCREEN-start.txt" 2>&1
 else
-  timeout 60 "$ADB" shell am start -W -n com.example.buddy/.ui.UiActivity --es open "$SCREEN" > "shots/$SCREEN-start.txt" 2>&1
+  timeout 60 "$ADB" shell am start -W -n com.example.buddy/.ui.UiActivity --es open "$SCREEN" --ez static true > "shots/$SCREEN-start.txt" 2>&1
 fi
 sleep 8
 adb shell uiautomator dump /sdcard/ui.xml > /dev/null 2>&1 && adb exec-out cat /sdcard/ui.xml > "shots/$SCREEN-ui.xml" 2>/dev/null

@@ -88,7 +88,8 @@ class HomeScreen(act: UiActivity) : Screen(act) {
             species = Backend.str(ctx, "species", "cat")
             outfit = Outfits.parse(Backend.str(ctx, "outfit", ""))
             mood = if (running) "happy" else "sleepy"
-            setActive(true)
+            // `--ez static true` (CI screenshots on a slow emulator) keeps the mascot still
+            setActive(!act.intent.getBooleanExtra("static", false))
             setOnClickListener { pet() }
         }
         hero.add(buddy, WRAP, WRAP)

@@ -405,10 +405,6 @@ class Brain(private val ctx: Context) {
 
     private fun call(sys: String): String {
         val keys = keyList()
-        if (prefs.getString("provider", "cloud") == "gemma") {
-            if (LocalLlm.available(ctx)) return LocalLlm.chat(ctx, sys, history)
-            if (keys.isEmpty()) throw Exception("модель не скачана: откройте Ещё → Модель на телефоне")
-        }
         if (keys.isEmpty()) throw Exception("не задан ключ: откройте Ещё → Подключение ИИ")
         val now = System.currentTimeMillis()
         // skip connections that just failed, unless every one of them did

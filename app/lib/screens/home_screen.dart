@@ -75,10 +75,10 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
       if (p['mic'] != true) _micPoked = false;
       setState(() {
         _battery = bat;
-        _hasAi = s.hasKeys || s.provider == 'gemma';
+        _hasAi = s.hasKeys;
         _running = s.running;
         _species = s.species;
-        _needAi = s.keys.isEmpty && s.provider != 'gemma';
+        _needAi = s.keys.isEmpty;
         _perms = p;
         _loaded = true;
         if (!_onboardingDecided) {

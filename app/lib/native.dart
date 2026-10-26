@@ -22,8 +22,6 @@ class Settings {
     this.voice = true,
     this.persona = '',
     this.running = false,
-    this.provider = 'cloud',
-    this.gemmaModel = 'e2b',
     this.outfit = '',
     this.species = 'cat',
     this.lastCrash = '',
@@ -52,8 +50,6 @@ class Settings {
   final bool voice;
   final String persona;
   final bool running;
-  final String provider;
-  final String gemmaModel;
   final String outfit;
   final String species;
   final String lastCrash;
@@ -88,8 +84,6 @@ class Settings {
         voice: (m['voice'] as bool?) ?? true,
         persona: (m['persona'] as String?) ?? '',
         running: (m['running'] as bool?) ?? false,
-        provider: (m['provider'] as String?) ?? 'cloud',
-        gemmaModel: (m['gemmaModel'] as String?) ?? 'e2b',
         outfit: (m['outfit'] as String?) ?? '',
         species: (m['species'] as String?) ?? 'cat',
         lastCrash: (m['lastCrash'] as String?) ?? '',
@@ -141,53 +135,6 @@ class MusicApp {
         label: (m['label'] as String?) ?? '',
         installed: (m['installed'] as bool?) ?? false,
         kind: (m['kind'] as String?) ?? 'streaming',
-      );
-}
-
-class ModelState {
-  const ModelState({
-    this.state = 'none',
-    this.done = 0,
-    this.total = 0,
-    this.error,
-  });
-
-  final String state;
-  final int done;
-  final int total;
-  final String? error;
-
-  factory ModelState.fromMap(Map<dynamic, dynamic>? m) => ModelState(
-        state: (m?['state'] as String?) ?? 'none',
-        done: (m?['done'] as num?)?.toInt() ?? 0,
-        total: (m?['total'] as num?)?.toInt() ?? 0,
-        error: m?['error'] as String?,
-      );
-}
-
-class ModelStatus {
-  const ModelStatus({
-    this.e2b = const ModelState(),
-    this.e4b = const ModelState(),
-    this.ramGb = 0,
-    this.freeGb = 0,
-    this.supported = true,
-  });
-
-  final ModelState e2b;
-  final ModelState e4b;
-  final bool supported;
-  final double ramGb;
-  final double freeGb;
-
-  ModelState operator [](String id) => id == 'e4b' ? e4b : e2b;
-
-  factory ModelStatus.fromMap(Map<dynamic, dynamic> m) => ModelStatus(
-        e2b: ModelState.fromMap(m['e2b'] as Map<dynamic, dynamic>?),
-        e4b: ModelState.fromMap(m['e4b'] as Map<dynamic, dynamic>?),
-        ramGb: (m['ramGb'] as num?)?.toDouble() ?? 0,
-        freeGb: (m['freeGb'] as num?)?.toDouble() ?? 0,
-        supported: (m['supported'] as bool?) ?? true,
       );
 }
 
@@ -461,19 +408,6 @@ class Native {
 
   static Future<void> deleteEvent(int id) =>
       _call<bool>('deleteEvent', {'id': id});
-
-  static Future<ModelStatus> modelStatus() async {
-    final m = await _call<Map<dynamic, dynamic>>('modelStatus');
-    return ModelStatus.fromMap(m ?? const {});
-  }
-
-  static Future<void> modelDownload(String id) =>
-      _call<bool>('modelDownload', {'id': id});
-
-  static Future<void> modelCancel() => _call<bool>('modelCancel');
-
-  static Future<void> modelDelete(String id) =>
-      _call<bool>('modelDelete', {'id': id});
 
   static Future<Uint8List> renderSticker(String mood, [String caption = '']) async {
     final b = await _call<Uint8List>(

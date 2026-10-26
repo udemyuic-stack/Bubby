@@ -128,6 +128,7 @@ Errors: `result.error(code, message, null)`; Dart wrapper turns them into a `Nat
 Task JSON: `{id,title,notes,dueMillis|null,remind,done}`. Event JSON: `{id,title,startMillis,endMillis,location}`.
 
 ## PHASE 2 addendum (Gemma on phone, outfits, stickers, games)
+> Note: the on-device Gemma part (LocalLlm, ModelStore, ModelDownloadService, `model*` channel methods, `provider`/`gemmaModel` settings) was removed later; only the AI keys remain.
 Extra Gradle dependency allowed ONLY for the gemma owner: `com.google.ai.edge.litertlm:litertlm-android:0.18.1` (lead adds it to gradle).
 Additional ownership: `gemma` → `LocalLlm.kt`, `ModelStore.kt`, `ModelDownloadService.kt`; `emotions` → `Outfits.kt` + small edit of `BuddyView.kt`;
 `stickers` → `Stickers.kt`, `StickerProvider.kt`; `games` → `Games.kt`; `actions` also adds action cases below; `flutter` adds screens.

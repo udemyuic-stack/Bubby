@@ -363,9 +363,6 @@ class BuddyService : Service() {
         buddy.outfit = Outfits.parse(prefs.getString("outfit", "").orEmpty())
         buddy.species = prefs.getString("species", "cat").orEmpty()
         prefs.registerOnSharedPreferenceChangeListener(prefListener)
-        if (prefs.getString("provider", "cloud") == "gemma") Thread {
-            try { LocalLlm.warmUp(this) } catch (_: Exception) {}
-        }.start()
         h.post(clock)
         tiltStart()
         startAgentLink()
@@ -1460,7 +1457,6 @@ class BuddyService : Service() {
             "не задан ключ" in r -> t("Подключите ИИ — это бесплатно", "Connect an AI — it's free", "AI'ni ulang — bu bepul") to "open"
             "http 401" in r || "http 403" in r -> t("Ключ ИИ не подходит. Откройте Ещё → Подключение ИИ", "The AI key doesn't work. Open More → AI connection", "AI kaliti mos kelmadi. Yana → AI ulash bo'limini oching") to "open"
             "http 429" in r || "лимит" in r -> t("Лимит ИИ на сегодня исчерпан. Подключите запасной сервис в Ещё → Подключение ИИ", "Today's AI limit is used up. Add a backup service in More → AI connection", "Bugungi AI limiti tugadi. Yana → AI ulash bo'limida zaxira xizmatni ulang") to "open"
-            "модель не скачана" in r -> t("Модель на телефоне не скачана. Откройте Ещё → Модель на телефоне", "The on-device model isn't downloaded. Open More → On-device model", "Telefondagi model yuklanmagan. Yana → Telefondagi model bo'limini oching") to "open"
             "микрофон" in r || "(9)" in r || "permission" in r -> t("Разрешите микрофон, чтобы я вас слышал", "Allow the microphone so I can hear you", "Sizni eshitishim uchun mikrofonga ruxsat bering…") to "open"
             "нет сети для распознавания" in r -> t("Нужен интернет для распознавания речи", "Internet is needed for speech recognition", "Nutqni tanish uchun internet kerak") to "retry"
             "ошибка распознавания" in r -> t("Не расслышал, повторите", "Didn't catch that, please repeat", "Eshitmadim, qaytaring") to "retry"
@@ -1875,11 +1871,6 @@ class BuddyService : Service() {
         h.postDelayed(reclamp, 350)   // the window may only report its new size after the next layout pass
     }
 
-    override fun onTrimMemory(level: Int) {
-        super.onTrimMemory(level)
-        if (level >= 40) LocalLlm.release()
-    }
-
     // phone tilt drives the mascot's 2.5D parallax; only while the screen is on, and it can be switched off with pref `tilt`
     private var tiltOn = false
     private val tiltListener = object : SensorEventListener {
@@ -1915,7 +1906,6 @@ class BuddyService : Service() {
         holdAnim?.cancel(); holdAnim = null
         prefs.unregisterOnSharedPreferenceChangeListener(prefListener)
         agentLink?.stop(); agentLink = null
-        LocalLlm.release()
         h.removeCallbacksAndMessages(null)
         try { win.setOnApplyWindowInsetsListener(null) } catch (_: Exception) {}
         islandAnim?.let { it.removeAllListeners(); it.cancel() }; islandAnim = null

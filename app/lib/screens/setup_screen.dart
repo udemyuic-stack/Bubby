@@ -104,7 +104,7 @@ class _OnboardingStepperState extends State<OnboardingStepper>
       final ok = <bool>[
         p['mic'] == true,
         p['overlay'] == true,
-        s.hasKeys || s.provider == 'gemma',
+        s.hasKeys,
         bat,
         false,
       ];

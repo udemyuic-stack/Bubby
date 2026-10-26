@@ -54,7 +54,7 @@ android {
         // is added automatically by Flutter. (https://developer.android.com/studio/build/configure-apk-splits#configure-APK-versions)
         // You can force using the value of versionCode by specifying the `-P force-version-code-ignoring-abi=true`
         // flag during build.
-        // phones only: x86 libraries from dependencies (LiteRT-LM) would add ~26 MB
+        // phones only: one ABI per APK
         ndk { abiFilters += listOf(buddyAbi) }
         versionCode = flutter.versionCode
         versionName = flutter.versionName
@@ -76,10 +76,6 @@ kotlin {
     compilerOptions {
         jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
     }
-}
-
-dependencies {
-    implementation("com.google.ai.edge.litertlm:litertlm-android:0.18.1")
 }
 
 flutter {

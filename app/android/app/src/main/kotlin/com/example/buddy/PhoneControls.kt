@@ -19,6 +19,8 @@ import android.os.Handler
 import android.os.Looper
 import android.os.StatFs
 import android.provider.Settings
+import java.text.SimpleDateFormat
+import java.util.Date
 import java.util.Locale
 
 /** Phone-level controls: do not disturb, screen timeout, "find my phone" ring and a status report for the AI. */
@@ -132,6 +134,11 @@ object PhoneControls {
             val cr = ctx.contentResolver
             sb.append("Brightness: ").append(Settings.System.getInt(cr, Settings.System.SCREEN_BRIGHTNESS) * 100 / 255).append("%\n")
             sb.append("Screen timeout: ").append(Settings.System.getInt(cr, Settings.System.SCREEN_OFF_TIMEOUT) / 1000).append(" s\n")
+        } catch (_: Exception) { }
+        try {
+            val until = ctx.getSharedPreferences("buddy", Context.MODE_PRIVATE).getLong("auto_reply_until", 0L)
+            sb.append("Auto-reply to chat messages: ")
+                .append(if (until > System.currentTimeMillis()) "on until " + SimpleDateFormat("HH:mm", Locale.US).format(Date(until)) else "off").append('\n')
         } catch (_: Exception) { }
         return sb.toString().trim()
     }

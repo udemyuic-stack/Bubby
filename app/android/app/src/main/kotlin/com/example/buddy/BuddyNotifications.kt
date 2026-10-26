@@ -150,6 +150,9 @@ class BuddyNotifications : NotificationListenerService() {
                 while (entries.size > MAX) entries.removeAt(0)
             }
             if (fresh) {
+                try {
+                    AutoReply.onNotification(applicationContext, item, n.category, ex.getBoolean(Notification.EXTRA_IS_GROUP_CONVERSATION, false))
+                } catch (e: Exception) { }
                 val read = getSharedPreferences("buddy", Context.MODE_PRIVATE).getBoolean("read_notifs", false)
                 val cb = onNew
                 if (read && cb != null) main.post { try { cb(item) } catch (e: Exception) { } }

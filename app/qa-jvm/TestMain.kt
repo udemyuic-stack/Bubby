@@ -339,8 +339,29 @@ fun mathTools() {
     check("convert mixed", try { MathTools.convert(1.0, "kg", "km"); false } catch (x: IllegalArgumentException) { true })
 }
 
+fun comms() {
+    val now = 1_000_000_000L
+    val on = ReplyRules.until(now, 2)
+    fun rep(until: Long = on, canReply: Boolean = true, msg: Boolean = true, group: Boolean = false, num: Boolean = false, last: Long? = null) =
+        ReplyRules.shouldReply(until, now, canReply, msg, group, num, last)
+    check("autoreply private message", rep())
+    check("autoreply off", !rep(until = 0))
+    check("autoreply expired", !rep(until = now - 1))
+    check("autoreply no reply button", !rep(canReply = false))
+    check("autoreply group", !rep(group = true))
+    check("autoreply unknown number", !rep(num = true))
+    check("autoreply cooldown", !rep(last = now - 10 * 60_000L))
+    check("autoreply after cooldown", rep(last = now - 61 * 60_000L))
+    check("autoreply max 12h", ReplyRules.until(now, 99) == now + 12 * 3_600_000L)
+    val rows = listOf("Alisher Karimov" to "a@mail.uz", "Alisher Valiyev" to "v@gmail.com", "Dilnoza" to "d@mail.ru", "Бобур" to "b@gmail.com")
+    check("mail unique name", Mail.rank(rows, "Dilnoza").map { it.address } == listOf("d@mail.ru"))
+    check("mail two matches", Mail.rank(rows, "Alisher").size == 2)
+    check("mail cyrillic vs latin", Mail.rank(rows, "Bobur").firstOrNull()?.address == "b@gmail.com")
+    check("mail no match", Mail.rank(rows, "Zafar").isEmpty())
+}
+
 fun main() {
-    quick(); contacts(); apps(); mathTools(); if (System.getenv("PROBE") != null) probe()
+    quick(); contacts(); apps(); mathTools(); comms(); if (System.getenv("PROBE") != null) probe()
     println("RESULT: $pass passed, $fail failed (${pass + fail} assertions)")
     if (fail > 0) System.exit(1)
 }

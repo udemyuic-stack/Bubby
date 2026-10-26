@@ -77,6 +77,7 @@ private class ConfettiView(c: Context) : View(c) {
     private val p = Paint(Paint.ANTI_ALIAS_FLAG)
     private val start = SystemClock.uptimeMillis()
     private val total = 2400f
+    private val dens = c.resources.displayMetrics.density
 
     override fun onDraw(cv: Canvas) {
         val t = (SystemClock.uptimeMillis() - start) / total
@@ -90,7 +91,7 @@ private class ConfettiView(c: Context) : View(c) {
             p.color = colors[(i + (r * 6).toInt()) % colors.size]
             p.alpha = (255 * (1f - t * t)).toInt().coerceIn(0, 255)
             cv.save(); cv.translate(x, y); cv.rotate(t * 540f * (r - 0.5f) * 2f + a * 90f)
-            val w = context.dpf(5f + s * 4f)
+            val w = (5f + s * 4f) * dens
             cv.drawRect(-w, -w * 0.5f, w, w * 0.5f, p)
             cv.restore()
         }
@@ -115,21 +116,31 @@ class AuraView(c: Context, private val kind: String) : View(c) {
     private val p = Paint(Paint.ANTI_ALIAS_FLAG)
     private val bg = RectF()
     private val path = Path()
+    private val clip = Path()
+    private var bgShader: Shader? = null
+    private val vis = android.graphics.Rect()
     private val radius = c.dpf(14f)
+    private val u = c.dpf(1f)
     private val n = 9
+
+    // the tile's gradient and rounded clip only depend on its size: built here, not on every frame
+    override fun onSizeChanged(w: Int, h: Int, ow: Int, oh: Int) {
+        super.onSizeChanged(w, h, ow, oh)
+        bg.set(0f, 0f, w.toFloat(), h.toFloat())
+        bgShader = LinearGradient(0f, 0f, 0f, h.toFloat(), 0xFF2A2060.toInt(), 0xFF14102E.toInt(), Shader.TileMode.CLAMP)
+        clip.reset(); clip.addRoundRect(bg, radius, radius, Path.Direction.CW)
+    }
 
     private fun h(i: Int, k: Int): Float { val x = sin(i * 12.9898f + k * 78.233f) * 43758.547f; return x - floor(x) }
 
     override fun onDraw(cv: Canvas) {
         val w = width.toFloat(); val hh = height.toFloat()
-        bg.set(0f, 0f, w, hh)
-        p.shader = LinearGradient(0f, 0f, 0f, hh, 0xFF2A2060.toInt(), 0xFF14102E.toInt(), Shader.TileMode.CLAMP)
+        p.shader = bgShader
         p.style = Paint.Style.FILL
         cv.drawRoundRect(bg, radius, radius, p)
         p.shader = null
-        cv.save(); path.reset(); path.addRoundRect(bg, radius, radius, Path.Direction.CW); cv.clipPath(path)
+        cv.save(); cv.clipPath(clip)
         val t = (SystemClock.uptimeMillis() % 100000L) / 1000f
-        val u = context.dpf(1f)
         for (i in 0 until n) {
             val ph = (t * (0.35f + h(i, 1) * 0.5f) + h(i, 2)) % 1f
             val x = w * (0.12f + 0.76f * h(i, 3))
@@ -177,7 +188,8 @@ class AuraView(c: Context, private val kind: String) : View(c) {
             }
         }
         cv.restore()
-        postInvalidateOnAnimation()
+        // scrolled out of the page's view: a few cheap frames a second instead of 60 until it comes back
+        if (getLocalVisibleRect(vis)) postInvalidateOnAnimation() else postInvalidateDelayed(150)
     }
 
     private fun heart(cv: Canvas, x: Float, y: Float, s: Float) {
@@ -201,14 +213,25 @@ class AuraView(c: Context, private val kind: String) : View(c) {
 class SheenImageView(c: Context) : ImageView(c) {
     var sheen = 0f   // -1 .. 1, where the highlight is
     private val p = Paint(Paint.ANTI_ALIAS_FLAG).apply { xfermode = PorterDuffXfermode(PorterDuff.Mode.SRC_ATOP) }
+    private val shift = android.graphics.Matrix()
+    private var band: LinearGradient? = null
+
+    // the highlight band is built once per size around x = 0 and only moved (local matrix) as the sheen slides
+    override fun onSizeChanged(w: Int, h: Int, ow: Int, oh: Int) {
+        super.onSizeChanged(w, h, ow, oh)
+        val half = w * 0.22f
+        band = LinearGradient(-half, 0f, half, h * 0.35f,
+            intArrayOf(0x00FFFFFF, 0x66FFFFFF, 0x00FFFFFF), floatArrayOf(0f, 0.5f, 1f), Shader.TileMode.CLAMP)
+        p.shader = band
+    }
 
     override fun onDraw(cv: Canvas) {
+        val g = band
+        if (g == null || drawable == null) { super.onDraw(cv); return }
         val sc = cv.saveLayer(0f, 0f, width.toFloat(), height.toFloat(), null)
         super.onDraw(cv)
-        val cx = width * (0.5f + sheen * 0.6f)
-        val half = width * 0.22f
-        p.shader = LinearGradient(cx - half, 0f, cx + half, height * 0.35f,
-            intArrayOf(0x00FFFFFF, 0x66FFFFFF, 0x00FFFFFF), floatArrayOf(0f, 0.5f, 1f), Shader.TileMode.CLAMP)
+        shift.setTranslate(width * (0.5f + sheen * 0.6f), 0f)
+        g.setLocalMatrix(shift); p.shader = g
         cv.drawRect(0f, 0f, width.toFloat(), height.toFloat(), p)
         cv.restoreToCount(sc)
     }
@@ -230,6 +253,7 @@ class Tilt3D(c: Context, private val still: Boolean = false) : FrameLayout(c) {
     private var kickStart = 0L
     private var lastTouchX = 0f
     private var lastTouchY = 0f
+    private val vis = android.graphics.Rect()
     private val loop = ValueAnimator.ofFloat(0f, 1f).apply {
         duration = 7000; repeatCount = ValueAnimator.INFINITE; interpolator = android.view.animation.LinearInterpolator()
         addUpdateListener { frame() }
@@ -259,6 +283,7 @@ class Tilt3D(c: Context, private val still: Boolean = false) : FrameLayout(c) {
     fun swing() { kickStart = SystemClock.uptimeMillis(); kick = 1f }
 
     private fun frame() {
+        if (!getLocalVisibleRect(vis)) return   // scrolled away: nothing to move or redraw
         val now = SystemClock.uptimeMillis()
         val t = loop.animatedFraction * 2f * PI.toFloat()
         // idle sway and glow breathing
@@ -284,7 +309,14 @@ class Tilt3D(c: Context, private val still: Boolean = false) : FrameLayout(c) {
         glow.scaleX = breathe; glow.scaleY = breathe
     }
 
-    override fun onAttachedToWindow() { super.onAttachedToWindow(); loop.start() }
+    // the endless sway pauses while the app is in the background (older Androids keep animators ticking there)
+    private fun syncLoop() {
+        if (isAttachedToWindow && windowVisibility == View.VISIBLE) {
+            if (!loop.isStarted) loop.start() else if (loop.isPaused) loop.resume()
+        } else if (loop.isStarted && !loop.isPaused) loop.pause()
+    }
+    override fun onAttachedToWindow() { super.onAttachedToWindow(); syncLoop() }
+    override fun onWindowVisibilityChanged(v: Int) { super.onWindowVisibilityChanged(v); syncLoop() }
     override fun onDetachedFromWindow() { loop.cancel(); super.onDetachedFromWindow() }
 
     override fun onTouchEvent(e: MotionEvent): Boolean {

@@ -238,7 +238,7 @@ class BuddyView(c: Context) : View(c) {
             }
         }
     }
-    private var shadowShader: Shader? = null
+    private val shadowShader: Shader = RadialGradient(0f, 0f, 1f, 0x66000000, 0x00000000, Shader.TileMode.CLAMP)
     private val gp = Paint(Paint.ANTI_ALIAS_FLAG)
     private var grabStart = 0L
     private var petStart = 0L
@@ -440,7 +440,7 @@ class BuddyView(c: Context) : View(c) {
     private val ur = RectF()
     private val rb = RectF()
 
-    init { buildShaders(); buildUnitShaders() }
+    init { buildGlowShader(); buildUnitShaders() }
 
     /** Tilt of the phone, each axis -1..1 (low-pass filtered inside the view). */
     fun setTilt(x: Float, y: Float) {
@@ -523,22 +523,23 @@ class BuddyView(c: Context) : View(c) {
         cv.drawCircle(cx + w * 0.5f, cy + h * 0.55f, h * 0.2f, p)
     }
 
-    fun setGlowColor(c: Int) { if (c == glowCol) return; glowCol = c; buildShaders(); kick() }
+    fun setGlowColor(c: Int) { if (c == glowCol) return; glowCol = c; buildGlowShader(); kick() }
     private fun kick() { if (looping) { removeCallbacks(tick); postOnAnimation(tick) } else updateLoop() }
     fun pet() { poke(); kick(); petStart = SystemClock.uptimeMillis(); spinStart = 0L; wakeStart = 0L; invalidate() }
     fun spinHead() { poke(); kick(); spinStart = SystemClock.uptimeMillis(); petStart = 0L; wakeStart = 0L; invalidate() }
     fun wake() { poke(); kick(); wakeStart = SystemClock.uptimeMillis(); invalidate() }
 
-    private fun buildShaders() {
+    // Both are unit-space (radius 1, scaled when drawn), so a size change (pinch resize) never rebuilds them;
+    // only a new glow colour does, and that rebuilds the glow alone.
+    private fun buildGlowShader() {
         val rr = Color.red(glowCol); val gg = Color.green(glowCol); val bb = Color.blue(glowCol)
         glowShader = RadialGradient(0f, 0f, 1f,
             intArrayOf(Color.argb(0xB0, rr, gg, bb), Color.argb(0x50, rr, gg, bb), Color.argb(0, rr, gg, bb)),
             floatArrayOf(0f, 0.55f, 1f), Shader.TileMode.CLAMP)
-        shadowShader = RadialGradient(0f, 0f, 1f, 0x66000000, 0x00000000, Shader.TileMode.CLAMP)
     }
 
     override fun onSizeChanged(w: Int, h: Int, ow: Int, oh: Int) {
-        super.onSizeChanged(w, h, ow, oh); buildShaders()
+        super.onSizeChanged(w, h, ow, oh)
         if (enterWanted && looping && w > 0) { beginEnter(); kick() }
     }
 
@@ -591,10 +592,13 @@ class BuddyView(c: Context) : View(c) {
         return !(mood == "idle" || mood == "sleepy")
     }
 
+    private val visR = Rect()
     private val tick = object : Runnable {
         override fun run() {
             if (!looping) return
             if (!shouldRun()) { looping = false; return }
+            // scrolled out of sight inside a page (the app's previews): no frames, just look again a few times a second
+            if (!getLocalVisibleRect(visR)) { postOnAnimationDelayed(this, 250L); return }
             invalidate()
             if (busy()) postOnAnimation(this)
             else postOnAnimationDelayed(this, if (outfit.isEmpty()) 66L else 33L)

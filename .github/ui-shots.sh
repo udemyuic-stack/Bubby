@@ -11,7 +11,10 @@ shot() {
   if command -v convert >/dev/null 2>&1; then convert /tmp/raw.png -resize 400x "shots/$1.png"; else cp /tmp/raw.png "shots/$1.png"; fi
 }
 adb shell am force-stop $pkg
-adb shell am start -n $pkg/.ui.UiActivity
+adb logcat -c
+adb shell am start -W -n $pkg/.ui.UiActivity > shots/ui-start.txt 2>&1
+adb shell dumpsys activity activities 2>&1 | grep -i "mResumedActivity\|topResumedActivity" >> shots/ui-start.txt
+adb shell pidof $pkg >> shots/ui-start.txt 2>&1
 shot home 5
 for i in 1 2 3 4; do
   x=$(( W * (2 * i + 1) / 10 ))
@@ -23,4 +26,5 @@ for s in $UI_SCREENS; do
   shot "$s" 3
 done
 adb logcat -d -t 400 *:E > shots/errors.txt 2>&1 || true
+adb logcat -d -t 2000 | grep -i "buddy\|AndroidRuntime\|ActivityManager" > shots/ui-log.txt 2>&1 || true
 echo "screenshots: $(ls shots | wc -l)"

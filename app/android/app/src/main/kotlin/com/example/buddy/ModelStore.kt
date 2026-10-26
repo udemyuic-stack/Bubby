@@ -65,6 +65,7 @@ object ModelStore {
         }
         val m = LinkedHashMap<String, Any?>()
         for (id in IDS) m[id] = one(ctx, id)
+        m["supported"] = LocalLlm.supported
         m["ramGb"] = mi.totalMem / 1073741824.0
         m["freeGb"] = free / 1073741824.0
         return m
@@ -72,6 +73,10 @@ object ModelStore {
 
     fun start(ctx: Context, id: String) {
         if (id !in IDS) return
+        if (!LocalLlm.supported) {
+            setState(id, "error", 0L, expectedSize(id), Tr.t(ctx, "Нужен 64-битный телефон.", "This needs a 64-bit phone.", "64-bitli telefon kerak."))
+            return
+        }
         val app = ctx.applicationContext
         val i = Intent(app, ModelDownloadService::class.java).putExtra(EXTRA_ID, id)
         try {

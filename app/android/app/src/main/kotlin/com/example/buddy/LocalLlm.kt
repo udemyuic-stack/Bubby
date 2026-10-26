@@ -31,7 +31,11 @@ object LocalLlm {
 
     fun loadedModel(): String? = loadedId
 
+    // LiteRT-LM ships 64-bit libraries only, and a 2.6 GB model does not fit a 32-bit process anyway
+    val supported: Boolean = android.os.Process.is64Bit()
+
     fun available(ctx: Context): Boolean {
+        if (!supported) return false
         val id = modelId(ctx)
         val f = ModelStore.file(ctx, id)
         return f.exists() && f.length() == ModelStore.expectedSize(id)

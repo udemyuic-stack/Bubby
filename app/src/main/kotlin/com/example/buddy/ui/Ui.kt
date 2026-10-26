@@ -242,7 +242,7 @@ fun Context.emptyState(title: String, message: String): View = col {
         species = Backend.str(this@emptyState, "species", "cat")
         outfit = com.example.buddy.Outfits.parse(Backend.str(this@emptyState, "outfit", ""))
         mood = "happy"
-        setActive(true)
+        setActive(false)
     }
     add(b, WRAP, WRAP)
     add(text(title, T.Title).apply { gravity = Gravity.CENTER }, MATCH, WRAP, top = 12)

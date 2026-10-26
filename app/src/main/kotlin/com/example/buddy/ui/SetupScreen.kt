@@ -92,7 +92,7 @@ class SetupScreen(act: UiActivity) : Screen(act) {
                 species = Backend.str(ctx, "species", "cat")
                 outfit = Outfits.parse(Backend.str(ctx, "outfit", ""))
                 this.mood = mood(i, passed)
-                setActive(true)
+                setActive(false)
             }, WRAP, WRAP)
             if (passed) add(ctx.pill(t("Готово", "Done", "Tayyor"), P.success), WRAP, WRAP, top = 8)
             add(ctx.text(step.title, T.Headline).apply { gravity = Gravity.CENTER; textSize = 24f }, MATCH, WRAP, top = 12)

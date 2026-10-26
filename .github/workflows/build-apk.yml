@@ -55,7 +55,7 @@ jobs:
           ram-size: 2048M
           emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim -camera-back none -camera-front none
           disable-animations: true
-          script: timeout 300 bash .github/shot-one.sh ${{ matrix.screen }}
+          script: timeout 420 bash .github/shot-one.sh ${{ matrix.screen }}
       - uses: actions/upload-artifact@v4
         if: always()
         with:

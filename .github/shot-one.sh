@@ -3,6 +3,8 @@
 SCREEN=${1:-home}
 ADB=$(command -v adb); adb() { timeout 30 "$ADB" "$@"; }
 mkdir -p shots
+# let the emulator finish its own start-up work (media scan, Google services) before touching it
+sleep 45
 adb install -r bubby.apk
 adb logcat -c
 ( "$ADB" logcat -v threadtime > "shots/$SCREEN-live.txt" 2>&1 & )

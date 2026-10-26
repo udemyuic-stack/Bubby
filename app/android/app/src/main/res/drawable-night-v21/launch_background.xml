@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Cream, dark surface, so the splash blends into the in-app launch. -->
-<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item>
-        <shape android:shape="rectangle">
-            <solid android:color="#FF130F1F" />
-        </shape>
-    </item>
-</layer-list>

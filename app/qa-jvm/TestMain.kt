@@ -360,8 +360,16 @@ fun comms() {
     check("mail no match", Mail.rank(rows, "Zafar").isEmpty())
 }
 
+fun groq() {
+    val ids = listOf("llama-3.3-70b-versatile", "openai/gpt-oss-20b", "qwen/qwen3.8-27b", "openai/gpt-oss-120b")
+    check("groq uz: newest Qwen first", com.example.buddy.ui.GroqModels.pick(ids, "uz") == listOf("qwen/qwen3.8-27b", "openai/gpt-oss-120b", "openai/gpt-oss-20b"))
+    check("groq en: gpt-oss-120b first", com.example.buddy.ui.GroqModels.pick(ids, "en") == listOf("openai/gpt-oss-120b", "qwen/qwen3.8-27b", "openai/gpt-oss-20b"))
+    check("groq uz without Qwen", com.example.buddy.ui.GroqModels.pick(listOf("openai/gpt-oss-120b", "llama-3.3-70b-versatile"), "uz") == listOf("openai/gpt-oss-120b", "llama-3.3-70b-versatile"))
+    check("groq empty", com.example.buddy.ui.GroqModels.pick(emptyList(), "en").isEmpty())
+}
+
 fun main() {
-    quick(); contacts(); apps(); mathTools(); comms(); if (System.getenv("PROBE") != null) probe()
+    quick(); contacts(); apps(); mathTools(); comms(); groq(); if (System.getenv("PROBE") != null) probe()
     println("RESULT: $pass passed, $fail failed (${pass + fail} assertions)")
     if (fail > 0) System.exit(1)
 }

@@ -31,7 +31,8 @@ class OutfitsScreen(act: UiActivity) : Screen(act) {
     private var drawAgain = false
     private val rng = Random.Default
 
-    private lateinit var previewImage: ImageView
+    private lateinit var tilt: Tilt3D
+    private var popId: String? = null
     private lateinit var previewTitle: android.widget.TextView
     private lateinit var animalsBox: LinearLayout
     private lateinit var presetsBox: LinearLayout
@@ -102,12 +103,14 @@ class OutfitsScreen(act: UiActivity) : Screen(act) {
 
     private fun setSpecies(id: String) {
         if (id == species) return
+        popId = id
         species = id
         Backend.setStr(ctx, "species", id)
         redraw(); fillAnimals(); updateTitle(); wobble()
     }
 
     private fun toggle(item: String) {
+        popId = item
         val next = items.toMutableSet()
         val had = item in next
         next.removeAll(slots[slot].orEmpty().toSet())
@@ -128,7 +131,7 @@ class OutfitsScreen(act: UiActivity) : Screen(act) {
     private fun redraw() {
         if (drawing) { drawAgain = true; return }
         drawing = true
-        previewImage.alpha = 0.6f
+        tilt.image.alpha = 0.6f
         Thread {
             var bmp: Bitmap? = null
             try {
@@ -138,17 +141,13 @@ class OutfitsScreen(act: UiActivity) : Screen(act) {
             act.runOnUiThread {
                 drawing = false
                 if (drawAgain) { drawAgain = false; redraw(); return@runOnUiThread }
-                if (bmp != null) { preview = bmp; previewImage.setImageBitmap(bmp) }
-                previewImage.alpha = 1f
+                if (bmp != null) { preview = bmp; tilt.setBitmap(bmp) }
+                tilt.image.alpha = 1f
             }
         }.start()
     }
 
-    private fun wobble() {
-        previewImage.animate().cancel()
-        previewImage.scaleX = 0.9f; previewImage.scaleY = 0.9f
-        previewImage.animate().scaleX(1f).scaleY(1f).setDuration(380).setInterpolator(OvershootInterpolator(3f)).start()
-    }
+    private fun wobble() = tilt.swing()
 
     private fun updateTitle() {
         val a = animals().firstOrNull { it.first == species }?.second ?: species
@@ -157,42 +156,16 @@ class OutfitsScreen(act: UiActivity) : Screen(act) {
 
     // ---- views ----
 
-    private fun selectableCard(selected: Boolean, pad: Int = 8, onTap: () -> Unit, block: LinearLayout.() -> Unit): LinearLayout =
-        ctx.card(pad = pad, fill = if (selected) P.primaryContainer else P.low, stroke = if (selected) P.primary else P.outlineVariant, radius = 20f, onClick = onTap, block = block)
+    private fun selectableCard(selected: Boolean, pad: Int = 8, id: String? = null, onTap: () -> Unit, block: LinearLayout.() -> Unit): LinearLayout =
+        ctx.card(pad = pad, fill = if (selected) P.primaryContainer else P.low, stroke = if (selected) P.primary else P.outlineVariant, radius = 20f, onClick = onTap, block = block).also { card ->
+            // the card that was just picked pops
+            if (selected && id != null && id == popId) { popId = null; card.post { card.pop() } }
+        }
 
     private fun previewCard(): View = ctx.card(pad = 16, fill = P.primaryContainer, stroke = 0) {
-        val stage = FrameLayout(ctx)
-        val glow = View(ctx).apply {
-            background = android.graphics.drawable.GradientDrawable().apply {
-                gradientType = android.graphics.drawable.GradientDrawable.RADIAL_GRADIENT
-                gradientRadius = ctx.dpf(100f)
-                colors = intArrayOf(P.alpha(P.primary, 110), P.alpha(P.primary, 0))
-            }
-        }
-        stage.addView(glow, FrameLayout.LayoutParams(ctx.dp(200), ctx.dp(200), Gravity.CENTER))
-        previewImage = ImageView(ctx).apply {
-            scaleType = ImageView.ScaleType.FIT_CENTER
-            cameraDistance = ctx.dpf(800f)
-            preview?.let { setImageBitmap(it) }
-        }
-        stage.addView(previewImage, FrameLayout.LayoutParams(ctx.dp(170), ctx.dp(170), Gravity.CENTER))
-        // drag to turn the picture in 3D, it springs back when released
-        stage.setOnTouchListener { _, e ->
-            when (e.actionMasked) {
-                MotionEvent.ACTION_DOWN, MotionEvent.ACTION_MOVE -> {
-                    stage.parent?.requestDisallowInterceptTouchEvent(true)
-                    val nx = ((e.x / stage.width) - 0.5f).coerceIn(-0.5f, 0.5f)
-                    val ny = ((e.y / stage.height) - 0.5f).coerceIn(-0.5f, 0.5f)
-                    previewImage.animate().cancel()
-                    previewImage.rotationY = nx * 50f
-                    previewImage.rotationX = -ny * 50f
-                }
-                MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL ->
-                    previewImage.animate().rotationX(0f).rotationY(0f).setDuration(450).setInterpolator(OvershootInterpolator(2.5f)).start()
-            }
-            true
-        }
-        add(stage, MATCH, ctx.dp(210))
+        tilt = Tilt3D(ctx)
+        tilt.setBitmap(preview)
+        add(tilt, MATCH, ctx.dp(210))
         add(ctx.row {
             previewTitle = ctx.text("", T.Title)
             add(previewTitle, 0, WRAP, 1f)
@@ -201,13 +174,13 @@ class OutfitsScreen(act: UiActivity) : Screen(act) {
         updateTitle()
     }
 
-    private fun animalCard(id: String, name: String): View = selectableCard(species == id, pad = 8, onTap = { setSpecies(id) }) {
+    private fun animalCard(id: String, name: String): View = selectableCard(species == id, pad = 8, id = id, onTap = { setSpecies(id) }) {
         gravity = Gravity.CENTER_HORIZONTAL
         val b = BuddyView(ctx).apply {
             scaleF = 0.55f
             this.species = id
             mood = if (id == species) "happy" else "idle"
-            setActive(false)
+            setActive(id == species)
         }
         add(b, WRAP, WRAP)
         add(ctx.text(name, T.Small, if (id == species) P.onPrimaryContainer else P.onSurface).apply { maxLines = 1; gravity = Gravity.CENTER }, MATCH, WRAP, top = 2)
@@ -222,7 +195,7 @@ class OutfitsScreen(act: UiActivity) : Screen(act) {
 
     private fun presetCard(p: Preset): View {
         val selected = items.size == p.items.size && items.containsAll(p.items)
-        return selectableCard(selected, pad = 10, onTap = { setItems(p.items) }) {
+        return selectableCard(selected, pad = 10, id = p.id, onTap = { popId = p.id; setItems(p.items) }) {
             gravity = Gravity.CENTER_HORIZONTAL
             add(ctx.row(Gravity.CENTER) {
                 background = ctx.rounded(P.alpha(p.color, 46), 30f)
@@ -241,13 +214,10 @@ class OutfitsScreen(act: UiActivity) : Screen(act) {
 
     private fun itemTile(id: String): View {
         val selected = id in items
-        return selectableCard(selected, pad = 8, onTap = { toggle(id) }) {
+        return selectableCard(selected, pad = 8, id = id, onTap = { toggle(id) }) {
             gravity = Gravity.CENTER
             if (slot == "aura") {
-                add(ctx.row(Gravity.CENTER) {
-                    background = ctx.gradient(intArrayOf(0xFF2A2060.toInt(), 0xFF14102E.toInt()), 14f, android.graphics.drawable.GradientDrawable.Orientation.TOP_BOTTOM)
-                    add(ctx.icon(iconFor("aura", id), 0xFFFFD27A.toInt(), 30), WRAP, WRAP)
-                }, MATCH, ctx.dp(54))
+                add(AuraView(ctx, id), MATCH, ctx.dp(54))
             } else {
                 add(ctx.icon(iconFor(slot, id), if (selected) P.onPrimaryContainer else P.onSurfaceVariant, 30), WRAP, WRAP, top = 8)
             }

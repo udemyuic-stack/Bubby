@@ -131,6 +131,7 @@ class AiScreen(act: UiActivity) : Screen(act) {
                 testing = -1; statusOk = ok
                 status = if (ok) t("Подключение работает", "The connection works", "Ulanish ishlayapti") else AiApi.hint(ctx, raw)
                 refresh()
+                if (ok) act.confetti()
             }
         }.start()
     }
@@ -174,6 +175,7 @@ class AiScreen(act: UiActivity) : Screen(act) {
                 else {
                     persist(keys + chosen.map { "${AiApi.GROQ_BASE}|$it|$key" }.filter { it !in keys })
                     f.setText(""); groqDone = chosen
+                    act.confetti()
                 }
                 refresh()
             }
@@ -299,7 +301,7 @@ class AiScreen(act: UiActivity) : Screen(act) {
             act.runOnUiThread {
                 busy = null
                 if (!ok) errors[p.id] = AiApi.hint(ctx, raw)
-                else if (addSpec(spec)) for (k in listOf(":key", ":url", ":model")) fields[p.id + k]?.setText("")
+                else if (addSpec(spec)) { for (k in listOf(":key", ":url", ":model")) fields[p.id + k]?.setText(""); act.confetti() }
                 refresh()
             }
         }.start()

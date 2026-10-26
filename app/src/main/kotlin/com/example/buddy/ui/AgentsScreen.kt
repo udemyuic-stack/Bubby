@@ -11,6 +11,7 @@ import com.example.buddy.R
 class AgentsScreen(act: UiActivity) : Screen(act) {
     override fun title() = t("Агенты", "Agents", "Agentlar")
     private var polling = false
+    private val shown = HashMap<String, Int>()   // progress already drawn per session, so a refresh only animates the change
     private val linkField by lazy { ctx.field(t("Ссылка для подключения", "Connection link", "Ulanish havolasi")).apply { setSingleLine(); hint = "coucou://pair?..." } }
 
     override fun onShow() {
@@ -52,10 +53,13 @@ class AgentsScreen(act: UiActivity) : Screen(act) {
             if (a.statusText.isNotEmpty()) add(ctx.text(a.statusText, T.Body), MATCH, WRAP, top = 6)
             if (a.stepCount > 0) {
                 val bar = ProgressBar(ctx, null, android.R.attr.progressBarStyleHorizontal).apply {
-                    max = a.stepCount; progress = a.stepIndex.coerceIn(0, a.stepCount)
+                    max = a.stepCount; progress = shown[a.pillId] ?: 0
                     progressTintList = android.content.res.ColorStateList.valueOf(P.primary)
                 }
                 add(bar, MATCH, ctx.dp(10), top = 10)
+                val goal = a.stepIndex.coerceIn(0, a.stepCount)
+                if (goal != bar.progress) bar.post { bar.animateTo(goal) }
+                shown[a.pillId] = goal
                 add(ctx.text(t("Шаг ${a.stepIndex} из ${a.stepCount}", "Step ${a.stepIndex} of ${a.stepCount}", "${a.stepIndex}-qadam, jami ${a.stepCount} ta"), T.Small), MATCH, WRAP, top = 4)
             }
         }

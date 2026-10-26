@@ -30,7 +30,6 @@ class UiActivity : Activity() {
         P.init(this)
         cleanOldModel()
         window.setBackgroundDrawable(android.graphics.drawable.ColorDrawable(P.surface))
-        setBars()
         host = FrameLayout(this)
         shell = col { setBackgroundColor(P.surface) }
         body = FrameLayout(this)
@@ -45,6 +44,7 @@ class UiActivity : Activity() {
             ins
         }
         setContentView(host)
+        setBars()
         showTab(0)
         intent?.getStringExtra("open")?.let { openByName(it) }
     }
@@ -96,8 +96,10 @@ class UiActivity : Activity() {
         window.navigationBarColor = Color.TRANSPARENT
         if (Build.VERSION.SDK_INT >= 30) {
             val light = if (P.dark) 0 else (android.view.WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS or android.view.WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS)
-            window.insetsController?.setSystemBarsAppearance(light,
-                android.view.WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS or android.view.WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS)
+            try {
+                window.decorView.windowInsetsController?.setSystemBarsAppearance(light,
+                    android.view.WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS or android.view.WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS)
+            } catch (_: Exception) { }
         } else {
             var f = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
             if (!P.dark) {

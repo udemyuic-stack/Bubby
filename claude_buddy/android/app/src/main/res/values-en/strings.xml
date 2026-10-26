@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="access_desc">Lets the mascot tap screen elements, scroll, type text and press Back and Home on your voice command. Nothing from the screen is sent anywhere.</string>
+    <string name="share_to_buby">Send to Bubby</string>
+</resources>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="access_desc">Ovozli buyruq bilan maskot ekrandagi elementlarni bosishi, aylantirishi, matn kiritishi hamda «Orqaga» va «Bosh ekran» tugmalarini bosishi mumkin. Ekrandagi ma\'lumotlar hech qayerga yuborilmaydi.</string>
+    <string name="share_to_buby">Bubbyga yuborish</string>
+</resources>

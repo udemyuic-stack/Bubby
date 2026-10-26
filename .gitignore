@@ -1,0 +1,31 @@
+# third-party reference code and old experiments (not ours to republish)
+ref-coucou/
+src-zip/
+apk-zip/
+ClaudeBuddy/
+
+# built APKs and previews
+*.apk
+buby-icon-1024.png
+
+# secrets and local state
+.buddy-token
+**/.buddy-token
+**/CURRENT_URL.txt
+*.keystore
+*.jks
+key.properties
+local.properties
+
+# OS / IDE
+.DS_Store
+.idea/
+*.iml
+
+# build outputs
+**/build/
+**/.dart_tool/
+**/.gradle/
+qa-jvm/out/
+qa-jvm/*.class
+qa-jvm/*.jar

@@ -84,7 +84,7 @@ class MusicScreen(act: UiActivity) : Screen(act) {
                     }, ctx.dp(44), ctx.dp(44), end = 10)
                     add(ctx.text(label(m), T.Label).apply { maxLines = 2 }, 0, WRAP, 1f)
                 })
-            }, 0, WRAP, 1f, end = if (m === pair.first()) 10 else 0, bottom = 10)
+            }, 0, ctx.dp(68), 1f, end = if (m === pair.first()) 10 else 0, bottom = 10)
             c.add(row, MATCH, WRAP)
         }
 

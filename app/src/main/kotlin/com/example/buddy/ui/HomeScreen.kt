@@ -75,7 +75,7 @@ class HomeScreen(act: UiActivity) : Screen(act) {
         // the microphone was granted after the floating service started: poke it so it re-declares the microphone type
         if (running && perms["mic"] == true && perms["overlay"] == true && !micPoked) { micPoked = true; Backend.startBuddy(ctx) }
         if (perms["mic"] != true) micPoked = false
-        if (firstShow) { firstShow = false; if (missing) content.post { act.open("setup") } }
+        if (firstShow) { firstShow = false; if (missing && !act.intent.getBooleanExtra("static", false)) content.post { act.open("setup") } }
 
         // ---- hero ----
         val hero = ctx.col {

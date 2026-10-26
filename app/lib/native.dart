@@ -41,6 +41,7 @@ class Settings {
     this.stickersOnEvents = true,
     this.statusBadge = true,
     this.stateGlow = true,
+    this.dockPlace = '',
   });
 
   final String key;
@@ -71,6 +72,9 @@ class Settings {
   final bool stickersOnEvents;
   final bool statusBadge;
   final bool stateGlow;
+
+  /// 'status_left' / 'status_right' while Bubby sits in the status bar, otherwise ''.
+  final String dockPlace;
 
   /// True when at least one non-empty AI key is saved.
   bool get hasKeys => keys.any((k) => k.trim().isNotEmpty);
@@ -107,6 +111,7 @@ class Settings {
         stickersOnEvents: (m['stickersOnEvents'] as bool?) ?? true,
         statusBadge: (m['statusBadge'] as bool?) ?? true,
         stateGlow: (m['stateGlow'] as bool?) ?? true,
+        dockPlace: (m['dockPlace'] as String?) ?? '',
       );
 
   Map<String, Object?> toMap() => {

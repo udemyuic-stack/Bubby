@@ -57,6 +57,7 @@ class NativeChannel(private val act: Activity) : MethodChannel.MethodCallHandler
                 "deviceReactions" to prefs.getBoolean("device_reactions", true),
                 "stickersOnEvents" to prefs.getBoolean("stickers_on_events", true),
                 "statusBadge" to prefs.getBoolean("badge", true),
+                "dockPlace" to prefs.getString("status_dock", "").orEmpty(),
                 "stateGlow" to prefs.getBoolean("state_glow", true),
                 "running" to BuddyService.running))
             "saveSettings" -> {
@@ -80,6 +81,13 @@ class NativeChannel(private val act: Activity) : MethodChannel.MethodCallHandler
                 call.argument<Boolean>("deviceReactions")?.let { e.putBoolean("device_reactions", it) }
                 call.argument<Boolean>("stickersOnEvents")?.let { e.putBoolean("stickers_on_events", it) }
                 call.argument<Boolean>("statusBadge")?.let { e.putBoolean("badge", it) }
+                call.argument<String>("dock")?.let { w ->
+                    if (w in setOf("status_left", "status_right", "top_right")) {
+                        // "where:time": the changing time makes the service act even when the same place is chosen again
+                        e.putString("dock", w + ":" + System.currentTimeMillis())
+                        if (w.startsWith("status_")) e.putString("status_dock", w) else e.remove("status_dock")
+                    }
+                }
                 call.argument<Boolean>("stateGlow")?.let { e.putBoolean("state_glow", it) }
                 call.argument<Boolean>("hotword")?.let { e.putBoolean("hotword", it) }
                 call.argument<Boolean>("stickerAuto")?.let { e.putBoolean("sticker_auto", it) }

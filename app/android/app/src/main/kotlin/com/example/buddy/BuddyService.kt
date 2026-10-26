@@ -706,6 +706,10 @@ class BuddyService : Service() {
             onPinch = { f -> applySize((liveSize * f).coerceIn(0.15f, 6f)) }
             onPinchEnd = { prefs.edit().putFloat("size", liveSize).apply() }
             onDragStart = {
+                // screen limits are measured once per drag, not on every finger move
+                dragMaxX = maxOf(0, screenW() - win.width)
+                dragMinY = minY()
+                dragMaxY = maxOf(dragMinY, realH() - win.height)
                 cancelTap(); touched(); hotStop()
                 snapAnim?.cancel(); snapAnim = null; dockAnim?.let { it.removeAllListeners(); it.cancel() }; dockAnim = null; dockRight = false
                 statusDock = null; prefs.edit().remove("status_dock").apply()
@@ -713,8 +717,15 @@ class BuddyService : Service() {
                     .setStartDelay(0).setDuration(140).setInterpolator(DecelerateInterpolator()).start()
                 startHold()
             }
-            onDrag = { dx, dy -> lp.x += dx.toInt(); lp.y += dy.toInt(); clamp() }
+            onDrag = { dx, dy ->
+                lp.x = (lp.x + dx.toInt()).coerceIn(0, dragMaxX)
+                lp.y = (lp.y + dy.toInt()).coerceIn(dragMinY, dragMaxY)
+                // the system is told about the new position once per frame, however many touch events came in
+                if (!dragFrame) { dragFrame = true; win.postOnAnimation(dragRun) }
+            }
             onDragEnd = {
+                win.removeCallbacks(dragRun); dragFrame = false
+                try { wm.updateViewLayout(win, lp) } catch (_: Exception) {}   // the final spot, then snap to the edge
                 endHold()
                 animate().scaleX(1f).scaleY(1f).translationZ(0f).translationY(0f).rotation(0f).setStartDelay(0).setDuration(380)
                     .setInterpolator(OvershootInterpolator(2.6f)).start()
@@ -754,6 +765,15 @@ class BuddyService : Service() {
         }
     }
 
+    private var dragMaxX = 0
+    private var dragMinY = 0
+    private var dragMaxY = 0
+    private var dragFrame = false
+    private val dragRun = Runnable {
+        dragFrame = false
+        try { wm.updateViewLayout(win, lp) } catch (_: Exception) {}
+    }
+
     private fun startHold() {
         buddy.grabbed = true; buddy.glow = true
         holdAnim?.cancel(); holdAnim = null
@@ -761,11 +781,17 @@ class BuddyService : Service() {
         holdAnim = ValueAnimator.ofFloat(0f, 1f).apply {
             duration = 520; repeatCount = ValueAnimator.INFINITE; repeatMode = ValueAnimator.REVERSE
             interpolator = LinearInterpolator()
+            var lastStep = -1
             addUpdateListener {
                 val f = it.animatedValue as Float
                 root.rotation = (f - 0.5f) * 5f
-                buddy.setGlowColor((((130 + 125 * f).toInt()) shl 24) or (hueBase and 0xFFFFFF))
-                tintIsland((90 + 140 * f).toInt())
+                // the glow pulse changes in 8 steps: rebuilding its shader on every frame would slow the drag down
+                val step = (f * 8f).toInt()
+                if (step != lastStep) {
+                    lastStep = step
+                    buddy.setGlowColor((((130 + 125 * f).toInt()) shl 24) or (hueBase and 0xFFFFFF))
+                    tintIsland((90 + 140 * f).toInt())
+                }
             }
             start()
         }

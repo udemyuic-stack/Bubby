@@ -70,6 +70,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   bool _stickersOnEvents = true;
   bool _statusBadge = true;
   bool _stateGlow = true;
+  String _dockPlace = '';
   bool _readNotifs = false;
   bool _quiet = false;
   bool _autohide = true;
@@ -117,6 +118,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         _stickersOnEvents = s.stickersOnEvents;
         _statusBadge = s.statusBadge;
         _stateGlow = s.stateGlow;
+        _dockPlace = s.dockPlace;
         _readNotifs = s.readNotifs;
         _quiet = s.quiet;
         _autohide = s.autohide;
@@ -649,6 +651,42 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       ),
                     ]),
                     _group(2, tr('Вид Bubby', en: 'Bubby look', uz: 'Bubby koʻrinishi'), Icons.palette_rounded, [
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: Sp.s),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(tr('Где живёт Bubby', en: 'Where Bubby lives', uz: 'Bubby qayerda turadi'), style: context.tt.titleSmall),
+                            const SizedBox(height: 2),
+                            Text(
+                              tr('В строке состояния он не закрывает видео. Его можно сдвинуть пальцем в любой момент',
+                                  en: 'In the status bar it never covers a video. You can still drag him anywhere',
+                                  uz: 'Holat panelida u videoni yopmaydi. Xohlagan payt barmoq bilan surib qoʻyish mumkin'),
+                              style: context.tt.bodySmall,
+                            ),
+                            const SizedBox(height: Sp.s),
+                            Wrap(
+                              spacing: Sp.s,
+                              runSpacing: Sp.s,
+                              children: [
+                                for (final o in [
+                                  ('status_right', tr('Справа, у батареи', en: 'Right, by the battery', uz: 'Oʻngda, batareya yonida')),
+                                  ('status_left', tr('Слева, у часов', en: 'Left, by the clock', uz: 'Chapda, soat yonida')),
+                                  ('top_right', tr('Обычное место', en: 'Normal spot', uz: 'Oddiy joy')),
+                                ])
+                                  ChoiceChip(
+                                    label: Text(o.$2),
+                                    selected: o.$1 == 'top_right' ? !_dockPlace.startsWith('status_') : _dockPlace == o.$1,
+                                    onSelected: (_) {
+                                      setState(() => _dockPlace = o.$1 == 'top_right' ? '' : o.$1);
+                                      _save('dock', o.$1);
+                                    },
+                                  ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
                       BuddySwitchTile(
                         contentPadding: EdgeInsets.zero,
                         title: Text(tr('Значок состояния', en: 'Status badge', uz: 'Holat belgisi')),

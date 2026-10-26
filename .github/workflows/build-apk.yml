@@ -22,7 +22,7 @@ jobs:
       - name: Build the release APK
         working-directory: app
         run: gradle --no-daemon assembleRelease -Pbuddy.code=${{ github.run_number }} -Pbuddy.version=1.0.${{ github.run_number }}
-      - run: cp app/build/outputs/apk/release/app-release.apk bubby.apk
+      - run: find app/build/outputs/apk/release -name "*.apk" -print -exec cp {} bubby.apk ;
       - uses: actions/upload-artifact@v4
         with:
           name: bubby

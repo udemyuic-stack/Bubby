@@ -3,9 +3,11 @@ package com.example.buddy.ui
 import android.content.ClipboardManager
 import android.content.Context
 import android.view.Gravity
+import android.view.View
 import android.widget.LinearLayout
 import android.widget.ProgressBar
 import com.example.buddy.AgentSession
+import com.example.buddy.BuddyService
 import com.example.buddy.R
 
 class AgentsScreen(act: UiActivity) : Screen(act) {
@@ -14,14 +16,20 @@ class AgentsScreen(act: UiActivity) : Screen(act) {
     private val shown = HashMap<String, Int>()   // progress already drawn per session, so a refresh only animates the change
     private val linkField by lazy { ctx.field(t("Ссылка для подключения", "Connection link", "Ulanish havolasi")).apply { setSingleLine(); hint = "coucou://pair?..." } }
 
+    /** What the page last showed of the live link state; the poll redraws only when it changes. */
+    private var shownLive: Any? = null
+    private fun live(): Any = listOf(BuddyService.agentDesktop, BuddyService.agentConnected, BuddyService.agentSessions)
+
     override fun onShow() {
-        refresh()
+        reshow()
         if (polling) return
         polling = true
         val tick = object : Runnable {
             override fun run() {
-                if (!content.isAttachedToWindow) { polling = false; return }
-                if (Backend.agentStatus(ctx).paired) refresh()
+                // gone, or the app went to the background: stop (onShow starts it again on return)
+                if (!content.isAttachedToWindow || content.windowVisibility != View.VISIBLE) { polling = false; return }
+                // the pairing check decrypts the token through the Keystore: only done when the live state really changed
+                if (live() != shownLive && Backend.agentStatus(ctx).paired) refresh()
                 content.postDelayed(this, 2000)
             }
         }
@@ -79,6 +87,7 @@ class AgentsScreen(act: UiActivity) : Screen(act) {
     ) { Backend.agentUnpair(ctx); refresh() }
 
     override fun render(c: LinearLayout) {
+        shownLive = live()
         val s = Backend.agentStatus(ctx)
         c.add(ctx.card(pad = 16, fill = P.accentContainer(java.util.Calendar.getInstance().get(java.util.Calendar.HOUR_OF_DAY), 0)) {
             add(ctx.text(t(

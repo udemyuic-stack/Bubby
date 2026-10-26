@@ -1,6 +1,5 @@
 package com.example.buddy.ui
 
-import android.graphics.BitmapFactory
 import android.view.Gravity
 import android.view.View
 import android.widget.ImageView
@@ -22,15 +21,21 @@ class FunScreen(act: UiActivity) : Screen(act) {
         t("Слова-цепочка", "Word chain", "So'z zanjiri"),
     )
 
+    private val tiles = HashMap<String, ImageView>()
+
+    /**
+     * The eight stickers are drawn one after another on a single thread (each needs ~20 MB of scratch bitmaps, eight at
+     * once could exhaust a small phone's heap) and handed over as bitmaps (no PNG encode and decode); each one fills its
+     * own tile instead of redrawing the whole page.
+     */
     override fun onShow() {
         if (started) return
         started = true
-        for (m in moods) Thread {
-            try {
-                val bytes = Stickers.png(ctx, m, "")
-                val bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.size) ?: return@Thread
-                act.runOnUiThread { images[m] = bmp; refresh() }
-            } catch (_: Exception) {}
+        Thread {
+            for (m in moods) {
+                val bmp = try { Stickers.render(ctx, m, "", Stickers.prefOutfitSet(ctx)) } catch (_: Throwable) { null } ?: continue
+                act.runOnUiThread { images[m] = bmp; tiles[m]?.setImageBitmap(bmp) }
+            }
         }.start()
     }
 
@@ -68,6 +73,7 @@ class FunScreen(act: UiActivity) : Screen(act) {
                         scaleType = ImageView.ScaleType.FIT_CENTER
                         images[m]?.let { setImageBitmap(it) }
                     }
+                    tiles[m] = img
                     add(img, MATCH, MATCH)
                     press { share(m) }
                 }

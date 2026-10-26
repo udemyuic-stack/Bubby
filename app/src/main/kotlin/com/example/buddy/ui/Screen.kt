@@ -18,6 +18,8 @@ abstract class Screen(val act: UiActivity) {
     protected lateinit var content: LinearLayout
     private var scroll: ScrollView? = null
     private var root: View? = null
+    /** True from building the page until the main thread is next idle: nothing can have changed in between. */
+    private var fresh = false
 
     /** A floating action button (label, action) shown at the bottom right, or null. */
     open fun fab(): Pair<String, () -> Unit>? = null
@@ -43,6 +45,8 @@ abstract class Screen(val act: UiActivity) {
         content = ctx.col { setPadding(ctx.dp(padH), ctx.dp(if (padH == 0) 0 else 8), ctx.dp(padH), ctx.dp(if (f != null) 100 else 28)) }
         render(content)
         content.staggerChildren()
+        fresh = true
+        content.post { fresh = false }
         val sv = ctx.scroll(content)
         scroll = sv
         val r: View = if (f == null) sv else FrameLayout(ctx).apply {
@@ -62,6 +66,12 @@ abstract class Screen(val act: UiActivity) {
         root = r
         return r
     }
+
+    /**
+     * For [onShow] of pages that only redraw there: skips the redraw when the page was built a moment ago in the same
+     * main-thread turn (opening a tab, then onResume, used to build the start page three times and cut its fade-in short).
+     */
+    protected fun reshow() { if (!fresh) refresh() }
 
     fun refresh() {
         if (scroll == null) return

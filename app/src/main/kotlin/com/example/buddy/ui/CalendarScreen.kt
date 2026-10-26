@@ -14,7 +14,7 @@ class CalendarScreen(act: UiActivity) : Screen(act) {
     private val days = 14
 
     override fun title() = t("Календарь", "Calendar", "Kalendar")
-    override fun onShow() { refresh() }
+    override fun onShow() { reshow() }
     override fun onPermissionResult() { refresh() }
     override fun fab() = if (CalendarStore(ctx).hasPermission()) t("Событие", "Event", "Tadbir") to { add() } else null
 

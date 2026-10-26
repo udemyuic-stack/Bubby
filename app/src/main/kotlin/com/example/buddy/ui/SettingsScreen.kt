@@ -13,7 +13,7 @@ import kotlin.math.roundToInt
 
 class SettingsScreen(act: UiActivity) : Screen(act) {
     override fun title() = t("Настройки", "Settings", "Sozlamalar")
-    override fun onShow() { refresh() }
+    override fun onShow() { reshow() }
 
     private val moods = listOf("funny and cheerful", "serious and precise", "warm and affectionate", "sarcastic", "sleepy", "energetic", "")
     private val legacy = mapOf(

@@ -18,7 +18,7 @@ class HomeScreen(act: UiActivity) : Screen(act) {
 
     override val padH = 0
     override fun title() = "Bubby"
-    override fun onShow() { refresh() }
+    override fun onShow() { reshow() }
     override fun onPermissionResult() { refresh() }
 
     private fun heroBackground(): GradientDrawable {

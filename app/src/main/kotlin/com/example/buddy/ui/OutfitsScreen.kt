@@ -2,7 +2,6 @@ package com.example.buddy.ui
 
 import android.animation.ValueAnimator
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.view.Gravity
 import android.view.MotionEvent
 import android.view.View
@@ -98,15 +97,48 @@ class OutfitsScreen(act: UiActivity) : Screen(act) {
     private fun setItems(next: Set<String>) {
         items = next
         Backend.setStr(ctx, "outfit", csv(next))
-        redraw(); fillPresets(); fillSlot(); updateTitle(); wobble()
+        val ps = presets().associateBy { it.id }
+        redraw()
+        updateCards(presetViews, { id -> ps[id]?.let(::presetSelected) == true }) { id -> presetCard(ps.getValue(id)) }
+        updateCards(tileViews, { id -> id in items }) { id -> itemTile(id) }
+        updateTitle(); wobble()
     }
 
     private fun setSpecies(id: String) {
         if (id == species) return
+        val old = species
         popId = id
         species = id
         Backend.setStr(ctx, "species", id)
-        redraw(); fillAnimals(); updateTitle(); wobble()
+        // only the two cards whose selection changed are rebuilt (each holds a live mascot), not all sixteen
+        val names = animals().toMap()
+        for (a in listOf(old, id)) animalViews[a]?.let { (v, _) -> animalViews[a] = swap(v, animalCard(a, names[a] ?: a)) to (a == id) }
+        redraw(); updateTitle(); wobble()
+    }
+
+    // ---- cards that are updated in place: id -> (view, whether it was drawn selected) ----
+    private val animalViews = HashMap<String, Pair<View, Boolean>>()
+    private val presetViews = HashMap<String, Pair<View, Boolean>>()
+    private val tileViews = HashMap<String, Pair<View, Boolean>>()
+
+    private fun presetSelected(p: Preset) = items.size == p.items.size && items.containsAll(p.items)
+
+    /** Puts [fresh] where [old] was (same parent, index and layout params) and returns it. */
+    private fun swap(old: View, fresh: View): View {
+        val parent = old.parent as? android.view.ViewGroup ?: return old
+        val i = parent.indexOfChild(old)
+        val lp = old.layoutParams
+        parent.removeViewAt(i)
+        parent.addView(fresh, i, lp)
+        return fresh
+    }
+
+    /** Rebuilds only the cards whose selected state changed (or that should pop), instead of whole rows. */
+    private fun updateCards(views: HashMap<String, Pair<View, Boolean>>, selected: (String) -> Boolean, build: (String) -> View) {
+        for ((id, vs) in views.entries.toList()) {
+            val sel = selected(id)
+            if (sel != vs.second || (sel && id == popId)) views[id] = swap(vs.first, build(id)) to sel
+        }
     }
 
     private fun toggle(item: String) {
@@ -135,8 +167,7 @@ class OutfitsScreen(act: UiActivity) : Screen(act) {
         Thread {
             var bmp: Bitmap? = null
             try {
-                val b = Stickers.previewPng(ctx, "happy")
-                bmp = BitmapFactory.decodeByteArray(b, 0, b.size)
+                bmp = Stickers.preview(ctx, "happy")
             } catch (_: Throwable) {}
             act.runOnUiThread {
                 drawing = false
@@ -187,14 +218,14 @@ class OutfitsScreen(act: UiActivity) : Screen(act) {
     }
 
     private fun fillAnimals() {
-        animalsBox.removeAllViews()
+        animalsBox.removeAllViews(); animalViews.clear()
         val flow = FlowLayout(ctx)
-        for ((id, name) in animals()) flow.addView(animalCard(id, name))
+        for ((id, name) in animals()) { val v = animalCard(id, name); animalViews[id] = v to (id == species); flow.addView(v) }
         animalsBox.add(flow, MATCH, WRAP)
     }
 
     private fun presetCard(p: Preset): View {
-        val selected = items.size == p.items.size && items.containsAll(p.items)
+        val selected = presetSelected(p)
         return selectableCard(selected, pad = 10, id = p.id, onTap = { popId = p.id; setItems(p.items) }) {
             gravity = Gravity.CENTER_HORIZONTAL
             add(ctx.row(Gravity.CENTER) {
@@ -206,9 +237,9 @@ class OutfitsScreen(act: UiActivity) : Screen(act) {
     }
 
     private fun fillPresets() {
-        presetsBox.removeAllViews()
+        presetsBox.removeAllViews(); presetViews.clear()
         val row = ctx.row { setPadding(0, ctx.dp(4), 0, ctx.dp(8)) }
-        for (p in presets()) row.add(presetCard(p), ctx.dp(108), WRAP, end = 10)
+        for (p in presets()) { val v = presetCard(p); presetViews[p.id] = v to presetSelected(p); row.add(v, ctx.dp(108), WRAP, end = 10) }
         presetsBox.addView(HorizontalScrollView(ctx).apply { isHorizontalScrollBarEnabled = false; clipChildren = false; addView(row) })
     }
 
@@ -226,7 +257,7 @@ class OutfitsScreen(act: UiActivity) : Screen(act) {
     }
 
     private fun fillSlot() {
-        slotBox.removeAllViews()
+        slotBox.removeAllViews(); tileViews.clear()
         val chips = FlowLayout(ctx)
         for (s in slotOrder) chips.addView(ctx.chip(slotTitle(s), slot == s) { slot = s; fillSlot() })
         slotBox.add(chips, MATCH, WRAP, bottom = 8)
@@ -234,7 +265,8 @@ class OutfitsScreen(act: UiActivity) : Screen(act) {
             val row = ctx.row {}
             for (i in 0 until 3) {
                 val id = rowIds.getOrNull(i)
-                row.addView(if (id != null) itemTile(id) else View(ctx), LinearLayout.LayoutParams(0, ctx.dp(94), 1f).apply {
+                val v = if (id != null) itemTile(id).also { tileViews[id] = it to (id in items) } else View(ctx)
+                row.addView(v, LinearLayout.LayoutParams(0, ctx.dp(94), 1f).apply {
                     setMargins(ctx.dp(4), ctx.dp(4), ctx.dp(4), ctx.dp(4))
                 })
             }

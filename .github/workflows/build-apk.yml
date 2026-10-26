@@ -29,6 +29,7 @@ jobs:
           path: bubby.apk
 
   smoke:
+    timeout-minutes: 20
     # Installs the APK on an emulator, opens every screen and keeps the crash log and screenshots.
     # The screenshots are pushed to the ci-screenshots branch.
     needs: build
@@ -53,7 +54,7 @@ jobs:
           ram-size: 4096M
           emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim -camera-back none -camera-front none
           disable-animations: true
-          script: bash .github/ci-emulator.sh
+          script: timeout 420 bash .github/ci-emulator.sh
       - uses: actions/upload-artifact@v4
         if: always()
         with:

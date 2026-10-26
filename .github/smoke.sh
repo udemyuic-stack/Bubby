@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # Runs inside the emulator: install, launch, wait, keep the log. Never aborts early so the log is always saved.
+adb() { timeout 25 command adb "$@"; }
 APK=bubby.apk
 adb install -r "$APK"
 adb logcat -c

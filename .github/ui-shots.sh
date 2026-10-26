@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # Opens the native UI, visits every tab and some screens, and saves downscaled screenshots in ./shots.
+adb() { timeout 25 command adb "$@"; }
 mkdir -p shots
 adb shell wm size 720x1440
 adb shell wm density 320

@@ -1532,6 +1532,12 @@ class BuddyService : Service() {
             if (calling) {
                 val t = text?.lowercase().orEmpty()
                 when {
+                    CallWatcher.looksLikeRejectAndText(t) -> {
+                        releaseCallFocus()
+                        val driving = Regex("rul|за рул|driv").containsMatchIn(t)
+                        val err = actions.run(JSONObject().put("do", "reject_call").put("text", AutoReply.defaultText(this, if (driving) "driving" else "busy")))
+                        status.text = if (err == null) t("Сбросил, пишу", "Declined, texting", "Rad etdim, xabar yuboryapman") else err
+                    }
                     CallWatcher.looksLikeReject(t) -> { releaseCallFocus(); actions.run(JSONObject().put("do", "end_call")); status.text = t("Сбросил", "Declined", "Rad etdim") }
                     CallWatcher.looksLikeAnswer(t) -> { releaseCallFocus(); actions.run(JSONObject().put("do", "answer_call")); status.text = t("Отвечаю", "Answering", "Javob beryapman") }
                     attempt < 8 -> h.postDelayed({ listenForCall(attempt + 1) }, 300)

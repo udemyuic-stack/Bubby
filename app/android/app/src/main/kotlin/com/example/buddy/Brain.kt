@@ -136,12 +136,13 @@ class Brain(private val ctx: Context) {
     }
 
     /** Actions an injected instruction could abuse; only run after untrusted data when the user's own words ask for them. */
-    private val sensitiveOps = setOf("message", "call", "brightness", "delete_task", "notification_reply", "dnd", "screen_timeout", "auto_reply")
+    private val sensitiveOps = setOf("message", "call", "brightness", "delete_task", "notification_reply", "dnd", "screen_timeout", "auto_reply", "reject_call")
     private val reAskMessage = Regex("отправ|напиш|смс|сообщен|вацап|ватсап|телеграм|ответь|send|message|sms|whatsapp|telegram|\\btext\\b|\\bwrite\\b|\\breply\\b|yubor|yoz\\b|yozing|xabar|javob", RegexOption.IGNORE_CASE)
     private val reAskCall = Regex("позвон|набер|звони|вызови|call|dial|\\bring\\b|qo'?ng'?iroq|qo.ng.iroq|telefon\\s*qil", RegexOption.IGNORE_CASE)
     private val reAskDelete = Regex("удал|убери|delete|remove|o'?chir|o.chir", RegexOption.IGNORE_CASE)
     private val reAskBright = Regex("яркост|brightness|yorqinlik|yorug", RegexOption.IGNORE_CASE)
     private val reAskDnd = Regex("беспоко|тишин|dnd|disturb|silent|bezovta|jim", RegexOption.IGNORE_CASE)
+    private val reAskReject = Regex("rad|отклон|сброс|сброс|reject|decline|hang|band|занят|busy|ko.?tarma|не бер", RegexOption.IGNORE_CASE)
     private val reAskAuto = Regex("авто|ответ|занят|за рул|auto|reply|busy|driv|meeting|javob|band\\b|rul|haydov|majlis", RegexOption.IGNORE_CASE)
     private val reAskTimeout = Regex("экран|screen|display|timeout|таймаут|ekran|o'?chib|засып|sleep", RegexOption.IGNORE_CASE)
 
@@ -153,6 +154,7 @@ class Brain(private val ctx: Context) {
         "dnd" -> reAskDnd.containsMatchIn(text)
         "screen_timeout" -> reAskTimeout.containsMatchIn(text)
         "auto_reply" -> reAskAuto.containsMatchIn(text)
+        "reject_call" -> reAskReject.containsMatchIn(text)
         else -> true
     }
 
@@ -549,7 +551,7 @@ private const val ACTIONS = """{"do":"alarm","hour":7,"minute":30,"label":""} (2
 {"do":"search","q":""} opens Google on screen; {"do":"web_search","q":""} looks up fresh facts yourself (news, prices, weather, "who is", anything uncertain): send it ALONE with an empty say, you get the results next turn
 {"do":"music","q":"song, artist, mood or playlist"} finds the track and starts PLAYING it automatically (optional "app": package id only if the user names an app); {"do":"media","key":"play|pause|play_pause|next|previous|stop|seek_forward|seek_back","seconds":10}
 {"do":"open_app","name":""} {"do":"open_url","url":"https://..."} {"do":"maps","q":""}
-{"do":"call","to":"contact or number"} {"do":"answer_call"} {"do":"end_call"} {"do":"speaker","on":true}
+{"do":"call","to":"contact or number"} {"do":"answer_call"} {"do":"end_call"} {"do":"reject_call","text":"I'm busy, I'll call you back"} declines the ringing call AND texts the caller by SMS in one step (empty text = standard busy message): use it for "reject the call and tell them I'm busy", never end_call + message for that {"do":"speaker","on":true}
 {"do":"volume","dir":"up|down"} or {"do":"volume","percent":50}; {"do":"flashlight","on":true}
 {"do":"auto_reply","on":true,"mode":"busy|driving","hours":2,"text":""} answers incoming private chat messages for the user with a short automatic reply (once per chat per hour; never groups or unknown numbers) and switches itself off after "hours" (1-12): use it when the user says they are driving, busy or in a meeting (leave "text" empty for the standard text, or write the user's own words); {"do":"email","to":"contact name or address","subject":"","body":""} opens a ready email draft in the mail app: you write subject and body from what the user dictates, the user reads it and taps Send (apps cannot send email silently, so never say it was sent); {"do":"dnd","on":true} turns Do Not Disturb on/off; {"do":"screen_timeout","seconds":60} sets how long the screen stays on; {"do":"find_phone","on":true} rings the alarm loudly for 30 s so the phone can be found (on:false stops it)
 {"do":"back"} {"do":"home"} {"do":"recents"} {"do":"notification_shade"} (pulls down the shade) {"do":"quick_settings"} {"do":"lock"} {"do":"scroll","dir":"up|down|left|right"} {"do":"tap_text","text":""} {"do":"type_text","text":"","submit":true} {"do":"tap_node","index":3} (number from the screen text) {"do":"press_enter"} {"do":"settings","panel":"wifi|bluetooth|volume|airplane|battery|storage|display|location"} (Android lets apps only open these screens, not flip wifi/bluetooth/airplane themselves: open the panel and say so)

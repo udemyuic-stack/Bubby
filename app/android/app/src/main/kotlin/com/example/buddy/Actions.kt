@@ -113,6 +113,7 @@ class Actions(private val ctx: Context) {
             }
             "volume" -> volume(a)
             "flashlight" -> flashlight(a.optBoolean("on", true))
+            "reject_call" -> rejectCall(s(a, "text"))
             "email" -> email(a)
             "auto_reply" -> AutoReply.set(ctx, a.optBoolean("on", true), s(a, "mode").lowercase(), a.optInt("hours", 2), s(a, "text"))
             "dnd" -> PhoneControls.dnd(ctx, a.optBoolean("on", true))
@@ -468,6 +469,19 @@ class Actions(private val ctx: Context) {
                 }
             }
         }.start()
+        return null
+    }
+
+    /** Declines the ringing call and texts the caller at once (the user asked for exactly this in one sentence). */
+    private fun rejectCall(text: String): String? {
+        val number = CallWatcher.lastNumber
+        val fresh = System.currentTimeMillis() - CallWatcher.lastRingMs < 120_000L
+        endCall()?.let { return it }
+        if (number.isNullOrEmpty() || !fresh)
+            return tr("Звонок сброшен, но номер звонившего неизвестен: сообщение не отправлено", "Call declined, but the caller's number is unknown: no message sent", "Qo'ng'iroq rad etildi, lekin raqam noma'lum: xabar yuborilmadi")
+        if (!granted(Manifest.permission.SEND_SMS)) return tr("Нет разрешения отправлять SMS", "No permission to send SMS", "SMS yuborishga ruxsat yo'q")
+        val msg = text.trim().take(300).ifEmpty { AutoReply.defaultText(ctx, "busy") }
+        main.post { sendNow("sms", Contacts.normalizeNumber(number), msg) }
         return null
     }
 

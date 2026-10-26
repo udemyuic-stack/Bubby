@@ -24,7 +24,7 @@ for i in 1 2 3 4; do
   adb shell input tap $x $(( H - 170 ))
   shot "tab$i" 2
 done
-for s in $UI_SCREENS; do
+for s in ${UI_SCREENS:-ai setup outfits music agents fun permissions}; do
   adb shell am start -n $pkg/.ui.UiActivity --es open "$s"
   shot "$s" 3
 done

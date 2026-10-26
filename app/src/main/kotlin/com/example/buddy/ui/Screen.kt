@@ -73,7 +73,7 @@ abstract class Screen(val act: UiActivity) {
     protected fun header(c: LinearLayout, subtitle: String? = null) {
         c.add(ctx.text(title(), T.Headline), MATCH, WRAP, top = 8)
         if (!subtitle.isNullOrEmpty()) c.add(ctx.text(subtitle, T.Small), MATCH, WRAP, top = 4, bottom = 8)
-        else c.add(ctx.space(8))
+        else c.add(ctx.space(8), MATCH, ctx.dp(8))
     }
 }
 

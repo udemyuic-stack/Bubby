@@ -23,3 +23,5 @@ grep -E "com.example.buddy|AndroidRuntime|FATAL|ANR" "shots/$SCREEN-live.txt" | 
 tail -n 150 "shots/$SCREEN-live.txt" | cut -c1-240 > "shots/$SCREEN-tail.txt"
 rm -f "shots/$SCREEN-live.txt"
 ls -la shots
+# a dead emulator leaves an empty picture: fail so that "re-run failed jobs" tries this screen again
+[ -s "shots/$SCREEN.png" ] || exit 1

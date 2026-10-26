@@ -62,6 +62,7 @@ jobs:
           name: shot-${{ matrix.screen }}
           path: shots
           if-no-files-found: warn
+          overwrite: true
 
   publish:
     # Collects the screenshots of every screen on the ci-screenshots branch.
@@ -80,7 +81,7 @@ jobs:
       - run: |
           git config user.name "ci"
           git config user.email "ci@users.noreply.github.com"
-          mkdir -p /tmp/shots && cp shots/* /tmp/shots/
+          mkdir -p /tmp/shots && find shots -type f -size 0 -delete; cp shots/* /tmp/shots/
           git checkout --orphan ci-shots-tmp
           git rm -rf . > /dev/null 2>&1 || true
           cp /tmp/shots/* .

@@ -210,6 +210,7 @@ class _OutfitsScreenState extends State<OutfitsScreen>
       return;
     }
     _refreshing = true;
+    if (mounted) setState(() {});
     try {
       do {
         _refreshAgain = false;
@@ -220,6 +221,7 @@ class _OutfitsScreenState extends State<OutfitsScreen>
       // preview is optional
     } finally {
       _refreshing = false;
+      if (mounted) setState(() {});
     }
   }
 
@@ -305,34 +307,44 @@ class _OutfitsScreenState extends State<OutfitsScreen>
             child: Stack(
               alignment: Alignment.center,
               children: [
-                AnimatedBuilder(
-                  animation: _tick,
-                  builder: (context, _) {
-                    final k = 0.5 + 0.5 * math.sin(_tick.value * math.pi * 2 * 4);
-                    return Container(
-                      width: 190 + 12 * k,
-                      height: 190 + 12 * k,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        gradient: RadialGradient(
-                          colors: [
-                            cs.primary.withAlpha((70 + 50 * k).round()),
-                            cs.primary.withAlpha(0),
-                          ],
+                RepaintBoundary(
+                  child: AnimatedBuilder(
+                    animation: _tick,
+                    builder: (context, _) {
+                      final k = 0.5 + 0.5 * math.sin(_tick.value * math.pi * 2 * 4);
+                      return Container(
+                        width: 190 + 12 * k,
+                        height: 190 + 12 * k,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          gradient: RadialGradient(
+                            colors: [
+                              cs.primary.withAlpha((70 + 50 * k).round()),
+                              cs.primary.withAlpha(0),
+                            ],
+                          ),
                         ),
-                      ),
-                    );
-                  },
+                      );
+                    },
+                  ),
                 ),
-                Bounce(
-                  trigger: _rev,
-                  amount: 0.1,
-                  child: SizedBox(
-                    width: 170,
-                    height: 170,
-                    child: preview == null || preview.isEmpty
-                        ? Mascot(mood: MascotMood.happy, size: 150, species: _species)
-                        : Image.memory(preview, gaplessPlayback: true),
+                Tilt3D(
+                  wobble: _rev,
+                  child: Bounce(
+                    trigger: _rev,
+                    amount: 0.1,
+                    child: SizedBox(
+                      width: 170,
+                      height: 170,
+                      // the picture dims a little while the new one is being drawn
+                      child: AnimatedOpacity(
+                        opacity: _refreshing ? 0.6 : 1,
+                        duration: const Duration(milliseconds: 150),
+                        child: preview == null || preview.isEmpty
+                            ? Mascot(mood: MascotMood.happy, size: 150, species: _species)
+                            : Image.memory(preview, gaplessPlayback: true),
+                      ),
+                    ),
                   ),
                 ),
               ],

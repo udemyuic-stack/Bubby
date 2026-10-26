@@ -13,3 +13,4 @@ export 'press_scale.dart';
 export 'sparkle_field.dart';
 export 'status_pill.dart';
 export 'tap_ripple.dart';
+export 'tilt_3d.dart';

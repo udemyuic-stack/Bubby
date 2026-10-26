@@ -77,16 +77,28 @@ fun Context.row(gravity: Int = Gravity.CENTER_VERTICAL, block: LinearLayout.() -
 }
 
 /** Gives a view a quick squash when pressed and calls [onClick] on release inside it. */
-fun View.press(onClick: () -> Unit) {
+fun View.press(onClick: () -> Unit) = pressLong(null, onClick)
+
+fun View.pressLong(onLong: (() -> Unit)?, onClick: () -> Unit) {
     isClickable = true
+    var longFired = false
+    val long = Runnable { longFired = true; performHapticFeedback(android.view.HapticFeedbackConstants.LONG_PRESS); onLong?.invoke() }
     setOnTouchListener { v, e ->
         when (e.actionMasked) {
-            MotionEvent.ACTION_DOWN -> v.animate().scaleX(0.97f).scaleY(0.97f).setDuration(80).start()
-            MotionEvent.ACTION_UP -> {
-                v.animate().scaleX(1f).scaleY(1f).setDuration(120).start()
-                if (e.x in 0f..v.width.toFloat() && e.y in 0f..v.height.toFloat()) { v.performClick(); onClick() }
+            MotionEvent.ACTION_DOWN -> {
+                longFired = false
+                v.animate().scaleX(0.97f).scaleY(0.97f).setDuration(80).start()
+                if (onLong != null) v.postDelayed(long, 550)
             }
-            MotionEvent.ACTION_CANCEL -> v.animate().scaleX(1f).scaleY(1f).setDuration(120).start()
+            MotionEvent.ACTION_MOVE -> {
+                if (e.x !in -20f..(v.width + 20f) || e.y !in -20f..(v.height + 20f)) v.removeCallbacks(long)
+            }
+            MotionEvent.ACTION_UP -> {
+                v.removeCallbacks(long)
+                v.animate().scaleX(1f).scaleY(1f).setDuration(120).start()
+                if (!longFired && e.x in 0f..v.width.toFloat() && e.y in 0f..v.height.toFloat()) { v.performClick(); onClick() }
+            }
+            MotionEvent.ACTION_CANCEL -> { v.removeCallbacks(long); v.animate().scaleX(1f).scaleY(1f).setDuration(120).start() }
         }
         true
     }
@@ -94,10 +106,10 @@ fun View.press(onClick: () -> Unit) {
 
 fun Context.card(
     pad: Int = 16, fill: Int = P.low, stroke: Int = P.outlineVariant, radius: Float = 22f,
-    onClick: (() -> Unit)? = null, block: LinearLayout.() -> Unit = {}
+    onClick: (() -> Unit)? = null, onLong: (() -> Unit)? = null, block: LinearLayout.() -> Unit = {}
 ): LinearLayout = col(pad) {
     background = rounded(fill, radius, stroke)
-    if (onClick != null) press(onClick)
+    if (onClick != null) pressLong(onLong, onClick)
     block()
 }
 
@@ -208,3 +220,31 @@ fun Context.scroll(content: View): ScrollView = ScrollView(this).apply {
 }
 
 fun Context.space(hDp: Int): View = View(this).apply { layoutParams = LinearLayout.LayoutParams(MATCH, dp(hDp)) }
+
+/** Small rounded label with an optional dot: "Assistant is on". */
+fun Context.pill(label: String, color: Int, dot: Boolean = true, onClick: (() -> Unit)? = null): View = row(Gravity.CENTER) {
+    setPadding(dp(14), dp(8), dp(14), dp(8))
+    background = rounded(P.alpha(color, 36), 30f, P.alpha(color, 90))
+    if (dot) add(View(this@pill).apply { background = rounded(color, 5f) }, dp(9), dp(9), end = 8)
+    add(text(label, T.Label, P.onSurface), WRAP, WRAP)
+    if (onClick != null) press(onClick)
+}
+
+fun Context.gradient(colors: IntArray, radiusDp: Float, orientation: GradientDrawable.Orientation = GradientDrawable.Orientation.TL_BR): GradientDrawable =
+    GradientDrawable(orientation, colors).apply { cornerRadius = dpf(radiusDp) }
+
+/** The mascot with a title and a hint, for lists with nothing in them. */
+fun Context.emptyState(title: String, message: String): View = col {
+    gravity = Gravity.CENTER_HORIZONTAL
+    setPadding(dp(24), dp(32), dp(24), dp(24))
+    val b = com.example.buddy.BuddyView(this@emptyState).apply {
+        scaleF = 1.5f
+        species = Backend.str(this@emptyState, "species", "cat")
+        outfit = com.example.buddy.Outfits.parse(Backend.str(this@emptyState, "outfit", ""))
+        mood = "happy"
+        setActive(true)
+    }
+    add(b, WRAP, WRAP)
+    add(text(title, T.Title).apply { gravity = Gravity.CENTER }, MATCH, WRAP, top = 12)
+    add(text(message, T.Small).apply { gravity = Gravity.CENTER }, MATCH, WRAP, top = 6)
+}

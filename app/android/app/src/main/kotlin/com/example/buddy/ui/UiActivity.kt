@@ -191,6 +191,12 @@ class UiActivity : Activity() {
         (stack.lastOrNull()?.first ?: tabs[tab]).onPermissionResult()
     }
 
+    /** Pushes the named screen, or says it is not there yet. */
+    fun open(name: String) {
+        val s = Screens.create(name, this)
+        if (s != null) push(s) else toast("...")
+    }
+
     /** The language changed: draw everything again. */
     fun restart() = recreate()
 }

@@ -17,9 +17,16 @@ abstract class Screen(val act: UiActivity) {
     val ctx: Context get() = act
     protected lateinit var content: LinearLayout
     private var scroll: ScrollView? = null
+    private var root: View? = null
+
+    /** A floating action button (label, action) shown at the bottom right, or null. */
+    open fun fab(): Pair<String, () -> Unit>? = null
 
     /** Page title (large on tabs, in the top bar on pushed screens). */
     abstract fun title(): String
+
+    /** Horizontal padding of the page in dp (0 for screens that draw edge to edge). */
+    protected open val padH: Int = 16
 
     /** Fills [c] with the screen's widgets. */
     abstract fun render(c: LinearLayout)
@@ -31,10 +38,28 @@ abstract class Screen(val act: UiActivity) {
     protected fun t(ru: String, en: String, uz: String): String = Tr.t(ctx, ru, en, uz)
 
     fun view(): View {
-        scroll?.let { return it }
-        content = ctx.col { setPadding(ctx.dp(16), ctx.dp(8), ctx.dp(16), ctx.dp(28)) }
+        root?.let { return it }
+        val f = fab()
+        content = ctx.col { setPadding(ctx.dp(padH), ctx.dp(if (padH == 0) 0 else 8), ctx.dp(padH), ctx.dp(if (f != null) 100 else 28)) }
         render(content)
-        return ctx.scroll(content).also { scroll = it }
+        val sv = ctx.scroll(content)
+        scroll = sv
+        val r: View = if (f == null) sv else FrameLayout(ctx).apply {
+            addView(sv, FrameLayout.LayoutParams(MATCH, MATCH))
+            val button = ctx.row(Gravity.CENTER) {
+                background = ctx.gradient(intArrayOf(P.primary, P.mix(P.primary, P.rose, 0.35f)), 28f)
+                setPadding(ctx.dp(20), 0, ctx.dp(22), 0)
+                elevation = ctx.dpf(6f)
+                add(ctx.icon(R.drawable.ic_add, P.onPrimary, 24), WRAP, WRAP, end = 8)
+                add(ctx.text(f.first, T.Label, P.onPrimary).apply { textSize = 15f }, WRAP, WRAP)
+                press { f.second() }
+            }
+            addView(button, FrameLayout.LayoutParams(WRAP, ctx.dp(56), Gravity.END or Gravity.BOTTOM).apply {
+                setMargins(0, 0, ctx.dp(16), ctx.dp(20))
+            })
+        }
+        root = r
+        return r
     }
 
     fun refresh() {

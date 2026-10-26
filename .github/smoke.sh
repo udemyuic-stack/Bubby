@@ -4,6 +4,8 @@ ADB=$(command -v adb); adb() { timeout 25 "$ADB" "$@"; }
 APK=bubby.apk
 adb install -r "$APK"
 adb logcat -c
+mkdir -p shots
+( "$ADB" logcat -v threadtime > shots/live-logcat.txt 2>&1 & )
 timeout 60 adb shell am start -n com.example.buddy/.ui.UiActivity
 for i in 1 2 3 4 5 6; do
   sleep 5

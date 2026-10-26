@@ -109,6 +109,10 @@ class _ModelScreenState extends State<ModelScreen> {
       _ => cs.outline,
     };
     final warn = <String>[
+      if (!_st.supported)
+        tr('Нужен 64-битный телефон: на 32-битном Gemma не работает.',
+            en: 'Needs a 64-bit phone: Gemma does not run on 32-bit.',
+            uz: '64-bitli telefon kerak: Gemma 32-bitda ishlamaydi.'),
       if (_st.ramGb > 0 && _st.ramGb < _needRam[id]!)
         tr('Мало памяти: нужно ${_needRam[id]!.toStringAsFixed(0)} ГБ+, у вас ${_st.ramGb.toStringAsFixed(1)} ГБ.',
             en: 'Not enough RAM: need ${_needRam[id]!.toStringAsFixed(0)} GB+, you have ${_st.ramGb.toStringAsFixed(1)} GB.',

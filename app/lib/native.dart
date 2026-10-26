@@ -171,10 +171,12 @@ class ModelStatus {
     this.e4b = const ModelState(),
     this.ramGb = 0,
     this.freeGb = 0,
+    this.supported = true,
   });
 
   final ModelState e2b;
   final ModelState e4b;
+  final bool supported;
   final double ramGb;
   final double freeGb;
 
@@ -185,6 +187,7 @@ class ModelStatus {
         e4b: ModelState.fromMap(m['e4b'] as Map<dynamic, dynamic>?),
         ramGb: (m['ramGb'] as num?)?.toDouble() ?? 0,
         freeGb: (m['freeGb'] as num?)?.toDouble() ?? 0,
+        supported: (m['supported'] as bool?) ?? true,
       );
 }
 

@@ -20,8 +20,11 @@ server also work) and Bubby falls back automatically between connections. Keys s
 ```
 export JAVA_HOME=<JDK 17 with jlink> ANDROID_HOME=<Android SDK>
 cd app
-flutter build apk --release --target-platform android-arm64
+flutter build apk --release --target-platform android-arm64   # 64-bit phones (default ABI)
+flutter build apk --release --target-platform android-arm     # 32-bit phones
 ```
+Each APK contains one ABI only. The `Build APK` GitHub Actions workflow builds both and uploads them as artifacts.
+The on-device Gemma model needs a 64-bit phone; on 32-bit phones Bubby uses the cloud AI key instead.
 Tests: `flutter test` (widget matrix: 3 languages x light/dark x text scale x screen width) and `app/qa-jvm/run.sh`.
 
 ## Notes

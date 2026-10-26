@@ -4,13 +4,33 @@ plugins {
     id("dev.flutter.flutter-gradle-plugin")
 }
 
+// One ABI per APK keeps the download small. Default is 64-bit ARM. For 32-bit ARM run
+// `flutter build apk --release --target-platform android-arm` (Flutter passes that as the
+// `target-platform` property), or force it with `-Pbuddy.abi=armeabi-v7a`.
+val buddyAbi: String = (project.findProperty("buddy.abi") as String?)
+    ?: if ((project.findProperty("target-platform") as String?)?.split(",")?.map { it.trim() } == listOf("android-arm")) "armeabi-v7a" else "arm64-v8a"
+require(buddyAbi in listOf("arm64-v8a", "armeabi-v7a")) { "buddy.abi must be arm64-v8a or armeabi-v7a, got $buddyAbi" }
+
 android {
     namespace = "com.example.buddy"
     compileSdk = flutter.compileSdkVersion
 
     packaging {
-        // real phones only: x86 / 32-bit ARM copies from dependencies just bloat the APK
-        jniLibs { excludes += listOf("**/x86_64/*.so", "**/x86/*.so", "**/armeabi-v7a/*.so") }
+        // real phones only: drop every native library that is not for the chosen ABI
+        jniLibs {
+            excludes += listOf("**/x86_64/*.so", "**/x86/*.so") +
+                listOf("arm64-v8a", "armeabi-v7a").filter { it != buddyAbi }.map { "**/$it/*.so" }
+        }
+        resources {
+            excludes += listOf(
+                "/META-INF/{AL2.0,LGPL2.1}",
+                "/META-INF/*.version",
+                "/DebugProbesKt.bin",
+                "/kotlin/**",
+                "/**/*.kotlin_builtins",
+                "/**/*.kotlin_metadata"
+            )
+        }
     }
 
     compileOptions {
@@ -30,7 +50,7 @@ android {
         // You can force using the value of versionCode by specifying the `-P force-version-code-ignoring-abi=true`
         // flag during build.
         // phones only: x86 libraries from dependencies (LiteRT-LM) would add ~26 MB
-        ndk { abiFilters += listOf("arm64-v8a") }
+        ndk { abiFilters += listOf(buddyAbi) }
         versionCode = flutter.versionCode
         versionName = flutter.versionName
     }

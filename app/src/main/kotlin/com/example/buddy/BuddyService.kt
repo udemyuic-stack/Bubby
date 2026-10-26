@@ -146,7 +146,10 @@ class BuddyService : Service() {
         override fun onReceive(c: Context?, i: Intent?) {
             when (i?.action) {
                 Intent.ACTION_SCREEN_OFF -> { screenOn = false; buddy.setActive(false); hotStop(); tiltStop(); fsPollRestart() }
-                Intent.ACTION_SCREEN_ON -> { screenOn = true; buddy.setActive(true); hotKick(); tiltStart(); fsPollRestart() }
+                Intent.ACTION_SCREEN_ON -> {
+                    screenOn = true; applyPalette(); buddy.calm = calm()   // the minute clock skips the visuals while the screen is off
+                    buddy.setActive(true); hotKick(); tiltStart(); fsPollRestart()
+                }
                 Intent.ACTION_USER_PRESENT -> checkReturn()
             }
         }
@@ -439,24 +442,47 @@ class BuddyService : Service() {
 
     private fun hour() = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
     private fun now() = System.currentTimeMillis()
+    // last_touch and affection live in memory and reach the prefs file only now and then: every apply() rewrites the whole
+    // file (chat history and tasks included), which used to happen on every touch and once a minute around the clock
+    private var touchMem = -1L
+    private var touchSaved = 0L
     private fun lastTouch(): Long {
-        val t = prefs.getLong("last_touch", 0L)
-        if (t != 0L) return t
-        prefs.edit().putLong("last_touch", now()).apply()
-        return now()
+        if (touchMem < 0L) { touchMem = prefs.getLong("last_touch", 0L); touchSaved = touchMem }
+        if (touchMem == 0L) setTouch(now(), force = true)
+        return touchMem
+    }
+    /** Remembers the time of the last touch; written to the prefs when [force]d or at most once a minute (thresholds are hours). */
+    private fun setTouch(t: Long, force: Boolean = false) {
+        touchMem = t
+        if (force || t - touchSaved >= 60_000L) { touchSaved = t; prefs.edit().putLong("last_touch", t).apply() }
     }
     private fun ignored() = now() - lastTouch() >= 2 * 3600_000L
     private fun baseMood() = if (ignored()) "sleepy" else "idle"   // at night the mascot dozes off by itself after a quiet while (BuddyView), it is not asleep by default
 
-    private fun aff() = try { prefs.getFloat("affection", 50f) } catch (_: Exception) { 50f }
-    private fun addAff(d: Float) { prefs.edit().putFloat("affection", (aff() + d).coerceIn(0f, 100f)).apply() }
+    private var affMem = Float.NaN
+    private var affSaved = 0f
+    private fun aff(): Float {
+        if (affMem.isNaN()) { affMem = try { prefs.getFloat("affection", 50f) } catch (_: Exception) { 50f }; affSaved = affMem }
+        return affMem
+    }
+    /** The slow decay (-0.03 a minute) is saved every half point, about every 17 minutes; petting (+4) right away. */
+    private fun addAff(d: Float) {
+        affMem = (aff() + d).coerceIn(0f, 100f)
+        if (kotlin.math.abs(affMem - affSaved) >= 0.5f) { affSaved = affMem; prefs.edit().putFloat("affection", affMem).apply() }
+    }
+    private fun flushMemPrefs() {
+        val e = prefs.edit()
+        if (touchMem > touchSaved) e.putLong("last_touch", touchMem)
+        if (!affMem.isNaN() && affMem != affSaved) e.putFloat("affection", affMem)
+        e.apply()
+    }
 
     private fun calm() = !expanded && prog < 0.02f && !busy && !calling && approvals.isEmpty() && screenOn
 
     /** Returns true (and greets) when the user comes back after more than 3 hours without touching the mascot. */
     private fun checkReturn(): Boolean {
         if (now() - lastTouch() <= 3 * 3600_000L || calling || busy) return false
-        prefs.edit().putLong("last_touch", now()).apply()
+        setTouch(now(), force = true)
         buddy.flash("happy", 3500)
         val locked = try { getSystemService(KeyguardManager::class.java).isKeyguardLocked } catch (_: Exception) { false }
         val tn = SystemClock.elapsedRealtime()
@@ -471,7 +497,7 @@ class BuddyService : Service() {
 
     private fun touched() {
         checkReturn()
-        prefs.edit().putLong("last_touch", now()).apply()
+        setTouch(now())
     }
 
     private fun say(text: String, lang: String?, done: () -> Unit) { hotStop(); voice.speak(text, lang, done) }
@@ -503,16 +529,19 @@ class BuddyService : Service() {
 
     private val clock = object : Runnable {
         override fun run() {
-            applyPalette()
-            buddy.calm = calm()
             addAff(-0.03f)   // slow decay, ~2 points per hour
-            if (calm()) {
-                if (ignored()) {
-                    val t = SystemClock.elapsedRealtime()
-                    if (lastLonely == 0L || t - lastLonely > 20 * 60_000L) { lastLonely = t; buddy.flash("sad", 4000) }
-                } else if (aff() > 80f && mode == "idle" && Random.nextInt(8) == 0) buddy.flash("love", 3000)
+            // screen off: nothing is drawn and the wake word is stopped, so only the decay runs (SCREEN_ON repaints)
+            if (screenOn) {
+                applyPalette()
+                buddy.calm = calm()
+                if (calm()) {
+                    if (ignored()) {
+                        val t = SystemClock.elapsedRealtime()
+                        if (lastLonely == 0L || t - lastLonely > 20 * 60_000L) { lastLonely = t; buddy.flash("sad", 4000) }
+                    } else if (aff() > 80f && mode == "idle" && Random.nextInt(8) == 0) buddy.flash("love", 3000)
+                }
+                hotKick()
             }
-            hotKick()
             h.postDelayed(this, 60000)
         }
     }
@@ -712,7 +741,7 @@ class BuddyService : Service() {
                 dragMaxY = maxOf(dragMinY, realH() - win.height)
                 cancelTap(); touched(); hotStop()
                 snapAnim?.cancel(); snapAnim = null; dockAnim?.let { it.removeAllListeners(); it.cancel() }; dockAnim = null; dockRight = false
-                statusDock = null; prefs.edit().remove("status_dock").apply()
+                statusDock = null; if (prefs.contains("status_dock")) prefs.edit().remove("status_dock").apply()
                 animate().scaleX(1.05f).scaleY(1.05f).translationZ(dp(6).toFloat()).translationY(-dp(4).toFloat())
                     .setStartDelay(0).setDuration(140).setInterpolator(DecelerateInterpolator()).start()
                 startHold()
@@ -1893,9 +1922,15 @@ class BuddyService : Service() {
         if (want != autoHidden) { autoHidden = want; applyHidden() }
     }
 
+    private fun landscape() = resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
+
+    /**
+     * Auto-hide only ever applies in landscape, so the once-a-second insets poll (each one a layout pass of the overlay)
+     * only runs there; rotating restarts it (onConfigurationChanged).
+     */
     private val fsPoll = object : Runnable {
         override fun run() {
-            if (!running || !screenOn || !prefs.getBoolean("autohide", true)) return
+            if (!running || !screenOn || !prefs.getBoolean("autohide", true) || !landscape()) return
             try { if (win.isAttachedToWindow) win.requestApplyInsets() } catch (_: Exception) {}
             updateAutoHide()
             h.postDelayed(this, 1000)
@@ -1916,6 +1951,7 @@ class BuddyService : Service() {
         answer.maxWidth = islandW() - dp(28)
         applyProgress(prog)
         updateAutoHide()
+        if (screenOn && landscape() && prefs.getBoolean("autohide", true)) { h.removeCallbacks(fsPoll); h.post(fsPoll) }
         val reclamp = Runnable {
             if (!running) return@Runnable
             clamp()
@@ -1973,6 +2009,7 @@ class BuddyService : Service() {
         BuddyNotifications.onNew = null
         try { DeviceEvents.stop(this) } catch (_: Exception) {}
         releaseCallFocus()
+        flushMemPrefs()
         prefs.edit().putBoolean("was_running", false).apply()
         clearSticker()
         wave.mode = WaveView.NONE

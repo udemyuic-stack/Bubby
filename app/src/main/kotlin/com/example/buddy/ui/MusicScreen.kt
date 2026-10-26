@@ -75,7 +75,7 @@ class MusicScreen(act: UiActivity) : Screen(act) {
 
         c.add(ctx.section(t("Выберите настроение", "Pick a mood", "Kayfiyatni tanlang"), R.drawable.ic_face))
         for (pair in moods.chunked(2)) {
-            val row = ctx.row {}
+            val row = ctx.row(Gravity.TOP) {}
             for (m in pair) row.add(ctx.card(pad = 12, onClick = { play(m) }) {
                 add(ctx.row {
                     add(ctx.row(Gravity.CENTER) {
@@ -84,8 +84,8 @@ class MusicScreen(act: UiActivity) : Screen(act) {
                     }, ctx.dp(44), ctx.dp(44), end = 10)
                     add(ctx.text(label(m), T.Label).apply { maxLines = 2 }, 0, WRAP, 1f)
                 })
-            }, 0, ctx.dp(68), 1f, end = if (m === pair.first()) 10 else 0, bottom = 10)
-            c.add(row, MATCH, WRAP)
+            }, 0, ctx.dp(68), 1f, end = if (m === pair.first()) 10 else 0)
+            c.add(row, MATCH, WRAP, bottom = 10)
         }
 
         c.add(ctx.card(pad = 12) {

@@ -3,24 +3,33 @@ package com.example.buddy.ui
 import android.content.ClipboardManager
 import android.content.Context
 import android.view.Gravity
+import android.view.View
 import android.widget.LinearLayout
 import android.widget.ProgressBar
 import com.example.buddy.AgentSession
+import com.example.buddy.BuddyService
 import com.example.buddy.R
 
 class AgentsScreen(act: UiActivity) : Screen(act) {
     override fun title() = t("Агенты", "Agents", "Agentlar")
     private var polling = false
+    private val shown = HashMap<String, Int>()   // progress already drawn per session, so a refresh only animates the change
     private val linkField by lazy { ctx.field(t("Ссылка для подключения", "Connection link", "Ulanish havolasi")).apply { setSingleLine(); hint = "coucou://pair?..." } }
 
+    /** What the page last showed of the live link state; the poll redraws only when it changes. */
+    private var shownLive: Any? = null
+    private fun live(): Any = listOf(BuddyService.agentDesktop, BuddyService.agentConnected, BuddyService.agentSessions)
+
     override fun onShow() {
-        refresh()
+        reshow()
         if (polling) return
         polling = true
         val tick = object : Runnable {
             override fun run() {
-                if (!content.isAttachedToWindow) { polling = false; return }
-                if (Backend.agentStatus(ctx).paired) refresh()
+                // gone, or the app went to the background: stop (onShow starts it again on return)
+                if (!content.isAttachedToWindow || content.windowVisibility != View.VISIBLE) { polling = false; return }
+                // the pairing check decrypts the token through the Keystore: only done when the live state really changed
+                if (live() != shownLive && Backend.agentStatus(ctx).paired) refresh()
                 content.postDelayed(this, 2000)
             }
         }
@@ -52,10 +61,13 @@ class AgentsScreen(act: UiActivity) : Screen(act) {
             if (a.statusText.isNotEmpty()) add(ctx.text(a.statusText, T.Body), MATCH, WRAP, top = 6)
             if (a.stepCount > 0) {
                 val bar = ProgressBar(ctx, null, android.R.attr.progressBarStyleHorizontal).apply {
-                    max = a.stepCount; progress = a.stepIndex.coerceIn(0, a.stepCount)
+                    max = a.stepCount; progress = shown[a.pillId] ?: 0
                     progressTintList = android.content.res.ColorStateList.valueOf(P.primary)
                 }
                 add(bar, MATCH, ctx.dp(10), top = 10)
+                val goal = a.stepIndex.coerceIn(0, a.stepCount)
+                if (goal != bar.progress) bar.post { bar.animateTo(goal) }
+                shown[a.pillId] = goal
                 add(ctx.text(t("Шаг ${a.stepIndex} из ${a.stepCount}", "Step ${a.stepIndex} of ${a.stepCount}", "${a.stepIndex}-qadam, jami ${a.stepCount} ta"), T.Small), MATCH, WRAP, top = 4)
             }
         }
@@ -75,6 +87,7 @@ class AgentsScreen(act: UiActivity) : Screen(act) {
     ) { Backend.agentUnpair(ctx); refresh() }
 
     override fun render(c: LinearLayout) {
+        shownLive = live()
         val s = Backend.agentStatus(ctx)
         c.add(ctx.card(pad = 16, fill = P.accentContainer(java.util.Calendar.getInstance().get(java.util.Calendar.HOUR_OF_DAY), 0)) {
             add(ctx.text(t(

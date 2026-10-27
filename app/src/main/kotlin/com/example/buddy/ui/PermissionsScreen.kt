@@ -7,7 +7,7 @@ import com.example.buddy.R
 /** Optional abilities, each asks only for its own permission. */
 class PermissionsScreen(act: UiActivity) : Screen(act) {
     override fun title() = t("Все разрешения", "All permissions", "Barcha ruxsatlar")
-    override fun onShow() { refresh() }
+    override fun onShow() { reshow() }
     override fun onPermissionResult() { refresh() }
 
     private class Perm(val key: String, val icon: Int, val title: String, val why: String, val page: String?)

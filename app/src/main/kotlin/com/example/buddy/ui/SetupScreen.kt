@@ -17,6 +17,12 @@ class SetupScreen(act: UiActivity) : Screen(act) {
     private var i = 0
     private var positioned = false
     private var ok = BooleanArray(5)
+    private var lastProgress = 100
+    private var slide = 0          // -1 / 1 while moving between steps, 0 for a plain redraw
+    private var confettiFor = -1
+    private var pulseFor = -1
+
+    private fun go(to: Int) { slide = if (to > i) 1 else -1; i = to; refresh() }
 
     private fun steps() = listOf(
         Step(t("Микрофон", "Microphone", "Mikrofon"), t("Чтобы Bubby вас слышал", "So Bubby can hear you", "Bubby sizni eshitishi uchun"),
@@ -48,6 +54,7 @@ class SetupScreen(act: UiActivity) : Screen(act) {
             val first = ok.take(4).indexOf(false)
             i = if (first < 0) 4 else first
         } else if (i < 4 && ok[i]) {
+            slide = 1
             i++
             while (i < 4 && ok[i]) i++
         }
@@ -81,29 +88,42 @@ class SetupScreen(act: UiActivity) : Screen(act) {
         val step = steps[i]
         val passed = ok[i] && i < 4
         c.add(ctx.text(t("Шаг ${i + 1} из ${steps.size}", "Step ${i + 1} of ${steps.size}", "${i + 1}-qadam, jami ${steps.size} ta"), T.Label), MATCH, WRAP, top = 8)
-        c.add(ProgressBar(ctx, null, android.R.attr.progressBarStyleHorizontal).apply {
-            max = steps.size * 100; progress = (i + 1) * 100
+        val bar = ProgressBar(ctx, null, android.R.attr.progressBarStyleHorizontal).apply {
+            max = steps.size * 100; progress = lastProgress
             progressTintList = android.content.res.ColorStateList.valueOf(P.primary)
-        }, MATCH, ctx.dp(10), top = 8, bottom = 20)
-        c.add(ctx.card(pad = 24, fill = P.primaryContainer, stroke = 0, radius = 28f) {
+        }
+        c.add(bar, MATCH, ctx.dp(10), top = 8, bottom = 20)
+        val target = (i + 1) * 100
+        if (target != lastProgress) { bar.post { bar.animateTo(target) }; lastProgress = target }
+        val card = ctx.card(pad = 24, fill = P.primaryContainer, stroke = 0, radius = 28f) {
             gravity = Gravity.CENTER_HORIZONTAL
             add(BuddyView(ctx).apply {
                 scaleF = 2.0f
                 species = Backend.str(ctx, "species", "cat")
                 outfit = Outfits.parse(Backend.str(ctx, "outfit", ""))
                 this.mood = mood(i, passed)
-                setActive(false)
+                setActive(true)
             }, WRAP, WRAP)
-            if (passed) add(ctx.pill(t("Готово", "Done", "Tayyor"), P.success), WRAP, WRAP, top = 8)
+            if (passed) add(ctx.row(Gravity.CENTER) {
+                add(ctx.pill(t("Готово", "Done", "Tayyor"), P.success), WRAP, WRAP, end = 8)
+                if (pulseFor != i) { pulseFor = i; add(ctx.successPulse(32), ctx.dp(44), ctx.dp(44)) }
+            }, WRAP, WRAP, top = 8)
             add(ctx.text(step.title, T.Headline).apply { gravity = Gravity.CENTER; textSize = 24f }, MATCH, WRAP, top = 12)
             add(ctx.text(step.why, T.Body, P.onPrimaryContainer).apply { gravity = Gravity.CENTER }, MATCH, WRAP, top = 8)
             if (i == 4) add(ctx.text(t("Bubby запустится, когда вы нажмёте «Готово»", "Bubby will start when you tap “Done”", "«Tayyor» ni bossangiz, Bubby ishga tushadi"), T.Small).apply { gravity = Gravity.CENTER }, MATCH, WRAP, top = 8)
-        }, MATCH, WRAP)
+        }
+        c.add(card, MATCH, WRAP)
+        if (slide != 0) {
+            card.alpha = 0f; card.translationX = ctx.dpf(48f) * slide
+            card.animate().alpha(1f).translationX(0f).setDuration(380).setInterpolator(android.view.animation.DecelerateInterpolator(1.6f)).start()
+            slide = 0
+        }
+        if (i == 4 && confettiFor != 4) { confettiFor = 4; card.post { act.confetti() } }
         c.add(ctx.button(if (passed) t("Уже готово — дальше", "Already done — next", "Tayyor — keyingisi") else step.action) {
-            if (passed) { i++; refresh() } else { action(); if (i != 4) { /* result arrives on resume */ } }
+            if (passed) go(i + 1) else { action(); if (i != 4) { /* result arrives on resume */ } }
         }, MATCH, ctx.dp(60), top = 24)
-        if (step.optional && !passed) c.add(ctx.button(t("Пропустить", "Skip", "O'tkazib yuborish"), BtnStyle.Text) { i = (i + 1).coerceIn(0, 4); refresh() }, MATCH, WRAP, top = 6)
-        if (i > 0) c.add(ctx.button(t("Назад", "Back", "Orqaga"), BtnStyle.Text) { i--; refresh() }, MATCH, WRAP, top = 6)
+        if (step.optional && !passed) c.add(ctx.button(t("Пропустить", "Skip", "O'tkazib yuborish"), BtnStyle.Text) { go((i + 1).coerceIn(0, 4)) }, MATCH, WRAP, top = 6)
+        if (i > 0) c.add(ctx.button(t("Назад", "Back", "Orqaga"), BtnStyle.Text) { go(i - 1) }, MATCH, WRAP, top = 6)
         c.add(ctx.button(t("Все разрешения", "All permissions", "Barcha ruxsatlar"), BtnStyle.Outline, R.drawable.ic_check_circle) { act.open("permissions") }, MATCH, WRAP, top = 18)
     }
 }

@@ -52,5 +52,8 @@ android {
 kotlin {
     compilerOptions {
         jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
+        // No Java callers pass nulls into this app's Kotlin code, so the generated null checks (and the parameter-name
+        // strings they carry) are dead weight in the dex and on every call.
+        freeCompilerArgs.addAll("-Xno-param-assertions", "-Xno-call-assertions", "-Xno-receiver-assertions")
     }
 }

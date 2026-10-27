@@ -7,7 +7,7 @@ import com.example.buddy.R
 
 class MoreScreen(act: UiActivity) : Screen(act) {
     override fun title() = t("Ещё", "More", "Yana")
-    override fun onShow() { refresh() }
+    override fun onShow() { reshow() }
 
     private class Item(val icon: Int, val title: String, val sub: String, val color: Int, val page: String)
 

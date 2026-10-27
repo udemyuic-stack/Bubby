@@ -72,13 +72,8 @@ object Stickers {
     }
 
     /** Small plain picture of the mascot for the outfit screen: no border, no caption, a fraction of the sticker's cost. */
-    fun previewPng(ctx: Context, mood: String): ByteArray {
-        val art = renderArt(ctx, if (mood in Moods.KNOWN) mood else "happy", Outfits.parse(prefOutfit(ctx)), 3.5f)
-        val bos = ByteArrayOutputStream()
-        art.compress(Bitmap.CompressFormat.PNG, 90, bos)
-        art.recycle()
-        return bos.toByteArray()
-    }
+    fun preview(ctx: Context, mood: String): Bitmap =
+        renderArt(ctx, if (mood in Moods.KNOWN) mood else "happy", Outfits.parse(prefOutfit(ctx)), 3.5f)
 
     fun png(ctx: Context, mood: String, caption: String): ByteArray {
         val bmp = render(ctx, mood, caption, Outfits.parse(prefOutfit(ctx)))
@@ -112,6 +107,8 @@ object Stickers {
             Tr.t(ctx, "Не удалось поделиться стикером", "Could not share the sticker", "Stikerni ulashib bo'lmadi")
         }
     }
+
+    internal fun prefOutfitSet(ctx: Context): Set<String> = Outfits.parse(prefOutfit(ctx))
 
     private fun prefOutfit(ctx: Context): String =
         ctx.getSharedPreferences("buddy", Context.MODE_PRIVATE).getString("outfit", "") ?: ""

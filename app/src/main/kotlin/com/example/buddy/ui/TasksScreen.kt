@@ -8,7 +8,7 @@ import com.example.buddy.Task
 
 class TasksScreen(act: UiActivity) : Screen(act) {
     override fun title() = t("Задачи", "Tasks", "Vazifalar")
-    override fun onShow() { refresh() }
+    override fun onShow() { reshow() }
     override fun fab() = t("Задача", "Task", "Vazifa") to { edit(null) }
 
     private fun edit(task: Task?) {

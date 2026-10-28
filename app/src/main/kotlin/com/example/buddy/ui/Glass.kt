@@ -28,15 +28,64 @@ import kotlin.math.sign
 object Glass {
     fun white(a: Float) = Color.argb((a * 255).toInt().coerceIn(0, 255), 255, 255, 255)
 
-    const val TEXT = 0xFF1C2B45.toInt()
-    const val TEXT2 = 0xFF4A5C7D.toInt()
-    const val TEXT_LABEL = 0xFF3F5578.toInt()
-    const val ACCENT = 0xFFE08A4A.toInt()
-    const val DATE = 0xFFB8672F.toInt()
-    const val OK = 0xFF2F9D73.toInt()
+    var TEXT = 0xFF1C2B45.toInt()
+    var TEXT2 = 0xFF4A5C7D.toInt()
+    var TEXT_LABEL = 0xFF3F5578.toInt()
+    var ACCENT = 0xFFE08A4A.toInt()
+    var ACCENT2 = 0xFF7A6BD0.toInt()
+    var DATE = 0xFFB8672F.toInt()
+    var OK = 0xFF2F9D73.toInt()
+    var NAVY_A = 0xFF34466B.toInt()
+    var NAVY_B = 0xFF1C2B45.toInt()
     const val OK_GLOW = 0xFF7AE8BD.toInt()
-    const val NAVY_A = 0xFF34466B.toInt()
-    const val NAVY_B = 0xFF1C2B45.toInt()
+}
+
+/** One look: the default blue-grey glass, a green one with a butterfly, a blue one with a whale. */
+class ThemeDef(
+    val id: String, val bgTop: Int, val bgMid: Int, val bgBottom: Int, val glowBottom: Int, val leftLight: Int,
+    val ink: Int, val ink2: Int, val accent: Int, val accent2: Int, val date: Int, val dark: Int, val glow: Int, val glow2: Int, val sh: Int,
+    val eye: Int, val rim: Int, val tiles: List<IntArray>, val navyA: Int, val navyB: Int, val amberA: Int, val amberB: Int,
+    val mascot: String, val ok: Int, val homeTop: Int = bgTop
+)
+
+object Theme {
+    val GLASS = ThemeDef("glass", 0xFFE3EBF4.toInt(), 0xFFCBD8E6.toInt(), 0xFFAEBFD5.toInt(), 0xFF7F9BBD.toInt(), 0xFFF3F6FA.toInt(),
+        0xFF1C2B45.toInt(), 0xFF4A5C7D.toInt(), 0xFFE08A4A.toInt(), 0xFF7A6BD0.toInt(), 0xFFB8672F.toInt(), 0xFF341E1A.toInt(), 0xFF7F9BBD.toInt(), 0xFFE2A0B0.toInt(), 0xFF466496.toInt(),
+        0xFFFFFFFF.toInt(), 0xFFFFFFFF.toInt(),
+        listOf(intArrayOf(0xFF8D7EE0.toInt(), 0xFF5B4BB0.toInt()), intArrayOf(0xFF58B9A2.toInt(), 0xFF3A8C78.toInt()), intArrayOf(0xFF6FA0EE.toInt(), 0xFF4A74C4.toInt()), intArrayOf(0xFFE48AA8.toInt(), 0xFFBD5F80.toInt())),
+        0xFF34466B.toInt(), 0xFF1C2B45.toInt(), 0x80E08A4A.toInt(), 0x66965A3C.toInt(), "mochi", 0xFF2F9D73.toInt(), 0xFFDDE6F0.toInt())
+    val GREEN = ThemeDef("green", 0xFFE2F4D6.toInt(), 0xFFB6E58F.toInt(), 0xFF7FCF45.toInt(), 0xFF6FCF3A.toInt(), 0xFFF6FDF0.toInt(),
+        0xFF123D1A.toInt(), 0xFF3F6E48.toInt(), 0xFF2FA83A.toInt(), 0xFF7BC62D.toInt(), 0xFF3F6E48.toInt(), 0xFF082C0E.toInt(), 0xFF78D746.toInt(), 0xFFBEEB3C.toInt(), 0xFF1E6428.toInt(),
+        0xFFEAFF7A.toInt(), 0xFFC4F76E.toInt(),
+        listOf(intArrayOf(0xFF6FD13A.toInt(), 0xFF2F9A1C.toInt()), intArrayOf(0xFF3FCF8A.toInt(), 0xFF168A52.toInt()), intArrayOf(0xFFB6E03A.toInt(), 0xFF79A812.toInt()), intArrayOf(0xFF5FD6B0.toInt(), 0xFF22987A.toInt())),
+        0xFF2F6B3A.toInt(), 0xFF123D1A.toInt(), 0xB3C8F58A.toInt(), 0x99A0E05A.toInt(), "butterfly", 0xFF2FA83A.toInt())
+    val BLUE = ThemeDef("blue", 0xFFE3EEFF.toInt(), 0xFFA9C6FF.toInt(), 0xFF6A96F2.toInt(), 0xFF4F86F0.toInt(), 0xFFF0F6FF.toInt(),
+        0xFF0F2A6B.toInt(), 0xFF3A5AA8.toInt(), 0xFF2F66E0.toInt(), 0xFF7A8CF0.toInt(), 0xFF3A5AA8.toInt(), 0xFF06165A.toInt(), 0xFF468CFF.toInt(), 0xFF9682F0.toInt(), 0xFF1E46AA.toInt(),
+        0xFFD2E8FF.toInt(), 0xFF9CCAFF.toInt(),
+        listOf(intArrayOf(0xFF5AA8FF.toInt(), 0xFF2A5FD8.toInt()), intArrayOf(0xFF8D86F0.toInt(), 0xFF4C42C4.toInt()), intArrayOf(0xFF45C8F0.toInt(), 0xFF1A7FD0.toInt()), intArrayOf(0xFFA9A4F4.toInt(), 0xFF6A5CDC.toInt())),
+        0xFF2D4FB0.toInt(), 0xFF0F2A6B.toInt(), 0xB3A8BEFA.toInt(), 0x998CA0F0.toInt(), "whale", 0xFF2F66E0.toInt())
+    val ALL = listOf(GLASS, GREEN, BLUE)
+
+    var cur: ThemeDef = GLASS
+        private set
+
+    /** Tile gradient [i] of the theme; the default theme keeps the colours passed in. */
+    fun tile(i: Int, a: Int, b: Int): IntArray = if (cur.id == "glass") intArrayOf(a, b) else cur.tiles[i % cur.tiles.size]
+
+    fun byId(id: String) = ALL.firstOrNull { it.id == id } ?: GLASS
+
+    fun apply(ctx: Context) {
+        cur = byId(Backend.str(ctx, "theme", "glass"))
+        val t = cur
+        Glass.TEXT = t.ink; Glass.TEXT2 = t.ink2; Glass.TEXT_LABEL = if (t.id == "glass") 0xFF3F5578.toInt() else t.ink2
+        Glass.ACCENT = t.accent; Glass.ACCENT2 = t.accent2; Glass.DATE = t.date
+        Glass.OK = t.ok; Glass.NAVY_A = t.navyA; Glass.NAVY_B = t.navyB
+    }
+
+    fun rgb(c: Int, a: Int) = Color.argb(a, Color.red(c), Color.green(c), Color.blue(c))
+
+    /** A slightly lighter step of the dark patch colour, for the soft edge. */
+    fun mixDark(c: Int) = Color.rgb(minOf(255, Color.red(c) + 26), minOf(255, Color.green(c) + 18), minOf(255, Color.blue(c) + 16))
 }
 
 enum class GlassKind { Base, Dim, Mid, Active, Amber, Navy, Nav }
@@ -82,7 +131,8 @@ class GlassDrawable(
                 rim.color = Glass.white(.7f)
             }
             GlassKind.Nav -> {
-                fill.shader = LinearGradient(x0, y0, x1, y1, Color.argb(235, 238, 244, 251), Color.argb(214, 214, 226, 240), Shader.TileMode.CLAMP)
+                val a = Theme.cur.bgMid
+                fill.shader = LinearGradient(x0, y0, x1, y1, Color.argb(235, 255 - (255 - Color.red(a)) / 4, 255 - (255 - Color.green(a)) / 4, 255 - (255 - Color.blue(a)) / 4), Color.argb(214, 255 - (255 - Color.red(a)) / 2, 255 - (255 - Color.green(a)) / 2, 255 - (255 - Color.blue(a)) / 2), Shader.TileMode.CLAMP)
                 rim.color = Glass.white(.85f)
             }
             GlassKind.Dim -> {
@@ -99,7 +149,7 @@ class GlassDrawable(
                 rim.color = Color.WHITE
             }
             GlassKind.Amber -> {
-                fill.shader = LinearGradient(x0, y0, x1, y1, Color.argb(128, 224, 138, 74), Color.argb(102, 150, 90, 60), Shader.TileMode.CLAMP)
+                fill.shader = LinearGradient(x0, y0, x1, y1, Theme.cur.amberA, Theme.cur.amberB, Shader.TileMode.CLAMP)
                 rim.color = Glass.white(.55f)
             }
             GlassKind.Navy -> {
@@ -109,10 +159,10 @@ class GlassDrawable(
         }
         rim.strokeWidth = maxOf(1f, density)
         shade.color = when (kind) {
-            GlassKind.Active -> Color.argb(46, 60, 90, 140)
+            GlassKind.Active -> Theme.rgb(Theme.cur.sh, 46)
             GlassKind.Mid -> Color.argb(0, 0, 0, 0)
-            GlassKind.Navy -> Color.argb(52, 28, 43, 69)
-            else -> Color.argb(30, 70, 100, 150)
+            GlassKind.Navy -> Theme.rgb(Theme.cur.navyB, 52)
+            else -> Theme.rgb(Theme.cur.sh, 30)
         }
         // inner glow
         val glowA = when (kind) { GlassKind.Active -> .8f; GlassKind.Dim -> .25f; GlassKind.Mid -> .12f; GlassKind.Base -> .18f; else -> 0f }
@@ -175,24 +225,28 @@ class GlassBackground(c: Context, private val home: Boolean) : View(c) {
         val w = width.toFloat(); val h = height.toFloat()
         if (w <= 0f) return
         val s = w / 390f
-        val top = if (home) 0xFFDDE6F0.toInt() else 0xFFE3EBF4.toInt()
-        p.shader = LinearGradient(0f, 0f, 0f, h, intArrayOf(top, 0xFFCBD8E6.toInt(), 0xFFAEBFD5.toInt()), floatArrayOf(0f, .45f, 1f), Shader.TileMode.CLAMP)
+        val t = Theme.cur
+        val top = if (home) t.homeTop else t.bgTop
+        p.shader = LinearGradient(0f, 0f, 0f, h, intArrayOf(top, t.bgMid, t.bgBottom), floatArrayOf(0f, .45f, 1f), Shader.TileMode.CLAMP)
         cv.drawRect(0f, 0f, w, h, p)
         p.shader = null
         val clear = 0
+        val lite = t.leftLight
         // soft white light on the left, level with the core / at the top of sub pages
-        if (home) blob(cv, 0.1f * w, 0.4f * h, 0.9f * w * .5f + 40 * s, 0.4f * h * .5f + 40 * s, intArrayOf(0xFFF3F6FA.toInt(), clear), null)
+        if (home) blob(cv, 0.1f * w, 0.4f * h, 0.9f * w * .5f + 40 * s, 0.4f * h * .5f + 40 * s, intArrayOf(lite, clear), null)
         else blob(cv, 30 * s, 120 * s, 260 * s, 200 * s, intArrayOf(Glass.white(.7f), clear), null)
         // cool glow rising from the bottom edge
-        blob(cv, 0.5f * w, h, 0.6f * w, 0.25f * h, intArrayOf(0xFF7F9BBD.toInt(), clear), null)
+        blob(cv, 0.5f * w, h, 0.6f * w, 0.25f * h, intArrayOf(t.glowBottom, clear), null)
+        val d = t.dark
         if (home) {
-            // dark brown patch behind the glass mascot, with a pink glint to the right
-            blob(cv, 235 * s, 115 * s, 215 * s, 235 * s, intArrayOf(Color.argb(247, 52, 30, 26), Color.argb(217, 78, 48, 42), clear), floatArrayOf(0f, .55f, 1f))
-            blob(cv, 330 * s, 30 * s, 100 * s, 60 * s, intArrayOf(Color.argb(140, 226, 160, 176), clear), null)
+            // dark patch behind the mascot, with a coloured glint to the right
+            blob(cv, 235 * s, 115 * s, 215 * s, 235 * s, intArrayOf(Theme.rgb(d, 247), Theme.rgb(Theme.mixDark(d), 217), clear), floatArrayOf(0f, .55f, 1f))
+            blob(cv, 330 * s, 30 * s, 100 * s, 60 * s, intArrayOf(Theme.rgb(t.glow2, 140), clear), null)
             blob(cv, 50 * s, 480 * s, 130 * s, 150 * s, intArrayOf(Glass.white(.7f), clear), null)
             blob(cv, 200 * s, 660 * s, 240 * s, 100 * s, intArrayOf(Glass.white(.35f), clear), null, -8f)
         } else {
-            blob(cv, 400 * s, 20 * s, 190 * s, 110 * s, intArrayOf(Color.argb(46, 52, 30, 26), clear), null)
+            blob(cv, 400 * s, 20 * s, 190 * s, 110 * s, intArrayOf(Theme.rgb(d, 46), clear), null)
+            if (t.id != "glass") blob(cv, 340 * s, 590 * s, 170 * s, 170 * s, intArrayOf(Theme.rgb(t.glow, 115), clear), null)
         }
     }
 }
@@ -206,6 +260,10 @@ class MochiView(c: Context, private val withHalo: Boolean = true) : View(c) {
     private val eyeGlow = Paint(Paint.ANTI_ALIAS_FLAG).apply { style = Paint.Style.STROKE; strokeCap = Paint.Cap.ROUND }
     private val shape = Path()
     private val eyes = Path()
+    private val kind = Theme.cur.mascot
+    private val line = Paint(Paint.ANTI_ALIAS_FLAG).apply { style = Paint.Style.STROKE; strokeCap = Paint.Cap.ROUND; strokeJoin = Paint.Join.ROUND }
+    private val wing = Paint(Paint.ANTI_ALIAS_FLAG)
+    private val dot = Paint(Paint.ANTI_ALIAS_FLAG)
     /** Blink: 0 = open, 1 = closed (they are drawn as arcs; a blink flattens them). */
     var squash = 0f
         set(v) { field = v; invalidate() }
@@ -234,6 +292,67 @@ class MochiView(c: Context, private val withHalo: Boolean = true) : View(c) {
         eyeGlow.color = Glass.white(.3f)
     }
 
+    private fun rimA(a: Float) = Theme.rgb(Theme.cur.rim, (a * 255).toInt())
+
+    private fun glowDot(cv: Canvas, x: Float, y: Float, r: Float, ring: Boolean) {
+        val eyeC = Theme.cur.eye
+        dot.style = Paint.Style.FILL
+        dot.color = Theme.rgb(eyeC, 70); cv.drawCircle(x, y, r * 2f, dot)
+        if (ring) {
+            dot.style = Paint.Style.STROKE; dot.strokeWidth = 1.6f; dot.color = eyeC; cv.drawCircle(x, y, r, dot)
+            dot.style = Paint.Style.FILL; cv.drawCircle(x, y, r * .37f, dot)
+        } else { dot.style = Paint.Style.FILL; dot.color = eyeC; cv.drawCircle(x, y, r, dot) }
+    }
+
+    private fun stroked(cv: Canvas, path: Path, a: Float, w: Float) { line.strokeWidth = w; line.color = rimA(a); cv.drawPath(path, line) }
+
+    private fun filled(cv: Canvas, path: Path, strokeW: Float) {
+        val b = RectF(); path.computeBounds(b, true)
+        wing.shader = LinearGradient(b.left, b.top, b.right, b.bottom, intArrayOf(rimA(.42f), rimA(.10f), rimA(.22f)), floatArrayOf(0f, .6f, 1f), Shader.TileMode.CLAMP)
+        cv.drawPath(path, wing)
+        stroked(cv, path, 1f, strokeW)
+    }
+
+    private fun drawCritter(cv: Canvas) {
+        if (withHalo) {
+            lit.shader = RadialGradient(85f, 68f, 111f, intArrayOf(Theme.rgb(Theme.cur.glow, 70), Glass.white(0f)), null, Shader.TileMode.CLAMP)
+            cv.save(); cv.scale(1f, 176f / 222f, 85f, 68f); cv.drawCircle(85f, 68f, 111f, lit); cv.restore()
+            lit.shader = null
+        }
+        if (kind == "butterfly") {
+            val flap = 1f - .18f * squash
+            for (side in 0..1) {
+                cv.save()
+                if (side == 1) { cv.translate(170f, 0f); cv.scale(-1f, 1f) }
+                cv.scale(flap, 1f, 82f, 70f)
+                filled(cv, BUTTERFLY_WING_A, 1.2f); filled(cv, BUTTERFLY_WING_B, 1.2f)
+                stroked(cv, BUTTERFLY_VEINS, .35f, .8f)
+                glowDot(cv, 44f, 46f, 7f, true)
+                glowDot(cv, 50f, 100f, 4f, false)
+                wing.shader = null; wing.color = Glass.white(.28f)
+                cv.save(); cv.rotate(-24f, 46f, 34f); cv.drawOval(RectF(24f, 29f, 68f, 39f), wing); cv.restore()
+                cv.restore()
+            }
+            wing.shader = null
+            wing.color = rimA(.55f); cv.drawOval(RectF(80.8f, 50f, 89.2f, 102f), wing)
+            line.strokeWidth = 1f; line.color = rimA(1f)
+            val body = Path().apply { addOval(RectF(80.8f, 50f, 89.2f, 102f), Path.Direction.CW) }; cv.drawPath(body, line)
+            wing.color = rimA(.5f); cv.drawCircle(85f, 46f, 5.5f, wing); cv.drawCircle(85f, 46f, 5.5f, line)
+            stroked(cv, BUTTERFLY_ANT, 1f, 1.2f)
+            glowDot(cv, 62f, 18f, 2f, false); glowDot(cv, 108f, 18f, 2f, false)
+        } else {
+            cv.save(); cv.translate(0f, 0f)
+            filled(cv, WHALE_BODY, 1.3f)
+            filled(cv, WHALE_FIN, 1f)
+            stroked(cv, WHALE_LINES, .4f, .9f)
+            stroked(cv, WHALE_ANT, 1f, 1.3f)
+            glowDot(cv, 40f, 9f, 2f, false); glowDot(cv, 80f, 9f, 2f, false); glowDot(cv, 38f, 68f, 4.2f, false)
+            wing.shader = null; wing.color = Glass.white(.30f)
+            cv.save(); cv.rotate(-8f, 62f, 44f); cv.drawOval(RectF(36f, 39f, 88f, 49f), wing); cv.restore()
+            cv.restore()
+        }
+    }
+
     override fun onMeasure(w: Int, h: Int) {
         val d = resources.displayMetrics.density
         val mw = if (MeasureSpec.getMode(w) == MeasureSpec.EXACTLY) MeasureSpec.getSize(w) else (170 * d).toInt()
@@ -245,6 +364,7 @@ class MochiView(c: Context, private val withHalo: Boolean = true) : View(c) {
         val k = width / 170f
         cv.save()
         cv.scale(k, k)
+        if (kind != "mochi") { drawCritter(cv); cv.restore(); return }
         if (withHalo) {
             lit.shader = RadialGradient(85f, 68f, 111f, intArrayOf(Glass.white(.28f), Glass.white(0f)), null, Shader.TileMode.CLAMP)
             cv.save(); cv.scale(1f, 176f / 222f, 85f, 68f); cv.drawCircle(85f, 68f, 111f, lit); cv.restore()
@@ -272,6 +392,33 @@ class MochiView(c: Context, private val withHalo: Boolean = true) : View(c) {
         cv.restore()
     }
 }
+
+/** Parses the absolute M / C / L / Z path strings of the mockups. */
+private fun svgPath(d: String): Path {
+    val p = Path()
+    val tok = Regex("[MCLZ]|-?[0-9]*\\.?[0-9]+").findAll(d).map { it.value }.toList()
+    var i = 0
+    fun n() = tok[i++].toFloat()
+    while (i < tok.size) {
+        when (tok[i++]) {
+            "M" -> p.moveTo(n(), n())
+            "L" -> p.lineTo(n(), n())
+            "C" -> p.cubicTo(n(), n(), n(), n(), n(), n())
+            "Z" -> p.close()
+        }
+    }
+    return p
+}
+
+private val BUTTERFLY_WING_A = svgPath("M82 64 C70 30 36 6 16 24 C2 38 18 66 50 74 C64 78 76 74 82 70 Z")
+private val BUTTERFLY_WING_B = svgPath("M82 72 C62 76 36 80 34 102 C33 118 56 124 68 108 C76 98 80 84 82 78 Z")
+private val BUTTERFLY_VEINS = svgPath("M80 66 C62 46 40 30 22 28 M80 68 C58 62 36 60 14 44 M80 80 C64 88 50 98 42 112")
+private val BUTTERFLY_ANT = svgPath("M83 42 C78 28 70 20 62 18 M87 42 C92 28 100 20 108 18")
+private val WHALE_BODY = svgPath("M14 74 C14 48 44 34 80 34 C112 34 136 48 146 64 C150 60 156 52 164 50 C162 62 160 70 154 76 C160 80 164 88 166 98 C156 96 150 90 146 84 C132 100 104 108 70 106 C36 104 14 94 14 74 Z")
+private val WHALE_FIN = svgPath("M62 88 C58 102 66 112 80 114 C80 104 78 96 74 90 Z")
+private val WHALE_LINES = svgPath("M30 88 C60 99 100 98 132 84 M34 94 C62 104 98 102 124 92")
+private val WHALE_ANT = svgPath("M60 33 C58 22 50 16 42 14 M60 33 C62 22 70 16 78 14")
+
 
 /** A petal: a rotated glass drop whose icon and label stay upright. */
 class PetalView(c: Context, kind: GlassKind, iconRes: Int, label: String, angle: Float, textColor: Int, size: Int = 12, bold: Boolean = false, sc: Float = 0f) : FrameLayout(c) {

@@ -32,6 +32,7 @@ class UiActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        intent?.getStringExtra("theme")?.let { Backend.setStr(this, "theme", it) }   // CI screenshots: `--es theme green`
         P.init(this)
         shownLang = Tr.lang(this)
         cleanOldModel()

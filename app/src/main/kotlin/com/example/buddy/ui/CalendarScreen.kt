@@ -94,7 +94,7 @@ class CalendarScreen(act: UiActivity) : Screen(act) {
             val hour = Calendar.getInstance()
             val accent = P.accent(hour.get(Calendar.HOUR_OF_DAY), hour.get(Calendar.MINUTE))
             val short = weekdaysShort(ctx)
-            val dot = 0xFF7A6BD0.toInt()
+            val dot = Glass.ACCENT2
             for (i in 0 until days) {
                 val day = midnight(i)
                 val c = cal(day)

@@ -42,6 +42,13 @@ object P {
 
     fun init(ctx: Context) {
         dark = false
+        Theme.apply(ctx)
+        val t = Theme.cur
+        primary = t.navyA
+        onSurface = t.ink
+        onSurfaceVariant = t.ink2
+        onSecondaryContainer = t.ink
+        outline = mix(t.ink2, 0xFFFFFFFF.toInt(), 0.35f)
     }
 
     // ---- hour-of-day accent: the app drifts through 24 hues during the day ----

@@ -10,12 +10,12 @@ class MoreScreen(act: UiActivity) : Screen(act) {
     override fun title() = t("Ещё", "More", "Yana")
     override fun onShow() { reshow() }
 
-    private class Item(val icon: Int, val title: String, val sub: String, val color: Int, val page: String, val color2: Int = 0)
+    private class Item(val icon: Int, val title: String, val sub: String, val color: Int, val page: String, val color2: Int = 0, val tile: IntArray? = null)
 
     private fun menuCard(i: Item) = ctx.card(pad = 18, onClick = { act.open(i.page) }) {
         add(ctx.row {
             add(ctx.row(Gravity.CENTER) {
-                background = ctx.gradient(intArrayOf(i.color, if (i.color2 != 0) i.color2 else P.mix(i.color, Color.BLACK, 0.25f)), 16f)
+                background = ctx.gradient(i.tile ?: intArrayOf(i.color, P.mix(i.color, Color.BLACK, 0.25f)), 16f)
                 add(ctx.icon(i.icon, 0xFFFFFFFF.toInt(), 24), WRAP, WRAP)
             }, ctx.dp(46), ctx.dp(46), end = 14)
             add(ctx.col {
@@ -30,17 +30,17 @@ class MoreScreen(act: UiActivity) : Screen(act) {
         header(c, t("Агенты, наряды и игры", "Agents, outfits and games", "Agentlar, kiyimlar va o'yinlar"))
         val paired = Backend.agentStatus(ctx).paired
         val agents = Item(R.drawable.ic_bolt, t("Агенты (Claude Code)", "Agents (Claude Code)", "Agentlar (Claude Code)"),
-            t("Следите за Claude Code с телефона", "Watch Claude Code from your phone", "Claude Code ni telefondan kuzating"), P.violet, "agents")
+            t("Следите за Claude Code с телефона", "Watch Claude Code from your phone", "Claude Code ni telefondan kuzating"), 0, "agents", 0, Theme.tile(1, P.violet, P.mix(P.violet, Color.BLACK, 0.25f)))
         val items = buildList {
             add(Item(R.drawable.ic_key, t("Подключение ИИ", "AI connection", "AI ulanishi"),
-                t("Свой бесплатный ключ и запасные подключения", "Your own free key and backup connections", "O'zingizning bepul kalitingiz va zaxira ulanishlar"), 0xFF8D7EE0.toInt(), "ai", 0xFF5B4BB0.toInt()))
+                t("Свой бесплатный ключ и запасные подключения", "Your own free key and backup connections", "O'zingizning bepul kalitingiz va zaxira ulanishlar"), 0, "ai", 0, Theme.tile(0, 0xFF8D7EE0.toInt(), 0xFF5B4BB0.toInt())))
             if (paired) add(agents)
             add(Item(R.drawable.ic_music, t("Музыка", "Music", "Musiqa"),
-                t("Музыка по настроению и выбор приложения", "Music for your mood and app choice", "Kayfiyatga mos musiqa va ilova tanlash"), 0xFF6FA0EE.toInt(), "music", 0xFF4A74C4.toInt()))
+                t("Музыка по настроению и выбор приложения", "Music for your mood and app choice", "Kayfiyatga mos musiqa va ilova tanlash"), 0, "music", 0, Theme.tile(2, 0xFF6FA0EE.toInt(), 0xFF4A74C4.toInt())))
             add(Item(R.drawable.ic_face, t("Наряды", "Outfits", "Kiyimlar"),
-                t("Шляпы, очки и шарфы для Bubby", "Hats, glasses and scarves for Bubby", "Bubby uchun shlyapa, ko'zoynak va sharflar"), 0xFFE48AA8.toInt(), "outfits", 0xFFBD5F80.toInt()))
+                t("Шляпы, очки и шарфы для Bubby", "Hats, glasses and scarves for Bubby", "Bubby uchun shlyapa, ko'zoynak va sharflar"), 0, "outfits", 0, Theme.tile(3, 0xFFE48AA8.toInt(), 0xFFBD5F80.toInt())))
             add(Item(R.drawable.ic_play, t("Игры и стикеры", "Games and stickers", "O'yinlar va stikerlar"),
-                t("Играйте и отправляйте стикеры друзьям", "Play and send stickers to friends", "O'ynang va do'stlaringizga stiker yuboring"), 0xFFE89A58.toInt(), "fun", 0xFFC0702F.toInt()))
+                t("Играйте и отправляйте стикеры друзьям", "Play and send stickers to friends", "O'ynang va do'stlaringizga stiker yuboring"), 0, "fun", 0, Theme.tile(0, 0xFFE89A58.toInt(), 0xFFC0702F.toInt())))
         }
         for (i in items) c.add(menuCard(i), MATCH, WRAP, bottom = 10)
 

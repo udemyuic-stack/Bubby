@@ -233,7 +233,7 @@ fun Context.pill(label: String, color: Int, dot: Boolean = true, onClick: (() ->
     setPadding(dp(13), dp(8), dp(13), dp(8))
     background = glass(GlassKind.Base, 30f)
     if (dot) add(DotView(this@pill, color), dp(9), dp(9), end = 7)
-    add(text(label, T.Small, 0xFF24344F.toInt()).apply { textSize = 12f; typeface = glassFont(bold = false) }, WRAP, WRAP)
+    add(text(label, T.Small, Glass.TEXT).apply { textSize = 12f; typeface = glassFont(bold = false) }, WRAP, WRAP)
     if (onClick != null) press(onClick)
 }
 
@@ -311,7 +311,7 @@ class SpotDrawable : android.graphics.drawable.Drawable() {
         val b = bounds
         val r = b.width() * .5f
         p.shader = android.graphics.RadialGradient(0f, 0f, r,
-            intArrayOf(android.graphics.Color.argb(199, 60, 40, 48), android.graphics.Color.argb(102, 60, 40, 48), 0), floatArrayOf(0f, .6f, 1f), android.graphics.Shader.TileMode.CLAMP)
+            intArrayOf(Theme.rgb(Theme.cur.dark, 199), Theme.rgb(Theme.cur.dark, 102), 0), floatArrayOf(0f, .6f, 1f), android.graphics.Shader.TileMode.CLAMP)
         c.save(); c.translate(b.exactCenterX(), b.exactCenterY()); c.scale(1f, b.height() / b.width().toFloat())
         c.drawCircle(0f, 0f, r, p); c.restore()
     }

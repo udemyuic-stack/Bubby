@@ -66,7 +66,7 @@ class HomeScreen(act: UiActivity) : Screen(act) {
         val statusV = ctx.row(Gravity.CENTER) {
             background = ctx.rounded(Glass.white(.14f), 20f, Glass.white(.3f))
             setPadding((14 * sc).toInt(), (6 * sc).toInt(), (14 * sc).toInt(), (6 * sc).toInt())
-            add(DotView(ctx, if (running) Glass.OK else 0xFFA3A9C9.toInt()), (9 * sc).toInt(), (9 * sc).toInt(), end = (8 * sc).toInt())
+            add(DotView(ctx, if (running || Theme.cur.id != "glass") Glass.OK else 0xFFA3A9C9.toInt()), (9 * sc).toInt(), (9 * sc).toInt(), end = (8 * sc).toInt())
             add(ctx.text(if (running) t("Помощник работает", "Assistant is on", "Yordamchi ishlayapti") else t("Помощник выключен", "Assistant is off", "Yordamchi o'chiq"), T.Small, 0xFFF1ECEA.toInt())
                 .apply { setTextSize(android.util.TypedValue.COMPLEX_UNIT_PX, 12f * sc) }, WRAP, WRAP)
         }
@@ -94,7 +94,7 @@ class HomeScreen(act: UiActivity) : Screen(act) {
         petal(GlassKind.Dim, R.drawable.tg_gear, t("Настройки", "Settings", "Sozlamalar"), 184f, 524f, 104f, 112f, 8f, Glass.TEXT_LABEL) { act.showTab(3) }
         scene.put(CoreView(ctx, sc), 171f, 448f, 44f, 44f)
         petal(GlassKind.Active, if (running) R.drawable.tg_stop else R.drawable.tg_play, if (running) t("Остановить", "Stop", "To'xtatish") else t("Запустить", "Start", "Ishga tushirish"),
-            237f, 379f, 116f, 106f, 12f, 0xFF2A3A58.toInt(), 13, true) { toggle() }
+            237f, 379f, 116f, 106f, 12f, Glass.TEXT, 13, true) { toggle() }
         scene.alpha = if (busy) 0.7f else 1f
         mascot.setOnClickListener {
             if (!still) android.animation.ValueAnimator.ofFloat(0f, 1f, 0f).apply { duration = 260; addUpdateListener { mascot.squash = it.animatedValue as Float } }.start()
@@ -207,7 +207,7 @@ class HomeScreen(act: UiActivity) : Screen(act) {
                 setPadding(ctx.dp(18), ctx.dp(11), ctx.dp(18), ctx.dp(11))
                 background = ctx.glass(GlassKind.Base, 30f)
                 add(ctx.icon(R.drawable.tg_mic, Glass.TEXT, 16), WRAP, WRAP, end = 8)
-                add(ctx.text("«$h»", T.Body, 0xFF24344F.toInt()).apply { textSize = 14f }, WRAP, WRAP)
+                add(ctx.text("«$h»", T.Body, Glass.TEXT).apply { textSize = 14f }, WRAP, WRAP)
                 press { send(h) }
             })
         }

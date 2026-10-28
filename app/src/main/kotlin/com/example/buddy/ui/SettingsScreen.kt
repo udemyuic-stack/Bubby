@@ -128,7 +128,7 @@ class SettingsScreen(act: UiActivity) : Screen(act) {
         return ctx.card(pad = 14, onClick = { act.open("music") }) {
             add(ctx.row {
                 add(ctx.row(Gravity.CENTER) {
-                    background = ctx.gradient(intArrayOf(0xFF8D7EE0.toInt(), 0xFF5B4BB0.toInt()), 16f)
+                    background = ctx.gradient(Theme.tile(2, 0xFF8D7EE0.toInt(), 0xFF5B4BB0.toInt()), 16f)
                     add(ctx.icon(R.drawable.ic_music, 0xFFFFFFFF.toInt(), 24), WRAP, WRAP)
                 }, ctx.dp(46), ctx.dp(46), end = 14)
                 add(ctx.col {
@@ -156,6 +156,14 @@ class SettingsScreen(act: UiActivity) : Screen(act) {
                 "Bu Bubby gapiradigan va javob beradigan til hamdir. «Avto»: Bubby siz gaplashgan tilda javob beradi va ilovani shu tilga o'tkazadi"), T.Small), MATCH, WRAP, top = 2)
         }
         c.add(musicCard(), MATCH, WRAP, top = 14)
+
+        group(c, t("Внешний вид", "Look", "Ko'rinish"), R.drawable.ic_palette) {
+            add(chips(listOf("glass" to t("Стекло", "Glass", "Shisha"), "green" to t("Зелёная", "Green", "Yashil"), "blue" to t("Синяя", "Blue", "Ko'k")),
+                Backend.str(ctx, "theme", "glass")) {
+                if (it != Backend.str(ctx, "theme", "glass")) { Backend.prefs(ctx).edit().putString("theme", it).commit(); act.restart() }
+            })
+            add(ctx.text(t("Тема меняет цвета и зверька: мотылёк, кит или стеклянный мочи", "The theme changes the colours and the mascot: a butterfly, a whale or the glass mochi", "Mavzu ranglarni va maskotni o'zgartiradi: kapalak, kit yoki shisha mochi"), T.Small), MATCH, WRAP, top = 2)
+        }
 
         group(c, t("Голос и поведение", "Voice and behavior", "Ovoz va xulq"), R.drawable.ic_mic) {
             add(sw(t("Озвучивать ответы", "Speak replies aloud", "Javoblarni ovoz chiqarib aytish"), "tts", true))

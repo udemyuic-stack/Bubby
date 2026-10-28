@@ -277,7 +277,7 @@ class PhoneHost(private val ctx: Context, private val ui: AgentUi, private val u
         return ToolOutput(c.joinToString("\n") { "${it.name}: ${it.number} (${it.label})" }, untrusted = "contacts")
     }
 
-    private val privateSms = Regex("(?iu)bank|банк|card|карт|karta|код|code|kod|parol|пароль|password|otp|verification|подтвержд|tasdiq")
+    private val privateSms = Regex("bank|банк|card|карт|karta|код|code|kod|parol|пароль|password|otp|verification|подтвержд|tasdiq", RegexOption.IGNORE_CASE)
 
     private fun smsRead(count: Int, from: String): ToolOutput {
         if (!prefs.getBoolean("sms_read", false)) return err("reading SMS is off: the user can allow it in Bubby Settings (\"Let Bubby read SMS\")")
@@ -292,7 +292,7 @@ class PhoneHost(private val ctx: Context, private val ui: AgentUi, private val u
             while (c.moveToNext() && n < count) {
                 val addr = c.getString(0).orEmpty(); val body = c.getString(1).orEmpty(); val date = c.getLong(2)
                 // codes and bank messages never leave the phone
-                val shown = if (privateSms.containsMatchIn(body) || privateSms.containsMatchIn(addr) || Safety.hasPrivateText(body) || Regex("\\b\\d{4,8}\\b").containsMatchIn(body) && body.length < 200 && Regex("(?iu)code|код|kod").containsMatchIn(body))
+                val shown = if (privateSms.containsMatchIn(body) || privateSms.containsMatchIn(addr) || Safety.hasPrivateText(body) || Regex("\\b\\d{4,8}\\b").containsMatchIn(body) && body.length < 200 && Regex("code|код|kod", RegexOption.IGNORE_CASE).containsMatchIn(body))
                     "(hidden: banking or code message)" else body.replace('\n', ' ').take(300)
                 out.append(df.format(Date(date))).append(" from ").append(addr).append(": ").append(shown).append('\n')
                 n++

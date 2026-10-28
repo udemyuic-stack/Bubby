@@ -15,9 +15,7 @@ internal val PRIVATE_PKG_HINTS = listOf(
 )
 
 /** Words and shapes that mean the screen shows card or payment details, whatever app it is (also a payment page in a browser). */
-internal val PRIVATE_TEXT = Regex(
-    "(?iu)\\b(?:\\d[ -]?){13,19}\\b|\\bcvv\\b|\\bcvc\\b|pin[ -]?code|пин[ -]?код|номер карты|срок действия|card number|expiry date|karta raqami|amal qilish muddati|parolni kiriting|enter your password|введите пароль"
-)
+internal val PRIVATE_TEXT = Regex("\\b(?:\\d[ -]?){13,19}\\b|\\bcvv\\b|\\bcvc\\b|pin[ -]?code|пин[ -]?код|номер карты|срок действия|card number|expiry date|karta raqami|amal qilish muddati|parolni kiriting|enter your password|введите пароль", RegexOption.IGNORE_CASE)
 
 /** What a screen action would touch: the label of the element, its app, and whether it is a password field. */
 class Target(val label: String, val pkg: String, val password: Boolean = false, val editable: Boolean = false)
@@ -43,7 +41,7 @@ object Safety {
     fun hasPrivateText(text: CharSequence): Boolean = PRIVATE_TEXT.containsMatchIn(text)
 
     // ---------------------------------------------------------------- untrusted data
-    private val tagRe = Regex("(?iu)</?\\s*untrusted[^>]*>")
+    private val tagRe = Regex("</?\\s*untrusted[^>]*>", RegexOption.IGNORE_CASE)
 
     /**
      * Wraps data that did not come from the user (screen, notifications, web, clipboard, files, contacts, SMS) so the model
@@ -111,13 +109,13 @@ object Safety {
     }
 
     // ---------------------------------------------------------------- screen elements
-    private val rePay = Regex("(?iu)\\b(pay|buy|purchase|checkout|check out|place order|order now|confirm order|confirm payment|confirm and pay|top up|donate|book now)\\b|оплат|купить|заплат|оформить заказ|подтвердить заказ|пополнить|забронировать|to.?lash|to.?lov|sotib olish|xarid qilish|buyurtma berish|bron qilish")
-    private val reDelete = Regex("(?iu)\\b(delete|remove|erase|wipe|factory reset|reset phone|clear data|clear storage|clear all)\\b|удал|стереть|очистить|сбросить|o.?chirish|tozalash")
-    private val reInstall = Regex("(?iu)\\b(install|uninstall|update)\\b|установ|обновить|o.?rnatish|yangilash")
-    private val reSecurity = Regex("(?iu)password|passcode|pin code|screen lock|fingerprint|face unlock|пароль|пин-код|блокировка экрана|отпечат|parol|ekran qulfi|barmoq izi")
-    private val rePermission = Regex("(?iu)\\b(allow|while using the app|only this time|grant)\\b|разрешить|при использовании|только в этот раз|ruxsat berish|ruxsat")
-    private val reSend = Regex("(?iu)\\b(send|post|publish|share|reply|tweet|forward)\\b|отправ|опубликовать|поделиться|ответить|переслать|yuborish|ulashish|javob berish")
-    private val reCall = Regex("(?iu)\\b(call|dial|video call|voice call)\\b|позвонить|вызов|видеозвонок|qo.?ng.?iroq")
+    private val rePay = Regex("\\b(pay|buy|purchase|checkout|check out|place order|order now|confirm order|confirm payment|confirm and pay|top up|donate|book now)\\b|оплат|купить|заплат|оформить заказ|подтвердить заказ|пополнить|забронировать|to.?lash|to.?lov|sotib olish|xarid qilish|buyurtma berish|bron qilish", RegexOption.IGNORE_CASE)
+    private val reDelete = Regex("\\b(delete|remove|erase|wipe|factory reset|reset phone|clear data|clear storage|clear all)\\b|удал|стереть|очистить|сбросить|o.?chirish|tozalash", RegexOption.IGNORE_CASE)
+    private val reInstall = Regex("\\b(install|uninstall|update)\\b|установ|обновить|o.?rnatish|yangilash", RegexOption.IGNORE_CASE)
+    private val reSecurity = Regex("password|passcode|pin code|screen lock|fingerprint|face unlock|пароль|пин-код|блокировка экрана|отпечат|parol|ekran qulfi|barmoq izi", RegexOption.IGNORE_CASE)
+    private val rePermission = Regex("\\b(allow|while using the app|only this time|grant)\\b|разрешить|при использовании|только в этот раз|ruxsat berish|ruxsat", RegexOption.IGNORE_CASE)
+    private val reSend = Regex("\\b(send|post|publish|share|reply|tweet|forward)\\b|отправ|опубликовать|поделиться|ответить|переслать|yuborish|ulashish|javob berish", RegexOption.IGNORE_CASE)
+    private val reCall = Regex("\\b(call|dial|video call|voice call)\\b|позвонить|вызов|видеозвонок|qo.?ng.?iroq", RegexOption.IGNORE_CASE)
     private val messengerHints = listOf("whatsapp", "telegram", "messag", "mms", "sms", "instagram", "orca", "viber", "signal", "com.google.android.gm",
         "outlook", "discord", "slack", "skype", "snapchat", "vkontakte", "imo", "ru.oneme", "twitter", "facebook")
 
@@ -130,12 +128,12 @@ object Safety {
         val p = pkg.lowercase()
         return when {
             (p.contains("permissioncontroller") || p.contains("packageinstaller")) && rePermission.containsMatchIn(l) -> TapClass.PERMISSION
-            p.contains("vending") && Regex("(?iu)subscri|подпис|obuna").containsMatchIn(l) -> TapClass.PAY
+            p.contains("vending") && Regex("subscri|подпис|obuna", RegexOption.IGNORE_CASE).containsMatchIn(l) -> TapClass.PAY
             p.contains("packageinstaller") || (p.contains("vending") && reInstall.containsMatchIn(l)) -> TapClass.INSTALL
             rePay.containsMatchIn(l) -> TapClass.PAY
             reSecurity.containsMatchIn(l) -> TapClass.SECURITY
             reDelete.containsMatchIn(l) -> TapClass.DELETE
-            reInstall.containsMatchIn(l) && !reSend.containsMatchIn(l) && (p.contains("vending") || p.contains("settings") || Regex("(?iu)install|установ|o.?rnat").containsMatchIn(l)) -> TapClass.INSTALL
+            reInstall.containsMatchIn(l) && !reSend.containsMatchIn(l) && (p.contains("vending") || p.contains("settings") || Regex("install|установ|o.?rnat", RegexOption.IGNORE_CASE).containsMatchIn(l)) -> TapClass.INSTALL
             rePermission.containsMatchIn(l) -> TapClass.PERMISSION
             reSend.containsMatchIn(l) -> TapClass.SEND
             reCall.containsMatchIn(l) -> TapClass.CALL

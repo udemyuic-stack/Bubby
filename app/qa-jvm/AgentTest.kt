@@ -373,6 +373,16 @@ fun runLogTests() {
     check("run log: typed text is not stored", r.log.steps.none { it.detail.contains("secret") }, r.log.steps.map { it.detail }.toString())
 }
 
-fun agentTests() { registryTests(); formatTests(); loopTests(); safetyTests(); screenTests(); runLogTests() }
+/** Android's ICU regex engine rejects the inline u/U flags (the app crashed on start once): keep them out of the sources. */
+fun regexPortability() {
+    val dir = System.getenv("BUBBY_SRC") ?: return
+    val bad = Regex("\\(\\?[a-zA-Z]*[uU][a-zA-Z]*\\)")
+    java.io.File(dir).walkTopDown().filter { it.name.endsWith(".kt") }.forEach { f ->
+        f.readLines().forEachIndexed { i, line -> if (line.contains("Regex(") && bad.containsMatchIn(line)) check("no inline (?u)/(?U) regex flag: ${f.name}:${i + 1}", false) }
+    }
+    check("regex portability scan ran", true)
+}
+
+fun agentTests() { registryTests(); formatTests(); loopTests(); safetyTests(); screenTests(); runLogTests(); regexPortability() }
 
 @Suppress("unused") private fun unusedArray() = JSONArray()

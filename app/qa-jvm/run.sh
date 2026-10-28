@@ -16,5 +16,5 @@ java -cp "$CP" org.jetbrains.kotlin.cli.jvm.K2JVMCompiler -no-stdlib -no-reflect
 # the agent tests need a real org.json at run time (android.jar only has stubs): Robolectric's android-all or org.json:json
 JSONJAR="$(find $G ~/.m2 -name 'android-all*.jar' 2>/dev/null | grep -v sources | head -1)"
 [ -z "$JSONJAR" ] && JSONJAR="$(find $G ~/.m2 -name 'json-20*.jar' 2>/dev/null | grep -v sources | head -1)"
-java -cp "$OUT:$STD:$JSONJAR" com.example.buddy.TestMainKt | tee "$HERE/results.txt"
+BUBBY_SRC="$SRC" java -cp "$OUT:$STD:$JSONJAR" com.example.buddy.TestMainKt | tee "$HERE/results.txt"
 exit ${PIPESTATUS[0]}

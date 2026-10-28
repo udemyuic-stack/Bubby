@@ -211,7 +211,7 @@ class BuddyService : Service() {
         /** Requests waiting for an answer (the app's agents page lists them; answers go back through ACTION_AGENT_DECIDE). */
         @Volatile var agentApprovals: List<Approval> = emptyList()
         /** Spoken words that stop a running agent task. */
-        private val STOP_WORDS = Regex("(?iU)\\b(стоп|хватит|отмена|отмени|останови\\w*|stop|cancel|enough|to'?xta\\w*|bas|yetarli|bekor)\\b")
+        private val STOP_WORDS = Regex("\\b(стоп|хватит|отмена|отмени|останови\\w*|stop|cancel|enough|to'?xta\\w*|bas|yetarli|bekor)\\b", RegexOption.IGNORE_CASE)
         const val ACTION_ASK = "com.example.buddy.ASK"
         const val ACTION_TOGGLE_QUIET = "com.example.buddy.TOGGLE_QUIET"
         const val ACTION_AGENT_RELOAD = "com.example.buddy.AGENT_RELOAD"

@@ -22,7 +22,7 @@ class Shot(val b64: String?, val w: Int, val h: Int, val screenW: Int, val scree
 }
 
 /** Words in the user's own request that already say "look at / use my screen": no question is asked then. */
-private val SCREEN_WORDS = Regex("(?iu)экран|screen|ekran|на странице|on the page|sahifa|прочитай|read (this|it|the)|o'qib ber|нажми|tap |press |bosing|bos |scroll|листай|прокрути|type |напечатай|yoz ")
+private val SCREEN_WORDS = Regex("экран|screen|ekran|на странице|on the page|sahifa|прочитай|read (this|it|the)|o'qib ber|нажми|tap |press |bosing|bos |scroll|листай|прокрути|type |напечатай|yoz ", RegexOption.IGNORE_CASE)
 
 class BuddyAccess : AccessibilityService() {
     override fun onServiceConnected() { inst = this }

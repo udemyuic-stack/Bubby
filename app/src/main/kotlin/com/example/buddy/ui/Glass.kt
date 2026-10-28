@@ -315,6 +315,8 @@ class GlassCritter(val kind: String = Theme.cur.mascot, private val def: ThemeDe
     var squash = 0f
     var mini = false
     var withHalo = true
+    /** Poke reaction: 1 draws wide-open dot eyes instead of the happy arcs (mochi and cube). */
+    var awake = false
 
     init {
         val rx = 78f; val ry = 59f
@@ -441,7 +443,8 @@ class GlassCritter(val kind: String = Theme.cur.mascot, private val def: ThemeDe
         cv.save()
         if (squash > 0f) cv.scale(1f, 1f - .75f * squash, 85f, 80f)
         eye.strokeWidth = if (mini) 6f else 5.2f
-        cv.drawPath(eyes, eye)
+        if (awake) { eye.style = Paint.Style.FILL; for (ex in floatArrayOf(55f, 115f)) cv.drawCircle(ex, 74f, 6.2f, eye); eye.style = Paint.Style.STROKE }
+        else cv.drawPath(eyes, eye)
         eye.color = Color.argb(242, 255, 255, 255)
         cv.restore()
     }
@@ -470,8 +473,14 @@ class GlassCritter(val kind: String = Theme.cur.mascot, private val def: ThemeDe
         val sw = if (mini) 3.4f else 4.6f
         eyeGlow.strokeWidth = sw + 3f
         eye.strokeWidth = sw
-        cv.drawPath(eyes, eyeGlow)
-        cv.drawPath(eyes, eye)
+        if (awake) {
+            eye.style = Paint.Style.FILL
+            for (ex in floatArrayOf(55f, 115f)) { dot.style = Paint.Style.FILL; dot.color = Glass.white(.3f); cv.drawCircle(ex, 74f, 10f, dot); cv.drawCircle(ex, 74f, 6.2f, eye) }
+            eye.style = Paint.Style.STROKE
+        } else {
+            cv.drawPath(eyes, eyeGlow)
+            cv.drawPath(eyes, eye)
+        }
         cv.restore()
     }
 }
@@ -483,6 +492,13 @@ class MochiView(c: Context, withHalo: Boolean = true) : View(c) {
     var squash = 0f
         set(v) { field = v; invalidate() }
     var mini = false
+    /** Tap reaction (like pressing the little round-screen pet): flatten under the finger, spring back with sparks, eyes pop open. */
+    var pokeable = false
+        set(v) { field = v; if (v) isClickable = true }
+    private var press = 0f            // 0..1 how flat it is under the finger
+    private var popAt = 0L            // uptime when the finger lifted
+    private val rayPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply { style = Paint.Style.STROKE; strokeCap = Paint.Cap.ROUND }
+    private var pressAnim: android.animation.ValueAnimator? = null
 
     override fun onMeasure(w: Int, h: Int) {
         val d = resources.displayMetrics.density
@@ -491,13 +507,61 @@ class MochiView(c: Context, withHalo: Boolean = true) : View(c) {
         setMeasuredDimension(mw, mh)
     }
 
+    override fun onTouchEvent(e: android.view.MotionEvent): Boolean {
+        if (!pokeable) return super.onTouchEvent(e)
+        when (e.actionMasked) {
+            android.view.MotionEvent.ACTION_DOWN -> { popAt = 0L; pressTo(1f, 90); return true }
+            android.view.MotionEvent.ACTION_UP, android.view.MotionEvent.ACTION_CANCEL -> {
+                pressTo(0f, 0); popAt = android.os.SystemClock.uptimeMillis(); invalidate()
+                if (e.actionMasked == android.view.MotionEvent.ACTION_UP) performClick()
+                return true
+            }
+        }
+        return true
+    }
+
+    private fun pressTo(to: Float, ms: Long) {
+        pressAnim?.cancel()
+        if (ms == 0L) { press = to; invalidate(); return }
+        pressAnim = android.animation.ValueAnimator.ofFloat(press, to).apply { duration = ms; addUpdateListener { press = it.animatedValue as Float; invalidate() }; start() }
+    }
+
     override fun onDraw(cv: Canvas) {
         val k = width / 170f
         critter.squash = squash; critter.mini = mini
+        var sx = 1f; var sy = 1f
+        var rays = 0f; var wake = false
+        if (press > 0f) { sy -= .34f * press; sx += .10f * press }
+        if (popAt != 0L) {
+            val t = (android.os.SystemClock.uptimeMillis() - popAt) / 1000f
+            if (t > 1.5f) popAt = 0L else {
+                // damped spring from the flattened shape, overshooting upwards
+                val spring = Math.exp(-5.0 * t).toFloat() * Math.cos(t * 16.0).toFloat()
+                sy += (-.34f * spring).coerceIn(-.34f, .22f); sx += (.10f * spring)
+                wake = t > .12f && t < 1.15f
+                if (t in .1f..0.75f) rays = Math.sin((t - .1f) / .65f * Math.PI).toFloat()
+                invalidate()
+            }
+        }
+        critter.awake = wake
         cv.save()
         cv.scale(k, k)
+        cv.scale(sx, sy, 85f, 118f)
         critter.draw(cv)
         cv.restore()
+        if (rays > 0f) {
+            // short sparks around the body, flying outwards
+            cv.save(); cv.scale(k, k)
+            rayPaint.color = Glass.white(.85f * rays); rayPaint.strokeWidth = 3.2f
+            for (i in 0 until 10) {
+                val a = Math.toRadians(i * 36.0 + 18.0)
+                val cx = 85f; val cy = 68f
+                val r0 = 1.10f + .08f * (1f - rays); val r1 = r0 + .12f + .05f * rays
+                val ex = Math.cos(a).toFloat() * 78f; val ey = Math.sin(a).toFloat() * 59f
+                cv.drawLine(cx + ex * r0, cy + ey * r0, cx + ex * r1, cy + ey * r1, rayPaint)
+            }
+            cv.restore()
+        }
     }
 }
 

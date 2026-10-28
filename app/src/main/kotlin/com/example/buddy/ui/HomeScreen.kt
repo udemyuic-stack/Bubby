@@ -59,7 +59,7 @@ class HomeScreen(act: UiActivity) : Screen(act) {
         val still = act.intent.getBooleanExtra("static", false)
         val sc = ctx.resources.displayMetrics.widthPixels / 390f
         val scene = DesignCanvas(ctx, 668).apply { clipChildren = false; clipToPadding = false }
-        val mascot = MochiView(ctx)
+        val mascot = MochiView(ctx).apply { pokeable = true }
         val nameV = ctx.text("Bubby", T.Headline, 0xFFF4F1EE.toInt()).apply {
             setTextSize(android.util.TypedValue.COMPLEX_UNIT_PX, 30f * sc); gravity = Gravity.CENTER
         }
@@ -96,9 +96,6 @@ class HomeScreen(act: UiActivity) : Screen(act) {
         petal(GlassKind.Active, if (running) R.drawable.tg_stop else R.drawable.tg_play, if (running) t("Остановить", "Stop", "To'xtatish") else t("Запустить", "Start", "Ishga tushirish"),
             264f, 379f, 116f, 106f, 12f, Glass.ON_ACTIVE, 13, true) { toggle() }
         scene.alpha = if (busy) 0.7f else 1f
-        mascot.setOnClickListener {
-            if (!still) android.animation.ValueAnimator.ofFloat(0f, 1f, 0f).apply { duration = 260; addUpdateListener { mascot.squash = it.animatedValue as Float } }.start()
-        }
         c.add(scene)
 
         // ---- cards ----

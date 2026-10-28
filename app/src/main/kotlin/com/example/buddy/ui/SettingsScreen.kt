@@ -183,6 +183,15 @@ class SettingsScreen(act: UiActivity) : Screen(act) {
                 t("Bubby читает экран только для задачи, на которую вы ответили «Да» (или когда вы сами просите посмотреть, нажать, прочитать). Платёжные и банковские экраны не читаются никогда",
                     "Bubby reads the screen only for a task you said “Yes” to (or when you ask him to look, tap or read). Payment and banking screens are never read",
                     "Bubby ekranni faqat siz «Ha» degan vazifa uchun o'qiydi (yoki o'zingiz qarash, bosish, o'qishni so'ragan paytda). To'lov va bank ekranlari hech qachon o'qilmaydi")))
+            add(sw(t("Умные инструменты ИИ", "Smart AI tools", "Aqlli AI vositalari"), "native_tools", true,
+                t("Для задач в несколько шагов Bubby пользуется вызовом инструментов ИИ; выключите, если ваш ИИ-сервер работает с ошибками (тогда остаётся простой режим)",
+                    "For multi-step tasks Bubby uses the AI's tool calling; turn it off if your AI server misbehaves (the simple mode stays)",
+                    "Ko'p bosqichli vazifalarda Bubby AI vositalarini chaqiradi; AI serveringiz xato ishlasa o'chiring (oddiy rejim qoladi)")))
+            add(ctx.switchRow(t("Разрешить Bubby читать SMS", "Let Bubby read SMS", "Bubby SMS o'qishiga ruxsat"),
+                t("Только по вашей просьбе и только последние сообщения; коды и банковские SMS скрыты. Текст уходит выбранному ИИ-сервису",
+                    "Only when you ask, only the latest messages; codes and bank SMS are hidden. The text goes to your chosen AI service",
+                    "Faqat so'raganingizda va faqat so'nggi xabarlar; kodlar va bank SMS'lari yashiriladi. Matn tanlangan AI xizmatiga yuboriladi"),
+                Backend.bool(ctx, "sms_read", false)) { on -> Backend.setBool(ctx, "sms_read", on); if (on) Backend.requestPermissions(act, "smsRead") })
             add(sw(t("Реагировать на зарядку и наушники", "React to charging and headphones", "Zaryadka va quloqchinga munosabat bildirish"), "device_reactions", true))
             add(sw(t("Стикеры при реакциях", "Stickers on reactions", "Reaksiyalarda stiklerlar"), "stickers_on_events", true))
             add(sw(t("Отвечать стикерами", "Reply with stickers", "Stikerlar bilan javob berish"), "sticker_auto", true))

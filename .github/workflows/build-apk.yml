@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     tags: ['v*']
-    branches: [claude/zen-thompson-qfzrjr, main]
+    branches: [claude/zen-thompson-qfzrjr, claude/phone-agent, main]
 
 jobs:
   build:
@@ -36,7 +36,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        screen: [home, tasks, calendar, settings, more, ai, setup, outfits, music, agents, agents-demo, fun, permissions]
+        screen: [home, tasks, calendar, settings, more, ai, setup, outfits, music, agents, agents-demo, fun, permissions, runs]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/download-artifact@v4

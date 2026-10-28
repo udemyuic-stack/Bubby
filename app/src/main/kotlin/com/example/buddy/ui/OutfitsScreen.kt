@@ -83,7 +83,7 @@ class OutfitsScreen(act: UiActivity) : Screen(act) {
     )
 
     private fun animals() = listOf(
-        "glass" to t("Стекло (как в теме)", "Glass (follows the look)", "Shisha (mavzuga mos)"), "cat" to t("Кот", "Cat", "Mushuk"), "dog" to t("Пёс", "Dog", "It"), "bunny" to t("Зайчик", "Bunny", "Quyon"),
+        "glass" to t("Стекло (как в теме)", "Glass (follows the look)", "Shisha (mavzuga mos)"), "cube" to t("Куб", "Cube", "Kub"), "cat" to t("Кот", "Cat", "Mushuk"), "dog" to t("Пёс", "Dog", "It"), "bunny" to t("Зайчик", "Bunny", "Quyon"),
         "bear" to t("Мишка", "Bear", "Ayiq"), "panda" to t("Панда", "Panda", "Panda"), "fox" to t("Лис", "Fox", "Tulki"),
         "frog" to t("Лягушонок", "Frog", "Qurbaqa"), "penguin" to t("Пингвин", "Penguin", "Pingvin"), "capybara" to t("Капибара", "Capybara", "Kapibara"),
         "hamster" to t("Хомяк", "Hamster", "Xomyak"), "owl" to t("Сова", "Owl", "Boyqush"), "duck" to t("Утёнок", "Duck", "O'rdak"),

@@ -112,11 +112,11 @@ object Moods {
 }
 
 object Species {
-    val ALL: List<String> = listOf("glass", "cat", "dog", "bunny", "bear", "panda", "fox", "frog", "penguin",
+    val ALL: List<String> = listOf("glass", "cube", "cat", "dog", "bunny", "bear", "panda", "fox", "frog", "penguin",
         "capybara", "hamster", "owl", "duck", "pig", "koala", "lion", "tiger")
 
     val LABELS: Map<String, String> = mapOf(
-        "glass" to "Стекло", "cat" to "Кот", "dog" to "Пёс", "bunny" to "Зайчик", "bear" to "Мишка",
+        "glass" to "Стекло", "cube" to "Куб", "cat" to "Кот", "dog" to "Пёс", "bunny" to "Зайчик", "bear" to "Мишка",
         "panda" to "Панда", "fox" to "Лис", "frog" to "Лягушонок", "penguin" to "Пингвин",
         "capybara" to "Капибара", "hamster" to "Хомяк", "owl" to "Сова", "duck" to "Утёнок",
         "pig" to "Поросёнок", "koala" to "Коала", "lion" to "Лев", "tiger" to "Тигр"
@@ -1226,6 +1226,84 @@ class BuddyView(c: Context) : View(c) {
         }
     }
 
+    private var cubeBody: Int = -1
+    private var cubeShader: Shader? = null
+    private val cubeRim = Paint(Paint.ANTI_ALIAS_FLAG)
+
+    /**
+     * The white "cube" mascot: a soft white rounded square with two dark eyes. Its state shows on the face (thinking dots,
+     * spiral eyes when dizzy, a red tint when angry...) so it is readable at a glance, also in the status bar.
+     */
+    private fun drawCube(cv: Canvas, em: String, blink: Boolean, sleepy: Boolean, t: Float) {
+        val tint = when (em) {
+            "dizzy", "love", "shy", "pet" -> 0xFFFFC3DA.toInt()
+            "angry", "offended" -> 0xFFFFB3AE.toInt()
+            "scared", "think", "listen" -> 0xFFDCE8FF.toInt()
+            "crying", "sad", "worried" -> 0xFFD8E4F4.toInt()
+            else -> 0xFFFFFFFF.toInt()
+        }
+        val ink = 0xFF1A1F2C.toInt()
+        // soft shadow under the body and the white body itself
+        fill(0x26000000); r.set(-36f, -9f, 36f, -1f); cv.drawOval(r, p)
+        r.set(-42f, -66f, 42f, -6f)
+        if (cubeBody != tint) {
+            cubeBody = tint
+            cubeShader = LinearGradient(0f, -66f, 0f, -6f, intArrayOf(tint, mix(tint, 0xFFC9D4E6.toInt(), 0.45f)), null, Shader.TileMode.CLAMP)
+        }
+        p.shader = cubeShader; p.style = Paint.Style.FILL; p.color = 0xFFFFFFFF.toInt()
+        cv.drawRoundRect(r, 24f, 24f, p)
+        p.shader = null
+        cubeRim.style = Paint.Style.STROKE; cubeRim.strokeWidth = 1.2f; cubeRim.color = 0x33566A8C
+        cv.drawRoundRect(r, 24f, 24f, cubeRim)
+        // glossy highlight, top left
+        fill(0x66FFFFFF); r.set(-30f, -62f, -4f, -53f); cv.drawOval(r, p)
+
+        cv.save(); cv.translate(eyeDx * 0.9f, eyeDy * 0.7f)
+        val y = -35f
+        fun bar(x: Float, w: Float, h: Float) { fill(ink); r.set(x - w / 2, y - h / 2, x + w / 2, y + h / 2); cv.drawRoundRect(r, w / 2.2f, w / 2.2f, p) }
+        fun arc(x: Float, up: Boolean) {
+            line(ink, 3.4f); path.reset(); path.moveTo(x - 7f, y + (if (up) 4f else -4f))
+            path.quadTo(x, y + (if (up) -9f else 9f), x + 7f, y + (if (up) 4f else -4f)); cv.drawPath(path, p)
+        }
+        fun dash(x: Float, w: Float = 14f) { line(ink, 3.4f); cv.drawLine(x - w / 2, y, x + w / 2, y, p) }
+        for (i in 0..1) {
+            val x = if (i == 0) -17f else 17f
+            when {
+                blink -> dash(x)
+                sleepy -> dash(x, 12f)
+                em == "happy" || em == "laugh" || em == "dance" || em == "proud" || em == "pet" -> arc(x, true)
+                em == "wink" -> if (i == 1) dash(x) else bar(x, 8f, 13f)
+                em == "dizzy" -> { line(ink, 1.6f); spiral(cv, x, y, 7.5f, t * 8f) }
+                em == "love" -> { fill(0xFFFF4F86.toInt()); heart(cv, x, y, 5f + sin(t * 8f) * 0.6f) }
+                em == "excited" -> { fill(0xFFFFC83D.toInt()); star(cv, x, y, 8f + sin(t * 10f), t * 2f) }
+                em == "cool" -> if (i == 0) { fill(ink); r.set(-27f, y - 6f, 27f, y + 6f); cv.drawRoundRect(r, 4f, 4f, p) }
+                em == "angry" || em == "offended" -> { bar(x, 8f, 11f); line(0xFFD2443E.toInt(), 3f); cv.drawLine(x - 8f * (if (i == 0) 1 else -1), y - 11f, x + 6f * (if (i == 0) 1 else -1), y - 7f, p) }
+                em == "surprised" || em == "scared" -> { bar(x, 10f, 16f); fill(0xFFFFFFFF.toInt()); cv.drawCircle(x - 1.5f, y - 4f, 1.8f, p) }
+                em == "sad" || em == "crying" || em == "worried" -> {
+                    bar(x, 8f, 12f); line(ink, 2.6f)
+                    cv.drawLine(x - 8f * (if (i == 0) 1 else -1), y - 9f, x + 6f * (if (i == 0) 1 else -1), y - 12f, p)
+                }
+                em == "curious" || em == "confused" -> bar(x, 8f, if (i == 0) 16f else 10f)
+                em == "listen" -> bar(x, 9f, 16f)
+                em == "think" -> { cv.save(); cv.translate(-3f, -3f); bar(x, 8f, 13f); cv.restore() }
+                em == "smug" -> { fill(ink); r.set(x - 7f, y - 1f, x + 7f, y + 3f); cv.drawRoundRect(r, 2f, 2f, p) }
+                else -> bar(x, 8f, 13f)
+            }
+        }
+        cv.restore()
+        // tears, the thinking bubble and a mouth when speaking
+        if (em == "crying" || em == "sad") { fill(0xFF6CB4F5.toInt()); cv.drawCircle(-24f, -26f + (t * 9f) % 10f, 2.2f, p) }
+        if (em == "think") {
+            fill(0xFF4C8DFF.toInt()); r.set(-44f, -78f, -16f, -64f); cv.drawRoundRect(r, 7f, 7f, p)
+            for (k in 0..2) { p.color = Color.argb((255 * (0.45f + 0.55f * abs(sin(t * 4f - k)))).toInt(), 255, 255, 255); cv.drawCircle(-37f + k * 7f, -71f, 2f, p) }
+        }
+        if (em == "excited" || em == "dance") { fill(0xFFFFC83D.toInt()); sparkle(cv, 36f, -64f, 2.5f + 2f * abs(sin(t * 7f))) }
+        if (spkEnv > 0.02f) {
+            val o = syll(t) * spkEnv
+            fill(ink); r.set(-4f - 2f * o, -22f, 4f + 2f * o, -22f + 3f + 8f * o); cv.drawRoundRect(r, 4f, 4f, p)
+        } else if (em == "laugh") { fill(ink); r.set(-6f, -24f, 6f, -14f); cv.drawArc(r, 0f, 180f, true, p) }
+    }
+
     private var critter: GlassCritter? = null
     private val spot = Paint(Paint.ANTI_ALIAS_FLAG)
     private var spotFor = 0
@@ -1416,7 +1494,10 @@ class BuddyView(c: Context) : View(c) {
 
         Outfits.drawBack(cv, p, outfit, em, t)
         val glassSp = species == "glass"
-        if (glassSp) drawGlass(cv, sleepEyes || dozeK > 0.3f || em == "sleepy" || em == "tired", mk == 1 || entBlink) else {
+        val sleepy = sleepEyes || dozeK > 0.3f || em == "sleepy" || em == "tired"
+        if (glassSp) drawGlass(cv, sleepy, mk == 1 || entBlink)
+        else if (species == "cube") drawCube(cv, em, mk == 1 || entBlink, sleepy, t)
+        else {
         drawHead(cv, body, face)
 
         val ch = when (em) { "offended" -> 8f; "love" -> 6f; "shy" -> 7.5f; "pet" -> 5f + 5f * petK; else -> 4.5f }

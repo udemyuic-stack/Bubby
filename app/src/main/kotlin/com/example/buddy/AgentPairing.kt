@@ -139,7 +139,7 @@ object AgentPairing {
                     if (!TOKEN_RE.matches(token)) Result(null, "protocol")
                     else Result(ParsedLink(host, port, fpSeen, token, j.optString("name").filter { !it.isISOControl() }.trim().take(64).ifEmpty { nameHint }), null)
                 }
-                "error" -> Result(null, when (j.optString("error")) { "bad_code" -> "bad_code"; "slow_down" -> "slow_down"; else -> "protocol" })
+                "error" -> Result(null, when (j.optString("error")) { "bad_code" -> "bad_code"; "slow_down" -> "slow_down"; "not_pairing" -> "not_pairing"; else -> "protocol" })
                 else -> Result(null, "protocol")
             }
         } catch (e: java.net.SocketTimeoutException) {

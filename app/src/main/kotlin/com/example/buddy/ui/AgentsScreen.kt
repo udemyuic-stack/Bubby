@@ -95,6 +95,7 @@ class AgentsScreen(act: UiActivity) : Screen(act) {
     private fun failText(code: String?) = when (code) {
         "bad_code" -> t("Код не подошёл. На компьютере появился новый — введите его", "That code did not work. The computer shows a new one: type it", "Kod mos kelmadi. Kompyuterda yangisi chiqdi: shuni kiriting")
         "slow_down" -> t("Слишком много попыток, подождите минуту", "Too many tries, wait a minute", "Urinishlar ko'p, bir daqiqa kuting")
+        "not_pairing" -> t("Этот компьютер уже связан с телефоном. Запустите на нём мост с ключом --new-pairing", "This computer is already paired with a phone. Run the bridge with --new-pairing", "Bu kompyuter telefon bilan ulangan. Ko'prikni --new-pairing bilan ishga tushiring")
         "fingerprint" -> t("Это не тот компьютер (сертификат другой)", "This is not that computer (different certificate)", "Bu o'sha kompyuter emas (sertifikat boshqa)")
         "network" -> t("Не удалось связаться. Телефон и компьютер в одной сети?", "Could not reach it. Are the phone and the computer on the same network?", "Ulanib bo'lmadi. Telefon va kompyuter bitta tarmoqdami?")
         else -> t("Не получилось подключиться", "Could not connect", "Ulanib bo'lmadi")
@@ -179,7 +180,7 @@ class AgentsScreen(act: UiActivity) : Screen(act) {
         c.add(ctx.card(pad = 18, fill = P.accentContainer(java.util.Calendar.getInstance().get(java.util.Calendar.HOUR_OF_DAY), 0), stroke = 0, radius = 28f) {
             add(ctx.row {
                 add(BuddyView(ctx).apply {
-                    scaleF = 1.25f
+                    scaleF = 0.75f
                     species = Backend.str(ctx, "species", "cat")
                     outfit = Outfits.parse(Backend.str(ctx, "outfit", ""))
                     mood = AgentWidgets.mascotMood(st)
@@ -188,7 +189,7 @@ class AgentsScreen(act: UiActivity) : Screen(act) {
                 add(ctx.col {
                     add(ctx.row {
                         add(View(ctx).apply { background = ctx.rounded(color, 6f) }, ctx.dp(11), ctx.dp(11), end = 8)
-                        add(ctx.text(AgentWidgets.title(ctx, st), T.Headline).apply { textSize = 24f }, WRAP, WRAP)
+                        add(ctx.text(AgentWidgets.title(ctx, st), T.Headline).apply { textSize = 21f }, 0, WRAP, 1f)
                     })
                     add(ctx.text(s.desktop.ifEmpty { t("Компьютер", "Computer", "Kompyuter") } + if (s.connected) "" else " · " + t("нет связи", "offline", "aloqa yo'q"), T.Body), MATCH, WRAP, top = 4)
                     val busy = s.sessions.count { it.state in setOf("working", "thinking", "searching") }

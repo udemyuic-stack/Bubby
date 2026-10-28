@@ -56,7 +56,9 @@ object Backend {
             "exactAlarm" to com.example.buddy.Reminders.canExact(act),
             "notifListener" to (Settings.Secure.getString(act.contentResolver, "enabled_notification_listeners") ?: "").contains(act.packageName),
             "dnd" to (act.getSystemService(Context.NOTIFICATION_SERVICE) as android.app.NotificationManager).isNotificationPolicyAccessGranted,
-            "writeSettings" to Settings.System.canWrite(act)
+            "writeSettings" to Settings.System.canWrite(act),
+            "smsRead" to granted(act, Manifest.permission.READ_SMS),
+            "files" to granted(act, if (Build.VERSION.SDK_INT >= 33) Manifest.permission.READ_MEDIA_IMAGES else Manifest.permission.READ_EXTERNAL_STORAGE)
         )
     }
 
@@ -73,6 +75,8 @@ object Backend {
             "contacts" -> listOf(Manifest.permission.READ_CONTACTS)
             "location" -> listOf(Manifest.permission.ACCESS_COARSE_LOCATION)
             "sms" -> listOf(Manifest.permission.SEND_SMS)
+            "smsRead" -> listOf(Manifest.permission.READ_SMS)
+            "files" -> listOf(if (Build.VERSION.SDK_INT >= 33) Manifest.permission.READ_MEDIA_IMAGES else Manifest.permission.READ_EXTERNAL_STORAGE)
             "calendar" -> listOf(Manifest.permission.READ_CALENDAR, Manifest.permission.WRITE_CALENDAR)
             "notifications" -> if (Build.VERSION.SDK_INT >= 33) listOf(Manifest.permission.POST_NOTIFICATIONS) else emptyList()
             else -> null

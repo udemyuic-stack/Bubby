@@ -502,7 +502,7 @@ fun agentsV3() {
 }
 
 fun main() {
-    quick(); contacts(); apps(); mathTools(); comms(); groq(); pairing(); agentsV3(); if (System.getenv("PROBE") != null) probe()
+    quick(); contacts(); apps(); mathTools(); comms(); groq(); pairing(); agentsV3(); agentTests(); if (System.getenv("PROBE") != null) probe()
     println("RESULT: $pass passed, $fail failed (${pass + fail} assertions)")
     if (fail > 0) System.exit(1)
 }

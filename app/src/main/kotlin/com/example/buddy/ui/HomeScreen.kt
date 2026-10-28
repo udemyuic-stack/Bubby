@@ -151,6 +151,24 @@ class HomeScreen(act: UiActivity) : Screen(act) {
             }, MATCH, WRAP, top = 16, start = 16, end = 16)
         }
 
+        // ---- the last task Bubby did on the phone ----
+        com.example.buddy.RunHistory.load(ctx).firstOrNull()?.let { r ->
+            c.add(ctx.card(onClick = { act.open("runs") }) {
+                add(ctx.row {
+                    add(ctx.icon(R.drawable.ic_schedule, P.primary, 26), WRAP, WRAP, end = 12)
+                    add(ctx.col {
+                        add(ctx.text(t("Последняя задача: ", "Last task: ", "Oxirgi vazifa: ") + r.task.take(60), T.Label).apply { maxLines = 2 }, MATCH, WRAP)
+                        val res = when (r.outcome) {
+                            "done" -> t("готово", "done", "bajarildi"); "cancelled" -> t("остановлено", "stopped", "to'xtatildi")
+                            "stuck" -> t("застрял", "got stuck", "tiqilib qoldi"); else -> t("слишком долго", "took too long", "juda uzoq")
+                        }
+                        add(ctx.text(t("шагов: ", "steps: ", "qadamlar: ") + r.steps.size + "  ·  " + res + "  ·  " + t("посмотреть, что сделал Bubby", "see what Bubby did", "Bubby nima qilganini ko'rish"), T.Small), MATCH, WRAP, top = 2)
+                    }, 0, WRAP, 1f)
+                    add(ctx.icon(R.drawable.ic_chevron_right, P.onSurfaceVariant, 22), WRAP, WRAP)
+                })
+            }, MATCH, WRAP, top = 16, start = 16, end = 16)
+        }
+
         // ---- agents on the computer (only when a computer is paired) ----
         if (com.example.buddy.PairingStore(ctx).isPaired()) {
             val st = com.example.buddy.AgentWidgets.overall()

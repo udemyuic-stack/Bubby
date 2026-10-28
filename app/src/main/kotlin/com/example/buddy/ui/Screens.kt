@@ -10,6 +10,7 @@ object Screens {
         "music" -> MusicScreen(act)
         "fun" -> FunScreen(act)
         "agents" -> AgentsScreen(act)
+        "runs" -> RunsScreen(act)
         else -> null
     }
 }

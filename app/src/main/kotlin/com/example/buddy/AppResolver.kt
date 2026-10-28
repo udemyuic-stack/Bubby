@@ -202,7 +202,7 @@ object AppResolver {
         return 0
     }
 
-    private fun apps(ctx: Context): List<AppEntry> {
+    internal fun apps(ctx: Context): List<AppEntry> {
         val pm = ctx.packageManager
         val count = try { pm.getInstalledPackages(0).size } catch (e: Exception) { -1 }
         val now = System.currentTimeMillis()

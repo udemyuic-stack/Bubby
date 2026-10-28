@@ -52,6 +52,7 @@ class MoreScreen(act: UiActivity) : Screen(act) {
             press { Backend.openSettings(act, "battery") }
         }, MATCH, WRAP)
 
+        c.add(ctx.linkRow(t("Что сделал Bubby", "What Bubby did", "Bubby nima qildi"), t("Шаги последних задач на телефоне", "Steps of the latest tasks on the phone", "Telefondagi so'nggi vazifalar qadamlari"), R.drawable.ic_schedule, P.primary) { act.open("runs") }, MATCH, WRAP, top = 4)
         if (!paired) c.add(ctx.linkRow(t("Для разработчиков: агенты (Claude Code)", "For developers: agents (Claude Code)", "Dasturchilar uchun: agentlar (Claude Code)"), null, R.drawable.ic_bolt, P.violet) { act.open("agents") }, MATCH, WRAP, top = 4)
 
         c.add(ctx.card(pad = 16) {

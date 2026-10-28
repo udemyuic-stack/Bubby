@@ -215,7 +215,7 @@ class Actions(private val ctx: Context) {
             }
             "move" -> {
                 val w = s(a, "where").lowercase()
-                if (w !in setOf("top", "bottom", "left", "right", "center", "bottom_left", "bottom_right", "top_left", "top_right", "status_left", "status_right")) tr("Не понял, куда", "Did not understand where", "Qayerga ekanini tushunmadim")
+                if (w !in setOf("top", "bottom", "left", "right", "center", "bottom_left", "bottom_right", "top_left", "top_right", "status_left", "status_right", "status_center")) tr("Не понял, куда", "Did not understand where", "Qayerga ekanini tushunmadim")
                 else { prefs.edit().putString("dock", w + ":" + System.currentTimeMillis()).apply(); null }
             }
             "quiet" -> {

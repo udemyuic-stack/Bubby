@@ -224,6 +224,8 @@ class BuddyAccess : AccessibilityService() {
         /** SystemClock.uptimeMillis() of the last window state/content change in another app. */
         @Volatile var lastEventMs: Long = 0L
         val enabled: Boolean get() = inst != null
+        /** The window manager for accessibility overlays (they are layered above the status bar), or null when the service is off. */
+        fun windowManager(): android.view.WindowManager? = try { inst?.getSystemService(android.content.Context.WINDOW_SERVICE) as? android.view.WindowManager } catch (_: Exception) { null }
 
         fun global(action: Int): Boolean = try { inst?.performGlobalAction(action) ?: false } catch (_: Exception) { false }
         fun swipe(dir: String): Boolean = try { inst?.doSwipe(dir) ?: false } catch (_: Exception) { false }

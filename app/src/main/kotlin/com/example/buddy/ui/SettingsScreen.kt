@@ -201,9 +201,17 @@ class SettingsScreen(act: UiActivity) : Screen(act) {
             val place = Backend.str(ctx, "status_dock")
             add(chips(listOf(
                 "status_right" to t("Справа, у батареи", "Right, by the battery", "O'ngda, batareya yonida"),
+                "status_center" to t("По центру, «остров»", "Centre, like an island", "O'rtada, «orol» kabi"),
                 "status_left" to t("Слева, у часов", "Left, by the clock", "Chapda, soat yonida"),
                 "top_right" to t("Обычное место", "Normal spot", "Oddiy joy")),
-                if (place.startsWith("status_")) place else "top_right") { Backend.dockTo(ctx, it) })
+                if (place.startsWith("status_")) place else "top_right") {
+                Backend.dockTo(ctx, it)
+                if (it.startsWith("status_") && !com.example.buddy.BuddyAccess.enabled) ctx.toast(t("Чтобы Bubby реагировал на нажатия в строке состояния, включите «Управление экраном голосом» в разрешениях",
+                    "For taps in the status bar, turn on “Control the screen by voice” in Permissions", "Holat qatorida bosish ishlashi uchun Ruxsatlarda «Ekranni ovoz bilan boshqarish»ni yoqing"))
+            })
+            add(ctx.text(t("В строке состояния нужна служба доступности: без неё Bubby там виден, но нажать на него нельзя",
+                "The status bar needs the accessibility service: without it Bubby shows there but cannot be tapped",
+                "Holat qatorida maxsus imkoniyatlar xizmati kerak: usiz Bubby u yerda ko'rinadi, lekin bosib bo'lmaydi"), T.Small), MATCH, WRAP, bottom = 6)
             add(sw(t("Значок состояния", "Status badge", "Holat belgisi"), "badge", true,
                 t("Маленький значок на голове: думает, слушает, ждёт подтверждения, лимит, ошибка, готово",
                     "A small badge on the head: thinking, listening, waiting for approval, limit, error, done",

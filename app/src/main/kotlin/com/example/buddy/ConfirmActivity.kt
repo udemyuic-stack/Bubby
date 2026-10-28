@@ -18,7 +18,9 @@ class ConfirmActivity : Activity() {
             done(false)
             return
         }
-        val i = km.createConfirmDeviceCredentialIntent(Tr.t(this, "Подтвердите разрешение", "Confirm permission", "Ruxsatni tasdiqlang"), Tr.t(this, "Разрешить агенту выполнить команду?", "Allow the agent to run this command?", "Agent buyruqni bajarishiga ruxsat berasizmi?"))
+        val title = intent.getStringExtra("title") ?: Tr.t(this, "Подтвердите разрешение", "Confirm permission", "Ruxsatni tasdiqlang")
+        val desc = intent.getStringExtra("desc") ?: Tr.t(this, "Разрешить агенту выполнить команду?", "Allow the agent to run this command?", "Agent buyruqni bajarishiga ruxsat berasizmi?")
+        val i = km.createConfirmDeviceCredentialIntent(title, desc)
         if (i == null) {
             done(false)
             return
@@ -62,9 +64,20 @@ class ConfirmActivity : Activity() {
         /** Set before starting the activity; called once on the main thread with true only if the user confirmed. */
         var callback: ((Boolean) -> Unit)? = null
 
-        fun request(ctx: Context, cb: (Boolean) -> Unit) {
+        fun request(ctx: Context, cb: (Boolean) -> Unit) = request(ctx, null, null, cb)
+
+        /** Same, with the words the lock screen shows (null keeps "Confirm permission"). */
+        fun request(ctx: Context, title: String?, desc: String?, cb: (Boolean) -> Unit) {
             callback = cb
-            ctx.startActivity(Intent(ctx, ConfirmActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+            val i = Intent(ctx, ConfirmActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            if (title != null) i.putExtra("title", title)
+            if (desc != null) i.putExtra("desc", desc)
+            ctx.startActivity(i)
         }
+
+        /** The lock screen words before an answer to Claude Code's question leaves the phone. */
+        fun requestAnswer(ctx: Context, cb: (Boolean) -> Unit) = request(ctx,
+            Tr.t(ctx, "Подтвердите ответ", "Confirm the answer", "Javobni tasdiqlang"),
+            Tr.t(ctx, "Отправить ответ на вопрос Claude?", "Send your answer to Claude's question?", "Claude savoliga javobni yuborasizmi?"), cb)
     }
 }

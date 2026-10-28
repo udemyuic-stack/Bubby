@@ -122,6 +122,9 @@ class BuddyService : Service() {
     private lateinit var approvalHolder: LinearLayout
     private var agentLink: AgentLink? = null
     private val approvals = ArrayList<Approval>()
+    private val questions = ArrayList<AgentQuestion>()
+    /** An approval or a question from the agents waits for the user: the island stays open for it. */
+    private fun waiting() = approvals.isNotEmpty() || questions.isNotEmpty()
     private var holdAnim: ValueAnimator? = null
     private var tapPending: Runnable? = null
     private var hueBase = 0xFF7A6BC4.toInt()
@@ -152,15 +155,16 @@ class BuddyService : Service() {
                     screenOn = true; applyPalette(); buddy.calm = calm()   // the minute clock skips the visuals while the screen is off
                     buddy.setActive(true); hotKick(); tiltStart(); fsPollRestart()
                 }
-                Intent.ACTION_USER_PRESENT -> checkReturn()
+                Intent.ACTION_USER_PRESENT -> { checkReturn(); if (approvals.isEmpty() && questions.isNotEmpty()) showApproval(announce = false) }
             }
         }
     }
-    private val closeTask = Runnable { if (!busy && !calling && approvals.isEmpty() && !choiceActive && !replying) collapse() }
+    private val closeTask = Runnable { if (!busy && !calling && !waiting() && !choiceActive && !replying) collapse() }
 
     private val agentListener = object : AgentLink.Listener {
         override fun onStatus(connected: Boolean, desktop: String?) {
             agentConnected = connected; agentDesktop = desktop
+            agentCaps = if (connected) agentLink?.caps ?: emptySet() else emptySet()
             AgentStats.refreshWidgets(this@BuddyService)
         }
         override fun onSessions(list: List<AgentSession>) { agentSessions = list; AgentStats.refreshWidgets(this@BuddyService) }
@@ -172,9 +176,16 @@ class BuddyService : Service() {
         }
         override fun onApprovalResolved(fp: String) {
             approvals.removeAll { it.fingerprint == fp }
+            questions.removeAll { it.fingerprint == fp }
             publishApprovals()
             showApproval(announce = false)
         }
+        override fun onQuestion(q: AgentQuestion) {
+            if (questions.none { it.fingerprint == q.fingerprint }) questions.add(q)
+            publishApprovals()
+            showApproval(announce = true)
+        }
+        override fun onDiff(d: DiffPart) { agentDiffSink?.invoke(d) }
     }
 
     private lateinit var chipsScroll: HorizontalScrollView
@@ -207,6 +218,15 @@ class BuddyService : Service() {
         @Volatile var agentUsage: Usage? = null
         /** Requests waiting for an answer (the app's agents page lists them; answers go back through ACTION_AGENT_DECIDE). */
         @Volatile var agentApprovals: List<Approval> = emptyList()
+        /** Questions from Claude Code waiting for an answer (answers go back through ACTION_AGENT_ANSWER). */
+        @Volatile var agentQuestions: List<AgentQuestion> = emptyList()
+        /** What the connected bridge offered (`details`, `answers`, `diffs`); empty for an older bridge or offline. */
+        @Volatile var agentCaps: Set<String> = emptySet()
+        /** The open diff sheet: gets each part asked for with ACTION_AGENT_GET_DIFF, or null when it could not be asked. */
+        @Volatile var agentDiffSink: ((DiffPart?) -> Unit)? = null
+        const val ACTION_AGENT_ANSWER = "com.example.buddy.AGENT_ANSWER"
+        const val ACTION_AGENT_LATER = "com.example.buddy.AGENT_LATER"
+        const val ACTION_AGENT_GET_DIFF = "com.example.buddy.AGENT_GET_DIFF"
         const val ACTION_ASK = "com.example.buddy.ASK"
         const val ACTION_TOGGLE_QUIET = "com.example.buddy.TOGGLE_QUIET"
         const val ACTION_AGENT_RELOAD = "com.example.buddy.AGENT_RELOAD"
@@ -310,6 +330,20 @@ class BuddyService : Service() {
             Reminders.ACTION_SPEAK -> remind(i.getStringExtra("text").orEmpty())
             ACTION_AGENT_RELOAD -> startAgentLink()
             ACTION_AGENT_DECIDE -> i.getStringExtra("fp")?.let { fp -> agentLink?.decide(fp, i.getBooleanExtra("allow", false)); resolveLocal(fp) }
+            // the app asked for the screen lock already; picks is a JSON list of label lists, checked again by AgentLink
+            ACTION_AGENT_ANSWER -> i.getStringExtra("fp")?.let { fp ->
+                val picks = try {
+                    val a = org.json.JSONArray(i.getStringExtra("picks").orEmpty())
+                    List(a.length()) { k -> a.getJSONArray(k).let { l -> List(l.length()) { l.getString(it) } } }
+                } catch (_: Exception) { null }
+                if (picks != null && agentLink?.answer(fp, picks) == true) resolveLocal(fp)
+            }
+            ACTION_AGENT_LATER -> i.getStringExtra("fp")?.let { resolveLocal(it) }
+            ACTION_AGENT_GET_DIFF -> {
+                val pill = i.getStringExtra("pill").orEmpty(); val id = i.getStringExtra("file").orEmpty()
+                val file = agentSessions.firstOrNull { it.pillId == pill }?.files?.firstOrNull { it.id == id }
+                if (file == null || agentLink?.getDiff(pill, file) != true) agentDiffSink?.invoke(null)
+            }
             ACTION_LISTEN -> if (!busy && !calling) {
                 cancelTap(); voice.stopSpeaking(); touched()
                 if (voiceOn()) startVoice()
@@ -493,7 +527,7 @@ class BuddyService : Service() {
         e.apply()
     }
 
-    private fun calm() = !expanded && prog < 0.02f && !busy && !calling && approvals.isEmpty() && screenOn
+    private fun calm() = !expanded && prog < 0.02f && !busy && !calling && !waiting() && screenOn
 
     /** Returns true (and greets) when the user comes back after more than 3 hours without touching the mascot. */
     private fun checkReturn(): Boolean {
@@ -741,7 +775,7 @@ class BuddyService : Service() {
             addView(chipsScroll, LinearLayout.LayoutParams(-1, -2).apply { topMargin = dp(8) })
             addView(approvalHolder, LinearLayout.LayoutParams(-1, -2).apply { topMargin = dp(8) })
             elevation = 0f   // collapsed: the mascot floats freely, no box and no square shadow around its head
-            canPet = { !expanded && prog < 0.05f && !busy && !calling && approvals.isEmpty() }
+            canPet = { !expanded && prog < 0.05f && !busy && !calling && !waiting() }
             onPet = { petMascot() }
             // eyes follow the finger while it touches the mascot; coordinates are converted into the mascot's own space
             onTouchAt = { x, y ->
@@ -1207,8 +1241,8 @@ class BuddyService : Service() {
 
     private fun startAgentLink() {
         agentLink?.stop(); agentLink = null
-        approvals.clear(); showApproval(announce = false)
-        agentConnected = false; agentDesktop = null; agentSessions = emptyList(); AgentStats.refreshWidgets(this)
+        approvals.clear(); questions.clear(); publishApprovals(); showApproval(announce = false)
+        agentConnected = false; agentDesktop = null; agentSessions = emptyList(); agentCaps = emptySet(); AgentStats.refreshWidgets(this)
         if (PairingStore(this).load() == null) return
         agentLink = AgentLink(this, agentListener).also { it.start() }
     }
@@ -1216,6 +1250,7 @@ class BuddyService : Service() {
     private fun showApproval(announce: Boolean) {
         approvalHolder.removeAllViews()
         val a = approvals.firstOrNull()
+        if (a == null && questions.isNotEmpty()) { showQuestion(questions.first(), announce); return }
         if (a == null) {
             approvalHolder.visibility = View.GONE
             if (!busy && !calling && !listeningNow()) h.postDelayed(closeTask, 1500)
@@ -1240,9 +1275,39 @@ class BuddyService : Service() {
         focusable(false)
     }
 
-    private fun resolveLocal(fp: String) { approvals.removeAll { it.fingerprint == fp }; publishApprovals(); showApproval(announce = false) }
+    /** A question from Claude Code on the island: like an approval, the mascot is surprised, flashes and says so. */
+    private fun showQuestion(q: AgentQuestion, announce: Boolean) {
+        h.removeCallbacks(closeTask)
+        voice.stopListening()
+        val locked = getSystemService(KeyguardManager::class.java).isKeyguardLocked
+        style(true); status.text = t("У Claude вопрос", "Claude has a question", "Claude'da savol bor"); setMode("surprised"); setWave(WaveView.NONE)
+        hide(input); hide(answer)
+        approvalHolder.addView(QuestionCard.build(this, q, locked, onSend = { picks ->
+            ConfirmActivity.requestAnswer(this) { ok ->
+                if (ok && agentLink?.answer(q.fingerprint, picks) == true) resolveLocal(q.fingerprint)
+                else if (questions.any { it.fingerprint == q.fingerprint }) {
+                    showApproval(announce = false)   // a fresh card: the picks can be made again
+                    status.text = if (ok) t("Ответ не отправлен", "The answer was not sent", "Javob yuborilmadi") else t("Нужен экран блокировки", "Lock screen required", "Ekran qulfi kerak")
+                }
+            }
+        }, onLater = { resolveLocal(q.fingerprint) }))
+        approvalHolder.alpha = 1f; approvalHolder.visibility = View.VISIBLE
+        if (announce) {
+            flashBadge("approval", 6000L)
+            if (ttsOn() && !locked) {
+                val l = uiLang()
+                say(when (l) { "uz" -> "Claude'da savol bor"; "ru" -> "У Claude вопрос"; else -> "Claude has a question" }, l) {}
+            }
+        }
+        focusable(false)
+    }
 
-    private fun publishApprovals() { agentApprovals = approvals.toList(); AgentStats.refreshWidgets(this) }
+    private fun resolveLocal(fp: String) {
+        approvals.removeAll { it.fingerprint == fp }; questions.removeAll { it.fingerprint == fp }
+        publishApprovals(); showApproval(announce = false)
+    }
+
+    private fun publishApprovals() { agentApprovals = approvals.toList(); agentQuestions = questions.toList(); AgentStats.refreshWidgets(this) }
 
     private fun sListen() = t("Слушаю…", "Listening…", "Eshityapman…")
     private fun listeningNow() = status.text.toString() == sListen()
@@ -1284,7 +1349,7 @@ class BuddyService : Service() {
 
     private fun showCoach() {
         if (prefs.getBoolean("coach_done", false)) return
-        if (calling || busy || expanded || approvals.isNotEmpty()) { h.postDelayed({ showCoach() }, 15000); return }
+        if (calling || busy || expanded || waiting()) { h.postDelayed({ showCoach() }, 15000); return }
         prefs.edit().putBoolean("coach_done", true).apply()
         h.removeCallbacks(closeTask)
         style(true); status.text = t("Привет, я Bubby!", "Hi, I'm Bubby!", "Salom, men Bubby!"); setMode("excited"); setWave(WaveView.NONE)
@@ -1307,7 +1372,7 @@ class BuddyService : Service() {
         when {
             calling -> {}
             expanded && busy -> { touched(); cancelAsk() }
-            expanded -> { touched(); if (!busy && approvals.isEmpty() && pendingRun == null) collapse() }
+            expanded -> { touched(); if (!busy && !waiting() && pendingRun == null) collapse() }
             tapPending != null -> { cancelTap(); touched(); addAff(-3f); buddy.spinHead() }
             else -> {
                 // wait out the double-tap window before starting the voice session
@@ -1522,7 +1587,7 @@ class BuddyService : Service() {
             setAnswer(shown, !failed); if (shown.isBlank()) hide(answer) else show(answer)
             if (!failed) inlineStickers.lastOrNull()?.let { showInlineSticker(it.first, it.second) }
             if (!failed && !hadSticker && !lastReplyHadSticker && prefs.getBoolean("sticker_auto", true) && emo in AUTO_STICKER_MOODS &&
-                reply.say.length <= 160 && !calling && approvals.isEmpty() && Random.nextFloat() < 0.35f) {
+                reply.say.length <= 160 && !calling && !waiting() && Random.nextFloat() < 0.35f) {
                 hadSticker = true
                 showInlineSticker(emo, "")
             }
@@ -1953,7 +2018,7 @@ class BuddyService : Service() {
     }
 
     // ---- quiet mode + fullscreen auto-hide ----------------------------------------------------------------------
-    private fun mustShow() = wakeShow || calling || approvals.isNotEmpty()
+    private fun mustShow() = wakeShow || calling || waiting()
 
     /** Shows or hides the whole overlay; hidden means invisible, alpha 0 and click-through. Mic / wake-word keep running. */
     private fun applyHidden() {

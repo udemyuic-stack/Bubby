@@ -306,13 +306,7 @@ class AgentsScreen(act: UiActivity) : Screen(act) {
         // hero
         c.add(ctx.card(pad = 18, fill = P.primaryContainer, stroke = 0, radius = 28f) {
             add(ctx.row {
-                add(BuddyView(ctx).apply {
-                    scaleF = 0.75f
-                    species = Backend.str(ctx, "species", "cat")
-                    outfit = Outfits.parse(Backend.str(ctx, "outfit", ""))
-                    mood = AgentWidgets.mascotMood(st)
-                    setActive(!act.intent.getBooleanExtra("static", false))
-                }, WRAP, WRAP, end = 8)
+                add(ctx.mascotStage(96, 70), ctx.dp(96), (ctx.dp(96) * 0.9f).toInt(), end = 8)
                 add(ctx.col {
                     add(ctx.row {
                         add(View(ctx).apply { background = ctx.rounded(color, 6f) }, ctx.dp(11), ctx.dp(11), end = 8)

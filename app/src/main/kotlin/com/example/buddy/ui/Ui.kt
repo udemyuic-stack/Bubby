@@ -297,6 +297,13 @@ fun Context.emptyState(title: String, message: String, bubble: String? = null): 
 
 private fun FrameLayout.add(v: View, w: Int, h: Int, gravity: Int) = addView(v, FrameLayout.LayoutParams(w, h, gravity))
 
+/** The glass mascot on its dark patch: [boxDp] wide stage, the mascot [mochiDp] wide. */
+fun Context.mascotStage(boxDp: Int, mochiDp: Int): View = FrameLayout(this).apply {
+    background = SpotDrawable()
+    addView(MochiView(this@mascotStage), FrameLayout.LayoutParams(dp(mochiDp), (dp(mochiDp) * 136f / 170f).toInt(), Gravity.CENTER))
+    layoutParams = LinearLayout.LayoutParams(dp(boxDp), (dp(boxDp) * 0.9f).toInt())
+}
+
 /** The soft dark patch under the glass mascot. */
 class SpotDrawable : android.graphics.drawable.Drawable() {
     private val p = android.graphics.Paint(android.graphics.Paint.ANTI_ALIAS_FLAG)

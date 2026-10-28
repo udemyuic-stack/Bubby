@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # Runs inside the emulator: opens one screen (or tab) of the app, saves a screenshot and the log around it in ./shots.
 SCREEN=${1:-home}
+OPEN=$SCREEN; EXTRA=""
+if [ "$SCREEN" = agents-demo ]; then OPEN=agents; EXTRA="--ez demo true"; fi
 ADB=$(command -v adb); adb() { timeout 30 "$ADB" "$@"; }
 mkdir -p shots
 # let the emulator finish its own start-up work (media scan, Google services) before touching it
@@ -11,7 +13,7 @@ adb logcat -c
 if [ "$SCREEN" = home ]; then
   timeout 60 "$ADB" shell am start -W -n com.example.buddy/.ui.UiActivity --ez static true > "shots/$SCREEN-start.txt" 2>&1
 else
-  timeout 60 "$ADB" shell am start -W -n com.example.buddy/.ui.UiActivity --es open "$SCREEN" --ez static true > "shots/$SCREEN-start.txt" 2>&1
+  timeout 60 "$ADB" shell am start -W -n com.example.buddy/.ui.UiActivity --es open "$OPEN" --ez static true $EXTRA > "shots/$SCREEN-start.txt" 2>&1
 fi
 sleep 8
 adb shell uiautomator dump /sdcard/ui.xml > /dev/null 2>&1 && adb exec-out cat /sdcard/ui.xml > "shots/$SCREEN-ui.xml" 2>/dev/null

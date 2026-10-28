@@ -45,6 +45,12 @@ object AgentWidgets {
         for (k in KINDS) for (id in mgr.getAppWidgetIds(ComponentName(ctx, cls(k)))) draw(ctx, mgr, id, k)
     }
 
+    /** A widget picture for the in-app preview (sizes in dp). */
+    fun preview(ctx: Context, kind: String, wDp: Int, hDp: Int): Bitmap {
+        val d = ctx.resources.displayMetrics.density
+        return render(ctx, kind, (wDp * d).toInt(), (hDp * d).toInt(), d)
+    }
+
     private fun draw(ctx: Context, mgr: AppWidgetManager, id: Int, kind: String) {
         val o = mgr.getAppWidgetOptions(id)
         val d = ctx.resources.displayMetrics.density

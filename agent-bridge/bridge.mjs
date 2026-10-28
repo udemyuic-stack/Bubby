@@ -13,6 +13,8 @@ import {
 import { ensureCert } from "./lib/cert.mjs";
 import { loadToken, newToken, revokeToken, tokenMatches, isPaired, markPaired, createCodePairing } from "./lib/pairing.mjs";
 import { startMdns, cutUtf8 } from "./lib/mdns.mjs";
+import { createUsageSource } from "./lib/usage.mjs";
+import { createStats } from "./lib/stats.mjs";
 
 const HELLO_TIMEOUT_MS = 10_000;
 const SILENCE_MS = 90_000;
@@ -69,6 +71,43 @@ export async function startBridge(opts = {}) {
   };
   const pushSessions = () => phone?.send({ type: "sessions", sessions: sessionList() });
 
+  // usage (docs/AGENTS-V2.md section 3): after welcome/paired, on change at most every 5 s, and every 60 s
+  const usage = opts.usage ?? createUsageSource({ log });
+  const usageMinMs = opts.usageMinIntervalMs ?? 5_000;
+  const stats = createStats(dir, { onChange: () => scheduleUsage() });
+  let lastUsageAt = 0, lastUsageKey = "", usageTimer = null, usageForce = false;
+  const usageMessage = () => {
+    const r = usage.snapshot();
+    const s = stats.today();
+    return {
+      type: "usage",
+      ...(r.fiveHour ? { fiveHour: r.fiveHour } : {}),
+      ...(r.sevenDay ? { sevenDay: r.sevenDay } : {}),
+      doneToday: s.doneToday,
+      ...(s.tokensToday !== undefined ? { tokensToday: s.tokensToday } : {}),
+      ...(r.plan ? { plan: r.plan } : {}),
+      updatedAt: Date.now(),
+    };
+  };
+  const sendUsage = (force) => {
+    if (!phone) return;
+    const m = usageMessage();
+    const key = JSON.stringify({ ...m, updatedAt: 0 });
+    if (!force && key === lastUsageKey) return;
+    lastUsageKey = key;
+    lastUsageAt = Date.now();
+    phone.send(m);
+  };
+  function scheduleUsage(force = false) {
+    usageForce ||= force;
+    if (!phone || usageTimer) return;
+    usageTimer = setTimeout(() => { usageTimer = null; const f = usageForce; usageForce = false; sendUsage(f); }, Math.max(0, lastUsageAt + usageMinMs - Date.now()));
+    usageTimer.unref?.();
+  }
+  const refreshUsage = (force) => usage.refresh().catch(() => {}).then(() => scheduleUsage(force));
+  const usageTick = setInterval(() => { if (phone) refreshUsage(true); }, opts.usageRefreshMs ?? 60_000);
+  usageTick.unref();
+
   const touch = (id, patch) => {
     const s = sessions.get(id) ?? { state: "idle", statusText: "", steps: 0, updatedAt: 0 };
     Object.assign(s, patch, { updatedAt: Date.now() });
@@ -103,7 +142,7 @@ export async function startBridge(opts = {}) {
         if (ev.notificationType === "elicitation_dialog") touch(id, { state: "question", statusText: "Asking you a question" });
         else if (ev.notificationType === "idle_prompt") touch(id, { state: "idle", statusText: "Waiting for you" });
         break;
-      case "Stop": touch(id, { state: "finished", statusText: "Done" }); break;
+      case "Stop": touch(id, { state: "finished", statusText: "Done" }); stats.recordStop(ev.transcriptPath); break;
       case "StopFailure": touch(id, { state: "error", statusText: "Error" }); break;
       case "SessionEnd": sessions.delete(id); pushSessions(); break;
       case "PermissionRequest": return onPermission(ev, reply);
@@ -138,7 +177,12 @@ export async function startBridge(opts = {}) {
       phone = { sock, send };
       log("phone connected");
     };
-    const afterWelcome = () => { pushSessions(); };
+    const afterWelcome = () => {
+      pushSessions();
+      lastUsageKey = "";
+      sendUsage(true);
+      refreshUsage(false);
+    };
     const refuse = (error) => {
       closing = true;
       setTimeout(() => { send({ type: "error", error }); sock.end(); }, FAIL_DELAY_MS);
@@ -200,6 +244,8 @@ export async function startBridge(opts = {}) {
       clearTimeout(helloTimer);
       if (phone?.sock === sock) {
         phone = null;
+        clearTimeout(usageTimer);
+        usageTimer = null;
         for (const fp of [...pending.keys()]) resolve(fp, null);
         log("phone disconnected");
       }
@@ -274,8 +320,11 @@ export async function startBridge(opts = {}) {
       codes.start("new");
       mdns?.update();
     },
+    flushStats: () => stats.flush(),
     async close() {
       clearInterval(prune);
+      clearInterval(usageTick);
+      clearTimeout(usageTimer);
       codes.stop();
       await mdns?.close();
       for (const fp of [...pending.keys()]) resolve(fp, null);

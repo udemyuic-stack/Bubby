@@ -5,10 +5,13 @@ import path from "node:path";
 import tls from "node:tls";
 import crypto from "node:crypto";
 import { startBridge } from "../bridge.mjs";
+import { createUsageSource } from "../lib/usage.mjs";
 import { fakePhone, pairByCode } from "../lib/fake-phone.mjs";
 import { ensureCert } from "../lib/cert.mjs";
 import { loadToken, isPaired, pairProof, createCodePairing } from "../lib/pairing.mjs";
 
+// never read the real ~/.claude credentials or touch the network in tests
+const offline = () => createUsageSource({ readCredentials: async () => null });
 const dirs = [];
 const tmp = () => { const d = fs.mkdtempSync("/tmp/cb-pair-"); dirs.push(d); return path.join(d, "b"); };
 after(() => dirs.forEach((d) => fs.rmSync(d, { recursive: true, force: true })));
@@ -18,7 +21,7 @@ const start = async (extra = {}) => {
   const codes = [];
   const logs = [];
   const b = await startBridge({
-    dir, host: "127.0.0.1", port: 0, name: "Test", mdns: false,
+    dir, host: "127.0.0.1", port: 0, name: "Test", mdns: false, usage: offline(),
     onCode: (c, why) => codes.push({ c, why }), log: (l) => logs.push(l), ...extra,
   });
   return { b, dir, codes, logs };
@@ -186,7 +189,7 @@ test("a restart keeps the paired state: no code offered", async () => {
   const { phone } = await pair(b, b.pairingCode());
   phone.close();
   await b.close();
-  const b2 = await startBridge({ dir, host: "127.0.0.1", port: 0, mdns: false });
+  const b2 = await startBridge({ dir, host: "127.0.0.1", port: 0, mdns: false, usage: offline() });
   assert.equal(b2.paired(), true);
   assert.equal(b2.pairingCode(), null);
   await b2.close();

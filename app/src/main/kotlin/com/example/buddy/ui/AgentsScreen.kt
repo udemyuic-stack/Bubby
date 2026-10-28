@@ -221,6 +221,19 @@ class AgentsScreen(act: UiActivity) : Screen(act) {
         c.add(ctx.section(if (s.sessions.isEmpty()) t("Агенты", "Agents", "Agentlar") else t("Агенты: ${s.sessions.size}", "Agents: ${s.sessions.size}", "Agentlar: ${s.sessions.size}"), R.drawable.ic_bolt))
         if (s.sessions.isEmpty()) c.add(ctx.card(pad = 16) { add(ctx.text(t("Сейчас никто не работает. Запустите Claude Code на компьютере.", "Nothing is running right now. Start Claude Code on the computer.", "Hozir hech kim ishlamayapti. Kompyuterda Claude Code'ni ishga tushiring."), T.Body), MATCH, WRAP) }, MATCH, WRAP, bottom = 10)
         for (a in s.sessions) c.add(sessionCard(a), MATCH, WRAP, bottom = 10)
+        // widgets
+        c.add(ctx.section(t("Виджеты на экране", "Home-screen widgets", "Bosh ekran vidjetlari"), R.drawable.ic_apps))
+        c.add(ctx.card(pad = 14) {
+            add(ctx.text(t("Удерживайте пустое место на главном экране → «Виджеты» → Bubby: статус, лимит Claude, сделано сегодня и список агентов.",
+                "Long-press an empty spot on the home screen → Widgets → Bubby: status, Claude limit, done today and the agent list.",
+                "Bosh ekranning bo'sh joyini bosib turing → «Vidjetlar» → Bubby: holat, Claude limiti, bugun bajarilgani va agentlar ro'yxati."), T.Body), MATCH, WRAP)
+            add(ctx.row(Gravity.TOP) {
+                for (k in listOf("status", "usage")) {
+                    val iv = android.widget.ImageView(ctx).apply { setImageBitmap(try { AgentWidgets.preview(ctx, k, 150, 150) } catch (_: Throwable) { null }) }
+                    add(iv, 0, ctx.dp(150), 1f, end = 6, start = 6)
+                }
+            }, MATCH, WRAP, top = 10)
+        }, MATCH, WRAP, bottom = 8)
         c.add(ctx.button(t("Отключить", "Disconnect", "Uzish"), BtnStyle.Outline) { unpair() }, MATCH, WRAP, top = 8)
     }
 
@@ -274,9 +287,23 @@ class AgentsScreen(act: UiActivity) : Screen(act) {
         }
     }
 
+    /** `--ez demo true` (CI screenshots): shows the dashboard with made-up numbers. */
+    private fun demo(): AgentInfo? {
+        if (!act.intent.getBooleanExtra("demo", false)) return null
+        BuddyService.agentConnected = true; BuddyService.agentDesktop = "Work laptop"
+        val now = System.currentTimeMillis()
+        BuddyService.agentSessions = listOf(
+            AgentSession("a", "Claude Code", "working", "Editing UiActivity.kt", 3, 8),
+            AgentSession("b", "Claude Code", "approval", "Run: gradle assembleRelease", 0, 0),
+            AgentSession("c", "Claude Code", "idle", "", 0, 0)
+        )
+        BuddyService.agentUsage = com.example.buddy.Usage(0.68f, now + 130 * 60_000L, 0.42f, now + 4 * 86_400_000L, 4, 182_400L, "max", now)
+        return AgentInfo(true, "Work laptop", true, BuddyService.agentSessions)
+    }
+
     override fun render(c: LinearLayout) {
         shownLive = live()
-        val s = Backend.agentStatus(ctx)
+        val s = demo() ?: Backend.agentStatus(ctx)
         if (s.paired) {
             discovery?.stop(); discovery = null
             dashboard(c, s)

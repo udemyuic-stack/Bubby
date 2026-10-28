@@ -8,18 +8,21 @@ import tls from "node:tls";
 import { spawn } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { startBridge } from "../bridge.mjs";
+import { createUsageSource } from "../lib/usage.mjs";
 import { fakePhone } from "../lib/fake-phone.mjs";
 import { sockPath } from "../lib/common.mjs";
 import { loadToken, revokeToken } from "../lib/pairing.mjs";
 
 const HOOK = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "hook.mjs");
+// never read the real ~/.claude credentials or touch the network in tests
+const offline = () => createUsageSource({ readCredentials: async () => null });
 const dirs = [];
 const tmp = () => { const d = fs.mkdtempSync("/tmp/cb-"); dirs.push(d); return path.join(d, "b"); };
 after(() => dirs.forEach((d) => fs.rmSync(d, { recursive: true, force: true })));
 
 const start = async (extra = {}) => {
   const dir = tmp();
-  const b = await startBridge({ dir, host: "127.0.0.1", port: 0, name: "Test", mdns: false, ...extra });
+  const b = await startBridge({ dir, host: "127.0.0.1", port: 0, name: "Test", mdns: false, usage: offline(), ...extra });
   return { b, dir, token: loadToken(dir) };
 };
 const phoneFor = (b, token, extra) => fakePhone({ host: b.host, port: b.port, fp: b.fp, token, ...extra });

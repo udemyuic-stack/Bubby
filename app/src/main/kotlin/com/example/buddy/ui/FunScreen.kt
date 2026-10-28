@@ -33,10 +33,19 @@ class FunScreen(act: UiActivity) : Screen(act) {
         started = true
         Thread {
             for (m in moods) {
-                val bmp = try { Stickers.render(ctx, m, "", Stickers.prefOutfitSet(ctx)) } catch (_: Throwable) { null } ?: continue
+                val bmp = try { thumb(m) } catch (_: Throwable) { null } ?: continue
                 act.runOnUiThread { images[m] = bmp; tiles[m]?.setImageBitmap(bmp) }
             }
         }.start()
+    }
+
+    /** Grid thumbnails are drawn at a third of the sharing size and kept for the next visit (same pet, outfit and look). */
+    private fun thumb(mood: String): android.graphics.Bitmap {
+        val key = mood + "|" + Stickers.prefOutfitSet(ctx).sorted().joinToString(",") + "|" + Backend.str(ctx, "species", "glass") + "|" + Backend.str(ctx, "theme", "glass")
+        synchronized(thumbs) { thumbs[key]?.let { return it } }
+        val b = Stickers.preview(ctx, mood)
+        synchronized(thumbs) { if (thumbs.size > 24) thumbs.clear(); thumbs[key] = b }
+        return b
     }
 
     private fun share(mood: String) {
@@ -82,4 +91,6 @@ class FunScreen(act: UiActivity) : Screen(act) {
             c.add(row, MATCH, WRAP)
         }
     }
+
+    private companion object { val thumbs = HashMap<String, android.graphics.Bitmap>() }
 }

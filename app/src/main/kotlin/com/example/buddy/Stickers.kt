@@ -113,6 +113,9 @@ object Stickers {
     private fun prefOutfit(ctx: Context): String =
         ctx.getSharedPreferences("buddy", Context.MODE_PRIVATE).getString("outfit", "") ?: ""
 
+    /** The state badge the next [renderArt] shows (only set by the "Pet & outfits" page while it draws an expression preview). */
+    @Volatile var previewBadge: String = ""
+
     // draws the mascot at a high fixed scale and crops to its visible bounds
     private fun renderArt(ctx: Context, mood: String, outfit: Set<String>, scale: Float = 7f): Bitmap {
         val v = BuddyView(ctx)
@@ -120,8 +123,9 @@ object Stickers {
         val dens = ctx.resources.displayMetrics.density
         v.scaleF = scale / dens
         v.mood = mood
+        v.badge = previewBadge
         v.outfit = outfit
-        v.species = ctx.getSharedPreferences("buddy", Context.MODE_PRIVATE).getString("species", "cat").orEmpty()
+        v.species = ctx.getSharedPreferences("buddy", Context.MODE_PRIVATE).getString("species", "glass").orEmpty()
         v.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED)
         val w = max(1, v.measuredWidth)
         val h = max(1, v.measuredHeight)

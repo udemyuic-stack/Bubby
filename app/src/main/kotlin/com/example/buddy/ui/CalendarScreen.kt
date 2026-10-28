@@ -100,7 +100,7 @@ class CalendarScreen(act: UiActivity) : Screen(act) {
                 val c = cal(day)
                 val isSel = selected == day
                 val has = events.any { it.startMillis in day until day + 86_400_000L }
-                val fg = Glass.TEXT
+                val fg = if (isSel) Glass.ON_ACTIVE else Glass.TEXT
                 add(ctx.col {
                     gravity = Gravity.CENTER_HORIZONTAL
                     setPadding(ctx.dp(4), ctx.dp(12), ctx.dp(4), ctx.dp(8))

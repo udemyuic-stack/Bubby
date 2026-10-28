@@ -29,7 +29,16 @@ object Backend {
 
     fun running() = BuddyService.running
 
-    fun aiKeys(ctx: Context): List<String> = Brain(ctx).keyList()
+    fun aiKeys(ctx: Context): List<String> {
+        val p = prefs(ctx)
+        val fromJson = try {
+            val a = org.json.JSONArray(p.getString("keys_json", null))
+            (0 until a.length()).map { a.getString(it).trim() }.filter { it.isNotEmpty() }
+        } catch (_: Exception) { emptyList() }
+        if (fromJson.isNotEmpty()) return fromJson
+        val k = (p.getString("key", "") ?: "").trim()
+        return if (k.isEmpty()) emptyList() else listOf(k)
+    }
 
     /** Stores the connections in priority order (first = primary). */
     fun saveAiKeys(ctx: Context, list: List<String>) {

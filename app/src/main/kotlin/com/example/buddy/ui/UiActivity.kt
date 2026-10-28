@@ -29,6 +29,7 @@ class UiActivity : Activity() {
     private var shownLang = ""
     private var insetTop = 0
     private var insetBottom = 0
+    val bottomInset: Int get() = insetBottom
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -102,6 +103,7 @@ class UiActivity : Activity() {
     private fun applyInsets() {
         shell.setPadding(0, insetTop, 0, 0)
         navFrame.setPadding(dp(12), 0, dp(12), dp(18) + insetBottom)
+        for (s in tabs) s.applyNavInset(insetBottom)
         for ((_, v) in stack) v.setPadding(0, insetTop, 0, insetBottom)
     }
 
@@ -156,8 +158,8 @@ class UiActivity : Activity() {
                 }
                 val inner = col {
                     gravity = Gravity.CENTER_HORIZONTAL
-                    add(icon(it.first, if (selected) Glass.TEXT else Glass.TEXT2, 22), WRAP, WRAP)
-                    add(text(it.second, T.Label, if (selected) Glass.TEXT else Glass.TEXT2).apply { setSingleLine(); textSize = 10f }, WRAP, WRAP, top = 2)
+                    add(icon(it.first, if (selected) Glass.ON_ACTIVE else Glass.TEXT2, 22), WRAP, WRAP)
+                    add(text(it.second, T.Label, if (selected) Glass.ON_ACTIVE else Glass.TEXT2).apply { setSingleLine(); textSize = 10f }, WRAP, WRAP, top = 2)
                 }
                 addView(inner, FrameLayout.LayoutParams(WRAP, WRAP, Gravity.CENTER))
                 press { showTab(i) }
@@ -171,7 +173,7 @@ class UiActivity : Activity() {
         tab = i
         body.removeAllViews()
         body.addView(tabs[i].view(), FrameLayout.LayoutParams(MATCH, MATCH))
-        setBars(i != 0)
+        setBars(i != 0 && !Glass.NIGHT)
         bgHome.visibility = if (i == 0) View.VISIBLE else View.GONE
         bgSub.visibility = if (i == 0) View.GONE else View.VISIBLE
         navFrame.removeAllViews()

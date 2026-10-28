@@ -7,11 +7,13 @@ if [ "$SCREEN" = agents-diff ]; then OPEN=agents; EXTRA="--ez demo true --ez dem
 case "$SCREEN" in
   *-green) OPEN=${SCREEN%-green}; EXTRA="--es theme green";;
   *-blue) OPEN=${SCREEN%-blue}; EXTRA="--es theme blue";;
+  *-night) OPEN=${SCREEN%-night}; EXTRA="--es theme night";;
 esac
 ADB=$(command -v adb); adb() { timeout 30 "$ADB" "$@"; }
 mkdir -p shots
 # let the emulator finish its own start-up work (media scan, Google services) before touching it
 sleep 45
+PXW=$(adb shell wm size | grep -o "[0-9]*x[0-9]*" | tail -1 | cut -dx -f1); adb shell wm density $((PXW * 160 / 411)) >/dev/null 2>&1   # about 411 dp wide, like a real phone, whatever the emulator resolution
 adb install -r bubby.apk
 adb logcat -c
 ( "$ADB" logcat -v threadtime > "shots/$SCREEN-live.txt" 2>&1 & )

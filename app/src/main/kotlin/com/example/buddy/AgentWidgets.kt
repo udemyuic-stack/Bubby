@@ -138,6 +138,14 @@ object AgentWidgets {
     fun agentColor(name: String): Int {
         val n = name.ifEmpty { "Claude Code" }
         if (n.equals("Claude Code", true) || n.equals("claude", true)) return 0xFFE07B53.toInt()
+        val known = mapOf(
+            "hermes" to 0xFFB791F2.toInt(), "codex" to 0xFF35C2B6.toInt(), "cursor" to 0xFFE8EAF0.toInt(), "gemini" to 0xFF6FA8FF.toInt(),
+            "antigravity" to 0xFFEE80C8.toInt(), "copilot" to 0xFF8E8CF0.toInt(), "muse" to 0xFF5BB6F2.toInt(), "opencode" to 0xFF5FD39A.toInt(),
+            "amp" to 0xFFF5A83B.toInt(), "openai" to 0xFF35B58F.toInt(), "ollama" to 0xFFF2D13A.toInt(), "lm studio" to 0xFF9BDB3C.toInt(),
+            "github" to 0xFFF0626A.toInt(), "stripe" to 0xFF5B7FF5.toInt(), "n8n" to 0xFFF59E4B.toInt(), "anthropic" to 0xFFE88A5B.toInt()
+        )
+        val low = n.lowercase()
+        known.entries.firstOrNull { low.contains(it.key) }?.let { return it.value }
         val pal = intArrayOf(0xFF3FB8A5.toInt(), 0xFF5B9BF0.toInt(), 0xFF9C7BEA.toInt(), 0xFFEE7BA3.toInt(), 0xFFE0B23A.toInt(), 0xFF5BC26A.toInt())
         var hsh = 0
         for (c in n.lowercase()) hsh = hsh * 31 + c.code
@@ -148,7 +156,7 @@ object AgentWidgets {
 
     private val mascots = HashMap<String, Bitmap>()
     private fun mascot(ctx: Context, mood: String): Bitmap = synchronized(mascots) {
-        val key = mood + "|" + Stickers.prefOutfitSet(ctx).sorted().joinToString(",") + "|" + ctx.getSharedPreferences("buddy", Context.MODE_PRIVATE).getString("species", "cat")
+        val key = mood + "|" + Stickers.prefOutfitSet(ctx).sorted().joinToString(",") + "|" + ctx.getSharedPreferences("buddy", Context.MODE_PRIVATE).getString("species", "glass")
         mascots.getOrPut(key) { if (mascots.size > 6) mascots.clear(); Stickers.preview(ctx, mood) }
     }
 

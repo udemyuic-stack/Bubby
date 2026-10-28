@@ -201,23 +201,8 @@ class Actions(private val ctx: Context) {
                 if (n !in Species.ALL) tr("Такого питомца нет", "No such pet", "Bunday uy hayvoni yo'q")
                 else { prefs.edit().putString("species", n).apply(); null }
             }
-            "size" -> {
-                val cur = prefs.getFloat("size", 1f)
-                val v = s(a, "value").lowercase()
-                val n = when (v) {
-                    "bigger", "larger", "big" -> cur * 1.25f
-                    "smaller", "small" -> cur / 1.25f
-                    "normal", "default", "reset" -> 1f
-                    else -> v.toFloatOrNull() ?: a.optDouble("value", Double.NaN).toFloat()
-                }
-                if (n.isNaN()) tr("Не понял размер", "Did not understand the size", "O'lchamni tushunmadim")
-                else { prefs.edit().putFloat("size", n.coerceIn(0.15f, 6f)).apply(); null }
-            }
-            "move" -> {
-                val w = s(a, "where").lowercase()
-                if (w !in setOf("top", "bottom", "left", "right", "center", "bottom_left", "bottom_right", "top_left", "top_right", "status_left", "status_right", "status_center")) tr("Не понял, куда", "Did not understand where", "Qayerga ekanini tushunmadim")
-                else { prefs.edit().putString("dock", w + ":" + System.currentTimeMillis()).apply(); null }
-            }
+            // Bubby lives in the status bar next to the clock; its place and size are fixed
+            "size", "move" -> tr("Моё место у часов, его не меняют", "My place is next to the clock and it does not change", "Mening joyim soat yonida, u o'zgarmaydi")
             "quiet" -> {
                 prefs.edit().putBoolean("quiet", a.optBoolean("on", true)).apply()
                 null
@@ -269,7 +254,7 @@ class Actions(private val ctx: Context) {
                 val c = ch.optString(i, "").trim()
                 if (c.isNotEmpty()) arr.put(c)
             }
-            e.putString("game_state", st).putString("game_chips", arr.toString())
+            e.putString("game_state", st).putString("game_chips", arr.toString()).putLong("game_ts", System.currentTimeMillis())
         }
         e.apply()
         return null

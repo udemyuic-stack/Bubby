@@ -41,10 +41,13 @@ object P {
     var highest = 0x73FFFFFF.toInt()
 
     fun init(ctx: Context) {
-        dark = false
         Theme.apply(ctx)
         val t = Theme.cur
+        dark = t.night
         primary = t.navyA
+        primaryContainer = Theme.rgb(t.accent, 26); onPrimaryContainer = t.ink
+        tertiaryContainer = Theme.rgb(t.accent, 22); onTertiaryContainer = t.ink
+        errorContainer = Theme.rgb(error, 40); onErrorContainer = t.ink
         onSurface = t.ink
         onSurfaceVariant = t.ink2
         onSecondaryContainer = t.ink

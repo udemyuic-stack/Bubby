@@ -22,18 +22,21 @@ class OutfitsScreen(act: UiActivity) : Screen(act) {
 
     private val slotOrder = listOf("head", "eyes", "neck", "aura", "hand")
     private val slots = Outfits.SLOTS
-    private var species = Backend.str(ctx, "species", "cat")
+    private var species = Backend.str(ctx, "species", "glass")
     private var items: Set<String> = Backend.str(ctx, "outfit", "").split(',').map { it.trim() }.filter { it.isNotEmpty() }.toSet()
     private var slot = "head"
     private var preview: Bitmap? = null
     private var drawing = false
     private var drawAgain = false
     private val rng = Random.Default
+    /** The expression shown in the big preview: a mood and a state badge. */
+    private var expr: Pair<String, String> = "happy" to ""
 
     private lateinit var tilt: Tilt3D
     private var popId: String? = null
     private lateinit var previewTitle: android.widget.TextView
     private lateinit var animalsBox: LinearLayout
+    private lateinit var exprBox: LinearLayout
     private lateinit var presetsBox: LinearLayout
     private lateinit var slotBox: LinearLayout
 
@@ -83,7 +86,7 @@ class OutfitsScreen(act: UiActivity) : Screen(act) {
     )
 
     private fun animals() = listOf(
-        "cat" to t("Кот", "Cat", "Mushuk"), "dog" to t("Пёс", "Dog", "It"), "bunny" to t("Зайчик", "Bunny", "Quyon"),
+        "glass" to t("Стекло (как в теме)", "Glass (follows the look)", "Shisha (mavzuga mos)"), "cube" to t("Куб", "Cube", "Kub"), "cat" to t("Кот", "Cat", "Mushuk"), "dog" to t("Пёс", "Dog", "It"), "bunny" to t("Зайчик", "Bunny", "Quyon"),
         "bear" to t("Мишка", "Bear", "Ayiq"), "panda" to t("Панда", "Panda", "Panda"), "fox" to t("Лис", "Fox", "Tulki"),
         "frog" to t("Лягушонок", "Frog", "Qurbaqa"), "penguin" to t("Пингвин", "Penguin", "Pingvin"), "capybara" to t("Капибара", "Capybara", "Kapibara"),
         "hamster" to t("Хомяк", "Hamster", "Xomyak"), "owl" to t("Сова", "Owl", "Boyqush"), "duck" to t("Утёнок", "Duck", "O'rdak"),
@@ -167,8 +170,10 @@ class OutfitsScreen(act: UiActivity) : Screen(act) {
         Thread {
             var bmp: Bitmap? = null
             try {
-                bmp = Stickers.preview(ctx, "happy")
+                Stickers.previewBadge = expr.second
+                bmp = Stickers.preview(ctx, expr.first)
             } catch (_: Throwable) {}
+            Stickers.previewBadge = ""
             act.runOnUiThread {
                 drawing = false
                 if (drawAgain) { drawAgain = false; redraw(); return@runOnUiThread }
@@ -222,6 +227,57 @@ class OutfitsScreen(act: UiActivity) : Screen(act) {
         val flow = FlowLayout(ctx)
         for ((id, name) in animals()) { val v = animalCard(id, name); animalViews[id] = v to (id == species); flow.addView(v) }
         animalsBox.add(flow, MATCH, WRAP)
+    }
+
+    /** What the mascot shows for each state of the agents and for each mood: (id, label, mood, state badge). */
+    private fun expressions() = listOf(
+        listOf("idle", t("Покой", "Idle", "Tinch"), "idle", ""),
+        listOf("working", t("Работает", "Working", "Ishlayapti"), "idle", "search"),
+        listOf("thinking", t("Думает", "Thinking", "O'ylayapti"), "idle", "think"),
+        listOf("searching", t("Ищет", "Searching", "Qidiryapti"), "curious", "search"),
+        listOf("approval", t("Ждёт ответа", "Approval", "Ruxsat kutadi"), "idle", "approval"),
+        listOf("question", t("Вопрос", "Question", "Savol"), "idle", "listen"),
+        listOf("error", t("Ошибка", "Error", "Xato"), "idle", "error"),
+        listOf("finished", t("Готово", "Finished", "Tayyor"), "idle", "done"),
+        listOf("limit", t("Лимит", "Rate limit", "Limit"), "idle", "limit"),
+        listOf("sleeping", t("Спит", "Sleeping", "Uxlayapti"), "sleepy", ""),
+        listOf("dizzy", t("Кружится", "Dizzy", "Boshi aylanadi"), "dizzy", ""),
+        listOf("greeting", t("Привет", "Greeting", "Salom"), "happy", ""),
+        listOf("love", t("Любовь", "Love", "Sevgi"), "love", ""),
+        listOf("surprised", t("Удивлён", "Surprised", "Hayron"), "surprised", ""),
+        listOf("proud", t("Гордый", "Proud", "Mag'rur"), "proud", ""),
+        listOf("wink", t("Подмигивает", "Wink", "Ko'z qisadi"), "wink", ""),
+        listOf("yawn", t("Зевает", "Yawn", "Esnaydi"), "tired", ""),
+        listOf("annoyed", t("Недоволен", "Annoyed", "Norozi"), "offended", ""),
+        listOf("dancing", t("Танцует", "Dancing", "Raqsga tushadi"), "dance", ""),
+        listOf("upload", t("Загрузка", "Upload", "Yuklash"), "idle", "upload"),
+        listOf("slap", t("Шлепок", "Slap", "Shapaloq"), "angry", ""),
+    )
+
+    private fun exprTile(e: List<String>): View {
+        val sel = expr.first == e[2] && expr.second == e[3]
+        return selectableCard(sel, pad = 6, onTap = { expr = e[2] to e[3]; fillExpressions(); redraw(); wobble() }) {
+            gravity = Gravity.CENTER_HORIZONTAL
+            add(BuddyView(ctx).apply {
+                scaleF = 0.5f
+                this.species = species
+                mood = e[2]; badge = e[3]
+                setActive(false)
+            }, WRAP, WRAP)
+            add(ctx.text(e[1], T.Small, if (sel) P.onPrimaryContainer else P.onSurface).apply { maxLines = 1; gravity = Gravity.CENTER; textSize = 11.5f }, MATCH, WRAP, top = 2)
+        }
+    }
+
+    private fun fillExpressions() {
+        exprBox.removeAllViews()
+        for (rowItems in expressions().chunked(4)) {
+            val row = ctx.row {}
+            for (i in 0 until 4) {
+                val e = rowItems.getOrNull(i)
+                row.addView(if (e != null) exprTile(e) else View(ctx), LinearLayout.LayoutParams(0, ctx.dp(96), 1f).apply { setMargins(ctx.dp(3), ctx.dp(3), ctx.dp(3), ctx.dp(3)) })
+            }
+            exprBox.add(row, MATCH, WRAP)
+        }
     }
 
     private fun presetCard(p: Preset): View {
@@ -282,11 +338,13 @@ class OutfitsScreen(act: UiActivity) : Screen(act) {
         }, MATCH, WRAP, top = 4)
         c.add(ctx.section(t("Питомец", "Pet", "Uy hayvoni")))
         animalsBox = ctx.col(); c.add(animalsBox, MATCH, WRAP)
+        c.add(ctx.section(t("Выражения", "Expressions", "Ifodalar")))
+        exprBox = ctx.col(); c.add(exprBox, MATCH, WRAP)
         c.add(ctx.section(t("Образы", "Looks", "Obrazlar")))
         presetsBox = ctx.col(); c.add(presetsBox, MATCH, WRAP)
         c.add(ctx.section(t("Наряд по частям", "Outfit piece by piece", "Kiyim qismlar bo'yicha")))
         slotBox = ctx.col(); c.add(slotBox, MATCH, WRAP)
-        fillAnimals(); fillPresets(); fillSlot()
+        fillAnimals(); fillExpressions(); fillPresets(); fillSlot()
         if (preview == null) redraw()
     }
 }

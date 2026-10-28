@@ -38,10 +38,24 @@ android {
         versionName = buddyVersion
     }
 
+    // One fixed signing key for every build. CI used to sign with a fresh random debug key on each run, so a new APK could
+    // not be installed over the previous one ("package conflicts with an existing package"). The key is NOT in the repo:
+    // CI restores it from the BUBBY_KEYSTORE_B64 secret (see .github/workflows/build-apk.yml); without it the debug key is used.
+    val keystorePath = System.getenv("BUBBY_KEYSTORE")
+    if (!keystorePath.isNullOrEmpty()) {
+        signingConfigs {
+            create("bubby") {
+                storeFile = file(keystorePath)
+                storePassword = System.getenv("BUBBY_STORE_PASSWORD")
+                keyAlias = "bubby"
+                keyPassword = System.getenv("BUBBY_STORE_PASSWORD")
+            }
+        }
+    }
+
     buildTypes {
         release {
-            // Signed with the debug key so the APK installs directly; a store release needs its own key.
-            signingConfig = signingConfigs.getByName("debug")
+            signingConfig = signingConfigs.getByName(if (keystorePath.isNullOrEmpty()) "debug" else "bubby")
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")

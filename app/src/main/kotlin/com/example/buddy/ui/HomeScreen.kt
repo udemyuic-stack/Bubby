@@ -59,7 +59,7 @@ class HomeScreen(act: UiActivity) : Screen(act) {
         val still = act.intent.getBooleanExtra("static", false)
         val sc = ctx.resources.displayMetrics.widthPixels / 390f
         val scene = DesignCanvas(ctx, 668).apply { clipChildren = false; clipToPadding = false }
-        val mascot = MochiView(ctx)
+        val mascot = MochiView(ctx).apply { pokeable = true }
         val nameV = ctx.text("Bubby", T.Headline, 0xFFF4F1EE.toInt()).apply {
             setTextSize(android.util.TypedValue.COMPLEX_UNIT_PX, 30f * sc); gravity = Gravity.CENTER
         }
@@ -87,18 +87,15 @@ class HomeScreen(act: UiActivity) : Screen(act) {
         fun petal(kind: GlassKind, icon: Int, label: String, l: Float, tp: Float, w: Float, h: Float, ang: Float, tc: Int, size: Int = 12, bold: Boolean = false, go: () -> Unit) {
             scene.put(PetalView(ctx, kind, icon, label, ang, tc, size, bold, sc).apply { press(go) }, l, tp, w, h)
         }
-        petal(GlassKind.Mid, R.drawable.tg_hand, t("Проверить:\nпривет", "Test:\nhello", "Tekshirish:\nsalom"), 186f, 310f, 104f, 112f, -6f, 0xFFFFFFFF.toInt()) { send(t("Привет!", "Hello!", "Salom!")) }
-        petal(GlassKind.Dim, R.drawable.tg_check, t("Задачи", "Tasks", "Vazifalar"), 44f, 459f, 104f, 112f, -28f, Glass.TEXT_LABEL) { act.showTab(1) }
-        petal(GlassKind.Dim, R.drawable.tg_apps, t("Ещё", "More", "Yana"), 246f, 459f, 104f, 112f, 28f, Glass.TEXT_LABEL) { act.showTab(4) }
-        petal(GlassKind.Dim, R.drawable.tg_cal, t("Календарь", "Calendar", "Kalendar"), 100f, 524f, 104f, 112f, -8f, Glass.TEXT_LABEL) { act.showTab(2) }
-        petal(GlassKind.Dim, R.drawable.tg_gear, t("Настройки", "Settings", "Sozlamalar"), 184f, 524f, 104f, 112f, 8f, Glass.TEXT_LABEL) { act.showTab(3) }
+        petal(GlassKind.Mid, R.drawable.tg_hand, t("Проверить:\nпривет", "Test:\nhello", "Tekshirish:\nsalom"), 150f, 304f, 104f, 112f, -10f, 0xFFFFFFFF.toInt()) { send(t("Привет!", "Hello!", "Salom!")) }
+        petal(GlassKind.Dim, R.drawable.tg_check, t("Задачи", "Tasks", "Vazifalar"), 34f, 462f, 104f, 112f, -28f, Glass.TEXT_LABEL) { act.showTab(1) }
+        petal(GlassKind.Dim, R.drawable.tg_apps, t("Ещё", "More", "Yana"), 256f, 462f, 104f, 112f, 28f, Glass.TEXT_LABEL) { act.showTab(4) }
+        petal(GlassKind.Dim, R.drawable.tg_cal, t("Календарь", "Calendar", "Kalendar"), 94f, 540f, 104f, 112f, -8f, Glass.TEXT_LABEL) { act.showTab(2) }
+        petal(GlassKind.Dim, R.drawable.tg_gear, t("Настройки", "Settings", "Sozlamalar"), 192f, 540f, 104f, 112f, 8f, Glass.TEXT_LABEL) { act.showTab(3) }
         scene.put(CoreView(ctx, sc), 171f, 448f, 44f, 44f)
         petal(GlassKind.Active, if (running) R.drawable.tg_stop else R.drawable.tg_play, if (running) t("Остановить", "Stop", "To'xtatish") else t("Запустить", "Start", "Ishga tushirish"),
-            237f, 379f, 116f, 106f, 12f, Glass.TEXT, 13, true) { toggle() }
+            264f, 379f, 116f, 106f, 12f, Glass.ON_ACTIVE, 13, true) { toggle() }
         scene.alpha = if (busy) 0.7f else 1f
-        mascot.setOnClickListener {
-            if (!still) android.animation.ValueAnimator.ofFloat(0f, 1f, 0f).apply { duration = 260; addUpdateListener { mascot.squash = it.animatedValue as Float } }.start()
-        }
         c.add(scene)
 
         // ---- cards ----

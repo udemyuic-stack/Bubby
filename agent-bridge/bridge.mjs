@@ -6,6 +6,7 @@ import fs from "node:fs";
 import os from "node:os";
 import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
+import { createInterface } from "node:readline/promises";
 import {
   PROTOCOL_V, MAX_LINE, PILL_ID, AGENT, APPROVAL_TIMEOUT_MS, buddyDir, sockPath, ensureDir,
   fingerprint, truncateCommand, defaultHost, lanIps,
@@ -15,6 +16,7 @@ import { loadToken, newToken, revokeToken, tokenMatches, isPaired, markPaired, c
 import { startMdns, cutUtf8 } from "./lib/mdns.mjs";
 import { createUsageSource } from "./lib/usage.mjs";
 import { createStats } from "./lib/stats.mjs";
+import { planHooks, applyHooks } from "./lib/hooks.mjs";
 
 const HELLO_TIMEOUT_MS = 10_000;
 const SILENCE_MS = 90_000;
@@ -335,28 +337,99 @@ export async function startBridge(opts = {}) {
   };
 }
 
-function main() {
+const HELP = `node bridge.mjs [options]
+
+  First run does everything: certificate, LAN address, Claude Code hooks (asks first), mDNS, pairing code.
+
+  --yes            install the Claude Code hooks without asking
+  --no-hooks       do not touch ~/.claude/settings.json
+  --link           also print the old coucou://pair link (contains the token, keep it secret)
+  --new-pairing    new token and a new code (the old phone stops working)
+  --revoke         delete the token and exit
+  --host IPv4      LAN address to listen on (default: first private IPv4)
+  --port N         TCP port (default 47821)
+  --name NAME      computer name shown on the phone (default: host name)
+  --no-mdns        do not advertise over mDNS`;
+
+const headline = (code) => `Open Bubby on your phone → Agents → tap this computer → type ${code}`;
+
+function printCode(code) {
+  const line = headline(code);
+  const bar = "─".repeat(Math.min(Array.from(line).length + 4, 100));
+  console.log(`\n  ${bar}\n    ${line}\n  ${bar}`);
+}
+
+// Claude Code hooks, same logic as install-hooks.mjs --yes (dated .bak copy). Returns a short status for the banner.
+async function setupHooks({ yes, skip }) {
+  if (skip) return "не трогаю (--no-hooks)";
+  let plan;
+  try { plan = planHooks(); } catch (e) { console.log(`Хуки Claude Code: ${e.message}`); return "не установлены (settings.json не разобран)"; }
+  if (!plan.diff) return "установлены";
+  if (!yes) {
+    if (!process.stdin.isTTY || !process.stdout.isTTY) {
+      console.log("Хуки Claude Code не установлены. Запустите с --yes, чтобы установить, или с --no-hooks, чтобы не спрашивать.");
+      return "не установлены (нужен --yes)";
+    }
+    console.log(`Bridge добавит свои хуки Claude Code в ${plan.file}`);
+    console.log("(события сессий и запросы разрешений пойдут в Bubby; чужие хуки не меняются; сначала делается копия .bak):\n");
+    console.log(plan.diff + "\n");
+    const rl = createInterface({ input: process.stdin, output: process.stdout });
+    const answer = await rl.question("Установить хуки? [y/N] ").finally(() => rl.close());
+    if (!/^(y|yes|д|да)$/i.test(answer.trim())) return "не установлены (можно позже: node install-hooks.mjs --yes)";
+  }
+  const backup = applyHooks(plan);
+  if (backup) console.log(`Резервная копия: ${backup}`);
+  return "установлены сейчас";
+}
+
+async function main() {
   const args = process.argv.slice(2);
   const arg = (n) => { const i = args.indexOf(`--${n}`); return i >= 0 ? args[i + 1] : undefined; };
   const dir = buddyDir();
-  if (args.includes("--help")) {
-    console.log("bridge.mjs [--host IPv4] [--port N] [--name NAME] [--new-pairing] [--revoke]");
-    return;
-  }
+  if (args.includes("--help") || args.includes("-h")) { console.log(HELP); return; }
   if (args.includes("--revoke")) {
     console.log(revokeToken(dir) ? "Токен сопряжения удалён. Телефон больше не сможет подключиться." : "Токена нет.");
     return;
   }
   if (args.includes("--new-pairing")) { ensureDir(dir); newToken(dir); }
-  startBridge({ dir, host: arg("host"), port: arg("port") ? Number(arg("port")) : undefined, name: arg("name"), log: (m) => console.log(new Date().toISOString(), m) })
-    .then((b) => {
-      console.log(`Bridge слушает ${b.host}:${b.port} (только локальная сеть)`);
-      console.log(`\nСсылка для сопряжения (держите в секрете):\n${b.link()}\n`);
-      const stop = () => b.close().then(() => process.exit(0));
-      process.on("SIGINT", stop);
-      process.on("SIGTERM", stop);
-    })
-    .catch((e) => { console.error("Ошибка:", e.message); process.exit(1); });
+  const hooks = await setupHooks({ yes: args.includes("--yes"), skip: args.includes("--no-hooks") });
+
+  let ready = false;
+  const b = await startBridge({
+    dir, host: arg("host"), port: arg("port") ? Number(arg("port")) : undefined, name: arg("name"),
+    mdns: !args.includes("--no-mdns"),
+    log: (m) => console.log(new Date().toISOString(), m),
+    onCode: (code, why) => {
+      if (!ready) return; // the first code is part of the banner below
+      console.log(why === "failed" ? "\nНеверный код: он сожжён. Новый код:" : why === "expired" ? "\nКод устарел (5 минут). Новый код:" : "\nНовый код:");
+      printCode(code);
+    },
+    onPaired: (phoneName) => console.log(`\nГотово: телефон сопряжён${phoneName ? ` (${phoneName})` : ""}. Код больше не нужен.\n`),
+  });
+  ready = true;
+
+  console.log(`\n  Bubby agent bridge`);
+  console.log(`  Компьютер:  ${b.name}`);
+  console.log(`  Адрес:      ${b.host}:${b.port} (только локальная сеть)`);
+  console.log(`  Хуки:       ${hooks}`);
+  console.log(`  mDNS:       ${b.mdnsName() ? `${b.mdnsName()}._bubby-agent._tcp.local.` : "выключен"}`);
+  console.log(`  Сертификат: ${b.fp.slice(0, 16)}…`);
+  if (b.pairingCode()) {
+    printCode(b.pairingCode());
+    console.log(`\n  Код одноразовый, действует 5 минут. Компьютера нет в списке? Введите в приложении ${b.host}:${b.port}.`);
+  } else {
+    console.log(`\n  Телефон уже сопряжён: просто откройте Bubby → Agents.`);
+    console.log(`  Другой телефон: node bridge.mjs --new-pairing (старый перестанет подключаться).`);
+  }
+  if (args.includes("--link")) console.log(`\n  Ссылка для сопряжения (держите в секрете):\n  ${b.link()}`);
+  console.log(`\n  Ctrl+C — остановить.\n`);
+
+  let stopping = false;
+  const stop = () => { if (stopping) return; stopping = true; b.close().finally(() => process.exit(0)); };
+  process.on("SIGINT", stop);
+  process.on("SIGTERM", stop);
 }
 
-if (process.argv[1] && fileURLToPath(import.meta.url) === fs.realpathSync(process.argv[1])) main();
+if (process.argv[1] && fileURLToPath(import.meta.url) === fs.realpathSync(process.argv[1])) {
+  main().catch((e) => { console.error("Ошибка:", e.message); process.exit(1); });
+}

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Desktop side of the phone link (protocol v1 + docs/AGENTS-V2.md + docs/AGENTS-V3.md) for Claude Code and other agents.
-// Protocol ideas from Coucou (MIT); the code is Bubby's own.
+// Protocol ideas from Coucou (MIT); the v1 core was adapted from Coucou's android/tools/dev-desktop.mjs (MIT).
 import tls from "node:tls";
 import net from "node:net";
 import fs from "node:fs";

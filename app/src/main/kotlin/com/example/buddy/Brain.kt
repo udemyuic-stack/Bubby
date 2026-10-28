@@ -321,10 +321,17 @@ class Brain(private val ctx: Context) {
         else -> "gemini"
     }
 
-    private fun noTools(key: String): Boolean = key in noToolsKeys || (prefs.getStringSet("no_tools", null)?.contains(key) == true)
+    private fun today() = System.currentTimeMillis() / 86_400_000L
+
+    /** Remembered for 7 days (a provider may add tool support; the user can also switch tool calling off in Settings). */
+    private fun noTools(key: String): Boolean = key in noToolsKeys ||
+        (prefs.getStringSet("no_tools", null)?.any { it.substringBeforeLast('@') == key && today() - (it.substringAfterLast('@').toLongOrNull() ?: 0L) < 7 } == true)
     private fun markNoTools(key: String) {
         noToolsKeys.add(key)
-        try { val s = HashSet(prefs.getStringSet("no_tools", emptySet()) ?: emptySet()); s.add(key); prefs.edit().putStringSet("no_tools", s).apply() } catch (_: Exception) { }
+        try {
+            val s = HashSet((prefs.getStringSet("no_tools", emptySet()) ?: emptySet()).filter { it.substringBeforeLast('@') != key && today() - (it.substringAfterLast('@').toLongOrNull() ?: 0L) < 7 })
+            s.add(key + "@" + today()); prefs.edit().putStringSet("no_tools", s).apply()
+        } catch (_: Exception) { }
     }
 
     /** The user can switch tool calling off (Settings); then every connection uses the JSON mode. */
@@ -352,8 +359,11 @@ class Brain(private val ctx: Context) {
                 val k = specKey(spec)
                 val n = (toolStrikes[k] ?: 0) + 1
                 toolStrikes[k] = n
+                // only errors about tools count: a 400 for another reason just answers this turn in JSON mode
                 val m = (e.message ?: "").lowercase()
-                if (n >= 2 || m.contains("not support") || m.contains("does not support") || m.contains("unsupported") || m.contains("unknown field") || m.contains("tools")) markNoTools(k)
+                val aboutTools = m.contains("tool") || m.contains("function")
+                if (aboutTools && (n >= 2 || m.contains("not support") || m.contains("unsupported") || m.contains("unknown field") || m.contains("not allowed"))) markNoTools(k)
+                if (!aboutTools) toolStrikes[k] = n - 1
             }
         }
         val turns = ProviderFormat.flatten(req.msgs)

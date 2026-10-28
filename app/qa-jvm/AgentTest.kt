@@ -239,6 +239,12 @@ fun loopTests() {
         val r = loop(m, h).run(task("navigate home"))
         check("cancel: ends within one step", r.outcome == Outcome.CANCELLED && h.done == listOf("open_app") && m.requests.size == 1, "${r.outcome} ${h.done} ${m.requests.size}")
     }
+    // a sticker mid-task is shown with the final answer, not run (Actions would open the share sheet)
+    run {
+        val h = FakeHost()
+        val r = loop(FakeModel(native("", call("sticker", "mood" to "love"), call("open_app", "name" to "Maps")), native("", call("done", "summary" to "ok"))), h).run(task("open maps"))
+        check("sticker deferred to the reply", h.done == listOf("open_app") && r.actions.length() == 1 && r.actions.getJSONObject(0).getString("do") == "sticker")
+    }
     // wait tool sleeps on the host clock, bounded
     run {
         val h = FakeHost()

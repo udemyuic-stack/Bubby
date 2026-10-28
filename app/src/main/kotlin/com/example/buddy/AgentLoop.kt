@@ -239,6 +239,8 @@ class AgentLoop(
         var lastSig: Int? = null
         var lastAction = ""
         val ui = task.uiLang ?: task.lang
+        // UI-only actions (an inline sticker) are always shown with the final answer, never in the middle of a task
+        val deferred = JSONArray()
 
         fun finish(o: Outcome, emotion: String, say: String, lang: String?, actions: JSONArray): AgentResult {
             log.outcome = o.name.lowercase(); log.end = host.now(); log.summary = say
@@ -309,6 +311,7 @@ class AgentLoop(
                     } catch (_: Exception) { }
                 }
                 val actions = JSONArray()
+                for (i in 0 until deferred.length()) actions.put(deferred.get(i))
                 for (c in calls) {
                     if (host.cancelled()) return stop(Outcome.CANCELLED)
                     val tool = ToolRegistry.get(c.name)
@@ -378,6 +381,7 @@ class AgentLoop(
                         legacyNotes.append(text).append('\n')
                         log.add(steps, c.name, brief(c.name, c.args), if (o.error) o.text.take(80) else "read", !o.error)
                     }
+                    c.name in DEFER_TO_REPLY -> { deferred.put(JSONObject(c.args.toString()).put("do", c.name)); res("will be shown with your final answer") }
                     !host.canAct -> res("actions cannot run right now", true)
                     !out.native && !more -> legacyNotes.append("Not run yet: ${c.name} (repeat it in your final reply if still needed).\n")
                     else -> {
@@ -452,6 +456,11 @@ class AgentLoop(
                 msgs.add(Msg("user", sb.toString().trim().ifEmpty { "ok" }))
             }
         }
+    }
+
+    companion object {
+        /** Shown with the final answer even when called mid-task. */
+        val DEFER_TO_REPLY = setOf("sticker")
     }
 
     @Volatile private var lastDenial = ""

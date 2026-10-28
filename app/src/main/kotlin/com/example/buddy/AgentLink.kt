@@ -23,6 +23,12 @@ import javax.net.ssl.SSLSocket
 import javax.net.ssl.X509TrustManager
 
 data class AgentSession(val pillId: String, val agent: String, val state: String, val statusText: String, val stepIndex: Int, val stepCount: Int)
+/** What the computer reports about limits and work done (every field may be missing). `used` is 0..1, times are epoch ms. */
+data class Usage(
+    val fiveHour: Float?, val fiveHourResets: Long, val sevenDay: Float?, val sevenDayResets: Long,
+    val doneToday: Int?, val tokensToday: Long?, val plan: String?, val updatedAt: Long
+)
+
 data class Approval(val pillId: String, val fingerprint: String, val tool: String, val command: String, val createdAt: Long, val truncated: Boolean)
 
 /** Accepts only the certificate whose SHA-256 was in the pairing link; no CA, no hostname check. */
@@ -54,6 +60,7 @@ class AgentLink(ctx: Context, val listener: Listener) {
         fun onSessions(list: List<AgentSession>)
         fun onApproval(a: Approval)
         fun onApprovalResolved(fp: String)
+        fun onUsage(u: Usage) {}
     }
 
     private enum class Next { GO, RETRY, FATAL }
@@ -262,6 +269,22 @@ class AgentLink(ctx: Context, val listener: Listener) {
                     cut || j.optBoolean("truncated", false)
                 )
                 post(g) { onApprovalMain(a) }
+            }
+            "usage" -> if (welcomed) {
+                fun ring(o: JSONObject?, k: String): Pair<Float?, Long> {
+                    val r = o?.optJSONObject(k) ?: return null to 0L
+                    val used = if (r.has("used") && !r.isNull("used")) r.optDouble("used", Double.NaN).toFloat() else Float.NaN
+                    return (if (used.isNaN()) null else used.coerceIn(0f, 1f)) to r.optLong("resetsAt", 0L)
+                }
+                val (f, fr) = ring(j, "fiveHour")
+                val (w, wr) = ring(j, "sevenDay")
+                val u = Usage(
+                    f, fr, w, wr,
+                    if (j.has("doneToday") && !j.isNull("doneToday")) j.optInt("doneToday", 0).coerceAtLeast(0) else null,
+                    if (j.has("tokensToday") && !j.isNull("tokensToday")) j.optLong("tokensToday", 0L).coerceAtLeast(0L) else null,
+                    str(j, "plan").take(24).ifEmpty { null }, j.optLong("updatedAt", System.currentTimeMillis())
+                )
+                post(g) { listener.onUsage(u) }
             }
             "approvalResolved" -> if (welcomed) {
                 val fp = str(j, "fingerprint")

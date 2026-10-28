@@ -360,6 +360,12 @@ fun comms() {
     check("mail no match", Mail.rank(rows, "Zafar").isEmpty())
 }
 
+fun pairing() {
+    check("pair proof matches the Node HMAC", com.example.buddy.PairProof.proof("123456", "ab".repeat(32), "00112233445566778899aabbccddeeff") == "5f340d585a5c9e96680612e01da930742b91cca112759506a9e907b488fb4fcd")
+    check("pair proof lowercases the fingerprint", com.example.buddy.PairProof.proof("123456", "AB".repeat(32), "00112233445566778899aabbccddeeff") == "5f340d585a5c9e96680612e01da930742b91cca112759506a9e907b488fb4fcd")
+    check("pair code keeps only digits", com.example.buddy.PairProof.cleanCode("12 34-56") == "123456")
+}
+
 fun groq() {
     val ids = listOf("llama-3.3-70b-versatile", "openai/gpt-oss-20b", "qwen/qwen3.8-27b", "openai/gpt-oss-120b")
     check("groq uz: newest Qwen first", com.example.buddy.ui.GroqModels.pick(ids, "uz") == listOf("qwen/qwen3.8-27b", "openai/gpt-oss-120b", "openai/gpt-oss-20b"))
@@ -369,7 +375,7 @@ fun groq() {
 }
 
 fun main() {
-    quick(); contacts(); apps(); mathTools(); comms(); groq(); if (System.getenv("PROBE") != null) probe()
+    quick(); contacts(); apps(); mathTools(); comms(); groq(); pairing(); if (System.getenv("PROBE") != null) probe()
     println("RESULT: $pass passed, $fail failed (${pass + fail} assertions)")
     if (fail > 0) System.exit(1)
 }

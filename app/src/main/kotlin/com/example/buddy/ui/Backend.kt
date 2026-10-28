@@ -211,5 +211,14 @@ fun Backend.agentPair(ctx: Context, raw: String): String? {
     return null
 }
 
+/** Saves a link found by code pairing and tells the running service. Returns an error text or null. */
+fun Backend.agentSave(ctx: Context, link: com.example.buddy.ParsedLink): String? {
+    try { com.example.buddy.PairingStore(ctx).save(link) } catch (e: Exception) {
+        return Tr.t(ctx, "Не удалось сохранить ключ: ${e.message}", "Could not save the key: ${e.message}", "Kalitni saqlab bo'lmadi: ${e.message}")
+    }
+    reloadAgents(ctx)
+    return null
+}
+
 fun Backend.agentUnpair(ctx: Context) { com.example.buddy.PairingStore(ctx).clear(); reloadAgents(ctx) }
 

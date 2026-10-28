@@ -161,8 +161,10 @@ class BuddyService : Service() {
     private val agentListener = object : AgentLink.Listener {
         override fun onStatus(connected: Boolean, desktop: String?) {
             agentConnected = connected; agentDesktop = desktop
+            AgentStats.refreshWidgets(this@BuddyService)
         }
-        override fun onSessions(list: List<AgentSession>) { agentSessions = list }
+        override fun onSessions(list: List<AgentSession>) { agentSessions = list; AgentStats.refreshWidgets(this@BuddyService) }
+        override fun onUsage(u: Usage) { agentUsage = u; AgentStats.save(this@BuddyService, u); AgentStats.refreshWidgets(this@BuddyService) }
         override fun onApproval(a: Approval) {
             if (approvals.none { it.fingerprint == a.fingerprint }) approvals.add(a)
             showApproval(announce = true)
@@ -200,6 +202,7 @@ class BuddyService : Service() {
         @Volatile var agentConnected = false
         @Volatile var agentDesktop: String? = null
         @Volatile var agentSessions: List<AgentSession> = emptyList()
+        @Volatile var agentUsage: Usage? = null
         const val ACTION_ASK = "com.example.buddy.ASK"
         const val ACTION_TOGGLE_QUIET = "com.example.buddy.TOGGLE_QUIET"
         const val ACTION_AGENT_RELOAD = "com.example.buddy.AGENT_RELOAD"
@@ -1195,7 +1198,7 @@ class BuddyService : Service() {
     private fun startAgentLink() {
         agentLink?.stop(); agentLink = null
         approvals.clear(); showApproval(announce = false)
-        agentConnected = false; agentDesktop = null; agentSessions = emptyList()
+        agentConnected = false; agentDesktop = null; agentSessions = emptyList(); AgentStats.refreshWidgets(this)
         if (PairingStore(this).load() == null) return
         agentLink = AgentLink(this, agentListener).also { it.start() }
     }

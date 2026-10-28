@@ -2,4 +2,8 @@
 <resources>
     <string name="access_desc">Позволяет маскоту по голосовой команде нажимать на элементы экрана, прокручивать, вводить текст и нажимать «Назад» и «Домой». Данные с экрана никуда не отправляются.</string>
     <string name="share_to_buby">Отправить Bubby</string>
+    <string name="widget_status_desc">Агенты: что делают</string>
+    <string name="widget_usage_desc">Лимит Claude</string>
+    <string name="widget_done_desc">Сделано сегодня</string>
+    <string name="widget_agents_desc">Список агентов</string>
 </resources>

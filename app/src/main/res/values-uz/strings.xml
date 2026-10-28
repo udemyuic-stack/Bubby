@@ -2,4 +2,8 @@
 <resources>
     <string name="access_desc">Ovozli buyruq bilan maskot ekrandagi elementlarni bosishi, aylantirishi, matn kiritishi hamda «Orqaga» va «Bosh ekran» tugmalarini bosishi mumkin. Ekrandagi ma\'lumotlar hech qayerga yuborilmaydi.</string>
     <string name="share_to_buby">Bubbyga yuborish</string>
+    <string name="widget_status_desc">Agentlar: nima qilyapti</string>
+    <string name="widget_usage_desc">Claude limiti</string>
+    <string name="widget_done_desc">Bugun bajarildi</string>
+    <string name="widget_agents_desc">Agentlar ro\'yxati</string>
 </resources>

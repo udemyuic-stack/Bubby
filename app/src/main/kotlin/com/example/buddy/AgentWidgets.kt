@@ -22,12 +22,14 @@ import kotlin.math.min
  * how much was done today, and the list of agents. Each is drawn as one bitmap (our own look, drawn in code).
  */
 object AgentWidgets {
-    private val KINDS = listOf("status", "usage", "done", "agents")
+    private val KINDS = listOf("status", "usage", "done", "agents", "bar", "mini")
 
     class StatusWidget : Base("status")
     class UsageWidget : Base("usage")
     class DoneWidget : Base("done")
     class AgentsWidget : Base("agents")
+    class BarWidget : Base("bar")
+    class MiniWidget : Base("mini")
 
     abstract class Base(private val kind: String) : AppWidgetProvider() {
         override fun onUpdate(ctx: Context, mgr: AppWidgetManager, ids: IntArray) { for (id in ids) draw(ctx, mgr, id, kind) }
@@ -36,7 +38,7 @@ object AgentWidgets {
 
     private fun cls(kind: String): Class<*> = when (kind) {
         "status" -> StatusWidget::class.java; "usage" -> UsageWidget::class.java
-        "done" -> DoneWidget::class.java; else -> AgentsWidget::class.java
+        "done" -> DoneWidget::class.java; "bar" -> BarWidget::class.java; "mini" -> MiniWidget::class.java; else -> AgentsWidget::class.java
     }
 
     /** Redraws every placed widget (called when agents or limits change). */
@@ -57,10 +59,20 @@ object AgentWidgets {
         val wDp = o.getInt(AppWidgetManager.OPTION_APPWIDGET_MIN_WIDTH, 0).let { if (it <= 0) 110 else it }.coerceAtMost(420)
         val hDp = o.getInt(AppWidgetManager.OPTION_APPWIDGET_MIN_HEIGHT, 0).let { if (it <= 0) 110 else it }.coerceAtMost(420)
         val bmp = try { render(ctx, kind, (wDp * d).toInt(), (hDp * d).toInt(), d) } catch (_: Throwable) { return }
-        val rv = RemoteViews(ctx.packageName, R.layout.widget_image)
+        val bar = kind == "bar"
+        val rv = RemoteViews(ctx.packageName, if (bar) R.layout.widget_bar else R.layout.widget_image)
         rv.setImageViewBitmap(R.id.widget_img, bmp)
-        val open = Intent(ctx, com.example.buddy.ui.UiActivity::class.java).putExtra("open", "agents").addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        rv.setOnClickPendingIntent(R.id.widget_root, PendingIntent.getActivity(ctx, kind.hashCode(), open, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE))
+        val imm = PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        fun openApp(name: String, req: Int) = PendingIntent.getActivity(ctx, req,
+            Intent(ctx, com.example.buddy.ui.UiActivity::class.java).putExtra("open", name).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP), imm)
+        // a tap opens the agents page, which also shows the request that is waiting for an answer
+        rv.setOnClickPendingIntent(R.id.widget_root, openApp(if (kind == "mini") "home" else "agents", kind.hashCode()))
+        if (bar) {
+            rv.setOnClickPendingIntent(R.id.btn_home, openApp("home", 1001))
+            rv.setOnClickPendingIntent(R.id.btn_settings, openApp("settings", 1003))
+            rv.setOnClickPendingIntent(R.id.btn_talk, PendingIntent.getForegroundService(ctx, 1002,
+                Intent(ctx, BuddyService::class.java).setAction(BuddyService.ACTION_LISTEN), imm))
+        }
         mgr.updateAppWidget(id, rv)
     }
 
@@ -73,7 +85,7 @@ object AgentWidgets {
         if (!BuddyService.agentConnected) return "offline"
         val s = BuddyService.agentSessions
         return when {
-            s.any { it.state == "approval" || it.state == "question" } -> "approval"
+            BuddyService.agentApprovals.isNotEmpty() || s.any { it.state == "approval" || it.state == "question" } -> "approval"
             s.any { it.state in BUSY } -> "working"
             s.any { it.state == "error" || it.state == "ratelimit" } -> "problem"
             s.any { it.state == "finished" } -> "finished"
@@ -129,6 +141,15 @@ object AgentWidgets {
 
     // ---- drawing --------------------------------------------------------------------------------------------------------
 
+    /** The whole widget takes the colour of the state: blue working, amber waiting for you, green finished, red problem. */
+    private fun tint(st: String): Pair<Int, Int> = when (st) {
+        "working" -> 0xFF16346A.toInt() to 0xFF0B1B3C.toInt()
+        "approval" -> 0xFF5A3A10.toInt() to 0xFF2E1C08.toInt()
+        "finished" -> 0xFF14463A.toInt() to 0xFF0A261F.toInt()
+        "problem" -> 0xFF5A1E22.toInt() to 0xFF2E0F12.toInt()
+        else -> 0xFF1A2650.toInt() to 0xFF0F1630.toInt()
+    }
+
     private fun render(ctx: Context, kind: String, w: Int, h: Int, d: Float): Bitmap {
         val bmp = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888)
         val cv = Canvas(bmp)
@@ -137,7 +158,8 @@ object AgentWidgets {
         val accent = color(st)
         val r = 24f * d
         val box = RectF(1f * d, 1f * d, w - 1f * d, h - 1f * d)
-        p.shader = LinearGradient(0f, 0f, w.toFloat(), h.toFloat(), 0xFF1A2650.toInt(), 0xFF0F1630.toInt(), Shader.TileMode.CLAMP)
+        val (t1, t2) = tint(st)
+        p.shader = LinearGradient(0f, 0f, w.toFloat(), h.toFloat(), t1, t2, Shader.TileMode.CLAMP)
         cv.drawRoundRect(box, r, r, p)
         p.shader = RadialGradient(w * 0.5f, h * 0.35f, min(w, h) * 0.7f, (accent and 0xFFFFFF) or 0x40000000, 0x00000000, Shader.TileMode.CLAMP)
         cv.drawRoundRect(box, r, r, p)
@@ -148,6 +170,8 @@ object AgentWidgets {
             "status" -> status(ctx, cv, p, w, h, d, st)
             "usage" -> usage(ctx, cv, p, w, h, d)
             "done" -> done(ctx, cv, p, w, h, d)
+            "bar" -> bar(ctx, cv, p, w, h, d, st)
+            "mini" -> mini(ctx, cv, p, w, h, d, st)
             else -> agents(ctx, cv, p, w, h, d, st)
         }
         return bmp
@@ -160,6 +184,33 @@ object AgentWidgets {
         var t = s
         if (maxW > 0f) while (t.length > 1 && p.measureText(t) > maxW) t = t.dropLast(2) + "…"
         cv.drawText(t, x, y, p)
+    }
+
+    private fun bar(ctx: Context, cv: Canvas, p: Paint, w: Int, h: Int, d: Float, st: String) {
+        p.color = color(st); cv.drawCircle(20f * d, h / 2f, 5.5f * d, p)
+        val title = "Claude"
+        text(cv, p, title, 32f * d, h / 2f + 6f * d, 17f * d, 0xFFFFFFFF.toInt(), true)
+        val tw = p.measureText(title)
+        text(cv, p, title(ctx, st), 32f * d + tw + 8f * d, h / 2f + 5.5f * d, 13f * d, 0xBFFFFFFF.toInt(), false, false, w - 32f * d - tw - 8f * d - 160f * d)
+        // three round buttons on the right: home, talk to Bubby, settings
+        val icons = intArrayOf(R.drawable.ic_home, R.drawable.ic_mic, R.drawable.ic_settings)
+        for (i in 0..2) {
+            val cx = w - 10f * d - (2 - i) * 50f * d - 22f * d
+            p.color = 0x26FFFFFF; cv.drawCircle(cx, h / 2f, 17f * d, p)
+            val dr = ctx.getDrawable(icons[i])?.mutate() ?: continue
+            dr.setTint(0xFFFFFFFF.toInt())
+            val r = (10f * d).toInt()
+            dr.setBounds((cx - r).toInt(), (h / 2f - r).toInt(), (cx + r).toInt(), (h / 2f + r).toInt())
+            dr.draw(cv)
+        }
+    }
+
+    private fun mini(ctx: Context, cv: Canvas, p: Paint, w: Int, h: Int, d: Float, st: String) {
+        val side = min(w, h) * 0.84f
+        cv.drawBitmap(mascot(ctx, mascotMood(st)), null, RectF((w - side) / 2f, (h - side) / 2f, (w + side) / 2f, (h + side) / 2f), p)
+        if (st == "approval" || st == "working" || st == "finished" || st == "problem") {
+            p.color = color(st); cv.drawCircle(w - 10f * d, 10f * d, 5f * d, p)
+        }
     }
 
     private fun status(ctx: Context, cv: Canvas, p: Paint, w: Int, h: Int, d: Float, st: String) {

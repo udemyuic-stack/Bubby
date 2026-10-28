@@ -6,4 +6,6 @@
     <string name="widget_usage_desc">Claude limiti</string>
     <string name="widget_done_desc">Bugun bajarildi</string>
     <string name="widget_agents_desc">Agentlar ro\'yxati</string>
+    <string name="widget_bar_desc">Agent paneli</string>
+    <string name="widget_mini_desc">Bubby (maskot)</string>
 </resources>

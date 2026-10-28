@@ -6,4 +6,6 @@
     <string name="widget_usage_desc">Лимит Claude</string>
     <string name="widget_done_desc">Сделано сегодня</string>
     <string name="widget_agents_desc">Список агентов</string>
+    <string name="widget_bar_desc">Панель агента</string>
+    <string name="widget_mini_desc">Bubby (маскот)</string>
 </resources>

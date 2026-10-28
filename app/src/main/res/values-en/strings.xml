@@ -6,4 +6,6 @@
     <string name="widget_usage_desc">Claude limit</string>
     <string name="widget_done_desc">Done today</string>
     <string name="widget_agents_desc">Agent list</string>
+    <string name="widget_bar_desc">Agent bar</string>
+    <string name="widget_mini_desc">Bubby (mascot)</string>
 </resources>

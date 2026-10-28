@@ -167,10 +167,12 @@ class BuddyService : Service() {
         override fun onUsage(u: Usage) { agentUsage = u; AgentStats.save(this@BuddyService, u); AgentStats.refreshWidgets(this@BuddyService) }
         override fun onApproval(a: Approval) {
             if (approvals.none { it.fingerprint == a.fingerprint }) approvals.add(a)
+            publishApprovals()
             showApproval(announce = true)
         }
         override fun onApprovalResolved(fp: String) {
             approvals.removeAll { it.fingerprint == fp }
+            publishApprovals()
             showApproval(announce = false)
         }
     }
@@ -203,9 +205,12 @@ class BuddyService : Service() {
         @Volatile var agentDesktop: String? = null
         @Volatile var agentSessions: List<AgentSession> = emptyList()
         @Volatile var agentUsage: Usage? = null
+        /** Requests waiting for an answer (the app's agents page lists them; answers go back through ACTION_AGENT_DECIDE). */
+        @Volatile var agentApprovals: List<Approval> = emptyList()
         const val ACTION_ASK = "com.example.buddy.ASK"
         const val ACTION_TOGGLE_QUIET = "com.example.buddy.TOGGLE_QUIET"
         const val ACTION_AGENT_RELOAD = "com.example.buddy.AGENT_RELOAD"
+        const val ACTION_AGENT_DECIDE = "com.example.buddy.AGENT_DECIDE"
         const val ACTION_LISTEN = "com.example.buddy.LISTEN"
         private val WAKE_NAMES = setOf("bubby", "buby", "bubbi", "bubi", "buuby", "буби", "бубби", "бабби", "бубы", "бубя")
         // close to "bubby"/"buby" in spelling but ordinary words
@@ -304,6 +309,7 @@ class BuddyService : Service() {
         when (i?.action) {
             Reminders.ACTION_SPEAK -> remind(i.getStringExtra("text").orEmpty())
             ACTION_AGENT_RELOAD -> startAgentLink()
+            ACTION_AGENT_DECIDE -> i.getStringExtra("fp")?.let { fp -> agentLink?.decide(fp, i.getBooleanExtra("allow", false)); resolveLocal(fp) }
             ACTION_LISTEN -> if (!busy && !calling) {
                 cancelTap(); voice.stopSpeaking(); touched()
                 if (voiceOn()) startVoice()
@@ -1230,7 +1236,9 @@ class BuddyService : Service() {
         focusable(false)
     }
 
-    private fun resolveLocal(fp: String) { approvals.removeAll { it.fingerprint == fp }; showApproval(announce = false) }
+    private fun resolveLocal(fp: String) { approvals.removeAll { it.fingerprint == fp }; publishApprovals(); showApproval(announce = false) }
+
+    private fun publishApprovals() { agentApprovals = approvals.toList(); AgentStats.refreshWidgets(this) }
 
     private fun sListen() = t("Слушаю…", "Listening…", "Eshityapman…")
     private fun listeningNow() = status.text.toString() == sListen()

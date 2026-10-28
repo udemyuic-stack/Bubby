@@ -28,7 +28,7 @@ class AgentsScreen(act: UiActivity) : Screen(act) {
 
     /** What the page last showed of the live link state; the poll redraws only when it changes. */
     private var shownLive: Any? = null
-    private fun live(): Any = listOf(BuddyService.agentDesktop, BuddyService.agentConnected, BuddyService.agentSessions, BuddyService.agentUsage)
+    private fun live(): Any = listOf(BuddyService.agentDesktop, BuddyService.agentConnected, BuddyService.agentSessions, BuddyService.agentUsage, BuddyService.agentApprovals)
 
     override fun onShow() {
         reshow()
@@ -199,6 +199,26 @@ class AgentsScreen(act: UiActivity) : Screen(act) {
             })
         }, MATCH, WRAP, bottom = 12)
 
+        // requests waiting for an answer
+        for (ap in BuddyService.agentApprovals) c.add(ctx.card(pad = 16, fill = P.warning.let { P.alpha(it, 40) }, stroke = P.warning) {
+            add(ctx.row {
+                add(ctx.icon(R.drawable.ic_warning, P.warning, 24), WRAP, WRAP, end = 10)
+                add(ctx.text(t("Ждёт вашего ответа", "Waiting for you", "Javobingizni kutyapti"), T.Title), 0, WRAP, 1f)
+            })
+            add(ctx.text(ap.tool, T.Label), MATCH, WRAP, top = 8)
+            if (ap.command.isNotEmpty()) add(ctx.text(ap.command, T.Body).apply { typeface = android.graphics.Typeface.MONOSPACE; textSize = 13f; maxLines = 6; ellipsize = android.text.TextUtils.TruncateAt.END
+                background = ctx.rounded(P.container, 12f); setPadding(ctx.dp(10), ctx.dp(8), ctx.dp(10), ctx.dp(8)) }, MATCH, WRAP, top = 6)
+            add(ctx.row {
+                add(ctx.button(t("Отклонить", "Deny", "Rad etish"), BtnStyle.Outline) { decide(ap.fingerprint, false) }, 0, WRAP, 1f, end = 8)
+                if (!ap.truncated) add(ctx.button(t("Разрешить", "Allow", "Ruxsat berish")) {
+                    // the lock screen (PIN, pattern, fingerprint) must confirm first
+                    com.example.buddy.ConfirmActivity.request(ctx) { ok -> if (ok) decide(ap.fingerprint, true) else ctx.toast(t("Нужен экран блокировки", "Lock screen required", "Ekran qulfi kerak")) }
+                }, 0, WRAP, 1f)
+            }, MATCH, WRAP, top = 10)
+            add(ctx.text(if (ap.truncated) t("Команда слишком длинная: разрешить можно только на компьютере", "The command is too long: it can only be allowed on the computer", "Buyruq juda uzun: ruxsatni faqat kompyuterda berish mumkin")
+                else t("Разрешить можно только после проверки экрана блокировки", "You can allow only after the lock screen check", "Ruxsat faqat qulf ekrani tekshiruvidan keyin beriladi"), T.Small), MATCH, WRAP, top = 8)
+        }, MATCH, WRAP, bottom = 12)
+
         // usage rings and done today
         val u = AgentStats.current(ctx)
         fun ringCard(value: Float?, resets: Long, title: String): LinearLayout = statCard(title,
@@ -234,8 +254,17 @@ class AgentsScreen(act: UiActivity) : Screen(act) {
                     add(iv, 0, ctx.dp(150), 1f, end = 6, start = 6)
                 }
             }, MATCH, WRAP, top = 10)
+            for ((k, hh) in listOf("bar" to 56, "agents" to 110)) {
+                val iv = android.widget.ImageView(ctx).apply { setImageBitmap(try { AgentWidgets.preview(ctx, k, 320, hh) } catch (_: Throwable) { null }) }
+                add(iv, MATCH, ctx.dp(hh), top = 8)
+            }
         }, MATCH, WRAP, bottom = 8)
         c.add(ctx.button(t("Отключить", "Disconnect", "Uzish"), BtnStyle.Outline) { unpair() }, MATCH, WRAP, top = 8)
+    }
+
+    private fun decide(fp: String, allow: Boolean) {
+        ctx.startService(android.content.Intent(ctx, BuddyService::class.java).setAction(BuddyService.ACTION_AGENT_DECIDE).putExtra("fp", fp).putExtra("allow", allow))
+        content.postDelayed({ refresh() }, 300)
     }
 
     private fun fmtTokens(n: Long): String = when { n >= 1_000_000 -> "%.1fM".format(n / 1_000_000.0); n >= 1_000 -> "%.1fk".format(n / 1_000.0); else -> n.toString() }
@@ -298,6 +327,7 @@ class AgentsScreen(act: UiActivity) : Screen(act) {
             AgentSession("b", "Claude Code", "approval", "Run: gradle assembleRelease", 0, 0),
             AgentSession("c", "Claude Code", "idle", "", 0, 0)
         )
+        BuddyService.agentApprovals = listOf(com.example.buddy.Approval("b", "fp1", "Bash", "gradle assembleRelease -Pbuddy.code=45", now, false))
         BuddyService.agentUsage = com.example.buddy.Usage(0.68f, now + 130 * 60_000L, 0.42f, now + 4 * 86_400_000L, 4, 182_400L, "max", now)
         return AgentInfo(true, "Work laptop", true, BuddyService.agentSessions)
     }

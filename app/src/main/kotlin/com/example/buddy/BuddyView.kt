@@ -301,6 +301,7 @@ class BuddyView(c: Context) : View(c) {
     private var night = false
     private var touchDown = false
     private var touchStart = 0L
+    private var popStart = 0L   // finger lifted: spring back, sparks, eyes pop open
     private var touchLast = 0L
     private var sqStart = 0L
     // mood cross-blend: blend 0 -> 1 over ~220 ms; p* = values drawn when the change began, c* = currently drawn
@@ -351,7 +352,7 @@ class BuddyView(c: Context) : View(c) {
     fun touchAt(x: Float, y: Float) {
         val now = SystemClock.uptimeMillis()
         val first = !touchDown
-        if (first) { touchDown = true; touchStart = now; sqStart = now }
+        if (first) { touchDown = true; touchStart = now }
         touchLast = now; poke()
         val hw = width.coerceAtLeast(1) * 0.5f; val hh = height.coerceAtLeast(1) * 0.5f
         lookAt((x - hw) / hw * 0.7f, (y - hh) / hh * 0.5f)
@@ -361,6 +362,7 @@ class BuddyView(c: Context) : View(c) {
     fun touchEnd() {
         if (!touchDown) return
         touchDown = false
+        popStart = SystemClock.uptimeMillis()
         lkStamp = SystemClock.uptimeMillis() - 1800L   // eyes drift back after ~0.7 s
         kick()
     }
@@ -1375,7 +1377,8 @@ class BuddyView(c: Context) : View(c) {
         } else if (wakeT in 0L..1500L) {
             em = if (wakeT < 450L) "tired" else if (wakeT < 900L) "surprised" else "idle"
             if (wakeT in 450L..900L) wkDy = -sin((wakeT - 450L) / 450f * 3.1415927f) * 6f
-        }
+        } else if (popStart != 0L && em == "idle" && now - popStart in 120L..1100L && !speaking) em = "surprised"
+        if (popStart != 0L && now - popStart > 1500L) popStart = 0L
         val mf =if (mk != 0) ((now - mStart).toFloat() / mDur).coerceIn(0f, 1f) else 0f
         val env = if (mk >= 4) sin(mf * 3.1415927f) else minOf(1f, minOf(mf, 1f - mf) * 6f)
 
@@ -1422,12 +1425,13 @@ class BuddyView(c: Context) : View(c) {
         if (dozeK > 0f) { dy += dozeK * 2.5f; rot += dozeK * (4f + sin(t * 0.9f) * 2f) }
         earX += bEx; earY += bEy
         Outfits.earX = earX; Outfits.earY = earY   // hats / ear accessories follow the twitch
-        if (sqStart != 0L) {   // soft squash-and-stretch when first touched
-            val sqT = now - sqStart
-            if (sqT > 320L) sqStart = 0L else {
-                val x = sqT / 320f; val k = sin(x * 6.2831855f) * (1f - x)
-                qx *= 1f + 0.07f * k; qy *= 1f - 0.09f * k
-            }
+        if (touchDown && !offscreen) {   // pressed: flatten under the finger
+            val pk = minOf(1f, (now - touchStart) / 90f)
+            qy *= 1f - 0.30f * pk; qx *= 1f + 0.09f * pk
+        } else if (popStart != 0L) {   // released: damped spring, overshooting upwards
+            val pt = (now - popStart) / 1000f
+            val sp = exp(-5.0 * pt).toFloat() * cos(pt * 16.0).toFloat()
+            qy *= 1f + (-0.30f * sp).coerceIn(-0.30f, 0.2f); qx *= 1f + 0.09f * sp
         }
         if (touchDown && now - touchLast > 3000L) touchDown = false   // safety if touchEnd() is never called
         val entT = if (enterStart != 0L) now - enterStart else -1L
@@ -1510,6 +1514,20 @@ class BuddyView(c: Context) : View(c) {
         cv.rotate(rot + hx * 2.9f); cv.skew(-hy * 0.03f, 0f)
         cv.scale(s * sx * (1f - sq * 0.6f) * qx, s * (1f + sq) * qy)
 
+        if (popStart != 0L) {   // sparks flying outwards from the body
+            val pt = (now - popStart) / 1000f
+            if (pt in 0.1f..0.75f) {
+                val rk = sin((pt - 0.1f) / 0.65f * 3.1415927f)
+                line(0xFFFFFFFF.toInt(), 2.2f); p.alpha = (230 * rk).toInt()
+                for (i in 0 until 10) {
+                    val a = Math.toRadians(i * 36.0 + 18.0)
+                    val ca = cos(a).toFloat(); val sa = sin(a).toFloat()
+                    val r0 = 1.12f + 0.08f * (1f - rk); val r1 = r0 + 0.13f + 0.05f * rk
+                    cv.drawLine(ca * 42f * r0, -34f + sa * 33f * r0, ca * 42f * r1, -34f + sa * 33f * r1, p)
+                }
+                p.alpha = 255
+            }
+        }
         Outfits.drawBack(cv, p, outfit, em, t)
         val glassSp = species == "glass"
         val sleepy = sleepEyes || dozeK > 0.3f || em == "sleepy" || em == "tired"

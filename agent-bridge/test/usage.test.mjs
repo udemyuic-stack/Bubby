@@ -131,7 +131,7 @@ test("usage after paired too; with the source failing the limit fields are absen
   const { b } = await startWith(createUsageSource({ httpGet: fakeHttp([], new Error("down")), readCredentials: creds }));
   const { phone, reply } = await pairByCode({ host: b.host, port: b.port, code: b.pairingCode() });
   assert.equal(reply.type, "paired");
-  const u = await phone.wait((m) => m.type === "usage");
+  const u = await phone.wait((m) => m.type === "usage" && m.plan); // second message, after the (failed) refresh
   await new Promise((r) => setTimeout(r, 100));
   for (const m of phone.msgs.filter((x) => x.type === "usage")) {
     assert.equal(m.fiveHour, undefined);

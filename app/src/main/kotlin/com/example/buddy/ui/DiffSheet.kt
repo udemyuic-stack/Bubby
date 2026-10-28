@@ -134,7 +134,7 @@ class DiffSheet(private val act: UiActivity, private val pillId: String, private
                 else -> P.onSurface to 0
             }
             // the text is plain characters from the computer, cleaned already: never parsed as HTML or styled text
-            body.add(ctx.text((if (l.kind == ' ') "  " else "${l.kind} ") + l.text, T.Body, fg).apply {
+            body.add(ctx.text(when (l.kind) { ' ' -> "  " + l.text; '@' -> l.text.ifEmpty { "@@" }; else -> "${l.kind} " + l.text }, T.Body, fg).apply {
                 typeface = Typeface.MONOSPACE; textSize = 12.5f; setSingleLine(); setHorizontallyScrolling(true)
                 setPadding(ctx.dp(10), ctx.dp(1), ctx.dp(16), ctx.dp(1))
                 if (bg != 0) setBackgroundColor(bg)

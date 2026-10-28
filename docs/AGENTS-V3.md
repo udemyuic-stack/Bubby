@@ -72,3 +72,34 @@ session list shows that name in `agent`. `hook.mjs --agent <name>` injects it. `
 hook format (check which of Codex CLI, Gemini CLI, Cursor, GitHub Copilot CLI, OpenCode Coucou's docs/AGENTS.md and installer
 describe, and support only those you can implement safely and test, each with diff, confirmation, `.bak`, uninstall). Add a
 short docs/AGENTS-OTHER.md listing what is supported and the manual JSON recipe for everything else.
+
+## 6. Clarifications from the bridge implementation (agent-bridge)
+These pin down what the spec above left open; the bridge does exactly this.
+- **Caps on pairing.** `pair` may carry `caps` like `hello`, and `paired` then carries `caps` like `welcome` (for a phone
+  that keeps the pairing connection). `welcome` and `paired` always carry `caps`, `[]` when nothing is offered. Unknown
+  names in the phone's list are ignored. Offered order: `details`, `answers`, `diffs`.
+- **statusLine.** The relay sends the bridge `{"event":"StatusLine","sessionId":...,"rateLimits":<rate_limits as is>}`;
+  nothing else of the payload. The previous status line (saved whole, `padding` etc. kept in settings.json) runs through
+  `/bin/sh -c` (Git Bash `bash -c` on Windows) with a 5 s budget and 64 KiB of output, then is killed and prints nothing.
+  A `statusLine` that is not an object is left alone. `used_percentage` must be a number >= 0 (above 100 is clamped to
+  `used: 1`); a bad `resets_at` drops only `resetsAt`. The last good values persist in `~/.bubby/limits.json` across
+  restarts. `usage.updatedAt` is the time of those values; with none it is the send time. `plan` comes only from
+  `rate_limits.plan` (letters, digits, space, `_`, `-`, at most 20, lowercased).
+- **doneToday** counts Claude Code's turns only (`Stop` without `bubby_agent`).
+- **Questions.** Also not offered: two questions with the same text (Claude Code's answers are keyed by the text), a
+  non-boolean `multiSelect`, an empty label. `description` is always sent (`""` when absent). The answer goes back as
+  `{question text: label}` and, for a multiple choice, `{question text: [labels]}` in the phone's order. A `decision`
+  for a question and an `answer` for an approval are ignored. Questions are only offered while a phone with `answers`
+  is connected; they come only from Claude Code (`tool_name` `AskUserQuestion` on `PermissionRequest`).
+- **Details.** `project` is the session's `cwd` folder name. Steps: Bash = the command on one line, a file tool = the
+  file name, Read = `Read <name>`, other tools = the tool name. `finalLine` = the first paragraph of the Stop hook's
+  `last_assistant_message`, without Markdown markers, one line, at most 200 chars; cleared on the next prompt. One pill
+  per agent: its entry shows the most urgent of its sessions; `steps`/`files` cover all of them.
+- **Diffs.** `id` / `fileId` are positive integers, unique per bridge run. Edits of the same file in a session add up
+  in one entry (same id, moved to the front). The `@` line text is `@@ <n>` with `n` the 1-based line in the edited
+  text (the tool input), not in the file. A diff over 200 KB / 4000 lines is `tooLarge` with counts only. An unknown or
+  forgotten file is answered `{"type":"diff",...,"gone":true,"part":0,"parts":1,"lines":[]}` with `name:""`, counts 0.
+  Over the rate, `getDiff` is dropped without an answer.
+- **More agents.** Pill id `agent_<name>` (Claude Code keeps `integration_claude`), `agent` = the name as given. Another
+  agent's `PermissionRequest` is never sent to the phone and gets no decision (display only). Installers exist for
+  Gemini CLI and GitHub Copilot CLI only; see docs/AGENTS-OTHER.md.

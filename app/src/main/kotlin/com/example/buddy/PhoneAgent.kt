@@ -137,6 +137,7 @@ class PhoneHost(private val ctx: Context, private val ui: AgentUi, private val u
 
     private val reSmsWords = Regex("смс|sms|сообщени|message|xabar", RegexOption.IGNORE_CASE)
     private val reFileWords = Regex("файл|file|загрузк|download|фото|photo|картин|picture|скачан|fayl|rasm|yuklab", RegexOption.IGNORE_CASE)
+    private val reContactWords = Regex("контакт|contact|номер|number|kontakt|raqam|телефон|phone|позвон|call|qo'?ng'?iroq|напиш|write|send|отправ|yubor|xabar", RegexOption.IGNORE_CASE)
     private val reClipWords = Regex("буфер|clipboard|скопир|copied|вставь|paste|nusxa", RegexOption.IGNORE_CASE)
 
     private fun device(name: String, a: JSONObject): ToolOutput {
@@ -272,6 +273,7 @@ class PhoneHost(private val ctx: Context, private val ui: AgentUi, private val u
     private fun contacts(q: String): ToolOutput {
         if (q.isBlank()) return err("whose contact?")
         if (!granted(Manifest.permission.READ_CONTACTS)) return err("no access to contacts: the user can allow it in the Bubby app (More > All permissions > Contacts)")
+        if (!dataConsent("contacts", reContactWords, tr("Посмотреть контакты", "Look up your contacts", "Kontaktlarni ko'rish"))) return err("the user did not allow looking at contacts for this task")
         val c = Contacts.resolve(ctx, q, 6)
         if (c.isEmpty()) return ToolOutput("no contact matches \"$q\"")
         return ToolOutput(c.joinToString("\n") { "${it.name}: ${it.number} (${it.label})" }, untrusted = "contacts")

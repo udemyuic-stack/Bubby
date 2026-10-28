@@ -456,6 +456,8 @@ class BuddyService : Service() {
     private fun uiLang(): String {
         val l = prefs.getString("lang", "auto") ?: "auto"
         if (l == "uz" || l == "ru" || l == "en") return l
+        // auto: the language the user spoke last, until they have said anything the phone's language
+        prefs.getString("last_lang", null)?.let { if (it == "uz" || it == "ru" || it == "en") return it }
         return Locale.getDefault().language.let { if (it == "uz" || it == "ru") it else "en" }
     }
 

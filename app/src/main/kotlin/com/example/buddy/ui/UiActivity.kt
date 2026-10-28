@@ -24,12 +24,14 @@ class UiActivity : Activity() {
     private val tabs = ArrayList<Screen>()
     private var tab = 0
     private val stack = ArrayList<Pair<Screen, View>>()
+    private var shownLang = ""
     private var insetTop = 0
     private var insetBottom = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         P.init(this)
+        shownLang = Tr.lang(this)
         cleanOldModel()
         window.setBackgroundDrawable(android.graphics.drawable.ColorDrawable(P.surface))
         host = FrameLayout(this)
@@ -201,6 +203,8 @@ class UiActivity : Activity() {
 
     override fun onResume() {
         super.onResume()
+        // the language the user speaks changed (auto mode): draw everything in it
+        if (Tr.lang(this) != shownLang) { recreate(); return }
         (stack.lastOrNull()?.first ?: tabs[tab]).onShow()
     }
 

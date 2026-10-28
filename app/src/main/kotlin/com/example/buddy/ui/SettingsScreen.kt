@@ -147,12 +147,13 @@ class SettingsScreen(act: UiActivity) : Screen(act) {
         group(c, t("Искусственный интеллект", "Artificial intelligence", "Sun'iy intellekt"), R.drawable.ic_sparkle) {
             add(aiCard(), MATCH, WRAP)
             add(ctx.text("Язык / Language / Til", T.Title), MATCH, WRAP, top = 14, bottom = 8)
-            add(chips(listOf("auto" to t("Авто", "Auto", "Avto"), "uz" to "O'zbekcha", "ru" to "Русский", "en" to "English"),
+            add(chips(listOf("auto" to t("Авто (как я говорю)", "Auto (as I speak)", "Avto (gapirgan tilim)"), "uz" to "O'zbekcha", "ru" to "Русский", "en" to "English"),
                 Backend.str(ctx, "lang", "auto")) {
-                if (it != Backend.str(ctx, "lang", "auto")) { Backend.setStr(ctx, "lang", it); act.restart() }
+                if (it != Backend.str(ctx, "lang", "auto")) { Backend.prefs(ctx).edit().putString("lang", it).commit(); act.restart() }
             })
-            add(ctx.text(t("Это также язык, на котором Bubby говорит и отвечает", "This is also the language Bubby speaks and answers in",
-                "Bu Bubby gapiradigan va javob beradigan til hamdir"), T.Small), MATCH, WRAP, top = 2)
+            add(ctx.text(t("Это также язык, на котором Bubby говорит и отвечает. «Авто»: Bubby отвечает и переключает приложение на язык, на котором вы с ним говорите",
+                "This is also the language Bubby speaks and answers in. “Auto”: Bubby answers, and switches the app, to the language you speak to him",
+                "Bu Bubby gapiradigan va javob beradigan til hamdir. «Avto»: Bubby siz gaplashgan tilda javob beradi va ilovani shu tilga o'tkazadi"), T.Small), MATCH, WRAP, top = 2)
         }
         c.add(musicCard(), MATCH, WRAP, top = 14)
 

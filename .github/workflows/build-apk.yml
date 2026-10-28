@@ -19,10 +19,25 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '9.3.1'
+      - name: Restore the signing key (secret BUBBY_KEYSTORE_B64, password BUBBY_STORE_PASSWORD)
+        env:
+          KS_B64: ${{ secrets.BUBBY_KEYSTORE_B64 }}
+        run: |
+          if [ -n "$KS_B64" ]; then
+            echo "$KS_B64" | base64 -d > "$RUNNER_TEMP/bubby.jks"
+            echo "BUBBY_KEYSTORE=$RUNNER_TEMP/bubby.jks" >> "$GITHUB_ENV"
+            echo "Signing with the fixed Bubby key"
+          else
+            echo "::warning::BUBBY_KEYSTORE_B64 is not set: this APK is signed with a random key and cannot be installed over another build"
+          fi
       - name: Build the release APK
         working-directory: app
+        env:
+          BUBBY_STORE_PASSWORD: ${{ secrets.BUBBY_STORE_PASSWORD }}
         run: gradle --no-daemon assembleRelease -Pbuddy.code=${{ github.run_number }} -Pbuddy.version=1.0.${{ github.run_number }}
       - run: find app/build/outputs/apk/release -name "*.apk" -print -exec cp {} bubby.apk \;
+      - name: Show the signing certificate (must be the same in every build, or updates cannot install)
+        run: $(ls -d $ANDROID_HOME/build-tools/*/ | tail -1)apksigner verify --print-certs bubby.apk | grep -i "SHA-256"
       - uses: actions/upload-artifact@v4
         with:
           name: bubby

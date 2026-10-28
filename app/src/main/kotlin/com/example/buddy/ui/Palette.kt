@@ -18,48 +18,30 @@ object P {
     val success = 0xFF3DA66B.toInt()
     val warning = 0xFFF2B01E.toInt()
 
-    var primary = orange
-    var onPrimary = ink
-    var primaryContainer = 0xFFFFE6C8.toInt()
-    var onPrimaryContainer = 0xFF4A2300.toInt()
-    var secondaryContainer = 0xFFE7E2FA.toInt()
-    var onSecondaryContainer = 0xFF2A2159.toInt()
-    var tertiaryContainer = 0xFFFFDCE8.toInt()
+    // soft-glass light palette (the redesign has no dark scheme)
+    var primary = 0xFF2C4470.toInt()
+    var onPrimary = 0xFFFFFFFF.toInt()
+    var primaryContainer = 0x59E08A4A.toInt()
+    var onPrimaryContainer = 0xFF4A2A10.toInt()
+    var secondaryContainer = 0x66FFFFFF.toInt()
+    var onSecondaryContainer = 0xFF24344F.toInt()
+    var tertiaryContainer = 0x59E48AA8.toInt()
     var onTertiaryContainer = 0xFF5C1A38.toInt()
-    var error = 0xFFD13B3B.toInt()
-    var errorContainer = 0xFFFFDAD6.toInt()
+    var error = 0xFFC93A3A.toInt()
+    var errorContainer = 0x59E06A6A.toInt()
     var onErrorContainer = 0xFF5A0F0F.toInt()
-    var surface = 0xFFFFFAF3.toInt()
-    var onSurface = ink
-    var onSurfaceVariant = 0xFF6A607A.toInt()
-    var outline = 0xFF8E819E.toInt()
-    var outlineVariant = 0xFFEBDFD2.toInt()
-    var low = 0xFFFFFFFF.toInt()          // cards
-    var container = 0xFFFFF4E6.toInt()
-    var high = 0xFFFFEEDC.toInt()
-    var highest = 0xFFFBE8D2.toInt()
+    var surface = 0xFFCBD8E6.toInt()
+    var onSurface = 0xFF1C2B45.toInt()
+    var onSurfaceVariant = 0xFF4A5C7D.toInt()
+    var outline = 0xFF7F93B0.toInt()
+    var outlineVariant = 0xB3FFFFFF.toInt()
+    var low = 0x66FFFFFF.toInt()          // cards
+    var container = 0x59FFFFFF.toInt()
+    var high = 0x66FFFFFF.toInt()
+    var highest = 0x73FFFFFF.toInt()
 
     fun init(ctx: Context) {
-        dark = (ctx.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
-        if (dark) {
-            onPrimary = 0xFF2B1400.toInt()
-            primaryContainer = 0xFF5A2E0C.toInt(); onPrimaryContainer = 0xFFFFE6C8.toInt()
-            secondaryContainer = 0xFF3B3377.toInt(); onSecondaryContainer = 0xFFE7E2FA.toInt()
-            tertiaryContainer = 0xFF6B2347.toInt(); onTertiaryContainer = 0xFFFFD9E6.toInt()
-            error = 0xFFFF8A80.toInt(); errorContainer = 0xFF7A2020.toInt(); onErrorContainer = 0xFFFFDAD6.toInt()
-            surface = 0xFF130F1F.toInt(); onSurface = 0xFFF3ECFA.toInt(); onSurfaceVariant = 0xFFB9AFCB.toInt()
-            outline = 0xFF6E6585.toInt(); outlineVariant = 0xFF3A3256.toInt()
-            low = 0xFF1C1631.toInt(); container = 0xFF241D3E.toInt(); high = 0xFF2D2549.toInt(); highest = 0xFF372E57.toInt()
-        } else {
-            onPrimary = ink
-            primaryContainer = 0xFFFFE6C8.toInt(); onPrimaryContainer = 0xFF4A2300.toInt()
-            secondaryContainer = 0xFFE7E2FA.toInt(); onSecondaryContainer = 0xFF2A2159.toInt()
-            tertiaryContainer = 0xFFFFDCE8.toInt(); onTertiaryContainer = 0xFF5C1A38.toInt()
-            error = 0xFFD13B3B.toInt(); errorContainer = 0xFFFFDAD6.toInt(); onErrorContainer = 0xFF5A0F0F.toInt()
-            surface = 0xFFFFFAF3.toInt(); onSurface = ink; onSurfaceVariant = 0xFF6A607A.toInt()
-            outline = 0xFF8E819E.toInt(); outlineVariant = 0xFFEBDFD2.toInt()
-            low = 0xFFFFFFFF.toInt(); container = 0xFFFFF4E6.toInt(); high = 0xFFFFEEDC.toInt(); highest = 0xFFFBE8D2.toInt()
-        }
+        dark = false
     }
 
     // ---- hour-of-day accent: the app drifts through 24 hues during the day ----

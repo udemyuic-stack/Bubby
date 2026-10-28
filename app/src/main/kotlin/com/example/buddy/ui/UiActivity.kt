@@ -156,8 +156,8 @@ class UiActivity : Activity() {
                 }
                 val inner = col {
                     gravity = Gravity.CENTER_HORIZONTAL
-                    add(icon(it.first, if (selected) Glass.TEXT else Glass.TEXT2, 22), WRAP, WRAP)
-                    add(text(it.second, T.Label, if (selected) Glass.TEXT else Glass.TEXT2).apply { setSingleLine(); textSize = 10f }, WRAP, WRAP, top = 2)
+                    add(icon(it.first, if (selected) Glass.ON_ACTIVE else Glass.TEXT2, 22), WRAP, WRAP)
+                    add(text(it.second, T.Label, if (selected) Glass.ON_ACTIVE else Glass.TEXT2).apply { setSingleLine(); textSize = 10f }, WRAP, WRAP, top = 2)
                 }
                 addView(inner, FrameLayout.LayoutParams(WRAP, WRAP, Gravity.CENTER))
                 press { showTab(i) }
@@ -171,7 +171,7 @@ class UiActivity : Activity() {
         tab = i
         body.removeAllViews()
         body.addView(tabs[i].view(), FrameLayout.LayoutParams(MATCH, MATCH))
-        setBars(i != 0)
+        setBars(i != 0 && !Glass.NIGHT)
         bgHome.visibility = if (i == 0) View.VISIBLE else View.GONE
         bgSub.visibility = if (i == 0) View.GONE else View.VISIBLE
         navFrame.removeAllViews()

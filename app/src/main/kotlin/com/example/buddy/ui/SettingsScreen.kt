@@ -146,23 +146,41 @@ class SettingsScreen(act: UiActivity) : Screen(act) {
 
         group(c, t("Искусственный интеллект", "Artificial intelligence", "Sun'iy intellekt"), R.drawable.ic_sparkle) {
             add(aiCard(), MATCH, WRAP)
-            add(ctx.text("Язык / Language / Til", T.Title), MATCH, WRAP, top = 14, bottom = 8)
+            add(ctx.text(t("Язык", "Language", "Til"), T.Title), MATCH, WRAP, top = 14, bottom = 8)
             add(chips(listOf("auto" to t("Авто (как я говорю)", "Auto (as I speak)", "Avto (gapirgan tilim)"), "uz" to "O'zbekcha", "ru" to "Русский", "en" to "English"),
                 Backend.str(ctx, "lang", "auto")) {
                 if (it != Backend.str(ctx, "lang", "auto")) { Backend.prefs(ctx).edit().putString("lang", it).commit(); act.restart() }
             })
-            add(ctx.text(t("Это также язык, на котором Bubby говорит и отвечает. «Авто»: Bubby отвечает и переключает приложение на язык, на котором вы с ним говорите",
-                "This is also the language Bubby speaks and answers in. “Auto”: Bubby answers, and switches the app, to the language you speak to him",
-                "Bu Bubby gapiradigan va javob beradigan til hamdir. «Avto»: Bubby siz gaplashgan tilda javob beradi va ilovani shu tilga o'tkazadi"), T.Small), MATCH, WRAP, top = 2)
+            add(ctx.text(t("Язык ответов и приложения. «Авто» — язык, на котором вы говорите",
+                "Language of the replies and the app. “Auto” follows the language you speak",
+                "Javoblar va ilova tili. «Avto» — siz gaplashgan til"), T.Small), MATCH, WRAP, top = 2)
         }
         c.add(musicCard(), MATCH, WRAP, top = 14)
 
-        group(c, t("Внешний вид", "Look", "Ko'rinish"), R.drawable.ic_palette) {
-            add(chips(listOf("glass" to t("Стекло", "Glass", "Shisha"), "green" to t("Зелёная", "Green", "Yashil"), "blue" to t("Синяя", "Blue", "Ko'k")),
-                Backend.str(ctx, "theme", "glass")) {
-                if (it != Backend.str(ctx, "theme", "glass")) { Backend.prefs(ctx).edit().putString("theme", it).commit(); act.restart() }
-            })
-            add(ctx.text(t("Тема меняет цвета и зверька: мотылёк, кит или стеклянный мочи", "The theme changes the colours and the mascot: a butterfly, a whale or the glass mochi", "Mavzu ranglarni va maskotni o'zgartiradi: kapalak, kit yoki shisha mochi"), T.Small), MATCH, WRAP, top = 2)
+        group(c, t("Стиль", "Style", "Uslub"), R.drawable.ic_palette) {
+            add(ctx.text(t("Цвета приложения, остров и зверёк", "App colours, the island and the mascot", "Ilova ranglari, orol va maskot"), T.Small), MATCH, WRAP, bottom = 10)
+            val cur = Backend.str(ctx, "theme", "glass")
+            val styles = listOf(
+                Triple("night", t("Ночь", "Night", "Tun"), t("Куб", "Cube", "Kub")),
+                Triple("glass", t("Стекло", "Glass", "Shisha"), t("Мочи", "Mochi", "Mochi")),
+                Triple("green", t("Зелёный", "Green", "Yashil"), t("Мотылёк", "Butterfly", "Kapalak")),
+                Triple("blue", t("Синий", "Blue", "Ko'k"), t("Кит", "Whale", "Kit"))
+            )
+            for (pair in styles.chunked(2)) {
+                add(ctx.row {
+                    for ((i, st) in pair.withIndex()) {
+                        add(StylePreview(ctx, Theme.byId(st.first), st.second, st.third, st.first == cur).apply {
+                            press {
+                                if (st.first != Backend.str(ctx, "theme", "glass")) {
+                                    // the mascot of the chosen style, everywhere (also the floating one)
+                                    Backend.prefs(ctx).edit().putString("theme", st.first).putString("species", "glass").commit()
+                                    act.restart()
+                                }
+                            }
+                        }, 0, ctx.dp(132), 1f, end = if (i == 0) 10 else 0)
+                    }
+                }, MATCH, WRAP, bottom = 10)
+            }
         }
 
         group(c, t("Голос и поведение", "Voice and behavior", "Ovoz va xulq"), R.drawable.ic_mic) {
@@ -171,9 +189,9 @@ class SettingsScreen(act: UiActivity) : Screen(act) {
             add(sw(t("Режим диалога", "Conversation mode", "Suhbat rejimi"), "conv", false,
                 t("Слушать снова после ответа", "Listen again after a reply", "Javobdan keyin yana tinglash")))
             add(sw(t("Звать по имени: «Bubby»", "Call by name: “Bubby”", "Ism bilan chaqirish: «Bubby»"), "hotword", true,
-                t("Индикатор микрофона остаётся включённым, батарея расходуется больше; скажите «Bubby» — и он послушает",
-                    "The microphone indicator stays on and it uses more battery; say “Bubby” and he will listen",
-                    "Mikrofon indikatori yoniq turadi va batareya ko'proq sarflanadi; «Bubby» deng — u tinglaydi")))
+                t("Микрофон всегда включён, батарея садится быстрее",
+                    "The microphone stays on and the battery drains faster",
+                    "Mikrofon doim yoniq, batareya tezroq sarflanadi")))
             add(sw(t("Зачитывать уведомления", "Read notifications aloud", "Bildirishnomalarni ovoz chiqarib o'qish"), "read_notifs", false,
                 t("Нужен доступ к уведомлениям; читает вслух только при включённом экране",
                     "Needs notification access; reads aloud only while the screen is on",
@@ -185,21 +203,21 @@ class SettingsScreen(act: UiActivity) : Screen(act) {
 
         group(c, t("Поведение Bubby", "Bubby's behaviour", "Bubby xulq-atvori"), R.drawable.ic_bolt) {
             add(sw(t("Разрешить Bubby читать экран", "Let Bubby read the screen", "Bubby ekranni o'qishiga ruxsat"), "screen_agent", true,
-                t("Так он может нажимать и печатать за вас; тексты банковских приложений и паролей не читаются; текст экрана уходит выбранному ИИ-сервису",
-                    "It is how he can tap and type for you; texts of banking and password apps are never read; screen text is sent to your chosen AI service",
-                    "Shu bilan u siz uchun bosadi va yozadi; bank va parol ilovalari matni o'qilmaydi; ekran matni tanlangan AI xizmatiga yuboriladi")))
+                t("Нужно, чтобы нажимать и печатать за вас. Банки и пароли не читаются",
+                    "Needed to tap and type for you. Banking and password apps are never read",
+                    "Siz uchun bosish va yozish uchun kerak. Bank va parollar o'qilmaydi")))
             add(sw(t("Спрашивать перед чтением экрана", "Ask before reading the screen", "Ekranni o'qishdan oldin so'rash"), "screen_ask", true,
-                t("Bubby читает экран только для задачи, на которую вы ответили «Да» (или когда вы сами просите посмотреть, нажать, прочитать). Платёжные и банковские экраны не читаются никогда",
-                    "Bubby reads the screen only for a task you said “Yes” to (or when you ask him to look, tap or read). Payment and banking screens are never read",
-                    "Bubby ekranni faqat siz «Ha» degan vazifa uchun o'qiydi (yoki o'zingiz qarash, bosish, o'qishni so'ragan paytda). To'lov va bank ekranlari hech qachon o'qilmaydi")))
+                t("Экран читается только после вашего «Да» для этой задачи",
+                    "The screen is read only after your “Yes” for that task",
+                    "Ekran faqat shu vazifa uchun «Ha» deganingizdan keyin o'qiladi")))
             add(sw(t("Умные инструменты ИИ", "Smart AI tools", "Aqlli AI vositalari"), "native_tools", true,
-                t("Для задач в несколько шагов Bubby пользуется вызовом инструментов ИИ; выключите, если ваш ИИ-сервер работает с ошибками (тогда остаётся простой режим)",
-                    "For multi-step tasks Bubby uses the AI's tool calling; turn it off if your AI server misbehaves (the simple mode stays)",
-                    "Ko'p bosqichli vazifalarda Bubby AI vositalarini chaqiradi; AI serveringiz xato ishlasa o'chiring (oddiy rejim qoladi)")))
+                t("Для задач в несколько шагов. Выключите, если ИИ-сервер даёт ошибки",
+                    "For multi-step tasks. Turn off if your AI server gives errors",
+                    "Ko'p bosqichli vazifalar uchun. AI server xato bersa o'chiring")))
             add(ctx.switchRow(t("Разрешить Bubby читать SMS", "Let Bubby read SMS", "Bubby SMS o'qishiga ruxsat"),
-                t("Только по вашей просьбе и только последние сообщения; коды и банковские SMS скрыты. Текст уходит выбранному ИИ-сервису",
-                    "Only when you ask, only the latest messages; codes and bank SMS are hidden. The text goes to your chosen AI service",
-                    "Faqat so'raganingizda va faqat so'nggi xabarlar; kodlar va bank SMS'lari yashiriladi. Matn tanlangan AI xizmatiga yuboriladi"),
+                t("Только по просьбе; коды и банковские SMS скрыты",
+                    "Only on request; codes and bank SMS are hidden",
+                    "Faqat so'rov bo'yicha; kodlar va bank SMS'lari yashirin"),
                 Backend.bool(ctx, "sms_read", false)) { on -> Backend.setBool(ctx, "sms_read", on); if (on) Backend.requestPermissions(act, "smsRead") })
             add(sw(t("Реагировать на зарядку и наушники", "React to charging and headphones", "Zaryadka va quloqchinga munosabat bildirish"), "device_reactions", true))
             add(sw(t("Стикеры при реакциях", "Stickers on reactions", "Reaksiyalarda stiklerlar"), "stickers_on_events", true))

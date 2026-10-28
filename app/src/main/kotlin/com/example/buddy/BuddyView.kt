@@ -1235,13 +1235,23 @@ class BuddyView(c: Context) : View(c) {
      * spiral eyes when dizzy, a red tint when angry...) so it is readable at a glance, also in the status bar.
      */
     private fun drawCube(cv: Canvas, em: String, blink: Boolean, sleepy: Boolean, t: Float) {
-        val tint = when (em) {
-            "dizzy", "love", "shy", "pet" -> 0xFFFFC3DA.toInt()
-            "angry", "offended" -> 0xFFFFB3AE.toInt()
-            "scared", "think", "listen" -> 0xFFDCE8FF.toInt()
-            "crying", "sad", "worried" -> 0xFFD8E4F4.toInt()
+        // the agent state (badge) tints the body and sets the face when no mood of its own is playing
+        val calmFace = em == "idle" || em == "listen" || em == "think"
+        val tint = when {
+            em == "dizzy" || em == "love" || em == "shy" || em == "pet" -> 0xFFFFC3DA.toInt()
+            em == "angry" || em == "offended" -> 0xFFFFB3AE.toInt()
+            em == "scared" -> 0xFFDCE8FF.toInt()
+            em == "crying" || em == "sad" || em == "worried" -> 0xFFD8E4F4.toInt()
+            calmFace && badge == "think" -> 0xFFE6DCFF.toInt()
+            calmFace && badge == "search" -> 0xFFD3F4EE.toInt()
+            calmFace && badge == "listen" -> 0xFFD9E8FF.toInt()
+            calmFace && badge == "done" -> 0xFFD6F5E4.toInt()
+            calmFace && badge == "error" -> 0xFFFFCBCE.toInt()
+            calmFace && badge == "limit" -> 0xFFFFE5C4.toInt()
+            calmFace && badge == "approval" -> 0xFFFFEBCB.toInt()
             else -> 0xFFFFFFFF.toInt()
         }
+        val faceMood = if (!calmFace) em else when (badge) { "error", "limit" -> "tired"; "done" -> "happy"; else -> em }
         val ink = 0xFF1A1F2C.toInt()
         // soft shadow under the body and the white body itself
         fill(0x26000000); r.set(-36f, -9f, 36f, -1f); cv.drawOval(r, p)
@@ -1259,7 +1269,7 @@ class BuddyView(c: Context) : View(c) {
         fill(0x66FFFFFF); r.set(-30f, -62f, -4f, -53f); cv.drawOval(r, p)
 
         cv.save(); cv.translate(eyeDx * 0.9f, eyeDy * 0.7f)
-        val y = -35f
+        val y = -30f   // the same eye line as the animals, so glasses and hats of "Pet & outfits" sit right
         fun bar(x: Float, w: Float, h: Float) { fill(ink); r.set(x - w / 2, y - h / 2, x + w / 2, y + h / 2); cv.drawRoundRect(r, w / 2.2f, w / 2.2f, p) }
         fun arc(x: Float, up: Boolean) {
             line(ink, 3.4f); path.reset(); path.moveTo(x - 7f, y + (if (up) 4f else -4f))
@@ -1267,26 +1277,26 @@ class BuddyView(c: Context) : View(c) {
         }
         fun dash(x: Float, w: Float = 14f) { line(ink, 3.4f); cv.drawLine(x - w / 2, y, x + w / 2, y, p) }
         for (i in 0..1) {
-            val x = if (i == 0) -17f else 17f
+            val x = if (i == 0) -15f else 15f
             when {
                 blink -> dash(x)
                 sleepy -> dash(x, 12f)
-                em == "happy" || em == "laugh" || em == "dance" || em == "proud" || em == "pet" -> arc(x, true)
-                em == "wink" -> if (i == 1) dash(x) else bar(x, 8f, 13f)
-                em == "dizzy" -> { line(ink, 1.6f); spiral(cv, x, y, 7.5f, t * 8f) }
-                em == "love" -> { fill(0xFFFF4F86.toInt()); heart(cv, x, y, 5f + sin(t * 8f) * 0.6f) }
-                em == "excited" -> { fill(0xFFFFC83D.toInt()); star(cv, x, y, 8f + sin(t * 10f), t * 2f) }
-                em == "cool" -> if (i == 0) { fill(ink); r.set(-27f, y - 6f, 27f, y + 6f); cv.drawRoundRect(r, 4f, 4f, p) }
-                em == "angry" || em == "offended" -> { bar(x, 8f, 11f); line(0xFFD2443E.toInt(), 3f); cv.drawLine(x - 8f * (if (i == 0) 1 else -1), y - 11f, x + 6f * (if (i == 0) 1 else -1), y - 7f, p) }
-                em == "surprised" || em == "scared" -> { bar(x, 10f, 16f); fill(0xFFFFFFFF.toInt()); cv.drawCircle(x - 1.5f, y - 4f, 1.8f, p) }
-                em == "sad" || em == "crying" || em == "worried" -> {
+                faceMood == "happy" || faceMood == "laugh" || faceMood == "dance" || faceMood == "proud" || faceMood == "pet" -> arc(x, true)
+                faceMood == "wink" -> if (i == 1) dash(x) else bar(x, 8f, 13f)
+                faceMood == "dizzy" -> { line(ink, 1.6f); spiral(cv, x, y, 7.5f, t * 8f) }
+                faceMood == "love" -> { fill(0xFFFF4F86.toInt()); heart(cv, x, y, 5f + sin(t * 8f) * 0.6f) }
+                faceMood == "excited" -> { fill(0xFFFFC83D.toInt()); star(cv, x, y, 8f + sin(t * 10f), t * 2f) }
+                faceMood == "cool" -> if (i == 0) { fill(ink); r.set(-27f, y - 6f, 27f, y + 6f); cv.drawRoundRect(r, 4f, 4f, p) }
+                faceMood == "angry" || faceMood == "offended" -> { bar(x, 8f, 11f); line(0xFFD2443E.toInt(), 3f); cv.drawLine(x - 8f * (if (i == 0) 1 else -1), y - 11f, x + 6f * (if (i == 0) 1 else -1), y - 7f, p) }
+                faceMood == "surprised" || faceMood == "scared" -> { bar(x, 10f, 16f); fill(0xFFFFFFFF.toInt()); cv.drawCircle(x - 1.5f, y - 4f, 1.8f, p) }
+                faceMood == "sad" || faceMood == "crying" || faceMood == "worried" -> {
                     bar(x, 8f, 12f); line(ink, 2.6f)
                     cv.drawLine(x - 8f * (if (i == 0) 1 else -1), y - 9f, x + 6f * (if (i == 0) 1 else -1), y - 12f, p)
                 }
-                em == "curious" || em == "confused" -> bar(x, 8f, if (i == 0) 16f else 10f)
-                em == "listen" -> bar(x, 9f, 16f)
-                em == "think" -> { cv.save(); cv.translate(-3f, -3f); bar(x, 8f, 13f); cv.restore() }
-                em == "smug" -> { fill(ink); r.set(x - 7f, y - 1f, x + 7f, y + 3f); cv.drawRoundRect(r, 2f, 2f, p) }
+                faceMood == "curious" || faceMood == "confused" -> bar(x, 8f, if (i == 0) 16f else 10f)
+                faceMood == "listen" -> bar(x, 9f, 16f)
+                faceMood == "think" -> { cv.save(); cv.translate(-3f, -3f); bar(x, 8f, 13f); cv.restore() }
+                faceMood == "smug" -> { fill(ink); r.set(x - 7f, y - 1f, x + 7f, y + 3f); cv.drawRoundRect(r, 2f, 2f, p) }
                 else -> bar(x, 8f, 13f)
             }
         }
@@ -1495,7 +1505,7 @@ class BuddyView(c: Context) : View(c) {
         Outfits.drawBack(cv, p, outfit, em, t)
         val glassSp = species == "glass"
         val sleepy = sleepEyes || dozeK > 0.3f || em == "sleepy" || em == "tired"
-        if (glassSp) drawGlass(cv, sleepy, mk == 1 || entBlink)
+        if (glassSp) { if (com.example.buddy.ui.Theme.cur.mascot == "cube") drawCube(cv, em, mk == 1 || entBlink, sleepy, t) else drawGlass(cv, sleepy, mk == 1 || entBlink) }
         else if (species == "cube") drawCube(cv, em, mk == 1 || entBlink, sleepy, t)
         else {
         drawHead(cv, body, face)

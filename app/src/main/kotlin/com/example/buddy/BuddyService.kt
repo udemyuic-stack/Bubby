@@ -580,7 +580,7 @@ class BuddyService : Service() {
     private fun tintIsland(strokeAlpha: Int) {
         // the panel follows the chosen look: near-black glass, deep green or deep blue
         val t = com.example.buddy.ui.Theme.cur
-        val deep = when (t.id) { "green" -> 0xFF0A2A12.toInt(); "blue" -> 0xFF0A1C5C.toInt(); else -> 0xFF14161C.toInt() }
+        val deep = when (t.id) { "green" -> 0xFF0A2A12.toInt(); "blue" -> 0xFF0A1C5C.toInt(); "night" -> 0xFF0B0C10.toInt(); else -> 0xFF14161C.toInt() }
         val edge = if (t.id == "glass") 0xFFFFFFFF.toInt() else t.rim
         bg.colors = intArrayOf(mixC(0xFF000000.toInt(), deep, 0.55f), deep)
         bg.setStroke(maxOf(1, dp(1)), ((strokeAlpha * 0.6f).toInt().coerceIn(0, 255) shl 24) or (edge and 0xFFFFFF))

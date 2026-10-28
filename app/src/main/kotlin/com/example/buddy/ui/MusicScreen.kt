@@ -58,17 +58,17 @@ class MusicScreen(act: UiActivity) : Screen(act) {
         }
 
     override fun render(c: LinearLayout) {
-        c.add(ctx.card(pad = 16, fill = P.violet, stroke = 0) {
+        c.add(ctx.card(pad = 16) {
             add(ctx.row {
                 add(ctx.row(Gravity.CENTER) {
-                    background = ctx.rounded(0x2EFFFFFF, 18f)
-                    add(ctx.icon(R.drawable.ic_music, 0xFFFFFFFF.toInt(), 30), WRAP, WRAP)
-                }, ctx.dp(56), ctx.dp(56), end = 14)
+                    background = ctx.gradient(Theme.tile(2, 0xFF6FA0EE.toInt(), 0xFF4A74C4.toInt()), 16f)
+                    add(ctx.icon(R.drawable.ic_music, 0xFFFFFFFF.toInt(), 26), WRAP, WRAP)
+                }, ctx.dp(52), ctx.dp(52), end = 14)
                 add(ctx.col {
-                    add(ctx.text(t("Музыка по настроению", "Music for your mood", "Kayfiyatga mos musiqa"), T.Title, 0xFFFFFFFF.toInt()), MATCH, WRAP)
+                    add(ctx.text(t("Музыка по настроению", "Music for your mood", "Kayfiyatga mos musiqa"), T.Title), MATCH, WRAP)
                     add(ctx.text(t("Скажите: «Bubby, включи музыку» — я спрошу про настроение и подберу плейлист",
                         "Say: “Bubby, play some music” — I will ask about your mood and pick a playlist",
-                        "Ayting: «Bubby, musiqa qo'y» — kayfiyatingizni so'rab, pleylist tanlayman"), T.Body, 0xE6FFFFFF.toInt()), MATCH, WRAP, top = 4)
+                        "Ayting: «Bubby, musiqa qo'y» — kayfiyatingizni so'rab, pleylist tanlayman"), T.Small), MATCH, WRAP, top = 4)
                 }, 0, WRAP, 1f)
             })
         }, MATCH, WRAP)

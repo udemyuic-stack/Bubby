@@ -141,15 +141,13 @@ fun Context.button(label: String, style: BtnStyle = BtnStyle.Filled, iconRes: In
 }
 
 fun Context.section(title: String, iconRes: Int = 0): View = row {
-    add(View(this@section).apply { background = rounded(Glass.ACCENT, 3f) }, dp(4), dp(22), end = 10)
-    if (iconRes != 0) add(icon(iconRes, Glass.TEXT_LABEL, 20), WRAP, WRAP, end = 8)
-    add(text(title, T.Title), WRAP, WRAP)
-}.also { it.setPadding(0, dp(18), 0, dp(10)) }
+    add(text(title, T.Title, Glass.TEXT).apply { textSize = 15f; letterSpacing = 0.01f }, WRAP, WRAP)
+}.also { it.setPadding(dp(4), dp(22), 0, dp(10)) }
 
 fun Context.chip(label: String, selected: Boolean, onClick: () -> Unit): View = row(Gravity.CENTER) {
     setPadding(dp(14), dp(8), dp(14), dp(8))
     background = glass(if (selected) GlassKind.Active else GlassKind.Dim, 20f)
-    add(text(label, T.Label, if (selected) Glass.TEXT else Glass.TEXT_LABEL), WRAP, WRAP)
+    add(text(label, T.Label, if (selected) Glass.ON_ACTIVE else Glass.TEXT_LABEL), WRAP, WRAP)
     press(onClick)
 }
 
@@ -196,7 +194,7 @@ fun Context.field(hint: String, value: String = "", multiline: Boolean = false, 
         typeface = glassFont()
         setTextSize(TypedValue.COMPLEX_UNIT_SP, 15f)
         setPadding(dp(16), dp(12), dp(16), dp(12))
-        background = rounded(Glass.white(.35f), 16f, Glass.white(.7f))
+        background = rounded(Glass.FIELD, 16f, if (Glass.NIGHT) Glass.white(.16f) else Glass.white(.7f))
         inputType = when {
             number -> InputType.TYPE_CLASS_NUMBER
             secret -> InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD

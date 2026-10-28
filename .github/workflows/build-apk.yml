@@ -51,7 +51,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        screen: [home, tasks, calendar, settings, more, ai, setup, outfits, music, agents, agents-demo, agents-diff, fun, permissions, runs, home-green, home-blue, tasks-green, settings-blue, more-green, calendar-blue]
+        screen: [home, tasks, calendar, settings, more, ai, setup, outfits, music, agents, agents-demo, agents-diff, fun, permissions, runs, home-green, home-blue, tasks-green, settings-blue, more-green, calendar-blue, home-night, tasks-night, settings-night, more-night]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/download-artifact@v4

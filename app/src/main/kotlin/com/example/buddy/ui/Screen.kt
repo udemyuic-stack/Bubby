@@ -57,8 +57,8 @@ abstract class Screen(val act: UiActivity) {
             val button = ctx.row(Gravity.CENTER) {
                 background = ctx.glass(GlassKind.Active, 27f)
                 setPadding(ctx.dp(22), 0, ctx.dp(24), 0)
-                add(ctx.icon(R.drawable.ic_add, Glass.TEXT, 22), WRAP, WRAP, end = 8)
-                add(ctx.text(f.first, T.Label, Glass.TEXT).apply { textSize = 15f }, WRAP, WRAP)
+                add(ctx.icon(R.drawable.ic_add, Glass.ON_ACTIVE, 22), WRAP, WRAP, end = 8)
+                add(ctx.text(f.first, T.Label, Glass.ON_ACTIVE).apply { textSize = 15f }, WRAP, WRAP)
                 press { f.second() }
             }
             addView(button, FrameLayout.LayoutParams(WRAP, ctx.dp(54), Gravity.END or Gravity.BOTTOM).apply {

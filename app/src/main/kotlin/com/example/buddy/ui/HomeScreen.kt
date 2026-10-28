@@ -94,7 +94,7 @@ class HomeScreen(act: UiActivity) : Screen(act) {
         petal(GlassKind.Dim, R.drawable.tg_gear, t("Настройки", "Settings", "Sozlamalar"), 184f, 524f, 104f, 112f, 8f, Glass.TEXT_LABEL) { act.showTab(3) }
         scene.put(CoreView(ctx, sc), 171f, 448f, 44f, 44f)
         petal(GlassKind.Active, if (running) R.drawable.tg_stop else R.drawable.tg_play, if (running) t("Остановить", "Stop", "To'xtatish") else t("Запустить", "Start", "Ishga tushirish"),
-            237f, 379f, 116f, 106f, 12f, Glass.TEXT, 13, true) { toggle() }
+            237f, 379f, 116f, 106f, 12f, Glass.ON_ACTIVE, 13, true) { toggle() }
         scene.alpha = if (busy) 0.7f else 1f
         mascot.setOnClickListener {
             if (!still) android.animation.ValueAnimator.ofFloat(0f, 1f, 0f).apply { duration = 260; addUpdateListener { mascot.squash = it.animatedValue as Float } }.start()

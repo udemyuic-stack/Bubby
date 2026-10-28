@@ -78,6 +78,7 @@ object AgentWidgets {
 
     // ---- what the agents are doing --------------------------------------------------------------------------------------
 
+    private val BMP = Paint(Paint.FILTER_BITMAP_FLAG)   // opaque paint for pictures (the text paint carries a see-through colour)
     private val BUSY = setOf("working", "thinking", "searching")
 
     /** Overall state: "offline", "approval", "working", "finished" or "idle". */
@@ -207,7 +208,7 @@ object AgentWidgets {
 
     private fun mini(ctx: Context, cv: Canvas, p: Paint, w: Int, h: Int, d: Float, st: String) {
         val side = min(w, h) * 0.84f
-        cv.drawBitmap(mascot(ctx, mascotMood(st)), null, RectF((w - side) / 2f, (h - side) / 2f, (w + side) / 2f, (h + side) / 2f), p)
+        cv.drawBitmap(mascot(ctx, mascotMood(st)), null, RectF((w - side) / 2f, (h - side) / 2f, (w + side) / 2f, (h + side) / 2f), BMP)
         if (st == "approval" || st == "working" || st == "finished" || st == "problem") {
             p.color = color(st); cv.drawCircle(w - 10f * d, 10f * d, 5f * d, p)
         }
@@ -217,7 +218,7 @@ object AgentWidgets {
         val m = mascot(ctx, mascotMood(st))
         val side = min(w * 0.62f, h * 0.55f)
         val left = (w - side) / 2f
-        cv.drawBitmap(m, null, RectF(left, h * 0.08f, left + side, h * 0.08f + side), p)
+        cv.drawBitmap(m, null, RectF(left, h * 0.08f, left + side, h * 0.08f + side), BMP)
         p.color = color(st); cv.drawCircle(left + side * 0.12f, h * 0.08f + side * 0.12f, 6f * d, p)
         text(cv, p, title(ctx, st), w / 2f, h * 0.80f, 17f * d, 0xFFFFFFFF.toInt(), true, true, w - 20f * d)
         val n = BuddyService.agentSessions.size
@@ -247,7 +248,7 @@ object AgentWidgets {
         val n = AgentStats.current(ctx)?.doneToday
         val m = mascot(ctx, "happy")
         val side = min(w * 0.4f, h * 0.38f)
-        cv.drawBitmap(m, null, RectF((w - side) / 2f, h * 0.08f, (w + side) / 2f, h * 0.08f + side), p)
+        cv.drawBitmap(m, null, RectF((w - side) / 2f, h * 0.08f, (w + side) / 2f, h * 0.08f + side), BMP)
         p.color = 0xFF47D18C.toInt(); cv.drawCircle((w + side) / 2f - 4f * d, h * 0.08f + 6f * d, 8f * d, p)
         text(cv, p, "✓", (w + side) / 2f - 4f * d, h * 0.08f + 10f * d, 11f * d, 0xFF0F1630.toInt(), true, true)
         text(cv, p, n?.toString() ?: "—", w / 2f, h * 0.76f, 40f * d, 0xFFFFFFFF.toInt(), true, true)

@@ -11,8 +11,10 @@ Now: run one command on the computer, open Agents on the phone, tap the computer
 The bridge advertises `_bubby-agent._tcp.local.` on its port (default 47821). TXT records: `v=1`, `name=<computer name>`,
 `fp=<sha256 of the certificate, lowercase hex>`, `paired=0|1`. The phone uses Android's `NsdManager`. No npm packages: the
 bridge answers mDNS queries itself with `dgram` on 224.0.0.251:5353 (also announce on start and on every query for the
-service name). The old pairing link keeps being printed as a fallback (and for networks that block multicast, the phone
-also accepts `host:port` typed by hand).
+service name). The old pairing link stays available as a fallback with `--link` (see 4; it contains the token, so it is
+not printed by default), and for networks that block multicast, the phone also accepts `host:port` typed by hand.
+The instance name is the computer name (dots replaced by `-`, at most 63 bytes); the SRV target is `bubby-<first 8 hex of
+fp>.local.` with its own A record, so it never clashes with the system's own mDNS host name.
 
 ## 2. Pairing by code
 The bridge shows a 6-digit code in the terminal (random, valid 5 minutes, one use). New message from the phone, sent first
@@ -28,9 +30,15 @@ middle presenting another certificate makes the proof fail.
 - success: bridge replies `{"type":"paired","token":"<the 32 char token>","name":"<computer name>"}` and keeps the
   connection as a normal authenticated one (the phone then proceeds exactly as after `welcome`). The code is consumed.
 - failure: `{"type":"error","error":"bad_code"}`, then the connection closes. A failed attempt burns the code: the bridge
-  prints a new one. At most 5 failed attempts per minute across all connections, then `{"error":"slow_down"}`.
+  prints a new one. At most 5 failed attempts per minute across all connections, then `{"type":"error","error":"slow_down"}`
+  and the connection closes (such a refused attempt is not checked and does not burn the code). A malformed `pair`
+  (nonce not 32 lowercase hex chars, proof not 64 lowercase hex chars, `v` not 1) counts as a failed attempt.
+- the bridge is already paired (TXT `paired=1`) or has no code to offer: `{"type":"error","error":"not_pairing"}`, then
+  the connection closes. Another phone connected right now: the v1 `{"type":"error","code":"busy",...}`.
 - the code is compared with `timingSafeEqual`; it never appears in logs.
-Pairing a second phone is allowed only by running the bridge's `--new-pairing`, as in v1.
+Pairing a second phone is allowed only by running the bridge's `--new-pairing`, as in v1. "Paired" means a phone has
+received the current token, by `paired` or by a successful v1 `hello`; after that no code is offered (and none is printed)
+until `--new-pairing`.
 
 ## 3. Usage and statistics
 After `welcome` (and whenever something changes, at most every 5 s, plus a refresh every 60 s) the bridge sends

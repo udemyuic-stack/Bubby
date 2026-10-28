@@ -19,11 +19,16 @@ sleep 8
 adb shell uiautomator dump /sdcard/ui.xml > /dev/null 2>&1 && adb exec-out cat /sdcard/ui.xml > "shots/$SCREEN-ui.xml" 2>/dev/null
 adb exec-out screencap -p > /tmp/raw.png
 if command -v convert >/dev/null 2>&1; then convert /tmp/raw.png -resize 400x "shots/$SCREEN.png"; else cp /tmp/raw.png "shots/$SCREEN.png"; fi
-if [ "$SCREEN" = settings ]; then
-  for k in 1 2 3 4 5 6; do adb shell input swipe 360 1100 360 300 250; done
+if [ "$SCREEN" = settings ] || [ "$SCREEN" = agents-demo ]; then
+  SZ=$(adb shell wm size | grep -o '[0-9]*x[0-9]*' | tail -1); W=${SZ%x*}; H=${SZ#*x}
+  for k in 1 2; do adb shell input swipe $((W/2)) $((H*3/4)) $((W/2)) $((H/5)) 300; done
   sleep 2
   adb exec-out screencap -p > /tmp/raw2.png
-  if command -v convert >/dev/null 2>&1; then convert /tmp/raw2.png -resize 400x "shots/settings-bottom.png"; else cp /tmp/raw2.png "shots/settings-bottom.png"; fi
+  if command -v convert >/dev/null 2>&1; then convert /tmp/raw2.png -resize 400x "shots/$SCREEN-bottom.png"; else cp /tmp/raw2.png "shots/$SCREEN-bottom.png"; fi
+  for k in 1 2 3; do adb shell input swipe $((W/2)) $((H*3/4)) $((W/2)) $((H/5)) 300; done
+  sleep 2
+  adb exec-out screencap -p > /tmp/raw3.png
+  if command -v convert >/dev/null 2>&1; then convert /tmp/raw3.png -resize 400x "shots/$SCREEN-end.png"; else cp /tmp/raw3.png "shots/$SCREEN-end.png"; fi
 fi
 adb shell pidof com.example.buddy >> "shots/$SCREEN-start.txt" 2>&1 || echo "app not running" >> "shots/$SCREEN-start.txt"
 pkill -f "adb.*logcat" || true

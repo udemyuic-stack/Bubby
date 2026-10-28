@@ -198,11 +198,7 @@ class BuddyService : Service() {
             "outfit" -> h.post { buddy.outfit = Outfits.parse(prefs.getString("outfit", "").orEmpty()) }
             "species" -> h.post { buddy.species = prefs.getString("species", "glass").orEmpty() }
             "theme" -> h.post { com.example.buddy.ui.Theme.apply(this); buddy.invalidate() }
-            "dock" -> h.post {
-                val w = prefs.getString("dock", "").orEmpty().substringBefore(':')
-                if (w.isNotEmpty()) dockTo(w)
-            }
-            "size" -> h.post { if (kotlin.math.abs(sizePref() - liveSize) > 0.001f) applySize() }
+            "dock" -> { }   // the place is fixed (next to the clock); nothing moves the mascot any more
             "game_chips" -> h.post { refreshChips() }
             "hotword" -> h.post { hotStop(); hotPausedUntil = 0L; hotKick() }
             "badge" -> h.post { buddy.badgeOn = prefs.getBoolean("badge", true) }
@@ -214,6 +210,8 @@ class BuddyService : Service() {
     }
 
     companion object {
+        /** Where the mascot lives: in the status-bar row, just right of the clock. */
+        const val FIXED_DOCK = "status_left"
         @Volatile var running = false
         @Volatile private var crashHookInstalled = false
         @Volatile var agentConnected = false
@@ -580,8 +578,12 @@ class BuddyService : Service() {
     }
 
     private fun tintIsland(strokeAlpha: Int) {
-        bg.colors = intArrayOf(mixC(0xFF000000.toInt(), hueBase, 0.04f), mixC(0xFF14121B.toInt(), hueBase, 0.14f))
-        bg.setStroke(maxOf(1, dp(1)), (strokeAlpha.coerceIn(0, 255) shl 24) or (hueBase and 0xFFFFFF))
+        // the panel follows the chosen look: near-black glass, deep green or deep blue
+        val t = com.example.buddy.ui.Theme.cur
+        val deep = when (t.id) { "green" -> 0xFF0A2A12.toInt(); "blue" -> 0xFF0A1C5C.toInt(); else -> 0xFF14161C.toInt() }
+        val edge = if (t.id == "glass") 0xFFFFFFFF.toInt() else t.rim
+        bg.colors = intArrayOf(mixC(0xFF000000.toInt(), deep, 0.55f), deep)
+        bg.setStroke(maxOf(1, dp(1)), ((strokeAlpha * 0.6f).toInt().coerceIn(0, 255) shl 24) or (edge and 0xFFFFFF))
     }
 
     private val clock = object : Runnable {
@@ -797,35 +799,12 @@ class BuddyService : Service() {
                 if (p != null && !expanded) buddy.touchAt(x - p.left - buddy.left, y - p.top - buddy.top)
             }
             onTouchEnd = { buddy.touchEnd() }
-            onPinch = { f -> applySize((liveSize * f).coerceIn(0.15f, 6f)) }
-            onPinchEnd = { prefs.edit().putFloat("size", liveSize).apply() }
-            onDragStart = {
-                // screen limits are measured once per drag, not on every finger move
-                dragMaxX = maxOf(0, screenW() - win.width)
-                dragMinY = minY()
-                dragMaxY = maxOf(dragMinY, realH() - win.height)
-                cancelTap(); touched(); hotStop()
-                snapAnim?.cancel(); snapAnim = null; dockAnim?.let { it.removeAllListeners(); it.cancel() }; dockAnim = null; dockRight = false
-                statusDock = null; if (prefs.contains("status_dock")) prefs.edit().remove("status_dock").apply()
-                animate().scaleX(1.05f).scaleY(1.05f).translationZ(dp(6).toFloat()).translationY(-dp(4).toFloat())
-                    .setStartDelay(0).setDuration(140).setInterpolator(DecelerateInterpolator()).start()
-                startHold()
-            }
-            onDrag = { dx, dy ->
-                lp.x = (lp.x + dx.toInt()).coerceIn(0, dragMaxX)
-                lp.y = (lp.y + dy.toInt()).coerceIn(dragMinY, dragMaxY)
-                // the system is told about the new position once per frame, however many touch events came in
-                if (!dragFrame) { dragFrame = true; win.postOnAnimation(dragRun) }
-            }
-            onDragEnd = {
-                win.removeCallbacks(dragRun); dragFrame = false
-                try { wm.updateViewLayout(win, lp) } catch (_: Exception) {}   // the final spot, then snap to the edge
-                endHold()
-                animate().scaleX(1f).scaleY(1f).translationZ(0f).translationY(0f).rotation(0f).setStartDelay(0).setDuration(380)
-                    .setInterpolator(OvershootInterpolator(2.6f)).start()
-                snap()
-                hotKick()
-            }
+            // Bubby sits at the top next to the clock and stays there: no dragging, no pinch resize
+            onPinch = {}
+            onPinchEnd = {}
+            onDragStart = { cancelTap() }
+            onDrag = { _, _ -> }
+            onDragEnd = {}
         }
         win = FrameLayout(this).apply {
             clipChildren = false; clipToPadding = false
@@ -847,17 +826,16 @@ class BuddyService : Service() {
             softInputMode = WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE
         }
         setMode(baseMood())
-        statusDock = prefs.getString("status_dock", null)
+        statusDock = FIXED_DOCK
         quietInit()
         try { wm.addView(win, lp) } catch (e: Exception) { stopSelf(); return }
         applyHidden()
         win.post { syncOverlayType() }
         buddy.enter()   // 700 ms pop-in entrance (skipped when animations are off)
         fsPollRestart()
-        if (sx == Int.MIN_VALUE) win.post {
-            lp.x = (screenW() - win.width) / 2
-            clamp()
-        }
+        // the fixed place: just right of the clock, in the status-bar row (once the window has its size)
+        h.postDelayed({ if (!expanded) dockTo(FIXED_DOCK) else pendingDock = FIXED_DOCK }, 300)
+        h.postDelayed({ if (!expanded) dockTo(FIXED_DOCK) }, 1200)
     }
 
     private var dragMaxX = 0

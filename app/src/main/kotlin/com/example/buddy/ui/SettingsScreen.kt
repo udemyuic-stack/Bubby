@@ -249,7 +249,6 @@ class SettingsScreen(act: UiActivity) : Screen(act) {
             }, MATCH, WRAP)
         }
 
-        group(c, t("Размер Bubby", "Bubby size", "Bubby o'lchami"), R.drawable.ic_face) { add(sizeCard(), MATCH, WRAP) }
 
         group(c, t("Не мешать при просмотре", "Stay out of the way during videos", "Video ko'rganda halaqit bermasin"), R.drawable.ic_play) {
             add(sw(t("Скрыть Bubby сейчас", "Hide Bubby now", "Bubby'ni hozir yashirish"), "quiet", false,

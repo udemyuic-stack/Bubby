@@ -15,6 +15,8 @@ export function buildEnvelope(payload) {
     tool: typeof payload.tool_name === "string" ? payload.tool_name : "",
     command: describeTool(payload.tool_name, payload.tool_input),
     notificationType: typeof payload.notification_type === "string" ? payload.notification_type : "",
+    // only for the bridge's local token count (stats.json); never forwarded to the phone
+    ...(payload.hook_event_name === "Stop" && typeof payload.transcript_path === "string" ? { transcriptPath: payload.transcript_path } : {}),
   };
 }
 

@@ -1,8 +1,11 @@
 import tls from "node:tls";
 import crypto from "node:crypto";
+import { pairProof } from "./pairing.mjs";
 
 // A phone for tests and smoke runs: TLS with the certificate pinned by SHA-256, newline JSON.
-export function fakePhone({ host, port, fp, token, v = 1, onMessage, autoHello = true }) {
+// v1: pinned fp + token => hello. v2: pair = {code, name?, fpSeen?, nonce?} => "pair" message, trust on first use
+// (fp may be omitted; fpSeen overrides the fingerprint put into the proof, to simulate a phone that saw another certificate).
+export function fakePhone({ host, port, fp, token, v = 1, onMessage, autoHello = true, pair }) {
   return new Promise((resolve, reject) => {
     const msgs = [];
     const waiters = [];
@@ -33,9 +36,20 @@ export function fakePhone({ host, port, fp, token, v = 1, onMessage, autoHello =
     sock.on("error", (e) => { reject(e); });
     sock.on("secureConnect", () => {
       const got = crypto.createHash("sha256").update(sock.getPeerCertificate().raw).digest("hex");
-      if (got !== fp) { sock.destroy(); return reject(new Error("certificate pin mismatch")); }
-      if (autoHello) send({ type: "hello", v, token, device: "fake-phone", caps: [] });
-      resolve({ sock, send, wait, msgs, closed, close: () => sock.destroy() });
+      if (fp && got !== fp) { sock.destroy(); return reject(new Error("certificate pin mismatch")); }
+      if (pair) {
+        const nonce = pair.nonce ?? crypto.randomBytes(16).toString("hex");
+        const proof = pairProof(pair.code, pair.fpSeen ?? got, nonce);
+        send({ type: "pair", v: 1, nonce, proof, name: pair.name ?? "fake-phone" });
+      } else if (autoHello) send({ type: "hello", v, token, device: "fake-phone", caps: [] });
+      resolve({ sock, send, wait, msgs, closed, fpSeen: got, close: () => sock.destroy() });
     });
   });
+}
+
+// Pairs by code and resolves with the reply: {type:"paired", token, name} or {type:"error", error}.
+export async function pairByCode({ host, port, code, ...rest }) {
+  const p = await fakePhone({ host, port, pair: { code, ...rest } });
+  const reply = await p.wait((m) => m.type === "paired" || m.type === "error");
+  return { phone: p, reply };
 }

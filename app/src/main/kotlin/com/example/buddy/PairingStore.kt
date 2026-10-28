@@ -64,6 +64,9 @@ class PairingStore(ctx: Context) {
             .apply()
     }
 
+    /** Cheap check (no Keystore work): is a computer paired? */
+    fun isPaired(): Boolean = prefs.contains("tok")
+
     fun load(): ParsedLink? {
         val host = prefs.getString("host", null) ?: return null
         val fp = prefs.getString("fp", null) ?: return null

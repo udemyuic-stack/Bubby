@@ -2,6 +2,7 @@ package com.example.buddy.ui
 
 import android.graphics.drawable.GradientDrawable
 import android.view.Gravity
+import android.view.View
 import android.widget.LinearLayout
 import com.example.buddy.BuddyView
 import com.example.buddy.Outfits
@@ -144,6 +145,27 @@ class HomeScreen(act: UiActivity) : Screen(act) {
                     add(ctx.col {
                         add(ctx.text(t("Управление экраном голосом", "Control the screen by voice", "Ekranni ovoz bilan boshqarish"), T.Label), MATCH, WRAP)
                         add(ctx.text(t("Включите, чтобы Bubby нажимал кнопки за вас", "Turn on so Bubby can tap buttons for you", "Bubby sizning o'rningizga tugmalarni bosishi uchun yoqing"), T.Small), MATCH, WRAP, top = 2)
+                    }, 0, WRAP, 1f)
+                    add(ctx.icon(R.drawable.ic_chevron_right, P.onSurfaceVariant, 22), WRAP, WRAP)
+                })
+            }, MATCH, WRAP, top = 16, start = 16, end = 16)
+        }
+
+        // ---- agents on the computer (only when a computer is paired) ----
+        if (com.example.buddy.PairingStore(ctx).isPaired()) {
+            val st = com.example.buddy.AgentWidgets.overall()
+            val u = com.example.buddy.AgentStats.current(ctx)
+            c.add(ctx.card(onClick = { act.open("agents") }) {
+                add(ctx.row {
+                    add(View(ctx).apply { background = ctx.rounded(com.example.buddy.AgentWidgets.color(st), 6f) }, ctx.dp(12), ctx.dp(12), end = 12)
+                    add(ctx.col {
+                        add(ctx.text(t("Агенты: ", "Agents: ", "Agentlar: ") + com.example.buddy.AgentWidgets.title(ctx, st), T.Label), MATCH, WRAP)
+                        val bits = listOfNotNull(
+                            u?.fiveHour?.let { "5 h: ${(it * 100).toInt()}%" },
+                            u?.sevenDay?.let { "7 d: ${(it * 100).toInt()}%" },
+                            u?.doneToday?.let { t("сегодня: $it", "today: $it", "bugun: $it") }
+                        )
+                        add(ctx.text(if (bits.isEmpty()) t("Нажмите, чтобы открыть", "Tap to open", "Ochish uchun bosing") else bits.joinToString("  ·  "), T.Small), MATCH, WRAP, top = 2)
                     }, 0, WRAP, 1f)
                     add(ctx.icon(R.drawable.ic_chevron_right, P.onSurfaceVariant, 22), WRAP, WRAP)
                 })

@@ -69,7 +69,9 @@ import kotlin.random.Random
 class BuddyService : Service() {
     private val AUTO_STICKER_MOODS = setOf("love", "laugh", "excited", "proud", "shy", "crying", "wink", "cool", "silly", "dance", "angry")
     private val h = Handler(Looper.getMainLooper())
-    private lateinit var wm: WindowManager
+    private lateinit var wm: WindowManager          // the manager the mascot window is attached to right now
+    private lateinit var sysWm: WindowManager       // the normal one
+    private var a11yWin = false                     // attached as an accessibility overlay (the only kind that gets touches over the status bar)
     private lateinit var root: DragLayout
     private lateinit var win: FrameLayout
     private lateinit var wave: WaveView
@@ -159,14 +161,18 @@ class BuddyService : Service() {
     private val agentListener = object : AgentLink.Listener {
         override fun onStatus(connected: Boolean, desktop: String?) {
             agentConnected = connected; agentDesktop = desktop
+            AgentStats.refreshWidgets(this@BuddyService)
         }
-        override fun onSessions(list: List<AgentSession>) { agentSessions = list }
+        override fun onSessions(list: List<AgentSession>) { agentSessions = list; AgentStats.refreshWidgets(this@BuddyService) }
+        override fun onUsage(u: Usage) { agentUsage = u; AgentStats.save(this@BuddyService, u); AgentStats.refreshWidgets(this@BuddyService) }
         override fun onApproval(a: Approval) {
             if (approvals.none { it.fingerprint == a.fingerprint }) approvals.add(a)
+            publishApprovals()
             showApproval(announce = true)
         }
         override fun onApprovalResolved(fp: String) {
             approvals.removeAll { it.fingerprint == fp }
+            publishApprovals()
             showApproval(announce = false)
         }
     }
@@ -198,9 +204,13 @@ class BuddyService : Service() {
         @Volatile var agentConnected = false
         @Volatile var agentDesktop: String? = null
         @Volatile var agentSessions: List<AgentSession> = emptyList()
+        @Volatile var agentUsage: Usage? = null
+        /** Requests waiting for an answer (the app's agents page lists them; answers go back through ACTION_AGENT_DECIDE). */
+        @Volatile var agentApprovals: List<Approval> = emptyList()
         const val ACTION_ASK = "com.example.buddy.ASK"
         const val ACTION_TOGGLE_QUIET = "com.example.buddy.TOGGLE_QUIET"
         const val ACTION_AGENT_RELOAD = "com.example.buddy.AGENT_RELOAD"
+        const val ACTION_AGENT_DECIDE = "com.example.buddy.AGENT_DECIDE"
         const val ACTION_LISTEN = "com.example.buddy.LISTEN"
         private val WAKE_NAMES = setOf("bubby", "buby", "bubbi", "bubi", "buuby", "буби", "бубби", "бабби", "бубы", "бубя")
         // close to "bubby"/"buby" in spelling but ordinary words
@@ -299,6 +309,7 @@ class BuddyService : Service() {
         when (i?.action) {
             Reminders.ACTION_SPEAK -> remind(i.getStringExtra("text").orEmpty())
             ACTION_AGENT_RELOAD -> startAgentLink()
+            ACTION_AGENT_DECIDE -> i.getStringExtra("fp")?.let { fp -> agentLink?.decide(fp, i.getBooleanExtra("allow", false)); resolveLocal(fp) }
             ACTION_LISTEN -> if (!busy && !calling) {
                 cancelTap(); voice.stopSpeaking(); touched()
                 if (voiceOn()) startVoice()
@@ -340,7 +351,8 @@ class BuddyService : Service() {
                 old?.uncaughtException(t, e)
             }
         }
-        wm = getSystemService(WINDOW_SERVICE) as WindowManager
+        sysWm = getSystemService(WINDOW_SERVICE) as WindowManager
+        wm = sysWm
         brain = Brain(this)
         voice = Voice(this, h)
         actions = Actions(this)
@@ -542,6 +554,7 @@ class BuddyService : Service() {
                 }
                 hotKick()
             }
+            syncOverlayType()
             h.postDelayed(this, 60000)
         }
     }
@@ -786,6 +799,7 @@ class BuddyService : Service() {
         quietInit()
         try { wm.addView(win, lp) } catch (e: Exception) { stopSelf(); return }
         applyHidden()
+        win.post { syncOverlayType() }
         buddy.enter()   // 700 ms pop-in entrance (skipped when animations are off)
         fsPollRestart()
         if (sx == Int.MIN_VALUE) win.post {
@@ -860,6 +874,7 @@ class BuddyService : Service() {
     }
 
     private fun snap() {
+        win.postDelayed({ syncOverlayType() }, 450)
         snapAnim?.cancel(); snapAnim = null
         dockAnim?.let { it.removeAllListeners(); it.cancel() }; dockAnim = null
         val w = win.width
@@ -917,11 +932,36 @@ class BuddyService : Service() {
 
     private var pendingDock: String? = null
 
+    /**
+     * The status bar sits above normal overlay windows, so a mascot parked up there cannot be tapped. Windows added through
+     * the accessibility service are layered above it, so while the mascot touches the status bar (and that service is on)
+     * it lives in such a window, and goes back to a normal one elsewhere.
+     */
+    private fun syncOverlayType() {
+        if (!::win.isInitialized || !win.isAttachedToWindow) return
+        val inBar = lp.y + win.paddingTop + dp(6) < topH()
+        val a11y = if (inBar) BuddyAccess.windowManager() else null
+        val want = a11y != null
+        if (want == a11yWin) return
+        if (!want && BuddyAccess.enabled && a11yWin && inBar) return
+        val next = if (want) a11y!! else sysWm
+        val oldType = lp.type
+        try { wm.removeView(win) } catch (_: Exception) {}
+        lp.type = if (want) WindowManager.LayoutParams.TYPE_ACCESSIBILITY_OVERLAY else WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
+        try {
+            next.addView(win, lp); wm = next; a11yWin = want
+        } catch (_: Exception) {
+            // could not move: put it back as it was
+            lp.type = oldType
+            try { sysWm.addView(win, lp); wm = sysWm; a11yWin = false } catch (_: Exception) { stopSelf() }
+        }
+    }
+
     private fun dockTo(where: String) {
         if (win.width == 0 || win.height == 0) return
         // positions depend on the window size: wait for the collapsed one
         if (expanded || prog > 0.02f) { pendingDock = where; return }
-        val isStatus = where == "status_left" || where == "status_right"
+        val isStatus = where.startsWith("status_")
         if (isStatus) {
             val sbh = topH(); val bh = buddy.height
             val target = (sbh * 1.1f).toInt()
@@ -971,13 +1011,17 @@ class BuddyService : Service() {
             "bottom_right" -> { tx = maxX; ty = botY }
             "top_left" -> { tx = 0; ty = topY }
             "top_right" -> { tx = maxX; ty = topY }
-            "status_left", "status_right" -> {
+            "status_left", "status_right", "status_center" -> {
                 // centre of the mascot inside the window, then centre that on the status bar
                 val hdr = buddy.parent as? View
                 val cy = win.paddingTop + root.top + (hdr?.top ?: 0) + buddy.top + buddy.height / 2
                 ty = topH() / 2 - cy
                 val inL = win.paddingLeft + root.left + root.paddingLeft
-                tx = if (where == "status_left") dp(72) - inL else sw - dp(170) - win.width
+                tx = when (where) {
+                    "status_left" -> dp(72) - inL
+                    "status_center" -> (sw - win.width) / 2        // in the camera-cutout "island" spot
+                    else -> sw - dp(170) - win.width
+                }
             }
             else -> return
         }
@@ -986,7 +1030,7 @@ class BuddyService : Service() {
         dockRight = maxX > 0 && fx == maxX && !isStatus && where != "top" && where != "bottom" && where != "center"
         if (isStatus) { statusDock = where; prefs.edit().putString("status_dock", where).apply() }
         val sx0 = lp.x; val sy0 = lp.y
-        fun save() { prefs.edit().putInt("px", lp.x).putInt("py", lp.y).apply() }
+        fun save() { prefs.edit().putInt("px", lp.x).putInt("py", lp.y).apply(); win.post { syncOverlayType() } }
         if (!IslandUi.animOn(this)) {
             lp.x = fx; lp.y = fy
             try { wm.updateViewLayout(win, lp) } catch (_: Exception) {}
@@ -1160,7 +1204,7 @@ class BuddyService : Service() {
     private fun startAgentLink() {
         agentLink?.stop(); agentLink = null
         approvals.clear(); showApproval(announce = false)
-        agentConnected = false; agentDesktop = null; agentSessions = emptyList()
+        agentConnected = false; agentDesktop = null; agentSessions = emptyList(); AgentStats.refreshWidgets(this)
         if (PairingStore(this).load() == null) return
         agentLink = AgentLink(this, agentListener).also { it.start() }
     }
@@ -1192,7 +1236,9 @@ class BuddyService : Service() {
         focusable(false)
     }
 
-    private fun resolveLocal(fp: String) { approvals.removeAll { it.fingerprint == fp }; showApproval(announce = false) }
+    private fun resolveLocal(fp: String) { approvals.removeAll { it.fingerprint == fp }; publishApprovals(); showApproval(announce = false) }
+
+    private fun publishApprovals() { agentApprovals = approvals.toList(); AgentStats.refreshWidgets(this) }
 
     private fun sListen() = t("Слушаю…", "Listening…", "Eshityapman…")
     private fun listeningNow() = status.text.toString() == sListen()

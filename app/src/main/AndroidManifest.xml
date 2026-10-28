@@ -166,5 +166,35 @@
             </intent-filter>
         </receiver>
 
+
+        <receiver android:name=".AgentWidgets$StatusWidget" android:exported="true" android:label="@string/widget_status_desc">
+            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE"/></intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_agent_status"/>
+        </receiver>
+
+        <receiver android:name=".AgentWidgets$UsageWidget" android:exported="true" android:label="@string/widget_usage_desc">
+            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE"/></intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_agent_usage"/>
+        </receiver>
+
+        <receiver android:name=".AgentWidgets$DoneWidget" android:exported="true" android:label="@string/widget_done_desc">
+            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE"/></intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_agent_done"/>
+        </receiver>
+
+        <receiver android:name=".AgentWidgets$AgentsWidget" android:exported="true" android:label="@string/widget_agents_desc">
+            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE"/></intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_agent_agents"/>
+        </receiver>
+
+        <receiver android:name=".AgentWidgets$BarWidget" android:exported="true" android:label="@string/widget_bar_desc">
+            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE"/></intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_agent_bar"/>
+        </receiver>
+
+        <receiver android:name=".AgentWidgets$MiniWidget" android:exported="true" android:label="@string/widget_mini_desc">
+            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE"/></intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_agent_mini"/>
+        </receiver>
     </application>
 </manifest>

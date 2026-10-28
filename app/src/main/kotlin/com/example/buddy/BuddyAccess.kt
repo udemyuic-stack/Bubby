@@ -13,8 +13,20 @@ import android.view.accessibility.AccessibilityNodeInfo
 /** Package-name fragments of apps whose screen is never read out (banks, wallets, password managers, crypto). */
 private val PRIVATE_PKG_HINTS = listOf(
     "bank", "wallet", "paypal", "payme", "uz.click", "uzum", "pay", "authenticator", "1password", "bitwarden",
-    "keepass", "lastpass", "dashlane", "passwords", "crypto", "binance", "metamask", "trust"
+    "keepass", "lastpass", "dashlane", "passwords", "crypto", "binance", "metamask", "trust",
+    // payment apps (Uzbekistan, Russia and global) and anything named like a card or money app
+    "click", "paynet", "humans", "milliy", "anor", "hamkor", "ipak", "agro", "tbc", "davr", "asaka", "xalq", "kapital", "ofb",
+    "uzcard", "humo", "oson", "apelsin", "alif", "paycom", "stripe", "revolut", "wise", "sber", "tinkoff", "yoomoney", "qiwi",
+    "visa", "mastercard", "card", "finance", "money", "secure", "otp", "vtb", "alfa", "raiffeisen"
 )
+
+/** Words and shapes that mean the screen shows card or payment details, whatever app it is (also a payment page in a browser). */
+private val PRIVATE_TEXT = Regex(
+    "(?i)\\b(?:\\d[ -]?){13,19}\\b|\\bcvv\\b|\\bcvc\\b|pin[ -]?code|пин[ -]?код|номер карты|срок действия|card number|expiry date|karta raqami|amal qilish muddati|parolni kiriting|enter your password|введите пароль"
+)
+
+/** Words in the user's own request that already say "look at / use my screen": no question is asked then. */
+private val SCREEN_WORDS = Regex("(?i)экран|screen|ekran|на странице|on the page|sahifa|прочитай|read (this|it|the)|o'qib ber|нажми|tap |press |bosing|bos |scroll|листай|прокрути|type |напечатай|yoz ")
 
 class BuddyAccess : AccessibilityService() {
     override fun onServiceConnected() { inst = this }
@@ -54,6 +66,92 @@ class BuddyAccess : AccessibilityService() {
     private fun tapAt(x: Float, y: Float): Boolean {
         val p = Path(); p.moveTo(x, y); p.lineTo(x, y + 1)
         return gesture(p, 50)
+    }
+
+    /** Reading the screen needs the user's yes for each task (unless they turned the question off or already asked for it). */
+    private fun consentOk(): Boolean {
+        val p = getSharedPreferences("buddy", MODE_PRIVATE)
+        if (!p.getBoolean("screen_ask", true)) return true
+        if (runGrant) return true
+        if (runDenied) return false
+        val ok = try { asker?.invoke() ?: false } catch (_: Exception) { false }
+        if (ok) runGrant = true else runDenied = true
+        return ok
+    }
+
+    /** True when the foreground app looks like a bank / payment / password app: no taps or typing there either. */
+    private fun privateForeground(): Boolean {
+        val pkg = rootInActiveWindow?.packageName?.toString()?.lowercase().orEmpty()
+        return pkg.isNotEmpty() && PRIVATE_PKG_HINTS.any { pkg.contains(it) }
+    }
+
+    private fun allNodes(root: AccessibilityNodeInfo?, out: MutableList<AccessibilityNodeInfo>, depth: Int = 0) {
+        if (root == null || depth > 30 || out.size > 600) return
+        out.add(root)
+        for (i in 0 until root.childCount) allNodes(root.getChild(i), out, depth + 1)
+    }
+
+    private fun checkables(n: AccessibilityNodeInfo): List<AccessibilityNodeInfo> {
+        val all = ArrayList<AccessibilityNodeInfo>(); allNodes(n, all)
+        return all.filter { it.isCheckable && it.isVisibleToUser }
+    }
+
+    /**
+     * Turns off an alarm in the clock app that is on screen (its alarm list). Matches by time (24 h or 12 h with AM/PM) or,
+     * with no time, takes the first alarm that is on. Returns 1 = switched off and confirmed, 0 = no such alarm that is on,
+     * -1 = the screen could not be read. Reads only the clock app's own screen and nothing is sent anywhere.
+     */
+    private fun doDisableAlarm(hour: Int, minute: Int): Int {
+        val root = rootInActiveWindow ?: return -1
+        if (isOurs(root)) return -1
+        val pkg = root.packageName?.toString()?.lowercase().orEmpty()
+        if (!pkg.contains("clock") && !pkg.contains("alarm") && !pkg.contains("deskclock")) return -1
+        val all = ArrayList<AccessibilityNodeInfo>(); allNodes(root, all)
+        val h12 = if (hour % 12 == 0) 12 else hour % 12
+        val re = Regex("^\\s*0?(\\d{1,2}):(\\d{2})\\s*([AaPp]\\.?[Mm]\\.?)?\\s*$")
+        var target: AccessibilityNodeInfo? = null
+        if (hour < 0) {
+            target = all.firstOrNull { it.isCheckable && it.isChecked && it.isVisibleToUser }
+        } else for (n in all) {
+            val t = n.text?.toString() ?: continue
+            val m = re.find(t) ?: continue
+            val hh = m.groupValues[1].toInt(); val mm = m.groupValues[2].toInt()
+            val ap = m.groupValues[3].lowercase().firstOrNull()
+            if (mm != minute) continue
+            val ok = when {
+                ap != null -> hh == h12 && ((ap == 'a') == (hour < 12))
+                hh == hour -> true
+                hh == h12 -> {
+                    // a 12 h clock may show AM/PM as its own text next to the time: look in the same row
+                    var up: AccessibilityNodeInfo? = n; var amPm: Boolean? = null
+                    repeat(3) { up = up?.parent; val rowTexts = ArrayList<AccessibilityNodeInfo>(); allNodes(up, rowTexts)
+                        rowTexts.mapNotNull { it.text?.toString()?.trim()?.lowercase() }.firstOrNull { it == "am" || it == "pm" || it == "a.m." || it == "p.m." }?.let { amPm = it.startsWith("a") } }
+                    amPm == null || amPm == (hour < 12)
+                }
+                else -> false
+            }
+            if (!ok) continue
+            // the switch of this alarm: the nearest ancestor row that holds one
+            var row: AccessibilityNodeInfo? = n
+            var sw: AccessibilityNodeInfo? = null
+            repeat(7) { if (sw == null) { row = row?.parent; val c = row?.let { checkables(it) }.orEmpty(); if (c.size == 1) sw = c[0] } }
+            if (sw != null && sw!!.isChecked) { target = sw; break }
+        }
+        val sw = target ?: return 0
+        sw.performAction(AccessibilityNodeInfo.ACTION_CLICK)
+        // the screen redraws: read it again and make sure that alarm is really off now
+        SystemClock.sleep(600)
+        val again = rootInActiveWindow ?: return 1
+        val now = ArrayList<AccessibilityNodeInfo>(); allNodes(again, now)
+        val stillOn = if (hour < 0) false else now.any { n ->
+            val t = n.text?.toString() ?: return@any false
+            val m = re.find(t) ?: return@any false
+            m.groupValues[2].toInt() == minute && (m.groupValues[1].toInt() == hour || m.groupValues[1].toInt() == h12) &&
+                run { var row: AccessibilityNodeInfo? = n; var c: List<AccessibilityNodeInfo> = emptyList()
+                    repeat(7) { if (c.size != 1) { row = row?.parent; c = row?.let { checkables(it) }.orEmpty() } }
+                    c.size == 1 && c[0].isChecked }
+        }
+        return if (stillOn) 0 else 1
     }
 
     private fun isOurs(n: AccessibilityNodeInfo?): Boolean = n?.packageName?.toString() == packageName
@@ -140,6 +238,7 @@ class BuddyAccess : AccessibilityService() {
         if (isOurs(root)) return "(no readable text)"
         val pkgName = root.packageName?.toString()?.lowercase().orEmpty()
         if (PRIVATE_PKG_HINTS.any { pkgName.contains(it) }) return "(screen hidden for privacy)"
+        if (!consentOk()) return "(the user did not allow reading the screen for this task; say so and ask them to allow it or to do this step themselves)"
         val out = StringBuilder()
         val list = ArrayList<AccessibilityNodeInfo>()
         fun walk(n: AccessibilityNodeInfo?, depth: Int, tappableAbove: Boolean) {
@@ -164,6 +263,8 @@ class BuddyAccess : AccessibilityService() {
             for (i in 0 until n.childCount) walk(n.getChild(i), depth + 1, up)
         }
         walk(root, 0, false)
+        // card or payment details on screen (even in a browser): nothing leaves the phone, nothing can be tapped by number
+        if (PRIVATE_TEXT.containsMatchIn(out)) return "(screen hidden for privacy)"
         synchronized(numbered) { numbered.addAll(list) }
         return out.toString().ifBlank { "(no readable text)" }
     }
@@ -224,19 +325,33 @@ class BuddyAccess : AccessibilityService() {
         /** SystemClock.uptimeMillis() of the last window state/content change in another app. */
         @Volatile var lastEventMs: Long = 0L
         val enabled: Boolean get() = inst != null
+        /** Set by the service: shows "may Bubby read your screen for this task?" and waits for the answer (worker thread). */
+        @Volatile var asker: (() -> Boolean)? = null
+        @Volatile private var runGrant = false
+        @Volatile private var runDenied = false
+
+        /** A new request from the user: the answer given for the last task is forgotten. */
+        fun newRun(userText: String) {
+            runDenied = false
+            runGrant = SCREEN_WORDS.containsMatchIn(userText)
+        }
+        /** See [doDisableAlarm]. */
+        fun disableAlarm(hour: Int, minute: Int): Int = try { inst?.doDisableAlarm(hour, minute) ?: -1 } catch (_: Exception) { -1 }
+        fun foregroundPackage(): String? = try { inst?.rootInActiveWindow?.packageName?.toString() } catch (_: Exception) { null }
+        fun endRun() { runGrant = false; runDenied = false }
         /** The window manager for accessibility overlays (they are layered above the status bar), or null when the service is off. */
         fun windowManager(): android.view.WindowManager? = try { inst?.getSystemService(android.content.Context.WINDOW_SERVICE) as? android.view.WindowManager } catch (_: Exception) { null }
 
         fun global(action: Int): Boolean = try { inst?.performGlobalAction(action) ?: false } catch (_: Exception) { false }
         fun swipe(dir: String): Boolean = try { inst?.doSwipe(dir) ?: false } catch (_: Exception) { false }
-        fun clickText(t: String): Boolean = try { inst?.doClickText(t) ?: false } catch (_: Exception) { false }
+        fun clickText(t: String): Boolean = try { inst?.let { !it.privateForeground() && it.doClickText(t) } ?: false } catch (_: Exception) { false }
         /** Visible text of the app on screen (null when the accessibility service is off). */
         fun screenText(): String? = try { inst?.doScreenText() } catch (_: Exception) { null }
-        fun typeText(t: String, submit: Boolean = false): Boolean = try { inst?.doTypeSubmit(t, submit) ?: false } catch (_: Exception) { false }
+        fun typeText(t: String, submit: Boolean = false): Boolean = try { inst?.let { !it.privateForeground() && it.doTypeSubmit(t, submit) } ?: false } catch (_: Exception) { false }
         /** Exact-label click restricted to the given app packages; false when nothing matched. */
         fun clickExact(labels: List<String>, pkgs: List<String>): Boolean = try { inst?.doClickExact(labels, pkgs) ?: false } catch (_: Exception) { false }
         fun activePackage(): String? = try { inst?.doActivePackage() } catch (_: Exception) { null }
-        fun tapNode(index: Int): Boolean = try { inst?.doTapNode(index) ?: false } catch (_: Exception) { false }
+        fun tapNode(index: Int): Boolean = try { inst?.let { !it.privateForeground() && it.doTapNode(index) } ?: false } catch (_: Exception) { false }
         fun pressEnter(): Boolean = try { inst?.doPressEnter() ?: false } catch (_: Exception) { false }
     }
 }

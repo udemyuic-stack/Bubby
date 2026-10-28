@@ -353,6 +353,8 @@ class BuddyService : Service() {
         }
         sysWm = getSystemService(WINDOW_SERVICE) as WindowManager
         wm = sysWm
+        BuddyAccess.asker = { askScreenConsent() }
+        ClockActions.report = { msg -> h.post { if (msg == null) flashBadge("done", 2500L) else showError(msg) } }
         brain = Brain(this)
         voice = Voice(this, h)
         actions = Actions(this)
@@ -1420,6 +1422,7 @@ class BuddyService : Service() {
         }
         val alts = if (spoken) voice.lastAlternatives else emptyList()
         h.postDelayed(askDeadline, 90_000L)
+        BuddyAccess.newRun(text)
         Thread {
             val r = try {
                 Result.success(brain.ask(text, spoken, alts, exec = { a -> if (id != reqId) cancelledText() else runOnMainBlocking(a) }, untrusted = untrusted))
@@ -1428,6 +1431,29 @@ class BuddyService : Service() {
                 if (id == reqId) { h.removeCallbacks(askDeadline); finish(r) }
             }
         }.start()
+    }
+
+    /** Asks the user, on the island, whether Bubby may read the screen for this task. Blocks the worker thread up to 30 s. */
+    private fun askScreenConsent(): Boolean {
+        val latch = java.util.concurrent.CountDownLatch(1)
+        var yes = false
+        fun answer(ok: Boolean) { if (latch.count == 0L) return; yes = ok; latch.countDown(); approvalHolder.visibility = View.GONE; approvalHolder.removeAllViews(); setMode("think") }
+        h.post {
+            voice.stopListening()
+            style(true); status.text = t("Можно посмотреть экран?", "May I look at the screen?", "Ekranga qarasam bo'ladimi?"); setMode("curious"); setWave(WaveView.NONE)
+            hide(input); hide(answer)
+            approvalHolder.removeAllViews()
+            val a = Approval("screen-consent", "screen-consent", t("Чтение экрана", "Reading the screen", "Ekranni o'qish"),
+                t("Для этой задачи Bubby нужно прочитать текст на экране. Банковские и платёжные приложения он не читает никогда.",
+                    "For this task Bubby needs to read the text on your screen. He never reads banking and payment apps.",
+                    "Bu vazifa uchun Bubby ekrandagi matnni o'qishi kerak. Bank va to'lov ilovalarini hech qachon o'qimaydi."), System.currentTimeMillis(), false)
+            approvalHolder.addView(ApprovalCard.build(this, a, false, onAllow = { answer(true) }, onDeny = { answer(false) }))
+            approvalHolder.alpha = 1f; approvalHolder.visibility = View.VISIBLE
+            focusable(false)
+        }
+        val got = try { latch.await(30, java.util.concurrent.TimeUnit.SECONDS) } catch (_: InterruptedException) { false }
+        if (!got) h.post { answer(false) }
+        return got && yes
     }
 
     private fun cancelledText() = t("Отменено", "Cancelled", "Bekor qilindi")
@@ -1457,6 +1483,7 @@ class BuddyService : Service() {
         if (!running) return
         busy = false
         h.removeCallbacks(askDeadline)
+        BuddyAccess.endRun()
         if (calling) return
         r.onSuccess { reply ->
             val emo = reply.emotion
@@ -2037,6 +2064,8 @@ class BuddyService : Service() {
     override fun onDestroy() {
         tiltStop()
         running = false
+        BuddyAccess.asker = null
+        ClockActions.report = null
         hotStop()
         try { unregisterReceiver(screenRx) } catch (_: Exception) {}
         holdAnim?.cancel(); holdAnim = null

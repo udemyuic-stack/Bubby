@@ -179,6 +179,10 @@ class SettingsScreen(act: UiActivity) : Screen(act) {
                 t("Так он может нажимать и печатать за вас; тексты банковских приложений и паролей не читаются; текст экрана уходит выбранному ИИ-сервису",
                     "It is how he can tap and type for you; texts of banking and password apps are never read; screen text is sent to your chosen AI service",
                     "Shu bilan u siz uchun bosadi va yozadi; bank va parol ilovalari matni o'qilmaydi; ekran matni tanlangan AI xizmatiga yuboriladi")))
+            add(sw(t("Спрашивать перед чтением экрана", "Ask before reading the screen", "Ekranni o'qishdan oldin so'rash"), "screen_ask", true,
+                t("Bubby читает экран только для задачи, на которую вы ответили «Да» (или когда вы сами просите посмотреть, нажать, прочитать). Платёжные и банковские экраны не читаются никогда",
+                    "Bubby reads the screen only for a task you said “Yes” to (or when you ask him to look, tap or read). Payment and banking screens are never read",
+                    "Bubby ekranni faqat siz «Ha» degan vazifa uchun o'qiydi (yoki o'zingiz qarash, bosish, o'qishni so'ragan paytda). To'lov va bank ekranlari hech qachon o'qilmaydi")))
             add(sw(t("Реагировать на зарядку и наушники", "React to charging and headphones", "Zaryadka va quloqchinga munosabat bildirish"), "device_reactions", true))
             add(sw(t("Стикеры при реакциях", "Stickers on reactions", "Reaksiyalarda stiklerlar"), "stickers_on_events", true))
             add(sw(t("Отвечать стикерами", "Reply with stickers", "Stikerlar bilan javob berish"), "sticker_auto", true))

@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.*
 import android.os.SystemClock
 import android.view.View
+import com.example.buddy.ui.GlassCritter
 import kotlin.math.abs
 import kotlin.math.cos
 import kotlin.math.exp
@@ -111,19 +112,19 @@ object Moods {
 }
 
 object Species {
-    val ALL: List<String> = listOf("cat", "dog", "bunny", "bear", "panda", "fox", "frog", "penguin",
+    val ALL: List<String> = listOf("glass", "cat", "dog", "bunny", "bear", "panda", "fox", "frog", "penguin",
         "capybara", "hamster", "owl", "duck", "pig", "koala", "lion", "tiger")
 
     val LABELS: Map<String, String> = mapOf(
-        "cat" to "Кот", "dog" to "Пёс", "bunny" to "Зайчик", "bear" to "Мишка",
+        "glass" to "Стекло", "cat" to "Кот", "dog" to "Пёс", "bunny" to "Зайчик", "bear" to "Мишка",
         "panda" to "Панда", "fox" to "Лис", "frog" to "Лягушонок", "penguin" to "Пингвин",
         "capybara" to "Капибара", "hamster" to "Хомяк", "owl" to "Сова", "duck" to "Утёнок",
         "pig" to "Поросёнок", "koala" to "Коала", "lion" to "Лев", "tiger" to "Тигр"
     )
 
     fun normalize(s: String?): String {
-        val k = s?.trim()?.lowercase() ?: return "cat"
-        return if (k in ALL) k else "cat"
+        val k = s?.trim()?.lowercase() ?: return "glass"
+        return if (k in ALL) k else "glass"
     }
 }
 
@@ -137,7 +138,7 @@ class BuddyView(c: Context) : View(c) {
             mk = 0; mNext = 0L
             kick()
         }
-    var species: String = "cat"
+    var species: String = "glass"   // "glass" = the mascot of the chosen look (glass mochi, butterfly or whale)
         set(v) { field = Species.normalize(v); kick() }
     var scaleF = 1f
     var outfit: Set<String> = emptySet()
@@ -1225,6 +1226,29 @@ class BuddyView(c: Context) : View(c) {
         }
     }
 
+    private var critter: GlassCritter? = null
+    private val spot = Paint(Paint.ANTI_ALIAS_FLAG)
+    private var spotFor = 0
+
+    /** The glass mascot in the character's own units (head around (0,-30)); a soft dark patch keeps it visible over any wallpaper. */
+    private fun drawGlass(cv: Canvas, sleepy: Boolean, blink: Boolean) {
+        val kind = com.example.buddy.ui.Theme.cur.mascot
+        var c = critter
+        if (c == null || c.kind != kind) { c = GlassCritter(kind).also { it.withHalo = false }; critter = c }
+        c.squash = if (blink) 1f else if (sleepy) 0.8f else 0f
+        val dark = com.example.buddy.ui.Theme.cur.dark
+        if (spotFor != dark) {
+            spotFor = dark
+            spot.shader = RadialGradient(0f, -30f, 56f, intArrayOf(Color.argb(150, Color.red(dark), Color.green(dark), Color.blue(dark)), Color.argb(70, Color.red(dark), Color.green(dark), Color.blue(dark)), 0), floatArrayOf(0f, .6f, 1f), Shader.TileMode.CLAMP)
+        }
+        cv.drawCircle(0f, -30f, 56f, spot)
+        cv.save()
+        cv.translate(-46f, -66f)
+        cv.scale(0.54f, 0.54f)
+        c.draw(cv)
+        cv.restore()
+    }
+
     override fun onDraw(cv: Canvas) {
         if (!isAttachedToWindow && !offscreen) return
         val now = SystemClock.uptimeMillis()
@@ -1391,6 +1415,8 @@ class BuddyView(c: Context) : View(c) {
         cv.scale(s * sx * (1f - sq * 0.6f) * qx, s * (1f + sq) * qy)
 
         Outfits.drawBack(cv, p, outfit, em, t)
+        val glassSp = species == "glass"
+        if (glassSp) drawGlass(cv, sleepEyes || dozeK > 0.3f || em == "sleepy" || em == "tired", mk == 1 || entBlink) else {
         drawHead(cv, body, face)
 
         val ch = when (em) { "offended" -> 8f; "love" -> 6f; "shy" -> 7.5f; "pet" -> 5f + 5f * petK; else -> 4.5f }
@@ -1616,6 +1642,7 @@ class BuddyView(c: Context) : View(c) {
 
         cv.restore() // mouth blend
         cv.restore() // face plate layer
+        }   // not the glass mascot
 
         when (em) {
             "sad" -> { fill(0xFF6CB4F5.toInt()); cv.drawCircle(-19f, -24f + (t * 8f) % 9f, 1.8f, p) }

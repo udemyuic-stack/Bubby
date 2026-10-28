@@ -196,7 +196,8 @@ class BuddyService : Service() {
     private val prefListener = SharedPreferences.OnSharedPreferenceChangeListener { _, k ->
         when (k) {
             "outfit" -> h.post { buddy.outfit = Outfits.parse(prefs.getString("outfit", "").orEmpty()) }
-            "species" -> h.post { buddy.species = prefs.getString("species", "cat").orEmpty() }
+            "species" -> h.post { buddy.species = prefs.getString("species", "glass").orEmpty() }
+            "theme" -> h.post { com.example.buddy.ui.Theme.apply(this); buddy.invalidate() }
             "dock" -> h.post {
                 val w = prefs.getString("dock", "").orEmpty().substringBefore(':')
                 if (w.isNotEmpty()) dockTo(w)
@@ -419,7 +420,8 @@ class BuddyService : Service() {
             else registerReceiver(screenRx, f)
         } catch (_: Exception) {}
         buddy.outfit = Outfits.parse(prefs.getString("outfit", "").orEmpty())
-        buddy.species = prefs.getString("species", "cat").orEmpty()
+        com.example.buddy.ui.Theme.apply(this)
+        buddy.species = prefs.getString("species", "glass").orEmpty()
         buddy.badgeOn = prefs.getBoolean("badge", true)
         buddy.stateGlow = prefs.getBoolean("state_glow", true)
         prefs.registerOnSharedPreferenceChangeListener(prefListener)

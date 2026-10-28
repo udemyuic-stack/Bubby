@@ -252,7 +252,11 @@ class GlassBackground(c: Context, private val home: Boolean) : View(c) {
 }
 
 /** The glass "mochi" mascot: a super-ellipse with a rim, light patches and two closed happy eyes. Drawn at 170x136 and scaled. */
-class MochiView(c: Context, private val withHalo: Boolean = true) : View(c) {
+/**
+ * The mascots of the three looks (glass mochi, butterfly, whale), drawn on a 170x136 canvas. Used by [MochiView] in the app
+ * and by the floating assistant (BuddyView), so the same character is everywhere.
+ */
+class GlassCritter(val kind: String = Theme.cur.mascot) {
     private val body = Paint(Paint.ANTI_ALIAS_FLAG)
     private val rim = Paint(Paint.ANTI_ALIAS_FLAG).apply { style = Paint.Style.STROKE; strokeWidth = 1.1f }
     private val lit = Paint(Paint.ANTI_ALIAS_FLAG)
@@ -260,14 +264,13 @@ class MochiView(c: Context, private val withHalo: Boolean = true) : View(c) {
     private val eyeGlow = Paint(Paint.ANTI_ALIAS_FLAG).apply { style = Paint.Style.STROKE; strokeCap = Paint.Cap.ROUND }
     private val shape = Path()
     private val eyes = Path()
-    private val kind = Theme.cur.mascot
     private val line = Paint(Paint.ANTI_ALIAS_FLAG).apply { style = Paint.Style.STROKE; strokeCap = Paint.Cap.ROUND; strokeJoin = Paint.Join.ROUND }
     private val wing = Paint(Paint.ANTI_ALIAS_FLAG)
     private val dot = Paint(Paint.ANTI_ALIAS_FLAG)
     /** Blink: 0 = open, 1 = closed (they are drawn as arcs; a blink flattens them). */
     var squash = 0f
-        set(v) { field = v; invalidate() }
     var mini = false
+    var withHalo = true
 
     init {
         val rx = 78f; val ry = 59f
@@ -353,18 +356,8 @@ class MochiView(c: Context, private val withHalo: Boolean = true) : View(c) {
         }
     }
 
-    override fun onMeasure(w: Int, h: Int) {
-        val d = resources.displayMetrics.density
-        val mw = if (MeasureSpec.getMode(w) == MeasureSpec.EXACTLY) MeasureSpec.getSize(w) else (170 * d).toInt()
-        val mh = if (MeasureSpec.getMode(h) == MeasureSpec.EXACTLY) MeasureSpec.getSize(h) else (mw * 136f / 170f).toInt()
-        setMeasuredDimension(mw, mh)
-    }
-
-    override fun onDraw(cv: Canvas) {
-        val k = width / 170f
-        cv.save()
-        cv.scale(k, k)
-        if (kind != "mochi") { drawCritter(cv); cv.restore(); return }
+    fun draw(cv: Canvas) {
+        if (kind != "mochi") { drawCritter(cv); return }
         if (withHalo) {
             lit.shader = RadialGradient(85f, 68f, 111f, intArrayOf(Glass.white(.28f), Glass.white(0f)), null, Shader.TileMode.CLAMP)
             cv.save(); cv.scale(1f, 176f / 222f, 85f, 68f); cv.drawCircle(85f, 68f, 111f, lit); cv.restore()
@@ -389,6 +382,30 @@ class MochiView(c: Context, private val withHalo: Boolean = true) : View(c) {
         cv.drawPath(eyes, eyeGlow)
         cv.drawPath(eyes, eye)
         cv.restore()
+    }
+}
+
+/** The mascot as a View (170x136 design units scaled to the view). */
+class MochiView(c: Context, withHalo: Boolean = true) : View(c) {
+    private var critter = GlassCritter().also { it.withHalo = withHalo }
+    /** Blink: 0 = open, 1 = closed. */
+    var squash = 0f
+        set(v) { field = v; invalidate() }
+    var mini = false
+
+    override fun onMeasure(w: Int, h: Int) {
+        val d = resources.displayMetrics.density
+        val mw = if (MeasureSpec.getMode(w) == MeasureSpec.EXACTLY) MeasureSpec.getSize(w) else (170 * d).toInt()
+        val mh = if (MeasureSpec.getMode(h) == MeasureSpec.EXACTLY) MeasureSpec.getSize(h) else (mw * 136f / 170f).toInt()
+        setMeasuredDimension(mw, mh)
+    }
+
+    override fun onDraw(cv: Canvas) {
+        val k = width / 170f
+        critter.squash = squash; critter.mini = mini
+        cv.save()
+        cv.scale(k, k)
+        critter.draw(cv)
         cv.restore()
     }
 }

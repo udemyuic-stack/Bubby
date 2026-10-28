@@ -148,7 +148,7 @@ object AgentWidgets {
 
     private val mascots = HashMap<String, Bitmap>()
     private fun mascot(ctx: Context, mood: String): Bitmap = synchronized(mascots) {
-        val key = mood + "|" + Stickers.prefOutfitSet(ctx).sorted().joinToString(",") + "|" + ctx.getSharedPreferences("buddy", Context.MODE_PRIVATE).getString("species", "cat")
+        val key = mood + "|" + Stickers.prefOutfitSet(ctx).sorted().joinToString(",") + "|" + ctx.getSharedPreferences("buddy", Context.MODE_PRIVATE).getString("species", "glass")
         mascots.getOrPut(key) { if (mascots.size > 6) mascots.clear(); Stickers.preview(ctx, mood) }
     }
 

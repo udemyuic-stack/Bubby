@@ -22,7 +22,7 @@ class OutfitsScreen(act: UiActivity) : Screen(act) {
 
     private val slotOrder = listOf("head", "eyes", "neck", "aura", "hand")
     private val slots = Outfits.SLOTS
-    private var species = Backend.str(ctx, "species", "cat")
+    private var species = Backend.str(ctx, "species", "glass")
     private var items: Set<String> = Backend.str(ctx, "outfit", "").split(',').map { it.trim() }.filter { it.isNotEmpty() }.toSet()
     private var slot = "head"
     private var preview: Bitmap? = null
@@ -83,7 +83,7 @@ class OutfitsScreen(act: UiActivity) : Screen(act) {
     )
 
     private fun animals() = listOf(
-        "cat" to t("Кот", "Cat", "Mushuk"), "dog" to t("Пёс", "Dog", "It"), "bunny" to t("Зайчик", "Bunny", "Quyon"),
+        "glass" to t("Стекло (как в теме)", "Glass (follows the look)", "Shisha (mavzuga mos)"), "cat" to t("Кот", "Cat", "Mushuk"), "dog" to t("Пёс", "Dog", "It"), "bunny" to t("Зайчик", "Bunny", "Quyon"),
         "bear" to t("Мишка", "Bear", "Ayiq"), "panda" to t("Панда", "Panda", "Panda"), "fox" to t("Лис", "Fox", "Tulki"),
         "frog" to t("Лягушонок", "Frog", "Qurbaqa"), "penguin" to t("Пингвин", "Penguin", "Pingvin"), "capybara" to t("Капибара", "Capybara", "Kapibara"),
         "hamster" to t("Хомяк", "Hamster", "Xomyak"), "owl" to t("Сова", "Owl", "Boyqush"), "duck" to t("Утёнок", "Duck", "O'rdak"),

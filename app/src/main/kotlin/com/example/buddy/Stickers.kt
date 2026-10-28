@@ -121,7 +121,7 @@ object Stickers {
         v.scaleF = scale / dens
         v.mood = mood
         v.outfit = outfit
-        v.species = ctx.getSharedPreferences("buddy", Context.MODE_PRIVATE).getString("species", "cat").orEmpty()
+        v.species = ctx.getSharedPreferences("buddy", Context.MODE_PRIVATE).getString("species", "glass").orEmpty()
         v.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED)
         val w = max(1, v.measuredWidth)
         val h = max(1, v.measuredHeight)

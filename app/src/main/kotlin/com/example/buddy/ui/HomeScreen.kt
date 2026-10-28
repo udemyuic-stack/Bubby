@@ -160,7 +160,11 @@ class HomeScreen(act: UiActivity) : Screen(act) {
                     add(View(ctx).apply { background = ctx.rounded(com.example.buddy.AgentWidgets.color(st), 6f) }, ctx.dp(12), ctx.dp(12), end = 12)
                     add(ctx.col {
                         add(ctx.text(t("Агенты: ", "Agents: ", "Agentlar: ") + com.example.buddy.AgentWidgets.title(ctx, st), T.Label), MATCH, WRAP)
+                        val n = com.example.buddy.BuddyService.agentSessions.size
+                        val q = com.example.buddy.BuddyService.agentQuestions.size
                         val bits = listOfNotNull(
+                            if (n > 0) t("агентов: $n", "agents: $n", "agentlar: $n") else null,
+                            if (q > 1) t("вопросов: $q", "questions: $q", "savollar: $q") else null,
                             u?.fiveHour?.let { "5 h: ${(it * 100).toInt()}%" },
                             u?.sevenDay?.let { "7 d: ${(it * 100).toInt()}%" },
                             u?.doneToday?.let { t("сегодня: $it", "today: $it", "bugun: $it") }

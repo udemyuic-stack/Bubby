@@ -5,6 +5,7 @@ import android.content.Context
 import android.os.Build
 import android.os.Handler
 import android.os.Looper
+import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.BufferedInputStream
@@ -22,7 +23,6 @@ import javax.net.ssl.SSLContext
 import javax.net.ssl.SSLSocket
 import javax.net.ssl.X509TrustManager
 
-data class AgentSession(val pillId: String, val agent: String, val state: String, val statusText: String, val stepIndex: Int, val stepCount: Int)
 /** What the computer reports about limits and work done (every field may be missing). `used` is 0..1, times are epoch ms. */
 data class Usage(
     val fiveHour: Float?, val fiveHourResets: Long, val sevenDay: Float?, val sevenDayResets: Long,
@@ -61,6 +61,10 @@ class AgentLink(ctx: Context, val listener: Listener) {
         fun onApproval(a: Approval)
         fun onApprovalResolved(fp: String)
         fun onUsage(u: Usage) {}
+        /** A question from Claude Code (only with the `answers` capability); it ends with [onApprovalResolved]. */
+        fun onQuestion(q: AgentQuestion) {}
+        /** One part of a diff asked for with [getDiff]. */
+        fun onDiff(d: DiffPart) {}
     }
 
     private enum class Next { GO, RETRY, FATAL }
@@ -70,11 +74,15 @@ class AgentLink(ctx: Context, val listener: Listener) {
     private val out = ConcurrentLinkedQueue<String>()
     private val pending = HashMap<String, Runnable>()
     private val decided = HashSet<String>()
+    private val asked = HashMap<String, AgentQuestion>()
     private var thread: Thread? = null
 
     @Volatile private var gen = 0
     @Volatile private var connected = false
     @Volatile private var raw: Socket? = null
+    /** What the bridge offered in this connection's `welcome` (empty for a bridge without capabilities). */
+    @Volatile var caps: Set<String> = emptySet()
+        private set
 
     fun start() {
         if (thread != null) return
@@ -98,10 +106,12 @@ class AgentLink(ctx: Context, val listener: Listener) {
         main.removeCallbacksAndMessages(null)
         pending.clear()
         decided.clear()
+        asked.clear()
+        caps = emptySet()
     }
 
     fun decide(fingerprint: String, allow: Boolean) {
-        if (!connected || fingerprint in decided) return
+        if (!connected || fingerprint in decided || fingerprint in asked) return
         val timer = pending.remove(fingerprint) ?: return
         main.removeCallbacks(timer)
         decided.add(fingerprint)
@@ -109,6 +119,32 @@ class AgentLink(ctx: Context, val listener: Listener) {
             JSONObject().put("type", "decision").put("fingerprint", fingerprint)
                 .put("decision", if (allow) "allow" else "deny").toString()
         )
+    }
+
+    /**
+     * Sends the answer to a pending question. [picks] must be exactly what the bridge accepts (one list per question),
+     * otherwise nothing is sent. The caller has already asked for the screen lock. True when it was queued.
+     */
+    fun answer(fingerprint: String, picks: List<List<String>>): Boolean {
+        if (!connected || "answers" !in caps || fingerprint in decided) return false
+        val q = asked[fingerprint] ?: return false
+        if (!AgentProto.picksValid(q, picks) || AgentProto.expired(q.createdAt, System.currentTimeMillis())) return false
+        pending.remove(fingerprint)?.let { main.removeCallbacks(it) }
+        asked.remove(fingerprint)
+        decided.add(fingerprint)
+        out.add(JSONObject().put("type", "answer").put("fingerprint", fingerprint)
+            .put("picks", JSONArray().apply { for (p in picks) put(JSONArray(p)) }).toString())
+        return true
+    }
+
+    /** Asks for the lines of one changed file (capability `diffs`, at most 20 in 10 s). False when it cannot be sent now. */
+    fun getDiff(pillId: String, file: AgentFile): Boolean {
+        if (!connected || "diffs" !in caps) return false
+        if (!diffRate.tryTake(System.currentTimeMillis())) return false
+        val o = JSONObject().put("type", "getDiff").put("pillId", pillId)
+        if (file.idNum != null) o.put("fileId", file.idNum) else o.put("fileId", file.id)
+        out.add(o.toString())
+        return true
     }
 
     private fun closeAsync(s: Socket?) {
@@ -153,8 +189,10 @@ class AgentLink(ctx: Context, val listener: Listener) {
         for ((fp, timer) in pending.toMap()) {
             main.removeCallbacks(timer)
             pending.remove(fp)
+            asked.remove(fp)
             listener.onApprovalResolved(fp)
         }
+        asked.clear()
     }
 
     private fun session(link: ParsedLink, g: Int, onWelcome: () -> Unit): Next {
@@ -175,14 +213,16 @@ class AgentLink(ctx: Context, val listener: Listener) {
             val input = BufferedInputStream(ssl.inputStream)
             val os = ssl.outputStream
             out.clear()
+            caps = emptySet()
             send(os, JSONObject().put("type", "hello").put("v", 1).put("token", link.token)
-                .put("device", Build.MODEL ?: "Android").put("caps", org.json.JSONArray()).toString())
+                .put("device", Build.MODEL ?: "Android").put("caps", JSONArray(AgentProto.CAPS)).toString())
 
             var welcomed = false
             val began = System.currentTimeMillis()
             var lastRx = began
             var lastPing = began
             val buf = ByteArrayOutputStream()
+            var skipping = false   // a line longer than MAX_LINE is dropped up to its end, the link stays up
 
             fun housekeeping(): Boolean {
                 val now = System.currentTimeMillis()
@@ -205,10 +245,12 @@ class AgentLink(ctx: Context, val listener: Listener) {
                 if (b < 0) return Next.RETRY
                 lastRx = System.currentTimeMillis()
                 if (b != '\n'.code) {
+                    if (skipping) continue
                     buf.write(b)
-                    if (buf.size() > MAX_LINE) return Next.RETRY
+                    if (buf.size() > MAX_LINE) { buf.reset(); skipping = true }
                     continue
                 }
+                if (skipping) { skipping = false; continue }
                 val line = buf.toString("UTF-8").trim()
                 buf.reset()
                 if (line.isNotEmpty()) {
@@ -236,7 +278,8 @@ class AgentLink(ctx: Context, val listener: Listener) {
         when (str(j, "type")) {
             "welcome" -> {
                 if (j.optInt("v", -1) != 1) return Next.FATAL
-                val desktop = str(j, "desktop").take(64).ifEmpty { null }
+                val desktop = AgentProto.clean(str(j, "desktop"), 64).ifEmpty { null }
+                caps = AgentProto.parseCaps(plain(j.opt("caps"), 0))
                 onWelcome()
                 post(g) { connected = true; listener.onStatus(true, desktop) }
             }
@@ -244,17 +287,10 @@ class AgentLink(ctx: Context, val listener: Listener) {
             "sessions" -> if (welcomed) {
                 val arr = j.optJSONArray("sessions") ?: return Next.GO
                 val list = ArrayList<AgentSession>()
-                for (i in 0 until minOf(arr.length(), 50)) {
-                    val o = arr.optJSONObject(i) ?: continue
-                    val pill = str(o, "pillId").take(64)
-                    if (pill.isEmpty()) continue
-                    val state = str(o, "state").let { if (it in STATES) it else "idle" }
-                    list.add(
-                        AgentSession(
-                            pill, str(o, "agent").take(64), state, str(o, "statusText").take(200),
-                            o.optInt("stepIndex", 0).coerceAtLeast(0), o.optInt("stepCount", 0).coerceAtLeast(0)
-                        )
-                    )
+                val c = caps
+                for (i in 0 until minOf(arr.length(), AgentProto.MAX_SESSIONS)) {
+                    val o = plain(arr.optJSONObject(i), 0) as? Map<*, *> ?: continue
+                    AgentProto.parseSession(o, c)?.let { list.add(it) }
                 }
                 post(g) { listener.onSessions(list) }
             }
@@ -290,8 +326,20 @@ class AgentLink(ctx: Context, val listener: Listener) {
                 val fp = str(j, "fingerprint")
                 if (fp.isNotEmpty()) post(g) {
                     pending.remove(fp)?.let { main.removeCallbacks(it) }
+                    asked.remove(fp)
                     listener.onApprovalResolved(fp)
                 }
+            }
+            // a question that breaks any limit of the spec is dropped: it stays on the computer
+            "question" -> if (welcomed && "answers" in caps) {
+                val m = plain(j, 0) as? Map<*, *> ?: return Next.GO
+                val q = AgentProto.parseQuestion(m, System.currentTimeMillis()) ?: return Next.GO
+                post(g) { onQuestionMain(q) }
+            }
+            "diff" -> if (welcomed && "diffs" in caps) {
+                val m = plain(j, 0) as? Map<*, *> ?: return Next.GO
+                val d = AgentProto.parseDiff(m) ?: return Next.GO
+                post(g) { listener.onDiff(d) }
             }
         }
         return Next.GO
@@ -311,14 +359,42 @@ class AgentLink(ctx: Context, val listener: Listener) {
         listener.onApproval(a)
     }
 
+    private fun onQuestionMain(q: AgentQuestion) {
+        val now = System.currentTimeMillis()
+        if (AgentProto.expired(q.createdAt, now)) return
+        if (q.fingerprint in decided || pending.containsKey(q.fingerprint)) return
+        val timer = Runnable {
+            pending.remove(q.fingerprint)
+            asked.remove(q.fingerprint)
+            listener.onApprovalResolved(q.fingerprint)
+        }
+        pending[q.fingerprint] = timer
+        asked[q.fingerprint] = q
+        main.postDelayed(timer, AgentProto.msLeft(q.createdAt, now))
+        listener.onQuestion(q)
+    }
+
+    /** org.json values as plain Kotlin ones (Map, List, String, Number, Boolean, null) for the Android-free checks. */
+    private fun plain(v: Any?, depth: Int): Any? = when {
+        depth > 8 -> null
+        v is JSONObject -> {
+            val m = LinkedHashMap<String, Any?>()
+            val it = v.keys()
+            while (it.hasNext()) { val k = it.next(); m[k] = plain(v.opt(k), depth + 1) }
+            m
+        }
+        v is JSONArray -> List(v.length()) { plain(v.opt(it), depth + 1) }
+        v === JSONObject.NULL -> null
+        v is String || v is Number || v is Boolean -> v
+        else -> null
+    }
+
     private companion object {
-        const val MAX_LINE = 64 * 1024
+        /** diff parts can be about 100 lines of 400 characters, more than 64 KiB once escaped; longer lines are skipped */
+        const val MAX_LINE = 256 * 1024
+        val diffRate = RateWindow(AgentProto.DIFF_RATE_MAX, AgentProto.DIFF_RATE_WINDOW_MS)
         const val PING_MS = 20000L
         const val TTL_MS = 120000L
         const val TICK_MS = 300
-        val STATES = setOf(
-            "idle", "working", "thinking", "searching", "approval", "question",
-            "error", "finished", "ratelimit", "sleeping", "dizzy"
-        )
     }
 }

@@ -6,7 +6,10 @@ import android.view.Gravity
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.ProgressBar
+import com.example.buddy.AgentFile
 import com.example.buddy.AgentPairing
+import com.example.buddy.AgentProto
+import com.example.buddy.AgentQuestion
 import com.example.buddy.AgentSession
 import com.example.buddy.AgentStats
 import com.example.buddy.AgentWidgets
@@ -28,7 +31,12 @@ class AgentsScreen(act: UiActivity) : Screen(act) {
 
     /** What the page last showed of the live link state; the poll redraws only when it changes. */
     private var shownLive: Any? = null
-    private fun live(): Any = listOf(BuddyService.agentDesktop, BuddyService.agentConnected, BuddyService.agentSessions, BuddyService.agentUsage, BuddyService.agentApprovals)
+    private fun live(): Any = listOf(BuddyService.agentDesktop, BuddyService.agentConnected, BuddyService.agentSessions, BuddyService.agentUsage, BuddyService.agentApprovals,
+        BuddyService.agentQuestions, BuddyService.agentCaps)
+    private val openSteps = HashSet<String>()     // sessions whose step list is unfolded
+    private val allFiles = HashSet<String>()      // sessions showing every changed file, not only the first few
+    private val qSel = HashMap<String, List<Set<Int>>>()   // picks so far per question fingerprint (kept across redraws)
+    private var demoDiffShown = false
 
     override fun onShow() {
         reshow()
@@ -62,13 +70,24 @@ class AgentsScreen(act: UiActivity) : Screen(act) {
     }
 
     private fun sessionCard(a: AgentSession): LinearLayout {
-        val (label, color) = stateInfo(a.state)
-        return ctx.card(pad = 14) {
+        val asks = BuddyService.agentQuestions.any { it.pillId == a.pillId }
+        val (label, color) = stateInfo(if (asks) "question" else a.state)
+        val name = a.agent.ifEmpty { "Claude Code" }
+        val tint = AgentWidgets.agentColor(name)
+        return ctx.card(pad = 14, stroke = P.alpha(tint, 110)) {
             add(ctx.row {
-                add(ctx.text(a.agent, T.Title), 0, WRAP, 1f)
+                // the agent's own colour and initial, so several agents are told apart at a glance
+                add(ctx.row(Gravity.CENTER) {
+                    background = ctx.rounded(P.alpha(tint, 60), 14f, tint)
+                    add(ctx.text(name.take(1).uppercase(), T.Title, tint), WRAP, WRAP)
+                }, ctx.dp(38), ctx.dp(38), end = 10)
+                add(ctx.col {
+                    add(ctx.text(name, T.Title).apply { maxLines = 1; ellipsize = android.text.TextUtils.TruncateAt.END }, MATCH, WRAP)
+                    if (a.project.isNotEmpty()) add(ctx.text("▸ " + a.project, T.Small).apply { maxLines = 1; ellipsize = android.text.TextUtils.TruncateAt.END }, MATCH, WRAP, top = 1)
+                }, 0, WRAP, 1f, end = 8)
                 add(ctx.pill(label, color), WRAP, WRAP)
             })
-            if (a.statusText.isNotEmpty()) add(ctx.text(a.statusText, T.Body), MATCH, WRAP, top = 6)
+            if (a.statusText.isNotEmpty()) add(ctx.text(a.statusText, T.Body), MATCH, WRAP, top = 8)
             if (a.stepCount > 0) {
                 val bar = ProgressBar(ctx, null, android.R.attr.progressBarStyleHorizontal).apply {
                     max = a.stepCount; progress = shown[a.pillId] ?: 0
@@ -80,7 +99,115 @@ class AgentsScreen(act: UiActivity) : Screen(act) {
                 shown[a.pillId] = goal
                 add(ctx.text(t("Шаг ${a.stepIndex} из ${a.stepCount}", "Step ${a.stepIndex} of ${a.stepCount}", "${a.stepIndex}-qadam, jami ${a.stepCount} ta"), T.Small), MATCH, WRAP, top = 4)
             }
+            if (a.finalLine.isNotEmpty() && a.state in setOf("finished", "idle", "sleeping", "error")) add(ctx.row(Gravity.TOP) {
+                background = ctx.rounded(P.alpha(P.success, 28), 12f)
+                setPadding(ctx.dp(10), ctx.dp(8), ctx.dp(10), ctx.dp(8))
+                add(ctx.icon(R.drawable.ic_check_circle, P.success, 18), WRAP, WRAP, end = 8)
+                add(ctx.text(a.finalLine, T.Body).apply { maxLines = 4; ellipsize = android.text.TextUtils.TruncateAt.END }, 0, WRAP, 1f)
+            }, MATCH, WRAP, top = 10)
+            if (a.steps.isNotEmpty()) {
+                val unfolded = a.pillId in openSteps
+                add(ctx.row {
+                    setPadding(0, ctx.dp(6), 0, ctx.dp(2))
+                    add(ctx.text(t("Последние шаги: ${a.steps.size}", "Last steps: ${a.steps.size}", "Oxirgi qadamlar: ${a.steps.size}"), T.Label, P.primary), 0, WRAP, 1f)
+                    add(ctx.icon(if (unfolded) R.drawable.ic_arrow_up else R.drawable.ic_arrow_down, P.primary, 20), WRAP, WRAP)
+                    press { if (!openSteps.add(a.pillId)) openSteps.remove(a.pillId); refresh() }
+                }, MATCH, WRAP, top = 6)
+                if (unfolded) add(ctx.col {
+                    for ((k, st) in a.steps.withIndex()) add(ctx.row(Gravity.TOP) {
+                        val last = k == a.steps.size - 1
+                        add(View(ctx).apply { background = ctx.rounded(if (last) tint else P.outline, 4f) }, ctx.dp(7), ctx.dp(7), end = 10, top = 7)
+                        add(ctx.text(st, T.Small, if (last) P.onSurface else P.onSurfaceVariant).apply { maxLines = 3; ellipsize = android.text.TextUtils.TruncateAt.END }, 0, WRAP, 1f)
+                    }, MATCH, WRAP, top = 3)
+                }, MATCH, WRAP, top = 2)
+            }
+            if (a.files.isNotEmpty()) {
+                add(ctx.text(t("Изменённые файлы: ${a.files.size}", "Files changed: ${a.files.size}", "O'zgargan fayllar: ${a.files.size}"), T.Label), MATCH, WRAP, top = 10)
+                val all = a.pillId in allFiles
+                for (f in if (all) a.files else a.files.take(4)) add(fileRow(a.pillId, f), MATCH, WRAP, top = 4)
+                if (a.files.size > 4) add(ctx.button(if (all) t("Свернуть", "Show fewer", "Kamroq") else t("Все файлы (${a.files.size})", "All files (${a.files.size})", "Barcha fayllar (${a.files.size})"), BtnStyle.Text) {
+                    if (!allFiles.add(a.pillId)) allFiles.remove(a.pillId); refresh()
+                }, WRAP, WRAP)
+            }
         }
+    }
+
+    /** One changed file: name, +added -removed, new / too large; a tap opens its lines (when the computer offers them). */
+    private fun fileRow(pill: String, f: AgentFile): View {
+        val canOpen = !f.tooLarge && ("diffs" in BuddyService.agentCaps || demoOn())
+        val green = if (P.dark) 0xFF7EE2A1.toInt() else 0xFF1C7C3E.toInt()
+        val red = if (P.dark) 0xFFFF9A93.toInt() else 0xFFB3261E.toInt()
+        return ctx.row {
+            background = ctx.rounded(P.container, 12f)
+            setPadding(ctx.dp(10), ctx.dp(8), ctx.dp(8), ctx.dp(8))
+            add(ctx.text(f.name, T.Body).apply { typeface = android.graphics.Typeface.MONOSPACE; textSize = 13f; maxLines = 1; ellipsize = android.text.TextUtils.TruncateAt.MIDDLE }, 0, WRAP, 1f, end = 6)
+            if (f.isNew) add(badge(ctx, t("новый", "new", "yangi"), P.sky), WRAP, WRAP, end = 6)
+            if (f.tooLarge) add(badge(ctx, t("очень большой", "too large", "juda katta"), P.orange), WRAP, WRAP, end = 6)
+            add(ctx.text("+${f.added}", T.Label, green).apply { textSize = 13f }, WRAP, WRAP, end = 6)
+            add(ctx.text("−${f.removed}", T.Label, red).apply { textSize = 13f }, WRAP, WRAP)
+            if (canOpen) {
+                add(ctx.icon(R.drawable.ic_chevron_right, P.onSurfaceVariant, 18), WRAP, WRAP, start = 2)
+                press { DiffSheet(act, pill, f, if (demoOn()) demoDiff(f) else null).show() }
+            }
+        }
+    }
+
+    /** A question from Claude Code: chips per question, Send only when every question has its picks, then the lock screen. */
+    private fun questionCard(q: AgentQuestion): View {
+        val holder = ctx.col()
+        fun build() {
+            holder.removeAllViews()
+            val sel = qSel[q.fingerprint]?.takeIf { it.size == q.items.size } ?: AgentProto.emptySelection(q)
+            val who = BuddyService.agentSessions.firstOrNull { it.pillId == q.pillId }
+            holder.add(ctx.card(pad = 16, fill = P.alpha(P.sky, 34), stroke = P.sky) {
+                add(ctx.row {
+                    add(ctx.icon(R.drawable.ic_info, P.sky, 24), WRAP, WRAP, end = 10)
+                    add(ctx.col {
+                        add(ctx.text(t("У Claude вопрос", "Claude has a question", "Claude'da savol bor"), T.Title), MATCH, WRAP)
+                        val sub = listOfNotNull(who?.agent?.ifEmpty { null }, who?.project?.ifEmpty { null }).joinToString(" · ")
+                        if (sub.isNotEmpty()) add(ctx.text(sub, T.Small), MATCH, WRAP)
+                    }, 0, WRAP, 1f)
+                })
+                for ((qi, item) in q.items.withIndex()) {
+                    add(ctx.text(item.question, T.Body), MATCH, WRAP, top = if (qi == 0) 10 else 14)
+                    add(ctx.text(if (item.multiSelect) t("Можно выбрать несколько", "Pick one or more", "Bir nechtasini tanlash mumkin") else t("Выберите один вариант", "Pick one", "Bittasini tanlang"), T.Small), MATCH, WRAP, top = 2)
+                    val flow = FlowLayout(ctx, 8)
+                    for ((oi, op) in item.options.withIndex()) flow.addView(ctx.chip(op.shown, oi in sel[qi]) {
+                        qSel[q.fingerprint] = AgentProto.toggle(q, sel, qi, oi); build()
+                    })
+                    add(flow, MATCH, WRAP, top = 6)
+                    for (oi in sel[qi].sorted()) item.options.getOrNull(oi)?.takeIf { it.description.isNotEmpty() }?.let {
+                        add(ctx.text(it.shown + " — " + it.description, T.Small).apply { maxLines = 4; ellipsize = android.text.TextUtils.TruncateAt.END }, MATCH, WRAP, top = 4)
+                    }
+                }
+                val picks = AgentProto.picksFor(q, sel)
+                add(ctx.row {
+                    add(ctx.button(t("На компьютере", "On the computer", "Kompyuterda"), BtnStyle.Outline) { later(q.fingerprint) }, 0, WRAP, 1f, end = 8)
+                    add(ctx.button(t("Отправить", "Send", "Yuborish")) {
+                        val p = AgentProto.picksFor(q, qSel[q.fingerprint] ?: return@button) ?: return@button
+                        com.example.buddy.ConfirmActivity.requestAnswer(ctx) { ok -> if (ok) answer(q.fingerprint, p) else ctx.toast(t("Нужен экран блокировки", "Lock screen required", "Ekran qulfi kerak")) }
+                    }.apply { alpha = if (picks != null) 1f else 0.4f; isEnabled = picks != null }, 0, WRAP, 1f)
+                }, MATCH, WRAP, top = 12)
+                add(ctx.text(t("Ответ уйдёт только после проверки экрана блокировки", "The answer is sent only after the lock screen check", "Javob faqat qulf ekrani tekshiruvidan keyin yuboriladi"), T.Small), MATCH, WRAP, top = 8)
+            }, MATCH, WRAP)
+        }
+        build()
+        return holder
+    }
+
+    private fun answer(fp: String, picks: List<List<String>>) {
+        if (demoOn()) { ctx.toast(t("Демо: ответ не отправлен", "Demo: nothing was sent", "Demo: hech narsa yuborilmadi")); return }
+        val json = org.json.JSONArray().apply { for (p in picks) put(org.json.JSONArray(p)) }.toString()
+        ctx.startService(android.content.Intent(ctx, BuddyService::class.java).setAction(BuddyService.ACTION_AGENT_ANSWER).putExtra("fp", fp).putExtra("picks", json))
+        qSel.remove(fp)
+        content.postDelayed({ refresh() }, 300)
+    }
+
+    private fun later(fp: String) {
+        if (demoOn()) return
+        ctx.startService(android.content.Intent(ctx, BuddyService::class.java).setAction(BuddyService.ACTION_AGENT_LATER).putExtra("fp", fp))
+        qSel.remove(fp)
+        content.postDelayed({ refresh() }, 300)
     }
 
     private fun startDiscovery() {
@@ -219,6 +346,10 @@ class AgentsScreen(act: UiActivity) : Screen(act) {
                 else t("Разрешить можно только после проверки экрана блокировки", "You can allow only after the lock screen check", "Ruxsat faqat qulf ekrani tekshiruvidan keyin beriladi"), T.Small), MATCH, WRAP, top = 8)
         }, MATCH, WRAP, bottom = 12)
 
+        // questions from Claude Code
+        qSel.keys.retainAll(BuddyService.agentQuestions.map { it.fingerprint }.toSet())
+        for (q in BuddyService.agentQuestions) c.add(questionCard(q), MATCH, WRAP, bottom = 12)
+
         // usage rings and done today
         val u = AgentStats.current(ctx)
         fun ringCard(value: Float?, resets: Long, title: String): LinearLayout = statCard(title,
@@ -254,7 +385,7 @@ class AgentsScreen(act: UiActivity) : Screen(act) {
                     add(iv, 0, ctx.dp(150), 1f, end = 6, start = 6)
                 }
             }, MATCH, WRAP, top = 10)
-            for ((k, hh) in listOf("bar" to 56, "agents" to 110)) {
+            for ((k, hh) in listOf("bar" to 56, "agents" to 150)) {
                 val iv = android.widget.ImageView(ctx).apply { setImageBitmap(try { AgentWidgets.preview(ctx, k, 320, hh) } catch (_: Throwable) { null }) }
                 add(iv, MATCH, ctx.dp(hh), top = 8)
             }
@@ -317,19 +448,67 @@ class AgentsScreen(act: UiActivity) : Screen(act) {
         }
     }
 
-    /** `--ez demo true` (CI screenshots): shows the dashboard with made-up numbers. */
+    private fun demoOn() = act.intent.getBooleanExtra("demo", false)
+
+    /**
+     * `--ez demo true` (CI screenshots): the dashboard with made-up numbers, several agents with details and changed files,
+     * a permission request and a question. `--ez demodiff true` also opens the lines of the first file.
+     */
     private fun demo(): AgentInfo? {
-        if (!act.intent.getBooleanExtra("demo", false)) return null
+        if (!demoOn()) return null
         BuddyService.agentConnected = true; BuddyService.agentDesktop = "Work laptop"
+        BuddyService.agentCaps = AgentProto.CAPS.toSet()
         val now = System.currentTimeMillis()
         BuddyService.agentSessions = listOf(
-            AgentSession("a", "Claude Code", "working", "Editing UiActivity.kt", 3, 8),
-            AgentSession("b", "Claude Code", "approval", "Run: gradle assembleRelease", 0, 0),
-            AgentSession("c", "Claude Code", "idle", "", 0, 0)
+            AgentSession("a", "Claude Code", "working", "Editing UiActivity.kt", 3, 8, "bubby",
+                listOf("Read AgentLink.kt", "Searched for \"caps\"", "Edited AgentsScreen.kt", "Running the JVM tests"), "",
+                listOf(AgentFile("1", 1L, "AgentsScreen.kt", 42, 7), AgentFile("2", 2L, "AgentProto.kt", 310, 0, isNew = true),
+                    AgentFile("3", 3L, "strings-big.json", 4200, 3900, tooLarge = true))),
+            AgentSession("q", "Claude Code", "question", "Choosing the database", 1, 4, "shop-api"),
+            AgentSession("b", "codex", "approval", "Run: gradle assembleRelease", 0, 0, "bubby"),
+            AgentSession("c", "gemini", "finished", "", 5, 5, "landing-page", listOf("Wrote index.html", "Checked the links"),
+                "Done: the landing page builds and every link works.", listOf(AgentFile("9", 9L, "index.html", 18, 4)))
         )
+        if ("a" !in openSteps && !act.intent.getBooleanExtra("demofold", false)) openSteps.add("a")
         BuddyService.agentApprovals = listOf(com.example.buddy.Approval("b", "fp1", "Bash", "gradle assembleRelease -Pbuddy.code=45", now, false))
+        BuddyService.agentQuestions = listOf(AgentQuestion("q", "fpq", now, listOf(
+            com.example.buddy.QItem("Which database should the shop use?", false, listOf(
+                com.example.buddy.QOption("PostgreSQL", "PostgreSQL", "Full SQL server, best for many users"),
+                com.example.buddy.QOption("SQLite", "SQLite", "One file, nothing to install"))),
+            com.example.buddy.QItem("Which tests should I add?", true, listOf(
+                com.example.buddy.QOption("Unit", "Unit", ""), com.example.buddy.QOption("API", "API", ""), com.example.buddy.QOption("End to end", "End to end", "")))
+        )))
+        if (qSel["fpq"] == null) qSel["fpq"] = listOf(setOf(0), emptySet())
         BuddyService.agentUsage = com.example.buddy.Usage(0.68f, now + 130 * 60_000L, 0.42f, now + 4 * 86_400_000L, 4, 182_400L, "max", now)
+        if (act.intent.getBooleanExtra("demodiff", false) && !demoDiffShown) {
+            demoDiffShown = true
+            val f = BuddyService.agentSessions[0].files[0]
+            content.post { DiffSheet(act, "a", f, demoDiff(f)).show() }
+        }
         return AgentInfo(true, "Work laptop", true, BuddyService.agentSessions)
+    }
+
+    /** Made-up lines for the demo sheet, sent in two parts like the bridge does. */
+    private fun demoDiff(f: AgentFile): List<com.example.buddy.DiffPart> {
+        fun l(k: Char, s: String) = com.example.buddy.DiffLine(k, s)
+        val a = listOf(l('@', "@@ 64"), l(' ', "    private fun sessionCard(a: AgentSession): LinearLayout {"),
+            l('-', "        val (label, color) = stateInfo(a.state)"),
+            l('+', "        val asks = BuddyService.agentQuestions.any { it.pillId == a.pillId }"),
+            l('+', "        val (label, color) = stateInfo(if (asks) \"question\" else a.state)"),
+            l('+', "        val tint = AgentWidgets.agentColor(a.agent)"), l(' ', "        return ctx.card(pad = 14) {"))
+        val b = listOf(l('@', "@@ 120"), l(' ', "            if (a.steps.isNotEmpty()) {"), l('-', "                add(old)"),
+            l('+', "                add(ctx.text(t(\"Последние шаги\", \"Last steps\", \"Oxirgi qadamlar\"), T.Label))"), l(' ', "            }"))
+        return listOf(
+            com.example.buddy.DiffPart("a", f.id, f.name, f.added, f.removed, false, false, false, 1, 2, b),
+            com.example.buddy.DiffPart("a", f.id, f.name, f.added, f.removed, false, false, false, 0, 2, a))
+    }
+
+    companion object {
+        /** A small coloured word next to a file ("new", "too large"). */
+        fun badge(ctx: Context, s: String, color: Int): View = ctx.text(s, T.Small, color).apply {
+            textSize = 11f; setPadding(ctx.dp(7), ctx.dp(1), ctx.dp(7), ctx.dp(2))
+            background = ctx.rounded(P.alpha(color, 40), 8f)
+        }
     }
 
     override fun render(c: LinearLayout) {

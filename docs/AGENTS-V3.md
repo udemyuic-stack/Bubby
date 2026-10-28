@@ -103,3 +103,18 @@ These pin down what the spec above left open; the bridge does exactly this.
 - **More agents.** Pill id `agent_<name>` (Claude Code keeps `integration_claude`), `agent` = the name as given. Another
   agent's `PermissionRequest` is never sent to the phone and gets no decision (display only). Installers exist for
   Gemini CLI and GitHub Copilot CLI only; see docs/AGENTS-OTHER.md.
+
+## 7. Phone side notes (clarifications, keep the bridge in line with them)
+- File `id`: a whole number (0 to 2^53) is preferred, as in Coucou; a short string (at most 64 printable characters) is also
+  accepted. The phone sends `getDiff.fileId` back with the same JSON type it received. A file with another kind of id, or
+  with an empty `name` after taking the last path segment, is dropped.
+- The phone reads lines of up to 256 KiB (a diff part of 100 lines of 400 characters can pass 64 KiB once escaped) and skips
+  a longer line instead of dropping the connection. Old phones never get `diff` lines because they send no `caps`.
+- Everything the bridge sends is drawn as plain text after removing control and format characters (bidi overrides,
+  zero-width), with the lengths above; nothing is parsed as HTML or styled text. A `question` whose labels are equal once
+  cleaned counts as having duplicate labels and is dropped (it stays on the computer). Labels go back exactly as received.
+- A `question` is shown on the Agents screen and on the floating mascot (with its text hidden while the phone is locked). It
+  expires on the phone 115 s after `createdAt` (a bridge clock ahead of the phone counts as now). "On the computer" only hides
+  it on the phone; nothing is sent.
+- `diff` messages that break the limits (more than 2 parts, `part` out of range, other ids) are ignored; a part with more
+  than 100 lines is cut and shown as truncated. The phone itself also keeps at most 20 `getDiff` per 10 s.

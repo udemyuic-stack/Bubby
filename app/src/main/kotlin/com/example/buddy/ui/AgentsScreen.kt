@@ -304,7 +304,7 @@ class AgentsScreen(act: UiActivity) : Screen(act) {
         val st = AgentWidgets.overall()
         val color = AgentWidgets.color(st)
         // hero
-        c.add(ctx.card(pad = 18, fill = P.accentContainer(java.util.Calendar.getInstance().get(java.util.Calendar.HOUR_OF_DAY), 0), stroke = 0, radius = 28f) {
+        c.add(ctx.card(pad = 18, fill = P.primaryContainer, stroke = 0, radius = 28f) {
             add(ctx.row {
                 add(BuddyView(ctx).apply {
                     scaleF = 0.75f
@@ -518,7 +518,7 @@ class AgentsScreen(act: UiActivity) : Screen(act) {
             discovery?.stop(); discovery = null
             dashboard(c, s)
         } else {
-            c.add(ctx.card(pad = 16, fill = P.accentContainer(java.util.Calendar.getInstance().get(java.util.Calendar.HOUR_OF_DAY), 0)) {
+            c.add(ctx.card(pad = 16, fill = P.primaryContainer) {
                 add(ctx.text(t(
                     "Следите за Claude Code на компьютере и разрешайте или отклоняйте его запросы с телефона. Пока вы не подтвердите, ничего не выполняется.",
                     "Keep an eye on Claude Code on your computer and allow or decline its requests from your phone. Nothing runs until you confirm.",

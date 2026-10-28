@@ -39,7 +39,7 @@ class AgentOrbit(c: Context, private val items: List<Item>) : View(c) {
         // the mascot in the middle on its dark patch
         p.style = Paint.Style.FILL
         val core = r * .5f
-        p.shader = RadialGradient(cx, cy, core * 1.5f, intArrayOf(Theme.rgb(Theme.cur.dark, 200), Theme.rgb(Theme.cur.dark, 90), 0), floatArrayOf(0f, .6f, 1f), Shader.TileMode.CLAMP)
+        p.shader = RadialGradient(cx, cy, core * 1.5f, intArrayOf(Theme.rgb(Theme.cur.dark, 245), Theme.rgb(Theme.cur.dark, 170), 0), floatArrayOf(0f, .62f, 1f), Shader.TileMode.CLAMP)
         cv.drawCircle(cx, cy, core * 1.5f, p); p.shader = null
         cv.save()
         val k = core * 2f / 170f

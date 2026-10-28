@@ -1337,7 +1337,7 @@ class BuddyView(c: Context) : View(c) {
             spotFor = dark
             spot.shader = RadialGradient(0f, -30f, 56f, intArrayOf(Color.argb(150, Color.red(dark), Color.green(dark), Color.blue(dark)), Color.argb(70, Color.red(dark), Color.green(dark), Color.blue(dark)), 0), floatArrayOf(0f, .6f, 1f), Shader.TileMode.CLAMP)
         }
-        cv.drawCircle(0f, -30f, 56f, spot)
+        if (!offscreen) cv.drawCircle(0f, -30f, 56f, spot)   // previews and stickers are cropped to the mascot: no patch there
         cv.save()
         cv.translate(-46f, -66f)
         cv.scale(0.54f, 0.54f)

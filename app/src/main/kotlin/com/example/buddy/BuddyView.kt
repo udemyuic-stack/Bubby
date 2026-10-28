@@ -1267,6 +1267,13 @@ class BuddyView(c: Context) : View(c) {
         cv.drawRoundRect(r, 24f, 24f, cubeRim)
         // glossy highlight, top left
         fill(0x66FFFFFF); r.set(-30f, -62f, -4f, -53f); cv.drawOval(r, p)
+        val upload = badge == "upload"
+        if (upload) {   // a dark slot on top of the cube and a small page going in
+            fill(0xFF1A1F2C.toInt()); r.set(-32f, -66f, 32f, -58f); cv.drawRoundRect(r, 4f, 4f, p)
+            val bob = sin(t * 5f) * 3f
+            fill(0xFFFFFFFF.toInt()); r.set(-6f, -84f + bob, 6f, -66f + bob); cv.drawRoundRect(r, 2f, 2f, p)
+            fill(0xFFE5484D.toInt()); r.set(-3f, -76f + bob, 3f, -74f + bob); cv.drawRoundRect(r, 1f, 1f, p)
+        }
 
         cv.save(); cv.translate(eyeDx * 0.9f, eyeDy * 0.7f)
         val y = -30f   // the same eye line as the animals, so glasses and hats of "Pet & outfits" sit right
@@ -1280,6 +1287,7 @@ class BuddyView(c: Context) : View(c) {
             val x = if (i == 0) -15f else 15f
             when {
                 blink -> dash(x)
+                upload -> bar(x, 9f, 9f)
                 sleepy -> dash(x, 12f)
                 faceMood == "happy" || faceMood == "laugh" || faceMood == "dance" || faceMood == "proud" || faceMood == "pet" -> arc(x, true)
                 faceMood == "wink" -> if (i == 1) dash(x) else bar(x, 8f, 13f)
@@ -1825,7 +1833,7 @@ class BuddyView(c: Context) : View(c) {
         extras(cv, t, if (petT in 0L..2500L && em == "pet") petT else -1L,
             if (grabT >= 0L) grabT else -1L, if (wakeT in 0L..1500L) wakeT else -1L)
         Outfits.draw(cv, p, outfit, em, t)
-        if (badgeOn && badge.isNotEmpty()) drawBadge(cv, t)
+        if (badgeOn && badge.isNotEmpty() && !(badge == "upload" && (species == "cube" || (species == "glass" && com.example.buddy.ui.Theme.cur.mascot == "cube")))) drawBadge(cv, t)
         cv.restore()
     }
 }

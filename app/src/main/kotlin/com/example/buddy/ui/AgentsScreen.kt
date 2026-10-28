@@ -303,6 +303,15 @@ class AgentsScreen(act: UiActivity) : Screen(act) {
     private fun dashboard(c: LinearLayout, s: AgentInfo) {
         val st = AgentWidgets.overall()
         val color = AgentWidgets.color(st)
+        // every agent as a small coloured cube around the mascot
+        if (s.sessions.isNotEmpty()) {
+            val seen = LinkedHashMap<String, AgentOrbit.Item>()
+            for (x in s.sessions) {
+                val nm = x.agent.ifEmpty { "Claude Code" }
+                if (nm !in seen && seen.size < 9) seen[nm] = AgentOrbit.Item(nm, AgentWidgets.agentColor(nm), x.state)
+            }
+            c.add(ctx.card(pad = 4) { add(AgentOrbit(ctx, seen.values.toList()), MATCH, ctx.dp(300)) }, MATCH, WRAP, bottom = 12)
+        }
         // hero
         c.add(ctx.card(pad = 18, fill = P.primaryContainer, stroke = 0, radius = 28f) {
             add(ctx.row {

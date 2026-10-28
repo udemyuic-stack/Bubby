@@ -85,7 +85,7 @@ class HomeScreen(act: UiActivity) : Screen(act) {
         scene.put(statusBox, 0f, 250f, 390f, 32f)
         scene.put(CollarView(ctx, sc), 0f, 380f, 390f, 140f)
         fun petal(kind: GlassKind, icon: Int, label: String, l: Float, tp: Float, w: Float, h: Float, ang: Float, tc: Int, size: Int = 12, bold: Boolean = false, go: () -> Unit) {
-            scene.put(PetalView(ctx, kind, icon, label, ang, tc, size, bold).apply { press(go) }, l, tp, w, h)
+            scene.put(PetalView(ctx, kind, icon, label, ang, tc, size, bold, sc).apply { press(go) }, l, tp, w, h)
         }
         petal(GlassKind.Mid, R.drawable.tg_hand, t("Проверить:\nпривет", "Test:\nhello", "Tekshirish:\nsalom"), 186f, 310f, 104f, 112f, -6f, 0xFFFFFFFF.toInt()) { send(t("Привет!", "Hello!", "Salom!")) }
         petal(GlassKind.Dim, R.drawable.tg_check, t("Задачи", "Tasks", "Vazifalar"), 44f, 459f, 104f, 112f, -28f, Glass.TEXT_LABEL) { act.showTab(1) }

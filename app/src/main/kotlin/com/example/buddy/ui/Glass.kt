@@ -39,7 +39,7 @@ object Glass {
     const val NAVY_B = 0xFF1C2B45.toInt()
 }
 
-enum class GlassKind { Base, Dim, Mid, Active, Amber, Navy }
+enum class GlassKind { Base, Dim, Mid, Active, Amber, Navy, Nav }
 
 /** A rounded glass surface. [radii] is 4 pairs (x,y) like Path.addRoundRect; null = uniform [radius]. */
 class GlassDrawable(
@@ -80,6 +80,10 @@ class GlassDrawable(
             GlassKind.Base -> {
                 fill.shader = LinearGradient(x0, y0, x1, y1, Glass.white(.62f), Glass.white(.22f), Shader.TileMode.CLAMP)
                 rim.color = Glass.white(.7f)
+            }
+            GlassKind.Nav -> {
+                fill.shader = LinearGradient(x0, y0, x1, y1, Color.argb(235, 238, 244, 251), Color.argb(214, 214, 226, 240), Shader.TileMode.CLAMP)
+                rim.color = Glass.white(.85f)
             }
             GlassKind.Dim -> {
                 fill.shader = LinearGradient(x0 + w * .2f, y0, x1 - w * .2f, y1, Glass.white(.34f), Color.argb(46, 150, 175, 205), Shader.TileMode.CLAMP)
@@ -270,20 +274,22 @@ class MochiView(c: Context, private val withHalo: Boolean = true) : View(c) {
 }
 
 /** A petal: a rotated glass drop whose icon and label stay upright. */
-class PetalView(c: Context, kind: GlassKind, iconRes: Int, label: String, angle: Float, textColor: Int, size: Int = 12, bold: Boolean = false) : FrameLayout(c) {
+class PetalView(c: Context, kind: GlassKind, iconRes: Int, label: String, angle: Float, textColor: Int, size: Int = 12, bold: Boolean = false, sc: Float = 0f) : FrameLayout(c) {
     init {
         background = c.petalShape(kind)
         rotation = angle
         val inner = c.col {
             gravity = Gravity.CENTER_HORIZONTAL
             rotation = -angle
-            add(c.icon(iconRes, textColor, 26), WRAP, WRAP)
+            val ic = if (sc > 0f) (26 * sc).toInt() else c.dp(26)
+            add(c.icon(iconRes, textColor, 26).apply { layoutParams = LinearLayout.LayoutParams(ic, ic) }, ic, ic)
             add(c.text(label, T.Small, textColor).apply {
-                textSize = size.toFloat(); gravity = Gravity.CENTER; setLineSpacing(0f, 1.05f)
+                if (sc > 0f) setTextSize(android.util.TypedValue.COMPLEX_UNIT_PX, size * sc) else textSize = size.toFloat()
+                gravity = Gravity.CENTER; setLineSpacing(0f, 1.05f)
                 typeface = glassFont(bold)
             }, WRAP, WRAP, top = 6)
         }
-        addView(inner, LayoutParams(WRAP, WRAP, Gravity.CENTER).apply { topMargin = c.dp(10) })
+        addView(inner, LayoutParams(WRAP, WRAP, Gravity.CENTER).apply { topMargin = if (sc > 0f) (10 * sc).toInt() else c.dp(10) })
         clipChildren = false
     }
 }

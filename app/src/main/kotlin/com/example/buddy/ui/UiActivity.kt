@@ -143,7 +143,7 @@ class UiActivity : Activity() {
     /** The floating glass navigation: the selected tab is a bright petal. */
     private fun buildNav(): View {
         val bar = row(Gravity.CENTER_VERTICAL) {
-            background = glass(GlassKind.Base, 34f)
+            background = glass(GlassKind.Nav, 34f)
             setPadding(dp(6), 0, dp(6), 0)
         }
         for ((i, it) in tabLabels().withIndex()) {

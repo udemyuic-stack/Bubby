@@ -302,9 +302,11 @@ class SpotDrawable : android.graphics.drawable.Drawable() {
     private val p = android.graphics.Paint(android.graphics.Paint.ANTI_ALIAS_FLAG)
     override fun draw(c: android.graphics.Canvas) {
         val b = bounds
-        p.shader = android.graphics.RadialGradient(b.exactCenterX(), b.exactCenterY(), b.width() * .5f,
+        val r = b.width() * .5f
+        p.shader = android.graphics.RadialGradient(0f, 0f, r,
             intArrayOf(android.graphics.Color.argb(199, 60, 40, 48), android.graphics.Color.argb(102, 60, 40, 48), 0), floatArrayOf(0f, .6f, 1f), android.graphics.Shader.TileMode.CLAMP)
-        c.drawCircle(b.exactCenterX(), b.exactCenterY(), b.width() * .5f, p)
+        c.save(); c.translate(b.exactCenterX(), b.exactCenterY()); c.scale(1f, b.height() / b.width().toFloat())
+        c.drawCircle(0f, 0f, r, p); c.restore()
     }
     override fun setAlpha(a: Int) {}
     override fun setColorFilter(cf: android.graphics.ColorFilter?) {}

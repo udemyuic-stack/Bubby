@@ -375,7 +375,7 @@ fun groq() {
 }
 
 fun main() {
-    quick(); contacts(); apps(); mathTools(); comms(); groq(); pairing(); if (System.getenv("PROBE") != null) probe()
+    quick(); contacts(); apps(); mathTools(); comms(); groq(); pairing(); agentTests(); if (System.getenv("PROBE") != null) probe()
     println("RESULT: $pass passed, $fail failed (${pass + fail} assertions)")
     if (fail > 0) System.exit(1)
 }

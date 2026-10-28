@@ -9,9 +9,6 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-/** JSON string field; JSON null or a missing key never becomes the text "null". */
-internal fun jsStr(j: JSONObject, k: String, def: String = ""): String = if (j.isNull(k)) def else j.optString(k, def)
-
 class Reply(val emotion: String, val lang: String?, val say: String, val actions: JSONArray, val more: Boolean = false)
 
 /** Models that rejected the reasoning_effort setting (shared by all Brain instances). */

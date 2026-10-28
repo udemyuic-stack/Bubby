@@ -10,23 +10,10 @@ import android.os.SystemClock
 import android.view.accessibility.AccessibilityEvent
 import android.view.accessibility.AccessibilityNodeInfo
 
-/** Package-name fragments of apps whose screen is never read out (banks, wallets, password managers, crypto). */
-private val PRIVATE_PKG_HINTS = listOf(
-    "bank", "wallet", "paypal", "payme", "uz.click", "uzum", "pay", "authenticator", "1password", "bitwarden",
-    "keepass", "lastpass", "dashlane", "passwords", "crypto", "binance", "metamask", "trust",
-    // payment apps (Uzbekistan, Russia and global) and anything named like a card or money app
-    "click", "paynet", "humans", "milliy", "anor", "hamkor", "ipak", "agro", "tbc", "davr", "asaka", "xalq", "kapital", "ofb",
-    "uzcard", "humo", "oson", "apelsin", "alif", "paycom", "stripe", "revolut", "wise", "sber", "tinkoff", "yoomoney", "qiwi",
-    "visa", "mastercard", "card", "finance", "money", "secure", "otp", "vtb", "alfa", "raiffeisen"
-)
-
-/** Words and shapes that mean the screen shows card or payment details, whatever app it is (also a payment page in a browser). */
-private val PRIVATE_TEXT = Regex(
-    "(?i)\\b(?:\\d[ -]?){13,19}\\b|\\bcvv\\b|\\bcvc\\b|pin[ -]?code|пин[ -]?код|номер карты|срок действия|card number|expiry date|karta raqami|amal qilish muddati|parolni kiriting|enter your password|введите пароль"
-)
+// PRIVATE_PKG_HINTS and PRIVATE_TEXT live in Safety.kt (shared with the agent loop and the JVM tests).
 
 /** Words in the user's own request that already say "look at / use my screen": no question is asked then. */
-private val SCREEN_WORDS = Regex("(?i)экран|screen|ekran|на странице|on the page|sahifa|прочитай|read (this|it|the)|o'qib ber|нажми|tap |press |bosing|bos |scroll|листай|прокрути|type |напечатай|yoz ")
+private val SCREEN_WORDS = Regex("(?iu)экран|screen|ekran|на странице|on the page|sahifa|прочитай|read (this|it|the)|o'qib ber|нажми|tap |press |bosing|bos |scroll|листай|прокрути|type |напечатай|yoz ")
 
 class BuddyAccess : AccessibilityService() {
     override fun onServiceConnected() { inst = this }

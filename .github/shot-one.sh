@@ -3,6 +3,7 @@
 SCREEN=${1:-home}
 OPEN=$SCREEN; EXTRA=""
 if [ "$SCREEN" = agents-demo ]; then OPEN=agents; EXTRA="--ez demo true"; fi
+if [ "$SCREEN" = agents-diff ]; then OPEN=agents; EXTRA="--ez demo true --ez demodiff true"; fi
 ADB=$(command -v adb); adb() { timeout 30 "$ADB" "$@"; }
 mkdir -p shots
 # let the emulator finish its own start-up work (media scan, Google services) before touching it

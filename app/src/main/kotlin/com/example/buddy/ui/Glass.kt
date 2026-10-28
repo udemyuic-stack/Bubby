@@ -58,17 +58,17 @@ object Theme {
         0xFF1C2B45.toInt(), 0xFF3B4D6E.toInt(), 0xFFE08A4A.toInt(), 0xFF7A6BD0.toInt(), 0xFFB8672F.toInt(), 0xFF341E1A.toInt(), 0xFF7F9BBD.toInt(), 0xFFE2A0B0.toInt(), 0xFF466496.toInt(),
         0xFFFFFFFF.toInt(), 0xFFFFFFFF.toInt(),
         listOf(intArrayOf(0xFF8D7EE0.toInt(), 0xFF5B4BB0.toInt()), intArrayOf(0xFF58B9A2.toInt(), 0xFF3A8C78.toInt()), intArrayOf(0xFF6FA0EE.toInt(), 0xFF4A74C4.toInt()), intArrayOf(0xFFE48AA8.toInt(), 0xFFBD5F80.toInt())),
-        0xFF34466B.toInt(), 0xFF1C2B45.toInt(), 0x80E08A4A.toInt(), 0x66965A3C.toInt(), "mochi", 0xFF2F9D73.toInt(), 0xFFDDE6F0.toInt())
+        0xFF34466B.toInt(), 0xFF1C2B45.toInt(), 0x40E08A4A.toInt(), 0x30E08A4A.toInt(), "mochi", 0xFF2F9D73.toInt(), 0xFFDDE6F0.toInt())
     val GREEN = ThemeDef("green", 0xFFE2F4D6.toInt(), 0xFFB6E58F.toInt(), 0xFF7FCF45.toInt(), 0xFF6FCF3A.toInt(), 0xFFF6FDF0.toInt(),
         0xFF123D1A.toInt(), 0xFF2F5A38.toInt(), 0xFF2FA83A.toInt(), 0xFF7BC62D.toInt(), 0xFF2F5A38.toInt(), 0xFF082C0E.toInt(), 0xFF78D746.toInt(), 0xFFBEEB3C.toInt(), 0xFF1E6428.toInt(),
         0xFFEAFF7A.toInt(), 0xFFC4F76E.toInt(),
         listOf(intArrayOf(0xFF6FD13A.toInt(), 0xFF2F9A1C.toInt()), intArrayOf(0xFF3FCF8A.toInt(), 0xFF168A52.toInt()), intArrayOf(0xFFB6E03A.toInt(), 0xFF79A812.toInt()), intArrayOf(0xFF5FD6B0.toInt(), 0xFF22987A.toInt())),
-        0xFF2F6B3A.toInt(), 0xFF123D1A.toInt(), 0xB3C8F58A.toInt(), 0x99A0E05A.toInt(), "butterfly", 0xFF2FA83A.toInt())
+        0xFF2F6B3A.toInt(), 0xFF123D1A.toInt(), 0x70C8F58A.toInt(), 0x50A0E05A.toInt(), "butterfly", 0xFF2FA83A.toInt())
     val BLUE = ThemeDef("blue", 0xFFE3EEFF.toInt(), 0xFFA9C6FF.toInt(), 0xFF6A96F2.toInt(), 0xFF4F86F0.toInt(), 0xFFF0F6FF.toInt(),
         0xFF0F2A6B.toInt(), 0xFF2D4C96.toInt(), 0xFF2F66E0.toInt(), 0xFF7A8CF0.toInt(), 0xFF2D4C96.toInt(), 0xFF06165A.toInt(), 0xFF468CFF.toInt(), 0xFF9682F0.toInt(), 0xFF1E46AA.toInt(),
         0xFFD2E8FF.toInt(), 0xFF9CCAFF.toInt(),
         listOf(intArrayOf(0xFF5AA8FF.toInt(), 0xFF2A5FD8.toInt()), intArrayOf(0xFF8D86F0.toInt(), 0xFF4C42C4.toInt()), intArrayOf(0xFF45C8F0.toInt(), 0xFF1A7FD0.toInt()), intArrayOf(0xFFA9A4F4.toInt(), 0xFF6A5CDC.toInt())),
-        0xFF2D4FB0.toInt(), 0xFF0F2A6B.toInt(), 0xB3A8BEFA.toInt(), 0x998CA0F0.toInt(), "whale", 0xFF2F66E0.toInt())
+        0xFF2D4FB0.toInt(), 0xFF0F2A6B.toInt(), 0x66A8BEFA.toInt(), 0x4C8CA0F0.toInt(), "whale", 0xFF2F66E0.toInt())
     /** The "night" look: a dark page, a black island and the white cube mascot (like the notch apps). */
     val NIGHT = ThemeDef("night", 0xFF1B1D24.toInt(), 0xFF14161C.toInt(), 0xFF0E1014.toInt(), 0xFF232A52.toInt(), 0xFF2A2D3A.toInt(),
         0xFFF1F3F8.toInt(), 0xFFA6AEC2.toInt(), 0xFF8C9CFF.toInt(), 0xFFB79CFF.toInt(), 0xFFA6AEC2.toInt(), 0xFF000000.toInt(), 0xFF5B6CFF.toInt(), 0xFFA68BFF.toInt(), 0xFF000000.toInt(),
@@ -166,7 +166,10 @@ class GlassDrawable(
                 fill.shader = LinearGradient(x0 + w * .2f, y0, x1 - w * .2f, y1, Glass.white(.20f), Glass.white(.06f), Shader.TileMode.CLAMP)
                 rim.color = Glass.white(.35f)
             }
-            GlassKind.Active -> {
+            GlassKind.Active -> if (Glass.NIGHT) {
+                fill.shader = LinearGradient(x0, y0, x1, y1, 0xFFF4F6FB.toInt(), 0xFFD9DEEA.toInt(), Shader.TileMode.CLAMP)
+                rim.color = Color.WHITE
+            } else {
                 val cx = r.left + w * .6f; val cy = r.top + h * .7f
                 fill.shader = RadialGradient(cx, cy, maxOf(w, h) * .75f, intArrayOf(Glass.white(.98f), Glass.white(.55f), Glass.white(.55f)), floatArrayOf(0f, .7f, 1f), Shader.TileMode.CLAMP)
                 rim.color = Color.WHITE

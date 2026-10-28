@@ -45,8 +45,8 @@ object P {
         val t = Theme.cur
         dark = t.night
         primary = t.navyA
-        primaryContainer = Theme.rgb(t.accent, 44); onPrimaryContainer = t.ink
-        tertiaryContainer = Theme.rgb(t.accent, 36); onTertiaryContainer = t.ink
+        primaryContainer = Theme.rgb(t.accent, 26); onPrimaryContainer = t.ink
+        tertiaryContainer = Theme.rgb(t.accent, 22); onTertiaryContainer = t.ink
         errorContainer = Theme.rgb(error, 40); onErrorContainer = t.ink
         onSurface = t.ink
         onSurfaceVariant = t.ink2

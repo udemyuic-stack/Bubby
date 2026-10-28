@@ -13,7 +13,7 @@ ADB=$(command -v adb); adb() { timeout 30 "$ADB" "$@"; }
 mkdir -p shots
 # let the emulator finish its own start-up work (media scan, Google services) before touching it
 sleep 45
-adb shell wm size 1080x2400 >/dev/null 2>&1; adb shell wm density 420 >/dev/null 2>&1   # a real phone size (411 dp wide), so screenshots show what the user sees
+adb shell wm density 250 >/dev/null 2>&1   # the emulator is 640 px wide: 250 dpi makes it about 411 dp wide, like a real phone
 adb install -r bubby.apk
 adb logcat -c
 ( "$ADB" logcat -v threadtime > "shots/$SCREEN-live.txt" 2>&1 & )

@@ -87,7 +87,7 @@ class HomeScreen(act: UiActivity) : Screen(act) {
         fun petal(kind: GlassKind, icon: Int, label: String, l: Float, tp: Float, w: Float, h: Float, ang: Float, tc: Int, size: Int = 12, bold: Boolean = false, go: () -> Unit) {
             scene.put(PetalView(ctx, kind, icon, label, ang, tc, size, bold, sc).apply { press(go) }, l, tp, w, h)
         }
-        petal(GlassKind.Mid, R.drawable.tg_hand, t("Проверить:\nпривет", "Test:\nhello", "Tekshirish:\nsalom"), 186f, 310f, 104f, 112f, -6f, 0xFFFFFFFF.toInt()) { send(t("Привет!", "Hello!", "Salom!")) }
+        petal(GlassKind.Mid, R.drawable.tg_hand, t("Проверить:\nпривет", "Test:\nhello", "Tekshirish:\nsalom"), 166f, 304f, 104f, 112f, -10f, 0xFFFFFFFF.toInt()) { send(t("Привет!", "Hello!", "Salom!")) }
         petal(GlassKind.Dim, R.drawable.tg_check, t("Задачи", "Tasks", "Vazifalar"), 44f, 459f, 104f, 112f, -28f, Glass.TEXT_LABEL) { act.showTab(1) }
         petal(GlassKind.Dim, R.drawable.tg_apps, t("Ещё", "More", "Yana"), 246f, 459f, 104f, 112f, 28f, Glass.TEXT_LABEL) { act.showTab(4) }
         petal(GlassKind.Dim, R.drawable.tg_cal, t("Календарь", "Calendar", "Kalendar"), 100f, 524f, 104f, 112f, -8f, Glass.TEXT_LABEL) { act.showTab(2) }

@@ -106,12 +106,12 @@ class SettingsScreen(act: UiActivity) : Screen(act) {
         }
         return ctx.col {
             add(ctx.row {
-                background = ctx.rounded(P.primaryContainer, 18f)
-                setPadding(ctx.dp(14), ctx.dp(12), ctx.dp(14), ctx.dp(12))
-                add(ctx.icon(R.drawable.ic_key, P.onPrimaryContainer, 24), WRAP, WRAP, end = 12)
+                background = ctx.glass(GlassKind.Amber, 20f, false)
+                setPadding(ctx.dp(16), ctx.dp(12), ctx.dp(16), ctx.dp(12))
+                add(ctx.icon(R.drawable.ic_key, Glass.TEXT, 24), WRAP, WRAP, end = 14)
                 add(ctx.col {
-                    add(ctx.text(t("ИИ-подключения: $n", "AI connections: $n", "AI ulanishlari: $n"), T.Title, P.onPrimaryContainer), MATCH, WRAP)
-                    add(ctx.text(summary, T.Small, P.onPrimaryContainer), MATCH, WRAP)
+                    add(ctx.text(t("ИИ-подключения: $n", "AI connections: $n", "AI ulanishlari: $n"), T.Title, Glass.TEXT), MATCH, WRAP)
+                    add(ctx.text(summary, T.Small, Glass.TEXT), MATCH, WRAP)
                 }, 0, WRAP, 1f)
             }, MATCH, WRAP)
             add(ctx.button(if (n == 0) t("Подключить ИИ", "Connect AI", "AI ulash") else t("Управлять подключениями", "Manage connections", "Ulanishlarni boshqarish"),
@@ -128,9 +128,9 @@ class SettingsScreen(act: UiActivity) : Screen(act) {
         return ctx.card(pad = 14, onClick = { act.open("music") }) {
             add(ctx.row {
                 add(ctx.row(Gravity.CENTER) {
-                    background = ctx.gradient(intArrayOf(P.violet, P.rose), 16f)
-                    add(ctx.icon(R.drawable.ic_music, 0xFFFFFFFF.toInt(), 26), WRAP, WRAP)
-                }, ctx.dp(52), ctx.dp(52), end = 14)
+                    background = ctx.gradient(intArrayOf(0xFF8D7EE0.toInt(), 0xFF5B4BB0.toInt()), 16f)
+                    add(ctx.icon(R.drawable.ic_music, 0xFFFFFFFF.toInt(), 24), WRAP, WRAP)
+                }, ctx.dp(46), ctx.dp(46), end = 14)
                 add(ctx.col {
                     add(ctx.text(t("Музыка и приложения", "Music and apps", "Musiqa va ilovalar"), T.Title), MATCH, WRAP)
                     add(ctx.text(t("Приложение: $title", "App: $title", "Ilova: $title"), T.Body), MATCH, WRAP, top = 2)

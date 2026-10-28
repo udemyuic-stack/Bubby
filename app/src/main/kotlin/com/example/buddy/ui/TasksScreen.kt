@@ -84,13 +84,13 @@ class TasksScreen(act: UiActivity) : Screen(act) {
     private fun checkBox(done: Boolean, onToggle: () -> Unit): View = ctx.row(Gravity.CENTER) {
         setPadding(ctx.dp(8), ctx.dp(8), ctx.dp(8), ctx.dp(8))
         add(ctx.row(Gravity.CENTER) {
-            background = ctx.rounded(if (done) P.primary else 0, 14f, if (done) P.primary else P.outline, 2f)
-            if (done) add(ctx.icon(R.drawable.ic_check, P.onPrimary, 18), WRAP, WRAP)
+            background = if (done) ctx.glass(GlassKind.Navy, 14f, false) else ctx.rounded(Glass.white(.3f), 14f, P.outline, 1.5f)
+            if (done) add(ctx.icon(R.drawable.ic_check, 0xFFFFFFFF.toInt(), 18), WRAP, WRAP)
         }, ctx.dp(28), ctx.dp(28))
         press(onToggle)
     }
 
-    private fun tile(task: Task): View = ctx.card(pad = 12, onClick = { edit(task) }, onLong = { confirmDelete(task) }) {
+    private fun tile(task: Task): View = ctx.card(pad = 12, radius = 22f, onClick = { edit(task) }, onLong = { confirmDelete(task) }) {
         add(ctx.row {
             add(checkBox(task.done) { Backend.setTaskDone(ctx, task.id, !task.done); refresh() }, WRAP, WRAP, end = 4)
             add(ctx.col {
@@ -112,7 +112,9 @@ class TasksScreen(act: UiActivity) : Screen(act) {
         else t("Открыто: ${open.size} · выполнено: ${done.size}", "Open: ${open.size} · done: ${done.size}", "Ochiq: ${open.size} · bajarilgan: ${done.size}"))
         if (all.isEmpty()) {
             c.add(ctx.emptyState(
-                t("Задач пока нет", "No tasks yet", "Hozircha vazifalar yo'q"),
+                bubble = t("Давай что-нибудь спланируем!", "Let's plan something!", "Keling, nimadir rejalashtiramiz!"),
+                title = t("Задач пока нет", "No tasks yet", "Hozircha vazifalar yo'q"),
+                message =
                 t("Нажмите «Задача», чтобы добавить первую", "Tap “Task” to add your first one", "Birinchisini qo'shish uchun «Vazifa» ni bosing")
             ))
             return

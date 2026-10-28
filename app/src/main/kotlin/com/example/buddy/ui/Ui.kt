@@ -274,9 +274,17 @@ fun Context.gradient(colors: IntArray, radiusDp: Float, orientation: GradientDra
     GradientDrawable(orientation, colors).apply { cornerRadius = dpf(radiusDp) }
 
 /** The mascot with a title and a hint, for lists with nothing in them. */
-fun Context.emptyState(title: String, message: String): View = col {
+fun Context.emptyState(title: String, message: String, bubble: String? = null): View = col {
     gravity = Gravity.CENTER_HORIZONTAL
     setPadding(dp(24), dp(24), dp(24), dp(24))
+    if (bubble != null) {
+        add(row(Gravity.CENTER) {
+            background = glass(GlassKind.Base, 25f)
+            setPadding(dp(24), dp(14), dp(24), dp(14))
+            add(text(bubble, T.Body).apply { textSize = 15f }, WRAP, WRAP)
+        }, WRAP, WRAP, top = 40)
+        add(View(this@emptyState).apply { rotation = 45f; background = rounded(Glass.white(.5f), 3f, Glass.white(.6f)) }, dp(14), dp(14), top = -6)
+    }
     // the glass mascot needs a dark patch behind it to be seen on the light page
     val stage = FrameLayout(this@emptyState).apply {
         background = SpotDrawable()

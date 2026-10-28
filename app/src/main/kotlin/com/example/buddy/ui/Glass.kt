@@ -199,15 +199,13 @@ class GlassDrawable(
     override fun draw(c: Canvas) {
         if (bounds.isEmpty) return
         if (shadow && kind != GlassKind.Mid) {
-            for (i in 3 downTo 1) {
-                c.save()
-                c.translate(0f, density * (2f + i * 2.2f))
-                val s = 1f - i * 0.012f
-                c.scale(s, s, bounds.exactCenterX(), bounds.exactCenterY())
-                shade.alpha = (Color.alpha(shade.color) / (i + 1)).coerceIn(0, 255)
-                c.drawPath(path, shade)
-                c.restore()
-            }
+            // one soft offset copy (three were too heavy for long lists)
+            c.save()
+            c.translate(0f, density * 5f)
+            c.scale(.985f, .985f, bounds.exactCenterX(), bounds.exactCenterY())
+            shade.alpha = (Color.alpha(shade.color) * .7f).toInt().coerceIn(0, 255)
+            c.drawPath(path, shade)
+            c.restore()
         }
         fill.alpha = alphaV
         c.drawPath(path, fill)
@@ -232,9 +230,12 @@ fun Context.glass(kind: GlassKind = GlassKind.Base, radius: Float = 22f, shadow:
 fun Context.petalShape(kind: GlassKind, radii: FloatArray = PETAL_RADII, shadow: Boolean = true): Drawable =
     GlassDrawable(kind, 0f, radii, shadow, resources.displayMetrics.density)
 
-/** The page background: cool blue gradient with soft light blobs. Home also has the dark brown patch under the mascot. */
+/** The page background: cool gradient with soft light blobs, painted once into a half-size bitmap (the gradients are soft, and scrolling must not repaint them). */
 class GlassBackground(c: Context, private val home: Boolean) : View(c) {
     private val p = Paint(Paint.ANTI_ALIAS_FLAG)
+    private val blit = Paint(Paint.FILTER_BITMAP_FLAG)
+    private var bmp: android.graphics.Bitmap? = null
+    private var bmpFor = ""
 
     private fun blob(cv: Canvas, cx: Float, cy: Float, rx: Float, ry: Float, stops: IntArray, pos: FloatArray?, rot: Float = 0f) {
         cv.save()
@@ -247,9 +248,7 @@ class GlassBackground(c: Context, private val home: Boolean) : View(c) {
         p.shader = null
     }
 
-    override fun onDraw(cv: Canvas) {
-        val w = width.toFloat(); val h = height.toFloat()
-        if (w <= 0f) return
+    private fun paint(cv: Canvas, w: Float, h: Float) {
         val s = w / 390f
         val t = Theme.cur
         val top = if (home) t.homeTop else t.bgTop
@@ -276,9 +275,25 @@ class GlassBackground(c: Context, private val home: Boolean) : View(c) {
             if (t.id != "glass") blob(cv, 340 * s, 590 * s, 170 * s, 170 * s, intArrayOf(Theme.rgb(t.glow, 115), clear), null)
         }
     }
+
+    override fun onDraw(cv: Canvas) {
+        val w = width; val h = height
+        if (w <= 0 || h <= 0) return
+        val key = "$w x $h ${Theme.cur.id}"
+        if (bmp == null || bmpFor != key) {
+            bmp?.recycle()
+            val b = android.graphics.Bitmap.createBitmap(maxOf(1, w / 2), maxOf(1, h / 2), android.graphics.Bitmap.Config.ARGB_8888)
+            val bc = Canvas(b)
+            bc.scale(.5f, .5f)
+            paint(bc, w.toFloat(), h.toFloat())
+            bmp = b; bmpFor = key
+        }
+        cv.drawBitmap(bmp!!, null, android.graphics.Rect(0, 0, w, h), blit)
+    }
+
+    override fun onDetachedFromWindow() { super.onDetachedFromWindow(); bmp?.recycle(); bmp = null }
 }
 
-/** The glass "mochi" mascot: a super-ellipse with a rim, light patches and two closed happy eyes. Drawn at 170x136 and scaled. */
 /**
  * The mascots of the three looks (glass mochi, butterfly, whale), drawn on a 170x136 canvas. Used by [MochiView] in the app
  * and by the floating assistant (BuddyView), so the same character is everywhere.
@@ -348,15 +363,26 @@ class GlassCritter(val kind: String = Theme.cur.mascot, private val def: ThemeDe
     private fun stroked(cv: Canvas, path: Path, a: Float, w: Float) { line.strokeWidth = w; line.color = rimA(a); cv.drawPath(path, line) }
 
     private fun filled(cv: Canvas, path: Path, strokeW: Float) {
-        val b = RectF(); path.computeBounds(b, true)
-        wing.shader = LinearGradient(b.left, b.top, b.right, b.bottom, intArrayOf(rimA(.42f), rimA(.10f), rimA(.22f)), floatArrayOf(0f, .6f, 1f), Shader.TileMode.CLAMP)
+        wing.shader = shaderCache.getOrPut(path) {
+            val b = RectF(); path.computeBounds(b, true)
+            LinearGradient(b.left, b.top, b.right, b.bottom, intArrayOf(rimA(.42f), rimA(.10f), rimA(.22f)), floatArrayOf(0f, .6f, 1f), Shader.TileMode.CLAMP)
+        }
         cv.drawPath(path, wing)
         stroked(cv, path, 1f, strokeW)
     }
 
+    private val shaderCache = HashMap<Any, Shader>()
+    private val cubeHalo: Shader by lazy { RadialGradient(85f, 68f, 111f, intArrayOf(Theme.rgb(def.glow, 60), Glass.white(0f)), null, Shader.TileMode.CLAMP) }
+    private val cubeBodySh: Shader by lazy { LinearGradient(0f, 10f, 0f, 126f, intArrayOf(0xFFFFFFFF.toInt(), 0xFFF1F3F8.toInt(), 0xFFC9D2E4.toInt()), floatArrayOf(0f, .55f, 1f), Shader.TileMode.CLAMP) }
+    private val cubeHi: Shader by lazy { RadialGradient(62f, 30f, 46f, intArrayOf(Glass.white(.85f), Glass.white(0f)), null, Shader.TileMode.CLAMP) }
+    private val mochiHalo: Shader by lazy { RadialGradient(85f, 68f, 111f, intArrayOf(Glass.white(.28f), Glass.white(0f)), null, Shader.TileMode.CLAMP) }
+    private val mochiPatch: Shader by lazy { RadialGradient(69f, 26f, 48f, intArrayOf(Glass.white(.5f), Glass.white(0f)), null, Shader.TileMode.CLAMP) }
+    private val mochiRefl: Shader by lazy { RadialGradient(99f, 125f, 60f, intArrayOf(Glass.white(.18f), Glass.white(0f)), null, Shader.TileMode.CLAMP) }
+    private val critterHalo: Shader by lazy { RadialGradient(85f, 68f, 111f, intArrayOf(Theme.rgb(def.glow, 70), Glass.white(0f)), null, Shader.TileMode.CLAMP) }
+
     private fun drawCritter(cv: Canvas) {
         if (withHalo) {
-            lit.shader = RadialGradient(85f, 68f, 111f, intArrayOf(Theme.rgb(def.glow, 70), Glass.white(0f)), null, Shader.TileMode.CLAMP)
+            lit.shader = critterHalo
             cv.save(); cv.scale(1f, 176f / 222f, 85f, 68f); cv.drawCircle(85f, 68f, 111f, lit); cv.restore()
             lit.shader = null
         }
@@ -396,15 +422,15 @@ class GlassCritter(val kind: String = Theme.cur.mascot, private val def: ThemeDe
 
     private fun drawCube(cv: Canvas) {
         if (withHalo) {
-            lit.shader = RadialGradient(85f, 68f, 111f, intArrayOf(Theme.rgb(def.glow, 60), Glass.white(0f)), null, Shader.TileMode.CLAMP)
+            lit.shader = cubeHalo
             cv.save(); cv.scale(1f, 176f / 222f, 85f, 68f); cv.drawCircle(85f, 68f, 111f, lit); cv.restore()
             lit.shader = null
         }
-        cubeFill.shader = LinearGradient(0f, 10f, 0f, 126f, intArrayOf(0xFFFFFFFF.toInt(), 0xFFF1F3F8.toInt(), 0xFFC9D2E4.toInt()), floatArrayOf(0f, .55f, 1f), Shader.TileMode.CLAMP)
+        cubeFill.shader = cubeBodySh
         cv.drawPath(cubeShape, cubeFill)
         cubeFill.shader = null
         cv.save(); cv.clipPath(cubeShape)
-        lit.shader = RadialGradient(62f, 30f, 46f, intArrayOf(Glass.white(.85f), Glass.white(0f)), null, Shader.TileMode.CLAMP)
+        lit.shader = cubeHi
         cv.save(); cv.scale(1f, .45f, 62f, 30f); cv.drawCircle(62f, 30f, 46f, lit); cv.restore()
         lit.shader = null
         cv.restore()
@@ -424,16 +450,16 @@ class GlassCritter(val kind: String = Theme.cur.mascot, private val def: ThemeDe
         if (kind == "cube") { drawCube(cv); return }
         if (kind != "mochi") { drawCritter(cv); return }
         if (withHalo) {
-            lit.shader = RadialGradient(85f, 68f, 111f, intArrayOf(Glass.white(.28f), Glass.white(0f)), null, Shader.TileMode.CLAMP)
+            lit.shader = mochiHalo
             cv.save(); cv.scale(1f, 176f / 222f, 85f, 68f); cv.drawCircle(85f, 68f, 111f, lit); cv.restore()
         }
         cv.drawPath(shape, body)
         cv.save()
         cv.clipPath(shape)
         // soft light patch on the upper part and a faint reflection at the bottom
-        lit.shader = RadialGradient(69f, 26f, 48f, intArrayOf(Glass.white(.5f), Glass.white(0f)), null, Shader.TileMode.CLAMP)
+        lit.shader = mochiPatch
         cv.save(); cv.scale(1f, 11f / 48f, 69f, 26f); cv.drawCircle(69f, 26f, 48f, lit); cv.restore()
-        lit.shader = RadialGradient(99f, 125f, 60f, intArrayOf(Glass.white(.18f), Glass.white(0f)), null, Shader.TileMode.CLAMP)
+        lit.shader = mochiRefl
         cv.save(); cv.scale(1f, 13f / 60f, 99f, 125f); cv.drawCircle(99f, 125f, 60f, lit); cv.restore()
         lit.shader = null
         cv.restore()

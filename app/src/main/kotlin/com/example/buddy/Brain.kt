@@ -143,7 +143,7 @@ class Brain(private val ctx: Context) {
         val persona = (prefs.getString("persona", "") ?: "").trim()
         val personaLine = if (persona.isEmpty()) "" else "\nYour current personality requested by the user (keep it in every reply): $persona."
         val studyLine = if (prefs.getBoolean("study", false))
-            "\nSTUDY MODE is on: you are also a patient tutor. Explain step by step in simple words with one small example, then check understanding with ONE short question and wait. Adapt to the user's answers, praise real progress, correct kindly. Keep quizzes scored with the game action."
+            "\nSTUDY MODE is on: you are also a patient tutor. Explain step by step in simple words with one small example, then check understanding with ONE short question and wait. Adapt to the user's answers, praise real progress, correct kindly. Keep quizzes scored with the game action. Never write notes like \"(did: ...)\" in your reply."
         else ""
         val tasksOn = reTasks.containsMatchIn(userText)
         val gameOn = !prefs.getString("game_state", "").isNullOrBlank() || reGame.containsMatchIn(userText)
@@ -199,8 +199,11 @@ class Brain(private val ctx: Context) {
         history.put(JSONObject().put("role", "assistant").put("content", keep))
         saveHistory()
         if (result.log.steps.isNotEmpty()) RunHistory.save(ctx, result.log)
-        return Reply(result.emotion, result.lang, result.say, result.actions, false)
+        return Reply(result.emotion, result.lang, stripNotes(result.say), result.actions, false)
     }
+
+    /** The "(did: ...)" note is only for the model's own memory; it must never be shown or spoken. */
+    private fun stripNotes(s: String) = s.replace(Regex("\\s*\\((did|done|actions)\\s*:[^)]*\\)", RegexOption.IGNORE_CASE), "").trim()
 
     /** Answers observations itself, checks vision before a screenshot, and hands everything else to the phone host. */
     private inner class BrainHost(private val ext: AgentHost?) : AgentHost {
@@ -531,7 +534,7 @@ private const val EMOTION_RULE = "Pick the one that fits and VARY them. Rude or 
 private const val MUSIC_MOOD_RULE = """- Music: if the user names a song or artist, play exactly that. If they only say they want music, pick a recommendation that fits their mood (ask how they feel only if you have no clue; otherwise guess from what they said and the time of day), build a good search query (genre + mood + language, e.g. "calm lofi chill playlist"), play it with the music action, and say in "say" what you chose and why. Offer to change it if they do not like it."""
 private const val MUSIC_PLAIN_RULE = """- Music: play exactly what the user names with the music action; if they did not say what, ask what they want to hear."""
 private const val TASKS_RULE = """- Tasks and calendar: the user's open tasks and upcoming events are listed above when there are any. Use them to answer "what do I have today?" and to remind them of what is due soon, proactively but briefly. Never invent tasks or events."""
-private const val GAME_RULE = """- Games: you can play guess-the-number, rock-paper-scissors, riddles, quiz, word chain. Keep the game going with the game action every turn (state = score, secret number, current word, etc.). Use the fresh random numbers given above for luck; never invent them, and never reveal a secret before the user guesses. End with an empty state."""
+private const val GAME_RULE = """- Games: you can play guess-the-number, rock-paper-scissors, riddles, quiz, word chain. Keep the game going with the game action every turn (state = score, secret number, current word, etc.). Use the fresh random numbers given above for luck; never invent them, and never reveal a secret before the user guesses. End with an empty state. QUIZ: ask ONE question with 3 or 4 possible answers and pass those answers as short `chips` (the user taps one); never put your feedback such as \"Correct!\" in the chips. After the user answers, say whether it was right, add the score, then ask the next question with new chips."""
 private const val DICT_RULE = """- Dictionary: when the user asks what a word means, how to say or translate it, or for a synonym/example (in any language: "what does X mean", "X nima degani", "что значит X", "translate X"), answer as a mini dictionary entry in "say", exactly in this order and in the user's language: the word (with its part of speech if useful), its TRANSLATION(S) into the user's language (or into the language they asked for), 2-3 SYNONYMS, then ONE natural EXAMPLE SENTENCE in the original language followed by its translation. Separate the parts with line breaks (\n), no markdown. This entry may be up to 6 short lines, longer than the usual 3-sentence limit. If the word is ambiguous, give the 2 most common meanings. If the user is learning a language (study mode), end with a tiny one-question quiz about the word."""
 
 private const val TRANSLATE_RULE = """- Translation: when the user asks to translate a phrase, sentence or text, or how to say something in another language, put ONLY the translation (plus, if short, the original in brackets) in "say" and set "lang" to the ISO code of the TARGET language (en, ru, uz, tr, de, fr, es, ar, zh...) so it is read aloud in that language. For several options give at most 3 short lines. Never mix in explanations unless asked. For an Uzbek target use Latin script."""

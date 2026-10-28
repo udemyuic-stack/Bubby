@@ -32,6 +32,15 @@ abstract class Screen(val act: UiActivity) {
 
     /** Set by the activity for the five tab pages, which sit above the floating glass navigation. */
     var inTab = false
+    private var fabButton: View? = null
+
+    /** Keeps the floating button above the navigation bar, whatever height the system bars have. */
+    fun applyNavInset(bottomInsetPx: Int) {
+        val b = fabButton ?: return
+        val lp = b.layoutParams as? FrameLayout.LayoutParams ?: return
+        lp.setMargins(0, 0, ctx.dp(20), if (inTab) ctx.dp(18 + 68 + 14) + bottomInsetPx else ctx.dp(20) + bottomInsetPx)
+        b.layoutParams = lp
+    }
 
     /** Fills [c] with the screen's widgets. */
     abstract fun render(c: LinearLayout)
@@ -45,7 +54,7 @@ abstract class Screen(val act: UiActivity) {
     fun view(): View {
         root?.let { return it }
         val f = fab()
-        content = ctx.col { setPadding(ctx.dp(padH), ctx.dp(if (padH == 0) 0 else 8), ctx.dp(padH), ctx.dp((if (f != null) 100 else 28) + (if (inTab) 90 else 0))) }
+        content = ctx.col { setPadding(ctx.dp(padH), ctx.dp(if (padH == 0) 0 else 8), ctx.dp(padH), ctx.dp((if (f != null) 100 else 28) + (if (inTab) 90 else 0)) + act.bottomInset) }
         render(content)
         content.staggerChildren()
         fresh = true
@@ -55,15 +64,15 @@ abstract class Screen(val act: UiActivity) {
         val r: View = if (f == null) sv else FrameLayout(ctx).apply {
             addView(sv, FrameLayout.LayoutParams(MATCH, MATCH))
             val button = ctx.row(Gravity.CENTER) {
-                background = ctx.glass(GlassKind.Active, 27f)
+                background = ctx.glass(GlassKind.Navy, 27f)
                 setPadding(ctx.dp(22), 0, ctx.dp(24), 0)
-                add(ctx.icon(R.drawable.ic_add, Glass.ON_ACTIVE, 22), WRAP, WRAP, end = 8)
-                add(ctx.text(f.first, T.Label, Glass.ON_ACTIVE).apply { textSize = 15f }, WRAP, WRAP)
+                add(ctx.icon(R.drawable.ic_add, 0xFFFFFFFF.toInt(), 22), WRAP, WRAP, end = 8)
+                add(ctx.text(f.first, T.Label, 0xFFFFFFFF.toInt()).apply { textSize = 15f }, WRAP, WRAP)
                 press { f.second() }
             }
-            addView(button, FrameLayout.LayoutParams(WRAP, ctx.dp(54), Gravity.END or Gravity.BOTTOM).apply {
-                setMargins(0, 0, ctx.dp(20), ctx.dp(if (inTab) 102 else 20))
-            })
+            fabButton = button
+            addView(button, FrameLayout.LayoutParams(WRAP, ctx.dp(54), Gravity.END or Gravity.BOTTOM))
+            applyNavInset(act.bottomInset)
         }
         root = r
         return r

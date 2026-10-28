@@ -254,7 +254,7 @@ class Actions(private val ctx: Context) {
                 val c = ch.optString(i, "").trim()
                 if (c.isNotEmpty()) arr.put(c)
             }
-            e.putString("game_state", st).putString("game_chips", arr.toString())
+            e.putString("game_state", st).putString("game_chips", arr.toString()).putLong("game_ts", System.currentTimeMillis())
         }
         e.apply()
         return null

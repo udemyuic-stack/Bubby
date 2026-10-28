@@ -29,6 +29,7 @@ class UiActivity : Activity() {
     private var shownLang = ""
     private var insetTop = 0
     private var insetBottom = 0
+    val bottomInset: Int get() = insetBottom
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -102,6 +103,7 @@ class UiActivity : Activity() {
     private fun applyInsets() {
         shell.setPadding(0, insetTop, 0, 0)
         navFrame.setPadding(dp(12), 0, dp(12), dp(18) + insetBottom)
+        for (s in tabs) s.applyNavInset(insetBottom)
         for ((_, v) in stack) v.setPadding(0, insetTop, 0, insetBottom)
     }
 

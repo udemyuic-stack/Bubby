@@ -241,7 +241,7 @@ object ToolRegistry {
         Tool("quiet", "Hides the mascot completely so a movie is not disturbed (on:false shows it again).", A, ACTION, MASCOT, listOf(b("on", req = true)), legacy = true,
             note = "(hide yourself completely so a movie is not disturbed; on:false shows you again)"),
         Tool("game", "Remembers the game state and answer chips (empty state ends the game).", A, ACTION, MASCOT,
-            listOf(s("state", ex = "what to remember about the game", req = true), P("chips", "array", "answer buttons", listOf("a", "b"))), legacy = true, note = "(empty state ends the game)"),
+            listOf(s("state", ex = "what to remember about the game", req = true), P("chips", "array", "the possible answers the user can tap (for a quiz: 3-4 options, never your feedback)", listOf("a", "b"))), legacy = true, note = "(empty state ends the game)"),
         Tool("set_mode", "Study mode (patient tutor) or normal.", A, ACTION, MASCOT, listOf(s("mode", ex = "study|normal", req = true, enum = listOf("study", "normal"))), legacy = true),
         Tool("set_persona", "Sets your personality (empty text = back to normal).", A, ACTION, MASCOT, listOf(s("text", ex = "funny and cheerful")), legacy = true,
             note = "(empty text = back to normal)"),

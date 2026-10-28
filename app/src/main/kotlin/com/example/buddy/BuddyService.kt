@@ -162,7 +162,13 @@ class BuddyService : Service() {
             }
         }
     }
-    private val closeTask = Runnable { if (!busy && !calling && !waiting() && !choiceActive && !replying) collapse() }
+    /** A game is running (the model updated it in the last 90 s): the island stays open so the answer chips can be tapped. */
+    private fun gameOn() = !prefs.getString("game_state", "").isNullOrBlank() && now() - prefs.getLong("game_ts", 0L) < 90_000L
+    private val closeTask: Runnable = Runnable {
+        if (!busy && !calling && !waiting() && !choiceActive && !replying) {
+            if (gameOn() && expanded) h.postDelayed(closeTask, 15_000L) else collapse()
+        }
+    }
 
     private val agentListener = object : AgentLink.Listener {
         override fun onStatus(connected: Boolean, desktop: String?) {

@@ -102,6 +102,9 @@ class BuddyService : Service() {
     private var lastAsk = ""
     private var lastSpoken = false
     private var lastUntrusted = false
+    @Volatile private var agentCancel: java.util.concurrent.atomic.AtomicBoolean? = null   // set by a tap or "stop" while the agent works
+    private var agentStepping = false                // the agent loop has started acting (progress shown, Stop chip up)
+    private var localApproval = false                // Bubby's own approval card is on the island (the agent waits for it)
     @Volatile private var reqId = 0                 // id of the in-flight ask; late results of older ids are ignored
     private var lastFgRetry = 0L
     private var typeAnim: ValueAnimator? = null
@@ -207,6 +210,8 @@ class BuddyService : Service() {
         @Volatile var agentUsage: Usage? = null
         /** Requests waiting for an answer (the app's agents page lists them; answers go back through ACTION_AGENT_DECIDE). */
         @Volatile var agentApprovals: List<Approval> = emptyList()
+        /** Spoken words that stop a running agent task. */
+        private val STOP_WORDS = Regex("(?iU)\\b(стоп|хватит|отмена|отмени|останови\\w*|stop|cancel|enough|to'?xta\\w*|bas|yetarli|bekor)\\b")
         const val ACTION_ASK = "com.example.buddy.ASK"
         const val ACTION_TOGGLE_QUIET = "com.example.buddy.TOGGLE_QUIET"
         const val ACTION_AGENT_RELOAD = "com.example.buddy.AGENT_RELOAD"
@@ -576,7 +581,8 @@ class BuddyService : Service() {
         startFg(true)
     }
 
-    private fun hotWanted() = prefs.getBoolean("hotword", true) && micOk() && screenOn && calm() && !inPhoneCall() &&
+    // while the agent works the wake-word loop also listens for "stop"
+    private fun hotWanted() = prefs.getBoolean("hotword", true) && micOk() && screenOn && (calm() || (busy && agentStepping && !localApproval)) && !inPhoneCall() &&
         SystemClock.elapsedRealtime() >= hotPausedUntil && !voice.talking && !voice.listening && holdAnim == null
 
     private fun hotKick() {
@@ -614,7 +620,13 @@ class BuddyService : Service() {
                 return
             }
         }
-        if (text != null) {
+        if (text != null && busy && agentStepping) {
+            if (text.split('|').any { STOP_WORDS.containsMatchIn(it) }) {
+                hotStop(); cancelAsk()
+                status.text = t("Остановился", "Stopped", "To'xtadim")
+                return
+            }
+        } else if (text != null) {
             // hypotheses are separated by " | "
             for (hyp in text.split('|')) {
                 val rest = wakeMatch(hyp)
@@ -1212,6 +1224,7 @@ class BuddyService : Service() {
     }
 
     private fun showApproval(announce: Boolean) {
+        if (localApproval) return   // Bubby's own card is up; the agent-link card comes back when it is answered
         approvalHolder.removeAllViews()
         val a = approvals.firstOrNull()
         if (a == null) {
@@ -1378,6 +1391,9 @@ class BuddyService : Service() {
 
     /** The user tapped the mascot while an ask is in flight: forget it (its late result is ignored) and close. */
     private fun cancelAsk() {
+        agentCancel?.set(true)
+        if (localApproval) { localApproval = false; approvalHolder.visibility = View.GONE; approvalHolder.removeAllViews() }
+        if (agentStepping) { agentStepping = false; hide(chipsScroll) }
         reqId++
         h.removeCallbacks(askDeadline)
         busy = false
@@ -1423,9 +1439,11 @@ class BuddyService : Service() {
         val alts = if (spoken) voice.lastAlternatives else emptyList()
         h.postDelayed(askDeadline, 90_000L)
         BuddyAccess.newRun(text)
+        val cancel = java.util.concurrent.atomic.AtomicBoolean(false)
+        agentCancel = cancel; agentStepping = false
         Thread {
             val r = try {
-                Result.success(brain.ask(text, spoken, alts, exec = { a -> if (id != reqId) cancelledText() else runOnMainBlocking(a) }, untrusted = untrusted))
+                Result.success(brain.ask(text, spoken, alts, host = PhoneHost(this, agentUi(id, cancel), text), untrusted = untrusted))
             } catch (e: Throwable) { Result.failure(e) }
             h.post {
                 if (id == reqId) { h.removeCallbacks(askDeadline); finish(r) }
@@ -1458,6 +1476,71 @@ class BuddyService : Service() {
 
     private fun cancelledText() = t("Отменено", "Cancelled", "Bekor qilindi")
 
+    /** The agent loop's view of the island: progress text, the Stop chip, approvals, actions on the main thread. */
+    private fun agentUi(id: Int, cancel: java.util.concurrent.atomic.AtomicBoolean) = object : AgentUi {
+        override fun cancelled() = cancel.get() || id != reqId || !running
+        override fun progress(label: String) {
+            h.post {
+                if (id != reqId || !busy || !running) return@post
+                // each step proves the run is alive: the deadline moves with it (the loop has its own 4 min budget)
+                h.removeCallbacks(askDeadline); h.postDelayed(askDeadline, 90_000L)
+                if (!agentStepping) {
+                    agentStepping = true
+                    showActionChip(t("Стоп", "Stop", "To'xtat")) { cancelAsk() }
+                    hotKick()
+                }
+                status.text = label.take(40)
+                setMode("think"); setWave(WaveView.THINK)
+            }
+        }
+        override fun approve(req: ApprovalReq): Boolean = if (cancelled()) false else askApproval(req, cancel)
+        override fun runAction(a: JSONObject): String? = if (cancelled()) cancelledText() else runOnMainBlocking(a)
+    }
+
+    /** Shows Bubby's own approval card for one agent action and blocks the worker until the user answers (60 s = no). */
+    private fun askApproval(req: ApprovalReq, cancel: java.util.concurrent.atomic.AtomicBoolean): Boolean {
+        val latch = java.util.concurrent.CountDownLatch(1)
+        var yes = false
+        fun answer(ok: Boolean) {
+            if (latch.count == 0L) return
+            yes = ok; latch.countDown()
+            localApproval = false
+            approvalHolder.visibility = View.GONE; approvalHolder.removeAllViews()
+            if (busy) { setMode("think"); status.text = t("Думаю…", "Thinking…", "O'ylayapman…") }
+            if (approvals.isNotEmpty()) showApproval(announce = false)
+        }
+        h.post {
+            if (!running || cancel.get()) { answer(false); return@post }
+            voice.stopListening()
+            localApproval = true
+            h.removeCallbacks(askDeadline); h.postDelayed(askDeadline, 120_000L)
+            style(true); status.text = t("Подтвердите", "Please confirm", "Tasdiqlang"); setMode("surprised"); setWave(WaveView.NONE)
+            flashBadge("approval", 60_000L)
+            hide(input); hide(answer)
+            approvalHolder.removeAllViews()
+            val a = Approval("bubby-agent", "bubby-agent", req.title, req.detail, System.currentTimeMillis(), false)
+            approvalHolder.addView(ApprovalCard.build(this, a, false, onAllow = {
+                if (req.lock) ConfirmActivity.request(this) { ok ->
+                    if (!ok) status.text = t("Нужен экран блокировки", "Lock screen required", "Ekran qulfi kerak")
+                    answer(ok)
+                } else answer(true)
+            }, onDeny = { answer(false) }, riskLevel = if (req.lock) IslandUi.RISK_HIGH else IslandUi.RISK_MID))
+            approvalHolder.alpha = 1f; approvalHolder.visibility = View.VISIBLE
+            focusable(false)
+            if (ttsOn()) say(req.title, uiLang()) {}
+        }
+        var got = false
+        val until = System.currentTimeMillis() + 60_000L
+        try {
+            while (!got && System.currentTimeMillis() < until) {
+                got = latch.await(250, java.util.concurrent.TimeUnit.MILLISECONDS)
+                if (!got && cancel.get()) break
+            }
+        } catch (_: InterruptedException) { }
+        if (!got) h.post { answer(false) }
+        return got && yes
+    }
+
     /** Runs an action; a new `message` is refused while another one is still counting down. */
     private fun runAction(a: JSONObject): String? {
         if (pendingRun != null && a.optString("do") == "message") {
@@ -1484,6 +1567,8 @@ class BuddyService : Service() {
         busy = false
         h.removeCallbacks(askDeadline)
         BuddyAccess.endRun()
+        agentCancel = null
+        if (agentStepping) { agentStepping = false; chipsRow.removeAllViews(); hide(chipsScroll) }
         if (calling) return
         r.onSuccess { reply ->
             val emo = reply.emotion

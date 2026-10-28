@@ -19,7 +19,7 @@ after(() => dirs.forEach((d) => fs.rmSync(d, { recursive: true, force: true })))
 
 const start = async (extra = {}) => {
   const dir = tmp();
-  const b = await startBridge({ dir, host: "127.0.0.1", port: 0, name: "Test", ...extra });
+  const b = await startBridge({ dir, host: "127.0.0.1", port: 0, name: "Test", mdns: false, ...extra });
   return { b, dir, token: loadToken(dir) };
 };
 const phoneFor = (b, token, extra) => fakePhone({ host: b.host, port: b.port, fp: b.fp, token, ...extra });

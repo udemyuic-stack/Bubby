@@ -81,12 +81,13 @@ object AgentWidgets {
     private val BMP = Paint(Paint.FILTER_BITMAP_FLAG)   // opaque paint for pictures (the text paint carries a see-through colour)
     private val BUSY = setOf("working", "thinking", "searching")
 
-    /** Overall state: "offline", "approval", "working", "finished" or "idle". */
+    /** Overall state: "offline", "approval", "question", "working", "problem", "finished" or "idle". A question waits like an approval. */
     fun overall(): String {
         if (!BuddyService.agentConnected) return "offline"
         val s = BuddyService.agentSessions
         return when {
-            BuddyService.agentApprovals.isNotEmpty() || s.any { it.state == "approval" || it.state == "question" } -> "approval"
+            BuddyService.agentApprovals.isNotEmpty() || s.any { it.state == "approval" } -> "approval"
+            BuddyService.agentQuestions.isNotEmpty() || s.any { it.state == "question" } -> "question"
             s.any { it.state in BUSY } -> "working"
             s.any { it.state == "error" || it.state == "ratelimit" } -> "problem"
             s.any { it.state == "finished" } -> "finished"
@@ -97,6 +98,7 @@ object AgentWidgets {
     fun title(ctx: Context, st: String): String = when (st) {
         "offline" -> Tr.t(ctx, "Нет связи", "Offline", "Aloqa yo'q")
         "approval" -> Tr.t(ctx, "Нужно разрешение", "Needs permission", "Ruxsat kerak")
+        "question" -> Tr.t(ctx, "У Claude вопрос", "Claude has a question", "Claude'da savol bor")
         "working" -> Tr.t(ctx, "Работает", "Working", "Ishlayapti")
         "problem" -> Tr.t(ctx, "Проблема", "Problem", "Muammo")
         "finished" -> Tr.t(ctx, "Готово", "Done", "Tayyor")
@@ -104,7 +106,7 @@ object AgentWidgets {
     }
 
     fun color(st: String): Int = when (st) {
-        "working" -> 0xFF4C9BFF.toInt(); "approval" -> 0xFFFFA43A.toInt(); "problem" -> 0xFFFF6B6B.toInt()
+        "working" -> 0xFF4C9BFF.toInt(); "approval", "question" -> 0xFFFFA43A.toInt(); "problem" -> 0xFFFF6B6B.toInt()
         "finished" -> 0xFF47D18C.toInt(); "offline" -> 0xFF7D8499.toInt(); else -> 0xFF9AA3BF.toInt()
     }
 
@@ -117,7 +119,7 @@ object AgentWidgets {
     }
 
     fun mascotMood(st: String) = when (st) {
-        "working" -> "think"; "approval" -> "surprised"; "problem" -> "sad"; "finished" -> "happy"; "offline" -> "sleepy"; else -> "idle"
+        "working" -> "think"; "approval", "question" -> "surprised"; "problem" -> "sad"; "finished" -> "happy"; "offline" -> "sleepy"; else -> "idle"
     }
 
     /** "2 h 10 min" until [at], or "" when unknown. */
@@ -130,6 +132,16 @@ object AgentWidgets {
             h > 0 -> Tr.t(ctx, "$h ч $mm мин", "$h h $mm min", "$h soat $mm daq")
             else -> Tr.t(ctx, "$mm мин", "$mm min", "$mm daq")
         }
+    }
+
+    /** Each agent keeps its own colour everywhere (cards, widget rows): Claude Code its warm orange, others from the name. */
+    fun agentColor(name: String): Int {
+        val n = name.ifEmpty { "Claude Code" }
+        if (n.equals("Claude Code", true) || n.equals("claude", true)) return 0xFFE07B53.toInt()
+        val pal = intArrayOf(0xFF3FB8A5.toInt(), 0xFF5B9BF0.toInt(), 0xFF9C7BEA.toInt(), 0xFFEE7BA3.toInt(), 0xFFE0B23A.toInt(), 0xFF5BC26A.toInt())
+        var hsh = 0
+        for (c in n.lowercase()) hsh = hsh * 31 + c.code
+        return pal[Math.floorMod(hsh, pal.size)]
     }
 
     fun ringColor(used: Float): Int = when { used >= 0.9f -> 0xFFFF6B6B.toInt(); used >= 0.7f -> 0xFFFFB84A.toInt(); else -> 0xFF35C2E0.toInt() }
@@ -145,7 +157,7 @@ object AgentWidgets {
     /** The whole widget takes the colour of the state: blue working, amber waiting for you, green finished, red problem. */
     private fun tint(st: String): Pair<Int, Int> = when (st) {
         "working" -> 0xFF16346A.toInt() to 0xFF0B1B3C.toInt()
-        "approval" -> 0xFF5A3A10.toInt() to 0xFF2E1C08.toInt()
+        "approval", "question" -> 0xFF5A3A10.toInt() to 0xFF2E1C08.toInt()
         "finished" -> 0xFF14463A.toInt() to 0xFF0A261F.toInt()
         "problem" -> 0xFF5A1E22.toInt() to 0xFF2E0F12.toInt()
         else -> 0xFF1A2650.toInt() to 0xFF0F1630.toInt()
@@ -209,7 +221,7 @@ object AgentWidgets {
     private fun mini(ctx: Context, cv: Canvas, p: Paint, w: Int, h: Int, d: Float, st: String) {
         val side = min(w, h) * 0.84f
         cv.drawBitmap(mascot(ctx, mascotMood(st)), null, RectF((w - side) / 2f, (h - side) / 2f, (w + side) / 2f, (h + side) / 2f), BMP)
-        if (st == "approval" || st == "working" || st == "finished" || st == "problem") {
+        if (st == "approval" || st == "question" || st == "working" || st == "finished" || st == "problem") {
             p.color = color(st); cv.drawCircle(w - 10f * d, 10f * d, 5f * d, p)
         }
     }
@@ -260,6 +272,8 @@ object AgentWidgets {
         val busy = list.count { it.state in BUSY }
         val head = when {
             !BuddyService.agentConnected -> Tr.t(ctx, "Нет связи с компьютером", "Computer is offline", "Kompyuter bilan aloqa yo'q")
+            st == "question" -> title(ctx, st)
+            st == "approval" -> title(ctx, st)
             list.isEmpty() -> Tr.t(ctx, "Агентов нет", "No agents running", "Agentlar yo'q")
             busy > 0 -> Tr.t(ctx, "Работает агентов: $busy", "$busy agents working", "Ishlayotgan agentlar: $busy")
             else -> Tr.t(ctx, "Агентов: ${list.size}", "${list.size} agents", "Agentlar: ${list.size}")
@@ -269,10 +283,13 @@ object AgentWidgets {
         val rowH = 38f * d
         var y = 40f * d
         for (s in list.take(((h - y) / rowH).toInt().coerceIn(0, 4))) {
-            p.color = 0x33FFFFFF; cv.drawRoundRect(RectF(14f * d, y + 2f * d, 17f * d, y + rowH - 6f * d), 2f * d, 2f * d, p)
-            text(cv, p, s.agent.ifEmpty { "Claude Code" }, 26f * d, y + 15f * d, 14f * d, 0xFFFFFFFF.toInt(), true, false, w - 70f * d)
-            text(cv, p, s.statusText.ifEmpty { stateText(ctx, s.state) }, 26f * d, y + 31f * d, 11.5f * d, 0xB3FFFFFF.toInt(), false, false, w - 70f * d)
-            p.color = color(when (s.state) { in BUSY -> "working"; "approval", "question" -> "approval"; "error", "ratelimit" -> "problem"; "finished" -> "finished"; else -> "idle" })
+            p.color = agentColor(s.agent); cv.drawRoundRect(RectF(14f * d, y + 2f * d, 17f * d, y + rowH - 6f * d), 2f * d, 2f * d, p)
+            val asks = s.state == "question" || BuddyService.agentQuestions.any { it.pillId == s.pillId }
+            val name = s.agent.ifEmpty { "Claude Code" } + if (s.project.isNotEmpty()) " · " + s.project else ""
+            text(cv, p, name, 26f * d, y + 15f * d, 14f * d, 0xFFFFFFFF.toInt(), true, false, w - 70f * d)
+            val line = if (asks) title(ctx, "question") else s.statusText.ifEmpty { s.finalLine.ifEmpty { stateText(ctx, s.state) } }
+            text(cv, p, line, 26f * d, y + 31f * d, 11.5f * d, 0xB3FFFFFF.toInt(), false, false, w - 70f * d)
+            p.color = color(when { asks -> "question"; s.state in BUSY -> "working"; s.state == "approval" -> "approval"; s.state == "error" || s.state == "ratelimit" -> "problem"; s.state == "finished" -> "finished"; else -> "idle" })
             cv.drawCircle(w - 24f * d, y + rowH / 2f - 2f * d, 5f * d, p)
             y += rowH
         }

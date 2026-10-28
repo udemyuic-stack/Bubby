@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-// Desktop side of the coucou phone-link protocol v1 for Claude Code. Adapted from coucou's android/tools/dev-desktop.mjs (MIT).
+// Desktop side of the phone link (protocol v1 + docs/AGENTS-V2.md + docs/AGENTS-V3.md) for Claude Code and other agents.
+// Protocol ideas from Coucou (MIT); the v1 core was adapted from Coucou's android/tools/dev-desktop.mjs (MIT).
 import tls from "node:tls";
 import net from "node:net";
 import fs from "node:fs";
@@ -8,24 +9,31 @@ import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
 import { createInterface } from "node:readline/promises";
 import {
-  PROTOCOL_V, MAX_LINE, PILL_ID, AGENT, APPROVAL_TIMEOUT_MS, buddyDir, sockPath, ensureDir,
+  PROTOCOL_V, MAX_LINE, PILL_ID, APPROVAL_TIMEOUT_MS, buddyDir, sockPath, ensureDir,
   fingerprint, truncateCommand, defaultHost, lanIps,
 } from "./lib/common.mjs";
 import { ensureCert } from "./lib/cert.mjs";
 import { loadToken, newToken, revokeToken, tokenMatches, isPaired, markPaired, createCodePairing } from "./lib/pairing.mjs";
 import { startMdns, cutUtf8 } from "./lib/mdns.mjs";
-import { createUsageSource } from "./lib/usage.mjs";
+import { createLimits } from "./lib/limits.mjs";
 import { createStats } from "./lib/stats.mjs";
 import { planHooks, applyHooks } from "./lib/hooks.mjs";
+import { planAgent, applyAgentPlan, validAgent, INSTALLERS } from "./lib/agents.mjs";
+import { offerable, answersFromPicks } from "./lib/questions.mjs";
+import { createSessions, sessionsMessage, pillIdOf, stepOf, finalLineOf } from "./lib/sessions.mjs";
 
 const HELLO_TIMEOUT_MS = 10_000;
 const SILENCE_MS = 90_000;
 const STALE_SESSION_MS = 30 * 60_000;
 const FAIL_DELAY_MS = 300;
-const PRIORITY = { approval: 5, question: 4, error: 3, working: 2, thinking: 2, finished: 1, idle: 0 };
+const HOOK_LINE_MAX = 4 * 1024 * 1024; // a file edit can be large; hook.mjs keeps it under ~1 MiB
+export const CAPS = ["details", "answers", "diffs"];
+const DIFF_LINES = 200, DIFF_LINE_CHARS = 400, DIFF_PART = 100;
+const DIFF_ASKS = 20, DIFF_WINDOW_MS = 10_000;
 
 // A display name from the phone: no control characters, at most 40 characters. Only used for the terminal.
 const cleanName = (n) => Array.from(String(typeof n === "string" ? n : "").replace(/[\u0000-\u001f\u007f-\u009f]/g, "")).slice(0, 40).join("").trim();
+const clip = (s, n) => { const a = Array.from(String(s)); return a.length > n ? a.slice(0, n).join("") : String(s); };
 
 const lineReader = (sock, onLine, onTooLong) => {
   let buf = "";
@@ -50,6 +58,8 @@ export async function startBridge(opts = {}) {
   const name = opts.name ?? os.hostname();
   const approvalTimeout = opts.approvalTimeoutMs ?? APPROVAL_TIMEOUT_MS;
   const log = opts.log ?? (() => {});
+  // capabilities this bridge offers (--no-details / --no-answers / --no-diffs turn them off)
+  const enabled = new Set(CAPS.filter((c) => opts.caps?.[c] !== false));
   const { key, cert, fp: certFp } = ensureCert(dir);
   let token = loadToken(dir) ?? newToken(dir);
   // 6-digit code pairing (docs/AGENTS-V2.md section 2). The code goes only to opts.onCode (the terminal), never to log.
@@ -57,67 +67,57 @@ export async function startBridge(opts = {}) {
   let mdns = null;
   const pairedChanged = (phoneName) => { mdns?.update(); opts.onPaired?.(phoneName); };
 
-  const sessions = new Map(); // sessionId -> {state, statusText, steps, updatedAt}
-  const pending = new Map(); // fingerprint -> {reply, truncated, timer, sessionId}
-  let phone = null; // {sock, send}
+  const sessions = createSessions();
+  const pending = new Map(); // fingerprint -> {kind, reply, truncated, timer, agent, sessionId, questions, createdAt}
+  let phone = null; // {sock, send, caps: Set}
 
-  const sessionList = () => {
-    if (!sessions.size) return [];
-    let best = null, steps = 0, newest = 0;
-    for (const s of sessions.values()) {
-      steps = Math.max(steps, s.steps);
-      newest = Math.max(newest, s.updatedAt);
-      if (!best || (PRIORITY[s.state] ?? 0) > (PRIORITY[best.state] ?? 0)) best = s;
-    }
-    return [{ pillId: PILL_ID, agent: AGENT, state: best.state, statusText: best.statusText, stepIndex: steps, stepCount: steps, updatedAt: newest }];
-  };
-  const pushSessions = () => phone?.send({ type: "sessions", sessions: sessionList() });
+  const pushSessions = () => phone?.send(sessionsMessage(sessions.list(phone.caps)));
 
-  // usage (docs/AGENTS-V2.md section 3): after welcome/paired, on change at most every 5 s, and every 60 s
-  const usage = opts.usage ?? createUsageSource({ log });
+  // usage: plan limits from the statusLine relay (V3 section 1) + today's counters (V2 section 3).
+  // Sent after welcome/paired, on change at most every 5 s, and every 60 s.
+  const limits = createLimits(dir);
   const usageMinMs = opts.usageMinIntervalMs ?? 5_000;
   const stats = createStats(dir, { onChange: () => scheduleUsage() });
   let lastUsageAt = 0, lastUsageKey = "", usageTimer = null, usageForce = false;
   const usageMessage = () => {
-    const r = usage.snapshot();
+    const r = limits.snapshot();
     const s = stats.today();
     return {
       type: "usage",
-      ...(r.fiveHour ? { fiveHour: r.fiveHour } : {}),
-      ...(r.sevenDay ? { sevenDay: r.sevenDay } : {}),
+      ...(r.fiveHour && { fiveHour: r.fiveHour }),
+      ...(r.sevenDay && { sevenDay: r.sevenDay }),
       doneToday: s.doneToday,
-      ...(s.tokensToday !== undefined ? { tokensToday: s.tokensToday } : {}),
-      ...(r.plan ? { plan: r.plan } : {}),
-      updatedAt: Date.now(),
+      ...(s.tokensToday !== undefined && { tokensToday: s.tokensToday }),
+      ...(r.plan && { plan: r.plan }),
+      updatedAt: r.updatedAt ?? Date.now(),
     };
   };
   const sendUsage = (force) => {
     if (!phone) return;
     const m = usageMessage();
-    const key = JSON.stringify({ ...m, updatedAt: 0 });
-    if (!force && key === lastUsageKey) return;
-    lastUsageKey = key;
+    const k = JSON.stringify({ ...m, updatedAt: r0(m) });
+    if (!force && k === lastUsageKey) return;
+    lastUsageKey = k;
     lastUsageAt = Date.now();
     phone.send(m);
   };
+  // updatedAt counts as a change only when it is the limits' own time
+  const r0 = (m) => (m.fiveHour || m.sevenDay ? m.updatedAt : 0);
   function scheduleUsage(force = false) {
     usageForce ||= force;
     if (!phone || usageTimer) return;
     usageTimer = setTimeout(() => { usageTimer = null; const f = usageForce; usageForce = false; sendUsage(f); }, Math.max(0, lastUsageAt + usageMinMs - Date.now()));
     usageTimer.unref?.();
   }
-  const refreshUsage = (force) => usage.refresh().catch(() => {}).then(() => scheduleUsage(force));
-  const usageTick = setInterval(() => { if (phone) refreshUsage(true); }, opts.usageRefreshMs ?? 60_000);
+  const usageTick = setInterval(() => scheduleUsage(true), opts.usageRefreshMs ?? 60_000);
   usageTick.unref();
 
-  const touch = (id, patch) => {
-    const s = sessions.get(id) ?? { state: "idle", statusText: "", steps: 0, updatedAt: 0 };
-    Object.assign(s, patch, { updatedAt: Date.now() });
-    sessions.set(id, s);
+  const touch = (ev, patch) => {
+    sessions.touch(ev.agent, ev.sessionId, { ...patch, ...(ev.project && { project: ev.project }) });
     pushSessions();
-    return s;
   };
 
+  // result: null (no decision), {decision: "allow"|"deny"} or {answers: {...}}
   const resolve = (fp, result) => {
     const p = pending.get(fp);
     if (!p) return;
@@ -125,43 +125,80 @@ export async function startBridge(opts = {}) {
     clearTimeout(p.timer);
     p.reply(result);
     phone?.send({ type: "approvalResolved", fingerprint: fp });
-    const s = sessions.get(p.sessionId);
-    if (s && s.state === "approval") touch(p.sessionId, { state: "working", statusText: "Working" });
+    const s = sessions.get(p.agent, p.sessionId);
+    if (s && (s.state === "approval" || s.state === "question")) touch({ agent: p.agent, sessionId: p.sessionId }, { state: "working", statusText: "Working" });
   };
 
   function onEvent(ev, reply) {
-    const id = ev.sessionId;
+    if (ev.event === "StatusLine") {
+      if (limits.update(ev.rateLimits)) scheduleUsage();
+      return reply(null);
+    }
+    const s = sessions.get(ev.agent, ev.sessionId);
     switch (ev.event) {
-      case "SessionStart": touch(id, { state: "idle", statusText: "Ready", steps: 0 }); break;
-      case "UserPromptSubmit": touch(id, { state: "thinking", statusText: "Thinking", steps: 0 }); break;
-      case "PreToolUse": {
-        const s = sessions.get(id);
-        touch(id, { state: "working", statusText: `Using ${String(ev.tool).slice(0, 30)}`, steps: (s?.steps ?? 0) + 1 });
+      case "SessionStart": touch(ev, { state: "idle", statusText: "Ready", steps: 0 }); break;
+      case "UserPromptSubmit": sessions.setFinal(ev.agent, ""); touch(ev, { state: "thinking", statusText: "Thinking", steps: 0 }); break;
+      case "PreToolUse":
+        sessions.step(ev.agent, stepOf(ev.tool, ev.command));
+        touch(ev, { state: "working", statusText: `Using ${String(ev.tool).slice(0, 30)}`, steps: (s?.steps ?? 0) + 1 });
         break;
-      }
-      case "PostToolUse": touch(id, { state: "working", statusText: "Working" }); break;
+      case "PostToolUse":
+        touch(ev, { state: "working", statusText: "Working" });
+        if (enabled.has("diffs") && ev.edit && sessions.edit(ev.agent, ev.sessionId, ev.tool, ev.edit)) pushSessions();
+        break;
       case "Notification":
-        if (ev.notificationType === "elicitation_dialog") touch(id, { state: "question", statusText: "Asking you a question" });
-        else if (ev.notificationType === "idle_prompt") touch(id, { state: "idle", statusText: "Waiting for you" });
+        if (ev.notificationType === "elicitation_dialog") touch(ev, { state: "question", statusText: "Asking you a question" });
+        else if (ev.notificationType === "idle_prompt") touch(ev, { state: "idle", statusText: "Waiting for you" });
         break;
-      case "Stop": touch(id, { state: "finished", statusText: "Done" }); stats.recordStop(ev.transcriptPath); break;
-      case "StopFailure": touch(id, { state: "error", statusText: "Error" }); break;
-      case "SessionEnd": sessions.delete(id); pushSessions(); break;
+      case "Stop":
+        if (typeof ev.finalText === "string") sessions.setFinal(ev.agent, finalLineOf(ev.finalText));
+        touch(ev, { state: "finished", statusText: "Done" });
+        if (!ev.agent) stats.recordStop(ev.transcriptPath); // doneToday counts Claude Code turns
+        break;
+      case "StopFailure": touch(ev, { state: "error", statusText: "Error" }); break;
+      case "SessionEnd": sessions.end(ev.agent, ev.sessionId); pushSessions(); break;
       case "PermissionRequest": return onPermission(ev, reply);
     }
     reply(null);
   }
 
+  const wait = (fp, entry) => {
+    const timer = setTimeout(() => resolve(fp, null), approvalTimeout);
+    timer.unref?.();
+    pending.set(fp, { ...entry, timer, createdAt: Date.now() });
+  };
+
   function onPermission(ev, reply) {
-    if (!phone || ev.tool === "AskUserQuestion") return reply(null);
+    // other agents: display only; nothing waits on the phone
+    if (!phone || ev.agent) return reply(null);
+    if (ev.tool === "AskUserQuestion") {
+      const questions = phone.caps.has("answers") ? offerable(ev.questions) : null;
+      if (!questions) return reply(null); // stays on the computer
+      const fp = fingerprint(PILL_ID, ev.sessionId, "AskUserQuestion", questions.map((q) => q.question).join("\n"), crypto.randomUUID());
+      wait(fp, { kind: "question", reply, agent: null, sessionId: ev.sessionId, questions });
+      touch(ev, { state: "question", statusText: "Asking you a question" });
+      phone.send({ type: "question", pillId: PILL_ID, fingerprint: fp, createdAt: pending.get(fp).createdAt, questions });
+      return;
+    }
     const { command, truncated } = truncateCommand(ev.command);
     const tool = String(ev.tool ?? "").slice(0, 60);
     const fp = fingerprint(PILL_ID, ev.sessionId, tool, command, crypto.randomUUID());
-    const timer = setTimeout(() => resolve(fp, null), approvalTimeout);
-    timer.unref?.();
-    pending.set(fp, { reply, truncated, timer, sessionId: ev.sessionId });
-    touch(ev.sessionId, { state: "approval", statusText: "Waiting for your approval" });
+    wait(fp, { kind: "approval", reply, truncated, agent: null, sessionId: ev.sessionId });
+    touch(ev, { state: "approval", statusText: "Waiting for your approval" });
     phone.send({ type: "approval", pillId: PILL_ID, fingerprint: fp, tool, command, createdAt: Date.now(), ...(truncated ? { truncated: true } : {}) });
+  }
+
+  // a phone's getDiff => one to two "diff" lines (or gone)
+  function sendDiff(send, pillId, fileId) {
+    const f = typeof pillId === "string" && Number.isSafeInteger(fileId) ? sessions.file(pillId, fileId) : null;
+    const base = { type: "diff", pillId: clip(String(pillId ?? ""), 64), fileId: Number.isSafeInteger(fileId) ? fileId : 0 };
+    if (!f) return send({ ...base, name: "", added: 0, removed: 0, tooLarge: false, gone: true, truncated: false, part: 0, parts: 1, lines: [] });
+    const rows = f.tooLarge ? [] : f.lines.slice(0, DIFF_LINES).map(([k, t]) => [["+", "-", "@"].includes(k) ? k : " ", clip(t, DIFF_LINE_CHARS)]);
+    const truncated = !f.tooLarge && f.lines.length > DIFF_LINES;
+    const parts = rows.length ? Math.ceil(rows.length / DIFF_PART) : 1;
+    for (let i = 0; i < parts; i++) {
+      send({ ...base, name: f.name, added: f.added, removed: f.removed, tooLarge: !!f.tooLarge, gone: false, truncated, part: i, parts, lines: rows.slice(i * DIFF_PART, (i + 1) * DIFF_PART) });
+    }
   }
 
   // TLS server for the phone
@@ -173,17 +210,23 @@ export async function startBridge(opts = {}) {
     const send = (o) => sock.writable && sock.write(JSON.stringify(o) + "\n");
     let authed = false;
     let closing = false; // a refused pair attempt: ignore anything else on this connection
+    let caps = new Set();
+    const diffAsks = [];
+    const offer = (m) => {
+      const asked = Array.isArray(m.caps) ? m.caps.filter((c) => typeof c === "string") : [];
+      caps = new Set(CAPS.filter((c) => enabled.has(c) && asked.includes(c)));
+      return [...caps];
+    };
     const authenticated = () => {
       authed = true;
       clearTimeout(helloTimer);
-      phone = { sock, send };
+      phone = { sock, send, caps };
       log("phone connected");
     };
     const afterWelcome = () => {
       pushSessions();
       lastUsageKey = "";
       sendUsage(true);
-      refreshUsage(false);
     };
     const refuse = (error) => {
       closing = true;
@@ -201,9 +244,10 @@ export async function startBridge(opts = {}) {
       }
       markPaired(dir);
       const phoneName = cleanName(m.name);
+      const offered = offer(m);
       authenticated();
       log(`phone paired by code${phoneName ? ` (${phoneName})` : ""}`);
-      send({ type: "paired", token: current, name });
+      send({ type: "paired", token: current, name, caps: offered });
       pairedChanged(phoneName);
       afterWelcome();
     };
@@ -225,8 +269,9 @@ export async function startBridge(opts = {}) {
         }
         if (phone) { send({ type: "error", code: "busy", message: "another phone is connected" }); return sock.end(); }
         if (!isPaired(dir)) { markPaired(dir); codes.stop(); pairedChanged(""); }
+        const offered = offer(m);
         authenticated();
-        send({ type: "welcome", v: PROTOCOL_V, desktop: name, os: process.platform });
+        send({ type: "welcome", v: PROTOCOL_V, desktop: name, os: process.platform, caps: offered });
         afterWelcome();
         return;
       }
@@ -235,9 +280,25 @@ export async function startBridge(opts = {}) {
         case "bye": return sock.end();
         case "decision": {
           const p = typeof m.fingerprint === "string" ? pending.get(m.fingerprint) : null;
-          if (!p || (m.decision !== "allow" && m.decision !== "deny")) return;
+          if (!p || p.kind !== "approval" || (m.decision !== "allow" && m.decision !== "deny")) return;
           if (m.decision === "allow" && p.truncated) return; // answered on the computer
-          return resolve(m.fingerprint, m.decision);
+          return resolve(m.fingerprint, { decision: m.decision });
+        }
+        case "answer": {
+          if (!caps.has("answers")) return;
+          const p = typeof m.fingerprint === "string" ? pending.get(m.fingerprint) : null;
+          if (!p || p.kind !== "question" || Date.now() - p.createdAt >= approvalTimeout) return;
+          const answers = answersFromPicks(p.questions, m.picks);
+          if (!answers) return; // not an exact match: nothing changes, the question stays open
+          return resolve(m.fingerprint, { answers });
+        }
+        case "getDiff": {
+          if (!caps.has("diffs")) return;
+          const t = Date.now();
+          while (diffAsks.length && t - diffAsks[0] >= DIFF_WINDOW_MS) diffAsks.shift();
+          if (diffAsks.length >= DIFF_ASKS) return;
+          diffAsks.push(t);
+          return sendDiff(send, m.pillId, m.fileId);
         }
         default: return;
       }
@@ -248,6 +309,7 @@ export async function startBridge(opts = {}) {
         phone = null;
         clearTimeout(usageTimer);
         usageTimer = null;
+        usageForce = false;
         for (const fp of [...pending.keys()]) resolve(fp, null);
         log("phone disconnected");
       }
@@ -268,19 +330,23 @@ export async function startBridge(opts = {}) {
     fs.rmSync(sp, { force: true });
   }
   const hookServer = net.createServer((c) => {
-    let buf = "";
-    let done = false;
-    const reply = (decision) => { if (!done) { done = true; c.end(decision ? JSON.stringify({ decision }) + "\n" : "\n"); } };
+    const chunks = [];
+    let size = 0, done = false, pendingFp = null;
+    const reply = (result) => { if (!done) { done = true; c.end(result ? JSON.stringify(result) + "\n" : "\n"); } };
     c.setTimeout(10_000, () => { if (!pendingFp) c.destroy(); });
-    let pendingFp = null;
     c.on("data", (d) => {
-      buf += d.toString("utf8");
-      if (buf.length > 256 * 1024) return c.destroy();
-      const i = buf.indexOf("\n");
-      if (i < 0 || pendingFp !== null) return;
+      if (pendingFp !== null) return;
+      size += d.length;
+      if (size > HOOK_LINE_MAX) return c.destroy();
+      chunks.push(d);
+      const i = d.indexOf(0x0a);
+      if (i < 0) return;
+      const all = Buffer.concat(chunks);
       let ev;
-      try { ev = JSON.parse(buf.slice(0, i)); } catch { return c.destroy(); }
+      try { ev = JSON.parse(all.subarray(0, all.indexOf(0x0a)).toString("utf8")); } catch { return c.destroy(); }
       if (!ev || typeof ev.event !== "string" || typeof ev.sessionId !== "string") return reply(null);
+      ev.agent = validAgent(ev.agent); // absent or invalid means Claude Code
+      if (typeof ev.project !== "string") delete ev.project;
       pendingFp = "";
       const before = new Set(pending.keys());
       onEvent(ev, reply);
@@ -303,14 +369,12 @@ export async function startBridge(opts = {}) {
     });
   }
 
-  const prune = setInterval(() => {
-    const now = Date.now();
-    for (const [id, s] of sessions) if (now - s.updatedAt > STALE_SESSION_MS) sessions.delete(id);
-  }, 60_000);
+  const prune = setInterval(() => { sessions.prune(STALE_SESSION_MS); }, 60_000);
   prune.unref();
 
   return {
     port, host, fp: certFp, name,
+    caps: [...enabled],
     pairingCode: () => codes.current(),
     paired: () => isPaired(dir),
     mdnsName: () => mdns?.instance ?? null,
@@ -339,17 +403,23 @@ export async function startBridge(opts = {}) {
 
 const HELP = `node bridge.mjs [options]
 
-  First run does everything: certificate, LAN address, Claude Code hooks (asks first), mDNS, pairing code.
+  First run does everything: certificate, LAN address, Claude Code hooks and the statusLine relay (asks first),
+  mDNS, pairing code.
 
-  --yes            install the Claude Code hooks without asking
-  --no-hooks       do not touch ~/.claude/settings.json
-  --link           also print the old coucou://pair link (contains the token, keep it secret)
-  --new-pairing    new token and a new code (the old phone stops working)
-  --revoke         delete the token and exit
-  --host IPv4      LAN address to listen on (default: first private IPv4)
-  --port N         TCP port (default 47821)
-  --name NAME      computer name shown on the phone (default: host name)
-  --no-mdns        do not advertise over mDNS`;
+  --yes                 install the Claude Code hooks / statusLine relay / agent hooks without asking
+  --no-hooks            do not install the Claude Code hooks
+  --no-statusline       do not install the statusLine relay (plan limits on the phone)
+  --install-agent NAME  also install hooks for another agent (${Object.keys(INSTALLERS).join(", ")}); see docs/AGENTS-OTHER.md
+  --no-details          do not offer session details (project, steps, final line) to the phone
+  --no-answers          do not let the phone answer Claude Code's questions
+  --no-diffs            do not offer the files an agent changed to the phone
+  --link                also print the old coucou://pair link (contains the token, keep it secret)
+  --new-pairing         new token and a new code (the old phone stops working)
+  --revoke              delete the token and exit
+  --host IPv4           LAN address to listen on (default: first private IPv4)
+  --port N              TCP port (default 47821)
+  --name NAME           computer name shown on the phone (default: host name)
+  --no-mdns             do not advertise over mDNS`;
 
 const headline = (code) => `Open Bubby on your phone → Agents → tap this computer → type ${code}`;
 
@@ -359,45 +429,72 @@ function printCode(code) {
   console.log(`\n  ${bar}\n    ${line}\n  ${bar}`);
 }
 
-// Claude Code hooks, same logic as install-hooks.mjs --yes (dated .bak copy). Returns a short status for the banner.
-async function setupHooks({ yes, skip }) {
-  if (skip) return "не трогаю (--no-hooks)";
+async function confirm(question) {
+  const rl = createInterface({ input: process.stdin, output: process.stdout });
+  const answer = await rl.question(question).finally(() => rl.close());
+  return /^(y|yes|д|да)$/i.test(answer.trim());
+}
+const tty = () => process.stdin.isTTY && process.stdout.isTTY;
+
+// Claude Code hooks + statusLine relay, same logic as install-hooks.mjs --yes (dated .bak copy).
+// Returns a short status for the banner.
+async function setupClaude({ yes, hooks, statusLine }) {
+  if (!hooks && !statusLine) return "не трогаю (--no-hooks --no-statusline)";
   let plan;
-  try { plan = planHooks(); } catch (e) { console.log(`Хуки Claude Code: ${e.message}`); return "не установлены (settings.json не разобран)"; }
-  if (!plan.diff) return "установлены";
+  try { plan = planHooks({ hooks, statusLine }); } catch (e) { console.log(`Хуки Claude Code: ${e.message}`); return "не установлены (settings.json не разобран)"; }
+  if (plan.note) console.log(`Claude Code: ${plan.note}`);
+  const what = [hooks && "хуки", statusLine && "statusLine"].filter(Boolean).join(" и ");
+  if (!plan.diff) return `${what}: установлены`;
   if (!yes) {
-    if (!process.stdin.isTTY || !process.stdout.isTTY) {
-      console.log("Хуки Claude Code не установлены. Запустите с --yes, чтобы установить, или с --no-hooks, чтобы не спрашивать.");
-      return "не установлены (нужен --yes)";
+    if (!tty()) {
+      console.log(`Claude Code: ${what} не установлены. Запустите с --yes, чтобы установить (или --no-hooks / --no-statusline).`);
+      return `${what}: не установлены (нужен --yes)`;
     }
-    console.log(`Bridge добавит свои хуки Claude Code в ${plan.file}`);
-    console.log("(события сессий и запросы разрешений пойдут в Bubby; чужие хуки не меняются; сначала делается копия .bak):\n");
+    console.log(`Bridge добавит в ${plan.file}: ${what}.`);
+    console.log("Хуки отправляют в Bubby события сессий и запросы разрешений; statusLine передаёт только лимиты плана и затем");
+    console.log("запускает вашу прежнюю строку состояния без изменений. Чужие хуки не меняются; сначала делается копия .bak.\n");
     console.log(plan.diff + "\n");
-    const rl = createInterface({ input: process.stdin, output: process.stdout });
-    const answer = await rl.question("Установить хуки? [y/N] ").finally(() => rl.close());
-    if (!/^(y|yes|д|да)$/i.test(answer.trim())) return "не установлены (можно позже: node install-hooks.mjs --yes)";
+    if (!(await confirm("Установить? [y/N] "))) return `${what}: не установлены (можно позже: node install-hooks.mjs --yes)`;
   }
   const backup = applyHooks(plan);
   if (backup) console.log(`Резервная копия: ${backup}`);
-  return "установлены сейчас";
+  return `${what}: установлены сейчас`;
+}
+
+async function setupAgent(agent, yes) {
+  let plan;
+  try { plan = planAgent(agent); } catch (e) { console.log(e.message); return; }
+  if (!plan.diff) { console.log(`${plan.title}: хуки уже установлены.`); return; }
+  if (!yes) {
+    if (!tty()) { console.log(`${plan.title}: запустите с --yes, чтобы установить хуки.`); return; }
+    console.log(`Bridge добавит хуки ${plan.title} в ${plan.file} (только показ сессий на телефоне; сначала копия .bak):\n`);
+    console.log(plan.diff + "\n");
+    if (!(await confirm("Установить? [y/N] "))) return;
+  }
+  const backup = applyAgentPlan(plan);
+  if (backup) console.log(`Резервная копия: ${backup}`);
+  console.log(`${plan.title}: хуки установлены. Удалить: node install-hooks.mjs --agent ${agent} --uninstall --yes`);
 }
 
 async function main() {
   const args = process.argv.slice(2);
   const arg = (n) => { const i = args.indexOf(`--${n}`); return i >= 0 ? args[i + 1] : undefined; };
+  const has = (n) => args.includes(`--${n}`);
   const dir = buddyDir();
-  if (args.includes("--help") || args.includes("-h")) { console.log(HELP); return; }
-  if (args.includes("--revoke")) {
+  if (has("help") || args.includes("-h")) { console.log(HELP); return; }
+  if (has("revoke")) {
     console.log(revokeToken(dir) ? "Токен сопряжения удалён. Телефон больше не сможет подключиться." : "Токена нет.");
     return;
   }
-  if (args.includes("--new-pairing")) { ensureDir(dir); newToken(dir); }
-  const hooks = await setupHooks({ yes: args.includes("--yes"), skip: args.includes("--no-hooks") });
+  if (has("new-pairing")) { ensureDir(dir); newToken(dir); }
+  const claude = await setupClaude({ yes: has("yes"), hooks: !has("no-hooks"), statusLine: !has("no-statusline") });
+  if (arg("install-agent")) await setupAgent(arg("install-agent"), has("yes"));
 
   let ready = false;
   const b = await startBridge({
     dir, host: arg("host"), port: arg("port") ? Number(arg("port")) : undefined, name: arg("name"),
-    mdns: !args.includes("--no-mdns"),
+    mdns: !has("no-mdns"),
+    caps: { details: !has("no-details"), answers: !has("no-answers"), diffs: !has("no-diffs") },
     log: (m) => console.log(new Date().toISOString(), m),
     onCode: (code, why) => {
       if (!ready) return; // the first code is part of the banner below
@@ -409,11 +506,12 @@ async function main() {
   ready = true;
 
   console.log(`\n  Bubby agent bridge`);
-  console.log(`  Компьютер:  ${b.name}`);
-  console.log(`  Адрес:      ${b.host}:${b.port} (только локальная сеть)`);
-  console.log(`  Хуки:       ${hooks}`);
-  console.log(`  mDNS:       ${b.mdnsName() ? `${b.mdnsName()}._bubby-agent._tcp.local.` : "выключен"}`);
-  console.log(`  Сертификат: ${b.fp.slice(0, 16)}…`);
+  console.log(`  Компьютер:   ${b.name}`);
+  console.log(`  Адрес:       ${b.host}:${b.port} (только локальная сеть)`);
+  console.log(`  Claude Code: ${claude}`);
+  console.log(`  Телефону:    ${b.caps.length ? b.caps.join(", ") : "только сессии и разрешения"}`);
+  console.log(`  mDNS:        ${b.mdnsName() ? `${b.mdnsName()}._bubby-agent._tcp.local.` : "выключен"}`);
+  console.log(`  Сертификат:  ${b.fp.slice(0, 16)}…`);
   if (b.pairingCode()) {
     printCode(b.pairingCode());
     console.log(`\n  Код одноразовый, действует 5 минут. Компьютера нет в списке? Введите в приложении ${b.host}:${b.port}.`);
@@ -421,7 +519,7 @@ async function main() {
     console.log(`\n  Телефон уже сопряжён: просто откройте Bubby → Agents.`);
     console.log(`  Другой телефон: node bridge.mjs --new-pairing (старый перестанет подключаться).`);
   }
-  if (args.includes("--link")) console.log(`\n  Ссылка для сопряжения (держите в секрете):\n  ${b.link()}`);
+  if (has("link")) console.log(`\n  Ссылка для сопряжения (держите в секрете):\n  ${b.link()}`);
   console.log(`\n  Ctrl+C — остановить.\n`);
 
   let stopping = false;

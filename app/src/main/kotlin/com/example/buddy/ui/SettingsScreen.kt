@@ -106,12 +106,12 @@ class SettingsScreen(act: UiActivity) : Screen(act) {
         }
         return ctx.col {
             add(ctx.row {
-                background = ctx.rounded(P.primaryContainer, 18f)
-                setPadding(ctx.dp(14), ctx.dp(12), ctx.dp(14), ctx.dp(12))
-                add(ctx.icon(R.drawable.ic_key, P.onPrimaryContainer, 24), WRAP, WRAP, end = 12)
+                background = ctx.glass(GlassKind.Amber, 20f, false)
+                setPadding(ctx.dp(16), ctx.dp(12), ctx.dp(16), ctx.dp(12))
+                add(ctx.icon(R.drawable.ic_key, Glass.TEXT, 24), WRAP, WRAP, end = 14)
                 add(ctx.col {
-                    add(ctx.text(t("ИИ-подключения: $n", "AI connections: $n", "AI ulanishlari: $n"), T.Title, P.onPrimaryContainer), MATCH, WRAP)
-                    add(ctx.text(summary, T.Small, P.onPrimaryContainer), MATCH, WRAP)
+                    add(ctx.text(t("ИИ-подключения: $n", "AI connections: $n", "AI ulanishlari: $n"), T.Title, Glass.TEXT), MATCH, WRAP)
+                    add(ctx.text(summary, T.Small, Glass.TEXT), MATCH, WRAP)
                 }, 0, WRAP, 1f)
             }, MATCH, WRAP)
             add(ctx.button(if (n == 0) t("Подключить ИИ", "Connect AI", "AI ulash") else t("Управлять подключениями", "Manage connections", "Ulanishlarni boshqarish"),
@@ -128,9 +128,9 @@ class SettingsScreen(act: UiActivity) : Screen(act) {
         return ctx.card(pad = 14, onClick = { act.open("music") }) {
             add(ctx.row {
                 add(ctx.row(Gravity.CENTER) {
-                    background = ctx.gradient(intArrayOf(P.violet, P.rose), 16f)
-                    add(ctx.icon(R.drawable.ic_music, 0xFFFFFFFF.toInt(), 26), WRAP, WRAP)
-                }, ctx.dp(52), ctx.dp(52), end = 14)
+                    background = ctx.gradient(Theme.tile(2, 0xFF8D7EE0.toInt(), 0xFF5B4BB0.toInt()), 16f)
+                    add(ctx.icon(R.drawable.ic_music, 0xFFFFFFFF.toInt(), 24), WRAP, WRAP)
+                }, ctx.dp(46), ctx.dp(46), end = 14)
                 add(ctx.col {
                     add(ctx.text(t("Музыка и приложения", "Music and apps", "Musiqa va ilovalar"), T.Title), MATCH, WRAP)
                     add(ctx.text(t("Приложение: $title", "App: $title", "Ilova: $title"), T.Body), MATCH, WRAP, top = 2)
@@ -147,14 +147,23 @@ class SettingsScreen(act: UiActivity) : Screen(act) {
         group(c, t("Искусственный интеллект", "Artificial intelligence", "Sun'iy intellekt"), R.drawable.ic_sparkle) {
             add(aiCard(), MATCH, WRAP)
             add(ctx.text("Язык / Language / Til", T.Title), MATCH, WRAP, top = 14, bottom = 8)
-            add(chips(listOf("auto" to t("Авто", "Auto", "Avto"), "uz" to "O'zbekcha", "ru" to "Русский", "en" to "English"),
+            add(chips(listOf("auto" to t("Авто (как я говорю)", "Auto (as I speak)", "Avto (gapirgan tilim)"), "uz" to "O'zbekcha", "ru" to "Русский", "en" to "English"),
                 Backend.str(ctx, "lang", "auto")) {
-                if (it != Backend.str(ctx, "lang", "auto")) { Backend.setStr(ctx, "lang", it); act.restart() }
+                if (it != Backend.str(ctx, "lang", "auto")) { Backend.prefs(ctx).edit().putString("lang", it).commit(); act.restart() }
             })
-            add(ctx.text(t("Это также язык, на котором Bubby говорит и отвечает", "This is also the language Bubby speaks and answers in",
-                "Bu Bubby gapiradigan va javob beradigan til hamdir"), T.Small), MATCH, WRAP, top = 2)
+            add(ctx.text(t("Это также язык, на котором Bubby говорит и отвечает. «Авто»: Bubby отвечает и переключает приложение на язык, на котором вы с ним говорите",
+                "This is also the language Bubby speaks and answers in. “Auto”: Bubby answers, and switches the app, to the language you speak to him",
+                "Bu Bubby gapiradigan va javob beradigan til hamdir. «Avto»: Bubby siz gaplashgan tilda javob beradi va ilovani shu tilga o'tkazadi"), T.Small), MATCH, WRAP, top = 2)
         }
         c.add(musicCard(), MATCH, WRAP, top = 14)
+
+        group(c, t("Внешний вид", "Look", "Ko'rinish"), R.drawable.ic_palette) {
+            add(chips(listOf("glass" to t("Стекло", "Glass", "Shisha"), "green" to t("Зелёная", "Green", "Yashil"), "blue" to t("Синяя", "Blue", "Ko'k")),
+                Backend.str(ctx, "theme", "glass")) {
+                if (it != Backend.str(ctx, "theme", "glass")) { Backend.prefs(ctx).edit().putString("theme", it).commit(); act.restart() }
+            })
+            add(ctx.text(t("Тема меняет цвета и зверька: мотылёк, кит или стеклянный мочи", "The theme changes the colours and the mascot: a butterfly, a whale or the glass mochi", "Mavzu ranglarni va maskotni o'zgartiradi: kapalak, kit yoki shisha mochi"), T.Small), MATCH, WRAP, top = 2)
+        }
 
         group(c, t("Голос и поведение", "Voice and behavior", "Ovoz va xulq"), R.drawable.ic_mic) {
             add(sw(t("Озвучивать ответы", "Speak replies aloud", "Javoblarni ovoz chiqarib aytish"), "tts", true))
@@ -179,6 +188,19 @@ class SettingsScreen(act: UiActivity) : Screen(act) {
                 t("Так он может нажимать и печатать за вас; тексты банковских приложений и паролей не читаются; текст экрана уходит выбранному ИИ-сервису",
                     "It is how he can tap and type for you; texts of banking and password apps are never read; screen text is sent to your chosen AI service",
                     "Shu bilan u siz uchun bosadi va yozadi; bank va parol ilovalari matni o'qilmaydi; ekran matni tanlangan AI xizmatiga yuboriladi")))
+            add(sw(t("Спрашивать перед чтением экрана", "Ask before reading the screen", "Ekranni o'qishdan oldin so'rash"), "screen_ask", true,
+                t("Bubby читает экран только для задачи, на которую вы ответили «Да» (или когда вы сами просите посмотреть, нажать, прочитать). Платёжные и банковские экраны не читаются никогда",
+                    "Bubby reads the screen only for a task you said “Yes” to (or when you ask him to look, tap or read). Payment and banking screens are never read",
+                    "Bubby ekranni faqat siz «Ha» degan vazifa uchun o'qiydi (yoki o'zingiz qarash, bosish, o'qishni so'ragan paytda). To'lov va bank ekranlari hech qachon o'qilmaydi")))
+            add(sw(t("Умные инструменты ИИ", "Smart AI tools", "Aqlli AI vositalari"), "native_tools", true,
+                t("Для задач в несколько шагов Bubby пользуется вызовом инструментов ИИ; выключите, если ваш ИИ-сервер работает с ошибками (тогда остаётся простой режим)",
+                    "For multi-step tasks Bubby uses the AI's tool calling; turn it off if your AI server misbehaves (the simple mode stays)",
+                    "Ko'p bosqichli vazifalarda Bubby AI vositalarini chaqiradi; AI serveringiz xato ishlasa o'chiring (oddiy rejim qoladi)")))
+            add(ctx.switchRow(t("Разрешить Bubby читать SMS", "Let Bubby read SMS", "Bubby SMS o'qishiga ruxsat"),
+                t("Только по вашей просьбе и только последние сообщения; коды и банковские SMS скрыты. Текст уходит выбранному ИИ-сервису",
+                    "Only when you ask, only the latest messages; codes and bank SMS are hidden. The text goes to your chosen AI service",
+                    "Faqat so'raganingizda va faqat so'nggi xabarlar; kodlar va bank SMS'lari yashiriladi. Matn tanlangan AI xizmatiga yuboriladi"),
+                Backend.bool(ctx, "sms_read", false)) { on -> Backend.setBool(ctx, "sms_read", on); if (on) Backend.requestPermissions(act, "smsRead") })
             add(sw(t("Реагировать на зарядку и наушники", "React to charging and headphones", "Zaryadka va quloqchinga munosabat bildirish"), "device_reactions", true))
             add(sw(t("Стикеры при реакциях", "Stickers on reactions", "Reaksiyalarda stiklerlar"), "stickers_on_events", true))
             add(sw(t("Отвечать стикерами", "Reply with stickers", "Stikerlar bilan javob berish"), "sticker_auto", true))

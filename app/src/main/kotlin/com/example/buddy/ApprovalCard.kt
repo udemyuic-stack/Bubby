@@ -11,11 +11,11 @@ import android.widget.LinearLayout
 import android.widget.TextView
 
 object ApprovalCard {
-    fun build(ctx: Context, a: Approval, locked: Boolean, onAllow: () -> Unit, onDeny: () -> Unit): View {
+    fun build(ctx: Context, a: Approval, locked: Boolean, onAllow: () -> Unit, onDeny: () -> Unit, riskLevel: Int? = null): View {
         val u = ctx.resources.displayMetrics.density
         fun dp(v: Int) = (v * u).toInt()
         var used = false
-        val risk = IslandUi.risk(a.tool, a.command)
+        val risk = riskLevel ?: IslandUi.risk(a.tool, a.command)
         val accent = IslandUi.riskColor(risk)
 
         fun button(label: String, color: Int, textColor: Int, action: () -> Unit) = TextView(ctx).apply {

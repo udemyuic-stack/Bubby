@@ -30,6 +30,9 @@ abstract class Screen(val act: UiActivity) {
     /** Horizontal padding of the page in dp (0 for screens that draw edge to edge). */
     protected open val padH: Int = 16
 
+    /** Set by the activity for the five tab pages, which sit above the floating glass navigation. */
+    var inTab = false
+
     /** Fills [c] with the screen's widgets. */
     abstract fun render(c: LinearLayout)
 
@@ -42,7 +45,7 @@ abstract class Screen(val act: UiActivity) {
     fun view(): View {
         root?.let { return it }
         val f = fab()
-        content = ctx.col { setPadding(ctx.dp(padH), ctx.dp(if (padH == 0) 0 else 8), ctx.dp(padH), ctx.dp(if (f != null) 100 else 28)) }
+        content = ctx.col { setPadding(ctx.dp(padH), ctx.dp(if (padH == 0) 0 else 8), ctx.dp(padH), ctx.dp((if (f != null) 100 else 28) + (if (inTab) 90 else 0))) }
         render(content)
         content.staggerChildren()
         fresh = true
@@ -52,15 +55,14 @@ abstract class Screen(val act: UiActivity) {
         val r: View = if (f == null) sv else FrameLayout(ctx).apply {
             addView(sv, FrameLayout.LayoutParams(MATCH, MATCH))
             val button = ctx.row(Gravity.CENTER) {
-                background = ctx.gradient(intArrayOf(P.primary, P.mix(P.primary, P.rose, 0.35f)), 28f)
-                elevation = ctx.dpf(6f)
-                setPadding(ctx.dp(20), 0, ctx.dp(22), 0)
-                add(ctx.icon(R.drawable.ic_add, P.onPrimary, 24), WRAP, WRAP, end = 8)
-                add(ctx.text(f.first, T.Label, P.onPrimary).apply { textSize = 15f }, WRAP, WRAP)
+                background = ctx.glass(GlassKind.Active, 27f)
+                setPadding(ctx.dp(22), 0, ctx.dp(24), 0)
+                add(ctx.icon(R.drawable.ic_add, Glass.TEXT, 22), WRAP, WRAP, end = 8)
+                add(ctx.text(f.first, T.Label, Glass.TEXT).apply { textSize = 15f }, WRAP, WRAP)
                 press { f.second() }
             }
-            addView(button, FrameLayout.LayoutParams(WRAP, ctx.dp(56), Gravity.END or Gravity.BOTTOM).apply {
-                setMargins(0, 0, ctx.dp(16), ctx.dp(20))
+            addView(button, FrameLayout.LayoutParams(WRAP, ctx.dp(54), Gravity.END or Gravity.BOTTOM).apply {
+                setMargins(0, 0, ctx.dp(20), ctx.dp(if (inTab) 102 else 20))
             })
         }
         root = r
@@ -83,24 +85,25 @@ abstract class Screen(val act: UiActivity) {
 
     /** Large page title used by the tab screens. */
     protected fun header(c: LinearLayout, subtitle: String? = null) {
-        c.add(ctx.text(title(), T.Headline), MATCH, WRAP, top = 8)
-        if (!subtitle.isNullOrEmpty()) c.add(ctx.text(subtitle, T.Small), MATCH, WRAP, top = 4, bottom = 8)
-        else c.add(ctx.space(8), MATCH, ctx.dp(8))
+        c.add(ctx.text(title(), T.Headline), MATCH, WRAP, top = 28, start = 8)
+        if (!subtitle.isNullOrEmpty()) c.add(ctx.text(subtitle, T.Small).apply { textSize = 14f }, MATCH, WRAP, top = 4, bottom = 14, start = 8)
+        else c.add(ctx.space(14), MATCH, ctx.dp(14))
     }
 }
 
 /** Wraps a pushed [Screen] with a top bar. */
 fun pageFor(act: UiActivity, s: Screen): FrameLayout {
     val frame = FrameLayout(act)
-    frame.setBackgroundColor(P.surface)
+    frame.addView(GlassBackground(act, false), FrameLayout.LayoutParams(MATCH, MATCH))
     val box = act.col()
     val bar = act.row {
-        setPadding(act.dp(8), act.dp(6), act.dp(16), act.dp(6))
+        setPadding(act.dp(10), act.dp(8), act.dp(16), act.dp(6))
         add(act.row(Gravity.CENTER) {
-            add(act.icon(R.drawable.ic_arrow_back, P.onSurface, 24), WRAP, WRAP)
+            background = act.glass(GlassKind.Base, 22f)
+            add(act.icon(R.drawable.ic_arrow_back, Glass.TEXT, 22), WRAP, WRAP)
             press { act.pop() }
-        }, act.dp(48), act.dp(48))
-        add(act.text(s.title(), T.Title).apply { textSize = 21f }, 0, WRAP, 1f, start = 4)
+        }, act.dp(44), act.dp(44))
+        add(act.text(s.title(), T.Title).apply { textSize = 22f; typeface = glassFont() }, 0, WRAP, 1f, start = 12)
     }
     box.add(bar)
     box.add(s.view(), MATCH, 0, 1f)

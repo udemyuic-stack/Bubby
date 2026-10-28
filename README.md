@@ -5,19 +5,25 @@ listens when you tap it or call its name, and controls the phone by voice: alarm
 messages, music and video, translation, search, tasks and calendar, screen tapping/typing, stickers and more.
 The app speaks English, Uzbek and Russian.
 
+Bubby is also a **phone agent**: from one instruction it can open apps, read the screen, tap, type, scroll and swipe in
+several steps until the task is done, showing each step on the mascot and asking before anything sensitive (sending,
+calling, paying, deleting, installing). See `docs/PHONE-AGENT.md`.
+
 Every user connects their **own free AI key** (Groq first; OpenRouter, Gemini, Anthropic or a custom/Ollama
 server also work) and Bubby falls back automatically between connections. Keys stay on the phone.
 
 ## Layout
 - `app/` – the Android app, plain Kotlin on the Android framework (no Flutter, no AndroidX, no third-party libraries).
   - `app/src/main/kotlin/com/example/buddy/` – the always-on overlay mascot (`BuddyService`, `BuddyView`), the AI harness
-    (`Brain`, `Actions`, `QuickIntent`) and the stores.
+    (`Brain`, `Actions`, `QuickIntent`), the phone agent (`ToolRegistry`, `AgentLoop`, `ProviderFormat`, `Safety`,
+    `ScreenDescriber`, `PhoneAgent`) and the stores.
   - `app/src/main/kotlin/com/example/buddy/ui/` – the app screens (`UiActivity` with tabs, `Screens` registry, one file per screen).
 - `agent-bridge/` – Node bridge that lets you approve Claude Code permission requests from the phone.
 - `ollama-gateway/` – token-protected proxy for a local Ollama (optional).
-- `app/qa-jvm/` – JVM tests for the offline command grammar and contact matching.
+- `app/qa-jvm/` – JVM tests for the offline command grammar, contact matching and the phone agent (fake model, fake phone).
 - `CONTRACT.md` – the interface contract used while the parts were built in parallel (historical).
 - `docs/GROQ-KEY-GUIDE.md` – user guide for getting a free Groq key (uz/ru).
+- `docs/PHONE-AGENT.md` – how the phone agent works: tools, providers, the loop, limits and safety.
 
 ## Build
 ```
@@ -33,3 +39,8 @@ pushes screenshots to the `ci-screenshots` branch. JVM tests: `app/qa-jvm/run.sh
 - The character art is drawn in code; no third-party artwork is used. The agent-bridge protocol idea comes from the
   open-source Coucou project (MIT); none of its assets (character, icon, sounds) are used here.
 - No license has been chosen yet.
+
+## NOTICE
+- Phone side of the agents link v3 (capabilities, session details, answering questions, file diffs): the protocol ideas and
+  message shapes come from Coucou's phone link (https://github.com/louis-cfm/coucou, MIT License, docs/ANDROID_LINK.md).
+  The code is Bubby's own; Coucou's name, character, icons, sounds and media are not used.

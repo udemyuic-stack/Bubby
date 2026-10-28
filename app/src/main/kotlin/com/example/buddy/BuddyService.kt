@@ -102,6 +102,9 @@ class BuddyService : Service() {
     private var lastAsk = ""
     private var lastSpoken = false
     private var lastUntrusted = false
+    @Volatile private var agentCancel: java.util.concurrent.atomic.AtomicBoolean? = null   // set by a tap or "stop" while the agent works
+    private var agentStepping = false                // the agent loop has started acting (progress shown, Stop chip up)
+    private var localApproval = false                // Bubby's own approval card is on the island (the agent waits for it)
     @Volatile private var reqId = 0                 // id of the in-flight ask; late results of older ids are ignored
     private var lastFgRetry = 0L
     private var typeAnim: ValueAnimator? = null
@@ -122,6 +125,9 @@ class BuddyService : Service() {
     private lateinit var approvalHolder: LinearLayout
     private var agentLink: AgentLink? = null
     private val approvals = ArrayList<Approval>()
+    private val questions = ArrayList<AgentQuestion>()
+    /** An approval or a question from the agents waits for the user: the island stays open for it. */
+    private fun waiting() = approvals.isNotEmpty() || questions.isNotEmpty()
     private var holdAnim: ValueAnimator? = null
     private var tapPending: Runnable? = null
     private var hueBase = 0xFF7A6BC4.toInt()
@@ -152,15 +158,16 @@ class BuddyService : Service() {
                     screenOn = true; applyPalette(); buddy.calm = calm()   // the minute clock skips the visuals while the screen is off
                     buddy.setActive(true); hotKick(); tiltStart(); fsPollRestart()
                 }
-                Intent.ACTION_USER_PRESENT -> checkReturn()
+                Intent.ACTION_USER_PRESENT -> { checkReturn(); if (approvals.isEmpty() && questions.isNotEmpty()) showApproval(announce = false) }
             }
         }
     }
-    private val closeTask = Runnable { if (!busy && !calling && approvals.isEmpty() && !choiceActive && !replying) collapse() }
+    private val closeTask = Runnable { if (!busy && !calling && !waiting() && !choiceActive && !replying) collapse() }
 
     private val agentListener = object : AgentLink.Listener {
         override fun onStatus(connected: Boolean, desktop: String?) {
             agentConnected = connected; agentDesktop = desktop
+            agentCaps = if (connected) agentLink?.caps ?: emptySet() else emptySet()
             AgentStats.refreshWidgets(this@BuddyService)
         }
         override fun onSessions(list: List<AgentSession>) { agentSessions = list; AgentStats.refreshWidgets(this@BuddyService) }
@@ -172,9 +179,16 @@ class BuddyService : Service() {
         }
         override fun onApprovalResolved(fp: String) {
             approvals.removeAll { it.fingerprint == fp }
+            questions.removeAll { it.fingerprint == fp }
             publishApprovals()
             showApproval(announce = false)
         }
+        override fun onQuestion(q: AgentQuestion) {
+            if (questions.none { it.fingerprint == q.fingerprint }) questions.add(q)
+            publishApprovals()
+            showApproval(announce = true)
+        }
+        override fun onDiff(d: DiffPart) { agentDiffSink?.invoke(d) }
     }
 
     private lateinit var chipsScroll: HorizontalScrollView
@@ -207,6 +221,17 @@ class BuddyService : Service() {
         @Volatile var agentUsage: Usage? = null
         /** Requests waiting for an answer (the app's agents page lists them; answers go back through ACTION_AGENT_DECIDE). */
         @Volatile var agentApprovals: List<Approval> = emptyList()
+        /** Questions from Claude Code waiting for an answer (answers go back through ACTION_AGENT_ANSWER). */
+        @Volatile var agentQuestions: List<AgentQuestion> = emptyList()
+        /** What the connected bridge offered (`details`, `answers`, `diffs`); empty for an older bridge or offline. */
+        @Volatile var agentCaps: Set<String> = emptySet()
+        /** The open diff sheet: gets each part asked for with ACTION_AGENT_GET_DIFF, or null when it could not be asked. */
+        @Volatile var agentDiffSink: ((DiffPart?) -> Unit)? = null
+        const val ACTION_AGENT_ANSWER = "com.example.buddy.AGENT_ANSWER"
+        const val ACTION_AGENT_LATER = "com.example.buddy.AGENT_LATER"
+        const val ACTION_AGENT_GET_DIFF = "com.example.buddy.AGENT_GET_DIFF"
+        /** Spoken words that stop a running agent task. */
+        private val STOP_WORDS = Regex("\\b(стоп|хватит|отмена|отмени|останови\\w*|stop|cancel|enough|to'?xta\\w*|bas|yetarli|bekor)\\b", RegexOption.IGNORE_CASE)
         const val ACTION_ASK = "com.example.buddy.ASK"
         const val ACTION_TOGGLE_QUIET = "com.example.buddy.TOGGLE_QUIET"
         const val ACTION_AGENT_RELOAD = "com.example.buddy.AGENT_RELOAD"
@@ -310,6 +335,20 @@ class BuddyService : Service() {
             Reminders.ACTION_SPEAK -> remind(i.getStringExtra("text").orEmpty())
             ACTION_AGENT_RELOAD -> startAgentLink()
             ACTION_AGENT_DECIDE -> i.getStringExtra("fp")?.let { fp -> agentLink?.decide(fp, i.getBooleanExtra("allow", false)); resolveLocal(fp) }
+            // the app asked for the screen lock already; picks is a JSON list of label lists, checked again by AgentLink
+            ACTION_AGENT_ANSWER -> i.getStringExtra("fp")?.let { fp ->
+                val picks = try {
+                    val a = org.json.JSONArray(i.getStringExtra("picks").orEmpty())
+                    List(a.length()) { k -> a.getJSONArray(k).let { l -> List(l.length()) { l.getString(it) } } }
+                } catch (_: Exception) { null }
+                if (picks != null && agentLink?.answer(fp, picks) == true) resolveLocal(fp)
+            }
+            ACTION_AGENT_LATER -> i.getStringExtra("fp")?.let { resolveLocal(it) }
+            ACTION_AGENT_GET_DIFF -> {
+                val pill = i.getStringExtra("pill").orEmpty(); val id = i.getStringExtra("file").orEmpty()
+                val file = agentSessions.firstOrNull { it.pillId == pill }?.files?.firstOrNull { it.id == id }
+                if (file == null || agentLink?.getDiff(pill, file) != true) agentDiffSink?.invoke(null)
+            }
             ACTION_LISTEN -> if (!busy && !calling) {
                 cancelTap(); voice.stopSpeaking(); touched()
                 if (voiceOn()) startVoice()
@@ -353,6 +392,8 @@ class BuddyService : Service() {
         }
         sysWm = getSystemService(WINDOW_SERVICE) as WindowManager
         wm = sysWm
+        BuddyAccess.asker = { askScreenConsent() }
+        ClockActions.report = { msg -> h.post { if (msg == null) flashBadge("done", 2500L) else showError(msg) } }
         brain = Brain(this)
         voice = Voice(this, h)
         actions = Actions(this)
@@ -449,6 +490,8 @@ class BuddyService : Service() {
     private fun uiLang(): String {
         val l = prefs.getString("lang", "auto") ?: "auto"
         if (l == "uz" || l == "ru" || l == "en") return l
+        // auto: the language the user spoke last, until they have said anything the phone's language
+        prefs.getString("last_lang", null)?.let { if (it == "uz" || it == "ru" || it == "en") return it }
         return Locale.getDefault().language.let { if (it == "uz" || it == "ru") it else "en" }
     }
 
@@ -489,7 +532,7 @@ class BuddyService : Service() {
         e.apply()
     }
 
-    private fun calm() = !expanded && prog < 0.02f && !busy && !calling && approvals.isEmpty() && screenOn
+    private fun calm() = !expanded && prog < 0.02f && !busy && !calling && !waiting() && screenOn
 
     /** Returns true (and greets) when the user comes back after more than 3 hours without touching the mascot. */
     private fun checkReturn(): Boolean {
@@ -574,7 +617,8 @@ class BuddyService : Service() {
         startFg(true)
     }
 
-    private fun hotWanted() = prefs.getBoolean("hotword", true) && micOk() && screenOn && calm() && !inPhoneCall() &&
+    // while the agent works the wake-word loop also listens for "stop"
+    private fun hotWanted() = prefs.getBoolean("hotword", true) && micOk() && screenOn && (calm() || (busy && agentStepping && !localApproval)) && !inPhoneCall() &&
         SystemClock.elapsedRealtime() >= hotPausedUntil && !voice.talking && !voice.listening && holdAnim == null
 
     private fun hotKick() {
@@ -612,7 +656,13 @@ class BuddyService : Service() {
                 return
             }
         }
-        if (text != null) {
+        if (text != null && busy && agentStepping) {
+            if (text.split('|').any { STOP_WORDS.containsMatchIn(it) }) {
+                hotStop(); cancelAsk()
+                status.text = t("Остановился", "Stopped", "To'xtadim")
+                return
+            }
+        } else if (text != null) {
             // hypotheses are separated by " | "
             for (hyp in text.split('|')) {
                 val rest = wakeMatch(hyp)
@@ -737,7 +787,7 @@ class BuddyService : Service() {
             addView(chipsScroll, LinearLayout.LayoutParams(-1, -2).apply { topMargin = dp(8) })
             addView(approvalHolder, LinearLayout.LayoutParams(-1, -2).apply { topMargin = dp(8) })
             elevation = 0f   // collapsed: the mascot floats freely, no box and no square shadow around its head
-            canPet = { !expanded && prog < 0.05f && !busy && !calling && approvals.isEmpty() }
+            canPet = { !expanded && prog < 0.05f && !busy && !calling && !waiting() }
             onPet = { petMascot() }
             // eyes follow the finger while it touches the mascot; coordinates are converted into the mascot's own space
             onTouchAt = { x, y ->
@@ -1203,15 +1253,17 @@ class BuddyService : Service() {
 
     private fun startAgentLink() {
         agentLink?.stop(); agentLink = null
-        approvals.clear(); showApproval(announce = false)
-        agentConnected = false; agentDesktop = null; agentSessions = emptyList(); AgentStats.refreshWidgets(this)
+        approvals.clear(); questions.clear(); publishApprovals(); showApproval(announce = false)
+        agentConnected = false; agentDesktop = null; agentSessions = emptyList(); agentCaps = emptySet(); AgentStats.refreshWidgets(this)
         if (PairingStore(this).load() == null) return
         agentLink = AgentLink(this, agentListener).also { it.start() }
     }
 
     private fun showApproval(announce: Boolean) {
+        if (localApproval) return   // Bubby's own card is up; the agent-link card comes back when it is answered
         approvalHolder.removeAllViews()
         val a = approvals.firstOrNull()
+        if (a == null && questions.isNotEmpty()) { showQuestion(questions.first(), announce); return }
         if (a == null) {
             approvalHolder.visibility = View.GONE
             if (!busy && !calling && !listeningNow()) h.postDelayed(closeTask, 1500)
@@ -1236,9 +1288,39 @@ class BuddyService : Service() {
         focusable(false)
     }
 
-    private fun resolveLocal(fp: String) { approvals.removeAll { it.fingerprint == fp }; publishApprovals(); showApproval(announce = false) }
+    /** A question from Claude Code on the island: like an approval, the mascot is surprised, flashes and says so. */
+    private fun showQuestion(q: AgentQuestion, announce: Boolean) {
+        h.removeCallbacks(closeTask)
+        voice.stopListening()
+        val locked = getSystemService(KeyguardManager::class.java).isKeyguardLocked
+        style(true); status.text = t("У Claude вопрос", "Claude has a question", "Claude'da savol bor"); setMode("surprised"); setWave(WaveView.NONE)
+        hide(input); hide(answer)
+        approvalHolder.addView(QuestionCard.build(this, q, locked, onSend = { picks ->
+            ConfirmActivity.requestAnswer(this) { ok ->
+                if (ok && agentLink?.answer(q.fingerprint, picks) == true) resolveLocal(q.fingerprint)
+                else if (questions.any { it.fingerprint == q.fingerprint }) {
+                    showApproval(announce = false)   // a fresh card: the picks can be made again
+                    status.text = if (ok) t("Ответ не отправлен", "The answer was not sent", "Javob yuborilmadi") else t("Нужен экран блокировки", "Lock screen required", "Ekran qulfi kerak")
+                }
+            }
+        }, onLater = { resolveLocal(q.fingerprint) }))
+        approvalHolder.alpha = 1f; approvalHolder.visibility = View.VISIBLE
+        if (announce) {
+            flashBadge("approval", 6000L)
+            if (ttsOn() && !locked) {
+                val l = uiLang()
+                say(when (l) { "uz" -> "Claude'da savol bor"; "ru" -> "У Claude вопрос"; else -> "Claude has a question" }, l) {}
+            }
+        }
+        focusable(false)
+    }
 
-    private fun publishApprovals() { agentApprovals = approvals.toList(); AgentStats.refreshWidgets(this) }
+    private fun resolveLocal(fp: String) {
+        approvals.removeAll { it.fingerprint == fp }; questions.removeAll { it.fingerprint == fp }
+        publishApprovals(); showApproval(announce = false)
+    }
+
+    private fun publishApprovals() { agentApprovals = approvals.toList(); agentQuestions = questions.toList(); AgentStats.refreshWidgets(this) }
 
     private fun sListen() = t("Слушаю…", "Listening…", "Eshityapman…")
     private fun listeningNow() = status.text.toString() == sListen()
@@ -1280,7 +1362,7 @@ class BuddyService : Service() {
 
     private fun showCoach() {
         if (prefs.getBoolean("coach_done", false)) return
-        if (calling || busy || expanded || approvals.isNotEmpty()) { h.postDelayed({ showCoach() }, 15000); return }
+        if (calling || busy || expanded || waiting()) { h.postDelayed({ showCoach() }, 15000); return }
         prefs.edit().putBoolean("coach_done", true).apply()
         h.removeCallbacks(closeTask)
         style(true); status.text = t("Привет, я Bubby!", "Hi, I'm Bubby!", "Salom, men Bubby!"); setMode("excited"); setWave(WaveView.NONE)
@@ -1303,7 +1385,7 @@ class BuddyService : Service() {
         when {
             calling -> {}
             expanded && busy -> { touched(); cancelAsk() }
-            expanded -> { touched(); if (!busy && approvals.isEmpty() && pendingRun == null) collapse() }
+            expanded -> { touched(); if (!busy && !waiting() && pendingRun == null) collapse() }
             tapPending != null -> { cancelTap(); touched(); addAff(-3f); buddy.spinHead() }
             else -> {
                 // wait out the double-tap window before starting the voice session
@@ -1376,6 +1458,9 @@ class BuddyService : Service() {
 
     /** The user tapped the mascot while an ask is in flight: forget it (its late result is ignored) and close. */
     private fun cancelAsk() {
+        agentCancel?.set(true)
+        if (localApproval) { localApproval = false; approvalHolder.visibility = View.GONE; approvalHolder.removeAllViews() }
+        if (agentStepping) { agentStepping = false; hide(chipsScroll) }
         reqId++
         h.removeCallbacks(askDeadline)
         busy = false
@@ -1420,9 +1505,12 @@ class BuddyService : Service() {
         }
         val alts = if (spoken) voice.lastAlternatives else emptyList()
         h.postDelayed(askDeadline, 90_000L)
+        BuddyAccess.newRun(text)
+        val cancel = java.util.concurrent.atomic.AtomicBoolean(false)
+        agentCancel = cancel; agentStepping = false
         Thread {
             val r = try {
-                Result.success(brain.ask(text, spoken, alts, exec = { a -> if (id != reqId) cancelledText() else runOnMainBlocking(a) }, untrusted = untrusted))
+                Result.success(brain.ask(text, spoken, alts, host = PhoneHost(this, agentUi(id, cancel), text), untrusted = untrusted))
             } catch (e: Throwable) { Result.failure(e) }
             h.post {
                 if (id == reqId) { h.removeCallbacks(askDeadline); finish(r) }
@@ -1430,7 +1518,95 @@ class BuddyService : Service() {
         }.start()
     }
 
+    /** Asks the user, on the island, whether Bubby may read the screen for this task. Blocks the worker thread up to 30 s. */
+    private fun askScreenConsent(): Boolean {
+        val latch = java.util.concurrent.CountDownLatch(1)
+        var yes = false
+        fun answer(ok: Boolean) { if (latch.count == 0L) return; yes = ok; latch.countDown(); approvalHolder.visibility = View.GONE; approvalHolder.removeAllViews(); setMode("think") }
+        h.post {
+            voice.stopListening()
+            style(true); status.text = t("Можно посмотреть экран?", "May I look at the screen?", "Ekranga qarasam bo'ladimi?"); setMode("curious"); setWave(WaveView.NONE)
+            hide(input); hide(answer)
+            approvalHolder.removeAllViews()
+            val a = Approval("screen-consent", "screen-consent", t("Чтение экрана", "Reading the screen", "Ekranni o'qish"),
+                t("Для этой задачи Bubby нужно прочитать текст на экране. Банковские и платёжные приложения он не читает никогда.",
+                    "For this task Bubby needs to read the text on your screen. He never reads banking and payment apps.",
+                    "Bu vazifa uchun Bubby ekrandagi matnni o'qishi kerak. Bank va to'lov ilovalarini hech qachon o'qimaydi."), System.currentTimeMillis(), false)
+            approvalHolder.addView(ApprovalCard.build(this, a, false, onAllow = { answer(true) }, onDeny = { answer(false) }))
+            approvalHolder.alpha = 1f; approvalHolder.visibility = View.VISIBLE
+            focusable(false)
+        }
+        val got = try { latch.await(30, java.util.concurrent.TimeUnit.SECONDS) } catch (_: InterruptedException) { false }
+        if (!got) h.post { answer(false) }
+        return got && yes
+    }
+
     private fun cancelledText() = t("Отменено", "Cancelled", "Bekor qilindi")
+
+    /** The agent loop's view of the island: progress text, the Stop chip, approvals, actions on the main thread. */
+    private fun agentUi(id: Int, cancel: java.util.concurrent.atomic.AtomicBoolean) = object : AgentUi {
+        override fun cancelled() = cancel.get() || id != reqId || !running
+        override fun progress(label: String) {
+            h.post {
+                if (id != reqId || !busy || !running) return@post
+                // each step proves the run is alive: the deadline moves with it (the loop has its own 4 min budget)
+                h.removeCallbacks(askDeadline); h.postDelayed(askDeadline, 90_000L)
+                if (!agentStepping) {
+                    agentStepping = true
+                    showActionChip(t("Стоп", "Stop", "To'xtat")) { cancelAsk() }
+                    hotKick()
+                }
+                status.text = label.take(40)
+                setMode("think"); setWave(WaveView.THINK)
+            }
+        }
+        override fun approve(req: ApprovalReq): Boolean = if (cancelled()) false else askApproval(req, cancel)
+        override fun runAction(a: JSONObject): String? = if (cancelled()) cancelledText() else runOnMainBlocking(a)
+    }
+
+    /** Shows Bubby's own approval card for one agent action and blocks the worker until the user answers (60 s = no). */
+    private fun askApproval(req: ApprovalReq, cancel: java.util.concurrent.atomic.AtomicBoolean): Boolean {
+        val latch = java.util.concurrent.CountDownLatch(1)
+        var yes = false
+        fun answer(ok: Boolean) {
+            if (latch.count == 0L) return
+            yes = ok; latch.countDown()
+            localApproval = false
+            approvalHolder.visibility = View.GONE; approvalHolder.removeAllViews()
+            if (busy) { setMode("think"); status.text = t("Думаю…", "Thinking…", "O'ylayapman…") }
+            if (approvals.isNotEmpty()) showApproval(announce = false)
+        }
+        h.post {
+            if (!running || cancel.get()) { answer(false); return@post }
+            voice.stopListening()
+            localApproval = true
+            h.removeCallbacks(askDeadline); h.postDelayed(askDeadline, 120_000L)
+            style(true); status.text = t("Подтвердите", "Please confirm", "Tasdiqlang"); setMode("surprised"); setWave(WaveView.NONE)
+            flashBadge("approval", 60_000L)
+            hide(input); hide(answer)
+            approvalHolder.removeAllViews()
+            val a = Approval("bubby-agent", "bubby-agent", req.title, req.detail, System.currentTimeMillis(), false)
+            approvalHolder.addView(ApprovalCard.build(this, a, false, onAllow = {
+                if (req.lock) ConfirmActivity.request(this) { ok ->
+                    if (!ok) status.text = t("Нужен экран блокировки", "Lock screen required", "Ekran qulfi kerak")
+                    answer(ok)
+                } else answer(true)
+            }, onDeny = { answer(false) }, riskLevel = if (req.lock) IslandUi.RISK_HIGH else IslandUi.RISK_MID))
+            approvalHolder.alpha = 1f; approvalHolder.visibility = View.VISIBLE
+            focusable(false)
+            if (ttsOn()) say(req.title, uiLang()) {}
+        }
+        var got = false
+        val until = System.currentTimeMillis() + 60_000L
+        try {
+            while (!got && System.currentTimeMillis() < until) {
+                got = latch.await(250, java.util.concurrent.TimeUnit.MILLISECONDS)
+                if (!got && cancel.get()) break
+            }
+        } catch (_: InterruptedException) { }
+        if (!got) h.post { answer(false) }
+        return got && yes
+    }
 
     /** Runs an action; a new `message` is refused while another one is still counting down. */
     private fun runAction(a: JSONObject): String? {
@@ -1457,6 +1633,9 @@ class BuddyService : Service() {
         if (!running) return
         busy = false
         h.removeCallbacks(askDeadline)
+        BuddyAccess.endRun()
+        agentCancel = null
+        if (agentStepping) { agentStepping = false; chipsRow.removeAllViews(); hide(chipsScroll) }
         if (calling) return
         r.onSuccess { reply ->
             val emo = reply.emotion
@@ -1493,7 +1672,7 @@ class BuddyService : Service() {
             setAnswer(shown, !failed); if (shown.isBlank()) hide(answer) else show(answer)
             if (!failed) inlineStickers.lastOrNull()?.let { showInlineSticker(it.first, it.second) }
             if (!failed && !hadSticker && !lastReplyHadSticker && prefs.getBoolean("sticker_auto", true) && emo in AUTO_STICKER_MOODS &&
-                reply.say.length <= 160 && !calling && approvals.isEmpty() && Random.nextFloat() < 0.35f) {
+                reply.say.length <= 160 && !calling && !waiting() && Random.nextFloat() < 0.35f) {
                 hadSticker = true
                 showInlineSticker(emo, "")
             }
@@ -1924,7 +2103,7 @@ class BuddyService : Service() {
     }
 
     // ---- quiet mode + fullscreen auto-hide ----------------------------------------------------------------------
-    private fun mustShow() = wakeShow || calling || approvals.isNotEmpty()
+    private fun mustShow() = wakeShow || calling || waiting()
 
     /** Shows or hides the whole overlay; hidden means invisible, alpha 0 and click-through. Mic / wake-word keep running. */
     private fun applyHidden() {
@@ -2037,6 +2216,8 @@ class BuddyService : Service() {
     override fun onDestroy() {
         tiltStop()
         running = false
+        BuddyAccess.asker = null
+        ClockActions.report = null
         hotStop()
         try { unregisterReceiver(screenRx) } catch (_: Exception) {}
         holdAnim?.cancel(); holdAnim = null

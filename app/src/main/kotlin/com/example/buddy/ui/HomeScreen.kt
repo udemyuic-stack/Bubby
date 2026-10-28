@@ -3,7 +3,10 @@ package com.example.buddy.ui
 import android.graphics.drawable.GradientDrawable
 import android.view.Gravity
 import android.view.View
+import android.view.ViewGroup
+import android.widget.FrameLayout
 import android.widget.LinearLayout
+import com.example.buddy.Tr
 import com.example.buddy.BuddyView
 import com.example.buddy.Outfits
 import com.example.buddy.R
@@ -21,32 +24,6 @@ class HomeScreen(act: UiActivity) : Screen(act) {
     override fun title() = "Bubby"
     override fun onShow() { reshow() }
     override fun onPermissionResult() { refresh() }
-
-    private fun heroBackground(): GradientDrawable {
-        val c = Calendar.getInstance()
-        val h = c.get(Calendar.HOUR_OF_DAY); val m = c.get(Calendar.MINUTE)
-        val accentLight = P.accentLight(h, m)
-        val deep = android.graphics.Color.HSVToColor(floatArrayOf(P.hourHue(h, m), 0.75f, 0.55f))
-        val inner = if (P.dark) P.mix(0xFF4B2F6B.toInt(), deep, 0.55f) else P.mix(0xFFFFD8AE.toInt(), accentLight, 0.7f)
-        val outer = if (P.dark) P.mix(0xFF1E1736.toInt(), deep, 0.15f) else P.mix(0xFFFFF1E2.toInt(), accentLight, 0.18f)
-        return GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, intArrayOf(inner, outer)).apply {
-            gradientType = GradientDrawable.RADIAL_GRADIENT
-            setGradientCenter(0.5f, 0.4f)
-            gradientRadius = ctx.dpf(360f)
-            val r = ctx.dpf(40f)
-            cornerRadii = floatArrayOf(0f, 0f, 0f, 0f, r, r, r, r)
-        }
-    }
-
-    private fun startButtonBackground(running: Boolean): GradientDrawable {
-        val colors = if (running) intArrayOf(0xFF8D7FD6.toInt(), 0xFF5A4BA6.toInt())
-        else {
-            val c = Calendar.getInstance()
-            val a = P.accent(c.get(Calendar.HOUR_OF_DAY), c.get(Calendar.MINUTE))
-            intArrayOf(P.mix(a, 0xFFFFFFFF.toInt(), 0.28f), a, P.mix(a, 0xFFEE7BA3.toInt(), 0.35f))
-        }
-        return ctx.gradient(colors, 34f)
-    }
 
     private fun toggle() {
         if (busy) return
@@ -78,41 +55,51 @@ class HomeScreen(act: UiActivity) : Screen(act) {
         if (perms["mic"] != true) micPoked = false
         if (firstShow) { firstShow = false; if (missing && !act.intent.getBooleanExtra("static", false)) content.post { act.open("setup") } }
 
-        // ---- hero ----
-        val hero = ctx.col {
-            gravity = Gravity.CENTER_HORIZONTAL
-            background = heroBackground()
-            setPadding(0, ctx.dp(20), 0, ctx.dp(24))
+        // ---- the glass scene: island, mascot, core and the fan of petals (laid out on a 390-wide grid) ----
+        val still = act.intent.getBooleanExtra("static", false)
+        val sc = ctx.resources.displayMetrics.widthPixels / 390f
+        val scene = DesignCanvas(ctx, 668).apply { clipChildren = false; clipToPadding = false }
+        val mascot = MochiView(ctx)
+        val nameV = ctx.text("Bubby", T.Headline, 0xFFF4F1EE.toInt()).apply {
+            setTextSize(android.util.TypedValue.COMPLEX_UNIT_PX, 30f * sc); gravity = Gravity.CENTER
         }
-        val buddy = BuddyView(ctx).apply {
-            scaleF = 2.1f
-            species = Backend.str(ctx, "species", "cat")
-            outfit = Outfits.parse(Backend.str(ctx, "outfit", ""))
-            mood = if (running) "happy" else "sleepy"
-            // `--ez static true` (CI screenshots on a slow emulator) keeps the mascot still
-            setActive(!act.intent.getBooleanExtra("static", false))
-            setOnClickListener { pet() }
+        val statusV = ctx.row(Gravity.CENTER) {
+            background = ctx.rounded(Glass.white(.14f), 20f, Glass.white(.3f))
+            setPadding((14 * sc).toInt(), (6 * sc).toInt(), (14 * sc).toInt(), (6 * sc).toInt())
+            add(DotView(ctx, if (running || Theme.cur.id != "glass") Glass.OK else 0xFFA3A9C9.toInt()), (9 * sc).toInt(), (9 * sc).toInt(), end = (8 * sc).toInt())
+            add(ctx.text(if (running) t("Помощник работает", "Assistant is on", "Yordamchi ishlayapti") else t("Помощник выключен", "Assistant is off", "Yordamchi o'chiq"), T.Small, 0xFFF1ECEA.toInt())
+                .apply { setTextSize(android.util.TypedValue.COMPLEX_UNIT_PX, 12f * sc) }, WRAP, WRAP)
         }
-        hero.add(buddy, WRAP, WRAP)
-        hero.add(ctx.text("Bubby", T.Headline), WRAP, WRAP, top = 10)
-        hero.add(
-            ctx.pill(
-                if (running) t("Помощник работает", "Assistant is on", "Yordamchi ishlayapti") else t("Помощник выключен", "Assistant is off", "Yordamchi o'chiq"),
-                if (running) P.success else P.outline
-            ), WRAP, WRAP, top = 8
-        )
-        c.add(hero)
-
-        // ---- start / stop ----
-        val start = ctx.row(Gravity.CENTER) {
-            background = startButtonBackground(running)
-            alpha = if (busy) 0.6f else 1f
-            val fg = if (running) 0xFFFFFFFF.toInt() else P.ink
-            add(ctx.icon(if (running) R.drawable.ic_stop else R.drawable.ic_play, fg, 34), WRAP, WRAP, end = 10)
-            add(ctx.text(if (running) t("Остановить", "Stop", "To'xtatish") else t("Запустить", "Start", "Ishga tushirish"), T.Title, fg).apply { textSize = 20f }, WRAP, WRAP)
-            press { toggle() }
+        val statusBox = FrameLayout(ctx).apply { addView(statusV, FrameLayout.LayoutParams(WRAP, WRAP, Gravity.CENTER_HORIZONTAL)) }
+        val island = Island(ctx, sc, still, { txt -> send(txt) }) { open ->
+            // with the island open the mascot steps back: smaller and lower (scale .68, top 134)
+            val k = if (open) .68f else 1f
+            mascot.pivotX = mascot.width / 2f; mascot.pivotY = 0f
+            mascot.animate().scaleX(k).scaleY(k).translationY(if (open) 68f * sc else 0f).setDuration(220).start()
+            nameV.animate().translationY(if (open) 24f * sc else 0f).setDuration(220).start()
+            statusBox.animate().translationY(if (open) 24f * sc else 0f).setDuration(220).start()
         }
-        c.add(start, MATCH, ctx.dp(68), top = 24, start = 20, end = 20)
+        scene.put(island, 0f, 0f, 390f, 134f)
+        scene.put(mascot, 110f, 66f, 170f, 136f)
+        scene.put(nameV, 0f, 204f, 390f, 40f)
+        scene.put(statusBox, 0f, 250f, 390f, 32f)
+        scene.put(CollarView(ctx, sc), 0f, 380f, 390f, 140f)
+        fun petal(kind: GlassKind, icon: Int, label: String, l: Float, tp: Float, w: Float, h: Float, ang: Float, tc: Int, size: Int = 12, bold: Boolean = false, go: () -> Unit) {
+            scene.put(PetalView(ctx, kind, icon, label, ang, tc, size, bold, sc).apply { press(go) }, l, tp, w, h)
+        }
+        petal(GlassKind.Mid, R.drawable.tg_hand, t("Проверить:\nпривет", "Test:\nhello", "Tekshirish:\nsalom"), 186f, 310f, 104f, 112f, -6f, 0xFFFFFFFF.toInt()) { send(t("Привет!", "Hello!", "Salom!")) }
+        petal(GlassKind.Dim, R.drawable.tg_check, t("Задачи", "Tasks", "Vazifalar"), 44f, 459f, 104f, 112f, -28f, Glass.TEXT_LABEL) { act.showTab(1) }
+        petal(GlassKind.Dim, R.drawable.tg_apps, t("Ещё", "More", "Yana"), 246f, 459f, 104f, 112f, 28f, Glass.TEXT_LABEL) { act.showTab(4) }
+        petal(GlassKind.Dim, R.drawable.tg_cal, t("Календарь", "Calendar", "Kalendar"), 100f, 524f, 104f, 112f, -8f, Glass.TEXT_LABEL) { act.showTab(2) }
+        petal(GlassKind.Dim, R.drawable.tg_gear, t("Настройки", "Settings", "Sozlamalar"), 184f, 524f, 104f, 112f, 8f, Glass.TEXT_LABEL) { act.showTab(3) }
+        scene.put(CoreView(ctx, sc), 171f, 448f, 44f, 44f)
+        petal(GlassKind.Active, if (running) R.drawable.tg_stop else R.drawable.tg_play, if (running) t("Остановить", "Stop", "To'xtatish") else t("Запустить", "Start", "Ishga tushirish"),
+            237f, 379f, 116f, 106f, 12f, Glass.TEXT, 13, true) { toggle() }
+        scene.alpha = if (busy) 0.7f else 1f
+        mascot.setOnClickListener {
+            if (!still) android.animation.ValueAnimator.ofFloat(0f, 1f, 0f).apply { duration = 260; addUpdateListener { mascot.squash = it.animatedValue as Float } }.start()
+        }
+        c.add(scene)
 
         // ---- cards ----
         if (!hasAi) {
@@ -151,6 +138,24 @@ class HomeScreen(act: UiActivity) : Screen(act) {
             }, MATCH, WRAP, top = 16, start = 16, end = 16)
         }
 
+        // ---- the last task Bubby did on the phone ----
+        com.example.buddy.RunHistory.load(ctx).firstOrNull()?.let { r ->
+            c.add(ctx.card(onClick = { act.open("runs") }) {
+                add(ctx.row {
+                    add(ctx.icon(R.drawable.ic_schedule, P.primary, 26), WRAP, WRAP, end = 12)
+                    add(ctx.col {
+                        add(ctx.text(t("Последняя задача: ", "Last task: ", "Oxirgi vazifa: ") + r.task.take(60), T.Label).apply { maxLines = 2 }, MATCH, WRAP)
+                        val res = when (r.outcome) {
+                            "done" -> t("готово", "done", "bajarildi"); "cancelled" -> t("остановлено", "stopped", "to'xtatildi")
+                            "stuck" -> t("застрял", "got stuck", "tiqilib qoldi"); else -> t("слишком долго", "took too long", "juda uzoq")
+                        }
+                        add(ctx.text(t("шагов: ", "steps: ", "qadamlar: ") + r.steps.size + "  ·  " + res + "  ·  " + t("посмотреть, что сделал Bubby", "see what Bubby did", "Bubby nima qilganini ko'rish"), T.Small), MATCH, WRAP, top = 2)
+                    }, 0, WRAP, 1f)
+                    add(ctx.icon(R.drawable.ic_chevron_right, P.onSurfaceVariant, 22), WRAP, WRAP)
+                })
+            }, MATCH, WRAP, top = 16, start = 16, end = 16)
+        }
+
         // ---- agents on the computer (only when a computer is paired) ----
         if (com.example.buddy.PairingStore(ctx).isPaired()) {
             val st = com.example.buddy.AgentWidgets.overall()
@@ -160,7 +165,11 @@ class HomeScreen(act: UiActivity) : Screen(act) {
                     add(View(ctx).apply { background = ctx.rounded(com.example.buddy.AgentWidgets.color(st), 6f) }, ctx.dp(12), ctx.dp(12), end = 12)
                     add(ctx.col {
                         add(ctx.text(t("Агенты: ", "Agents: ", "Agentlar: ") + com.example.buddy.AgentWidgets.title(ctx, st), T.Label), MATCH, WRAP)
+                        val n = com.example.buddy.BuddyService.agentSessions.size
+                        val q = com.example.buddy.BuddyService.agentQuestions.size
                         val bits = listOfNotNull(
+                            if (n > 0) t("агентов: $n", "agents: $n", "agentlar: $n") else null,
+                            if (q > 1) t("вопросов: $q", "questions: $q", "savollar: $q") else null,
                             u?.fiveHour?.let { "5 h: ${(it * 100).toInt()}%" },
                             u?.sevenDay?.let { "7 d: ${(it * 100).toInt()}%" },
                             u?.doneToday?.let { t("сегодня: $it", "today: $it", "bugun: $it") }
@@ -173,21 +182,19 @@ class HomeScreen(act: UiActivity) : Screen(act) {
         }
 
         // ---- status ----
+        fun label(txt: String) = ctx.text(txt.uppercase(), T.Small, Glass.TEXT_LABEL).apply { textSize = 13f; letterSpacing = 0.12f }
         val pad = LinearLayout(ctx).apply { orientation = LinearLayout.VERTICAL }
-        pad.add(ctx.section(t("Состояние", "Status", "Holat"), R.drawable.ic_info))
+        pad.add(label(t("Состояние", "Status", "Holat")), MATCH, WRAP, bottom = 10, start = 4)
         val pills = com.example.buddy.ui.FlowLayout(ctx)
-        fun level(l: Int) = when (l) { 2 -> P.success; 1 -> P.warning; else -> P.error }
+        fun level(l: Int) = when (l) { 2 -> Glass.OK; 1 -> P.warning; else -> P.error }
         pills.addView(ctx.pill(t("ИИ", "AI", "AI"), level(if (hasAi) 2 else 0)) { act.open("ai") })
         pills.addView(ctx.pill(t("Микрофон", "Microphone", "Mikrofon"), level(if (perms["mic"] == true) 2 else 0)) {
             if (perms["mic"] != true) Backend.requestPermissions(act, "mic")
         })
         pills.addView(ctx.pill(t("Не засыпать", "Stay awake", "Uxlamaslik"), level(if (Backend.batteryIgnored(ctx)) 2 else 1)) { Backend.openSettings(act, "battery") })
         pad.add(pills)
-        pad.add(ctx.button(t("Проверить: скажите привет", "Test: say hello", "Tekshirish: salom deng"), BtnStyle.Tonal, R.drawable.ic_mic) {
-            send(t("Привет!", "Hello!", "Salom!"))
-        }, MATCH, WRAP, top = 12)
 
-        pad.add(ctx.section(t("Что можно сказать", "What you can say", "Nima deyish mumkin"), R.drawable.ic_mic))
+        pad.add(label(t("Что можно сказать", "What you can say", "Nima deyish mumkin")), MATCH, WRAP, top = 20, bottom = 10, start = 4)
         val hints = com.example.buddy.ui.FlowLayout(ctx)
         for (h in listOf(
             t("поставь будильник на 7", "set an alarm for 7", "soat 7 ga budilnik qo'y"),
@@ -197,14 +204,130 @@ class HomeScreen(act: UiActivity) : Screen(act) {
             t("будь весёлым", "be cheerful", "quvnoq bo'l")
         )) {
             hints.addView(ctx.row(Gravity.CENTER_VERTICAL) {
-                setPadding(ctx.dp(14), ctx.dp(11), ctx.dp(14), ctx.dp(11))
-                background = ctx.rounded(P.secondaryContainer, 22f)
-                add(ctx.icon(R.drawable.ic_mic, P.violet, 18), WRAP, WRAP, end = 8)
-                add(ctx.text("«$h»", T.Body, P.onSecondaryContainer), WRAP, WRAP)
+                setPadding(ctx.dp(18), ctx.dp(11), ctx.dp(18), ctx.dp(11))
+                background = ctx.glass(GlassKind.Base, 30f)
+                add(ctx.icon(R.drawable.tg_mic, Glass.TEXT, 16), WRAP, WRAP, end = 8)
+                add(ctx.text("«$h»", T.Body, Glass.TEXT).apply { textSize = 14f }, WRAP, WRAP)
                 press { send(h) }
             })
         }
         pad.add(hints)
-        c.add(pad, MATCH, WRAP, start = 16, end = 16)
+        c.add(pad, MATCH, WRAP, start = 20, end = 20, bottom = 28)
+    }
+}
+
+/** The thin curved collar line around the core. */
+class CollarView(c: android.content.Context, private val sc: Float) : View(c) {
+    private val line = android.graphics.Paint(android.graphics.Paint.ANTI_ALIAS_FLAG).apply {
+        style = android.graphics.Paint.Style.STROKE; color = Glass.white(.45f); strokeWidth = 1.5f * sc
+    }
+    private val shade = android.graphics.Paint(android.graphics.Paint.ANTI_ALIAS_FLAG).apply {
+        style = android.graphics.Paint.Style.STROKE; color = android.graphics.Color.argb(89, 120, 140, 170); strokeWidth = 6f * sc
+        strokeCap = android.graphics.Paint.Cap.ROUND; maskFilter = android.graphics.BlurMaskFilter(3f * sc, android.graphics.BlurMaskFilter.Blur.NORMAL)
+    }
+    init { setLayerType(LAYER_TYPE_SOFTWARE, null) }
+    override fun onDraw(cv: android.graphics.Canvas) {
+        cv.scale(sc, sc)
+        val p = android.graphics.Path().apply { moveTo(60f, 70f); cubicTo(100f, 120f, 160f, 112f, 193f, 90f); cubicTo(230f, 105f, 290f, 100f, 330f, 60f) }
+        val q = android.graphics.Path().apply { moveTo(60f, 70f); cubicTo(100f, 125f, 160f, 118f, 193f, 96f) }
+        shade.strokeWidth = 6f; line.strokeWidth = 1.5f
+        cv.drawPath(q, shade)
+        cv.drawPath(p, line)
+    }
+}
+
+/** The glowing core in the middle of the fan. */
+class CoreView(c: android.content.Context, private val sc: Float) : View(c) {
+    private val p = android.graphics.Paint(android.graphics.Paint.ANTI_ALIAS_FLAG)
+    override fun onDraw(cv: android.graphics.Canvas) {
+        val cx = width / 2f; val cy = height / 2f
+        p.shader = android.graphics.RadialGradient(cx, cy, 22f * sc, intArrayOf(0xFFFFFFFF.toInt(), Glass.white(.7f), Glass.white(0f)), floatArrayOf(.25f / .72f, .5f / .72f, 1f), android.graphics.Shader.TileMode.CLAMP)
+        cv.drawCircle(cx, cy, 22f * sc, p)
+        p.shader = android.graphics.RadialGradient(cx, cy, 24f * sc, intArrayOf(Glass.white(.95f), Glass.white(.95f), Glass.white(0f)), floatArrayOf(0f, 11f / 24f, 1f), android.graphics.Shader.TileMode.CLAMP)
+        cv.drawCircle(cx, cy, 24f * sc, p)
+        p.shader = null; p.color = 0xFFFFFFFF.toInt()
+        cv.drawCircle(cx, cy, 11f * sc, p)
+    }
+}
+
+/** The app's own top panel: a capsule that opens into a text field ("Пишите…"). */
+class Island(c: android.content.Context, private val sc: Float, private val still: Boolean, private val onSend: (String) -> Unit, private val onToggle: (Boolean) -> Unit) : FrameLayout(c) {
+    private var open = false
+    private val capsule = LinearLayout(c).apply { orientation = LinearLayout.VERTICAL }
+    private val field = android.widget.EditText(c)
+
+    init {
+        clipChildren = false
+        layoutTransition = if (still) null else android.animation.LayoutTransition()
+        addView(capsule)
+        build()
+    }
+
+    private fun u(v: Float) = (v * sc).toInt()
+
+    private fun bars(): View = LinearLayout(context).apply {
+        orientation = LinearLayout.HORIZONTAL; gravity = Gravity.CENTER_VERTICAL
+        for ((i, h) in listOf(8, 14, 20, 12, 22, 16, 9).withIndex()) {
+            addView(View(context).apply { background = context.rounded(Glass.white(.7f), 1.5f) }, LinearLayout.LayoutParams(u(3f), u(h.toFloat())).apply { if (i > 0) leftMargin = u(3f) })
+        }
+    }
+
+    private fun build() {
+        capsule.removeAllViews()
+        val d = context
+        capsule.background = GlassDrawable(GlassKind.Mid, if (open) 30f else 23f, null, true, sc)
+        val top = LinearLayout(d).apply { orientation = LinearLayout.HORIZONTAL; gravity = Gravity.CENTER_VERTICAL }
+        top.addView(MochiView(d, false).apply { mini = true }, LinearLayout.LayoutParams(u(34f), u(28f)))
+        if (open) {
+            top.addView(d.text(Tr.t(d, "Пишите…", "Write…", "Yozing…"), T.Body, 0xFFFFFFFF.toInt()).apply { setTextSize(android.util.TypedValue.COMPLEX_UNIT_PX, 17f * sc) },
+                LinearLayout.LayoutParams(0, WRAP, 1f).apply { leftMargin = u(12f) })
+        } else top.addView(View(d), LinearLayout.LayoutParams(0, 1, 1f))
+        top.addView(bars(), LinearLayout.LayoutParams(WRAP, u(24f)))
+        top.setOnClickListener { toggle() }
+        capsule.addView(top, LinearLayout.LayoutParams(MATCH, if (open) u(30f) else MATCH))
+        if (open) {
+            val row = LinearLayout(d).apply {
+                orientation = LinearLayout.HORIZONTAL; gravity = Gravity.CENTER_VERTICAL
+                background = d.rounded(Glass.white(.13f), 18f * sc / d.resources.displayMetrics.density, Glass.white(.4f))
+                setPadding(u(16f), 0, u(6f), 0)
+            }
+            field.apply {
+                background = null; hint = Tr.t(d, "Спросите…", "Ask…", "So'rang…")
+                setHintTextColor(Glass.white(.75f)); setTextColor(0xFFFFFFFF.toInt()); typeface = glassFont()
+                setTextSize(android.util.TypedValue.COMPLEX_UNIT_PX, 17f * sc); setSingleLine(); imeOptions = android.view.inputmethod.EditorInfo.IME_ACTION_SEND
+                setPadding(0, 0, 0, 0)
+                setOnEditorActionListener { _, _, _ -> submit(); true }
+            }
+            (field.parent as? ViewGroup)?.removeView(field)
+            row.addView(field, LinearLayout.LayoutParams(0, MATCH, 1f))
+            val send = FrameLayout(d).apply {
+                background = d.rounded(Glass.white(.3f), 20f, Glass.white(.6f))
+                addView(d.icon(R.drawable.tg_send, 0xFFFFFFFF.toInt(), 16), FrameLayout.LayoutParams(u(16f), u(16f), Gravity.CENTER))
+                press { submit() }
+            }
+            row.addView(send, LinearLayout.LayoutParams(u(34f), u(34f)))
+            capsule.addView(row, LinearLayout.LayoutParams(MATCH, u(46f)).apply { topMargin = u(10f) })
+        }
+        capsule.setPadding(if (open) u(14f) else u(12f), if (open) u(12f) else 0, if (open) u(14f) else u(16f), 0)
+        capsule.gravity = Gravity.CENTER_VERTICAL
+        val lp = if (open) LayoutParams(MATCH, u(118f)).apply { setMargins(u(16f), u(12f), u(16f), 0) }
+        else LayoutParams(u(196f), u(46f), Gravity.CENTER_HORIZONTAL).apply { topMargin = u(12f) }
+        capsule.layoutParams = lp
+    }
+
+    private fun submit() {
+        val txt = field.text.toString().trim()
+        if (txt.isEmpty()) return
+        field.setText("")
+        onSend(txt)
+        toggle()
+    }
+
+    fun toggle() {
+        open = !open
+        build()
+        if (open) { field.requestFocus(); (context.getSystemService(android.content.Context.INPUT_METHOD_SERVICE) as android.view.inputmethod.InputMethodManager).showSoftInput(field, 0) }
+        else (context.getSystemService(android.content.Context.INPUT_METHOD_SERVICE) as android.view.inputmethod.InputMethodManager).hideSoftInputFromWindow(windowToken, 0)
+        onToggle(open)
     }
 }

@@ -12,6 +12,9 @@ STD="$(j kotlin-stdlib-2.4.0.jar)"
 OUT="$HERE/out"; rm -rf "$OUT"; mkdir -p "$OUT"
 java -cp "$CP" org.jetbrains.kotlin.cli.jvm.K2JVMCompiler -no-stdlib -no-reflect -nowarn \
   -classpath "$ANDROID_HOME/platforms/android-36/android.jar:$STD" -d "$OUT" \
-  "$SRC/QuickIntent.kt" "$SRC/Contacts.kt" "$SRC/AppResolver.kt" "$SRC/Tr.kt" "$SRC/MathTools.kt" "$SRC/ReplyRules.kt" "$SRC/Mail.kt" "$SRC/ui/GroqModels.kt" "$SRC/PairProof.kt" "$HERE/TestMain.kt" "$HERE/probe.kt" 2>&1 | grep -v "^warning" || true
-java -cp "$OUT:$STD" com.example.buddy.TestMainKt | tee "$HERE/results.txt"
+  "$SRC/QuickIntent.kt" "$SRC/Contacts.kt" "$SRC/AppResolver.kt" "$SRC/Tr.kt" "$SRC/MathTools.kt" "$SRC/ReplyRules.kt" "$SRC/Mail.kt" "$SRC/ui/GroqModels.kt" "$SRC/PairProof.kt" "$SRC/AgentProto.kt" "$SRC/ToolRegistry.kt" "$SRC/ProviderFormat.kt" "$SRC/Safety.kt" "$SRC/ScreenDescriber.kt" "$SRC/AgentLoop.kt" "$HERE/TestMain.kt" "$HERE/AgentTest.kt" "$HERE/probe.kt" 2>&1 | grep -v "^warning" || true
+# the agent tests need a real org.json at run time (android.jar only has stubs): Robolectric's android-all or org.json:json
+JSONJAR="$(find $G ~/.m2 -name 'android-all*.jar' 2>/dev/null | grep -v sources | head -1)"
+[ -z "$JSONJAR" ] && JSONJAR="$(find $G ~/.m2 -name 'json-20*.jar' 2>/dev/null | grep -v sources | head -1)"
+BUBBY_SRC="$SRC" java -cp "$OUT:$STD:$JSONJAR" com.example.buddy.TestMainKt | tee "$HERE/results.txt"
 exit ${PIPESTATUS[0]}

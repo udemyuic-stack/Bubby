@@ -7,138 +7,116 @@ import { fileURLToPath } from "node:url";
 import { startBridge } from "../bridge.mjs";
 import { fakePhone, pairByCode } from "../lib/fake-phone.mjs";
 import { loadToken } from "../lib/pairing.mjs";
-import { createUsageSource, parseCredentials, parseUsage, USAGE_URL } from "../lib/usage.mjs";
+import { parseWindow, parseRateLimits, createLimits } from "../lib/limits.mjs";
 import { createStats, localDay } from "../lib/stats.mjs";
 
 const HOOK = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "hook.mjs");
-const SECRET = "sk-ant-oat01-SECRET-TOKEN-never-leaves";
 const dirs = [];
 const tmpRoot = () => { const d = fs.mkdtempSync("/tmp/cb-usage-"); dirs.push(d); return d; };
 after(() => dirs.forEach((d) => fs.rmSync(d, { recursive: true, force: true })));
 
-const creds = async () => ({ accessToken: SECRET, expiresAt: Date.now() + 3600_000, plan: "max" });
-const okBody = JSON.stringify({
-  five_hour: { utilization: 68, resets_at: "2025-10-09T08:53:20+00:00" },
-  seven_day: { utilization: 42.5, resets_at: "2025-10-13T23:59:59.943648+00:00" },
-  seven_day_opus: null,
+const run = (dir, payload, args = []) => new Promise((resolve) => {
+  const p = spawn(process.execPath, [HOOK, ...args], { env: { ...process.env, BUBBY_DIR: dir } });
+  let out = "";
+  p.stdout.on("data", (d) => (out += d));
+  p.on("close", (code) => resolve({ code, out }));
+  p.stdin.end(typeof payload === "string" ? payload : JSON.stringify(payload));
 });
-const fakeHttp = (calls, reply = { status: 200, body: okBody }) => async (url, headers) => {
-  calls.push({ url, headers });
-  if (reply instanceof Error) throw reply;
-  return reply;
-};
+const runHook = (dir, payload) => run(dir, payload);
+const statusLine = (dir, payload) => run(dir, payload, ["--statusline"]);
 
-const runHook = (dir, payload) => new Promise((resolve) => {
-  const p = spawn(process.execPath, [HOOK], { env: { ...process.env, BUBBY_DIR: dir } });
-  p.on("close", resolve);
-  p.stdin.end(JSON.stringify(payload));
-});
-
-const startWith = async (usage, dir = path.join(tmpRoot(), "b")) => {
+const startWith = async (dir = path.join(tmpRoot(), "b"), extra = {}) => {
   const logs = [];
-  const b = await startBridge({ dir, host: "127.0.0.1", port: 0, name: "Test", mdns: false, usage, usageMinIntervalMs: 30, log: (l) => logs.push(l) });
+  const b = await startBridge({ dir, host: "127.0.0.1", port: 0, name: "Test", mdns: false, usageMinIntervalMs: 30, log: (l) => logs.push(l), ...extra });
   return { b, dir, logs };
 };
+const connect = (b, dir) => fakePhone({ host: b.host, port: b.port, fp: b.fp, token: loadToken(dir) });
 
-test("parseCredentials and parseUsage", () => {
-  assert.deepEqual(parseCredentials(JSON.stringify({ claudeAiOauth: { accessToken: "t", expiresAt: 5, subscriptionType: "pro" } })), { accessToken: "t", expiresAt: 5, plan: "pro" });
-  assert.equal(parseCredentials("{"), null);
-  assert.equal(parseCredentials(JSON.stringify({ claudeAiOauth: {} })), null);
-  assert.deepEqual(parseUsage(JSON.parse(okBody)), {
-    fiveHour: { used: 0.68, resetsAt: Date.parse("2025-10-09T08:53:20+00:00") },
-    sevenDay: { used: 0.425, resetsAt: Date.parse("2025-10-13T23:59:59.943648+00:00") },
-  });
-  assert.deepEqual(parseUsage({ five_hour: { utilization: 150 } }), { fiveHour: { used: 1 } });
-  assert.deepEqual(parseUsage({ five_hour: { resets_at: 1760000000 } }), { fiveHour: { resetsAt: 1760000000000 } });
-  assert.deepEqual(parseUsage({ five_hour: { utilization: "x" }, seven_day: "nope" }), {});
-  assert.deepEqual(parseUsage(null), {});
+const NOW = Date.now();
+const sec = (ms) => Math.floor(ms / 1000);
+
+test("statusLine numbers: percent to 0..1, seconds to ms, out-of-range values dropped", () => {
+  assert.deepEqual(parseWindow({ used_percentage: 68, resets_at: sec(NOW) + 3600 }, NOW), { used: 0.68, resetsAt: (sec(NOW) + 3600) * 1000 });
+  assert.deepEqual(parseWindow({ used_percentage: 130 }, NOW), { used: 1 }, "may exceed 100: clamped");
+  assert.equal(parseWindow({ used_percentage: -1 }, NOW), undefined);
+  assert.equal(parseWindow({ used_percentage: "50" }, NOW), undefined);
+  assert.equal(parseWindow({ used_percentage: NaN }, NOW), undefined);
+  // milliseconds sent instead of seconds: far more than 400 days ahead => resetsAt dropped
+  assert.deepEqual(parseWindow({ used_percentage: 10, resets_at: NOW + 3600_000 }, NOW), { used: 0.1 });
+  assert.deepEqual(parseRateLimits({ five_hour: { used_percentage: 5 }, seven_day: null, plan: "Max" }, NOW), { fiveHour: { used: 0.05 }, plan: "max" });
+  assert.deepEqual(parseRateLimits("x"), {});
+  assert.deepEqual(parseRateLimits({ plan: "<script>" }), {});
 });
 
-test("usage source: calls the endpoint with the bearer token and beta header, at most once a minute", async () => {
-  let t = 1_000_000;
-  const calls = [];
-  const src = createUsageSource({ httpGet: fakeHttp(calls), readCredentials: creds, now: () => t });
-  const s = await src.refresh();
-  assert.equal(calls.length, 1);
-  assert.equal(calls[0].url, USAGE_URL);
-  assert.equal(calls[0].url, "https://api.anthropic.com/api/oauth/usage");
-  assert.equal(calls[0].headers.Authorization, `Bearer ${SECRET}`);
-  assert.equal(calls[0].headers["anthropic-beta"], "oauth-2025-04-20");
-  assert.equal(s.fiveHour.used, 0.68);
-  assert.equal(s.plan, "max");
-  assert.ok(!JSON.stringify(s).includes(SECRET));
-  t += 30_000;
-  await src.refresh();
-  assert.equal(calls.length, 1, "not again within a minute");
-  t += 31_000;
-  await src.refresh();
-  assert.equal(calls.length, 2);
+test("limits: last good value kept with updatedAt, a past reset counts as 0, survives a restart", () => {
+  const dir = path.join(tmpRoot(), "b");
+  let t = NOW;
+  const l = createLimits(dir, { now: () => t });
+  assert.deepEqual(l.snapshot(), {});
+  assert.equal(l.update({ five_hour: { used_percentage: 40, resets_at: sec(NOW) + 60 }, seven_day: { used_percentage: 10, resets_at: sec(NOW) + 86400 } }), true);
+  assert.equal(l.update({}), false, "nothing usable: keep the last value");
+  assert.equal(l.update({ five_hour: { used_percentage: -5 } }), false);
+  let s = l.snapshot();
+  assert.equal(s.fiveHour.used, 0.4);
+  assert.equal(s.updatedAt, NOW);
+  t = NOW + 120_000; // past the five-hour reset
+  s = l.snapshot();
+  assert.equal(s.fiveHour.used, 0);
+  assert.equal(s.sevenDay.used, 0.1);
+  assert.equal(fs.statSync(path.join(dir, "limits.json")).mode & 0o777, 0o600);
+  const again = createLimits(dir, { now: () => NOW });
+  assert.equal(again.snapshot().fiveHour.used, 0.4);
+  assert.equal(again.snapshot().updatedAt, NOW);
 });
 
-test("usage source: failures leave the fields out, back off, never log the token", async () => {
-  let t = 0;
-  const calls = [];
-  const logs = [];
-  let reply = { status: 401, body: `{"error":"bad token ${SECRET}"}` };
-  const src = createUsageSource({ httpGet: async (u, h) => { calls.push(h); if (reply instanceof Error) throw reply; return reply; }, readCredentials: creds, now: () => t, log: (l) => logs.push(l) });
-  assert.deepEqual(await src.refresh(), { plan: "max" });
-  t += 61_000;
-  await src.refresh();
-  assert.equal(calls.length, 1, "backs off for longer than the normal minute after an error");
-  t += 60_000;
-  reply = Object.assign(new Error(`connect failed ${SECRET}`), { code: "ECONNREFUSED" });
-  assert.deepEqual(await src.refresh(), { plan: "max" });
-  assert.equal(calls.length, 2);
-  t += 4 * 60_000 + 1;
-  reply = { status: 200, body: okBody };
-  assert.equal((await src.refresh()).sevenDay.used, 0.425);
-  reply = { status: 200, body: "not json" };
-  t += 61_000;
-  assert.deepEqual(await src.refresh(), { plan: "max" });
-  assert.ok(logs.length >= 1);
-  assert.ok(!logs.join("\n").includes(SECRET));
-  assert.ok(!logs.join("\n").includes("bad token"));
-});
-
-test("usage source: no credentials or expired token => no call, no fields", async () => {
-  const calls = [];
-  assert.deepEqual(await createUsageSource({ httpGet: fakeHttp(calls), readCredentials: async () => null }).refresh(), {});
-  assert.deepEqual(await createUsageSource({ httpGet: fakeHttp(calls), readCredentials: async () => { throw new Error("x"); } }).refresh(), {});
-  const expired = createUsageSource({ httpGet: fakeHttp(calls), readCredentials: async () => ({ accessToken: SECRET, expiresAt: 1, plan: "pro" }) });
-  assert.deepEqual(await expired.refresh(), { plan: "pro" });
-  assert.equal(calls.length, 0);
-});
-
-test("bridge sends a usage message after welcome: shape with a faked HTTP source, token never sent", async () => {
-  const calls = [];
-  const { b, dir, logs } = await startWith(createUsageSource({ httpGet: fakeHttp(calls), readCredentials: creds }));
-  const phone = await fakePhone({ host: b.host, port: b.port, fp: b.fp, token: loadToken(dir) });
-  await phone.wait((m) => m.type === "welcome");
+test("statusLine relay: only rate_limits reaches the bridge; the user's own status line keeps its output", async () => {
+  const { b, dir } = await startWith();
+  const phone = await connect(b, dir);
+  await phone.wait((m) => m.type === "usage");
+  const recv = path.join(dir, "..", "seen.txt");
+  fs.writeFileSync(path.join(dir, "statusline-previous.json"), JSON.stringify({ type: "command", command: `cat > '${recv}'; printf 'my line'`, padding: 1 }));
+  const payload = {
+    session_id: "s1", cwd: "/home/me/SECRET-PROJECT", model: { display_name: "Opus" }, transcript_path: "/home/me/t.jsonl",
+    rate_limits: { five_hour: { used_percentage: 68, resets_at: sec(NOW) + 3600 }, seven_day: { used_percentage: 42.5, resets_at: sec(NOW) + 5 * 86400 } },
+  };
+  const r = await statusLine(dir, payload);
+  assert.equal(r.code, 0);
+  assert.equal(r.out, "my line");
+  assert.deepEqual(JSON.parse(fs.readFileSync(recv, "utf8")), payload, "same payload on its stdin");
   const u = await phone.wait((m) => m.type === "usage" && m.fiveHour);
-  assert.deepEqual(Object.keys(u), ["type", "fiveHour", "sevenDay", "doneToday", "plan", "updatedAt"]);
-  assert.deepEqual(u.fiveHour, { used: 0.68, resetsAt: Date.parse("2025-10-09T08:53:20+00:00") });
-  assert.deepEqual(u.sevenDay, { used: 0.425, resetsAt: Date.parse("2025-10-13T23:59:59.943648+00:00") });
-  assert.equal(u.doneToday, 0);
-  assert.equal(u.plan, "max");
+  assert.deepEqual(Object.keys(u), ["type", "fiveHour", "sevenDay", "doneToday", "updatedAt"]);
+  assert.deepEqual(u.fiveHour, { used: 0.68, resetsAt: (sec(NOW) + 3600) * 1000 });
+  assert.equal(u.sevenDay.used, 0.425);
   assert.ok(Math.abs(u.updatedAt - Date.now()) < 5000);
-  assert.ok(!JSON.stringify(phone.msgs).includes(SECRET));
-  assert.ok(!logs.join("\n").includes(SECRET));
+  assert.ok(!JSON.stringify(phone.msgs).includes("SECRET-PROJECT"));
+  assert.ok(!JSON.stringify(phone.msgs).includes("Opus"));
   phone.close();
   await b.close();
 });
 
-test("usage after paired too; with the source failing the limit fields are absent", async () => {
-  const { b } = await startWith(createUsageSource({ httpGet: fakeHttp([], new Error("down")), readCredentials: creds }));
+test("statusLine relay: no previous line prints nothing; a hanging one is killed; bridge down is fine", async () => {
+  const root = tmpRoot();
+  const dir = path.join(root, "b");
+  fs.mkdirSync(dir, { recursive: true });
+  const rl = { rate_limits: { five_hour: { used_percentage: 1 } } };
+  assert.deepEqual(await statusLine(dir, rl), { code: 0, out: "" });
+  assert.deepEqual(await statusLine(dir, "garbage"), { code: 0, out: "" });
+  fs.writeFileSync(path.join(dir, "statusline-previous.json"), JSON.stringify({ command: "sleep 30; echo late" }));
+  const t = Date.now();
+  assert.deepEqual(await statusLine(dir, rl), { code: 0, out: "" });
+  assert.ok(Date.now() - t < 8000);
+  fs.writeFileSync(path.join(dir, "statusline-previous.json"), JSON.stringify({ command: "echo hi; (sleep 30 &)" }));
+  const t2 = Date.now();
+  assert.equal((await statusLine(dir, rl)).out, "hi\n");
+  assert.ok(Date.now() - t2 < 3000, "a background child holding the pipe does not hold the status line");
+});
+
+test("usage without any statusLine payload: limit fields absent, doneToday and updatedAt present", async () => {
+  const { b } = await startWith();
   const { phone, reply } = await pairByCode({ host: b.host, port: b.port, code: b.pairingCode() });
   assert.equal(reply.type, "paired");
-  const u = await phone.wait((m) => m.type === "usage" && m.plan); // second message, after the (failed) refresh
-  await new Promise((r) => setTimeout(r, 100));
-  for (const m of phone.msgs.filter((x) => x.type === "usage")) {
-    assert.equal(m.fiveHour, undefined);
-    assert.equal(m.sevenDay, undefined);
-  }
-  assert.equal(u.doneToday, 0);
-  assert.equal(u.plan, "max");
+  const u = await phone.wait((m) => m.type === "usage");
+  assert.deepEqual(Object.keys(u), ["type", "doneToday", "updatedAt"]);
   phone.close();
   await b.close();
 });
@@ -156,23 +134,23 @@ test("doneToday counts Stop hooks, survives a restart; tokensToday from the tran
     { type: "assistant", timestamp: now, message: { id: "m2", usage: { input_tokens: 1, output_tokens: 2 } } },
   ];
   fs.writeFileSync(transcript, lines.map((l) => JSON.stringify(l)).join("\n") + "\n");
-  const off = () => createUsageSource({ readCredentials: async () => null });
 
-  let { b } = await startWith(off(), dir);
-  let phone = await fakePhone({ host: b.host, port: b.port, fp: b.fp, token: loadToken(dir) });
+  let { b } = await startWith(dir);
+  let phone = await connect(b, dir);
   await phone.wait((m) => m.type === "usage");
   await runHook(dir, { hook_event_name: "Stop", session_id: "s", transcript_path: transcript });
   await b.flushStats();
   let u = await phone.wait((m) => m.type === "usage" && m.tokensToday !== undefined);
   assert.equal(u.doneToday, 1);
   assert.equal(u.tokensToday, 118); // 10+5+100 (m1 once) + 1+2 (m2); cache reads and old days not counted
-  // the transcript grows; only the new part is read
   fs.appendFileSync(transcript, JSON.stringify({ type: "assistant", timestamp: now, message: { id: "m3", usage: { input_tokens: 2, output_tokens: 0 } } }) + "\n");
   await runHook(dir, { hook_event_name: "Stop", session_id: "s", transcript_path: transcript });
   await b.flushStats();
   u = await phone.wait((m) => m.type === "usage" && m.doneToday === 2 && m.tokensToday === 120);
   assert.ok(!JSON.stringify(phone.msgs).includes("SECRET PROMPT"));
   assert.ok(!JSON.stringify(phone.msgs).includes(transcript));
+  // another agent's turn is not a Claude Code turn
+  await run(dir, { hook_event_name: "AfterAgent", session_id: "g" }, ["--agent", "gemini", "Stop"]);
   phone.close();
   await b.close();
 
@@ -181,12 +159,12 @@ test("doneToday counts Stop hooks, survives a restart; tokensToday from the tran
   assert.equal(saved.doneToday, 2);
   assert.equal(fs.statSync(path.join(dir, "stats.json")).mode & 0o777, 0o600);
 
-  ({ b } = await startWith(off(), dir));
-  phone = await fakePhone({ host: b.host, port: b.port, fp: b.fp, token: loadToken(dir) });
+  ({ b } = await startWith(dir));
+  phone = await connect(b, dir);
   u = await phone.wait((m) => m.type === "usage");
   assert.equal(u.doneToday, 2);
   assert.equal(u.tokensToday, 120);
-  await runHook(dir, { hook_event_name: "Stop", session_id: "s2" }); // no transcript: still counted
+  await runHook(dir, { hook_event_name: "Stop", session_id: "s2" });
   await phone.wait((m) => m.type === "usage" && m.doneToday === 3);
   phone.close();
   await b.close();
@@ -198,25 +176,32 @@ test("stats: a new local day starts from zero; tokensToday absent until a transc
   const s = createStats(dir, { now: () => d });
   assert.deepEqual(s.today(), { doneToday: 0 });
   await s.recordStop();
-  await s.recordStop("relative/path.jsonl"); // ignored path, still a finished turn
+  await s.recordStop("relative/path.jsonl");
   assert.deepEqual(s.today(), { doneToday: 2 });
   assert.equal(createStats(dir, { now: () => d }).today().doneToday, 2);
   d = new Date(2026, 9, 29, 0, 1);
   assert.deepEqual(s.today(), { doneToday: 0 });
-  assert.deepEqual(createStats(dir, { now: () => d }).today(), { doneToday: 0 });
   fs.writeFileSync(path.join(dir, "stats.json"), "garbage");
   assert.deepEqual(createStats(dir, { now: () => d }).today(), { doneToday: 0 });
 });
 
-test("usage changes are throttled and the phone gets one message per change", async () => {
-  const { b, dir } = await startWith(createUsageSource({ readCredentials: async () => null }));
-  const phone = await fakePhone({ host: b.host, port: b.port, fp: b.fp, token: loadToken(dir) });
+test("usage changes are throttled; no duplicate message without a change", async () => {
+  const { b, dir } = await startWith();
+  const phone = await connect(b, dir);
   await phone.wait((m) => m.type === "usage");
   for (let i = 0; i < 3; i++) await runHook(dir, { hook_event_name: "Stop", session_id: "s" });
   await phone.wait((m) => m.type === "usage" && m.doneToday === 3);
   const usages = phone.msgs.filter((m) => m.type === "usage");
   assert.ok(usages.length <= 4);
-  for (let i = 1; i < usages.length; i++) assert.ok(usages[i].doneToday > usages[i - 1].doneToday, "no duplicate messages for no change");
+  for (let i = 1; i < usages.length; i++) assert.ok(usages[i].doneToday > usages[i - 1].doneToday);
   phone.close();
   await b.close();
+});
+
+test("the OAuth path is gone: nothing reads Claude's credentials", () => {
+  const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
+  for (const f of ["bridge.mjs", "hook.mjs", ...fs.readdirSync(path.join(root, "lib")).map((x) => `lib/${x}`)]) {
+    const src = fs.readFileSync(path.join(root, f), "utf8");
+    assert.ok(!src.includes(".credentials.json") && !src.includes("api/oauth"), f);
+  }
 });

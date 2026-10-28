@@ -95,21 +95,15 @@ class SetupScreen(act: UiActivity) : Screen(act) {
         c.add(bar, MATCH, ctx.dp(10), top = 8, bottom = 20)
         val target = (i + 1) * 100
         if (target != lastProgress) { bar.post { bar.animateTo(target) }; lastProgress = target }
-        val card = ctx.card(pad = 24, fill = P.primaryContainer, stroke = 0, radius = 28f) {
+        val card = ctx.card(pad = 24, radius = 28f) {
             gravity = Gravity.CENTER_HORIZONTAL
-            add(BuddyView(ctx).apply {
-                scaleF = 2.0f
-                species = Backend.str(ctx, "species", "cat")
-                outfit = Outfits.parse(Backend.str(ctx, "outfit", ""))
-                this.mood = mood(i, passed)
-                setActive(true)
-            }, WRAP, WRAP)
+            add(ctx.mascotStage(240, 170), ctx.dp(240), (ctx.dp(240) * 0.9f).toInt())
             if (passed) add(ctx.row(Gravity.CENTER) {
                 add(ctx.pill(t("Готово", "Done", "Tayyor"), P.success), WRAP, WRAP, end = 8)
                 if (pulseFor != i) { pulseFor = i; add(ctx.successPulse(32), ctx.dp(44), ctx.dp(44)) }
             }, WRAP, WRAP, top = 8)
             add(ctx.text(step.title, T.Headline).apply { gravity = Gravity.CENTER; textSize = 24f }, MATCH, WRAP, top = 12)
-            add(ctx.text(step.why, T.Body, P.onPrimaryContainer).apply { gravity = Gravity.CENTER }, MATCH, WRAP, top = 8)
+            add(ctx.text(step.why, T.Body).apply { gravity = Gravity.CENTER }, MATCH, WRAP, top = 8)
             if (i == 4) add(ctx.text(t("Bubby запустится, когда вы нажмёте «Готово»", "Bubby will start when you tap “Done”", "«Tayyor» ni bossangiz, Bubby ishga tushadi"), T.Small).apply { gravity = Gravity.CENTER }, MATCH, WRAP, top = 8)
         }
         c.add(card, MATCH, WRAP)

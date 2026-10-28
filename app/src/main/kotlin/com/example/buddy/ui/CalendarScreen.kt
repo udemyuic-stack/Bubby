@@ -94,21 +94,22 @@ class CalendarScreen(act: UiActivity) : Screen(act) {
             val hour = Calendar.getInstance()
             val accent = P.accent(hour.get(Calendar.HOUR_OF_DAY), hour.get(Calendar.MINUTE))
             val short = weekdaysShort(ctx)
+            val dot = Glass.ACCENT2
             for (i in 0 until days) {
                 val day = midnight(i)
                 val c = cal(day)
                 val isSel = selected == day
                 val has = events.any { it.startMillis in day until day + 86_400_000L }
-                val fg = if (isSel) P.ink else P.onSurface
+                val fg = Glass.TEXT
                 add(ctx.col {
                     gravity = Gravity.CENTER_HORIZONTAL
-                    setPadding(ctx.dp(8), ctx.dp(10), ctx.dp(8), ctx.dp(10))
-                    background = if (isSel) ctx.rounded(accent, 20f) else ctx.rounded(P.low, 20f, P.outlineVariant)
-                    add(ctx.text(short[c.mondayDow() - 1], T.Small, fg), WRAP, WRAP)
-                    add(ctx.text("${c.get(Calendar.DAY_OF_MONTH)}", T.Title, fg), WRAP, WRAP, top = 2)
-                    add(View(ctx).apply { background = ctx.rounded(if (has) (if (isSel) P.ink else accent) else 0, 4f) }, ctx.dp(6), ctx.dp(6), top = 4)
+                    setPadding(ctx.dp(4), ctx.dp(12), ctx.dp(4), ctx.dp(8))
+                    background = ctx.petalShape(if (isSel) GlassKind.Active else GlassKind.Dim, PETAL_RADII_DAY)
+                    add(ctx.text(short[c.mondayDow() - 1], T.Small, if (isSel) fg else Glass.TEXT_LABEL).apply { textSize = 12f }, WRAP, WRAP)
+                    add(ctx.text("${c.get(Calendar.DAY_OF_MONTH)}", T.Title, fg).apply { textSize = 20f }, WRAP, WRAP, top = 2)
+                    add(View(ctx).apply { background = ctx.rounded(if (has) dot else 0, 4f) }, ctx.dp(6), ctx.dp(6), top = 6)
                     press { selected = if (isSel) null else day; refresh() }
-                }, ctx.dp(54), WRAP, end = 8)
+                }, ctx.dp(56), ctx.dp(80), end = 8)
             }
         }
         return HorizontalScrollView(ctx).apply { isHorizontalScrollBarEnabled = false; addView(row) }
@@ -116,21 +117,29 @@ class CalendarScreen(act: UiActivity) : Screen(act) {
 
     private fun eventCard(e: CalEvent): View {
         val accent = accentFor(e.title)
-        return ctx.card(pad = 0, onClick = { confirmDelete(e) }) {
+        return ctx.card(pad = 0, radius = 22f, onClick = { confirmDelete(e) }) {
             add(ctx.row(Gravity.CENTER_VERTICAL) {
-                add(View(ctx).apply { background = ctx.rounded(accent, 3f) }, ctx.dp(5), ctx.dp(44), end = 12, start = 12)
+                minimumHeight = ctx.dp(58)
+                setPadding(ctx.dp(14), ctx.dp(10), ctx.dp(14), ctx.dp(10))
                 add(ctx.col {
-                    setPadding(0, ctx.dp(12), ctx.dp(14), ctx.dp(12))
-                    add(ctx.text(e.title.ifEmpty { t("Без названия", "Untitled", "Nomsiz") }, T.Title), MATCH, WRAP)
-                    add(ctx.text("${fmtTime(cal(e.startMillis))} – ${fmtTime(cal(e.endMillis))}", T.Small), MATCH, WRAP, top = 2)
-                    if (e.location.isNotEmpty()) add(ctx.text(e.location, T.Small), MATCH, WRAP, top = 2)
+                    gravity = Gravity.CENTER_HORIZONTAL
+                    add(ctx.text(fmtTime(cal(e.startMillis)), T.Label, Glass.TEXT).apply { textSize = 14f }, WRAP, WRAP)
+                    add(ctx.text(fmtTime(cal(e.endMillis)), T.Small).apply { textSize = 12f }, WRAP, WRAP, top = 2)
+                }, ctx.dp(46), WRAP)
+                add(View(ctx).apply { background = ctx.rounded(accent, 2f) }, ctx.dp(4), MATCH, start = 10, end = 12)
+                add(ctx.col {
+                    add(ctx.text(e.title.ifEmpty { t("Без названия", "Untitled", "Nomsiz") }, T.Body).apply { textSize = 15f }, MATCH, WRAP)
+                    if (e.location.isNotEmpty()) add(ctx.row {
+                        add(ctx.icon(R.drawable.tg_pin, Glass.TEXT2, 12), WRAP, WRAP, end = 4)
+                        add(ctx.text(e.location, T.Small).apply { textSize = 12f }, WRAP, WRAP)
+                    }, MATCH, WRAP, top = 4)
                 }, 0, WRAP, 1f)
             })
         }
     }
 
     override fun render(c: LinearLayout) {
-        header(c)
+        header(c, fmtDayHeader(ctx, System.currentTimeMillis()))
         val store = CalendarStore(ctx)
         if (!store.hasPermission()) {
             c.add(ctx.emptyState(
@@ -157,7 +166,7 @@ class CalendarScreen(act: UiActivity) : Screen(act) {
         var lastDay = -1L
         for (e in shown) {
             val d = cal(e.startMillis).apply { set(Calendar.HOUR_OF_DAY, 0); set(Calendar.MINUTE, 0); set(Calendar.SECOND, 0); set(Calendar.MILLISECOND, 0) }.timeInMillis
-            if (d != lastDay) { lastDay = d; c.add(ctx.section(fmtDayHeader(ctx, e.startMillis))) }
+            if (d != lastDay) { lastDay = d; c.add(ctx.text(fmtDayHeader(ctx, e.startMillis), T.Label, Glass.DATE), MATCH, WRAP, top = 10, bottom = 8, start = 4) }
             c.add(eventCard(e), MATCH, WRAP, bottom = 8)
         }
         c.add(ctx.text(t("Нажмите на событие, чтобы удалить", "Tap an event to delete it", "O'chirish uchun tadbirni bosing"), T.Small).apply { gravity = Gravity.CENTER }, MATCH, WRAP, top = 6)

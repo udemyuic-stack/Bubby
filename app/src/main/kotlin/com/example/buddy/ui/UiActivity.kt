@@ -20,33 +20,44 @@ class UiActivity : Activity() {
     private lateinit var host: FrameLayout
     private lateinit var shell: LinearLayout
     private lateinit var body: FrameLayout
-    private lateinit var tabBar: LinearLayout
+    private lateinit var navFrame: FrameLayout
+    private lateinit var bgHome: View
+    private lateinit var bgSub: View
     private val tabs = ArrayList<Screen>()
     private var tab = 0
     private val stack = ArrayList<Pair<Screen, View>>()
+    private var shownLang = ""
     private var insetTop = 0
     private var insetBottom = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        intent?.getStringExtra("theme")?.let { Backend.setStr(this, "theme", it) }   // CI screenshots: `--es theme green`
         P.init(this)
+        shownLang = Tr.lang(this)
         cleanOldModel()
         window.setBackgroundDrawable(android.graphics.drawable.ColorDrawable(P.surface))
         host = FrameLayout(this)
-        shell = col { setBackgroundColor(P.surface) }
+        bgHome = GlassBackground(this, true)
+        bgSub = GlassBackground(this, false)
+        host.addView(bgHome, FrameLayout.LayoutParams(MATCH, MATCH))
+        host.addView(bgSub, FrameLayout.LayoutParams(MATCH, MATCH))
+        shell = col {}
         body = FrameLayout(this)
         shell.add(body, MATCH, 0, 1f)
         tabs += listOf(HomeScreen(this), TasksScreen(this), CalendarScreen(this), SettingsScreen(this), MoreScreen(this))
-        tabBar = buildTabBar()
-        shell.add(tabBar)
+        for (s in tabs) s.inTab = true
+        tabs[0].inTab = false   // the home page has no navigation bar: its petals are the navigation
         host.addView(shell, FrameLayout.LayoutParams(MATCH, MATCH))
+        navFrame = FrameLayout(this)
+        host.addView(navFrame, FrameLayout.LayoutParams(MATCH, WRAP, Gravity.BOTTOM))
         host.setOnApplyWindowInsetsListener { _, ins ->
             readInsets(ins)
             applyInsets()
             ins
         }
         setContentView(host)
-        setBars()
+        setBars(false)
         // `--es open <name>` (used by the CI screenshots) starts straight on that tab or screen
         val open = intent?.getStringExtra("open")
         val first = TAB_NAMES.indexOf(open)
@@ -90,23 +101,23 @@ class UiActivity : Activity() {
 
     private fun applyInsets() {
         shell.setPadding(0, insetTop, 0, 0)
-        tabBar.setPadding(0, 0, 0, insetBottom)
+        navFrame.setPadding(dp(12), 0, dp(12), dp(18) + insetBottom)
         for ((_, v) in stack) v.setPadding(0, insetTop, 0, insetBottom)
     }
 
     @Suppress("DEPRECATION")
-    private fun setBars() {
+    private fun setBars(darkIcons: Boolean = false) {
         window.statusBarColor = Color.TRANSPARENT
         window.navigationBarColor = Color.TRANSPARENT
         if (Build.VERSION.SDK_INT >= 30) {
-            val light = if (P.dark) 0 else (android.view.WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS or android.view.WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS)
+            val light = if (!darkIcons) 0 else (android.view.WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS or android.view.WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS)
             try {
                 window.decorView.windowInsetsController?.setSystemBarsAppearance(light,
                     android.view.WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS or android.view.WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS)
             } catch (_: Exception) { }
         } else {
             var f = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-            if (!P.dark) {
+            if (darkIcons) {
                 f = f or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
                 if (Build.VERSION.SDK_INT >= 26) f = f or View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
             }
@@ -123,54 +134,48 @@ class UiActivity : Activity() {
     // ---- tabs ----------------------------------------------------------------------------------------------------
 
     private fun tabLabels() = listOf(
-        Triple(R.drawable.ic_home, Tr.t(this, "Главная", "Home", "Bosh sahifa"), 0),
-        Triple(R.drawable.ic_check_circle, Tr.t(this, "Задачи", "Tasks", "Vazifalar"), 1),
-        Triple(R.drawable.ic_calendar, Tr.t(this, "Календарь", "Calendar", "Kalendar"), 2),
-        Triple(R.drawable.ic_settings, Tr.t(this, "Настройки", "Settings", "Sozlamalar"), 3),
-        Triple(R.drawable.ic_apps, Tr.t(this, "Ещё", "More", "Yana"), 4)
+        Triple(R.drawable.tg_home, Tr.t(this, "Главная", "Home", "Bosh sahifa"), 0),
+        Triple(R.drawable.tg_check, Tr.t(this, "Задачи", "Tasks", "Vazifalar"), 1),
+        Triple(R.drawable.tg_cal, Tr.t(this, "Календарь", "Calendar", "Kalendar"), 2),
+        Triple(R.drawable.tg_gear, Tr.t(this, "Настройки", "Settings", "Sozlamalar"), 3),
+        Triple(R.drawable.tg_apps, Tr.t(this, "Ещё", "More", "Yana"), 4)
     )
 
-    private fun buildTabBar(): LinearLayout {
+    /** The floating glass navigation: the selected tab is a bright petal. */
+    private fun buildNav(): View {
         val bar = row(Gravity.CENTER_VERTICAL) {
-            background = rounded(P.low, 0f)
-            setPadding(0, dp(8), 0, dp(8))
+            background = glass(GlassKind.Nav, 34f)
+            setPadding(dp(6), 0, dp(6), 0)
         }
-        val line = View(this).apply { setBackgroundColor(P.outlineVariant) }
-        val box = col {}
-        box.add(line, MATCH, 1)
-        box.add(bar)
-        val cal = Calendar.getInstance()
-        val pill = P.accentContainer(cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE))
-        val onPill = P.onAccentContainer(cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE))
         for ((i, it) in tabLabels().withIndex()) {
             val selected = i == tab
-            val item = col {
-                gravity = Gravity.CENTER_HORIZONTAL
-                add(row(Gravity.CENTER) {
-                    background = if (selected) rounded(pill, 16f) else null
-                    add(icon(it.first, if (selected) onPill else P.onSurfaceVariant, 24), WRAP, WRAP)
-                }, dp(64), dp(32))
-                add(text(it.second, T.Label, if (selected) P.onSurface else P.onSurfaceVariant).apply {
-                    setSingleLine(); textSize = 11.5f
-                    if (!selected) setTypeface(null, android.graphics.Typeface.NORMAL)
-                }, WRAP, WRAP, top = 4)
+            val item = FrameLayout(this).apply {
+                if (selected) {
+                    addView(View(this@UiActivity).apply { background = petalShape(GlassKind.Active, PETAL_RADII_NAV) },
+                        FrameLayout.LayoutParams(dp(68), dp(54), Gravity.CENTER))
+                }
+                val inner = col {
+                    gravity = Gravity.CENTER_HORIZONTAL
+                    add(icon(it.first, if (selected) Glass.TEXT else Glass.TEXT2, 22), WRAP, WRAP)
+                    add(text(it.second, T.Label, if (selected) Glass.TEXT else Glass.TEXT2).apply { setSingleLine(); textSize = 10f }, WRAP, WRAP, top = 2)
+                }
+                addView(inner, FrameLayout.LayoutParams(WRAP, WRAP, Gravity.CENTER))
                 press { showTab(i) }
             }
-            bar.add(item, 0, WRAP, 1f)
+            bar.add(item, 0, MATCH, 1f)
         }
-        // the bar is rebuilt on every tab change, so wrap it in a stable parent
-        return LinearLayout(this).apply { orientation = LinearLayout.VERTICAL; addView(box); setBackgroundColor(P.low) }
+        return bar
     }
 
     fun showTab(i: Int) {
         tab = i
         body.removeAllViews()
         body.addView(tabs[i].view(), FrameLayout.LayoutParams(MATCH, MATCH))
-        val idx = shell.indexOfChild(tabBar)
-        shell.removeView(tabBar)
-        tabBar = buildTabBar()
-        shell.addView(tabBar, idx, LinearLayout.LayoutParams(MATCH, WRAP))
-        tabBar.setPadding(0, 0, 0, insetBottom)
+        setBars(i != 0)
+        bgHome.visibility = if (i == 0) View.VISIBLE else View.GONE
+        bgSub.visibility = if (i == 0) View.GONE else View.VISIBLE
+        navFrame.removeAllViews()
+        if (i != 0) navFrame.addView(buildNav(), FrameLayout.LayoutParams(MATCH, dp(68)))
         tabs[i].onShow()
     }
 
@@ -201,6 +206,8 @@ class UiActivity : Activity() {
 
     override fun onResume() {
         super.onResume()
+        // the language the user speaks changed (auto mode): draw everything in it
+        if (Tr.lang(this) != shownLang) { recreate(); return }
         (stack.lastOrNull()?.first ?: tabs[tab]).onShow()
     }
 

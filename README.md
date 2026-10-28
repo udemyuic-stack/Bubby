@@ -33,3 +33,8 @@ pushes screenshots to the `ci-screenshots` branch. JVM tests: `app/qa-jvm/run.sh
 - The character art is drawn in code; no third-party artwork is used. The agent-bridge protocol idea comes from the
   open-source Coucou project (MIT); none of its assets (character, icon, sounds) are used here.
 - No license has been chosen yet.
+
+## NOTICE
+- Phone side of the agents link v3 (capabilities, session details, answering questions, file diffs): the protocol ideas and
+  message shapes come from Coucou's phone link (https://github.com/louis-cfm/coucou, MIT License, docs/ANDROID_LINK.md).
+  The code is Bubby's own; Coucou's name, character, icons, sounds and media are not used.

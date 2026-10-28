@@ -374,8 +374,135 @@ fun groq() {
     check("groq empty", com.example.buddy.ui.GroqModels.pick(emptyList(), "en").isEmpty())
 }
 
+fun agentsV3() {
+    val P = AgentProto
+    // caps: only the ones this phone knows; none at all for an old bridge
+    check("caps old bridge", P.parseCaps(null).isEmpty())
+    check("caps filter", P.parseCaps(listOf("details", "chat", 3, "diffs")) == setOf("details", "diffs"))
+    check("caps not a list", P.parseCaps("details").isEmpty())
+    // cleaning
+    check("clean controls", P.clean("a\u0000b\u202Ec\u200Bd", 50) == "abcd")
+    check("clean newline single", P.clean("a\nb\r\nc", 50) == "a b c")
+    check("clean newline multi", P.clean("a\n\n\n\nb", 50, multiline = true) == "a\n\nb")
+    check("clean spaces", P.clean("  a   b\t c  ", 50) == "a b c")
+    check("clean cut", P.clean("abcdef", 3) == "abc")
+    check("clean no split pair", P.clean("ab\uD83D\uDE00", 3) == "ab")
+    check("clean keep pair", P.clean("ab\uD83D\uDE00", 4) == "ab\uD83D\uDE00")
+    check("clean lone surrogate", P.clean("a\uD800b", 9) == "ab")
+    check("clean html stays text", P.clean("<b>x</b>", 20) == "<b>x</b>")
+    check("clean keepSpaces", P.clean("    if (a)\tb", 50, keepSpaces = true) == "    if (a) b")
+    check("clean null", P.clean(null, 5) == "")
+    check("basename unix", P.baseName("/home/u/proj/src/Main.kt", 80) == "Main.kt")
+    check("basename win", P.baseName("C:\\work\\proj\\", 64) == "proj")
+    check("basename cut", P.baseName("x".repeat(100), 80).length == 80)
+    // sessions: details only with the capability
+    val raw = mapOf("pillId" to "p1", "agent" to "codex", "state" to "finished", "statusText" to "ok\nfine", "stepIndex" to 3, "stepCount" to 8.0,
+        "project" to "/Users/me/bubby", "steps" to (1..30).map { "step $it" } + listOf("", 5), "finalLine" to "All done",
+        "files" to listOf(mapOf("id" to 7, "name" to "src/a/UiActivity.kt", "added" to 12, "removed" to 3, "isNew" to true),
+            mapOf("id" to "x9", "name" to "b.txt", "added" to -4, "removed" to 1e12, "tooLarge" to true),
+            mapOf("id" to 7, "name" to "dup.kt"), mapOf("id" to 1.5, "name" to "frac.kt"), mapOf("id" to 8, "name" to "/"), mapOf("name" to "noid.kt")))
+    val v2 = P.parseSession(raw, emptySet())!!
+    check("session v2 no details", v2.project == "" && v2.steps.isEmpty() && v2.finalLine == "" && v2.files.isEmpty())
+    check("session v2 fields", v2.agent == "codex" && v2.state == "finished" && v2.statusText == "ok fine" && v2.stepIndex == 3 && v2.stepCount == 8)
+    val v3 = P.parseSession(raw, setOf("details", "diffs"))!!
+    check("session project is a folder name", v3.project == "bubby")
+    check("session last 20 steps", v3.steps.size == 20 && v3.steps.first() == "step 11" && v3.steps.last() == "step 30")
+    check("session final line", v3.finalLine == "All done")
+    check("session files valid only", v3.files.map { it.name } == listOf("UiActivity.kt", "b.txt"), "${v3.files}")
+    check("session file numeric id", v3.files[0].idNum == 7L && v3.files[0].id == "7" && v3.files[0].isNew)
+    check("session file string id", v3.files[1].idNum == null && v3.files[1].id == "x9" && v3.files[1].tooLarge)
+    check("session file counts clamped", v3.files[1].added == 0 && v3.files[1].removed == 1_000_000)
+    check("session details only", P.parseSession(raw, setOf("details"))!!.files.isEmpty())
+    check("session no pill", P.parseSession(mapOf("agent" to "x"), emptySet()) == null)
+    check("session unknown state", P.parseSession(mapOf("pillId" to "p", "state" to "evil"), emptySet())!!.state == "idle")
+    check("session long step cut", P.parseSession(mapOf("pillId" to "p", "steps" to listOf("s".repeat(500))), setOf("details"))!!.steps[0].length == 200)
+    check("session 25 files capped", P.parseFiles((1..25).map { mapOf("id" to it, "name" to "f$it") }).size == 20)
+    // questions
+    val now = 1_000_000_000L
+    fun opt(l: String, d: String = "") = mapOf("label" to l, "description" to d)
+    fun q(vararg items: Map<String, Any?>, created: Any? = now - 1000, fp: Any? = "fp1") =
+        mapOf("pillId" to "p1", "fingerprint" to fp, "createdAt" to created, "questions" to items.toList())
+    val q1 = mapOf("question" to "Which db?", "multiSelect" to false, "options" to listOf(opt("Postgres", "fast"), opt("SQLite")))
+    val q2 = mapOf("question" to "Which tests?", "multiSelect" to true, "options" to listOf(opt("unit"), opt("ui"), opt("e2e")))
+    val good = P.parseQuestion(q(q1, q2), now)
+    check("question parses", good != null && good.items.size == 2 && good.items[1].multiSelect && good.items[0].options[0].description == "fast")
+    check("question too old", P.parseQuestion(q(q1, created = now - 115_000), now) == null)
+    check("question almost too old", P.parseQuestion(q(q1, created = now - 114_000), now) != null)
+    check("question future clock", P.parseQuestion(q(q1, created = now + 60_000), now) != null)
+    check("question no createdAt", P.parseQuestion(q(q1, created = null), now)?.createdAt == now)
+    check("question no fingerprint", P.parseQuestion(q(q1, fp = ""), now) == null)
+    check("question fingerprint not text", P.parseQuestion(q(q1, fp = 5), now) == null)
+    check("question none", P.parseQuestion(q(), now) == null)
+    check("question 5 too many", P.parseQuestion(q(q1, q1, q1, q1, q1), now) == null)
+    check("question 4 ok", P.parseQuestion(q(q1, q1, q1, q1), now) != null)
+    check("question 9 options", P.parseQuestion(q(mapOf("question" to "x", "options" to (1..9).map { opt("o$it") })), now) == null)
+    check("question 8 options", P.parseQuestion(q(mapOf("question" to "x", "options" to (1..8).map { opt("o$it") })), now) != null)
+    check("question no options", P.parseQuestion(q(mapOf("question" to "x", "options" to emptyList<Any>())), now) == null)
+    check("question text 501", P.parseQuestion(q(mapOf("question" to "x".repeat(501), "options" to listOf(opt("a")))), now) == null)
+    check("question text 500", P.parseQuestion(q(mapOf("question" to "x".repeat(500), "options" to listOf(opt("a")))), now) != null)
+    check("question blank text", P.parseQuestion(q(mapOf("question" to " \u200B ", "options" to listOf(opt("a")))), now) == null)
+    check("question label 121", P.parseQuestion(q(mapOf("question" to "x", "options" to listOf(opt("l".repeat(121))))), now) == null)
+    check("question label 120", P.parseQuestion(q(mapOf("question" to "x", "options" to listOf(opt("l".repeat(120))))), now) != null)
+    check("question description 301", P.parseQuestion(q(mapOf("question" to "x", "options" to listOf(opt("a", "d".repeat(301))))), now) == null)
+    check("question duplicate labels", P.parseQuestion(q(mapOf("question" to "x", "options" to listOf(opt("a"), opt("a")))), now) == null)
+    check("question labels alike once cleaned", P.parseQuestion(q(mapOf("question" to "x", "options" to listOf(opt("a"), opt("a\u200B")))), now) == null)
+    check("question empty label", P.parseQuestion(q(mapOf("question" to "x", "options" to listOf(opt("")))), now) == null)
+    check("question multiSelect not bool", P.parseQuestion(q(mapOf("question" to "x", "multiSelect" to "yes", "options" to listOf(opt("a")))), now) == null)
+    check("question label kept exact", P.parseQuestion(q(mapOf("question" to "x", "options" to listOf(opt("  Yes\u202E  ")))), now)!!.items[0].options[0].let { it.label == "  Yes\u202E  " && it.shown == "Yes" })
+    check("question expiry", P.msLeft(now - 15_000, now) == 100_000L && P.expired(now - 115_000, now))
+    // answers
+    val g = good!!
+    check("picks valid", P.picksValid(g, listOf(listOf("Postgres"), listOf("unit", "e2e"))))
+    check("picks wrong count", !P.picksValid(g, listOf(listOf("Postgres"))))
+    check("picks two for single", !P.picksValid(g, listOf(listOf("Postgres", "SQLite"), listOf("ui"))))
+    check("picks none for multi", !P.picksValid(g, listOf(listOf("Postgres"), emptyList())))
+    check("picks unknown label", !P.picksValid(g, listOf(listOf("postgres"), listOf("ui"))))
+    check("picks duplicate", !P.picksValid(g, listOf(listOf("SQLite"), listOf("ui", "ui"))))
+    var sel = P.emptySelection(g)
+    check("send disabled at start", P.picksFor(g, sel) == null)
+    sel = P.toggle(g, sel, 0, 0); sel = P.toggle(g, sel, 0, 1)
+    check("single choice replaces", sel[0] == setOf(1))
+    check("send disabled until every question", P.picksFor(g, sel) == null)
+    sel = P.toggle(g, sel, 1, 2); sel = P.toggle(g, sel, 1, 0)
+    check("multi toggles", sel[1] == setOf(0, 2))
+    check("send enabled", P.picksFor(g, sel) == listOf(listOf("SQLite"), listOf("unit", "e2e")))
+    sel = P.toggle(g, sel, 1, 0); sel = P.toggle(g, sel, 1, 2)
+    check("multi untoggle to none disables", sel[1].isEmpty() && P.picksFor(g, sel) == null)
+    check("toggle out of range", P.toggle(g, sel, 5, 0) == sel && P.toggle(g, sel, 0, 9) == sel)
+    // diffs
+    fun part(i: Int, n: Int, lines: List<Any?>, extra: Map<String, Any?> = emptyMap()) =
+        mapOf("pillId" to "p1", "fileId" to 7, "name" to "a/b/Main.kt", "added" to 3, "removed" to 1, "part" to i, "parts" to n, "lines" to lines) + extra
+    val d0 = P.parseDiff(part(0, 2, listOf(listOf("@", "@@ 10"), listOf("+", "new\tline"), listOf("?", "ctx"), listOf("-", "x".repeat(450)), "bad")))!!
+    check("diff parse", d0.name == "Main.kt" && d0.fileId == "7" && d0.lines.size == 4 && d0.lines[2].kind == ' ' && d0.lines[1].text == "new line")
+    check("diff long line cut", d0.lines[3].text.length == 400 && d0.truncated)
+    check("diff too many parts", P.parseDiff(part(0, 3, emptyList())) == null)
+    check("diff part out of range", P.parseDiff(part(2, 2, emptyList())) == null)
+    check("diff part not whole", P.parseDiff(part(0, 2, emptyList(), mapOf("part" to 0.5))) == null)
+    check("diff no file id", P.parseDiff(part(0, 1, emptyList(), mapOf("fileId" to null))) == null)
+    check("diff 150 lines cut to 100", P.parseDiff(part(0, 1, (1..150).map { listOf("+", "l$it") }))!!.let { it.lines.size == 100 && it.truncated })
+    val asm = DiffAssembler("p1", "7")
+    val d1 = P.parseDiff(part(1, 2, listOf(listOf("+", "second"))))!!
+    check("assembler other file ignored", !asm.add(P.parseDiff(part(0, 1, emptyList(), mapOf("fileId" to 8)))!!))
+    check("assembler part 1 first", asm.add(d1) && !asm.complete)
+    check("assembler repeat ignored", !asm.add(d1))
+    check("assembler contradicting parts ignored", !asm.add(P.parseDiff(part(0, 1, emptyList()))!!))
+    check("assembler complete in order", asm.add(d0) && asm.complete && asm.lines().first().text == "@@ 10" && asm.lines().last().text == "second" && asm.truncated)
+    check("assembler done takes nothing", !asm.add(d0))
+    asm.clear()
+    check("assembler forgets", asm.lines().isEmpty())
+    val gone = DiffAssembler("p1", "7")
+    check("assembler gone", gone.add(P.parseDiff(part(0, 1, listOf(listOf("+", "x")), mapOf("gone" to true)))!!) && gone.complete && gone.gone && gone.lines().isEmpty())
+    val big = DiffAssembler("p1", "x9")
+    check("assembler tooLarge", big.add(P.parseDiff(mapOf("pillId" to "p1", "fileId" to "x9", "tooLarge" to true))!!) && big.complete && big.tooLarge)
+    // the phone keeps 20 getDiff in 10 s
+    val rw = RateWindow(20, 10_000L)
+    check("rate 20 ok", (1..20).all { rw.tryTake(1000L + it) })
+    check("rate 21st refused", !rw.tryTake(2000L))
+    check("rate after window", rw.tryTake(11_002L))
+}
+
 fun main() {
-    quick(); contacts(); apps(); mathTools(); comms(); groq(); pairing(); if (System.getenv("PROBE") != null) probe()
+    quick(); contacts(); apps(); mathTools(); comms(); groq(); pairing(); agentsV3(); if (System.getenv("PROBE") != null) probe()
     println("RESULT: $pass passed, $fail failed (${pass + fail} assertions)")
     if (fail > 0) System.exit(1)
 }

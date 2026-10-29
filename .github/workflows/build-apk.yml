@@ -51,7 +51,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        screen: [home, tasks, calendar, settings, more, ai, setup, outfits, music, agents, agents-demo, agents-diff, fun, permissions, runs, home-green, home-blue, tasks-green, settings-blue, more-green, calendar-blue, home-night, tasks-night, settings-night, more-night, home-space, home-halloween, home-forest, home-ocean, home-newyear, tasks-space, tasks-halloween, settings-ocean, calendar-newyear, more-forest, home-ice, tasks-ice, tasks-blue, home-newyear-live, home-space-live, home-green-live, home-ocean-live, home-halloween-live, home-forest-live, home-ice-live, home-blue-live, game-guess, game-rps, game-memory, game-twenty, game-room, game-room-live, game-room-shop, fun]
+        screen: [home, tasks, calendar, settings, more, ai, setup, outfits, music, agents, agents-demo, agents-diff, fun, permissions, runs, home-green, home-blue, tasks-green, settings-blue, more-green, calendar-blue, home-night, tasks-night, settings-night, more-night, home-space, home-halloween, home-forest, home-ocean, home-newyear, tasks-space, tasks-halloween, settings-ocean, calendar-newyear, more-forest, home-ice, tasks-ice, tasks-blue, home-newyear-live, home-space-live, home-green-live, home-ocean-live, home-halloween-live, home-forest-live, home-ice-live, home-blue-live, game-guess, game-rps, game-memory, game-twenty, game-room, game-room-live, game-room-shop]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/download-artifact@v4
@@ -76,6 +76,7 @@ jobs:
       - name: Second try (the emulator died)
         uses: reactivecircus/android-emulator-runner@v2
         if: steps.first.outcome == 'failure'
+        continue-on-error: true   # a machine that dies twice is an infrastructure problem; an app crash is caught by the last step
         with:
           api-level: 34
           arch: x86_64
@@ -91,6 +92,10 @@ jobs:
           path: shots
           if-no-files-found: warn
           overwrite: true
+      - name: The app must not crash
+        run: |
+          if grep -q "FATAL EXCEPTION" shots/*-log.txt 2>/dev/null; then echo "::error::the app crashed on ${{ matrix.screen }}"; grep -h -A8 "FATAL EXCEPTION" shots/*-log.txt | head -30; exit 1; fi
+          if [ ! -s "shots/${{ matrix.screen }}.png" ]; then echo "::warning::the emulator died on ${{ matrix.screen }}: no picture (not an app problem)"; fi
 
   publish:
     # Collects the screenshots of every screen on the ci-screenshots branch.

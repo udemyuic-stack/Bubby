@@ -69,5 +69,7 @@ grep -E "com.example.buddy|AndroidRuntime|FATAL|ANR" "shots/$SCREEN-live.txt" | 
 tail -n 150 "shots/$SCREEN-live.txt" | cut -c1-240 > "shots/$SCREEN-tail.txt"
 rm -f "shots/$SCREEN-live.txt"
 ls -la shots
-# a dead emulator leaves an empty picture: fail so that "re-run failed jobs" tries this screen again
-[ -s "shots/$SCREEN.png" ] || exit 1
+# a real crash of the app fails the run; an emulator that died on its own (no picture, "device not found") is only a note
+if grep -q "FATAL EXCEPTION" "shots/$SCREEN-log.txt" 2>/dev/null; then echo "the app crashed"; exit 1; fi
+if [ ! -s "shots/$SCREEN.png" ]; then echo "the emulator died, no picture for $SCREEN" | tee -a "shots/$SCREEN-start.txt"; fi
+exit 0

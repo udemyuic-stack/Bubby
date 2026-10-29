@@ -64,8 +64,8 @@ class SceneView(c: Context) : WebView(c) {
     fun onAppResume() { active = true; if (wanted != null) resumeWeb() }
     fun onAppPause() { active = false; pauseWeb() }
 
-    private fun resumeWeb() { try { onResume(); resumeTimers() } catch (_: Exception) { } }
-    private fun pauseWeb() { try { onPause(); pauseTimers() } catch (_: Exception) { } }
+    private fun resumeWeb() { try { onResume() } catch (_: Exception) { } }
+    private fun pauseWeb() { try { onPause() } catch (_: Exception) { } }
 }
 
 /** The mockup pages use modern CSS (individual transform properties, inset): they need a WebView of Chrome 105 or newer. */

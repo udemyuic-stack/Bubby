@@ -55,6 +55,6 @@ class HomeWebView(c: Context, private val host: Host) : WebView(c) {
     /** Runs [js] in the page, as soon as the page is ready. */
     fun run(js: String) { if (ready) evaluateJavascript(js, null) else queue.add(js) }
 
-    fun rest() { try { onPause(); pauseTimers() } catch (_: Exception) { } }
-    fun wake() { try { onResume(); resumeTimers() } catch (_: Exception) { } }
+    fun rest() { try { onPause() } catch (_: Exception) { } }
+    fun wake() { try { onResume() } catch (_: Exception) { } }
 }

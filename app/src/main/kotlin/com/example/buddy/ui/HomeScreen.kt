@@ -73,7 +73,7 @@ class HomeScreen(act: UiActivity) : Screen(act) {
         if (withSplash) {
             island.visibility = View.INVISIBLE; sv.visibility = View.INVISIBLE
             splashCover = listOf(island, sv)
-            root.postDelayed({ endSplash() }, 4500)   // in case the page never says it is done
+            root.postDelayed({ w.run("var s=document.querySelector('.splash');if(s)s.click()"); endSplash() }, 4500)   // in case the page never says it is done
         }
         pushState()
         return root

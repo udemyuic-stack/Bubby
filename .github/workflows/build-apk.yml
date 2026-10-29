@@ -51,7 +51,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        screen: [home, tasks, calendar, settings, more, ai, setup, outfits, music, agents, agents-demo, agents-diff, fun, permissions, runs, home-green, home-blue, tasks-green, settings-blue, more-green, calendar-blue, home-night, tasks-night, settings-night, more-night, home-space, home-halloween, home-forest, home-ocean, home-newyear, tasks-space, tasks-halloween, settings-ocean, calendar-newyear, more-forest, home-ice, tasks-ice, tasks-blue, home-newyear-live, home-space-live, home-green-live, home-ocean-live, home-halloween-live, home-forest-live, home-ice-live, home-blue-live, game-guess, game-rps, game-memory]
+        screen: [home, tasks, calendar, settings, more, ai, setup, outfits, music, agents, agents-demo, agents-diff, fun, permissions, runs, home-green, home-blue, tasks-green, settings-blue, more-green, calendar-blue, home-night, tasks-night, settings-night, more-night, home-space, home-halloween, home-forest, home-ocean, home-newyear, tasks-space, tasks-halloween, settings-ocean, calendar-newyear, more-forest, home-ice, tasks-ice, tasks-blue, home-newyear-live, home-space-live, home-green-live, home-ocean-live, home-halloween-live, home-forest-live, home-ice-live, home-blue-live, game-guess, game-rps, game-memory, game-twenty, fun]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/download-artifact@v4

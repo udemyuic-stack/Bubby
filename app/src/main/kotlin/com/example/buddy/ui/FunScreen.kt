@@ -18,6 +18,7 @@ class FunScreen(act: UiActivity) : Screen(act) {
         t("Угадай число", "Guess the number", "Sonni top") to "guess",
         t("Камень-ножницы-бумага", "Rock-paper-scissors", "Tosh-qaychi-qog'oz") to "rps",
         t("Найди пару", "Memory match", "Juftini top") to "memory",
+        t("20 вопросов", "20 questions", "20 ta savol") to "twenty",
         t("Загадки", "Riddles", "Topishmoqlar") to null,
         t("Викторина", "Quiz", "Viktorina") to null,
         t("Слова-цепочка", "Word chain", "So'z zanjiri") to null,

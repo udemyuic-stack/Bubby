@@ -11,12 +11,13 @@ import kotlin.random.Random
 
 /**
  * Games that play inside the app: every move answers at once (no network, no floating island), the mascot reacts to each one.
- * [kind] is "guess", "rps" or "memory". The voice games (riddles, quiz, word chain) go through the assistant instead.
+ * [kind] is "guess", "rps", "memory" (all instant) or "twenty" (the assistant asks yes/no questions: one short network answer per turn). The voice games (riddles, quiz, word chain) go through the assistant instead.
  */
 class GameScreen(act: UiActivity, private val kind: String) : Screen(act) {
     override fun title() = when (kind) {
         "guess" -> t("Угадай число", "Guess the number", "Sonni top")
         "rps" -> t("Камень-ножницы-бумага", "Rock-paper-scissors", "Tosh-qaychi-qog'oz")
+        "twenty" -> t("20 вопросов", "20 questions", "20 ta savol")
         else -> t("Найди пару", "Memory match", "Juftini top")
     }
 
@@ -43,6 +44,7 @@ class GameScreen(act: UiActivity, private val kind: String) : Screen(act) {
         when (kind) {
             "guess" -> guess(c)
             "rps" -> rps(c)
+            "twenty" -> twenty(c)
             else -> memory(c)
         }
     }
@@ -125,6 +127,94 @@ class GameScreen(act: UiActivity, private val kind: String) : Screen(act) {
         c.add(ctx.button(t("Сбросить счёт", "Reset the score", "Hisobni nolga tushirish"), BtnStyle.Tonal) { you = 0; me = 0; tie = 0; showScore(); result.text = ""; react("🙂", t("Давай сначала!", "Let's start again!", "Qaytadan boshlaymiz!")) }, MATCH, WRAP, top = 16)
         showScore()
         react("😎", t("Выбирай — я уже выбрал!", "Pick one, I have already picked!", "Tanla, men tanlab bo'ldim!"))
+    }
+
+    // ---- 20 questions: the user thinks of something, Bubby asks yes/no questions and guesses ------------------------
+
+    private fun twenty(c: LinearLayout) {
+        val turns = ArrayList<Pair<String, String>>()   // the whole talk, for the model
+        var asked = 0
+        var guessing = false
+        var busy = false
+        val counter = ctx.text("", T.Small).apply { gravity = Gravity.CENTER }
+        val answers = ctx.col()
+        val lang = when (com.example.buddy.Tr.lang(ctx)) { "ru" -> "Russian"; "uz" -> "Uzbek (Latin script)"; else -> "English" }
+        val system = "You are playing 20 Questions. The user is thinking of an animal, object, food or well-known thing (never a private person). " +
+            "Each turn you either ask ONE short yes/no question, or, when you are fairly sure, make a guess. You may make a guess at any time, and you must guess by question 20. " +
+            "Do not repeat questions. Reply with STRICT JSON only, no other text: {\"say\":\"<your question or guess, in $lang, max 14 words>\",\"guess\":true or false}."
+        fun parse(raw: String): Pair<String, Boolean> {
+            val a = raw.indexOf('{'); val b = raw.lastIndexOf('}')
+            if (a >= 0 && b > a) try {
+                val o = org.json.JSONObject(raw.substring(a, b + 1))
+                val s = o.optString("say", "").trim()
+                if (s.isNotEmpty()) return s to o.optBoolean("guess", false)
+            } catch (_: Exception) { }
+            return raw.trim().take(160) to false
+        }
+        lateinit var showButtons: (List<Pair<String, String>>) -> Unit
+        fun status() { counter.text = if (asked == 0) "" else t("Вопрос $asked из 20", "Question $asked of 20", "$asked/20-savol") }
+        fun ask(userSays: String) {
+            if (busy) return
+            busy = true
+            turns += "user" to userSays
+            react("🤔", t("Думаю…", "Thinking…", "O'ylayapman…"))
+            showButtons(emptyList())
+            Thread {
+                val raw = try { com.example.buddy.Brain(ctx.applicationContext).chatOnce(system + " Questions asked so far: $asked.", turns) } catch (e: Exception) { "" }
+                act.runOnUiThread {
+                    busy = false
+                    if (raw.isBlank()) {
+                        turns.removeAt(turns.size - 1)
+                        react("😕", t("Не получилось связаться с ИИ. Проверьте ключ и интернет.", "Could not reach the AI. Check the key and the internet.", "AI bilan aloqa bo'lmadi. Kalit va internetni tekshiring."))
+                        showButtons(listOf(t("Ещё раз", "Try again", "Qayta urinish") to "retry"))
+                        return@runOnUiThread
+                    }
+                    val (say, isGuess) = parse(raw)
+                    turns += "assistant" to raw
+                    guessing = isGuess
+                    if (!isGuess) asked++
+                    status()
+                    react(if (isGuess) "🧐" else "🤨", say)
+                    showButtons(if (isGuess) listOf(t("Да, верно!", "Yes, correct!", "Ha, to'g'ri!") to "win", t("Нет", "No", "Yo'q") to "wrong")
+                    else listOf(t("Да", "Yes", "Ha") to "Yes", t("Нет", "No", "Yo'q") to "No", t("Может быть", "Maybe", "Balki") to "Maybe", t("Не знаю", "I don't know", "Bilmayman") to "I don't know"))
+                }
+            }.start()
+        }
+        var lastSent = ""
+        showButtons = { list ->
+            answers.removeAllViews()
+            var i = 0
+            while (i < list.size) {
+                val r = ctx.row(Gravity.CENTER)
+                for (k in 0..1) {
+                    val (label, code) = list.getOrNull(i + k) ?: break
+                    r.addView(ctx.button(label, BtnStyle.Tonal) {
+                        when (code) {
+                            "retry" -> ask(lastSent)
+                            "win" -> {
+                                react("🥳", t("Ура, я угадал за $asked вопросов!", "Yes! I got it in $asked questions!", "Ura, $asked savolda topdim!"))
+                                showButtons(listOf(t("Сыграть ещё", "Play again", "Yana o'ynash") to "again")); act.confetti()
+                            }
+                            "wrong" -> {
+                                lastSent = if (asked >= 20) "No, that is not it. I win - you have used all 20 questions." else "No, that is not it. Keep asking."
+                                if (asked >= 20) {
+                                    react("😭", t("Сдаюсь! Ты победил — что ты загадал?", "I give up! You win. What was it?", "Taslim! Sen yutding. Nima o'ylagan eding?"))
+                                    showButtons(listOf(t("Сыграть ещё", "Play again", "Yana o'ynash") to "again"))
+                                } else ask(lastSent)
+                            }
+                            "again" -> { turns.clear(); asked = 0; guessing = false; status(); ask("Let's start. I have thought of something. Ask your first question.") }
+                            else -> { lastSent = code; ask(code) }
+                        }
+                    }, LinearLayout.LayoutParams(0, WRAP, 1f).apply { setMargins(ctx.dp(4), ctx.dp(4), ctx.dp(4), ctx.dp(4)) })
+                }
+                answers.addView(r, LinearLayout.LayoutParams(MATCH, WRAP))
+                i += 2
+            }
+        }
+        c.add(counter, MATCH, WRAP, bottom = 8)
+        c.add(answers, MATCH, WRAP)
+        react("🧠", t("Загадай животное, предмет или еду — я угадаю меньше чем за 20 вопросов.", "Think of an animal, an object or a food. I will guess it in under 20 questions.", "Hayvon, narsa yoki taom o'yla. Men 20 ta savoldan kam topaman."))
+        showButtons(listOf(t("Я загадал!", "I have one!", "O'yladim!") to "again"))
     }
 
     // ---- memory match ---------------------------------------------------------------------------------------------

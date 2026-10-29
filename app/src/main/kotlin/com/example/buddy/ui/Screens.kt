@@ -12,6 +12,7 @@ object Screens {
         "game-guess" -> GameScreen(act, "guess")
         "game-rps" -> GameScreen(act, "rps")
         "game-memory" -> GameScreen(act, "memory")
+        "game-twenty" -> GameScreen(act, "twenty")
         "agents" -> AgentsScreen(act)
         "runs" -> RunsScreen(act)
         else -> null

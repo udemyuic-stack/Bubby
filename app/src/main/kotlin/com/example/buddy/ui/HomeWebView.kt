@@ -20,6 +20,8 @@ class HomeWebView(c: Context, private val host: Host) : WebView(c) {
         fun nav(name: String)
         fun ask(text: String)
         fun toggle()
+        /** The loading splash of the page started (true) or ended (false). */
+        fun splash(show: Boolean)
     }
 
     private var ready = false
@@ -29,6 +31,7 @@ class HomeWebView(c: Context, private val host: Host) : WebView(c) {
         @JavascriptInterface fun nav(n: String) { if (n in setOf("tasks", "calendar", "settings", "more")) post { host.nav(n) } }
         @JavascriptInterface fun ask(t: String) { if (t.length <= 200) post { host.ask(t) } }
         @JavascriptInterface fun toggle() { post { host.toggle() } }
+        @JavascriptInterface fun splash(show: Boolean) { post { host.splash(show) } }
         @JavascriptInterface fun ready() { post { ready = true; queue.forEach { evaluateJavascript(it, null) }; queue.clear() } }
     }
 
@@ -47,7 +50,7 @@ class HomeWebView(c: Context, private val host: Host) : WebView(c) {
         }
     }
 
-    fun load(theme: String) { loadUrl("file:///android_asset/home/$theme.html") }
+    fun load(theme: String, splash: Boolean) { loadUrl("file:///android_asset/home/$theme.html" + if (splash) "" else "?nosplash=1") }
 
     /** Runs [js] in the page, as soon as the page is ready. */
     fun run(js: String) { if (ready) evaluateJavascript(js, null) else queue.add(js) }

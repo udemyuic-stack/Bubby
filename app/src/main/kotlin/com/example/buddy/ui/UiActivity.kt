@@ -26,6 +26,9 @@ class UiActivity : Activity() {
     private var scene: SceneView? = null
     private val tabs = ArrayList<Screen>()
     private var tab = 0
+    private var tabShown = false
+    private var touchX = -1f
+    private var touchY = -1f
     private val stack = ArrayList<Pair<Screen, View>>()
     private var shownLang = ""
     private var insetTop = 0
@@ -173,7 +176,30 @@ class UiActivity : Activity() {
         return bar
     }
 
+    override fun dispatchTouchEvent(ev: android.view.MotionEvent): Boolean {
+        if (ev.actionMasked == android.view.MotionEvent.ACTION_DOWN) { touchX = ev.rawX; touchY = ev.rawY }
+        return super.dispatchTouchEvent(ev)
+    }
+
+    /** A ring spreading from where the finger touched, and the new page opening as a circle from the same spot (like the designs). */
+    private fun revealFromTouch() {
+        if (touchX < 0f || intent?.getBooleanExtra("static", false) == true || Build.VERSION.SDK_INT < 21) return
+        try {
+            val loc = IntArray(2); body.getLocationOnScreen(loc)
+            val cx = (touchX - loc[0]).toInt().coerceIn(0, maxOf(1, body.width)); val cy = (touchY - loc[1]).toInt().coerceIn(0, maxOf(1, body.height))
+            val r = Math.hypot(maxOf(cx, body.width - cx).toDouble(), maxOf(cy, body.height - cy).toDouble()).toFloat()
+            body.post { try { android.view.ViewAnimationUtils.createCircularReveal(body, cx, cy, 0f, r).apply { duration = 650; interpolator = android.view.animation.DecelerateInterpolator(1.4f) }.start() } catch (_: Exception) { } }
+            val ring = View(this).apply {
+                background = android.graphics.drawable.GradientDrawable().apply { shape = android.graphics.drawable.GradientDrawable.OVAL; setColor(Color.TRANSPARENT); setStroke(dp(2), Glass.white(.85f)) }
+                isClickable = false
+            }
+            host.addView(ring, FrameLayout.LayoutParams(dp(40), dp(40)).apply { leftMargin = (touchX - dp(20)).toInt(); topMargin = (touchY - dp(20)).toInt() })
+            ring.animate().scaleX(9f).scaleY(9f).alpha(0f).setDuration(750).withEndAction { host.removeView(ring) }.start()
+        } catch (_: Exception) { }
+    }
+
     fun showTab(i: Int) {
+        val changed = tabShown && i != tab
         tab = i
         body.removeAllViews()
         body.addView(tabs[i].view(), FrameLayout.LayoutParams(MATCH, MATCH))
@@ -185,6 +211,8 @@ class UiActivity : Activity() {
         if (i != 0) navFrame.addView(buildNav(), FrameLayout.LayoutParams(MATCH, dp(68)))
         tabs[i].onShow()
         updateChrome()
+        if (changed) revealFromTouch()
+        tabShown = true
     }
 
     /**

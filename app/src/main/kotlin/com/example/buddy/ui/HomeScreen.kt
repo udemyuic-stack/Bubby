@@ -16,6 +16,8 @@ import java.util.Calendar
 private val REQUIRED = listOf("mic", "overlay")
 
 class HomeScreen(act: UiActivity) : Screen(act) {
+    private companion object { var splashSeen = false }
+
     private var busy = false
     private var micPoked = false
     private var firstShow = true
@@ -52,9 +54,12 @@ class HomeScreen(act: UiActivity) : Screen(act) {
             override fun nav(name: String) { act.showTab(when (name) { "tasks" -> 1; "calendar" -> 2; "settings" -> 3; else -> 4 }) }
             override fun ask(text: String) { send(if (text.trim().lowercase() == "привет") t("Привет!", "Hello!", "Salom!") else text) }
             override fun toggle() { this@HomeScreen.toggle() }
+            override fun splash(show: Boolean) { if (!show) endSplash() }
         })
         web = w
-        w.load(theme)
+        val withSplash = !splashSeen && !still
+        splashSeen = true
+        w.load(theme, withSplash)
         val island = Island(ctx, sc, still, { txt -> send(txt) }) { open -> w.run("bubbyIsland(" + open + ")") }
         content = ctx.col { setPadding(0, 0, 0, ctx.dp(16) + act.bottomInset) }
         render(content)
@@ -64,8 +69,20 @@ class HomeScreen(act: UiActivity) : Screen(act) {
         root.addView(w, FrameLayout.LayoutParams(MATCH, MATCH))
         root.addView(island, FrameLayout.LayoutParams(MATCH, (134 * sc).toInt()))
         root.addView(sv, FrameLayout.LayoutParams(MATCH, MATCH).apply { topMargin = (664 * sc).toInt() })
+        // the page's own loading splash covers the screen at first: the island and the cards wait for it
+        if (withSplash) {
+            island.visibility = View.INVISIBLE; sv.visibility = View.INVISIBLE
+            splashCover = listOf(island, sv)
+            root.postDelayed({ endSplash() }, 4500)   // in case the page never says it is done
+        }
         pushState()
         return root
+    }
+
+    private var splashCover: List<View> = emptyList()
+    private fun endSplash() {
+        splashCover.forEach { v -> v.visibility = View.VISIBLE; v.alpha = 0f; v.animate().alpha(1f).setDuration(400).start() }
+        splashCover = emptyList()
     }
 
     /** Tells the page what the app knows: running or not, and the words in the user's language. */
@@ -80,6 +97,14 @@ class HomeScreen(act: UiActivity) : Screen(act) {
         l("Задачи", t("Задачи", "Tasks", "Vazifalar")); l("Ещё", t("Ещё", "More", "Yana")); l("Календарь", t("Календарь", "Calendar", "Kalendar"))
         l("Настройки", t("Настройки", "Settings", "Sozlamalar")); l("Проверить", t("Проверить:<br>привет", "Test:<br>hello", "Tekshirish:<br>salom"))
         o.put("labels", labels)
+        o.put("splashHint", t("Нажмите, чтобы пропустить", "Tap to skip", "O'tkazish uchun bosing"))
+        o.put("splashSub", when (Theme.cur.id) {
+            "space" -> t("твоё солнце всегда рядом ☀️", "your sun is always near ☀️", "quyoshing doim yoningda ☀️")
+            "halloween" -> t("бу! счастливого Хэллоуина 🎃", "boo! happy Halloween 🎃", "bu! Halloween muborak 🎃")
+            "forest" -> t("даже в дождь — рядом ☔", "near you, even in the rain ☔", "yomg'irda ham yoningda ☔")
+            "ocean" -> t("медуза Bubby рядом 🌊", "your jellyfish Bubby is near 🌊", "meduza Bubby yoningda 🌊")
+            else -> t("С Новым годом! 🎄", "Happy New Year! 🎄", "Yangi yil muborak! 🎄")
+        })
         w.run("bubbyHome(" + o + ")")
     }
 

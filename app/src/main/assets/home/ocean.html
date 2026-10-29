@@ -72,6 +72,7 @@
   src: url(outfit-b1cb8c03.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
+.petal{text-shadow:0 0 7px rgba(255,255,255,.95),0 0 2px rgba(255,255,255,.9)}
 </style>
 <style>
 body{margin:0}
@@ -333,7 +334,7 @@ button,.row,.petal{cursor:pointer;-webkit-tap-highlight-color:transparent}
 <path d="M40.0 78.0 C43.0 63.0 67.0 63.0 70.0 78.0" fill="none" stroke="rgba(255,255,255,.95)" stroke-width="4.6" class="eye" style="display:none" stroke-linecap="round" filter="url(#gw)"></path><path d="M100.0 78.0 C103.0 63.0 127.0 63.0 130.0 78.0" fill="none" stroke="rgba(255,255,255,.95)" stroke-width="4.6" class="eye" style="display:none" stroke-linecap="round" filter="url(#gw)"></path>
 </svg></div>
 </div>
-<div style="margin-top:6px;font-size:26px;font-weight:200;letter-spacing:1px;color:#f4f1ee">Bubby</div>
+<div style="margin-top:6px;font-size:26px;font-weight:200;letter-spacing:1px;color:#f4f1ee;text-shadow:0 1px 10px rgba(8,62,92,.65),0 0 2px rgba(8,62,92,.5)">Bubby</div>
 <div style="margin-top:6px;display:flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);font-size:12px;font-weight:300;color:#f1ecea"><span style="width:7px;height:7px;border-radius:50%;background:#a3a9c9"></span>Помощник выключен</div>
 </div>
 
@@ -442,6 +443,7 @@ pills[3].onclick=()=>send('поставь будильник на 7');
  [...hm.children].forEach(c=>{if(c.querySelector&&c.querySelector('input'))c.style.visibility='hidden';if(c.style&&c.style.top==='668px')c.style.display='none'});
  const box=([...hm.children].find(c=>c.style&&c.style.top==='134px')||[...hm.children].find(c=>c.firstElementChild&&[...c.children].some(e=>e.textContent.trim()==='Bubby')))||document.createElement('div'),mascot=box.firstElementChild||document.createElement('div'),nameEl=[...box.children].find(e=>e.textContent.trim()==='Bubby');
  let openNow=false;
+ st.style.textShadow='0 1px 6px rgba(8,62,92,.6)';
  window.bubbyHome=(o)=>{
   if(o.splashSub){const e=$('.sp-sub');if(e)e.textContent=o.splashSub}
   if(o.splashHint){const e=$('.sp-hint');if(e)e.textContent=o.splashHint}
@@ -464,6 +466,7 @@ pills[3].onclick=()=>send('поставь будильник на 7');
   st.animate({transform:mv},{duration:220,fill:'forwards',easing:E});
  };
  window.bubbyInset=(px)=>{window.__inset=px;fit()};
+ window.bubbyBloom=()=>{try{bloom()}catch(e){}};
  B&&B.ready&&B.ready();
 })();
 

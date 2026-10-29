@@ -421,12 +421,12 @@ class GlassCritter(val kind: String = Theme.cur.mascot, private val def: ThemeDe
     private val mochiHalo: Shader by lazy { RadialGradient(85f, 68f, 111f, intArrayOf(Glass.white(.28f), Glass.white(0f)), null, Shader.TileMode.CLAMP) }
     private val mochiPatch: Shader by lazy { RadialGradient(69f, 26f, 48f, intArrayOf(Glass.white(.5f), Glass.white(0f)), null, Shader.TileMode.CLAMP) }
     private val mochiRefl: Shader by lazy { RadialGradient(99f, 125f, 60f, intArrayOf(Glass.white(.18f), Glass.white(0f)), null, Shader.TileMode.CLAMP) }
-    private val critterHalo: Shader by lazy { RadialGradient(85f, 68f, 111f, intArrayOf(Theme.rgb(def.glow, 70), Glass.white(0f)), null, Shader.TileMode.CLAMP) }
+    private val critterHalo: Shader by lazy { RadialGradient(85f, 68f, 66f, intArrayOf(Theme.rgb(def.glow, 70), Glass.white(0f)), null, Shader.TileMode.CLAMP) }   // fades out inside the view: no hard edge
 
     private fun drawCritter(cv: Canvas) {
         if (withHalo) {
             lit.shader = critterHalo
-            cv.save(); cv.scale(1f, 176f / 222f, 85f, 68f); cv.drawCircle(85f, 68f, 111f, lit); cv.restore()
+            cv.drawCircle(85f, 68f, 66f, lit)
             lit.shader = null
         }
         if (kind == "butterfly") {

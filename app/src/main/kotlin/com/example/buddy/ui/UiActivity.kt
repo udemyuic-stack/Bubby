@@ -113,7 +113,10 @@ class UiActivity : Activity() {
     }
 
     private fun applyInsets() {
-        shell.setPadding(0, insetTop, 0, 0)
+        // the themed home page reaches under the status bar (its own background fills the top)
+        val home = tabs.isNotEmpty() && tab == 0 && stack.isEmpty() && (tabs[0] as HomeScreen).themed
+        shell.setPadding(0, if (home) 0 else insetTop, 0, 0)
+        if (tabs.isNotEmpty()) (tabs[0] as HomeScreen).applyTopInset(insetTop)
         navFrame.setPadding(dp(12), 0, dp(12), dp(18) + insetBottom)
         for (s in tabs) s.applyNavInset(insetBottom)
         for ((_, v) in stack) v.setPadding(0, insetTop, 0, insetBottom)
@@ -225,6 +228,7 @@ class UiActivity : Activity() {
      * from page to page like in the design; the themed home page carries its own scene.
      */
     private fun updateChrome() {
+        applyInsets()
         val sc = scene ?: return
         val pushed = stack.isNotEmpty()
         sc.setScene(if (tab == 0 && !pushed && (tabs[0] as HomeScreen).themed) null else Theme.cur.scene)

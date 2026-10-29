@@ -24,7 +24,9 @@ class HomeScreen(act: UiActivity) : Screen(act) {
 
     override val padH = 0
     override fun title() = "Bubby"
-    override fun onShow() { reshow(); web?.wake() }
+    private var shownOnce = false
+    // coming back to the home page: the petals fly out of the core again, like in the designs
+    override fun onShow() { reshow(); web?.wake(); if (shownOnce && web != null && splashCover.isEmpty()) web?.run("bubbyBloom()"); shownOnce = true }
     override fun onPermissionResult() { refresh() }
 
     /** The mockup page of a themed look, when this look has one and the phone has a WebView. */
@@ -34,6 +36,17 @@ class HomeScreen(act: UiActivity) : Screen(act) {
     val themed: Boolean get() = themedRoot != null
     fun restWeb() { web?.rest() }
     fun wakeWeb() { web?.wake() }
+
+    /** The themed page fills the whole screen, also under the status bar: the native island and cards and the page's own frame move down by the bar. */
+    private var topInset = 0
+    private var islandView: View? = null
+    fun applyTopInset(px: Int) {
+        topInset = px
+        val sc = ctx.resources.displayMetrics.widthPixels / 390f
+        islandView?.let { (it.layoutParams as? FrameLayout.LayoutParams)?.let { lp -> lp.topMargin = px; it.layoutParams = lp } }
+        cardsScroll?.let { (it.layoutParams as? FrameLayout.LayoutParams)?.let { lp -> lp.topMargin = (664 * sc).toInt() + px; it.layoutParams = lp } }
+        web?.run("bubbyInset(" + (px / ctx.resources.displayMetrics.density) + ")")
+    }
     fun destroyWeb() { web?.destroy() }
 
     override fun view(): View {
@@ -67,8 +80,10 @@ class HomeScreen(act: UiActivity) : Screen(act) {
         cardsScroll = sv
         val root = FrameLayout(ctx)
         root.addView(w, FrameLayout.LayoutParams(MATCH, MATCH))
-        root.addView(island, FrameLayout.LayoutParams(MATCH, (134 * sc).toInt()))
-        root.addView(sv, FrameLayout.LayoutParams(MATCH, MATCH).apply { topMargin = (664 * sc).toInt() })
+        root.addView(island, FrameLayout.LayoutParams(MATCH, (134 * sc).toInt()).apply { topMargin = topInset })
+        root.addView(sv, FrameLayout.LayoutParams(MATCH, MATCH).apply { topMargin = (664 * sc).toInt() + topInset })
+        islandView = island
+        if (topInset > 0) w.run("bubbyInset(" + (topInset / ctx.resources.displayMetrics.density) + ")")
         // the page's own loading splash covers the screen at first: the island and the cards wait for it
         // (always: the page reports when it is done, also when it skips the splash)
         island.visibility = View.INVISIBLE; sv.visibility = View.INVISIBLE

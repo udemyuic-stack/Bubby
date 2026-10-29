@@ -268,16 +268,24 @@ class OutfitsScreen(act: UiActivity) : Screen(act) {
         }
     }
 
+    private var exprGen = 0
+
+    /** The first row at once, the others one per frame, so opening the screen does not wait for 21 pictures. */
     private fun fillExpressions() {
         exprBox.removeAllViews()
-        for (rowItems in expressions().chunked(4)) {
+        val gen = ++exprGen
+        val rows = expressions().chunked(4)
+        fun addRow(n: Int) {
+            if (gen != exprGen || n >= rows.size) return
             val row = ctx.row {}
             for (i in 0 until 4) {
-                val e = rowItems.getOrNull(i)
+                val e = rows[n].getOrNull(i)
                 row.addView(if (e != null) exprTile(e) else View(ctx), LinearLayout.LayoutParams(0, ctx.dp(96), 1f).apply { setMargins(ctx.dp(3), ctx.dp(3), ctx.dp(3), ctx.dp(3)) })
             }
             exprBox.add(row, MATCH, WRAP)
+            if (n + 1 < rows.size) exprBox.postDelayed({ addRow(n + 1) }, 16)
         }
+        addRow(0)
     }
 
     private fun presetCard(p: Preset): View {

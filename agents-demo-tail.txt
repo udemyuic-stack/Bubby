@@ -1,0 +1,150 @@
+10-29 15:19:11.674  2191  5595 D TrafficStats: tagSocket(83) with statsTag=0xffffff01, statsUid=10129
+10-29 15:19:11.687  5032  5519 E bwel    : Phenotype registration failed [CONTEXT service_id=51 ]
+10-29 15:19:11.687  5032  5519 E bwel    : java.util.concurrent.TimeoutException: Timed out waiting for Task
+10-29 15:19:11.687  5032  5519 E bwel    : 	at cfsz.o(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+10-29 15:19:11.687  5032  5519 E bwel    : 	at bwel.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):12)
+10-29 15:19:11.687  5032  5519 E bwel    : 	at com.google.android.gms.phenotype.sync.HeterodyneSyncTaskChimeraService.d(:com.google.android.gms@231818047@23.18.18 (190800-535401451):8)
+10-29 15:19:11.687  5032  5519 E bwel    : 	at com.google.android.gms.phenotype.sync.HeterodyneSyncTaskChimeraService.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):10)
+10-29 15:19:11.687  5032  5519 E bwel    : 	at avzs.call(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+10-29 15:19:11.687  5032  5519 E bwel    : 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+10-29 15:19:11.687  5032  5519 E bwel    : 	at aced.c(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+10-29 15:19:11.687  5032  5519 E bwel    : 	at aced.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):7)
+10-29 15:19:11.687  5032  5519 E bwel    : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+10-29 15:19:11.687  5032  5519 E bwel    : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+10-29 15:19:11.687  5032  5519 E bwel    : 	at acjn.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+10-29 15:19:11.687  5032  5519 E bwel    : 	at java.lang.Thread.run(Thread.java:1012)
+10-29 15:19:11.689  4221  5505 E BugleRcsEngine: [115] brfg.a: DroidGuardLogger: Could not create DroidGuard token creation event
+10-29 15:19:11.691  4221  5505 I BugleRcsEngine: [115] brfq.d: (PEv2-SM-Bugle-161255364): RequestWithImsiState: event Send config request [8712aaa2-98c3-4c60-8c01-66c701e9b6d4]
+10-29 15:19:11.691  4221  5505 I BugleRcsEngine: [115] brfq.d: (PEv2-SM-Bugle-161255364): InProgressState: event Send config request [8712aaa2-98c3-4c60-8c01-66c701e9b6d4]
+10-29 15:19:11.692  4221  5505 W BugleRcsEngine: [115] bpxc.w: Unable to send diagnostic log
+10-29 15:19:11.698  5109  5119 I gle.android.gms: Background concurrent copying GC freed 201999(8403KB) AllocSpace objects, 67(2392KB) LOS objects, 50% free, 17MB/34MB, paused 4.738ms,25us total 1.487s
+10-29 15:19:11.700   835   917 D StylusManager: Stylus InputDevice changed: 14 virtio_input_multi_touch_11
+10-29 15:19:11.710   835   835 D ControlsListingControllerImpl: ServiceConfig reloaded, count: 0
+10-29 15:19:11.711   835   917 D StylusManager: Stylus InputDevice changed: 11 virtio_input_multi_touch_8
+10-29 15:19:11.724  1047  1352 D ImsResolver: maybeAddedImsService, packageName: com.google.android.contacts
+10-29 15:19:11.733   835   917 D StylusManager: Stylus InputDevice changed: 13 virtio_input_multi_touch_10
+10-29 15:19:11.750   835   917 D StylusManager: Stylus InputDevice changed: 9 virtio_input_multi_touch_6
+10-29 15:19:11.754   835   917 D StylusManager: Stylus InputDevice changed: 10 virtio_input_multi_touch_7
+10-29 15:19:11.756  5032  5099 I GCoreUlr: WorldUpdater:init: Ensuring that reporting is stopped because of reasons: (no Google accounts)
+10-29 15:19:11.763   835   917 D StylusManager: Stylus InputDevice changed: 7 virtio_input_multi_touch_4
+10-29 15:19:11.764  5032  5099 I GCoreUlr: Unbound from all signal providers.
+10-29 15:19:11.773  5032  5032 I GCoreUlr: Unbound from all signal providers.
+10-29 15:19:11.773  5032  5032 I GCoreUlr: Stopping handler for UlrDispSvcFast
+10-29 15:19:11.783   523   550 E system_server: No package ID 7f found for resource ID 0x7f080107.
+10-29 15:19:11.783   523   550 E system_server: No package ID 7f found for resource ID 0x7f150560.
+10-29 15:19:11.786   835   917 D StylusManager: Stylus InputDevice changed: 6 virtio_input_multi_touch_3
+10-29 15:19:11.792  5109  5373 I Checkin : [CheckinRequestProcessor] updateCheckinIdTokenFileFromResponse, Reading existing AID
+10-29 15:19:11.794  4221  5604 W BugleRcsEngine: [117] bpxc.w: Unable to send diagnostic log
+10-29 15:19:11.796   338  5606 I resolv  : GetAddrInfoHandler::run: {100 786532 100 983140 10130 0}
+10-29 15:19:11.796   338  5607 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+10-29 15:19:11.799   338  5608 I resolv  : res_nmkquery: (QUERY, IN, A)
+10-29 15:19:11.812  5109  5373 I Checkin : [CheckinRequestProcessor] Default Task : Checkin Succeeded: https://android.googleapis.com/checkin (fragment #1).
+10-29 15:19:11.814   338  5608 I resolv  : res_nsend: used send_dg 64 terrno: 0
+10-29 15:19:11.814   338  5608 I resolv  : doQuery: rcode=0, ancount=1, return value=64
+10-29 15:19:11.818   835   917 D StylusManager: Stylus InputDevice changed: 5 virtio_input_multi_touch_2
+10-29 15:19:11.820   338  5607 I resolv  : res_nsend: used send_dg 76 terrno: 0
+10-29 15:19:11.820   338  5607 I resolv  : doQuery: rcode=0, ancount=1, return value=76
+10-29 15:19:11.821  4221  5604 D TrafficStats: tagSocket(116) with statsTag=0x107d, statsUid=-1
+10-29 15:19:11.831   835   917 D StylusManager: Stylus InputDevice changed: 8 virtio_input_multi_touch_5
+10-29 15:19:11.853  1607  1607 I AiAiEcho: AppFetcherImpl onPackageChanged com.google.android.contacts.
+10-29 15:19:11.856  1607  3745 I AiAiEcho: AppIndexer Package:[com.google.android.contacts] UserProfile:[0] Enabled:[true].
+10-29 15:19:11.858  1607  3745 I AiAiEcho: AppFetcherImplV2 updateApps package:[com.google.android.contacts], userId:[0], reason:[package is updated.].
+10-29 15:19:11.899   835   917 D StylusManager: Stylus InputDevice changed: 4 virtio_input_multi_touch_1
+10-29 15:19:11.902   835   917 D StylusManager: Stylus InputDevice changed: 12 virtio_input_multi_touch_9
+10-29 15:19:11.920  4974  4993 D EGL_emulation: app_time_stats: avg=25.92ms min=12.93ms max=85.30ms count=38
+10-29 15:19:11.924  5109  5373 I Checkin : [CheckinOperation] Checkin Operation finished with result: SUCCESS finish time: 108045.
+10-29 15:19:11.929  5109  5488 I AccountSeedingPrefetchI: AccountSeedingPrefetchInit intent operation started. [CONTEXT service_id=42 ]
+10-29 15:19:12.028  5032  5479 I Fitness : OnPackageChangedOperation got intent: Intent { act=android.intent.action.PACKAGE_CHANGED dat=package: flg=0x45000010 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.PersistentIntentO
+10-29 15:19:12.032  5032  5032 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.presencemanager.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+10-29 15:19:12.047  5032  5032 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.presencemanager.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+10-29 15:19:12.070  5032  5032 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.presencemanager.service.INTERNAL_IDENTITY dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+10-29 15:19:12.070  5032  5032 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.presencemanager.service.INTERNAL_IDENTITY dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiServic
+10-29 15:19:12.081  2191  5573 D DownloadManager: [11] Finished with status SUCCESS
+10-29 15:19:12.098  4221  5604 W BugleRcsEngine: [117] bpxc.w: Unable to send diagnostic log
+10-29 15:19:12.100  4221  5505 I BugleRcsEngine: [115] brfq.d: (PEv2-SM-Bugle-161255364): RequestWithImsiState: event HTTP Response [8712aaa2-98c3-4c60-8c01-66c701e9b6d4]
+10-29 15:19:12.109  4221  5505 I BugleRcsEngine: [115] brfq.d: (PEv2-SM-Bugle-161255364): InProgressState: event HTTP Response [8712aaa2-98c3-4c60-8c01-66c701e9b6d4]
+10-29 15:19:12.109  4221  5505 W BugleRcsEngine: [115] bpxc.w: Unable to send diagnostic log
+10-29 15:19:12.109  4221  5505 I BugleRcsEngine: [115] brfq.d: (PEv2-SM-Bugle-161255364): RequestWithImsiState: event HTTP 503 (Unavailable) [8712aaa2-98c3-4c60-8c01-66c701e9b6d4]
+10-29 15:19:12.121  4221  5505 I BugleRcsEngine: [115] brfq.d: (PEv2-SM-Bugle-161255364): InProgressState: event HTTP 503 (Unavailable) [8712aaa2-98c3-4c60-8c01-66c701e9b6d4]
+10-29 15:19:12.123  5032  5396 I Fitness : FitCleanupIntentOperation received Intent android.intent.action.PACKAGE_CHANGED [CONTEXT service_id=17 ]
+10-29 15:19:12.124  4221  5505 I BugleRcsEngine: [115] brfq.d: (PEv2-SM-Bugle-161255364): Connection unavailable. Retry in 1714 seconds [8712aaa2-98c3-4c60-8c01-66c701e9b6d4]
+10-29 15:19:12.125  4221  5505 I BugleRcsEngine: [115] brfq.d: (PEv2-SM-Bugle-161255364): transitionTo: destState=ReplayRequestState [8712aaa2-98c3-4c60-8c01-66c701e9b6d4]
+10-29 15:19:12.125  4221  5505 I BugleRcsEngine: [115] brfq.d: (PEv2-SM-Bugle-161255364): onTransitionRequested RequestWithImsiState [8712aaa2-98c3-4c60-8c01-66c701e9b6d4]
+10-29 15:19:12.126  4221  5505 W BugleRcsEngine: [115] bpxc.w: Unable to send diagnostic log
+10-29 15:19:12.127  4221  5505 I BugleRcsEngine: [115] brfq.d: (PEv2-SM-Bugle-161255364): Exit RequestWithImsiState [8712aaa2-98c3-4c60-8c01-66c701e9b6d4]
+10-29 15:19:12.129  4221  5505 W BugleRcsEngine: [115] bpxc.w: Unable to send diagnostic log
+10-29 15:19:12.129  4221  5505 I BugleRcsEngine: [115] brfq.d: (PEv2-SM-Bugle-161255364): Exit InProgressState [8712aaa2-98c3-4c60-8c01-66c701e9b6d4]
+10-29 15:19:12.129  4221  5505 W BugleRcsEngine: [115] bpxc.w: Unable to send diagnostic log
+10-29 15:19:12.129  4221  5505 I BugleRcsEngine: [115] brfq.d: (PEv2-SM-Bugle-161255364): Enter ReplayRequestState [8712aaa2-98c3-4c60-8c01-66c701e9b6d4]
+10-29 15:19:12.150  4221  4371 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of bdxy@45de71b
+10-29 15:19:12.195  4221  5505 W BugleRcsEngine: [115] bpxc.w: Unable to send diagnostic log
+10-29 15:19:12.197  4221  5505 I BugleRcsEngine: [115] brfq.d: (PEv2-SM-Bugle-161255364): ReplayRequestState: event Retry after [8712aaa2-98c3-4c60-8c01-66c701e9b6d4]
+10-29 15:19:12.247  4221  5505 I BugleRcsWorker: [seqId=0][workId=5a84b06b-6dd9-4b4f-9c04-17d04ac201f4] Provisioning Engine entered ReplayRequestState, request will be re-attempted in 1714
+10-29 15:19:12.248  4221  5505 I BugleRcsWorker: [seqId=0][workId=5a84b06b-6dd9-4b4f-9c04-17d04ac201f4] finish provisioning task with result Success {mOutputData=Data {}}
+10-29 15:19:12.258  4221  5505 I BugleRcsWorker: [seqId=0][workId=5a84b06b-6dd9-4b4f-9c04-17d04ac201f4] RCS provisioning task has finished with result Success {mOutputData=Data {}}
+10-29 15:19:12.260  4221  4380 I BugleRcsEngine: [61] brfq.d: (PEv2-SM-Bugle-161255364): quit [8712aaa2-98c3-4c60-8c01-66c701e9b6d4]
+10-29 15:19:12.263  4221  4379 I WM-WorkerWrapper: Worker result SUCCESS for Work [ id=959b2ed3-9ce3-4688-86f8-1fb351fea55d, tags={ com.google.android.apps.messaging.rcsprovisioning.RcsProvisioningListenableWorker, provisioning } ]
+10-29 15:19:12.272  4221  4367 W BugleRcsEngine: [49] brcu.d: [SR]: Single Registration is disabled. Skipping Single Registration capability check for subId: 1, OS.isAtLeastS:[true], enableSingleRegistrationProvisioning:[false]
+10-29 15:19:12.280  4221  4367 I BugleRcsEngine: [49] brnl.e: No RCS Configuration was found in Bugle for simID: redacted-pii:sim_id[chars:20,last3:897]
+10-29 15:19:12.290  4221  5505 I BugleRcsEngine: [115] brfq.d: (PEv2-SM-Bugle-161255364): transitionTo: destState=bqjk [8712aaa2-98c3-4c60-8c01-66c701e9b6d4]
+10-29 15:19:12.291  4221  5505 I BugleRcsEngine: [115] brfq.d: (PEv2-SM-Bugle-161255364): Exit ReplayRequestState [8712aaa2-98c3-4c60-8c01-66c701e9b6d4]
+10-29 15:19:12.291   523  1977 W JobScheduler: Job didn't exist in JobStore: 2c5fae0 #u0a130/1009 com.google.android.apps.messaging/androidx.work.impl.background.systemjob.SystemJobService
+10-29 15:19:12.295  4221  5505 W BugleRcsEngine: [115] bpxc.w: Unable to send diagnostic log
+10-29 15:19:12.296  4221  5505 W BugleRcsEngine: [115] brfq.e: (PEv2-SM-Bugle-161255364): onQuitting [8712aaa2-98c3-4c60-8c01-66c701e9b6d4]
+10-29 15:19:12.296  4221  5505 I BugleRcsEngine: [115] brjv.b: RcsAvailabilityManager: Calculating Rcs Availability
+10-29 15:19:12.297  4221  5505 I BugleRcsEngine: [115] brnl.C: Bugle is default SMS app: true
+10-29 15:19:12.298  4221  5505 I BugleRcsEngine: [115] brjv.b: Bugle has minimum required RCS permissions: true
+10-29 15:19:12.299  4221  5505 I BugleRcsEngine: [115] brnl.B: Rcs is enabled from user settings: true
+10-29 15:19:12.299  4221  5505 I BugleRcsEngine: [115] brox.b: Using config server URL from bqas
+10-29 15:19:12.300  4221  5505 I BugleRcsEngine: [115] brnl.e: No RCS Configuration was found in Bugle for simID: redacted-pii:sim_id[chars:20,last3:897]
+10-29 15:19:12.319  4221  5505 I BugleRcsEngine: [115] brnl.e: No RCS Configuration was found in Bugle for simID: redacted-pii:sim_id[chars:20,last3:897]
+10-29 15:19:12.325  4221  5505 I BugleRcsEngine: [115] brjv.b: Config state is not ACCEPTED, provisioning still in progress
+10-29 15:19:12.326  4221  5505 I BugleRcsEngine: [115] brjv.b: RcsAvailabilityManager: Rcs Availability still CARRIER_SETUP_PENDING (Carrier RCS is not set up)
+10-29 15:19:12.327  4221  5505 W BugleRcsEngine: [115] bpxc.w: Unable to send diagnostic log
+10-29 15:19:12.329  4221  4367 I BugleRcsEngine: [49] zzo.l: Scheduled provisioning task with 1714 seconds delay, APPEND policy, trigger is STATE_MACHINE_REPLAY, workerId is 296e9de9-0387-474b-8d91-56f3d45f3366
+10-29 15:19:12.363  3665  4779 I ConfigUpdater: Update downloaded, starting installation
+10-29 15:19:12.391   523  5613 I ConfigUpdateInstallReceiver: Couldn't find current metadata, assuming first update
+10-29 15:19:12.392   523  5613 I ConfigUpdateInstallReceiver: Failed to read current content, assuming first update!
+10-29 15:19:12.392   523  5613 I ConfigUpdateInstallReceiver: Found new update, installing...
+10-29 15:19:12.396  3665  4779 I ConfigUpdater: doneInstall
+10-29 15:19:12.421   523  5613 I ConfigUpdateInstallReceiver: Installation successful
+10-29 15:19:12.453  2191  5553 V DownloadManager: Deleting /data/data/com.android.providers.downloads/cache/model.smfb.metadata via provider delete
+10-29 15:19:12.462  1617  4586 W ModernMediaScanner: Failed to visit /data/data/com.android.providers.downloads/cache/model.smfb.metadata: java.nio.file.NoSuchFileException: /data/data/com.android.providers.downloads/cache/model.smfb.metada
+10-29 15:19:12.463  1617  4586 I MediaProvider: Scanned internal due to REASON_DEMAND, found 0 items in 2ms, 0 inserts 0 updates 0 deletes
+10-29 15:19:12.490  2191  5553 V DownloadManager: Deleting /data/data/com.android.providers.downloads/cache/model.smfb via provider delete
+10-29 15:19:12.495  1617  4586 W ModernMediaScanner: Failed to visit /data/data/com.android.providers.downloads/cache/model.smfb: java.nio.file.NoSuchFileException: /data/data/com.android.providers.downloads/cache/model.smfb
+10-29 15:19:12.498  1617  4586 I MediaProvider: Scanned internal due to REASON_DEMAND, found 0 items in 4ms, 0 inserts 0 updates 0 deletes
+10-29 15:19:12.549  5032  5097 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.ads.social.GcmSchedulerWakeupService started execution. cause:5 exec_start_elapsed_seconds: 107 [CONTEXT service_id=218 ]
+10-29 15:19:12.563  5032  5097 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.ads.social.GcmSchedulerWakeupService finished executing. cause:5 result: 1 elapsed_millis: 353 uptime_millis: 353 exec_start_elapsed
+10-29 15:19:12.690  5109  5157 I Icing   : Indexing com.google.android.gms-apps from com.google.android.gms
+10-29 15:19:12.702  5109  5157 I Icing   : Indexing done com.google.android.gms-apps
+10-29 15:19:12.718  5032  5097 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.auth.account.be.legacy.AuthCronService started execution. cause:5 exec_start_elapsed_seconds: 108 [CONTEXT service_id=218 ]
+10-29 15:19:12.776  5032  5099 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.auth.account.be.legacy.AuthCronService finished executing. cause:5 result: 3 elapsed_millis: 114 uptime_millis: 114 exec_start_elaps
+10-29 15:19:12.810  2191  5561 D DownloadManager: [10] Finished with status SUCCESS
+10-29 15:19:12.867  4974  4974 I com.example.buddy: Perf: native scene 25 fps
+10-29 15:19:12.883  5617  5617 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+10-29 15:19:12.885  5617  5617 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+10-29 15:19:12.894  2191  5595 D DownloadManager: [12] Finished with status SUCCESS
+10-29 15:19:12.896  5032  5097 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.gass.chimera.SchedulePeriodicTasksService started execution. cause:5 exec_start_elapsed_seconds: 108 [CONTEXT service_id=218 ]
+10-29 15:19:12.899  5032  5038 I .gms.persistent: Background young concurrent copying GC freed 369522(18MB) AllocSpace objects, 32(1116KB) LOS objects, 53% free, 16MB/34MB, paused 1.194ms,14.438ms total 188.264ms
+10-29 15:19:13.104     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+10-29 15:19:12.903   137   137 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+10-29 15:19:12.907  5617  5618 I Gralloc4: mapper 4.x is not supported
+10-29 15:19:12.948  4974  4993 D EGL_emulation: app_time_stats: avg=33.12ms min=24.89ms max=41.71ms count=31
+10-29 15:19:12.995  5032  5099 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.gass.chimera.SchedulePeriodicTasksService finished executing. cause:5 result: 1 elapsed_millis: 161 uptime_millis: 161 exec_start_el
+10-29 15:19:12.996  3665  4779 I ConfigUpdater: Update downloaded, starting installation
+10-29 15:19:13.029  3665  4779 I ConfigUpdater: doneInstall
+10-29 15:19:13.030  2191  2778 V DownloadManager: Deleting /data/data/com.android.providers.downloads/cache/en.fb.metadata via provider delete
+10-29 15:19:13.031  1617  4586 W ModernMediaScanner: Failed to visit /data/data/com.android.providers.downloads/cache/en.fb.metadata: java.nio.file.NoSuchFileException: /data/data/com.android.providers.downloads/cache/en.fb.metadata
+10-29 15:19:13.032   523  5621 I ConfigUpdateInstallReceiver: Couldn't find current metadata, assuming first update
+10-29 15:19:13.033   523  5621 I ConfigUpdateInstallReceiver: Failed to read current content, assuming first update!
+10-29 15:19:13.033   523  5621 I ConfigUpdateInstallReceiver: Found new update, installing...
+10-29 15:19:13.041  1617  4586 I MediaProvider: Scanned internal due to REASON_DEMAND, found 0 items in 10ms, 0 inserts 0 updates 0 deletes
+10-29 15:19:13.067  2191  2778 V DownloadManager: Deleting /data/data/com.android.providers.downloads/cache/en.fb via provider delete
+10-29 15:19:13.085   523  5621 I ConfigUpdateInstallReceiver: Installation successful
+10-29 15:19:13.093  1617  4586 W ModernMediaScanner: Failed to visit /data/data/com.android.providers.downloads/cache/en.fb: java.nio.file.NoSuchFileException: /data/data/com.android.providers.downloads/cache/en.fb
+10-29 15:19:13.095  5032  5097 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.gass.chimera.SchedulePeriodicTasksService started execution. cause:5 exec_start_elapsed_seconds: 109 [CONTEXT service_id=218 ]
+10-29 15:19:13.096  5109  5459 I Icing   : Indexing com.google.android.gms-apps from com.google.android.gms
+10-29 15:19:13.097  5109  5459 I Icing   : Indexing done com.google.android.gms-apps
+10-29 15:19:13.108  1617  4586 I MediaProvider: Scanned internal due to REASON_DEMAND, found 0 items in 1ms, 0 inserts 0 updates 0 deletes
+10-29 15:19:13.127  5032  5099 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.gass.chimera.SchedulePeriodicTasksService finished executing. cause:5 result: 1 elapsed_millis: 63 uptime_millis: 63 exec_start_elap

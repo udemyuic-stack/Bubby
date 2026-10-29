@@ -1,0 +1,150 @@
+10-29 15:20:17.266  4778  4829 I Icing   : IndexChimeraService.getServiceInterface callingPackage=com.google.android.googlequicksearchbox componentName=agsa_icing_connection serviceId=33
+10-29 15:20:17.271  4372  4480 I BugleRcsProvisioning: RcsProvisioningEventReceiver: Received ProvisioningEvent: Send Provisioning Session ID
+10-29 15:20:17.272   981  5473 D TrafficStats: tagSocket(68) with statsTag=0xffffff81, statsUid=-1
+10-29 15:20:17.273  4778  4818 W Icing   : No valid account for uploading user actions
+10-29 15:20:17.277   981  5472 D TrafficStats: tagSocket(75) with statsTag=0xffffff81, statsUid=-1
+10-29 15:20:17.277  4372  4476 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of com.google.android.apps.messaging.shared.receiver.RcsProvisioningEventReceiver@5d8ec55
+10-29 15:20:17.281   981  5473 D TrafficStats: tagSocket(68) with statsTag=0xffffff81, statsUid=-1
+10-29 15:20:17.281   981  5472 D TrafficStats: tagSocket(75) with statsTag=0xffffff81, statsUid=-1
+10-29 15:20:17.284   339  5475 I resolv  : ResNSendHandler::run: 0 / {100 983140 100 983140 1073 1}
+10-29 15:20:17.284   339  5475 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x6ffa8d843dd0
+10-29 15:20:17.285  4372  4482 I BugleRcsProvisioning: RcsProvisioningEventReceiver: Received ProvisioningEvent: Availability updated
+10-29 15:20:17.285  4372  4482 I BugleRcsProvisioning: RcsProvisioningEventReceiver: Bugle receives rcs availability update to: 10
+10-29 15:20:17.288   339  5476 I resolv  : ResNSendHandler::run: 0 / {100 983140 100 983140 1073 1}
+10-29 15:20:17.289   339  5476 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x6ffa8d8420f0
+10-29 15:20:17.289   981   981 D TrafficStats: tagSocket(75) with statsTag=0xffffffff, statsUid=-1
+10-29 15:20:17.290   981   981 D TrafficStats: tagSocket(75) with statsTag=0xffffffff, statsUid=-1
+10-29 15:20:17.290   981  5473 D NetworkMonitor/100: PROBE_DNS connectivitycheck.gstatic.com 18ms OK 142.251.150.120,2001:4860:4826:7800::
+10-29 15:20:17.291   339  5477 I resolv  : ResNSendHandler::run: 0 / {100 983140 100 983140 1073 1}
+10-29 15:20:17.291   339  5477 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x6ffbfd83f370
+10-29 15:20:17.293   339  5478 I resolv  : GetAddrInfoHandler::run: {100 983140 100 983140 1073 1}
+10-29 15:20:17.294   339  5474 I resolv  : ResNSendHandler::run: 0 / {100 983140 100 983140 1073 1}
+10-29 15:20:17.297   339  5474 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x6ffa3d843710
+10-29 15:20:17.297   981   981 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+10-29 15:20:17.298   981   981 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+10-29 15:20:17.298   981   981 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+10-29 15:20:17.299   981   981 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+10-29 15:20:17.299   981   981 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+10-29 15:20:17.300   981   981 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+10-29 15:20:17.300   981   981 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+10-29 15:20:17.301   981   981 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+10-29 15:20:17.301   981   981 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+10-29 15:20:17.301   981   981 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+10-29 15:20:17.302   981   981 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+10-29 15:20:17.302   981   981 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+10-29 15:20:17.302   339  5480 I resolv  : res_nmkquery: (QUERY, IN, A)
+10-29 15:20:17.303   339  5480 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x6ffa8d8420f0
+10-29 15:20:17.303   339  5480 I resolv  : doQuery: rcode=0, ancount=1, return value=63
+10-29 15:20:17.303   981   981 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+10-29 15:20:17.303   981   981 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+10-29 15:20:17.304   981   981 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+10-29 15:20:17.304   981   981 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+10-29 15:20:17.305   981  5472 D NetworkMonitor/100: PROBE_DNS www.google.com 27ms OK 142.251.153.119,142.251.155.119,142.251.157.119,142.251.152.119,142.251.154.119,142.251.150.119,142.251.151.119,142.251.156.119,2001:4860:482a:7700::,2001
+10-29 15:20:17.310   339  5481 I resolv  : GetAddrInfoHandler::run: {100 983140 100 983140 1073 1}
+10-29 15:20:17.314   339  5479 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+10-29 15:20:17.314   339  5479 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x6ffa8d843dd0
+10-29 15:20:17.314   339  5479 I resolv  : doQuery: rcode=0, ancount=1, return value=75
+10-29 15:20:17.315   339  5482 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+10-29 15:20:17.315   339  5482 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x6ffa3d843710
+10-29 15:20:17.315   339  5482 I resolv  : doQuery: rcode=0, ancount=8, return value=256
+10-29 15:20:17.316   981  5473 D TrafficStats: tagSocket(75) with statsTag=0xffffff81, statsUid=-1
+10-29 15:20:17.324   339  5483 I resolv  : res_nmkquery: (QUERY, IN, A)
+10-29 15:20:17.325   339  5483 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x6ffbfd83f370
+10-29 15:20:17.325   339  5483 I resolv  : doQuery: rcode=0, ancount=8, return value=160
+10-29 15:20:17.326   981  5472 D TrafficStats: tagSocket(68) with statsTag=0xffffff81, statsUid=-1
+10-29 15:20:17.328  4778  4818 I Icing   : Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0
+10-29 15:20:17.335  4778  4818 W Icing   : No valid account for uploading user actions
+10-29 15:20:17.356   981  5473 D NetworkMonitor/100: PROBE_HTTP http://connectivitycheck.gstatic.com/generate_204 time=64ms ret=204 request={Connection=[close], User-Agent=[Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gec
+10-29 15:20:17.366  4372  4476 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of com.google.android.apps.messaging.shared.receiver.RcsProvisioningEventReceiver@8cb0210
+10-29 15:20:17.382  5467  5467 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+10-29 15:20:17.383  5467  5467 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+10-29 15:20:17.384  4372  4372 W BugleRcsEngine: [2] brcu.d: [SR]: Single Registration is disabled. Skipping Single Registration capability check for subId: 1, OS.isAtLeastS:[true], enableSingleRegistrationProvisioning:[false]
+10-29 15:20:17.385   404   624 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=5467
+10-29 15:20:17.385   404   624 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (940 us)
+10-29 15:20:17.391  4372  4372 I BugleRcsEngine: [2] brnl.e: No RCS Configuration was found in Bugle for simID: redacted-pii:sim_id[chars:20,last3:897]
+10-29 15:20:17.392   523   822 I RemoteProvisionSysSvc: getRegistration(android.hardware.security.keymint.IRemotelyProvisionedComponent/default)
+10-29 15:20:17.393  4778  4818 I Icing   : Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0
+10-29 15:20:17.394   523   822 D ActivityManager: sync unfroze 3614 com.google.android.rkpdapp for 6
+10-29 15:20:17.396  4372  4372 I BugleRcsProvisioning: RcsAvailabilityUpdaterLocal: RcsAvailability configuration availability and enabled status: simId: redacted-pii:sim_id[chars:20,last3:897], SipConnectionType: DUAL_REG, isConfigurationA
+10-29 15:20:17.396  4372  4372 I BugleRcsEngine: [2] brox.b: Using config server URL from bqas
+10-29 15:20:17.595     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+10-29 15:20:17.405   523   523 I RegistrationProxy: onServiceConnected: com.android.rkpdapp.service.RemoteProvisioningService
+10-29 15:20:17.405   138   138 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+10-29 15:20:17.405  5467  5485 I Gralloc4: mapper 4.x is not supported
+10-29 15:20:17.599     0     0 I servicemanager: Found android.hardware.security.keymint.IRemotelyProvisionedComponent/default in device VINTF manifest.
+10-29 15:20:17.409   523  2246 I RegistrationProxy: IGetRegistrationCallback.onSuccess
+10-29 15:20:17.414   523  2253 I RemoteProvisionSysSvc: Fetching key 10128 for client 35533910
+10-29 15:20:17.415   523  2253 I RegistrationProxy: getKeyAsync operation started with callback 189967575
+10-29 15:20:17.416  3614  3718 I RkpdRegistrationBinder: Key requested for : android.hardware.security.keymint.IRemotelyProvisionedComponent/default, clientUid: 1017, keyId: 10128, callback: 153983686
+10-29 15:20:17.417  3614  3718 I RkpdRegistrationBinder: Key successfully assigned to client
+10-29 15:20:17.421   523   523 I RemoteProvisionSysSvc: Successfully fetched key for client 35533910
+10-29 15:20:17.440  4372  4372 I BugleRcsProvisioning: RcsAvailabilityUpdaterLocal: RcsAvailability subscription{id:1}, simId: redacted-pii:sim_id[chars:20,last3:897], sipConnectionType: DUAL_REG, isRcsAvailable: false
+10-29 15:20:17.440  4372  4372 I BugleRcsProvisioning: RcsAvailabilityUpdaterLocal: updateRcsAvailability, currentAvailability: 10, newAvailability: 10, hint: NO_HINT
+10-29 15:20:17.442  4372  4483 I BugleRcsProvisioning: RcsProvisioningTrigger: onRcsAvailabilityUpdate : availability is updated to Carrier RCS is not set up, lastAvailability is Carrier RCS is not set up, simId hash = 8059130701891969741, 
+10-29 15:20:17.466  4372  4480 I BugleRcsProvisioning: RcsProvisioningEventReceiver: Received ProvisioningEvent: Update provisioning status
+10-29 15:20:17.470  4372  4489 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of com.google.android.apps.messaging.shared.receiver.RcsProvisioningEventReceiver@de50328
+10-29 15:20:17.506   981  5472 D NetworkMonitor/100: PROBE_HTTPS https://www.google.com/generate_204 time=201ms ret=204 request={Connection=[close], User-Agent=[Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/6
+10-29 15:20:17.509  5305  5323 D EGL_emulation: app_time_stats: avg=16.97ms min=5.11ms max=49.65ms count=51
+10-29 15:20:17.520   981  5470 D NetworkMonitor/100: isCaptivePortal: isSuccessful()=true isPortal()=false RedirectUrl=null isPartialConnectivity()=false Time=320ms
+10-29 15:20:17.525   523   766 D ConnectivityService: [100 WIFI] validation passed
+10-29 15:20:17.528  4542  4568 W BugleRcsEngine: [50] bpxc.w: Unable to send diagnostic log
+10-29 15:20:17.533  4542  4568 I BugleRcsEngine: [50] brga.s: ProvisioningEngineManager: onCsLibPhenotypeUpdated, provisioningTaskInBugleEnabled = true, currentProvisioningStrategy = brka
+10-29 15:20:17.533  4542  4568 I BugleRcsEngine: [50] brga.s: ProvisioningEngineManager: onCsLibPhenotypeUpdated, provisioningTaskInBugleEnabled = true, currentProvisioningStrategy = brka
+10-29 15:20:17.533  4542  4568 I BugleRcsEngine: [50] brga.s: ProvisioningEngineManager: onCsLibPhenotypeUpdated, provisioningTaskInBugleEnabled = true, currentProvisioningStrategy = brka
+10-29 15:20:17.544  1788  2503 W SearchServiceCore: Abort, client detached.
+10-29 15:20:17.545  1788  2561 I BgTaskExecutorImpl: Starting EXCLUSIVE background task FETCH_CONFIGS_FROM_PHENOTYPE.
+10-29 15:20:17.559  4778  5373 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-29 15:20:17.559  4778  5373 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-29 15:20:17.559  4778  5421 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-29 15:20:17.559  4778  5421 V Backup  : [PhenotypeConfigIO] Phenotype broadcast received for different package
+10-29 15:20:17.561  4778  5421 I SyncIntentOperation: Handling the intent: Intent { act=com.google.android.gms.phenotype.COMMITTED flg=0x10 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras
+10-29 15:20:17.577  4778  5421 I MdiSyncModule: flag handling is skipping irrelevant intent.
+10-29 15:20:17.577  4778  5421 I MlBenchmarkInstaller: Intent: com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=340 ]
+10-29 15:20:17.577  4778  5421 I MlBenchmarkInstaller: COMMITTED Extra package name: com.google.android.gms.autofill [CONTEXT service_id=340 ]
+10-29 15:20:17.587  4778  5423 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-29 15:20:17.593  4778  5423 I GmsSyncPolicyEngine: Periodic sync 1 disabled by policy, cancelled.
+10-29 15:20:17.604  4709  5384 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+10-29 15:20:17.604  4709  5384 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+10-29 15:20:17.604  4709  5384 I NamespaceManager: Package com.android.media name not found! Using module version.
+10-29 15:20:17.606  4709  5384 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+10-29 15:20:17.606  4709  5384 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+10-29 15:20:17.607  4709  5384 I NamespaceManager: Package com.android.media name not found! Using module version.
+10-29 15:20:17.612  4709  5384 I NamespaceManager: Package 1 name not found! Using module version.
+10-29 15:20:17.613  4709  5384 I NamespaceManager: Package rkpd name not found! Using module version.
+10-29 15:20:17.613  4709  5384 I NamespaceManager: Package android.companion name not found! Using module version.
+10-29 15:20:17.614  4778  5423 I GmsSyncPolicyEngine: Periodic sync 2 disabled by policy, cancelled.
+10-29 15:20:17.614  4709  5143 I PTCommittedOperation: Receive new configuration for com.google.android.gms.autofill
+10-29 15:20:17.622  4709  5384 I NamespaceManager: Package com.google.android.aicore name not found! Using module version.
+10-29 15:20:17.634  4778  5421 I LocationHistory: [IntentOperation] Handling action com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=314 ]
+10-29 15:20:17.647  4709  5384 I NamespaceManager: Package com.google.android.audioproxy name not found! Using module version.
+10-29 15:20:17.648  4778  5423 I GmsSyncPolicyEngine: Periodic sync 3 disabled by policy, cancelled.
+10-29 15:20:17.665  4709  5384 I NamespaceManager: Package com.google.android.apps.pixel.psi name not found! Using module version.
+10-29 15:20:17.666  4709  5384 I NamespaceManager: Package com.google.android.apps.safetycore name not found! Using module version.
+10-29 15:20:17.666  4709  5384 I NamespaceManager: Package com.google.android.crashrecovery name not found! Using module version.
+10-29 15:20:17.675  4709  5384 I NamespaceManager: Package com.google.android.profiling name not found! Using module version.
+10-29 15:20:17.676   523  2841 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+10-29 15:20:17.676   523  2841 D PackageManager: Clear ephemeral installer activity
+10-29 15:20:17.677  4709  5384 I NamespaceManager: Package com.google.android.bt name not found! Using module version.
+10-29 15:20:17.680  4709  5384 I NamespaceManager: Package com.google.android.nfcservices name not found! Using module version.
+10-29 15:20:17.681   523  2841 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+10-29 15:20:17.681   523  2841 D PackageManager: Clear ephemeral installer activity
+10-29 15:20:17.681  4709  5384 I NamespaceManager: Package com.google.android.webapp name not found! Using module version.
+10-29 15:20:17.682  4709  5384 I NamespaceManager: Package com.google.android.telephonycore name not found! Using module version.
+10-29 15:20:17.682  4709  5384 I NamespaceManager: Package com.google.android.uprobestats name not found! Using module version.
+10-29 15:20:17.684  4709  5384 W PhenotypeConfigurationU: Update for unknown DeviceConfig package com.google.android.gms.fido [CONTEXT service_id=204 ]
+10-29 15:20:17.684  4709  5384 W PhenotypeConfigurationU: bwix: No package exists for config package: com.google.android.gms.fido
+10-29 15:20:17.684  4709  5384 W PhenotypeConfigurationU: 	at com.google.android.gms.platformconfigurator.PhenotypeConfigurationUpdateListener.b(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+10-29 15:20:17.684  4709  5384 W PhenotypeConfigurationU: 	at com.google.android.gms.platformconfigurator.PhenotypeConfigurationUpdateListener.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+10-29 15:20:17.684  4709  5384 W PhenotypeConfigurationU: 	at com.google.android.gms.platformconfigurator.PhenotypeConfigurationUpdateListener.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):21)
+10-29 15:20:17.684  4709  5384 W PhenotypeConfigurationU: 	at com.google.android.chimera.IntentOperation.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+10-29 15:20:17.684  4709  5384 W PhenotypeConfigurationU: 	at zhv.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+10-29 15:20:17.684  4709  5384 W PhenotypeConfigurationU: 	at hjm.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3)
+10-29 15:20:17.684  4709  5384 W PhenotypeConfigurationU: 	at hjl.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):11)
+10-29 15:20:17.684  4709  5384 W PhenotypeConfigurationU: 	at dfhf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+10-29 15:20:17.684  4709  5384 W PhenotypeConfigurationU: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+10-29 15:20:17.684  4709  5384 W PhenotypeConfigurationU: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+10-29 15:20:17.684  4709  5384 W PhenotypeConfigurationU: 	at java.lang.Thread.run(Thread.java:1012)
+10-29 15:20:17.685  3777  4531 I PhenotypeBackgroundRecv: Successfully updated snapshot for com.google.android.projection.gearhead
+10-29 15:20:17.717   523  2841 D OomAdjuster: Not killing cached processes
+10-29 15:20:17.728  4709  5143 I Fitness : OnPackageChangedOperation got intent: Intent { act=android.intent.action.PACKAGE_CHANGED dat=package: flg=0x45000010 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.PersistentIntentO
+10-29 15:20:17.729  4778  4818 I GmsSyncPolicyEngine: Periodic sync 7 disabled

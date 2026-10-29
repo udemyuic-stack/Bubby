@@ -1,0 +1,150 @@
+10-29 15:17:37.033  2965  2965 W binder:2965_2: type=1400 audit(0.0:44): avc:  denied  { read } for  name="u:object_r:system_adbd_prop:s0" dev="tmpfs" ino=292 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:system_adbd_prop:s0 tcl
+10-29 15:17:37.043  1593  2254 I A       : [Memory] eligibility: StashEligibility{6}
+10-29 15:17:37.043  1593  2254 I A       : Initialize
+10-29 15:17:37.037  2965  2965 W binder:2965_2: type=1400 audit(0.0:45): avc:  denied  { read } for  name="u:object_r:adbd_prop:s0" dev="tmpfs" ino=60 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:adbd_prop:s0 tclass=file permis
+10-29 15:17:37.048  1593  2187 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+10-29 15:17:37.048  1593  2187 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+10-29 15:17:37.048  1593  2187 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+10-29 15:17:37.048  1593  2187 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+10-29 15:17:37.048  1593  2187 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+10-29 15:17:37.048  1593  2187 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+10-29 15:17:37.048  1593  2187 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+10-29 15:17:37.049  1593  2187 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+10-29 15:17:37.049  1593  2187 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+10-29 15:17:37.049  1593  2187 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+10-29 15:17:37.049  1593  2187 I A       : onOpaVisibilityChanged: false
+10-29 15:17:37.049  1593  2187 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+10-29 15:17:37.049  1593  2187 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+10-29 15:17:37.049  1593  2187 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+10-29 15:17:37.049  1593  2187 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+10-29 15:17:37.049  1593  2187 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+10-29 15:17:37.049  1593  2187 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+10-29 15:17:37.049  1593  2187 I A       : Setting session to type: NO_SESSION
+10-29 15:17:37.049  1593  2187 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+10-29 15:17:37.049  1593  2187 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+10-29 15:17:37.049  1593  2187 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+10-29 15:17:37.049  1593  2187 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+10-29 15:17:37.049  1593  2187 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+10-29 15:17:37.049  1593  2187 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+10-29 15:17:37.049  1593  2187 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+10-29 15:17:37.049  1593  2187 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+10-29 15:17:37.049  1593  2187 I A       : setNavBarVisible: GestureNavBarVisible{navbarVisible=true}
+10-29 15:17:37.049  1593  2187 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+10-29 15:17:37.049  1593  2187 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+10-29 15:17:37.049  1593  2187 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+10-29 15:17:37.049  1593  2187 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+10-29 15:17:37.049  1593  2187 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+10-29 15:17:37.049  1593  2187 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+10-29 15:17:37.050  1593  2187 I A       : onDisabled. Registered: false
+10-29 15:17:37.050  1593  1633 I A       : APA or Classic session decision: SessionDecision(sessionVariance=CLASSIC, platformVariance=CLASSIC, justification=CURRENT_PLATFORM_VARIANCE).
+10-29 15:17:37.053  1593  2187 I A       : stopListening(NGA_PAUSED_UNKNOWN_REASON, NGA_CREATE), idleOverride=NOT_LISTENING
+10-29 15:17:37.053  1593  2187 I A       : on opa visibility changed false
+10-29 15:17:37.054  1593  2187 I A       : on opa visibility changed false
+10-29 15:17:37.055  1593  2254 I A       : State changed: IDLE => IDLE by NGA_STATE_CHANGED and N/A with Optional.empty
+10-29 15:17:37.056  1593  2254 I A       : Recognizer choice: (recognizer_type: 1, recognizer_mode: 1, choice_reason: 4)
+10-29 15:17:37.056  2965  2979 W libc    : Access denied finding property "service.adb.tls.port"
+10-29 15:17:37.060  1593  2254 I A       : onActiveStateChangeEvent: IDLE => IDLE
+10-29 15:17:37.063  1593  2187 I NgaEntryPointEventSendr: setupConnection
+10-29 15:17:37.065  1694  1694 I A       : Creating pss binder().
+10-29 15:17:37.067  1593  2187 I NgaEntryPointEventSendr: State changed: Disconnected => Connecting
+10-29 15:17:37.067  1593  2187 I NgaEntryPointEventSendr: onServiceConnected
+10-29 15:17:37.067  1694  1798 I A       : Calling beginBinderSession().
+10-29 15:17:37.069  1694  1798 I A       : beginBinderSession(): calling binder
+10-29 15:17:37.069  1593  2187 I NgaEntryPointEventSendr: State changed: Connecting => Ready
+10-29 15:17:37.072   521   824 W ActivityManager: Unable to start service Intent { cmp=com.google.android.apps.tachyon/.clientapi.ClientApiService } U=0: not found
+10-29 15:17:37.073  2965  2979 W SystemServiceRegistry: No service published for: persistent_data_block
+10-29 15:17:37.085  1694  2506 I PBSessionCacheImpl: Deleted sessionId[7452084076807296] from persistence.
+10-29 15:17:37.086  1694  2506 W A       : UiCallbackStub-onGenericEvent[ServiceEvent = 60] task was not run. Callback from Service received after client was disposed.
+10-29 15:17:37.091  1694  2506 W SearchServiceCore: Abort, client detached.
+10-29 15:17:37.096  1593  2254 W A       : Missing generator mapping for generator GENERATOR_CONTEXTUAL_SUGGESTIONS
+10-29 15:17:37.114  1593  2254 W A       : Missing generator mapping for generator GENERATOR_FRE_SUGGESTIONS_ON_TIMEOUT
+10-29 15:17:37.116  1593  2254 W A       : Missing generator mapping for generator GENERATOR_FRE_SUGGESTIONS_ON_INVOCATION
+10-29 15:17:37.119  1593  2254 I A       : #onActiveStateChangeEvent, newState: IDLE, previousState: IDLE.
+10-29 15:17:37.131  4101  4253 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of bdxy@3f95a09
+10-29 15:17:37.133  5113  5399 I PeopleGalProvider: Gal directories started.
+10-29 15:17:37.133  5113  5399 I PeopleGalProvider: Method 1 completed.
+10-29 15:17:37.133  5113  5399 I PeopleGalProvider: Method 1 finished successfully.
+10-29 15:17:37.138  1577  1577 I AiAiEcho: AppFetcherImpl onPackageChanged com.google.android.gms.
+10-29 15:17:37.139  1577  3592 I AiAiEcho: AppIndexer Package:[com.google.android.gms] UserProfile:[0] Enabled:[true].
+10-29 15:17:37.139  1577  3592 I AiAiEcho: AppFetcherImplV2 updateApps package:[com.google.android.gms], userId:[0], reason:[package is updated.].
+10-29 15:17:37.140  1593  2187 I NgaEntryPointEventSendr: State changed: Ready => Disconnected (onOpaDisconnected)
+10-29 15:17:37.150  1593  2187 W A       : Routing took 62 ms
+10-29 15:17:37.154  1593  2187 I A       : Successfully initialized all components
+10-29 15:17:37.167  5028  5148 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.pay.gcmtask.PayGcmTaskService finished executing. cause:5 result: 1 elapsed_millis: 440 uptime_millis: 440 exec_start_elapsed_second
+10-29 15:17:37.175  5113  5211 I Checkin : [CheckinRequestProcessor] Default Task : Checkin Succeeded: https://android.googleapis.com/checkin (fragment #1).
+10-29 15:17:37.198   337  5539 I resolv  : GetAddrInfoHandler::run: {100 786532 100 983140 10131 0}
+10-29 15:17:37.201   337  5541 I resolv  : res_nmkquery: (QUERY, IN, A)
+10-29 15:17:37.201   337  5541 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7f88c3e38e50
+10-29 15:17:37.201   337  5541 I resolv  : doQuery: rcode=0, ancount=8, return value=164
+10-29 15:17:37.203   337  5540 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+10-29 15:17:37.203   337  5540 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7f87a3e2ee10
+10-29 15:17:37.203   337  5540 I resolv  : doQuery: rcode=0, ancount=8, return value=260
+10-29 15:17:37.204  5113  5185 D TrafficStats: tagSocket(142) with statsTag=0x30003000, statsUid=-1
+10-29 15:17:37.208  5113  5211 I Checkin : [CheckinOperation] Checkin Operation finished with result: SUCCESS finish time: 98781.
+10-29 15:17:37.210  5113  5207 I AccountSeedingPrefetchI: AccountSeedingPrefetchInit intent operation started. [CONTEXT service_id=42 ]
+10-29 15:17:37.213  1593  1623 I hbox:interactor: Background young concurrent copying GC freed 37888(2288KB) AllocSpace objects, 7(140KB) LOS objects, 21% free, 8010KB/10204KB, paused 3.013ms,12us total 118.279ms
+10-29 15:17:37.221  5113  5185 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+10-29 15:17:37.222  5113  5185 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+10-29 15:17:37.222  5113  5185 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+10-29 15:17:37.238  5028  5151 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService started execution. cause:5 exec_start_elapsed_seconds: 98 [CONTEXT service_id=218 ]
+10-29 15:17:37.257  5028  5104 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService finished executing. cause:5 result: 1 elapsed_millis: 13 uptime_millis: 13 exec_start_elapsed_seconds: 98
+10-29 15:17:37.296  5028  5148 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.pay.gcmtask.PayGcmTaskService started execution. cause:5 exec_start_elapsed_seconds: 98 [CONTEXT service_id=218 ]
+10-29 15:17:37.297  5028  5282 I TapAndPay: Disabling TapAndPay HCE service [CONTEXT service_id=79 ]
+10-29 15:17:37.299  5028  5104 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.pay.gcmtask.PayGcmTaskService finished executing. cause:5 result: 1 elapsed_millis: 23 uptime_millis: 23 exec_start_elapsed_seconds:
+10-29 15:17:37.318  5028  5282 I TapAndPay: Disabling TapAndPay HCE service [CONTEXT service_id=79 ]
+10-29 15:17:37.319  5113  5172 W Pay     : Active account was null, notification task will be cancelled. [CONTEXT service_id=198 ]
+10-29 15:17:37.320  5113  5172 E Pay     : [Migration operation] Active tapandpay account not found! [CONTEXT service_id=198 ]
+10-29 15:17:37.320  5028  5148 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.pay.gcmtask.PayGcmTaskService started execution. cause:5 exec_start_elapsed_seconds: 98 [CONTEXT service_id=218 ]
+10-29 15:17:37.327  5113  5172 I Pay     : Migration flag not enabled. [CONTEXT service_id=198 ]
+10-29 15:17:37.331  5113  5172 I Pay     : Migration already completed. [CONTEXT service_id=198 ]
+10-29 15:17:37.333  5113  5172 I Pay     : Migration already completed. [CONTEXT service_id=198 ]
+10-29 15:17:37.333  5113  5172 I Pay     : Migration flag not enabled. [CONTEXT service_id=198 ]
+10-29 15:17:37.333  5113  5172 I Pay     : Migration flag not enabled. [CONTEXT service_id=198 ]
+10-29 15:17:37.334  5113  5172 I Pay     : Migration flag not enabled. [CONTEXT service_id=198 ]
+10-29 15:17:37.334  5113  5172 I Pay     : Migration flag not enabled. [CONTEXT service_id=198 ]
+10-29 15:17:37.334  5113  5172 I Pay     : [SeTosMigration] walletJpEligibility is not enabled [CONTEXT service_id=198 ]
+10-29 15:17:37.336  5113  5172 I Pay     : Wallet install state NOT_INSTALLED [CONTEXT service_id=198 ]
+10-29 15:17:37.337  5113  5172 I Pay     : Migration flag not enabled. [CONTEXT service_id=198 ]
+10-29 15:17:37.339  5028  5104 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.pay.gcmtask.PayGcmTaskService finished executing. cause:5 result: 1 elapsed_millis: 29 uptime_millis: 29 exec_start_elapsed_seconds:
+10-29 15:17:37.360  5028  5148 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.pay.gcmtask.PayGcmTaskService started execution. cause:5 exec_start_elapsed_seconds: 98 [CONTEXT service_id=218 ]
+10-29 15:17:37.363  5028  5104 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.pay.gcmtask.PayGcmTaskService finished executing. cause:5 result: 1 elapsed_millis: 11 uptime_millis: 11 exec_start_elapsed_seconds:
+10-29 15:17:37.387  5028  5148 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.pay.gcmtask.PayGcmTaskService started execution. cause:5 exec_start_elapsed_seconds: 98 [CONTEXT service_id=218 ]
+10-29 15:17:37.389  5113  5172 I Pay     : Device does not support HCE. [CONTEXT service_id=198 ]
+10-29 15:17:37.391  5028  5104 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.pay.gcmtask.PayGcmTaskService finished executing. cause:5 result: 2 elapsed_millis: 15 uptime_millis: 15 exec_start_elapsed_seconds:
+10-29 15:17:37.408  5028  5148 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.pay.gcmtask.PayGcmTaskService started execution. cause:5 exec_start_elapsed_seconds: 98 [CONTEXT service_id=218 ]
+10-29 15:17:37.413  5028  5104 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.pay.gcmtask.PayGcmTaskService finished executing. cause:5 result: 1 elapsed_millis: 9 uptime_millis: 9 exec_start_elapsed_seconds: 9
+10-29 15:17:37.443  5028  5148 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.pay.gcmtask.PayGcmTaskService started execution. cause:5 exec_start_elapsed_seconds: 99 [CONTEXT service_id=218 ]
+10-29 15:17:37.457  5028  5282 I TapAndPay: Disabling TapAndPay HCE service [CONTEXT service_id=79 ]
+10-29 15:17:37.459  5113  5172 W Pay     : Active account was null, notification task will be cancelled. [CONTEXT service_id=198 ]
+10-29 15:17:37.459  5113  5172 W Pay     : No account found on the task or the device. Notification task will not be rescheduled. [CONTEXT service_id=198 ]
+10-29 15:17:37.463  5028  5104 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.pay.gcmtask.PayGcmTaskService finished executing. cause:5 result: 2 elapsed_millis: 26 uptime_millis: 26 exec_start_elapsed_seconds:
+10-29 15:17:37.482  5113  5185 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+10-29 15:17:37.482  5113  5185 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+10-29 15:17:37.482  5113  5185 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+10-29 15:17:37.498  5028  5148 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.udc.service.UdcContextInitService started execution. cause:5 exec_start_elapsed_seconds: 99 [CONTEXT service_id=218 ]
+10-29 15:17:37.522  5028  5104 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.udc.service.UdcContextInitService finished executing. cause:5 result: 1 elapsed_millis: 36 uptime_millis: 36 exec_start_elapsed_seco
+10-29 15:17:37.846  5069  5069 I com.example.buddy: Perf: native scene 28 fps
+10-29 15:17:37.858  5069  5100 D EGL_emulation: app_time_stats: avg=31.93ms min=16.79ms max=45.81ms count=32
+10-29 15:17:37.944  5028  5284 E bwel    : Phenotype registration failed [CONTEXT service_id=51 ]
+10-29 15:17:37.944  5028  5284 E bwel    : java.util.concurrent.TimeoutException: Timed out waiting for Task
+10-29 15:17:37.944  5028  5284 E bwel    : 	at cfsz.o(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+10-29 15:17:37.944  5028  5284 E bwel    : 	at bwel.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):12)
+10-29 15:17:37.944  5028  5284 E bwel    : 	at com.google.android.gms.phenotype.sync.HeterodyneSyncTaskChimeraService.d(:com.google.android.gms@231818047@23.18.18 (190800-535401451):8)
+10-29 15:17:37.944  5028  5284 E bwel    : 	at com.google.android.gms.phenotype.sync.HeterodyneSyncTaskChimeraService.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):10)
+10-29 15:17:37.944  5028  5284 E bwel    : 	at avzs.call(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+10-29 15:17:37.944  5028  5284 E bwel    : 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+10-29 15:17:37.944  5028  5284 E bwel    : 	at aced.c(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+10-29 15:17:37.944  5028  5284 E bwel    : 	at aced.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):7)
+10-29 15:17:37.944  5028  5284 E bwel    : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+10-29 15:17:37.944  5028  5284 E bwel    : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+10-29 15:17:37.944  5028  5284 E bwel    : 	at acjn.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+10-29 15:17:37.944  5028  5284 E bwel    : 	at java.lang.Thread.run(Thread.java:1012)
+10-29 15:17:38.019  5548  5548 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+10-29 15:17:38.020  5548  5548 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+10-29 15:17:38.031   401   571 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=5548
+10-29 15:17:38.032   401   571 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (4165 us)
+10-29 15:17:38.257     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+10-29 15:17:38.053   133   133 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+10-29 15:17:38.053  5548  5549 I Gralloc4: mapper 4.x is not supported
+10-29 15:17:38.194  5113  5185 I Icing   : Indexing com.google.android.gms-apps from com.google.android.gms
+10-29 15:17:38.195  5113  5185 I Icing   : Indexing done com.google.android.gms-apps

@@ -1,0 +1,150 @@
+10-29 15:21:26.768  4937  5257 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+10-29 15:21:26.772  4937  5442 I Fitness : OnPackageChangedOperation got intent: Intent { act=android.intent.action.PACKAGE_CHANGED dat=package: flg=0x45000010 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.PersistentIntentO
+10-29 15:21:26.789  4937  5605 I Fitness : FitCleanupIntentOperation received Intent android.intent.action.PACKAGE_CHANGED [CONTEXT service_id=17 ]
+10-29 15:21:26.790  4937  5258 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+10-29 15:21:26.792  4937  5258 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+10-29 15:21:26.796  4982  5587 I Icing   : Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0
+10-29 15:21:26.798  4982  5587 I Icing   : updateResources: need to parse arkh{com.google.android.gms}
+10-29 15:21:26.806  4982  5587 I Icing   : Indexing com.google.android.gms-apps from com.google.android.gms
+10-29 15:21:26.808  4982  5587 I Icing   : Indexing com.google.android.gms-internal.3p:MobileApplication from com.google.android.gms
+10-29 15:21:26.810  4982  5587 I Icing   : Indexing done com.google.android.gms-apps
+10-29 15:21:26.810  4982  5587 I Icing   : Indexing done com.google.android.gms-internal.3p:MobileApplication
+10-29 15:21:26.810  4982  5587 I Icing   : Indexing com.google.android.gms-apps from com.google.android.gms
+10-29 15:21:26.811  4982  5587 I Icing   : Indexing done com.google.android.gms-apps
+10-29 15:21:26.879  5679  5679 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+10-29 15:21:26.879  5679  5679 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+10-29 15:21:26.888   401  1088 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=5679
+10-29 15:21:26.888   401  1088 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (242 us)
+10-29 15:21:26.900   135   135 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+10-29 15:21:26.900  5679  5680 I Gralloc4: mapper 4.x is not supported
+10-29 15:21:27.093     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+10-29 15:21:27.001  1093  1093 D TaplEvents: TIS / TouchInteractionService.onInputEvent: MotionEvent { action=ACTION_DOWN, actionButton=0, id[0]=0, x[0]=160.0, y[0]=480.0, toolType[0]=TOOL_TYPE_FINGER, buttonState=0, classification=NONE, me
+10-29 15:21:27.321  5543  5563 D EGL_emulation: app_time_stats: avg=39.16ms min=16.50ms max=144.09ms count=27
+10-29 15:21:27.323  1093  1093 D TaplEvents: TIS / TouchInteractionService.onInputEvent: MotionEvent { action=ACTION_UP, actionButton=0, id[0]=0, x[0]=160.0, y[0]=128.0, toolType[0]=TOOL_TYPE_FINGER, buttonState=0, classification=NONE, meta
+10-29 15:21:27.364  1093  1093 D TaplEvents: TIS / TouchInteractionService.onInputEvent: MotionEvent { action=ACTION_DOWN, actionButton=0, id[0]=0, x[0]=160.0, y[0]=480.0, toolType[0]=TOOL_TYPE_FINGER, buttonState=0, classification=NONE, me
+10-29 15:21:28.046   157   956 I keystore2: system/security/keystore2/src/watchdog.rs:319 - Watchdog thread idle -> terminating. Have a great day.
+10-29 15:21:28.047  5543  5543 I com.example.buddy: Perf: native scene 24 fps
+10-29 15:21:28.048  1093  1093 D TaplEvents: TIS / TouchInteractionService.onInputEvent: MotionEvent { action=ACTION_UP, actionButton=0, id[0]=0, x[0]=160.0, y[0]=128.0, toolType[0]=TOOL_TYPE_FINGER, buttonState=0, classification=NONE, meta
+10-29 15:21:28.319   522   757 D ConnectivityService: reportNetworkConnectivity(100, false) by 10132
+10-29 15:21:28.319   994  2861 D NetworkMonitor/100: Forcing reevaluation for UID 10132. Dns signal count: 0
+10-29 15:21:28.320   994  5698 D TrafficStats: tagSocket(68) with statsTag=0xffffff81, statsUid=-1
+10-29 15:21:28.321   994  5697 D TrafficStats: tagSocket(107) with statsTag=0xffffff81, statsUid=-1
+10-29 15:21:28.321   994  5698 D TrafficStats: tagSocket(75) with statsTag=0xffffff81, statsUid=-1
+10-29 15:21:28.321   994  5697 D TrafficStats: tagSocket(68) with statsTag=0xffffff81, statsUid=-1
+10-29 15:21:28.321   336  5699 I resolv  : ResNSendHandler::run: 0 / {100 983140 100 983140 1073 1}
+10-29 15:21:28.322   336  5699 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x782723fea310
+10-29 15:21:28.322   336  5700 I resolv  : ResNSendHandler::run: 0 / {100 983140 100 983140 1073 1}
+10-29 15:21:28.322   336  5700 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7826b3fefa50
+10-29 15:21:28.330   336  5702 I resolv  : ResNSendHandler::run: 0 / {100 983140 100 983140 1073 1}
+10-29 15:21:28.330   336  5702 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7826b3fee630
+10-29 15:21:28.331   336  5701 I resolv  : ResNSendHandler::run: 0 / {100 983140 100 983140 1073 1}
+10-29 15:21:28.331   336  5701 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x782823fef370
+10-29 15:21:28.332   994   994 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+10-29 15:21:28.332   994   994 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+10-29 15:21:28.333   994   994 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+10-29 15:21:28.333   994  5698 D NetworkMonitor/100: PROBE_DNS connectivitycheck.gstatic.com 12ms OK 142.251.150.120,2001:4860:4826:7800::
+10-29 15:21:28.334   994   994 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+10-29 15:21:28.334   994   994 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+10-29 15:21:28.335   994   994 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+10-29 15:21:28.335   994   994 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+10-29 15:21:28.335   994   994 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+10-29 15:21:28.335   994   994 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+10-29 15:21:28.336   994   994 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+10-29 15:21:28.336   994   994 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+10-29 15:21:28.336   994   994 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+10-29 15:21:28.337   994   994 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+10-29 15:21:28.337   994   994 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+10-29 15:21:28.338   994   994 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+10-29 15:21:28.338   994   994 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+10-29 15:21:28.338   994   994 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+10-29 15:21:28.339  5543  5563 D EGL_emulation: app_time_stats: avg=66.94ms min=16.61ms max=470.43ms count=15
+10-29 15:21:28.339   336  5703 I resolv  : GetAddrInfoHandler::run: {100 983140 100 983140 1073 1}
+10-29 15:21:28.339   994   994 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+10-29 15:21:28.340   994  5697 D NetworkMonitor/100: PROBE_DNS www.google.com 18ms OK 142.251.155.119,142.251.156.119,142.251.157.119,142.251.154.119,142.251.150.119,142.251.152.119,142.251.151.119,142.251.153.119,2001:4860:482b:7700::,2001
+10-29 15:21:28.343   336  5704 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+10-29 15:21:28.343   336  5704 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7826b3fefa50
+10-29 15:21:28.343   336  5704 I resolv  : doQuery: rcode=0, ancount=1, return value=75
+10-29 15:21:28.344   336  5705 I resolv  : res_nmkquery: (QUERY, IN, A)
+10-29 15:21:28.344   336  5705 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7826b3fee630
+10-29 15:21:28.344   336  5705 I resolv  : doQuery: rcode=0, ancount=1, return value=63
+10-29 15:21:28.344   994  5698 D TrafficStats: tagSocket(75) with statsTag=0xffffff81, statsUid=-1
+10-29 15:21:28.345   336  5706 I resolv  : GetAddrInfoHandler::run: {100 983140 100 983140 1073 1}
+10-29 15:21:28.346   336  5708 I resolv  : res_nmkquery: (QUERY, IN, A)
+10-29 15:21:28.346   336  5708 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x782823fef370
+10-29 15:21:28.346   336  5708 I resolv  : doQuery: rcode=0, ancount=8, return value=160
+10-29 15:21:28.346   336  5707 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+10-29 15:21:28.346   336  5707 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x782723fea310
+10-29 15:21:28.346   336  5707 I resolv  : doQuery: rcode=0, ancount=8, return value=256
+10-29 15:21:28.347   994  5697 D TrafficStats: tagSocket(68) with statsTag=0xffffff81, statsUid=-1
+10-29 15:21:28.364   994  5698 D NetworkMonitor/100: PROBE_HTTP http://connectivitycheck.gstatic.com/generate_204 time=30ms ret=204 request={Connection=[close], User-Agent=[Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gec
+10-29 15:21:28.370   994  5697 D NetworkMonitor/100: PROBE_HTTPS https://www.google.com/generate_204 time=30ms ret=204 request={Connection=[close], User-Agent=[Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60
+10-29 15:21:28.371   994  5696 D NetworkMonitor/100: isCaptivePortal: isSuccessful()=true isPortal()=false RedirectUrl=null isPartialConnectivity()=false Time=51ms
+10-29 15:21:28.371   522   757 D ConnectivityService: [100 WIFI] validation passed
+10-29 15:21:28.654   522   889 W BatteryExternalStatsWorker: error reading Bluetooth stats: 11
+10-29 15:21:29.357  5543  5563 D EGL_emulation: app_time_stats: avg=26.32ms min=16.36ms max=52.84ms count=38
+10-29 15:21:29.761   522   889 W ProcessStats: Tracking association SourceState{f98f669 com.google.android.gms.persistent/10131 BFgs #10720} whose proc state 4 is better than process ProcessState{e3c748e com.google.android.gms/10131 pkg=com
+10-29 15:21:29.884  1735  2545 W A       : [Download] response code: 400
+10-29 15:21:30.041   522   606 D ActivityManager: freezing 2372 com.google.android.tts
+10-29 15:21:30.041   522   606 D ActivityManager: freezing 1668 com.google.android.apps.youtube.music
+10-29 15:21:30.142  5711  5711 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+10-29 15:21:30.142  5711  5711 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+10-29 15:21:30.159   135   135 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+10-29 15:21:30.160  5711  5712 I Gralloc4: mapper 4.x is not supported
+10-29 15:21:30.351     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+10-29 15:21:30.299  1093  1093 D TaplEvents: TIS / TouchInteractionService.onInputEvent: MotionEvent { action=ACTION_DOWN, actionButton=0, id[0]=0, x[0]=160.0, y[0]=480.0, toolType[0]=TOOL_TYPE_FINGER, buttonState=0, classification=NONE, me
+10-29 15:21:30.313   522   606 D ActivityManager: freezing 3657 com.google.android.gm
+10-29 15:21:30.373  5543  5563 D EGL_emulation: app_time_stats: avg=30.59ms min=20.42ms max=41.00ms count=33
+10-29 15:21:30.401   522   606 D ActivityManager: freezing 4397 com.google.android.googlequicksearchbox
+10-29 15:21:30.429   522   606 D ActivityManager: freezing 4165 com.google.android.marvin.talkback
+10-29 15:21:30.551  1784  1784 V ContactsProvider: Scheduled notifyChange started.
+10-29 15:21:30.553  1021  1021 D BluetoothPbapService:  onChange on contact uri 
+10-29 15:21:30.569  1021  5718 D BluetoothPbapUtils: primaryVersionCounter = 0, secondaryVersionCounter=0
+10-29 15:21:30.582  4937  5208 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.icing.proxy.IcingInternalCorporaUpdateService started execution. cause:9 exec_start_elapsed_seconds: 87 [CONTEXT service_id=218 ]
+10-29 15:21:30.583  4937  5208 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.icing.proxy.IcingInternalCorporaUpdateService finished executing. cause:9 result: 1 elapsed_millis: 12 uptime_millis: 12 exec_start_
+10-29 15:21:30.590   522   606 D ActivityManager: freezing 3763 com.google.android.projection.gearhead:shared
+10-29 15:21:30.597   522   606 D ActivityManager: freezing 1768 com.google.android.youtube
+10-29 15:21:30.617  1093  1093 D TaplEvents: TIS / TouchInteractionService.onInputEvent: MotionEvent { action=ACTION_UP, actionButton=0, id[0]=0, x[0]=160.0, y[0]=128.0, toolType[0]=TOOL_TYPE_FINGER, buttonState=0, classification=NONE, meta
+10-29 15:21:30.662   522   599 D ActivityManager: sync unfroze 1768 com.google.android.youtube for 6
+10-29 15:21:30.667   522   889 D ConnectivityService: requestNetwork for uid/pid:10139/1768 activeRequest: null callbackRequest: 146 [NetworkRequest [ REQUEST id=147, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 1013
+10-29 15:21:30.669   522   757 D ConnectivityService: NetReassign [147 : null → 100] [c 0] [a 0] [i 1]
+10-29 15:21:30.669   522   750 D WifiNetworkFactory: got request NetworkRequest [ REQUEST id=147, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10139 RequestorUid: 10139 RequestorPkg: com.google.android.youtube Underl
+10-29 15:21:30.669   522   750 D UntrustedWifiNetworkFactory: got request NetworkRequest [ REQUEST id=147, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10139 RequestorUid: 10139 RequestorPkg: com.google.android.youtu
+10-29 15:21:30.669   522   750 D OemPaidWifiNetworkFactory: got request NetworkRequest [ REQUEST id=147, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10139 RequestorUid: 10139 RequestorPkg: com.google.android.youtube
+10-29 15:21:30.669   522   750 D MultiInternetWifiNetworkFactory: got request NetworkRequest [ REQUEST id=147, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10139 RequestorUid: 10139 RequestorPkg: com.google.android.y
+10-29 15:21:30.671  1093  1093 D TaplEvents: TIS / TouchInteractionService.onInputEvent: MotionEvent { action=ACTION_DOWN, actionButton=0, id[0]=0, x[0]=160.0, y[0]=480.0, toolType[0]=TOOL_TYPE_FINGER, buttonState=0, classification=NONE, me
+10-29 15:21:30.977  1093  1093 D TaplEvents: TIS / TouchInteractionService.onInputEvent: MotionEvent { action=ACTION_UP, actionButton=0, id[0]=0, x[0]=160.0, y[0]=128.0, toolType[0]=TOOL_TYPE_FINGER, buttonState=0, classification=NONE, meta
+10-29 15:21:31.001  1093  1093 D TaplEvents: TIS / TouchInteractionService.onInputEvent: MotionEvent { action=ACTION_DOWN, actionButton=0, id[0]=0, x[0]=160.0, y[0]=480.0, toolType[0]=TOOL_TYPE_FINGER, buttonState=0, classification=NONE, me
+10-29 15:21:31.024   522   990 D OomAdjuster: Not killing cached processes
+10-29 15:21:31.025  4937  4937 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.nearby.exposurenotification.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiServiceNoInstantApps }
+10-29 15:21:31.064   522   606 D ActivityManager: freezing 2912 com.google.android.gms.unstable
+10-29 15:21:31.308  1093  1093 D TaplEvents: TIS / TouchInteractionService.onInputEvent: MotionEvent { action=ACTION_UP, actionButton=0, id[0]=0, x[0]=160.0, y[0]=128.0, toolType[0]=TOOL_TYPE_FINGER, buttonState=0, classification=NONE, meta
+10-29 15:21:31.383  5543  5563 D EGL_emulation: app_time_stats: avg=9.18ms min=6.05ms max=21.93ms count=60
+10-29 15:21:31.557   522   990 W JobScheduler: Job didn't exist in JobStore: 37f1e3f #u0a155/7 com.google.android.contacts/com.google.android.apps.contacts.shortcut.ShortcutJobService
+10-29 15:21:31.732   831   831 D StatusBarIconController: ignoring old pipeline callbacks, because the new mobile icons are enabled
+10-29 15:21:31.957  4982  4982 I NearbySharing: SharingTileService destroyed [CONTEXT service_id=194 ]
+10-29 15:21:32.057  5543  5543 I com.example.buddy: Perf: native scene 23 fps
+10-29 15:21:32.165  4982  5129 D TrafficStats: tagSocket(81) with statsTag=0x30001803, statsUid=-1
+10-29 15:21:32.398  5543  5563 D EGL_emulation: app_time_stats: avg=13.86ms min=6.14ms max=33.83ms count=50
+10-29 15:21:32.414  4982  5730 I ChimeraConfigurator: Starting update, reason: 4 urgentFeatures: vision.ocr:-1
+10-29 15:21:32.414   522   606 D ActivityManager: freezing 5003 com.google.android.settings.intelligence
+10-29 15:21:32.424  4982  5730 I ChimeraConfigurator: Detected pending changes for urgent request: [vision.ocr]. Pending module sets: container:2318189190800+mlkit.ocr.common,tflite_dynamite:2640104055100800+tflite_dynamite,vision_ocr:23160
+10-29 15:21:32.432  4982  5730 I GmsDebugLogger: [73] 1801
+10-29 15:21:32.435  4982  5730 W ZappDownloader: No successful module downloads for requested features [vision.ocr].
+10-29 15:21:32.435  4982  5730 I GmsDebugLogger: [30] [VisionOcrDynamite.integ:231602402100000],[TfliteDynamiteDynamite.integ:264010405100800],[MlkitOcrCommon.optional:231818100800]
+10-29 15:21:32.437  4982  5730 W ChimeraConfigService: Retry attempt was throttled. [CONTEXT service_id=264 ]
+10-29 15:21:32.438  4982  5730 I GmsDebugLogger: [83] 1 [vision.ocr]
+10-29 15:21:32.439  4982  5729 W Vision  : Request for optional module download of ocr failed. Request again.
+10-29 15:21:32.439  4982  5729 W Vision  : Would have logged:
+10-29 15:21:32.439  4982  5729 W Vision  : # dsae@37884fe7
+10-29 15:21:32.439  4982  5729 I Vision  : Schedule retrying download ocr at 89148 with backoff 20 seconds
+10-29 15:21:32.557   522  2227 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+10-29 15:21:32.557   522  2227 D PackageManager: Clear ephemeral installer activity
+10-29 15:21:32.561   522   889 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+10-29 15:21:32.562   522   889 D PackageManager: Clear ephemeral installer activity
+10-29 15:21:32.812  4982  4982 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.ocr.service.internal.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsInternalApiService }
+10-29 15:21:33.364  5736  5736 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+10-29 15:21:33.364  5736  5736 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+10-29 15:21:33.369   135   135 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+10-29 15:21:33.369  5736  5737 I Gralloc4: mapper 4.x is not supported
+10-29 15:21:33.563     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+10-29 15:21:33.404  5543  5563 D EGL_emulation: app_time_stats: avg=27.94ms min=14.20ms max=38.43ms count=36

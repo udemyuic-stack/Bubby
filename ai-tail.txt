@@ -1,0 +1,150 @@
+10-29 15:14:19.514  4088  4213 D cevx    : Starting download: https://www.gstatic.com/messages/smarts/smart_actions_ml_models/loc_spam_no_assistant_04162019_lt_030.pb_1568226528414
+10-29 15:14:19.514  4088  4213 V cevx    : Is http uri, downloading (uri: https://www.gstatic.com/messages/smarts/smart_actions_ml_models/loc_spam_no_assistant_04162019_lt_030.pb_1568226528414)
+10-29 15:14:19.520  4088  4231 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793286828949_2bc5fa3d3ff184fc294e4c5b64d3ab7e0
+10-29 15:14:19.523  4088  4881 D cevx    : Starting download: https://www.gstatic.com/messages/smarts/smart_actions_ml_models/loc_spam_no_assistant_04162019_lt_020.pb_1568226528414
+10-29 15:14:19.523  4088  4881 V cevx    : Is http uri, downloading (uri: https://www.gstatic.com/messages/smarts/smart_actions_ml_models/loc_spam_no_assistant_04162019_lt_020.pb_1568226528414)
+10-29 15:14:19.535  4944  4971 E bwfc    : Phenotype API error. Event # edax@6f3a7c4, EventCode: 5 [CONTEXT service_id=51 ]
+10-29 15:14:19.535  4944  4971 E bwfc    : bwdx: 29501: Stale snapshot for com.google.android.gms.tron.metrics(change count changed - expected 4  but was 1)
+10-29 15:14:19.535  4944  4971 E bwfc    : 	at bwfg.b(:com.google.android.gms@231818047@23.18.18 (190800-535401451):16)
+10-29 15:14:19.535  4944  4971 E bwfc    : 	at bwff.g(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+10-29 15:14:19.535  4944  4971 E bwfc    : 	at bwfc.e(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+10-29 15:14:19.535  4944  4971 E bwfc    : 	at bwfc.f(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+10-29 15:14:19.535  4944  4971 E bwfc    : 	at avsy.eo(:com.google.android.gms@231818047@23.18.18 (190800-535401451):1)
+10-29 15:14:19.535  4944  4971 E bwfc    : 	at avtf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):14)
+10-29 15:14:19.535  4944  4971 E bwfc    : 	at dfhf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+10-29 15:14:19.535  4944  4971 E bwfc    : 	at aced.c(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+10-29 15:14:19.535  4944  4971 E bwfc    : 	at aced.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):8)
+10-29 15:14:19.535  4944  4971 E bwfc    : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+10-29 15:14:19.535  4944  4971 E bwfc    : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+10-29 15:14:19.535  4944  4971 E bwfc    : 	at acjn.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+10-29 15:14:19.535  4944  4971 E bwfc    : 	at java.lang.Thread.run(Thread.java:1012)
+10-29 15:14:19.537  4944  4971 W AsyncOperation: operation=CommitToConfigurationOperationCall, opStatusCode=29501 [CONTEXT service_id=51 ]
+10-29 15:14:19.537  4944  4971 W AsyncOperation: OperationException[Status{statusCode=Stale snapshot for com.google.android.gms.tron.metrics(change count changed - expected 4  but was 1), resolution=null}]
+10-29 15:14:19.537  4944  4971 W AsyncOperation: 	at bwfc.e(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+10-29 15:14:19.537  4944  4971 W AsyncOperation: 	at bwfc.f(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+10-29 15:14:19.537  4944  4971 W AsyncOperation: 	at avsy.eo(:com.google.android.gms@231818047@23.18.18 (190800-535401451):1)
+10-29 15:14:19.537  4944  4971 W AsyncOperation: 	at avtf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):14)
+10-29 15:14:19.537  4944  4971 W AsyncOperation: 	at dfhf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+10-29 15:14:19.537  4944  4971 W AsyncOperation: 	at aced.c(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+10-29 15:14:19.537  4944  4971 W AsyncOperation: 	at aced.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):8)
+10-29 15:14:19.537  4944  4971 W AsyncOperation: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+10-29 15:14:19.537  4944  4971 W AsyncOperation: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+10-29 15:14:19.537  4944  4971 W AsyncOperation: 	at acjn.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+10-29 15:14:19.537  4944  4971 W AsyncOperation: 	at java.lang.Thread.run(Thread.java:1012)
+10-29 15:14:19.537  4944  4981 E bwfc    : Phenotype API error. Event # edax@f0a54cc5, EventCode: 5 [CONTEXT service_id=51 ]
+10-29 15:14:19.537  4944  4981 E bwfc    : bwdx: 29501: Stale snapshot for com.google.android.gms.tron.metrics(change count changed - expected 4  but was 1)
+10-29 15:14:19.537  4944  4981 E bwfc    : 	at bwfg.b(:com.google.android.gms@231818047@23.18.18 (190800-535401451):16)
+10-29 15:14:19.537  4944  4981 E bwfc    : 	at bwff.g(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+10-29 15:14:19.537  4944  4981 E bwfc    : 	at bwfc.e(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+10-29 15:14:19.537  4944  4981 E bwfc    : 	at bwfc.f(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+10-29 15:14:19.537  4944  4981 E bwfc    : 	at avsy.eo(:com.google.android.gms@231818047@23.18.18 (190800-535401451):1)
+10-29 15:14:19.537  4944  4981 E bwfc    : 	at avtf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):14)
+10-29 15:14:19.537  4944  4981 E bwfc    : 	at dfhf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+10-29 15:14:19.537  4944  4981 E bwfc    : 	at aced.c(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+10-29 15:14:19.537  4944  4981 E bwfc    : 	at aced.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):8)
+10-29 15:14:19.537  4944  4981 E bwfc    : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+10-29 15:14:19.537  4944  4981 E bwfc    : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+10-29 15:14:19.537  4944  4981 E bwfc    : 	at acjn.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+10-29 15:14:19.537  4944  4981 E bwfc    : 	at java.lang.Thread.run(Thread.java:1012)
+10-29 15:14:19.538  4944  4981 W AsyncOperation: operation=CommitToConfigurationOperationCall, opStatusCode=29501 [CONTEXT service_id=51 ]
+10-29 15:14:19.538  4944  4981 W AsyncOperation: OperationException[Status{statusCode=Stale snapshot for com.google.android.gms.tron.metrics(change count changed - expected 4  but was 1), resolution=null}]
+10-29 15:14:19.538  4944  4981 W AsyncOperation: 	at bwfc.e(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+10-29 15:14:19.538  4944  4981 W AsyncOperation: 	at bwfc.f(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+10-29 15:14:19.538  4944  4981 W AsyncOperation: 	at avsy.eo(:com.google.android.gms@231818047@23.18.18 (190800-535401451):1)
+10-29 15:14:19.538  4944  4981 W AsyncOperation: 	at avtf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):14)
+10-29 15:14:19.538  4944  4981 W AsyncOperation: 	at dfhf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+10-29 15:14:19.538  4944  4981 W AsyncOperation: 	at aced.c(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+10-29 15:14:19.538  4944  4981 W AsyncOperation: 	at aced.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):8)
+10-29 15:14:19.538  4944  4981 W AsyncOperation: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+10-29 15:14:19.538  4944  4981 W AsyncOperation: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+10-29 15:14:19.538  4944  4981 W AsyncOperation: 	at acjn.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+10-29 15:14:19.538  4944  4981 W AsyncOperation: 	at java.lang.Thread.run(Thread.java:1012)
+10-29 15:14:19.538  4944  4971 I HeterodyneSyncScheduler: Scheduling Phenotype for a PhenotypeSyncImmediately(16, com.google.android.gms.nnapi.drivermanager) one off with window [1, 2] in seconds [CONTEXT service_id=51 ]
+10-29 15:14:19.538  5018  5127 W MobStoreFlagStore: Failed to commit due to stale snapshot for com.google.android.gms.tron.metrics, triggering flag update. Experiments may be delayed til next app start.
+10-29 15:14:19.539  4944  4977 W MobStoreFlagStore: Failed to commit due to stale snapshot for com.google.android.gms.tron.metrics, triggering flag update. Experiments may be delayed til next app start.
+10-29 15:14:19.545  4944  4976 I HeterodyneSyncer: Removed 0 invalid users [CONTEXT service_id=51 ]
+10-29 15:14:19.562  4088  4881 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793286828951_21f9a300c2499b5ce56c9de73b2b8a6f5
+10-29 15:14:19.568  4088  4231 D cevx    : Starting download: https://www.gstatic.com/messages/smarts/smart_actions_ml_models/loc_spam_no_assistant_04162019_lt_035.pb_1568226528414
+10-29 15:14:19.568  4088  4231 V cevx    : Is http uri, downloading (uri: https://www.gstatic.com/messages/smarts/smart_actions_ml_models/loc_spam_no_assistant_04162019_lt_035.pb_1568226528414)
+10-29 15:14:19.586  1634  1634 V ClearcutMetricXmitter: Transmission is done.
+10-29 15:14:19.603  4088  4231 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793286828952_7ca0e6ec6260790858496a6f6fcb76e1f
+10-29 15:14:19.606  4088  4881 D cevx    : Starting download: https://www.gstatic.com/messages/smarts/smart_actions_ml_models/loc_spam_no_assistant_04162019_lt_040.pb_1568226528414
+10-29 15:14:19.606  4088  4881 V cevx    : Is http uri, downloading (uri: https://www.gstatic.com/messages/smarts/smart_actions_ml_models/loc_spam_no_assistant_04162019_lt_040.pb_1568226528414)
+10-29 15:14:19.615  4088  4213 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793286828950_424adaefc76e4d31f3dd8baf45e30d8d3
+10-29 15:14:19.617  4088  4231 D cevx    : Starting download: https://www.gstatic.com/messages/smarts/smart_actions_ml_models/loc_spam_no_assistant_04162019_lt_050.pb_1568226528414
+10-29 15:14:19.617  4088  4231 V cevx    : Is http uri, downloading (uri: https://www.gstatic.com/messages/smarts/smart_actions_ml_models/loc_spam_no_assistant_04162019_lt_050.pb_1568226528414)
+10-29 15:14:19.635  5304  5321 D EGL_emulation: app_time_stats: avg=33.86ms min=28.92ms max=48.43ms count=30
+10-29 15:14:19.644  4088  4881 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793286828953_502de87de8c49c3f9770ad8672e068836
+10-29 15:14:19.647  4088  4213 D cevx    : Starting download: https://www.gstatic.com/messages/smarts/smart_actions_ml_models/loc_spam_no_assistant_04162019_lt_095.pb_1568226528414
+10-29 15:14:19.647  4088  4213 V cevx    : Is http uri, downloading (uri: https://www.gstatic.com/messages/smarts/smart_actions_ml_models/loc_spam_no_assistant_04162019_lt_095.pb_1568226528414)
+10-29 15:14:19.652  4088  4231 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793286828954_a11c4b87038997e3d8e1ed51ecaa7fd29
+10-29 15:14:19.655  4088  4881 D cevx    : Starting download: https://www.gstatic.com/messages/smarts/smart_actions_ml_models/sr_loc_spam_and_no_assistant_04162019.pb_1568226528414
+10-29 15:14:19.655  4088  4881 V cevx    : Is http uri, downloading (uri: https://www.gstatic.com/messages/smarts/smart_actions_ml_models/sr_loc_spam_and_no_assistant_04162019.pb_1568226528414)
+10-29 15:14:19.684  4088  4213 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793286828955_83b734fff8de8314e9cb42aaafc0e86cb
+10-29 15:14:19.687  4088  4231 D cevx    : Starting download: https://www.gstatic.com/messages/smarts/smart_actions_ml_models/loc_spam_no_assistant_04162019_lt_025.pb_1568226528414
+10-29 15:14:19.687  4088  4231 V cevx    : Is http uri, downloading (uri: https://www.gstatic.com/messages/smarts/smart_actions_ml_models/loc_spam_no_assistant_04162019_lt_025.pb_1568226528414)
+10-29 15:14:19.690  4088  4881 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793286828956_32270e7178ebdcd23a26a8e6bd0002c4b
+10-29 15:14:19.698  4088  4213 D cevx    : Starting download: https://www.gstatic.com//messages/smarts/smart_actions_sensitive_classifier_models/sgnn_w31c31_20200517_1596523090.tflite
+10-29 15:14:19.698  4088  4213 V cevx    : Is http uri, downloading (uri: https://www.gstatic.com//messages/smarts/smart_actions_sensitive_classifier_models/sgnn_w31c31_20200517_1596523090.tflite)
+10-29 15:14:19.723  4088  4231 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793286828957_764202f4da92607d1c787a26ff73f8518
+10-29 15:14:19.727  4088  4881 D cevx    : Starting download: https://www.gstatic.com/messages/smarts/smart_actions_sensitive_classifier_models/binary3.sgnn.w31c31.20201129.tflite
+10-29 15:14:19.727  4088  4881 V cevx    : Is http uri, downloading (uri: https://www.gstatic.com/messages/smarts/smart_actions_sensitive_classifier_models/binary3.sgnn.w31c31.20201129.tflite)
+10-29 15:14:19.740  4088  4213 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793286829353
+10-29 15:14:19.769  4088  4881 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793286829354
+10-29 15:14:19.822  4088  4231 D cevx    : Starting download: https://www.gstatic.com/messages/smarts/smart_actions_sensitive_classifier_models/multi3.sgnn.w31c31.20201129.tflite
+10-29 15:14:19.822  4088  4231 V cevx    : Is http uri, downloading (uri: https://www.gstatic.com/messages/smarts/smart_actions_sensitive_classifier_models/multi3.sgnn.w31c31.20201129.tflite)
+10-29 15:14:19.824  4088  4213 D cevx    : Starting download: https://www.gstatic.com/messages/smarts/smart_actions_sensitive_classifier_models/sgnn.w31c31.tflite_20211012
+10-29 15:14:19.824  4088  4213 V cevx    : Is http uri, downloading (uri: https://www.gstatic.com/messages/smarts/smart_actions_sensitive_classifier_models/sgnn.w31c31.tflite_20211012)
+10-29 15:14:19.869  4088  4213 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793286829356
+10-29 15:14:19.873  4088  4231 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793286829355
+10-29 15:14:19.895  5304  5304 I com.example.buddy: Perf: native scene 29 fps
+10-29 15:14:19.919   336   366 I netd    : tetherGetStats() -> {[]} <0.34ms>
+10-29 15:14:19.939  4944  4950 I .gms.persistent: Background concurrent copying GC freed 330124(16MB) AllocSpace objects, 3(60KB) LOS objects, 49% free, 14MB/28MB, paused 33us,19us total 170.524ms
+10-29 15:14:19.945  4088  4881 D cevx    : Starting download: https://www.gstatic.com/messages/smarts/supersort_us_grammars/Transportation_android.far_1635875924798
+10-29 15:14:19.945  4088  4881 V cevx    : Is http uri, downloading (uri: https://www.gstatic.com/messages/smarts/supersort_us_grammars/Transportation_android.far_1635875924798)
+10-29 15:14:19.952   336   366 I netd    : bandwidthSetGlobalAlert(2097152) <0.09ms>
+10-29 15:14:19.952  4088  4231 D cevx    : Starting download: https://www.gstatic.com/messages/smarts/supersort_us_grammars/Promo_android.far_1635875924798
+10-29 15:14:19.952  4088  4231 V cevx    : Is http uri, downloading (uri: https://www.gstatic.com/messages/smarts/supersort_us_grammars/Promo_android.far_1635875924798)
+10-29 15:14:19.991  4088  4231 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793286829372
+10-29 15:14:19.994  4088  4881 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793286829371
+10-29 15:14:20.006  4088  4213 D cevx    : Starting download: https://www.gstatic.com/messages/smarts/supersort_us_grammars/Delivery_android.far_1635875924798
+10-29 15:14:20.006  4088  4213 V cevx    : Is http uri, downloading (uri: https://www.gstatic.com/messages/smarts/supersort_us_grammars/Delivery_android.far_1635875924798)
+10-29 15:14:20.016  5519  5519 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+10-29 15:14:20.017  5519  5519 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+10-29 15:14:20.018   401   421 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=5519
+10-29 15:14:20.018   401   421 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (99 us)
+10-29 15:14:20.022  4088  4881 D cevx    : Starting download: https://www.gstatic.com/messages/smarts/supersort_us_grammars/model_based_provider_configs_pumpkin_supersort.pb_1635875924798
+10-29 15:14:20.022  4088  4881 V cevx    : Is http uri, downloading (uri: https://www.gstatic.com/messages/smarts/supersort_us_grammars/model_based_provider_configs_pumpkin_supersort.pb_1635875924798)
+10-29 15:14:20.038   138   138 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+10-29 15:14:20.038  5519  5521 I Gralloc4: mapper 4.x is not supported
+10-29 15:14:20.228     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+10-29 15:14:20.045  4088  4213 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793286829373
+10-29 15:14:20.057  4088  4231 D cevx    : Starting download: https://www.gstatic.com/messages/smarts/supersort_us_grammars/Bill_android.far_1635875924798
+10-29 15:14:20.057  4088  4231 V cevx    : Is http uri, downloading (uri: https://www.gstatic.com/messages/smarts/supersort_us_grammars/Bill_android.far_1635875924798)
+10-29 15:14:20.057  4088  4881 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793286829374
+10-29 15:14:20.070  4088  4213 D cevx    : Starting download: https://www.gstatic.com/messages/smarts/supersort_us_grammars/Debit_android.far_1635875924798
+10-29 15:14:20.070  4088  4213 V cevx    : Is http uri, downloading (uri: https://www.gstatic.com/messages/smarts/supersort_us_grammars/Debit_android.far_1635875924798)
+10-29 15:14:20.102  4088  4231 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793286829375
+10-29 15:14:20.106  4088  4881 D cevx    : Starting download: https://www.gstatic.com/messages/smarts/supersort_us_grammars/supersort_templates.pb_1635960903894
+10-29 15:14:20.106  4088  4881 V cevx    : Is http uri, downloading (uri: https://www.gstatic.com/messages/smarts/supersort_us_grammars/supersort_templates.pb_1635960903894)
+10-29 15:14:20.111  4088  4213 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793286829376
+10-29 15:14:20.117  4088  4231 D cevx    : Starting download: https://www.gstatic.com/messages/smarts/supersort_us_grammars/Credit_android.far_1635875924798
+10-29 15:14:20.117  4088  4231 V cevx    : Is http uri, downloading (uri: https://www.gstatic.com/messages/smarts/supersort_us_grammars/Credit_android.far_1635875924798)
+10-29 15:14:20.141  4088  4881 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793286829377
+10-29 15:14:20.146  4088  4213 D cevx    : Starting download: https://www.gstatic.com/messages/smarts/supersort_us_grammars/pumpkin_model_config_supersort.pb_1635875924798
+10-29 15:14:20.146  4088  4213 V cevx    : Is http uri, downloading (uri: https://www.gstatic.com/messages/smarts/supersort_us_grammars/pumpkin_model_config_supersort.pb_1635875924798)
+10-29 15:14:20.154  4088  4231 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793286829378
+10-29 15:14:20.162  4088  4881 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f600/lottie.json
+10-29 15:14:20.162  4088  4881 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f600/lottie.json)
+10-29 15:14:20.165   336  5522 I resolv  : GetAddrInfoHandler::run: {100 786532 100 983140 10129 0}
+10-29 15:14:20.167   336  5524 I resolv  : res_nmkquery: (QUERY, IN, A)
+10-29 15:14:20.169   336  5523 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+10-29 15:14:20.169   336  5523 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x79430a93d310
+10-29 15:14:20.170   336  5523 I resolv  : doQuery: rcode=0, ancount=1, return value=63
+10-29 15:14:20.174   336  5524 I resolv  : res_nsend: used send_dg 51 terrno: 0
+10-29 15:14:20.174   336  5524 I resolv  : doQuery: rcode=0, ancount=1, return value=51
+10-29 15:14:20.174  4088  4845 D TrafficStats: tagSocket(142) with statsTag=0xffffffff, statsUid=-1
+10-29 15:14:20.182  4088  4213 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793286829379
+10-29 15:14:20.184  4088  4231 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f603/lottie.json
+10-29 15:14:20.184  4088  4231 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f603/lottie.json)
+10-29 15:14:20.185  4088  4844 D TrafficStats: tagSocket(146) with statsTag=0xffffffff, statsUid=-1

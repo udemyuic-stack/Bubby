@@ -1,0 +1,150 @@
+10-29 15:20:11.903   518  1169 W ActivityManager: Unable to start service Intent { cmp=com.google.android.apps.tachyon/.clientapi.ClientApiService } U=0: not found
+10-29 15:20:11.943  5142  5434 D TrafficStats: tagSocket(176) with statsTag=0x401, statsUid=10131
+10-29 15:20:11.949  1712  2647 I PBSessionCacheImpl: Deleted sessionId[7531248914162324] from persistence.
+10-29 15:20:11.949  1712  2374 W A       : UiCallbackStub-onGenericEvent[ServiceEvent = 60] task was not run. Callback from Service received after client was disposed.
+10-29 15:20:11.954  1712  2374 W SearchServiceCore: Abort, client detached.
+10-29 15:20:11.971  1646  2377 I NgaEntryPointEventSendr: State changed: Ready => Disconnected (onOpaDisconnected)
+10-29 15:20:11.972  5142  5434 D TrafficStats: tagSocket(164) with statsTag=0x401, statsUid=10131
+10-29 15:20:11.977  1646  2377 I A       : Successfully initialized all components
+10-29 15:20:12.000  5142  5434 D TrafficStats: tagSocket(164) with statsTag=0x401, statsUid=10131
+10-29 15:20:12.006  5142  5434 D TrafficStats: tagSocket(176) with statsTag=0x401, statsUid=10131
+10-29 15:20:12.037  5142  5180 E bwel    : Phenotype registration failed [CONTEXT service_id=51 ]
+10-29 15:20:12.037  5142  5180 E bwel    : java.util.concurrent.TimeoutException: Timed out waiting for Task
+10-29 15:20:12.037  5142  5180 E bwel    : 	at cfsz.o(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+10-29 15:20:12.037  5142  5180 E bwel    : 	at bwel.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):12)
+10-29 15:20:12.037  5142  5180 E bwel    : 	at com.google.android.gms.phenotype.sync.HeterodyneSyncTaskChimeraService.d(:com.google.android.gms@231818047@23.18.18 (190800-535401451):8)
+10-29 15:20:12.037  5142  5180 E bwel    : 	at com.google.android.gms.phenotype.sync.HeterodyneSyncTaskChimeraService.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):10)
+10-29 15:20:12.037  5142  5180 E bwel    : 	at avzs.call(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+10-29 15:20:12.037  5142  5180 E bwel    : 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+10-29 15:20:12.037  5142  5180 E bwel    : 	at aced.c(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+10-29 15:20:12.037  5142  5180 E bwel    : 	at aced.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):7)
+10-29 15:20:12.037  5142  5180 E bwel    : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+10-29 15:20:12.037  5142  5180 E bwel    : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+10-29 15:20:12.037  5142  5180 E bwel    : 	at acjn.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+10-29 15:20:12.037  5142  5180 E bwel    : 	at java.lang.Thread.run(Thread.java:1012)
+10-29 15:20:12.047  5142  5434 D TrafficStats: tagSocket(176) with statsTag=0x401, statsUid=10131
+10-29 15:20:12.072  5064  5081 D EGL_emulation: app_time_stats: avg=15.66ms min=7.19ms max=35.13ms count=56
+10-29 15:20:12.083  5142  5434 D TrafficStats: tagSocket(164) with statsTag=0x401, statsUid=10131
+10-29 15:20:12.106  5142  5434 D TrafficStats: tagSocket(176) with statsTag=0x401, statsUid=10131
+10-29 15:20:12.123  5142  5434 D TrafficStats: tagSocket(176) with statsTag=0x401, statsUid=10131
+10-29 15:20:12.146  5142  5434 D TrafficStats: tagSocket(164) with statsTag=0x401, statsUid=10131
+10-29 15:20:12.180  5142  5434 D TrafficStats: tagSocket(176) with statsTag=0x401, statsUid=10131
+10-29 15:20:12.199  5142  5434 D TrafficStats: tagSocket(180) with statsTag=0x401, statsUid=10131
+10-29 15:20:12.204  5142  5434 D TrafficStats: tagSocket(164) with statsTag=0x401, statsUid=10131
+10-29 15:20:12.223  5142  5434 D TrafficStats: tagSocket(164) with statsTag=0x401, statsUid=10131
+10-29 15:20:12.240  5142  5434 D TrafficStats: tagSocket(164) with statsTag=0x401, statsUid=10131
+10-29 15:20:12.298  5142  5434 D TrafficStats: tagSocket(164) with statsTag=0x401, statsUid=10131
+10-29 15:20:12.315  5142  5434 D TrafficStats: tagSocket(164) with statsTag=0x401, statsUid=10131
+10-29 15:20:12.321  5259  5344 I ChimeraCfgMgr: Updating module config: container:2318189190800 -> container:2318189190800
+10-29 15:20:12.332  5259  5344 E DowngradeHelper: isModuleDowngradeRequired false
+10-29 15:20:12.356   518  1169 D CompatibilityChangeReporter: Compat change id reported: 229362273; UID 10131; state: DISABLED
+10-29 15:20:12.356   518  1169 D CompatibilityChangeReporter: Compat change id reported: 229362273; UID 10131; state: ENABLED
+10-29 15:20:12.372  5259  5344 I GmsDebugLogger: [46] container:2318189190800
+10-29 15:20:12.390  5259  5344 I ChimeraConfigurator: Checking 1 listeners. All downloaded: false
+10-29 15:20:12.400  5259  5344 I GmsDebugLogger: [83] 1 [maps_core, mlkit.barcode.ui, mlkit.ocr.common, tflite_dynamite, vision.ocr]
+10-29 15:20:12.422  5259  5344 I ChimeraConfigService: Scheduling checkin every 120 seconds, with flex of 60 seconds [CONTEXT service_id=264 ]
+10-29 15:20:12.462  5064  5064 I com.example.buddy: Perf: native scene 25 fps
+10-29 15:20:12.469  5259  5326 W gle.android.gms: Long monitor contention with owner [com.google.android.gms.chimera.container.intentoperation.GmsIntentOperationChimeraService-Executor] idle (5344) at void hjm.run()(:com.google.android.gms@
+10-29 15:20:12.470  5259  5326 I ChimeraConfigurator: Starting update, reason: 4 urgentFeatures: tflite_dynamite:-1
+10-29 15:20:12.518  5259  5326 I ChimeraConfigurator: Detected pending changes for urgent request: [tflite_dynamite]. Pending module sets: container:2318189190800,tflite_dynamite:2640104055100800+tflite_dynamite
+10-29 15:20:12.538  5259  5326 I GmsDebugLogger: [73] 1801
+10-29 15:20:12.548  5259  5326 W ZappDownloader: No successful module downloads for requested features [tflite_dynamite].
+10-29 15:20:12.549  5259  5326 I GmsDebugLogger: [30] [TfliteDynamiteDynamite.integ:264010405100800]
+10-29 15:20:12.561  5259  5326 W ChimeraConfigService: Retry attempt was throttled. [CONTEXT service_id=264 ]
+10-29 15:20:12.561  5259  5326 I GmsDebugLogger: [83] 1 [tflite_dynamite]
+10-29 15:20:12.759     0     0 I binder  : 5326:5259 cannot find target node
+10-29 15:20:12.760     0     0 I binder  : 5259:5326 transaction async to 0:0 failed 488861/29189/-22, size 160-0 line 3210
+10-29 15:20:12.603  5259  5326 E IPCThreadState: Binder transaction failure: 488861/29189/-22
+10-29 15:20:12.603  5259  5326 E ChimeraUPLUtils: Failed to invoke updateComplete: android.os.DeadObjectException
+10-29 15:20:12.605  5259  5326 I ChimeraConfigurator: Starting update, reason: 4 urgentFeatures: vision.ocr:-1
+10-29 15:20:12.663  5259  5326 I ChimeraConfigurator: Detected pending changes for urgent request: [vision.ocr]. Pending module sets: container:2318189190800+mlkit.ocr.common,tflite_dynamite:2640104055100800+tflite_dynamite,vision_ocr:23160
+10-29 15:20:12.698  5142  5207 W GLSUser : [AppCertManager] Exception while requesting key: 
+10-29 15:20:12.698  5142  5207 W GLSUser : java.util.concurrent.ExecutionException: avvw: Parse Proto Exception.
+10-29 15:20:12.698  5142  5207 W GLSUser : 	at dlnv.s(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3)
+10-29 15:20:12.698  5142  5207 W GLSUser : 	at dlnv.get(:com.google.android.gms@231818047@23.18.18 (190800-535401451):7)
+10-29 15:20:12.698  5142  5207 W GLSUser : 	at oub.b(:com.google.android.gms@231818047@23.18.18 (190800-535401451):78)
+10-29 15:20:12.698  5142  5207 W GLSUser : 	at otz.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):8)
+10-29 15:20:12.698  5142  5207 W GLSUser : 	at otv.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+10-29 15:20:12.698  5142  5207 W GLSUser : 	at otx.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+10-29 15:20:12.698  5142  5207 W GLSUser : 	at otx.b(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+10-29 15:20:12.698  5142  5207 W GLSUser : 	at abxk.r(:com.google.android.gms@231818047@23.18.18 (190800-535401451):1)
+10-29 15:20:12.698  5142  5207 W GLSUser : 	at abxw.e(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+10-29 15:20:12.698  5142  5207 W GLSUser : 	at abxw.g(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+10-29 15:20:12.698  5142  5207 W GLSUser : 	at cyeg.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):27)
+10-29 15:20:12.698  5142  5207 W GLSUser : 	at czpd.call(:com.google.android.gms@231818047@23.18.18 (190800-535401451):78)
+10-29 15:20:12.698  5142  5207 W GLSUser : 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+10-29 15:20:12.698  5142  5207 W GLSUser : 	at aced.c(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+10-29 15:20:12.698  5142  5207 W GLSUser : 	at aced.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):7)
+10-29 15:20:12.698  5142  5207 W GLSUser : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+10-29 15:20:12.698  5142  5207 W GLSUser : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+10-29 15:20:12.698  5142  5207 W GLSUser : 	at acjn.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+10-29 15:20:12.698  5142  5207 W GLSUser : 	at java.lang.Thread.run(Thread.java:1012)
+10-29 15:20:12.698  5142  5207 W GLSUser : Caused by: avvw: Parse Proto Exception.
+10-29 15:20:12.698  5142  5207 W GLSUser : 	at avwn.f(:com.google.android.gms@231818047@23.18.18 (190800-535401451):5)
+10-29 15:20:12.698  5142  5207 W GLSUser : 	at avxk.onSucceeded(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+10-29 15:20:12.698  5142  5207 W GLSUser : 	at jf.onSucceeded(:com.google.android.gms.dynamite_cronetdynamite@231818047@23.18.18 (190800-0):0)
+10-29 15:20:12.698  5142  5207 W GLSUser : 	at ie.run(:com.google.android.gms.dynamite_cronetdynamite@231818047@23.18.18 (190800-0):4)
+10-29 15:20:12.698  5142  5207 W GLSUser : 	... 6 more
+10-29 15:20:12.698  5142  5207 W GLSUser : Caused by: dzfz: Protocol message contained an invalid tag (zero).
+10-29 15:20:12.698  5142  5207 W GLSUser : 	at dzdb.k(:com.google.android.gms@231818047@23.18.18 (190800-535401451):13)
+10-29 15:20:12.698  5142  5207 W GLSUser : 	at dzha.c(:com.google.android.gms@231818047@23.18.18 (190800-535401451):47)
+10-29 15:20:12.698  5142  5207 W GLSUser : 	at dzha.h(:com.google.android.gms@231818047@23.18.18 (190800-535401451):45)
+10-29 15:20:12.698  5142  5207 W GLSUser : 	at dzfd.A(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+10-29 15:20:12.698  5142  5207 W GLSUser : 	at dzex.f(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+10-29 15:20:12.698  5142  5207 W GLSUser : 	at dzcx.d(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+10-29 15:20:12.698  5142  5207 W GLSUser : 	at dzcx.c(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+10-29 15:20:12.698  5142  5207 W GLSUser : 	at dzcx.n(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+10-29 15:20:12.698  5142  5207 W GLSUser : 	at avwn.h(:com.google.android.gms@231818047@23.18.18 (190800-535401451):7)
+10-29 15:20:12.698  5142  5207 W GLSUser : 	at avwn.f(:com.google.android.gms@231818047@23.18.18 (190800-535401451):1)
+10-29 15:20:12.698  5142  5207 W GLSUser : 	... 9 more
+10-29 15:20:12.700  5142  5207 W GLSUser : [DeviceKeyStore] Cannot load key: Device key file not found.
+10-29 15:20:12.705  5259  5326 I GmsDebugLogger: [73] 1801
+10-29 15:20:12.714  5142  5142 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.auth.account.data.service.START pkg=com.google.android.gms }
+10-29 15:20:12.739   334  5457 I resolv  : GetAddrInfoHandler::run: {100 786532 100 983140 10131 0}
+10-29 15:20:12.744  5259  5326 W ZappDownloader: No successful module downloads for requested features [vision.ocr].
+10-29 15:20:12.745   334  5458 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+10-29 15:20:12.745   334  5458 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7b1409228950
+10-29 15:20:12.745   334  5458 I resolv  : doQuery: rcode=0, ancount=8, return value=269
+10-29 15:20:12.747  5142  5142 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.usagereporting.service.START pkg=com.google.android.gms }
+10-29 15:20:12.749   334  5459 I resolv  : res_nmkquery: (QUERY, IN, A)
+10-29 15:20:12.749   334  5459 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7b13a9224170
+10-29 15:20:12.749   334  5459 I resolv  : doQuery: rcode=0, ancount=8, return value=173
+10-29 15:20:12.755  5142  5208 D TrafficStats: tagSocket(151) with statsTag=0x34000609, statsUid=10124
+10-29 15:20:12.760  5259  5326 I GmsDebugLogger: [30] [VisionOcrDynamite.integ:231602402100000],[TfliteDynamiteDynamite.integ:264010405100800],[MlkitOcrCommon.optional:231818100800]
+10-29 15:20:12.778  5259  5326 W ChimeraConfigService: Retry attempt was throttled. [CONTEXT service_id=264 ]
+10-29 15:20:12.778  5259  5326 I GmsDebugLogger: [83] 1 [vision.ocr]
+10-29 15:20:12.817  5259  5326 E IPCThreadState: Binder transaction failure: 489448/29189/-22
+10-29 15:20:12.817  5259  5326 E ChimeraUPLUtils: Failed to invoke updateComplete: android.os.DeadObjectException
+10-29 15:20:12.970     0     0 I binder  : 5326:5259 cannot find target node
+10-29 15:20:12.997     0     0 I binder  : 5259:5326 transaction async to 0:0 failed 489448/29189/-22, size 160-0 line 3210
+10-29 15:20:12.821  5259  5326 I ChimeraConfigurator: Starting update, reason: 4 urgentFeatures: maps_core:-1
+10-29 15:20:12.834  5142  5208 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+10-29 15:20:12.834  5142  5208 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+10-29 15:20:12.834  5142  5208 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+10-29 15:20:12.885  5259  5326 I ChimeraConfigurator: Detected pending changes for urgent request: [maps_core]. Pending module sets: container:2318189190800+maps_core
+10-29 15:20:12.893  5259  5326 I GmsDebugLogger: [73] 1801
+10-29 15:20:12.898  5259  5326 W ZappDownloader: No successful module downloads for requested features [maps_core].
+10-29 15:20:12.898  5259  5326 I GmsDebugLogger: [30] [MapsCoreDynamite.integ:231112103100800]
+10-29 15:20:12.915  5259  5326 W ChimeraConfigService: Retry attempt was throttled. [CONTEXT service_id=264 ]
+10-29 15:20:12.915  5259  5326 I GmsDebugLogger: [83] 1 [maps_core]
+10-29 15:20:12.921  5259  5344 I ChimeraConfigurator: Starting update, reason: 4 urgentFeatures: mlkit.barcode.ui:0
+10-29 15:20:12.953  5456  5456 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+10-29 15:20:12.954  5456  5456 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+10-29 15:20:12.958   400  1124 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=5456
+10-29 15:20:12.959   400  1124 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (884 us)
+10-29 15:20:12.970  5259  5344 I ChimeraConfigurator: Detected pending changes for urgent request: [mlkit.barcode.ui]. Pending module sets: container:2318189190800+mlkit.barcode.ui+vision.barcode,tflite_dynamite:2640104055100800+tflite_dyna
+10-29 15:20:12.977   136   136 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+10-29 15:20:12.977  5456  5461 I Gralloc4: mapper 4.x is not supported
+10-29 15:20:13.155     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+10-29 15:20:13.006  5259  5362 I GCM-GMS : Got GMS direct boot token.
+10-29 15:20:13.015  5259  5344 I GmsDebugLogger: [73] 1801
+10-29 15:20:13.019  5259  5344 W ZappDownloader: No successful module downloads for requested features [mlkit.barcode.ui].
+10-29 15:20:13.019  5259  5344 I GmsDebugLogger: [30] [VisionBarcode.optional:231818100800],[TfliteDynamiteDynamite.integ:264010405100800],[MlkitBarcodeUi.optional:231818100000]
+10-29 15:20:13.042  5259  5344 W ChimeraConfigService: Retry attempt was throttled. [CONTEXT service_id=264 ]
+10-29 15:20:13.042  5259  5344 I GmsDebugLogger: [83] 1 [mlkit.barcode.ui]
+10-29 15:20:13.068  5142  5208 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+10-29 15:20:13.069  5142  5208 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+10-29 15:20:13.070  5142  5208 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+10-29 15:20:13.096  5064  5081 D EGL_emulation: app_time_stats: avg=16.07ms min=7.15ms max=36.97ms count=57
+10-29 15:20:13.136  5259  5337 I ChimeraConfigurator: Starting update, reason: 4 urgentFeatures: tflite_dynamite:-1
+10-29 15:20:13.205  5259  5337 I ChimeraConfigurator: Detected pending changes for urgent request: [tflite_dynamite]. Pending module sets: container:2318189190800,tflite_dynamite:2640104055100800+tflite_dynamite

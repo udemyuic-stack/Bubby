@@ -1,0 +1,150 @@
+10-29 15:22:20.928  1664  2484 W YouTubeMusic: 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+10-29 15:22:20.928  1664  2484 W YouTubeMusic: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+10-29 15:22:20.928  1664  2484 W YouTubeMusic: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+10-29 15:22:20.928  1664  2484 W YouTubeMusic: 	at smg.run(PG:2)
+10-29 15:22:20.928  1664  2484 W YouTubeMusic: 	at java.lang.Thread.run(Thread.java:1012)
+10-29 15:22:20.928  1664  2484 W YouTubeMusic: 	at snu.run(PG:5)
+10-29 15:22:20.928  1664  2484 W YouTubeMusic: Caused by: zvm: Precondition check failed.
+10-29 15:22:20.928  1664  2484 W YouTubeMusic: 	at abpb.e(PG:5)
+10-29 15:22:20.928  1664  2484 W YouTubeMusic: 	at zhp.f(PG:1)
+10-29 15:22:20.928  1664  2484 W YouTubeMusic: 	at zhp.e(PG:1)
+10-29 15:22:20.928  1664  2484 W YouTubeMusic: 	at zgl.run(PG:19)
+10-29 15:22:20.928  1664  2484 W YouTubeMusic: 	at aosb.run(PG:3)
+10-29 15:22:20.928  1664  2484 W YouTubeMusic: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+10-29 15:22:20.928  1664  2484 W YouTubeMusic: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+10-29 15:22:20.928  1664  2484 W YouTubeMusic: 	at yxr.run(PG:11)
+10-29 15:22:20.928  1664  2484 W YouTubeMusic: 	at java.lang.Thread.run(Thread.java:1012)
+10-29 15:22:20.928  1664  2484 W YouTubeMusic: Caused by: efc
+10-29 15:22:20.928  1664  2484 W YouTubeMusic: 	at zgl.run(PG:13)
+10-29 15:22:20.928  1664  2484 W YouTubeMusic: 	... 5 more
+10-29 15:22:21.006  1664  2484 W YouTubeMusic: Could not register for notifications with InnerTube: 
+10-29 15:22:21.006  1664  2484 W YouTubeMusic: abqx: zvm: Precondition check failed.
+10-29 15:22:21.006  1664  2484 W YouTubeMusic: 	at abqn.apply(Unknown Source:4)
+10-29 15:22:21.006  1664  2484 W YouTubeMusic: 	at yyi.r(PG:5)
+10-29 15:22:21.006  1664  2484 W YouTubeMusic: 	at yyi.b(PG:2)
+10-29 15:22:21.006  1664  2484 W YouTubeMusic: 	at abqp.d(PG:4)
+10-29 15:22:21.006  1664  2484 W YouTubeMusic: 	at agsb.c(PG:63)
+10-29 15:22:21.006  1664  2484 W YouTubeMusic: 	at agsb.i(PG:4)
+10-29 15:22:21.006  1664  2484 W YouTubeMusic: 	at agsb.c(PG:92)
+10-29 15:22:21.006  1664  2484 W YouTubeMusic: 	at agsb.j(PG:38)
+10-29 15:22:21.006  1664  2484 W YouTubeMusic: 	at agsb.d(PG:3)
+10-29 15:22:21.006  1664  2484 W YouTubeMusic: 	at agrz.run(Unknown Source:2)
+10-29 15:22:21.006  1664  2484 W YouTubeMusic: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:487)
+10-29 15:22:21.006  1664  2484 W YouTubeMusic: 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+10-29 15:22:21.006  1664  2484 W YouTubeMusic: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+10-29 15:22:21.006  1664  2484 W YouTubeMusic: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+10-29 15:22:21.006  1664  2484 W YouTubeMusic: 	at smg.run(PG:2)
+10-29 15:22:21.006  1664  2484 W YouTubeMusic: 	at java.lang.Thread.run(Thread.java:1012)
+10-29 15:22:21.006  1664  2484 W YouTubeMusic: 	at snu.run(PG:5)
+10-29 15:22:21.006  1664  2484 W YouTubeMusic: Caused by: zvm: Precondition check failed.
+10-29 15:22:21.006  1664  2484 W YouTubeMusic: 	at abpb.e(PG:5)
+10-29 15:22:21.006  1664  2484 W YouTubeMusic: 	at zhp.f(PG:1)
+10-29 15:22:21.006  1664  2484 W YouTubeMusic: 	at zhp.e(PG:1)
+10-29 15:22:21.006  1664  2484 W YouTubeMusic: 	at zgl.run(PG:19)
+10-29 15:22:21.006  1664  2484 W YouTubeMusic: 	at aosb.run(PG:3)
+10-29 15:22:21.006  1664  2484 W YouTubeMusic: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+10-29 15:22:21.006  1664  2484 W YouTubeMusic: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+10-29 15:22:21.006  1664  2484 W YouTubeMusic: 	at yxr.run(PG:11)
+10-29 15:22:21.006  1664  2484 W YouTubeMusic: 	at java.lang.Thread.run(Thread.java:1012)
+10-29 15:22:21.006  1664  2484 W YouTubeMusic: Caused by: efc
+10-29 15:22:21.006  1664  2484 W YouTubeMusic: 	at zgl.run(PG:13)
+10-29 15:22:21.006  1664  2484 W YouTubeMusic: 	... 5 more
+10-29 15:22:21.745  2528  3252 I DialerOmtpVvmCarrierConfigHelper: com.android.voicemail.impl.OmtpVvmCarrierConfigHelper.handleEvent:527 OmtpEvent:CONFIG_STATUS_SMS_TIME_OUT PhoneAccountHandle: [ComponentName: com.android.phone/com.android.
+10-29 15:22:21.758  2528  2528 I DialerRetryPolicy: com.android.voicemail.impl.scheduling.RetryPolicy.onCompleted:118 discarding deferred status [CONTEXT enable_persistent_logger=true ]
+10-29 15:22:21.762  2528  2528 I DialerTaskExecutor: com.android.voicemail.impl.scheduling.TaskExecutor.prepareStop:371 no more tasks, stopping service if no task are added in 5000 millis [CONTEXT enable_persistent_logger=true ]
+10-29 15:22:21.762  2528  2528 I DialerLogcatLoggingBindings: com.android.dialer.logging.logcat.LogcatLoggingBindings.logImpression:41 Impression: VVM_AUTO_RETRY_ACTIVATION
+10-29 15:22:21.763  2528  2528 I DialerTaskReceiver: com.android.voicemail.impl.scheduling.TaskReceiver.onReceive:68 task received [CONTEXT enable_persistent_logger=true ]
+10-29 15:22:21.763  2528  2528 I DialerTaskReceiver: com.android.voicemail.impl.scheduling.TaskReceiver.onReceive:73 TaskExecutor already running [CONTEXT enable_persistent_logger=true ]
+10-29 15:22:21.763  2528  2528 I DialerTasks: com.android.voicemail.impl.scheduling.Tasks.createTask:59 Task.createTask create task:com.android.voicemail.impl.ActivationTask [CONTEXT enable_persistent_logger=true ]
+10-29 15:22:21.763  2528  2528 I DialerRetryPolicy: com.android.voicemail.impl.scheduling.RetryPolicy.onCreate:81 retry #1 for com.android.voicemail.impl.ActivationTask@56ce0d queued, executing in 5000 [CONTEXT enable_persistent_logger=true
+10-29 15:22:21.767  2528  2528 I DialerTaskExecutor: com.android.voicemail.impl.scheduling.TaskExecutor.addTask:299 com.android.voicemail.impl.ActivationTask@56ce0d added [CONTEXT enable_persistent_logger=true ]
+10-29 15:22:21.767  2528  2528 I DialerTaskExecutor: com.android.voicemail.impl.scheduling.TaskExecutor.runNextTask:345 minimal wait time:4997 [CONTEXT enable_persistent_logger=true ]
+10-29 15:22:21.767  2528  2528 I DialerTaskExecutor: com.android.voicemail.impl.scheduling.TaskExecutor.sleep:355 sleep for 4997 millis [CONTEXT enable_persistent_logger=true ]
+10-29 15:22:21.806  5527  5551 D EGL_emulation: app_time_stats: avg=21.46ms min=17.07ms max=26.49ms count=45
+10-29 15:22:22.586   518   607 D ActivityManager: freezing 4243 com.google.android.googlequicksearchbox
+10-29 15:22:22.749  1664  2484 W YouTubeMusic: Could not register for notifications with InnerTube: 
+10-29 15:22:22.749  1664  2484 W YouTubeMusic: abqx: zvm: Precondition check failed.
+10-29 15:22:22.749  1664  2484 W YouTubeMusic: 	at abqn.apply(Unknown Source:4)
+10-29 15:22:22.749  1664  2484 W YouTubeMusic: 	at yyi.r(PG:5)
+10-29 15:22:22.749  1664  2484 W YouTubeMusic: 	at yyi.b(PG:2)
+10-29 15:22:22.749  1664  2484 W YouTubeMusic: 	at abqp.d(PG:4)
+10-29 15:22:22.749  1664  2484 W YouTubeMusic: 	at agsb.c(PG:63)
+10-29 15:22:22.749  1664  2484 W YouTubeMusic: 	at agsb.i(PG:4)
+10-29 15:22:22.749  1664  2484 W YouTubeMusic: 	at agsb.c(PG:92)
+10-29 15:22:22.749  1664  2484 W YouTubeMusic: 	at agsb.j(PG:38)
+10-29 15:22:22.749  1664  2484 W YouTubeMusic: 	at agsb.d(PG:3)
+10-29 15:22:22.749  1664  2484 W YouTubeMusic: 	at agrz.run(Unknown Source:2)
+10-29 15:22:22.749  1664  2484 W YouTubeMusic: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:487)
+10-29 15:22:22.749  1664  2484 W YouTubeMusic: 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+10-29 15:22:22.749  1664  2484 W YouTubeMusic: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+10-29 15:22:22.749  1664  2484 W YouTubeMusic: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+10-29 15:22:22.749  1664  2484 W YouTubeMusic: 	at smg.run(PG:2)
+10-29 15:22:22.749  1664  2484 W YouTubeMusic: 	at java.lang.Thread.run(Thread.java:1012)
+10-29 15:22:22.749  1664  2484 W YouTubeMusic: 	at snu.run(PG:5)
+10-29 15:22:22.749  1664  2484 W YouTubeMusic: Caused by: zvm: Precondition check failed.
+10-29 15:22:22.749  1664  2484 W YouTubeMusic: 	at abpb.e(PG:5)
+10-29 15:22:22.749  1664  2484 W YouTubeMusic: 	at zhp.f(PG:1)
+10-29 15:22:22.749  1664  2484 W YouTubeMusic: 	at zhp.e(PG:1)
+10-29 15:22:22.749  1664  2484 W YouTubeMusic: 	at zgl.run(PG:19)
+10-29 15:22:22.749  1664  2484 W YouTubeMusic: 	at aosb.run(PG:3)
+10-29 15:22:22.749  1664  2484 W YouTubeMusic: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+10-29 15:22:22.749  1664  2484 W YouTubeMusic: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+10-29 15:22:22.749  1664  2484 W YouTubeMusic: 	at yxr.run(PG:11)
+10-29 15:22:22.749  1664  2484 W YouTubeMusic: 	at java.lang.Thread.run(Thread.java:1012)
+10-29 15:22:22.749  1664  2484 W YouTubeMusic: Caused by: efc
+10-29 15:22:22.749  1664  2484 W YouTubeMusic: 	at zgl.run(PG:13)
+10-29 15:22:22.749  1664  2484 W YouTubeMusic: 	... 5 more
+10-29 15:22:22.813  5527  5551 D EGL_emulation: app_time_stats: avg=20.51ms min=16.34ms max=27.28ms count=47
+10-29 15:22:23.198  1788  1788 V ContactsProvider: Scheduled notifyChange started.
+10-29 15:22:23.214  1016  1016 D BluetoothPbapService:  onChange on contact uri 
+10-29 15:22:23.221  1016  5684 D BluetoothPbapUtils: primaryVersionCounter = 0, secondaryVersionCounter=0
+10-29 15:22:23.229   518   607 D ActivityManager: freezing 4092 com.google.android.marvin.talkback
+10-29 15:22:23.242  4843  5539 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.icing.proxy.IcingInternalCorporaUpdateService started execution. cause:9 exec_start_elapsed_seconds: 97 [CONTEXT service_id=218 ]
+10-29 15:22:23.245  4843  4940 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.checkin.CheckinService started execution. cause:9 exec_start_elapsed_seconds: 97 [CONTEXT service_id=218 ]
+10-29 15:22:23.248  4843  5542 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.icing.proxy.IcingInternalCorporaUpdateService finished executing. cause:9 result: 1 elapsed_millis: 19 uptime_millis: 19 exec_start_
+10-29 15:22:23.272  4843  5542 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.checkin.CheckinService finished executing. cause:9 result: 1 elapsed_millis: 28 uptime_millis: 28 exec_start_elapsed_seconds: 97 [CO
+10-29 15:22:23.517   828   828 D StatusBarIconController: ignoring old pipeline callbacks, because the new mobile icons are enabled
+10-29 15:22:23.560   518   607 D ActivityManager: freezing 3798 com.google.android.projection.gearhead:shared
+10-29 15:22:23.633   518   607 D ActivityManager: freezing 1682 com.google.android.youtube
+10-29 15:22:23.820  5527  5551 D EGL_emulation: app_time_stats: avg=21.15ms min=16.96ms max=27.58ms count=45
+10-29 15:22:24.237   518  2313 W JobScheduler: Job didn't exist in JobStore: 63e38a7 #u0a155/7 com.google.android.contacts/com.google.android.apps.contacts.shortcut.ShortcutJobService
+10-29 15:22:24.252  5527  5527 I com.example.buddy: Perf: native scene 20 fps
+10-29 15:22:24.498   518  2313 D OomAdjuster: Not killing cached processes
+10-29 15:22:24.625  5687  5687 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+10-29 15:22:24.626  5687  5687 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+10-29 15:22:24.636   134   134 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+10-29 15:22:24.636  5687  5688 I Gralloc4: mapper 4.x is not supported
+10-29 15:22:24.825     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+10-29 15:22:24.839  5527  5551 D EGL_emulation: app_time_stats: avg=22.43ms min=17.90ms max=31.39ms count=44
+10-29 15:22:24.894  1664  2484 W YouTubeMusic: Could not register for notifications with InnerTube: 
+10-29 15:22:24.894  1664  2484 W YouTubeMusic: abqx: zvm: Precondition check failed.
+10-29 15:22:24.894  1664  2484 W YouTubeMusic: 	at abqn.apply(Unknown Source:4)
+10-29 15:22:24.894  1664  2484 W YouTubeMusic: 	at yyi.r(PG:5)
+10-29 15:22:24.894  1664  2484 W YouTubeMusic: 	at yyi.b(PG:2)
+10-29 15:22:24.894  1664  2484 W YouTubeMusic: 	at abqp.d(PG:4)
+10-29 15:22:24.894  1664  2484 W YouTubeMusic: 	at agsb.c(PG:63)
+10-29 15:22:24.894  1664  2484 W YouTubeMusic: 	at agsb.i(PG:4)
+10-29 15:22:24.894  1664  2484 W YouTubeMusic: 	at agsb.c(PG:92)
+10-29 15:22:24.894  1664  2484 W YouTubeMusic: 	at agsb.j(PG:38)
+10-29 15:22:24.894  1664  2484 W YouTubeMusic: 	at agsb.d(PG:3)
+10-29 15:22:24.894  1664  2484 W YouTubeMusic: 	at agrz.run(Unknown Source:2)
+10-29 15:22:24.894  1664  2484 W YouTubeMusic: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:487)
+10-29 15:22:24.894  1664  2484 W YouTubeMusic: 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+10-29 15:22:24.894  1664  2484 W YouTubeMusic: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+10-29 15:22:24.894  1664  2484 W YouTubeMusic: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+10-29 15:22:24.894  1664  2484 W YouTubeMusic: 	at smg.run(PG:2)
+10-29 15:22:24.894  1664  2484 W YouTubeMusic: 	at java.lang.Thread.run(Thread.java:1012)
+10-29 15:22:24.894  1664  2484 W YouTubeMusic: 	at snu.run(PG:5)
+10-29 15:22:24.894  1664  2484 W YouTubeMusic: Caused by: zvm: Precondition check failed.
+10-29 15:22:24.894  1664  2484 W YouTubeMusic: 	at abpb.e(PG:5)
+10-29 15:22:24.894  1664  2484 W YouTubeMusic: 	at zhp.f(PG:1)
+10-29 15:22:24.894  1664  2484 W YouTubeMusic: 	at zhp.e(PG:1)
+10-29 15:22:24.894  1664  2484 W YouTubeMusic: 	at zgl.run(PG:19)
+10-29 15:22:24.894  1664  2484 W YouTubeMusic: 	at aosb.run(PG:3)
+10-29 15:22:24.894  1664  2484 W YouTubeMusic: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+10-29 15:22:24.894  1664  2484 W YouTubeMusic: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+10-29 15:22:24.894  1664  2484 W YouTubeMusic: 	at yxr.run(PG:11)
+10-29 15:22:24.894  1664  2484 W YouTubeMusic: 	at java.lang.Thread.run(Thread.java:1012)
+10-29 15:22:24.894  1664  2484 W YouTubeMusic: Caused by: efc
+10-29 15:22:24.894  1664  2484 W YouTubeMusic: 	at zgl.run(PG:13)
+10-29 15:22:24.894  1664  2484 W YouTubeMusic: 	... 5 more

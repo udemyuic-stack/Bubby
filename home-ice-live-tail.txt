@@ -1,0 +1,150 @@
+10-29 15:19:00.785   520   550 W WindowMagnificationMgr: requestConnection duplicated request: connect=false, mConnectionState=DISCONNECTED
+10-29 15:19:00.794  1403  5014 I Fitness : OnPackageChangedOperation got intent: Intent { act=android.intent.action.PACKAGE_CHANGED dat=package: flg=0x5000010 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.PersistentIntentOp
+10-29 15:19:00.812  1598  1937 I AiAiEcho: EchoSearch: WidgetFetcherImpl is initialized with [34] widgets [reason=package added for userId: 0]
+10-29 15:19:00.816   520  2018 D CompatibilityChangeReporter: Compat change id reported: 171306433; UID 10192; state: ENABLED
+10-29 15:19:00.817   520  2018 D CompatibilityChangeReporter: Compat change id reported: 226439802; UID 10192; state: ENABLED
+10-29 15:19:00.820  5087  5087 D CompatibilityChangeReporter: Compat change id reported: 210923482; UID 10192; state: ENABLED
+10-29 15:19:00.836  1443  1443 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.constellation.service.START pkg=com.google.android.gms }
+10-29 15:19:00.838  5087  5087 D CompatibilityChangeReporter: Compat change id reported: 171228096; UID 10192; state: ENABLED
+10-29 15:19:00.840  5087  5087 D CompatibilityChangeReporter: Compat change id reported: 237531167; UID 10192; state: DISABLED
+10-29 15:19:00.841  5087  5087 W OpenGLRenderer: Unknown dataspace 0
+10-29 15:19:00.847   520  2420 D CoreBackPreview: Window{77fb449 u0 com.example.buddy/com.example.buddy.ui.UiActivity}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@4593b7c, mPri
+10-29 15:19:00.856  1598  1598 I AiAiEcho: AppFetcherImpl onPackageChanged com.example.buddy.
+10-29 15:19:00.857  1598  3786 I AiAiEcho: AppIndexer Package:[com.example.buddy] UserProfile:[0] Enabled:[true].
+10-29 15:19:00.857  1598  3786 I AiAiEcho: AppFetcherImplV2 updateApps package:[com.example.buddy], userId:[0], reason:[package is updated.].
+10-29 15:19:00.862   401  1145 W ServiceManagerCppClient: Permission failure: android.permission.ROTATE_SURFACE_FLINGER from uid=10192 pid=0
+10-29 15:19:00.863   401  1145 D PermissionCache: checking android.permission.ROTATE_SURFACE_FLINGER for uid=10192 => denied (461 us)
+10-29 15:19:00.863   401  1145 W ServiceManagerCppClient: Permission failure: android.permission.INTERNAL_SYSTEM_WINDOW from uid=10192 pid=0
+10-29 15:19:00.863   401  1145 D PermissionCache: checking android.permission.INTERNAL_SYSTEM_WINDOW for uid=10192 => denied (102 us)
+10-29 15:19:00.863   401  1145 W ServiceManagerCppClient: Permission failure: android.permission.ACCESS_SURFACE_FLINGER from uid=10192 pid=0
+10-29 15:19:00.863   401  1145 D PermissionCache: checking android.permission.ACCESS_SURFACE_FLINGER for uid=10192 => denied (74 us)
+10-29 15:19:00.863   401   571 W ServiceManagerCppClient: Permission failure: android.permission.ROTATE_SURFACE_FLINGER from uid=10192 pid=5087
+10-29 15:19:00.863   401   571 D PermissionCache: checking android.permission.ROTATE_SURFACE_FLINGER for uid=10192 => denied (971 us)
+10-29 15:19:00.870  5087  5104 W OpenGLRenderer: Failed to initialize 101010-2 format, error = EGL_SUCCESS
+10-29 15:19:00.896   337  5113 I resolv  : GetAddrInfoHandler::run: {100 786532 100 983140 10131 0}
+10-29 15:19:01.047     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+10-29 15:19:00.900   138   138 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+10-29 15:19:00.900  5087  5104 I Gralloc4: mapper 4.x is not supported
+10-29 15:19:00.904   337  5116 I resolv  : res_nmkquery: (QUERY, IN, A)
+10-29 15:19:00.904   337  5115 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+10-29 15:19:00.912   337  5115 I resolv  : res_nsend: used send_dg 272 terrno: 0
+10-29 15:19:00.912   337  5115 I resolv  : doQuery: rcode=0, ancount=8, return value=272
+10-29 15:19:00.932   337  5116 I resolv  : res_nsend: used send_dg 176 terrno: 0
+10-29 15:19:00.932   337  5116 I resolv  : doQuery: rcode=0, ancount=8, return value=176
+10-29 15:19:00.940  1443  4661 D TrafficStats: tagSocket(146) with statsTag=0x30004901, statsUid=10131
+10-29 15:19:00.944  1403  4503 I Fitness : FitCleanupIntentOperation received Intent android.intent.action.PACKAGE_CHANGED [CONTEXT service_id=17 ]
+10-29 15:19:00.948  1443  4917 I Auth    : [SupervisedAccountIntentOperation] onHandleIntent(): android.intent.action.PACKAGE_ADDED
+10-29 15:19:00.960  1403  3614 W GCM     : Unexpected forwarded intent: Intent { act=android.intent.action.PACKAGE_ADDED dat=package: flg=0x4000010 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.PersistentIntentOperationServ
+10-29 15:19:00.960  1403  5012 I FontLog : Package com.example.buddy has no metadata [CONTEXT service_id=132 ]
+10-29 15:19:00.966  1443  4917 I Auth    : [SupervisedAccountIntentOperation] This operation is disabled
+10-29 15:19:00.975  1443  1443 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.common.BIND_SHARED_PREFS pkg=com.google.android.gms }
+10-29 15:19:00.975  1443  1443 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.common.BIND_SHARED_PREFS pkg=com.google.android.gms }
+10-29 15:19:00.977  1403  5012 W GCM     : Unexpected forwarded intent: Intent { act=android.intent.action.PACKAGE_ADDED dat=package: flg=0x4000010 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.PersistentIntentOperationServ
+10-29 15:19:00.978  1403  3620 I Fitness : OnPackageChangedOperation got intent: Intent { act=android.intent.action.PACKAGE_CHANGED dat=package: flg=0x5000010 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.PersistentIntentOp
+10-29 15:19:00.979  1443  4470 I BlockstoreStorage: Clearing Blockstore Data for package com.example.buddy [CONTEXT service_id=258 ]
+10-29 15:19:00.980  1443  4470 I BlockstoreStorage: Keyless data not found or its IsLastInstallationData = false. [CONTEXT service_id=258 ]
+10-29 15:19:00.981  1443  4470 I Dck     : doesDeviceHaveSupportedWirelessCapabilities: wccSysProp:0, wccMendel:1, deviceWccOverride:false [CONTEXT service_id=289 ]
+10-29 15:19:00.981  1443  4470 I Dck     : isDckModuleEligible: isAtLeastR:true, hasWccSupport:false, downloadAllowed:false [CONTEXT service_id=289 ]
+10-29 15:19:00.982  1443  4470 W Dck     : Dck module not eligible for asynchronous downloading [CONTEXT service_id=289 ]
+10-29 15:19:00.993  1403  3620 I Fitness : FitCleanupIntentOperation received Intent android.intent.action.PACKAGE_CHANGED [CONTEXT service_id=17 ]
+10-29 15:19:01.037  1443  1443 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.common.BIND_SHARED_PREFS pkg=com.google.android.gms }
+10-29 15:19:01.042  1403  1403 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.nearby.exposurenotification.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiServiceNoInstantApps }
+10-29 15:19:01.042  1403  1403 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.nearby.exposurenotification.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiServiceNoInsta
+10-29 15:19:01.095  1095  1152 D LoaderTask: load widgets
+10-29 15:19:01.103  1095  1152 D LoaderTask: bindWidgets
+10-29 15:19:01.113  1095  1152 D LoaderTask: save widgets in icon cache
+10-29 15:19:01.116  1095  1152 D LoaderTask: finish icon update
+10-29 15:19:01.117  1095  1152 D QuickstepModelDelegate: Successfully registered for launcher snapshot logging!
+10-29 15:19:01.170  1598  1837 I AiAiEcho: Predicting[0]: 
+10-29 15:19:01.170  1598  1837 I AiAiEcho: EchoTargets: 
+10-29 15:19:01.170  1598  1837 I AiAiEcho: Filtered by AiAi flag check: 
+10-29 15:19:01.170  1598  1837 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+10-29 15:19:01.171  1598  1837 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0 (types=[])
+10-29 15:19:01.211  1443  1464 I gle.android.gms: Background young concurrent copying GC freed 112362(5808KB) AllocSpace objects, 18(616KB) LOS objects, 18% free, 22MB/27MB, paused 33us,21us total 216.575ms
+10-29 15:19:01.277  1095  1111 I s.nexuslauncher: Background concurrent copying GC freed 70134(3474KB) AllocSpace objects, 16(316KB) LOS objects, 49% free, 8736KB/17MB, paused 33us,14us total 200.066ms
+10-29 15:19:01.442     0     0 I servicemanager: Notifying artd they don't (previously: do) have clients when we now have no record of a client
+10-29 15:19:01.295  5046  5046 I AidlLazyServiceRegistrar: Process has 0 (of 1 available) client(s) in use after notification artd has clients: 0
+10-29 15:19:01.295  5046  5046 I AidlLazyServiceRegistrar: Trying to shut down the service. No clients in use for any service in process.
+10-29 15:19:01.446     0     0 I servicemanager: Unregistering artd
+10-29 15:19:01.447     0     0 I BpBinder: onLastStrongRef automatically unlinking death recipients:
+10-29 15:19:01.304  5046  5046 I AidlLazyServiceRegistrar: Unregistered all clients and exiting
+10-29 15:19:01.456     0     0 I init    : Service 'artd' (pid 5046) exited with status 0 oneshot service took 1.932000 seconds in background
+10-29 15:19:01.458     0     0 I init    : Sending signal 9 to service 'artd' (pid 5046) process group...
+10-29 15:19:01.460     0     0 I libprocessgroup: Successfully killed process cgroup uid 1082 pid 5046 in 0ms
+10-29 15:19:01.874  1443  4661 I Icing   : Indexing com.google.android.gms-internal.3p:MobileApplication from com.google.android.gms
+10-29 15:19:01.891  5087  5114 E SurfaceSyncGroup: Failed to receive transaction ready in 1000ms. Marking SurfaceSyncGroup(wmsSync-VRI[UiActivity]#0) as ready
+10-29 15:19:01.891  5087  5114 E SurfaceSyncGroup: Failed to receive transaction ready in 1000ms. Marking SurfaceSyncGroup(VRI[UiActivity]#1) as ready
+10-29 15:19:01.893   520  1665 W ServiceManagerCppClient: Permission failure: android.permission.ROTATE_SURFACE_FLINGER from uid=10192 pid=0
+10-29 15:19:01.893   520  1665 D PermissionCache: checking android.permission.ROTATE_SURFACE_FLINGER for uid=10192 => denied (283 us)
+10-29 15:19:01.893   520  1665 W ServiceManagerCppClient: Permission failure: android.permission.INTERNAL_SYSTEM_WINDOW from uid=10192 pid=0
+10-29 15:19:01.893   520  1665 D PermissionCache: checking android.permission.INTERNAL_SYSTEM_WINDOW for uid=10192 => denied (90 us)
+10-29 15:19:01.894   520  1665 W ServiceManagerCppClient: Permission failure: android.permission.ACCESS_SURFACE_FLINGER from uid=10192 pid=0
+10-29 15:19:01.894   520  1665 D PermissionCache: checking android.permission.ACCESS_SURFACE_FLINGER for uid=10192 => denied (39 us)
+10-29 15:19:01.896  1443  4661 I Icing   : Indexing done com.google.android.gms-internal.3p:MobileApplication
+10-29 15:19:01.899   520   539 I ActivityTaskManager: Displayed com.example.buddy/.ui.UiActivity for user 0: +1s519ms
+10-29 15:19:01.899  1443  4661 I Icing   : Indexing com.google.android.gms-apps from com.google.android.gms
+10-29 15:19:01.918  1443  4661 I Icing   : Indexing done com.google.android.gms-apps
+10-29 15:19:01.941   834   875 W WindowOnBackDispatcher: sendCancelIfRunning: isInProgress=falsecallback=android.view.ViewRootImpl$$ExternalSyntheticLambda17@7329909
+10-29 15:19:01.941   520  2787 W InputManager-JNI: Input channel object '27a5fe2 Splash Screen com.example.buddy (client)' was disposed without first being removed with the input manager!
+10-29 15:19:01.945   520  1665 W WindowManager: Failed looking up window session=Session{53fbdde 834:u0a10169} callers=com.android.server.wm.WindowManagerService.windowForClientLocked:6034 com.android.server.wm.Session.setOnBackInvokedCallb
+10-29 15:19:01.945   520  1665 I WindowManager: setOnBackInvokedCallback(): No window state for package:com.android.systemui
+10-29 15:19:01.950   834   887 D EGL_emulation: app_time_stats: avg=333.08ms min=1.97ms max=1321.35ms count=7
+10-29 15:19:02.141  1443  4661 I Icing   : Indexing com.google.android.gms-apps from com.google.android.gms
+10-29 15:19:02.141  1443  4661 I Icing   : Indexing done com.google.android.gms-apps
+10-29 15:19:02.191  1443  4661 I Icing   : Indexing com.google.android.gms-apps from com.google.android.gms
+10-29 15:19:02.191  1443  4661 I Icing   : Indexing done com.google.android.gms-apps
+10-29 15:19:02.195  1443  4661 I Icing   : Indexing com.google.android.gms-internal.3p:MobileApplication from com.google.android.gms
+10-29 15:19:02.196  1443  4661 I Icing   : Indexing done com.google.android.gms-internal.3p:MobileApplication
+10-29 15:19:02.253  1443  4661 I Icing   : Indexing com.google.android.gms-internal.3p:MobileApplication from com.google.android.gms
+10-29 15:19:02.254  1443  4661 I Icing   : Indexing done com.google.android.gms-internal.3p:MobileApplication
+10-29 15:19:02.396   520   612 D ActivityManager: freezing 3121 com.google.android.gms.unstable
+10-29 15:19:02.492   520   541 I DropBoxManagerService: add tag=system_server_strictmode isTagEnabled=true flags=0x2
+10-29 15:19:02.929  1443  1443 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.asterism.service.START pkg=com.google.android.gms }
+10-29 15:19:02.972  1443  3788 D TrafficStats: tagSocket(133) with statsTag=0x30001803, statsUid=-1
+10-29 15:19:03.334  1403  1488 I HeterodyneSyncScheduler: Scheduling Phenotype for a PhenotypeSyncImmediately(7, com.google.android.platform.runtime_native_boot) one off with window [1, 2] in seconds [CONTEXT service_id=51 ]
+10-29 15:19:03.340  1403  5015 W .gms.persistent: Long monitor contention with owner [com.google.android.gms.chimera.container.intentoperation.PersistentIntentOperationChimeraService-Executor] idle (4734) at void hjm.run()(:com.google.andro
+10-29 15:19:03.341  1403  5015 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+10-29 15:19:03.342  1403  5015 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+10-29 15:19:03.343  1403  5015 I NamespaceManager: Package com.android.media name not found! Using module version.
+10-29 15:19:03.344  1403  5015 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+10-29 15:19:03.344  1403  5015 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+10-29 15:19:03.345  1403  5015 I NamespaceManager: Package com.android.media name not found! Using module version.
+10-29 15:19:03.346  1403  5015 I NamespaceManager: Package 1 name not found! Using module version.
+10-29 15:19:03.346  1403  5015 I NamespaceManager: Package rkpd name not found! Using module version.
+10-29 15:19:03.347  1403  5015 I NamespaceManager: Package android.companion name not found! Using module version.
+10-29 15:19:03.348  1403  5015 I NamespaceManager: Package com.google.android.aicore name not found! Using module version.
+10-29 15:19:03.348  1403  5015 I NamespaceManager: Package com.google.android.audioproxy name not found! Using module version.
+10-29 15:19:03.349  1403  5015 I NamespaceManager: Package com.google.android.apps.pixel.psi name not found! Using module version.
+10-29 15:19:03.349  1403  5015 I NamespaceManager: Package com.google.android.apps.safetycore name not found! Using module version.
+10-29 15:19:03.350  1403  5015 I NamespaceManager: Package com.google.android.crashrecovery name not found! Using module version.
+10-29 15:19:03.350  1403  5015 I NamespaceManager: Package com.google.android.profiling name not found! Using module version.
+10-29 15:19:03.351  1403  5015 I NamespaceManager: Package com.google.android.bt name not found! Using module version.
+10-29 15:19:03.351  1403  5015 I NamespaceManager: Package com.google.android.nfcservices name not found! Using module version.
+10-29 15:19:03.353  1403  5015 I NamespaceManager: Package com.google.android.webapp name not found! Using module version.
+10-29 15:19:03.353  1403  5015 I NamespaceManager: Package com.google.android.telephonycore name not found! Using module version.
+10-29 15:19:03.353  1403  5015 I NamespaceManager: Package com.google.android.uprobestats name not found! Using module version.
+10-29 15:19:03.354  1403  5015 W PhenotypeConfigurationU: Update for unknown DeviceConfig package com.google.android.gms.accountsettings [CONTEXT service_id=204 ]
+10-29 15:19:03.354  1403  5015 W PhenotypeConfigurationU: bwix: No package exists for config package: com.google.android.gms.accountsettings
+10-29 15:19:03.354  1403  5015 W PhenotypeConfigurationU: 	at com.google.android.gms.platformconfigurator.PhenotypeConfigurationUpdateListener.b(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+10-29 15:19:03.354  1403  5015 W PhenotypeConfigurationU: 	at com.google.android.gms.platformconfigurator.PhenotypeConfigurationUpdateListener.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+10-29 15:19:03.354  1403  5015 W PhenotypeConfigurationU: 	at com.google.android.gms.platformconfigurator.PhenotypeConfigurationUpdateListener.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):21)
+10-29 15:19:03.354  1403  5015 W PhenotypeConfigurationU: 	at com.google.android.chimera.IntentOperation.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+10-29 15:19:03.354  1403  5015 W PhenotypeConfigurationU: 	at zhv.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+10-29 15:19:03.354  1403  5015 W PhenotypeConfigurationU: 	at hjm.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3)
+10-29 15:19:03.354  1403  5015 W PhenotypeConfigurationU: 	at hjl.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):11)
+10-29 15:19:03.354  1403  5015 W PhenotypeConfigurationU: 	at dfhf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+10-29 15:19:03.354  1403  5015 W PhenotypeConfigurationU: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+10-29 15:19:03.354  1403  5015 W PhenotypeConfigurationU: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+10-29 15:19:03.354  1403  5015 W PhenotypeConfigurationU: 	at java.lang.Thread.run(Thread.java:1012)
+10-29 15:19:03.357  5087  5087 I Choreographer: Skipped 149 frames!  The application may be doing too much work on its main thread.
+10-29 15:19:03.364   520   941 D CompatibilityChangeReporter: Compat change id reported: 214016041; UID 10192; state: ENABLED
+10-29 15:19:03.364   520   941 I ImeTracker: com.example.buddy:fb3b843c: onRequestHide at ORIGIN_SERVER_HIDE_INPUT reason HIDE_UNSPECIFIED_WINDOW
+10-29 15:19:03.364   520   941 I ImeTracker: com.example.buddy:fb3b843c: onCancelled at PHASE_SERVER_SHOULD_HIDE
+10-29 15:19:03.364  5087  5098 I OpenGLRenderer: Davey! duration=2514ms; Flags=1, FrameTimelineVsyncId=4086, IntendedVsync=79914745658, Vsync=79914745658, InputEventId=0, HandleInputStart=79916664455, AnimationStart=79916665159, PerformTrav
+10-29 15:19:03.368  1522  1522 I GoogleInputMethodService: GoogleInputMethodService.onFinishInput():3227 
+10-29 15:19:03.369  1522  1522 I GoogleInputMethodService: GoogleInputMethodService.updateDeviceLockedStatus():2087 repeatCheckTimes = 0, unlocked = true
+10-29 15:19:03.370  1522  1522 I GoogleInputMethodService: GoogleInputMethodService.onStartInput():1877 onStartInput(EditorInfo{inputType=0x0(NULL) imeOptions=0x0 privateImeOptions=null actionName=UNSPECIFIED actionLabel=null actionId=0 ini
+10-29 15:19:03.370  1522  1522 I GoogleInputMethodService: GoogleInputMethodService.shouldHideHeaderOnInitialState():4008 ShouldHideHeaderOnInitialState = false
+10-29 15:19:03.370  1522  1522 I GoogleInputMethodService: GoogleInputMethodService.updateDeviceLockedStatus():2087 repeatCheckTimes = 2, unlocked = true
+10-29 15:19:03.402  5087  5098 I OpenGLRenderer: Davey! duration=2533ms; Flags=0, FrameTimelineVsyncId=4101, IntendedVsync=79931412324, Vsync=82414745558, InputEventId=0, HandleInputStart=82429974588, AnimationStart=82429975018, PerformTrav
+10-29 15:19:03.405   520  2684 E TaskPersister: File error accessing recents directory (directory doesn't exist?).

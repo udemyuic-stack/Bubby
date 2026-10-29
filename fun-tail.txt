@@ -1,0 +1,150 @@
+10-29 15:18:01.562  1489  5016 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-29 15:18:01.562  1489  5016 V Backup  : [PhenotypeConfigIO] Phenotype broadcast received for different package
+10-29 15:18:01.562  1489  5016 I SyncIntentOperation: Handling the intent: Intent { act=com.google.android.gms.phenotype.COMMITTED flg=0x10 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras
+10-29 15:18:01.563  1489  5016 I MdiSyncModule: flag handling is skipping irrelevant intent.
+10-29 15:18:01.563  1489  5016 I MlBenchmarkInstaller: Intent: com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=340 ]
+10-29 15:18:01.563  1489  5016 I MlBenchmarkInstaller: COMMITTED Extra package name: com.google.android.gms.ads [CONTEXT service_id=340 ]
+10-29 15:18:01.564  1489  5016 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-29 15:18:01.564  1489  5016 I GmsSyncPolicyEngine: Periodic sync 1 disabled by policy, cancelled.
+10-29 15:18:01.564  1489  5016 I GmsSyncPolicyEngine: Periodic sync 2 disabled by policy, cancelled.
+10-29 15:18:01.564  1489  5016 I GmsSyncPolicyEngine: Periodic sync 3 disabled by policy, cancelled.
+10-29 15:18:01.564  1489  5016 I LocationHistory: [IntentOperation] Handling action com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=314 ]
+10-29 15:18:01.570   839   908 D StylusManager: Stylus InputDevice changed: 5 virtio_input_multi_touch_2
+10-29 15:18:01.571   839   908 D StylusManager: Stylus InputDevice changed: 4 virtio_input_multi_touch_1
+10-29 15:18:01.571   839   908 D StylusManager: Stylus InputDevice changed: 8 virtio_input_multi_touch_5
+10-29 15:18:01.596   522   896 W JobScheduler: Job didn't exist in JobStore: 8b68087 #u0a132/-43 com.google.android.googlequicksearchbox/com.google.android.apps.gsa.tasks.BackgroundTasksJobService
+10-29 15:18:01.639  1410  4756 W PhenotypeConfigurationU: Update for unknown DeviceConfig package com.google.android.gms.ocr [CONTEXT service_id=204 ]
+10-29 15:18:01.639  1410  4756 W PhenotypeConfigurationU: bwix: No package exists for config package: com.google.android.gms.ocr
+10-29 15:18:01.639  1410  4756 W PhenotypeConfigurationU: 	at com.google.android.gms.platformconfigurator.PhenotypeConfigurationUpdateListener.b(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+10-29 15:18:01.639  1410  4756 W PhenotypeConfigurationU: 	at com.google.android.gms.platformconfigurator.PhenotypeConfigurationUpdateListener.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+10-29 15:18:01.639  1410  4756 W PhenotypeConfigurationU: 	at com.google.android.gms.platformconfigurator.PhenotypeConfigurationUpdateListener.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):21)
+10-29 15:18:01.639  1410  4756 W PhenotypeConfigurationU: 	at com.google.android.chimera.IntentOperation.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+10-29 15:18:01.639  1410  4756 W PhenotypeConfigurationU: 	at zhv.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+10-29 15:18:01.639  1410  4756 W PhenotypeConfigurationU: 	at hjm.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3)
+10-29 15:18:01.639  1410  4756 W PhenotypeConfigurationU: 	at hjl.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):11)
+10-29 15:18:01.639  1410  4756 W PhenotypeConfigurationU: 	at dfhf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+10-29 15:18:01.639  1410  4756 W PhenotypeConfigurationU: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+10-29 15:18:01.639  1410  4756 W PhenotypeConfigurationU: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+10-29 15:18:01.639  1410  4756 W PhenotypeConfigurationU: 	at java.lang.Thread.run(Thread.java:1012)
+10-29 15:18:01.652  1410  3102 W BpBinder: Large outgoing transaction of 329636 bytes, interface descriptor , code 4
+10-29 15:18:01.662  1743  2318 W A       : Can't format flag AndroidGsaVelourJars__velour_birthdaydoodle_jar__name to integer.
+10-29 15:18:01.662  1743  2318 W A       : Can't format flag AndroidGsaVelourJars__velour_call_jar__name to integer.
+10-29 15:18:01.663  1743  2318 W A       : Can't format flag AndroidGsaVelourJars__velour_canvas_jar__name to integer.
+10-29 15:18:01.663  1743  2318 W A       : Can't format flag AndroidGsaVelourJars__velour_chkpkg_jar__name to integer.
+10-29 15:18:01.663  1743  2318 W A       : Can't format flag AndroidGsaVelourJars__velour_crashtest_jar__name to integer.
+10-29 15:18:01.663  1743  2318 W A       : Can't format flag AndroidGsaVelourJars__velour_dining_jar__name to integer.
+10-29 15:18:01.663  1743  2318 W A       : Can't format flag AndroidGsaVelourJars__velour_doodle_notifications_jar__name to integer.
+10-29 15:18:01.663  1743  2318 W A       : Can't format flag AndroidGsaVelourJars__velour_imageviewer_jar__name to integer.
+10-29 15:18:01.663  1743  2318 W A       : Can't format flag AndroidGsaVelourJars__velour_ipa_jar__name to integer.
+10-29 15:18:01.663  1743  2318 W A       : Can't format flag AndroidGsaVelourJars__velour_jslocation_jar__name to integer.
+10-29 15:18:01.663  1743  2318 W A       : Can't format flag AndroidGsaVelourJars__velour_localintent_jar__name to integer.
+10-29 15:18:01.663  1743  2318 W A       : Can't format flag AndroidGsaVelourJars__velour_messaging_jar__name to integer.
+10-29 15:18:01.663  1743  2318 W A       : Can't format flag AndroidGsaVelourJars__velour_nativesrp_activity_jar__name to integer.
+10-29 15:18:01.663  1743  2318 W A       : Can't format flag AndroidGsaVelourJars__velour_nativesrp_presenter_jar__name to integer.
+10-29 15:18:01.663  1743  2318 W A       : Can't format flag AndroidGsaVelourJars__velour_nowcontent_jar__name to integer.
+10-29 15:18:01.663  1743  2318 W A       : Can't format flag AndroidGsaVelourJars__velour_recents_activity_jar__name to integer.
+10-29 15:18:01.663  1743  2318 W A       : Can't format flag AndroidGsaVelourJars__velour_save_jar__name to integer.
+10-29 15:18:01.663  1743  2318 W A       : Can't format flag AndroidGsaVelourJars__velour_searchresults_activity_jar__name to integer.
+10-29 15:18:01.663  1743  2318 W A       : Can't format flag AndroidGsaVelourJars__velour_test_jar__name to integer.
+10-29 15:18:01.663  1743  2318 W A       : Can't format flag AndroidGsaVelourJars__velour_weather_jar__name to integer.
+10-29 15:18:01.663  1743  2318 W A       : Can't format flag bindle_flags__bloblobber_blob to integer.
+10-29 15:18:01.663  1743  2318 W A       : Can't format flag bindle_flags__velour_jar to integer.
+10-29 15:18:01.669   522   896 W BatteryExternalStatsWorker: error reading Bluetooth stats: 11
+10-29 15:18:01.674  1410  1416 I .gms.persistent: Background young concurrent copying GC freed 116220(5679KB) AllocSpace objects, 0(0B) LOS objects, 5% free, 34MB/36MB, paused 47us,17us total 192.526ms
+10-29 15:18:01.689  4204  4330 I PhenotypeBackgroundRecv: Successfully updated snapshot for com.google.android.libraries.mobileconfiguration#com.google.android.apps.messaging
+10-29 15:18:01.694  1743  2319 I A       : Refusing EXCLUSIVE task 24, it is already pending. Try again in 317 seconds.
+10-29 15:18:01.695  1489  5039 W gle.android.gms: Long monitor contention with owner [com.google.android.gms.chimera.container.intentoperation.GmsIntentOperationChimeraService-Executor] processing com.google.android.gms.adid.service.ModifyA
+10-29 15:18:01.695  1489  5043 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-29 15:18:01.695  1489  5043 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-29 15:18:01.696  1489  5043 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-29 15:18:01.696  1489  5043 V Backup  : [PhenotypeConfigIO] Phenotype broadcast received for different package
+10-29 15:18:01.696  1489  5043 I SyncIntentOperation: Handling the intent: Intent { act=com.google.android.gms.phenotype.COMMITTED flg=0x10 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras
+10-29 15:18:01.696  1489  5111 I MdiSyncModule: flag handling is skipping irrelevant intent.
+10-29 15:18:01.696  1489  5111 I MlBenchmarkInstaller: Intent: com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=340 ]
+10-29 15:18:01.696  1489  5111 I MlBenchmarkInstaller: COMMITTED Extra package name: com.google.android.gms.gcm [CONTEXT service_id=340 ]
+10-29 15:18:01.697  1743  2198 I FedAssExpListener: Fed-ass not supported for signed out users.
+10-29 15:18:01.697  1743  2198 I FedAssExpListener: Successfully processed experiments changed.
+10-29 15:18:01.698  1743  2198 I A       : NGA enabled in interactor.
+10-29 15:18:01.700  1489  5111 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-29 15:18:01.700  1489  5110 I LocationHistory: [IntentOperation] Handling action com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=314 ]
+10-29 15:18:01.700  1489  5111 I GmsSyncPolicyEngine: Periodic sync 1 disabled by policy, cancelled.
+10-29 15:18:01.701  1489  5111 I GmsSyncPolicyEngine: Periodic sync 2 disabled by policy, cancelled.
+10-29 15:18:01.701  1743  2319 I OpaEligibilityChecker: send OpaEligibilityChange broadcast to CommonBroadcastReceiver
+10-29 15:18:01.703  1489  5111 I GmsSyncPolicyEngine: Periodic sync 3 disabled by policy, cancelled.
+10-29 15:18:01.719  4204  4329 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of com.google.android.apps.messaging.shared.experiments.receiver.BuglePhenotypeBroadcastReceiver@100e31d
+10-29 15:18:01.724  4204  4333 I PhenotypeBackgroundRecv: Successfully updated snapshot for com.google.android.libraries.internal.growth.growthkit#com.google.android.apps.messaging
+10-29 15:18:01.726  1743  2319 W CorpusConfigHelper: Invalid input from icing corpus JSON flag.
+10-29 15:18:01.726  1743  2319 W CorpusConfigHelper: android.util.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 123 column 2
+10-29 15:18:01.726  1743  2319 W CorpusConfigHelper: 	at android.util.JsonReader.syntaxError(JsonReader.java:1162)
+10-29 15:18:01.726  1743  2319 W CorpusConfigHelper: 	at android.util.JsonReader.checkLenient(JsonReader.java:840)
+10-29 15:18:01.726  1743  2319 W CorpusConfigHelper: 	at android.util.JsonReader.nextInArray(JsonReader.java:615)
+10-29 15:18:01.726  1743  2319 W CorpusConfigHelper: 	at android.util.JsonReader.peek(JsonReader.java:345)
+10-29 15:18:01.726  1743  2319 W CorpusConfigHelper: 	at android.util.JsonReader.hasNext(JsonReader.java:321)
+10-29 15:18:01.726  1743  2319 W CorpusConfigHelper: 	at com.google.android.apps.gsa.searchbox.c.b.b.k.c(PG:7)
+10-29 15:18:01.726  1743  2319 W CorpusConfigHelper: 	at com.google.android.apps.gsa.searchbox.c.b.b.j.a(Unknown Source:2)
+10-29 15:18:01.726  1743  2319 W CorpusConfigHelper: 	at com.google.android.apps.gsa.search.core.i.r.run(PG:5)
+10-29 15:18:01.726  1743  2319 W CorpusConfigHelper: 	at com.google.android.libraries.gsa.k.a.h.run(PG:2)
+10-29 15:18:01.726  1743  2319 W CorpusConfigHelper: 	at com.google.android.apps.gsa.shared.util.c.a.cf.b(PG:1)
+10-29 15:18:01.726  1743  2319 W CorpusConfigHelper: 	at com.google.android.apps.gsa.shared.util.c.a.ci.run(PG:1)
+10-29 15:18:01.726  1743  2319 W CorpusConfigHelper: 	at com.google.android.libraries.i.ae.run(PG:1)
+10-29 15:18:01.726  1743  2319 W CorpusConfigHelper: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+10-29 15:18:01.726  1743  2319 W CorpusConfigHelper: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+10-29 15:18:01.726  1743  2319 W CorpusConfigHelper: 	at com.google.android.libraries.i.k.run(PG:2)
+10-29 15:18:01.726  1743  2319 W CorpusConfigHelper: 	at com.google.android.libraries.i.p.run(PG:4)
+10-29 15:18:01.726  1743  2319 W CorpusConfigHelper: 	at java.lang.Thread.run(Thread.java:1012)
+10-29 15:18:01.739  4204  4329 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of com.google.android.apps.messaging.shared.experiments.receiver.BuglePhenotypeBroadcastReceiver@8970760
+10-29 15:18:01.747  1410  4773 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.phenotype.service.sync.PhenotypeConfigurator finished executing. cause:5 result: 1 elapsed_millis: 17449 uptime_millis: 17449 exec_s
+10-29 15:18:01.757  1743  2930 W SearchServiceCore: Abort, client detached.
+10-29 15:18:01.768  1489  3654 I Icing   : IndexChimeraService.getServiceInterface callingPackage=com.google.android.googlequicksearchbox componentName=agsa_icing_connection serviceId=33
+10-29 15:18:01.769  1489  3098 I Icing   : IndexChimeraService.getServiceInterface callingPackage=com.google.android.googlequicksearchbox componentName=agsa_icing_connection serviceId=32
+10-29 15:18:01.789  4204  4204 I PhenotypeBackgroundRecv: Skipping com.google.lighter.android#com.google.android.apps.messaging which doesn't use ProcessStable flags.
+10-29 15:18:01.799  1489  5047 W Icing   : No valid account for uploading user actions
+10-29 15:18:01.799   522  2143 D OomAdjuster: Not killing cached processes
+10-29 15:18:01.812  4204  4330 W TimedProcessReaper: Scheduling killing of process to refresh configuration
+10-29 15:18:01.841  1489  5047 I Icing   : Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0
+10-29 15:18:01.849  4204  4303 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of com.google.android.apps.messaging.shared.experiments.receiver.BuglePhenotypeBroadcastReceiver@71a58d5
+10-29 15:18:01.860  4204  4289 I PhenotypeBackgroundRecv: Successfully updated snapshot for com.google.android.libraries.notifications.platform#com.google.android.apps.messaging
+10-29 15:18:01.864  4204  4271 W Bugle   : TextClassifierLibManagerImpl: Reclaiming memory at level: 40
+10-29 15:18:01.864  4204  4303 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of com.google.android.apps.messaging.shared.experiments.receiver.BuglePhenotypeBroadcastReceiver@cde3753
+10-29 15:18:01.864  4204  4271 W Bugle   : TextClassifierLibManagerImpl: Reclaiming memory at level: 40
+10-29 15:18:01.864  4204  4271 W Bugle   : TextClassifierLibManagerImpl: Reclaiming memory at level: 40
+10-29 15:18:01.866  4204  4204 I PhenotypeBackgroundRecv: Skipping com.google.android.apps.messaging.auto#com.google.android.apps.messaging which doesn't use ProcessStable flags.
+10-29 15:18:01.871  5121  5121 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+10-29 15:18:01.872  5121  5121 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+10-29 15:18:01.881   399   412 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=5121
+10-29 15:18:01.881   399   412 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (806 us)
+10-29 15:18:01.894  1489  5047 W Icing   : No valid account for uploading user actions
+10-29 15:18:01.898   135   135 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+10-29 15:18:01.898  5121  5124 I Gralloc4: mapper 4.x is not supported
+10-29 15:18:02.095     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+10-29 15:18:01.935  1489  3174 I GCM-GMS : Got GMS direct boot token.
+10-29 15:18:01.943  1743  2813 W TimedProcessReaper: Scheduling killing of process to refresh configuration
+10-29 15:18:01.944  4204  4330 W TimedProcessReaper: Scheduling killing of process to refresh configuration
+10-29 15:18:01.954  1489  5047 I Icing   : Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0
+10-29 15:18:01.976  1743  1743 I BgTaskExecutorImpl: Starting EXCLUSIVE background task FETCH_CONFIGS_FROM_PHENOTYPE.
+10-29 15:18:02.034  4204  4289 W TimedProcessReaper: Scheduling killing of process to refresh configuration
+10-29 15:18:02.040  1743  2846 W TimedProcessReaper: Scheduling killing of process to refresh configuration
+10-29 15:18:02.046  4204  4329 I BuglePhenotype: onReceive for bugle package [CONTEXT package_name="com.google.android.apps.messaging#com.google.android.apps.messaging" ]
+10-29 15:18:02.048  4204  4329 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of com.google.android.apps.messaging.shared.experiments.receiver.BuglePhenotypeBroadcastReceiver@59233fd
+10-29 15:18:02.063  4899  4919 D EGL_emulation: app_time_stats: avg=33.89ms min=27.19ms max=48.72ms count=30
+10-29 15:18:02.076  1410  1416 I .gms.persistent: Background concurrent copying GC freed 568021(21MB) AllocSpace objects, 6(224KB) LOS objects, 49% free, 17MB/35MB, paused 17.468ms,20us total 305.163ms
+10-29 15:18:02.078  4204  4204 I PhenotypeBackgroundRecv: Skipping com.google.android.apps.messaging#com.google.android.apps.messaging which doesn't use ProcessStable flags.
+10-29 15:18:02.080  1410  4756 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+10-29 15:18:02.087   522  2753 W JobScheduler: Job didn't exist in JobStore: 70a887f #u0a132/-43 com.google.android.googlequicksearchbox/com.google.android.apps.gsa.tasks.BackgroundTasksJobService
+10-29 15:18:02.089  4542  4542 I PhenotypeBackgroundRecv: Skipping assistant_auto_tng_libraries_device#com.google.android.googlequicksearchbox which doesn't use ProcessStable flags.
+10-29 15:18:02.097  1410  4756 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+10-29 15:18:02.105  1410  3441 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.gcm.gmsproc.GcmInGmsTaskService finished executing. cause:5 result: 1 elapsed_millis: 1194 uptime_millis: 1194 exec_start_elapsed_se
+10-29 15:18:02.114  4204  4303 I BuglePhenotype: onReceive for cslib package [CONTEXT package_name="com.google.android.ims.library" ]
+10-29 15:18:02.114  4204  4303 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of com.google.android.apps.messaging.shared.experiments.receiver.BuglePhenotypeBroadcastReceiver@ad312f9
+10-29 15:18:02.116  4204  4204 I PhenotypeBackgroundRecv: Skipping com.google.android.ims.library which doesn't use ProcessStable flags.
+10-29 15:18:02.122  1743  1743 I A       : Refusing EXCLUSIVE task 21, it is already pending. Try again in 359 seconds.
+10-29 15:18:02.130  1410  4756 I NamespaceManager: Package com.android.media name not found! Using module version.
+10-29 15:18:02.133  1410  4756 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+10-29 15:18:02.134  1410  4756 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+10-29 15:18:02.134  1410  4756 I NamespaceManager: Package com.android.media name not found! Using module version.
+10-29 15:18:02.135  1410  4756 I NamespaceManager: Package 1 name not found! Using module version.
+10-29 15:18:02.137  1410  4756 I NamespaceManager: Package rkpd name not found! Using module version.
+10-29 15:18:02.138  1410  4756 I NamespaceManager: Package android.companion name not found! Using module version.
+10-29 15:18:02.139  4204  4303 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of com.google.android.apps.messaging.shared.experiments.receiver.BuglePhenotypeBroadcastReceiver@4a8e5b5
+10-29 15:18:02.143  4542  4568 I PhenotypeBackgroundRecv: Successfully updated snapshot for com.google.android.libraries.consentverifier#com.google.android.googlequicksearchbox
+10-29 15:18:02.144  1410  3441 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.auth.account.be.legacy.AuthCronService started execution. cause:5 exec_start_elapsed_seconds: 97 [CONTEXT service_id=218 ]

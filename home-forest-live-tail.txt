@@ -1,0 +1,150 @@
+10-29 15:19:37.027  2773  2773 W binder:2773_6: type=1400 audit(0.0:42): avc:  denied  { read } for  name="u:object_r:system_adbd_prop:s0" dev="tmpfs" ino=292 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:system_adbd_prop:s0 tcl
+10-29 15:19:37.033  2773  4917 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+10-29 15:19:37.031  2773  2773 W binder:2773_6: type=1400 audit(0.0:43): avc:  denied  { read } for  name="u:object_r:adbd_prop:s0" dev="tmpfs" ino=60 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:adbd_prop:s0 tclass=file permis
+10-29 15:19:37.054  2773  4917 W libc    : Access denied finding property "service.adb.tls.port"
+10-29 15:19:37.067  5021  5041 I gle.android.gms: Compiler allocated 4740KB to compile boolean zec.j(int, zdr, java.util.List, zeb)
+10-29 15:19:37.081  5021  5042 I gle.android.gms: Background young concurrent copying GC freed 167718(6692KB) AllocSpace objects, 59(2364KB) LOS objects, 44% free, 10MB/19MB, paused 6.545ms,18us total 200.337ms
+10-29 15:19:37.146  4925  5083 I GCoreUlr: WorldUpdater received intent Intent { act=com.google.android.location.reporting.ACTION_UPDATE_WORLD cmp=com.google.android.gms/com.google.android.location.reporting.service.DispatchingService (has 
+10-29 15:19:37.164  4925  5083 I GCoreUlr: WorldUpdater:init: Ensuring that reporting is stopped because of reasons: (no Google accounts)
+10-29 15:19:37.165  4925  5083 I GCoreUlr: Unbound from all signal providers.
+10-29 15:19:37.179  4925  4925 I GCoreUlr: Unbound from all signal providers.
+10-29 15:19:37.179  4925  4925 I GCoreUlr: Stopping handler for UlrDispSvcFast
+10-29 15:19:37.440  2773  4917 W SystemServiceRegistry: No service published for: persistent_data_block
+10-29 15:19:37.500   336  5541 I resolv  : GetAddrInfoHandler::run: {100 786532 100 983140 10131 0}
+10-29 15:19:37.502   520   534 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+10-29 15:19:37.502   520   534 D PackageManager: Clear ephemeral installer activity
+10-29 15:19:37.504   336  5544 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+10-29 15:19:37.504   336  5544 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x70d0cbe3aa50
+10-29 15:19:37.504   336  5544 I resolv  : doQuery: rcode=0, ancount=8, return value=260
+10-29 15:19:37.508   336  5545 I resolv  : res_nmkquery: (QUERY, IN, A)
+10-29 15:19:37.508   336  5545 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x70cfebe3b350
+10-29 15:19:37.508   336  5545 I resolv  : doQuery: rcode=0, ancount=8, return value=164
+10-29 15:19:37.518   520   814 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+10-29 15:19:37.518   520   814 D PackageManager: Clear ephemeral installer activity
+10-29 15:19:37.529  5021  5152 D TrafficStats: tagSocket(131) with statsTag=0x30003000, statsUid=-1
+10-29 15:19:37.533  1670  2581 W A       : [Download] response code: 400
+10-29 15:19:37.535   336  5547 I resolv  : GetAddrInfoHandler::run: {100 786532 100 983140 10131 0}
+10-29 15:19:37.539   336  5548 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+10-29 15:19:37.539   336  5548 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x70d0cbe3bf50
+10-29 15:19:37.539   336  5548 I resolv  : doQuery: rcode=0, ancount=8, return value=264
+10-29 15:19:37.541  5021  5152 W ProviderHelper: Unknown dynamite feature providerinstaller.dynamite
+10-29 15:19:37.541  5021  5152 I DynamiteModule: Considering local module com.google.android.gms.providerinstaller.dynamite:1 and remote module com.google.android.gms.providerinstaller.dynamite:0
+10-29 15:19:37.541  5021  5152 I DynamiteModule: Selected local version of com.google.android.gms.providerinstaller.dynamite
+10-29 15:19:37.542  5021  5152 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+10-29 15:19:37.543  5021  5152 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+10-29 15:19:37.543  5021  5152 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+10-29 15:19:37.551   336  5549 I resolv  : res_nmkquery: (QUERY, IN, A)
+10-29 15:19:37.551   336  5549 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x70cfebe3d9d0
+10-29 15:19:37.551   336  5549 I resolv  : doQuery: rcode=0, ancount=8, return value=168
+10-29 15:19:37.552  5021  5415 D TrafficStats: tagSocket(133) with statsTag=0x30000408, statsUid=-1
+10-29 15:19:37.558  5021  5415 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+10-29 15:19:37.558  5021  5415 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+10-29 15:19:37.558  5021  5415 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+10-29 15:19:37.568  5021  5152 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+10-29 15:19:37.568  5021  5152 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+10-29 15:19:37.568  5021  5152 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+10-29 15:19:37.577  4925  5290 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.icing.proxy.IcingInternalCorporaUpdateService started execution. cause:9 exec_start_elapsed_seconds: 105 [CONTEXT service_id=218 ]
+10-29 15:19:37.603  4925  5290 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.icing.proxy.IcingInternalCorporaUpdateService finished executing. cause:9 result: 1 elapsed_millis: 327 uptime_millis: 327 exec_star
+10-29 15:19:37.624  5021  5415 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+10-29 15:19:37.624  5021  5415 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+10-29 15:19:37.624  5021  5415 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+10-29 15:19:37.654   520   814 W ProcessStats: Tracking association SourceState{1fab11e com.google.android.gms/10131 BFgs #7425} whose proc state 4 is better than process ProcessState{56dced2 com.google.process.gapps/10131 pkg=com.google.an
+10-29 15:19:37.660  4925  5533 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.gass.chimera.SchedulePeriodicTasksService started execution. cause:5 exec_start_elapsed_seconds: 106 [CONTEXT service_id=218 ]
+10-29 15:19:37.669  4925  5290 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.gass.chimera.SchedulePeriodicTasksService finished executing. cause:5 result: 1 elapsed_millis: 20 uptime_millis: 20 exec_start_elap
+10-29 15:19:37.671  5089  5123 D EGL_emulation: app_time_stats: avg=26.68ms min=14.63ms max=177.99ms count=36
+10-29 15:19:37.711  4925  5533 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.auth.account.be.legacy.AuthCronService started execution. cause:5 exec_start_elapsed_seconds: 106 [CONTEXT service_id=218 ]
+10-29 15:19:37.755  4925  5083 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.auth.account.be.legacy.AuthCronService finished executing. cause:5 result: 3 elapsed_millis: 42 uptime_millis: 42 exec_start_elapsed
+10-29 15:19:37.795  5021  5415 I Checkin : [CheckinRequestProcessor] updateCheckinIdTokenFileFromResponse, Reading existing AID
+10-29 15:19:37.800  5021  5415 I Checkin : [CheckinRequestProcessor] Default Task : Checkin Succeeded: https://android.googleapis.com/checkin (fragment #1).
+10-29 15:19:37.810   520   814 D CompatibilityChangeReporter: Compat change id reported: 229362273; UID 10131; state: DISABLED
+10-29 15:19:37.810   520   814 D CompatibilityChangeReporter: Compat change id reported: 229362273; UID 10131; state: ENABLED
+10-29 15:19:37.822  5021  5417 I AccountSeedingPrefetchI: AccountSeedingPrefetchInit intent operation started. [CONTEXT service_id=42 ]
+10-29 15:19:37.846  5021  5153 I Icing   : Indexing com.google.android.gms-apps from com.google.android.gms
+10-29 15:19:37.849  5021  5415 I Checkin : [CheckinOperation] Checkin Operation finished with result: SUCCESS finish time: 106364.
+10-29 15:19:37.855   835   916 D EGL_emulation: app_time_stats: avg=8589.42ms min=279.70ms max=16899.15ms count=2
+10-29 15:19:37.858  5021  5153 I Icing   : Indexing done com.google.android.gms-apps
+10-29 15:19:37.880  4925  5533 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.pay.gcmtask.PayGcmTaskService started execution. cause:5 exec_start_elapsed_seconds: 106 [CONTEXT service_id=218 ]
+10-29 15:19:37.900  5021  5152 I Pay     : Device does not support HCE. [CONTEXT service_id=198 ]
+10-29 15:19:37.928  4925  5083 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.pay.gcmtask.PayGcmTaskService finished executing. cause:5 result: 2 elapsed_millis: 110 uptime_millis: 110 exec_start_elapsed_second
+10-29 15:19:38.052  4925  5533 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.pay.gcmtask.PayGcmTaskService started execution. cause:5 exec_start_elapsed_seconds: 106 [CONTEXT service_id=218 ]
+10-29 15:19:38.063  4925  5083 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.pay.gcmtask.PayGcmTaskService finished executing. cause:5 result: 1 elapsed_millis: 73 uptime_millis: 73 exec_start_elapsed_seconds:
+10-29 15:19:38.173  4925  5533 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.pay.gcmtask.PayGcmTaskService started execution. cause:5 exec_start_elapsed_seconds: 106 [CONTEXT service_id=218 ]
+10-29 15:19:38.181  4925  4925 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.contextmanager.service.ContextManagerService.START pkg=com.google.android.gms }
+10-29 15:19:38.202  4925  5083 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.pay.gcmtask.PayGcmTaskService finished executing. cause:5 result: 1 elapsed_millis: 66 uptime_millis: 66 exec_start_elapsed_seconds:
+10-29 15:19:38.206   520   529 I system_server: Background concurrent copying GC freed 946088(24MB) AllocSpace objects, 12(304KB) LOS objects, 48% free, 25MB/49MB, paused 165us,95us total 199.931ms
+10-29 15:19:38.274  4925  5533 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.pay.gcmtask.PayGcmTaskService started execution. cause:5 exec_start_elapsed_seconds: 106 [CONTEXT service_id=218 ]
+10-29 15:19:38.281  4925  5083 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.pay.gcmtask.PayGcmTaskService finished executing. cause:5 result: 1 elapsed_millis: 17 uptime_millis: 17 exec_start_elapsed_seconds:
+10-29 15:19:38.297  4925  4925 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.clearcut.bootcount.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentBoundBrokerService }
+10-29 15:19:38.323  4925  5533 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.pay.gcmtask.PayGcmTaskService started execution. cause:5 exec_start_elapsed_seconds: 106 [CONTEXT service_id=218 ]
+10-29 15:19:38.328  4925  5224 I TapAndPay: Disabling TapAndPay HCE service [CONTEXT service_id=79 ]
+10-29 15:19:38.329  5021  5152 W Pay     : Active account was null, notification task will be cancelled. [CONTEXT service_id=198 ]
+10-29 15:19:38.329  5021  5152 W Pay     : No account found on the task or the device. Notification task will not be rescheduled. [CONTEXT service_id=198 ]
+10-29 15:19:38.340  4925  5083 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.pay.gcmtask.PayGcmTaskService finished executing. cause:5 result: 2 elapsed_millis: 24 uptime_millis: 24 exec_start_elapsed_seconds:
+10-29 15:19:38.369  4925  5224 I TapAndPay: Disabling TapAndPay HCE service [CONTEXT service_id=79 ]
+10-29 15:19:38.371  5021  5153 W Pay     : Active account was null, notification task will be cancelled. [CONTEXT service_id=198 ]
+10-29 15:19:38.371  5021  5153 E Pay     : [Migration operation] Active tapandpay account not found! [CONTEXT service_id=198 ]
+10-29 15:19:38.374  4925  5533 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.pay.gcmtask.PayGcmTaskService started execution. cause:5 exec_start_elapsed_seconds: 106 [CONTEXT service_id=218 ]
+10-29 15:19:38.379  5021  5153 I Pay     : Migration flag not enabled. [CONTEXT service_id=198 ]
+10-29 15:19:38.384  5021  5153 I Pay     : Migration already completed. [CONTEXT service_id=198 ]
+10-29 15:19:38.385  5021  5153 I Pay     : Migration already completed. [CONTEXT service_id=198 ]
+10-29 15:19:38.386  5021  5153 I Pay     : Migration flag not enabled. [CONTEXT service_id=198 ]
+10-29 15:19:38.386  5021  5153 I Pay     : Migration flag not enabled. [CONTEXT service_id=198 ]
+10-29 15:19:38.386  5021  5153 I Pay     : Migration flag not enabled. [CONTEXT service_id=198 ]
+10-29 15:19:38.386  5021  5153 I Pay     : Migration flag not enabled. [CONTEXT service_id=198 ]
+10-29 15:19:38.387  5021  5153 I Pay     : [SeTosMigration] walletJpEligibility is not enabled [CONTEXT service_id=198 ]
+10-29 15:19:38.388  5021  5153 I Pay     : Wallet install state NOT_INSTALLED [CONTEXT service_id=198 ]
+10-29 15:19:38.388  5021  5153 I Pay     : Migration flag not enabled. [CONTEXT service_id=198 ]
+10-29 15:19:38.396  4925  5083 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.pay.gcmtask.PayGcmTaskService finished executing. cause:5 result: 1 elapsed_millis: 38 uptime_millis: 38 exec_start_elapsed_seconds:
+10-29 15:19:38.438  4925  5533 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.pay.gcmtask.PayGcmTaskService started execution. cause:5 exec_start_elapsed_seconds: 106 [CONTEXT service_id=218 ]
+10-29 15:19:38.439  4925  5224 I TapAndPay: Disabling TapAndPay HCE service [CONTEXT service_id=79 ]
+10-29 15:19:38.456  4925  5083 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.pay.gcmtask.PayGcmTaskService finished executing. cause:5 result: 1 elapsed_millis: 24 uptime_millis: 24 exec_start_elapsed_seconds:
+10-29 15:19:38.464  5021  5021 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.feedback.internal.IFeedbackService dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsBoundBrokerService }
+10-29 15:19:38.490  4925  5533 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.udc.service.UdcContextInitService started execution. cause:5 exec_start_elapsed_seconds: 106 [CONTEXT service_id=218 ]
+10-29 15:19:38.513   844   862 I PermissionControllerServiceImpl: Updating user sensitive for uid 10154
+10-29 15:19:38.521  1040  1040 D CarrierSvcBindHelper: onPackageModified: com.google.android.contacts
+10-29 15:19:38.527  1016  1016 V MediaPlayerList: mPackageChangedBroadcastReceiver: action: android.intent.action.PACKAGE_CHANGED
+10-29 15:19:38.528   520   622 I InputReader: Reconfiguring input devices, changes=KEYBOARD_LAYOUTS
+10-29 15:19:38.528  1016  1016 V MediaPlayerList: mPackageChangedBroadcastReceiver: action: android.intent.action.PACKAGE_CHANGED
+10-29 15:19:38.530  1040  1040 D CarrierSvcBindHelper: No carrier app for: 0
+10-29 15:19:38.553   835   915 D StylusManager: Stylus InputDevice changed: 14 virtio_input_multi_touch_11
+10-29 15:19:38.558   835   915 D StylusManager: Stylus InputDevice changed: 9 virtio_input_multi_touch_6
+10-29 15:19:38.577   835   835 D ControlsListingControllerImpl: ServiceConfig reloaded, count: 0
+10-29 15:19:38.580  1040  1357 D ImsResolver: maybeAddedImsService, packageName: com.google.android.contacts
+10-29 15:19:38.582   835   915 D StylusManager: Stylus InputDevice changed: 7 virtio_input_multi_touch_4
+10-29 15:19:38.590   835   915 D StylusManager: Stylus InputDevice changed: 4 virtio_input_multi_touch_1
+10-29 15:19:38.591   835   915 D StylusManager: Stylus InputDevice changed: 13 virtio_input_multi_touch_10
+10-29 15:19:38.593   835   915 D StylusManager: Stylus InputDevice changed: 5 virtio_input_multi_touch_2
+10-29 15:19:38.593   835   915 D StylusManager: Stylus InputDevice changed: 11 virtio_input_multi_touch_8
+10-29 15:19:38.594   835   915 D StylusManager: Stylus InputDevice changed: 10 virtio_input_multi_touch_7
+10-29 15:19:38.595   835   915 D StylusManager: Stylus InputDevice changed: 12 virtio_input_multi_touch_9
+10-29 15:19:38.602   835   915 D StylusManager: Stylus InputDevice changed: 6 virtio_input_multi_touch_3
+10-29 15:19:38.603   835   915 D StylusManager: Stylus InputDevice changed: 8 virtio_input_multi_touch_5
+10-29 15:19:38.626  4925  5083 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.udc.service.UdcContextInitService finished executing. cause:5 result: 1 elapsed_millis: 147 uptime_millis: 147 exec_start_elapsed_se
+10-29 15:19:38.654   520   547 E system_server: No package ID 7f found for resource ID 0x7f080107.
+10-29 15:19:38.658   520   547 E system_server: No package ID 7f found for resource ID 0x7f150560.
+10-29 15:19:38.682  5089  5123 D EGL_emulation: app_time_stats: avg=19.60ms min=13.66ms max=26.47ms count=48
+10-29 15:19:38.694  1592  1592 I AiAiEcho: AppFetcherImpl onPackageChanged com.google.android.contacts.
+10-29 15:19:38.695  1592  3459 I AiAiEcho: AppIndexer Package:[com.google.android.contacts] UserProfile:[0] Enabled:[true].
+10-29 15:19:38.695  1592  3459 I AiAiEcho: AppFetcherImplV2 updateApps package:[com.google.android.contacts], userId:[0], reason:[package is updated.].
+10-29 15:19:38.957  4925  4925 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.libs.gmscorelogger.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentDirectBootAwareApiService }
+10-29 15:19:39.046  4925  5432 I Fitness : OnPackageChangedOperation got intent: Intent { act=android.intent.action.PACKAGE_CHANGED dat=package: flg=0x45000010 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.PersistentIntentO
+10-29 15:19:39.054  4925  4995 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+10-29 15:19:39.065  4925  5430 I Fitness : FitCleanupIntentOperation received Intent android.intent.action.PACKAGE_CHANGED [CONTEXT service_id=17 ]
+10-29 15:19:39.070  4925  4995 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+10-29 15:19:39.460  4925  4925 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.nearby.exposurenotification.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiServiceNoInstantApps }
+10-29 15:19:39.513   835   835 D StatusBarIconController: ignoring old pipeline callbacks, because the new mobile icons are enabled
+10-29 15:19:39.554  5089  5089 I com.example.buddy: Perf: native scene 19 fps
+10-29 15:19:39.677   520  1406 D OomAdjuster: Not killing cached processes
+10-29 15:19:39.679  4925  4925 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.icing.LIGHTWEIGHT_INDEX_SERVICE dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+10-29 15:19:39.693  5089  5123 D EGL_emulation: app_time_stats: avg=19.51ms min=15.03ms max=24.76ms count=50
+10-29 15:19:39.706  5021  5021 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.chimera.container.moduleinstall.ModuleInstallService.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsApiService }
+10-29 15:19:39.747  5021  5021 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.mobstore.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsBoundBrokerService }
+10-29 15:19:40.091  5021  5153 I Icing   : Indexing com.google.android.gms-apps from com.google.android.gms
+10-29 15:19:40.108  5021  5153 I Icing   : Indexing done com.google.android.gms-apps
+10-29 15:19:40.113  5021  5153 I Icing   : Indexing com.google.android.gms-internal.3p:MobileApplication from com.google.android.gms
+10-29 15:19:40.124  5021  5153 I Icing   : Indexing done com.google.android.gms-internal.3p:MobileApplication
+10-29 15:19:40.265  5561  5561 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+10-29 15:19:40.265  5561  5561 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+10-29 15:19:40.274   135   135 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+10-29 15:19:40.275  5561  5562 I Gralloc4: mapper 4.x is not supported
+10-29 15:19:40.475     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.

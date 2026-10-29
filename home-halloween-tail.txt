@@ -1,0 +1,150 @@
+10-29 15:19:59.626  1657  2333 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+10-29 15:19:59.626  1657  2333 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+10-29 15:19:59.626  1657  2333 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+10-29 15:19:59.626  1657  2333 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+10-29 15:19:59.626  1657  2333 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+10-29 15:19:59.626  1657  2333 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+10-29 15:19:59.626  1657  2333 I A       : onDisabled. Registered: false
+10-29 15:19:59.639  1657  2344 I A       : State changed: IDLE => IDLE by NGA_STATE_CHANGED and N/A with Optional.empty
+10-29 15:19:59.640  1657  2344 I A       : Recognizer choice: (recognizer_type: 1, recognizer_mode: 1, choice_reason: 4)
+10-29 15:19:59.642  1657  2344 I A       : onActiveStateChangeEvent: IDLE => IDLE
+10-29 15:19:59.665  1407  3720 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+10-29 15:19:59.672  1407  3720 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+10-29 15:19:59.673  1407  3720 I NamespaceManager: Package com.android.media name not found! Using module version.
+10-29 15:19:59.673  1407  3720 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+10-29 15:19:59.673  1407  3720 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+10-29 15:19:59.673  1407  3720 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+10-29 15:19:59.674  1407  3720 I NamespaceManager: Package com.android.media name not found! Using module version.
+10-29 15:19:59.674  1407  3720 I NamespaceManager: Package 1 name not found! Using module version.
+10-29 15:19:59.684  1657  2333 I A       : Initialize
+10-29 15:19:59.688  1657  2333 I A       : on opa visibility changed false
+10-29 15:19:59.691  1657  2333 I A       : on opa visibility changed false
+10-29 15:19:59.691  1657  2333 I A       : stopListening(NGA_PAUSED_UNKNOWN_REASON, NGA_CREATE), idleOverride=NOT_LISTENING
+10-29 15:19:59.733  1657  2344 W A       : Missing generator mapping for generator GENERATOR_CONTEXTUAL_SUGGESTIONS
+10-29 15:19:59.734  1657  2344 W A       : Missing generator mapping for generator GENERATOR_FRE_SUGGESTIONS_ON_TIMEOUT
+10-29 15:19:59.735  1460  1466 I gle.android.gms: Background concurrent copying GC freed 260999(12MB) AllocSpace objects, 76(3744KB) LOS objects, 49% free, 13MB/26MB, paused 36us,23us total 1.281s
+10-29 15:19:59.741   521   619 I RescueParty: Starting to observe: [android], updated namespace: display_manager
+10-29 15:19:59.745   521   566 W BrightnessThrottler: DeviceConfig ThermalBrightnessThrottlingData is null
+10-29 15:19:59.748   521   548 I PackageWatchdog: Syncing state, reason: observing new packages
+10-29 15:19:59.748   521   548 D PackageWatchdog: rescue-party-observer added the following packages to monitor [android]
+10-29 15:19:59.748   521   548 I PackageWatchdog: Syncing state, reason: updated observers
+10-29 15:19:59.748   521   548 I PackageWatchdog: Not pruning observers, elapsed time: 0ms
+10-29 15:19:59.748   521   548 I PackageWatchdog: Saving observer state to file
+10-29 15:19:59.750   521   521 I PackageWatchdog: Syncing health check requests for packages: {}
+10-29 15:19:59.751   521   521 I ExplicitHealthCheckController: Service not ready to get health check supported packages. Binding...
+10-29 15:19:59.760   521   521 I ExplicitHealthCheckController: Explicit health check service is bound
+10-29 15:19:59.761   521   521 I ExplicitHealthCheckController: Explicit health check service is connected ComponentInfo{com.google.android.ext.services/android.ext.services.watchdog.ExplicitHealthCheckServiceImpl}
+10-29 15:19:59.761   521   521 I ExplicitHealthCheckController: Service initialized, syncing requests
+10-29 15:19:59.761   521   521 I PackageWatchdog: Syncing health check requests for packages: {}
+10-29 15:19:59.762   521   521 D ExplicitHealthCheckController: Getting health check supported packages
+10-29 15:19:59.762   521  1774 I ExplicitHealthCheckController: Explicit health check supported packages [PackageConfig{com.google.android.networkstack, 86400000}]
+10-29 15:19:59.762   521  1774 D PackageWatchdog: Received supported packages [PackageConfig{com.google.android.networkstack, 86400000}]
+10-29 15:19:59.762   521  1774 D ExplicitHealthCheckController: Getting health check requested packages
+10-29 15:19:59.762   521  2111 I ExplicitHealthCheckController: Explicit health check requested packages []
+10-29 15:19:59.763   521  2111 I ExplicitHealthCheckController: No more health check requests, unbinding...
+10-29 15:19:59.765   521  2111 I ExplicitHealthCheckController: Explicit health check service is unbound
+10-29 15:19:59.768  1407  3720 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+10-29 15:19:59.771  1407  3720 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+10-29 15:19:59.771  1407  3720 I NamespaceManager: Package com.android.media name not found! Using module version.
+10-29 15:19:59.771  1407  3720 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+10-29 15:19:59.774  1407  3720 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+10-29 15:19:59.774  1407  3720 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+10-29 15:19:59.776  1407  3720 I NamespaceManager: Package com.android.media name not found! Using module version.
+10-29 15:19:59.776  1407  3720 I NamespaceManager: Package 1 name not found! Using module version.
+10-29 15:19:59.779  1657  2344 W A       : Missing generator mapping for generator GENERATOR_FRE_SUGGESTIONS_ON_INVOCATION
+10-29 15:19:59.783  1657  2333 I NgaEntryPointEventSendr: setupConnection
+10-29 15:19:59.794  1460  1460 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.asterism.service.START pkg=com.google.android.gms }
+10-29 15:19:59.830  1732  1732 I A       : Creating pss binder().
+10-29 15:19:59.840  1657  2333 I NgaEntryPointEventSendr: State changed: Disconnected => Connecting
+10-29 15:19:59.844  1657  2333 I NgaEntryPointEventSendr: onServiceConnected
+10-29 15:19:59.858  1407  1415 I .gms.persistent: Background concurrent copying GC freed 496219(18MB) AllocSpace objects, 8(432KB) LOS objects, 47% free, 26MB/50MB, paused 26us,19us total 1.753s
+10-29 15:19:59.866  1732  4911 I A       : Calling beginBinderSession().
+10-29 15:19:59.868  1732  4911 I A       : beginBinderSession(): calling binder
+10-29 15:19:59.869  1657  2333 I NgaEntryPointEventSendr: State changed: Connecting => Ready
+10-29 15:19:59.888   521  2111 W ActivityManager: Unable to start service Intent { cmp=com.google.android.apps.tachyon/.clientapi.ClientApiService } U=0: not found
+10-29 15:19:59.920  1657  2333 W A       : Routing took 0 ms
+10-29 15:19:59.929  1657  2344 I A       : #onActiveStateChangeEvent, newState: IDLE, previousState: IDLE.
+10-29 15:19:59.996  1732  2791 I PBSessionCacheImpl: Deleted sessionId[7619209844370674] from persistence.
+10-29 15:20:00.007  1649  1979 I AiAiEcho: Predicting[0]: 
+10-29 15:20:00.007  1657  2344 I NgaEntryPointEventSendr: State changed: Ready => Disconnected (onOpaDisconnected)
+10-29 15:20:00.014  1657  2344 I A       : Successfully initialized all components
+10-29 15:20:00.015  1649  1979 I AiAiEcho: EchoTargets: 
+10-29 15:20:00.015  1649  1979 I AiAiEcho: Filtered by AiAi flag check: 
+10-29 15:20:00.016  1649  1979 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+10-29 15:20:00.017  1649  1979 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0 (types=[])
+10-29 15:20:00.036  1732  2791 W A       : UiCallbackStub-onGenericEvent[ServiceEvent = 60] task was not run. Callback from Service received after client was disposed.
+10-29 15:20:00.048  1732  2791 W SearchServiceCore: Abort, client detached.
+10-29 15:20:00.071   834   907 D EGL_emulation: app_time_stats: avg=5850.61ms min=85.01ms max=11616.22ms count=2
+10-29 15:20:00.072   834   834 W PageIndicator: Total number of pages invalid: 0. Assuming 1 page.
+10-29 15:20:00.089  4946  4962 D EGL_emulation: app_time_stats: avg=40.90ms min=21.42ms max=86.17ms count=25
+10-29 15:20:00.162  2269  5134 D DownloadManager: [12] Finished with status SUCCESS
+10-29 15:20:00.212  1460  5106 I Icing   : Indexing com.google.android.gms-internal.3p:MobileApplication from com.google.android.gms
+10-29 15:20:00.246  1657  1691 I hbox:interactor: Background young concurrent copying GC freed 37061(2258KB) AllocSpace objects, 7(140KB) LOS objects, 20% free, 8116KB/10201KB, paused 40us,13us total 446.114ms
+10-29 15:20:00.296  1657  1657 V ClearcutMetricXmitter: Transmission is done.
+10-29 15:20:00.299  1460  5106 I Icing   : Indexing done com.google.android.gms-internal.3p:MobileApplication
+10-29 15:20:00.299  1460  5106 I Icing   : Indexing com.google.android.gms-apps from com.google.android.gms
+10-29 15:20:00.313  3759  4657 I ConfigUpdater: Update downloaded, starting installation
+10-29 15:20:00.397  2269  5124 D DownloadManager: [11] Finished with status SUCCESS
+10-29 15:20:00.415  1732  3123 W A       : [Download] response code: 400
+10-29 15:20:00.436  1460  5106 I Icing   : Indexing done com.google.android.gms-apps
+10-29 15:20:00.470   335   372 I netd    : tetherGetStats() -> {[]} <0.62ms>
+10-29 15:20:00.566   335   372 I netd    : bandwidthSetGlobalAlert(2097152) <0.08ms>
+10-29 15:20:00.569   335   372 I netd    : bandwidthRemoveInterfaceQuota(eth0) <0.45ms>
+10-29 15:20:00.571   335   372 I netd    : bandwidthSetInterfaceQuota(eth0, 9223372036854775807) <0.31ms>
+10-29 15:20:00.589   521   833 D NetworkStatsObservers: Unregistering RequestInfo from pid/uid:521/1000(android) for DataUsageRequest [ requestId=10, networkTemplate=NetworkTemplate: matchRule=MOBILE, matchSubscriberIds=[310260...], matchWi
+10-29 15:20:00.590   521   755 D NetworkStatsObservers: Registering observer for RequestInfo from pid/uid:521/1000(android) for DataUsageRequest [ requestId=11, networkTemplate=NetworkTemplate: matchRule=MOBILE, matchSubscriberIds=[310260..
+10-29 15:20:00.615   335   372 I netd    : tetherGetStats() -> {[]} <0.41ms>
+10-29 15:20:00.619  3759  4657 I ConfigUpdater: doneInstall
+10-29 15:20:00.636   521  5176 I ConfigUpdateInstallReceiver: Couldn't find current metadata, assuming first update
+10-29 15:20:00.636   521  5176 I ConfigUpdateInstallReceiver: Failed to read current content, assuming first update!
+10-29 15:20:00.636   521  5176 I ConfigUpdateInstallReceiver: Found new update, installing...
+10-29 15:20:00.638  2269  2455 V DownloadManager: Deleting /data/data/com.android.providers.downloads/cache/en.model.metadata via provider delete
+10-29 15:20:00.648   335  5177 I resolv  : GetAddrInfoHandler::run: {100 786532 100 983140 10131 0}
+10-29 15:20:00.650  1714  1796 W ModernMediaScanner: Failed to visit /data/data/com.android.providers.downloads/cache/en.model.metadata: java.nio.file.NoSuchFileException: /data/data/com.android.providers.downloads/cache/en.model.metadata
+10-29 15:20:00.652  1714  1796 I MediaProvider: Scanned internal due to REASON_DEMAND, found 0 items in 2ms, 0 inserts 0 updates 0 deletes
+10-29 15:20:00.652  5175  5175 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+10-29 15:20:00.653  2888  3499 D TrafficStats: tagSocket(120) with statsTag=0x1809, statsUid=-1
+10-29 15:20:00.656  5175  5175 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+10-29 15:20:00.684  2888  3499 D TrafficStats: tagSocket(120) with statsTag=0x1809, statsUid=-1
+10-29 15:20:00.685  2888  3499 D TrafficStats: tagSocket(120) with statsTag=0x1809, statsUid=-1
+10-29 15:20:00.687   400   416 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=5175
+10-29 15:20:00.688   400   416 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (389 us)
+10-29 15:20:00.745   135   135 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+10-29 15:20:00.746  5175  5178 I Gralloc4: mapper 4.x is not supported
+10-29 15:20:00.748  2269  2455 V DownloadManager: Deleting /data/data/com.android.providers.downloads/cache/en.model via provider delete
+10-29 15:20:00.936     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+10-29 15:20:00.782  1714  1796 W ModernMediaScanner: Failed to visit /data/data/com.android.providers.downloads/cache/en.model: java.nio.file.NoSuchFileException: /data/data/com.android.providers.downloads/cache/en.model
+10-29 15:20:00.784   521  5176 I ConfigUpdateInstallReceiver: Installation successful
+10-29 15:20:00.830  1714  1796 I MediaProvider: Scanned internal due to REASON_DEMAND, found 0 items in 48ms, 0 inserts 0 updates 0 deletes
+10-29 15:20:01.054  1407  4999 W GLSUser : [AppCertManager] Exception while requesting key: 
+10-29 15:20:01.054  1407  4999 W GLSUser : java.io.IOException: Invalid device key response.
+10-29 15:20:01.054  1407  4999 W GLSUser : 	at oub.b(:com.google.android.gms@231818047@23.18.18 (190800-535401451):40)
+10-29 15:20:01.054  1407  4999 W GLSUser : 	at otz.b(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+10-29 15:20:01.054  1407  4999 W GLSUser : 	at otu.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+10-29 15:20:01.054  1407  4999 W GLSUser : 	at otx.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+10-29 15:20:01.054  1407  4999 W GLSUser : 	at lzq.call(:com.google.android.gms@231818047@23.18.18 (190800-535401451):14)
+10-29 15:20:01.054  1407  4999 W GLSUser : 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+10-29 15:20:01.054  1407  4999 W GLSUser : 	at aced.c(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+10-29 15:20:01.054  1407  4999 W GLSUser : 	at aced.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):7)
+10-29 15:20:01.054  1407  4999 W GLSUser : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+10-29 15:20:01.054  1407  4999 W GLSUser : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+10-29 15:20:01.054  1407  4999 W GLSUser : 	at acjn.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+10-29 15:20:01.054  1407  4999 W GLSUser : 	at java.lang.Thread.run(Thread.java:1012)
+10-29 15:20:01.070  1407  3709 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.auth.account.be.legacy.AuthCronService finished executing. cause:5 result: 3 elapsed_millis: 3604 uptime_millis: 3604 exec_start_ela
+10-29 15:20:01.106  4946  4962 D EGL_emulation: app_time_stats: avg=30.21ms min=22.21ms max=46.23ms count=33
+10-29 15:20:01.125  3759  4657 I ConfigUpdater: Update downloaded, starting installation
+10-29 15:20:01.140   521  1650 D OomAdjuster: Not killing cached processes
+10-29 15:20:01.187  3759  4657 I ConfigUpdater: doneInstall
+10-29 15:20:01.188   521  5179 I ConfigUpdateInstallReceiver: Couldn't find current metadata, assuming first update
+10-29 15:20:01.188   521  5179 I ConfigUpdateInstallReceiver: Failed to read current content, assuming first update!
+10-29 15:20:01.188   521  5179 I ConfigUpdateInstallReceiver: Found new update, installing...
+10-29 15:20:01.213  2269  2455 V DownloadManager: Deleting /data/data/com.android.providers.downloads/cache/en.fb.metadata via provider delete
+10-29 15:20:01.214  1714  1796 W ModernMediaScanner: Failed to visit /data/data/com.android.providers.downloads/cache/en.fb.metadata: java.nio.file.NoSuchFileException: /data/data/com.android.providers.downloads/cache/en.fb.metadata
+10-29 15:20:01.215  1714  1796 I MediaProvider: Scanned internal due to REASON_DEMAND, found 0 items in 2ms, 0 inserts 0 updates 0 deletes
+10-29 15:20:01.223  1407  1505 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+10-29 15:20:01.248  1407  1505 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+10-29 15:20:01.253  2269  2455 V DownloadManager: Deleting /data/data/com.android.providers.downloads/cache/en.fb via provider delete
+10-29 15:20:01.266  1714  1796 W ModernMediaScanner: Failed to visit /data/data/com.android.providers.downloads/cache/en.fb: java.nio.file.NoSuchFileException: /data/data/com.android.providers.downloads/cache/en.fb
+10-29 15:20:01.285  1714  1796 I MediaProvider: Scanned internal due to REASON_DEMAND, found 0 items in 19ms, 0 inserts 0 updates 0 deletes
+10-29 15:20:01.296   521  5179 I ConfigUpdateInstallReceiver: Installation successful
+10-29 15:20:01.310  1407  3579 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService started execution. cause:5 exec_start_elapsed_seconds: 102 [CONTEXT service_id=218 ]

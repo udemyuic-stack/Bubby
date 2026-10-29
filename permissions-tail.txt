@@ -1,0 +1,150 @@
+10-29 15:16:28.011  1033  1240 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_address_manager.cc:193 unregister_client: Client unregistered
+10-29 15:16:28.011  1033  1240 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_address_manager.cc:197 unregister_client: Cancelled address rotation alarm
+10-29 15:16:28.012  1033  1240 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_scanning_manager.cc:1369 on_advertising_filter_complete: Got a Command complete LE_ADV_FILTER, status UNKNOWN_CONNECTION
+10-29 15:16:28.012  1033  1361 D BtGatt.ScanManager: Start gattClientScanNative with old scanMode -1 new scanMode 2 ( in MS: 100 / 100, in scan unit: 160 / 160 ) [ScanClient scanModeApp 2 scanModeUsed 2 [appScanStats com.google.uid.shared:1
+10-29 15:16:28.012  1033  1361 I bt_stack: [INFO:le_scanning_manager.cc(346)] SetScanParameters in shim layer
+10-29 15:16:28.012  1033  1279 D BtGatt.GattService: onScanParamSetupCompleted : 0
+10-29 15:16:28.012  1033  1361 I bt_stack: [INFO:le_scanning_manager.cc(168)] Scan in shim layer started
+10-29 15:16:28.012  1033  1240 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_scanning_manager.cc:588 stop_scan: Scanning already stopped, return!
+10-29 15:16:28.012  1033  1240 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_address_manager.cc:175 register_client: Scheduled address rotation for first client registered
+10-29 15:16:28.012  1033  1240 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_address_manager.cc:178 register_client: Client registered
+10-29 15:16:28.012  1033  1361 D BtGatt.ScanManager: apply scan timeout (600000)to scannerId 2
+10-29 15:16:28.048   522   612 D ActivityManager: freezing 2868 com.google.android.gms.unstable
+10-29 15:16:28.052  5064  5120 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.phenotype.service.sync.PhenotypeConfigurator started execution. cause:3 exec_start_elapsed_seconds: 96 [CONTEXT service_id=218 ]
+10-29 15:16:28.054  5064  5120 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.auth.account.be.legacy.AuthCronService started execution. cause:3 exec_start_elapsed_seconds: 96 [CONTEXT service_id=218 ]
+10-29 15:16:28.081  1586  1603 I .apps.wellbeing: Background young concurrent copying GC freed 62303(3028KB) AllocSpace objects, 0(0B) LOS objects, 25% free, 9073KB/11MB, paused 23us,17us total 138.130ms
+10-29 15:16:28.095  5064  5110 I GCoreUlr: WorldUpdater received intent Intent { act=com.google.android.location.reporting.ACTION_UPDATE_WORLD cmp=com.google.android.gms/com.google.android.location.reporting.service.DispatchingService (has 
+10-29 15:16:28.113  5064  5302 I Nearby  : is blocked device type false, isAuto=false, isIot=false, isLatchsky=false, isChinaWearable=false, isTv=false, isWearable=false (supportWearOs=false), isChromeOsDevice=false (supportChromeOs=false) 
+10-29 15:16:28.120  5064  5328 I Nearby  : is blocked device type false, isAuto=false, isIot=false, isLatchsky=false, isChinaWearable=false, isTv=false, isWearable=false (supportWearOs=false), isChromeOsDevice=false (supportChromeOs=false) 
+10-29 15:16:28.123  5064  5328 I NearbyDiscovery: DiscoveryController, showNotification, itemSize=0 [CONTEXT service_id=265 ]
+10-29 15:16:28.140  5064  5328 I NearbyDiscovery: Show notifications: 0 total, no changes since last shown, no-op. [CONTEXT service_id=265 ]
+10-29 15:16:28.152  5064  5300 I NearbyShared: FastPairSlice: enableBindServiceForDiscoveryItem called, isBind = false
+10-29 15:16:28.153  5129  5129 D BoundBrokerSvc: onBind: Intent { act=com.google.android.mdd.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsBoundBrokerService }
+10-29 15:16:28.153  5129  5129 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.mdd.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsBoundBrokerService }
+10-29 15:16:28.155  5129  5204 I NearbyDiscovery: FastPairSlice: Created under nearby module. [CONTEXT service_id=265 ]
+10-29 15:16:28.157  5064  5110 I GCoreUlr: WorldUpdater:android.location.PROVIDERS_CHANGED: Ensuring that reporting is stopped because of reasons: (no Google accounts)
+10-29 15:16:28.158  5064  5110 I GCoreUlr: Unbound from all signal providers.
+10-29 15:16:28.176  5339  5339 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+10-29 15:16:28.176  5339  5339 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+10-29 15:16:28.180   399  1134 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=5339
+10-29 15:16:28.180   399  1134 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (122 us)
+10-29 15:16:28.187  5129  5204 D CompatibilityChangeReporter: Compat change id reported: 3400644; UID 10132; state: DISABLED
+10-29 15:16:28.194  5064  5302 I Nearby  : is blocked device type false, isAuto=false, isIot=false, isLatchsky=false, isChinaWearable=false, isTv=false, isWearable=false (supportWearOs=false), isChromeOsDevice=false (supportChromeOs=false) 
+10-29 15:16:28.194   136   136 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+10-29 15:16:28.195  5339  5345 I Gralloc4: mapper 4.x is not supported
+10-29 15:16:28.393     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+10-29 15:16:28.203  5129  5197 I Icing   : Indexing com.google.android.gms-postals_data_id from com.google.android.gms
+10-29 15:16:28.206  5129  5204 I FastPair: ServiceBindHelper.onSlicePinned, pin slice, uri = content://com.google.android.gms.nearby.fastpair/method_bind_service_for_discovery_item?is_bind=false
+10-29 15:16:28.206  5064  5302 I Nearby  : is blocked device type false, isAuto=false, isIot=false, isLatchsky=false, isChinaWearable=false, isTv=false, isWearable=false (supportWearOs=false), isChromeOsDevice=false (supportChromeOs=false) 
+10-29 15:16:28.211  5129  5197 I Icing   : Indexing done com.google.android.gms-postals_data_id
+10-29 15:16:28.212  5129  5197 I Icing   : Indexing com.google.android.gms-emails_data_id from com.google.android.gms
+10-29 15:16:28.253  5129  5197 I Icing   : Indexing done com.google.android.gms-emails_data_id
+10-29 15:16:28.258  5129  5209 I Vision  : Supported ABIS: [x86_64, arm64-v8a]
+10-29 15:16:28.260  5129  5197 I Icing   : Indexing com.google.android.gms-contacts_contact_id from com.google.android.gms
+10-29 15:16:28.261  5129  5197 I Icing   : Indexing done com.google.android.gms-contacts_contact_id
+10-29 15:16:28.261  5129  5197 I Icing   : Indexing com.google.android.gms-apps from com.google.android.gms
+10-29 15:16:28.267   522  2742 D WifiNl80211Manager: Scan result ready event
+10-29 15:16:28.267   522  2742 D WifiNative: Scan result ready event
+10-29 15:16:28.268  5064  5110 I GCoreUlr: WorldUpdater received intent Intent { act=com.google.android.location.reporting.ACTION_UPDATE_WORLD cmp=com.google.android.gms/com.google.android.location.reporting.service.DispatchingService (has 
+10-29 15:16:28.269  5064  5110 I GCoreUlr: WorldUpdater:android.location.PROVIDERS_CHANGED: Ensuring that reporting is stopped because of reasons: (no Google accounts)
+10-29 15:16:28.270  5064  5110 I GCoreUlr: Unbound from all signal providers.
+10-29 15:16:28.291  5064  5110 I GCoreUlr: WorldUpdater received intent Intent { act=com.google.android.location.reporting.ACTION_UPDATE_WORLD cmp=com.google.android.gms/com.google.android.location.reporting.service.DispatchingService (has 
+10-29 15:16:28.293  5064  5110 I GCoreUlr: WorldUpdater:com.google.android.location.internal.server.ACTION_RESTARTED: Ensuring that reporting is stopped because of reasons: (no Google accounts)
+10-29 15:16:28.295  5064  5110 I GCoreUlr: Unbound from all signal providers.
+10-29 15:16:28.311  5064  5110 I GCoreUlr: WorldUpdater received intent Intent { act=com.google.android.location.reporting.ACTION_UPDATE_WORLD cmp=com.google.android.gms/com.google.android.location.reporting.service.DispatchingService (has 
+10-29 15:16:28.313  5064  5110 I GCoreUlr: WorldUpdater:android.location.PROVIDERS_CHANGED: Ensuring that reporting is stopped because of reasons: (no Google accounts)
+10-29 15:16:28.315  5064  5110 I GCoreUlr: Unbound from all signal providers.
+10-29 15:16:28.329  5064  5110 I GCoreUlr: WorldUpdater received intent Intent { act=com.google.android.location.reporting.ACTION_UPDATE_WORLD cmp=com.google.android.gms/com.google.android.location.reporting.service.DispatchingService (has 
+10-29 15:16:28.331  5064  5302 I GmsCoreVoilaTileGrpc: grpc compression enabled: gzip
+10-29 15:16:28.353  5064  5110 I GCoreUlr: WorldUpdater:android.location.PROVIDERS_CHANGED: Ensuring that reporting is stopped because of reasons: (no Google accounts)
+10-29 15:16:28.355  5064  5110 I GCoreUlr: Unbound from all signal providers.
+10-29 15:16:28.362  5129  5207 I ChimeraConfigurator: Starting update, reason: 4 urgentFeatures: vision.ocr:-1
+10-29 15:16:28.384  4900  4918 D EGL_emulation: app_time_stats: avg=33.26ms min=20.98ms max=42.70ms count=31
+10-29 15:16:28.394   522  2742 W BatteryExternalStatsWorker: error reading Bluetooth stats: 11
+10-29 15:16:28.417  5064  5110 I GCoreUlr: DispatchingService ignoring Intent { act=android.net.wifi.WIFI_STATE_CHANGED flg=0x44000010 (has extras) } because ULR inactive
+10-29 15:16:28.424  5129  5207 I ChimeraConfigurator: Detected pending changes for urgent request: [vision.ocr]. Pending module sets: container:2318189190800+mlkit.ocr.common,tflite_dynamite:2640104055100800+tflite_dynamite,vision_ocr:23160
+10-29 15:16:28.426  5064  5064 I GCoreUlr: Unbound from all signal providers.
+10-29 15:16:28.426  5064  5064 I GCoreUlr: Stopping handler for UlrDispSvcFast
+10-29 15:16:28.431  5129  5197 I Icing   : Indexing com.google.android.gms-phones_data_id from com.google.android.gms
+10-29 15:16:28.432  5129  5197 I Icing   : Indexing done com.google.android.gms-phones_data_id
+10-29 15:16:28.437  5064  5302 D CompatibilityChangeReporter: Compat change id reported: 247079863; UID 10132; state: DISABLED
+10-29 15:16:28.445  5129  5207 I DynamiteModule: Considering local module com.google.android.gms.cronet_dynamite:0 and remote module com.google.android.gms.cronet_dynamite:2411
+10-29 15:16:28.447  5129  5207 I DynamiteModule: Selected remote version of com.google.android.gms.cronet_dynamite, version >= 2411
+10-29 15:16:28.447  5129  5197 W Icing   : No valid account for uploading user actions
+10-29 15:16:28.451  5129  5207 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000001/CronetDynamite.dm': No such file or directory
+10-29 15:16:28.455   522  2742 D ActivityManager: sync unfroze 2868 com.google.android.gms.unstable for 6
+10-29 15:16:28.477  5129  5197 I Icing   : Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0
+10-29 15:16:28.490  5129  5197 W Icing   : No valid account for uploading user actions
+10-29 15:16:28.495  2868  3794 W DG      : [flow devicekey] DroidGuardRunner.newVmProcessForFastSignalCollection(): Fast program not found [CONTEXT service_id=25 ]
+10-29 15:16:28.528  5129  5197 I Icing   : Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0
+10-29 15:16:28.542  5129  5207 I GmsDebugLogger: [73] 1801
+10-29 15:16:28.550  5129  5197 I Icing   : Indexing done com.google.android.gms-internal.3p:MobileApplication
+10-29 15:16:28.562  5129  5207 W ZappDownloader: No successful module downloads for requested features [vision.ocr].
+10-29 15:16:28.562  5129  5207 I GmsDebugLogger: [30] [VisionOcrDynamite.integ:231602402100000],[TfliteDynamiteDynamite.integ:264010405100800],[MlkitOcrCommon.optional:231818100800]
+10-29 15:16:28.569  5064  5127 I SemanticLocation: [MDD] ModelBundleMetadata: File not found [CONTEXT service_id=173 ]
+10-29 15:16:28.569  5064  5127 I SemanticLocation: java.io.FileNotFoundException: /data/user/0/com.google.android.gms/files/model_bundle_metadata.pb: open failed: ENOENT (No such file or directory)
+10-29 15:16:28.569  5064  5127 I SemanticLocation: 	at libcore.io.IoBridge.open(IoBridge.java:574)
+10-29 15:16:28.569  5064  5127 I SemanticLocation: 	at java.io.FileInputStream.<init>(FileInputStream.java:160)
+10-29 15:16:28.569  5064  5127 I SemanticLocation: 	at android.app.ContextImpl.openFileInput(ContextImpl.java:745)
+10-29 15:16:28.569  5064  5127 I SemanticLocation: 	at android.content.ContextWrapper.openFileInput(ContextWrapper.java:249)
+10-29 15:16:28.569  5064  5127 I SemanticLocation: 	at android.content.ContextWrapper.openFileInput(ContextWrapper.java:249)
+10-29 15:16:28.569  5064  5127 I SemanticLocation: 	at android.content.ContextWrapper.openFileInput(ContextWrapper.java:249)
+10-29 15:16:28.569  5064  5127 I SemanticLocation: 	at bzxt.h(:com.google.android.gms@231818047@23.18.18 (190800-535401451):1)
+10-29 15:16:28.569  5064  5127 I SemanticLocation: 	at bzxd.c(:com.google.android.gms@231818047@23.18.18 (190800-535401451):9)
+10-29 15:16:28.569  5064  5127 I SemanticLocation: 	at bzxd.<init>(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+10-29 15:16:28.569  5064  5127 I SemanticLocation: 	at cadn.j(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+10-29 15:16:28.569  5064  5127 I SemanticLocation: 	at cadn.h(:com.google.android.gms@231818047@23.18.18 (190800-535401451):36)
+10-29 15:16:28.569  5064  5127 I SemanticLocation: 	at cadn.b(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+10-29 15:16:28.569  5064  5127 I SemanticLocation: 	at com.google.android.gms.semanticlocation.service.SemanticLocationChimeraService.k(:com.google.android.gms@231818047@23.18.18 (190800-535401451):9)
+10-29 15:16:28.569  5064  5127 I SemanticLocation: 	at com.google.android.gms.semanticlocation.service.SemanticLocationChimeraService.h(:com.google.android.gms@231818047@23.18.18 (190800-535401451):17)
+10-29 15:16:28.569  5064  5127 I SemanticLocation: 	at cacs.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):68)
+10-29 15:16:28.569  5064  5127 I SemanticLocation: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:487)
+10-29 15:16:28.569  5064  5127 I SemanticLocation: 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+10-29 15:16:28.569  5064  5127 I SemanticLocation: 	at aced.c(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+10-29 15:16:28.569  5064  5127 I SemanticLocation: 	at aced.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):8)
+10-29 15:16:28.569  5064  5127 I SemanticLocation: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+10-29 15:16:28.569  5064  5127 I SemanticLocation: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+10-29 15:16:28.569  5064  5127 I SemanticLocation: 	at acjn.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+10-29 15:16:28.569  5064  5127 I SemanticLocation: 	at java.lang.Thread.run(Thread.java:1012)
+10-29 15:16:28.569  5064  5127 I SemanticLocation: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 15:16:28.569  5064  5127 I SemanticLocation: 	at libcore.io.Linux.open(Native Method)
+10-29 15:16:28.569  5064  5127 I SemanticLocation: 	at libcore.io.ForwardingOs.open(ForwardingOs.java:563)
+10-29 15:16:28.569  5064  5127 I SemanticLocation: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:274)
+10-29 15:16:28.569  5064  5127 I SemanticLocation: 	at libcore.io.ForwardingOs.open(ForwardingOs.java:563)
+10-29 15:16:28.569  5064  5127 I SemanticLocation: 	at android.app.ActivityThread$AndroidOs.open(ActivityThread.java:8063)
+10-29 15:16:28.569  5064  5127 I SemanticLocation: 	at libcore.io.IoBridge.open(IoBridge.java:560)
+10-29 15:16:28.569  5064  5127 I SemanticLocation: 	... 22 more
+10-29 15:16:28.573  5129  5197 I Icing   : Indexing done com.google.android.gms-apps
+10-29 15:16:28.581  5129  5207 W ChimeraConfigService: Retry attempt was throttled. [CONTEXT service_id=264 ]
+10-29 15:16:28.584  5129  5207 I GmsDebugLogger: [83] 1 [vision.ocr]
+10-29 15:16:28.592  5129  5209 W Vision  : Request for optional module download of ocr failed. Request again.
+10-29 15:16:28.592  5129  5209 W Vision  : Would have logged:
+10-29 15:16:28.592  5129  5209 W Vision  : # dsae@37884fe7
+10-29 15:16:28.592  5129  5209 I Vision  : Schedule retrying download ocr at 96801 with backoff 20 seconds
+10-29 15:16:28.614  5064  5127 I SemanticLocation: [MDD] ModelBundleMetadata: File not found [CONTEXT service_id=173 ]
+10-29 15:16:28.614  5064  5127 I SemanticLocation: java.io.FileNotFoundException: /data/user/0/com.google.android.gms/files/model_bundle_metadata.pb: open failed: ENOENT (No such file or directory)
+10-29 15:16:28.614  5064  5127 I SemanticLocation: 	at libcore.io.IoBridge.open(IoBridge.java:574)
+10-29 15:16:28.614  5064  5127 I SemanticLocation: 	at java.io.FileInputStream.<init>(FileInputStream.java:160)
+10-29 15:16:28.614  5064  5127 I SemanticLocation: 	at android.app.ContextImpl.openFileInput(ContextImpl.java:745)
+10-29 15:16:28.614  5064  5127 I SemanticLocation: 	at android.content.ContextWrapper.openFileInput(ContextWrapper.java:249)
+10-29 15:16:28.614  5064  5127 I SemanticLocation: 	at android.content.ContextWrapper.openFileInput(ContextWrapper.java:249)
+10-29 15:16:28.614  5064  5127 I SemanticLocation: 	at android.content.ContextWrapper.openFileInput(ContextWrapper.java:249)
+10-29 15:16:28.614  5064  5127 I SemanticLocation: 	at bzxt.h(:com.google.android.gms@231818047@23.18.18 (190800-535401451):1)
+10-29 15:16:28.614  5064  5127 I SemanticLocation: 	at bzxd.c(:com.google.android.gms@231818047@23.18.18 (190800-535401451):9)
+10-29 15:16:28.614  5064  5127 I SemanticLocation: 	at cadb.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+10-29 15:16:28.614  5064  5127 I SemanticLocation: 	at aced.c(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+10-29 15:16:28.614  5064  5127 I SemanticLocation: 	at aced.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):8)
+10-29 15:16:28.614  5064  5127 I SemanticLocation: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+10-29 15:16:28.614  5064  5127 I SemanticLocation: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+10-29 15:16:28.614  5064  5127 I SemanticLocation: 	at acjn.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+10-29 15:16:28.614  5064  5127 I SemanticLocation: 	at java.lang.Thread.run(Thread.java:1012)
+10-29 15:16:28.614  5064  5127 I SemanticLocation: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 15:16:28.614  5064  5127 I SemanticLocation: 	at libcore.io.Linux.open(Native Method)
+10-29 15:16:28.614  5064  5127 I SemanticLocation: 	at libcore.io.ForwardingOs.open(ForwardingOs.java:563)
+10-29 15:16:28.614  5064  5127 I SemanticLocation: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:274)
+10-29 15:16:28.614  5064  5127 I SemanticLocation: 	at libcore.io.ForwardingOs.open(ForwardingOs.java:563)
+10-29 15:16:28.614  5064  5127 I SemanticLocation: 	at android.app.ActivityThread$AndroidOs.open(ActivityThread.java:8063)
+10-29 15:16:28.614  5064  5127 I SemanticLocation: 	at libcore.io.IoBridge.open(IoBridge.java:560)
+10-29 15:16:28.614  5064  5127 I SemanticLocation: 	... 14 more
+10-29 15:16:28.621  5129  5207 I ChimeraConfigurator: Starting update, reason: 4 urgentFeatures: tflite_dynamite:-1
+10-29 15:16:28.658  5129  5207 I ChimeraConfigurator: Detected pending changes for urgent request: [tflite_dynamite]. Pending module sets: container:2318189190800,tflite_dynamite:2640104055100800+tflite_dynamite

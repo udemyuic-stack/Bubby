@@ -1,0 +1,150 @@
+10-29 15:14:24.399   835  1013 E RoleControllerServiceImpl: Default/fallback role holder package doesn't qualify for the role, package: com.google.android.gms, role: android.app.role.SYSTEM_CALL_STREAMING
+10-29 15:14:24.400   835  1013 W Role    : Default holder doesn't have required signing certificate: com.google.android.apps.work.clouddpc:23962F4B43B9857638EA66F4D419518EAE282491ACDA4B94707BD59003C45E58
+10-29 15:14:24.403  2088  4679 V DownloadManager: Deleting /data/data/com.android.providers.downloads/cache/08202014-pins.txt via provider delete
+10-29 15:14:24.409  1594  1621 W ModernMediaScanner: Failed to visit /data/data/com.android.providers.downloads/cache/08202014-pins.txt: java.nio.file.NoSuchFileException: /data/data/com.android.providers.downloads/cache/08202014-pins.txt
+10-29 15:14:24.452   337  4913 I resolv  : GetAddrInfoHandler::run: {100 786532 100 983140 10131 0}
+10-29 15:14:24.455   337  4914 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+10-29 15:14:24.456   337  4915 I resolv  : res_nmkquery: (QUERY, IN, A)
+10-29 15:14:24.477   337  4914 I resolv  : res_nsend: used send_dg 272 terrno: 0
+10-29 15:14:24.477   337  4914 I resolv  : doQuery: rcode=0, ancount=8, return value=272
+10-29 15:14:24.491   337  4915 I resolv  : res_nsend: used send_dg 176 terrno: 0
+10-29 15:14:24.491   337  4915 I resolv  : doQuery: rcode=0, ancount=8, return value=176
+10-29 15:14:24.541  1594  1621 I MediaProvider: Scanned internal due to REASON_DEMAND, found 0 items in 133ms, 0 inserts 0 updates 0 deletes
+10-29 15:14:24.567  1721  2288 I OpaEligibilityChecker: send OpaEligibilityChange broadcast to CommonBroadcastReceiver
+10-29 15:14:24.603  1444  3511 D TrafficStats: tagSocket(123) with statsTag=0x30004901, statsUid=10131
+10-29 15:14:24.659   525   553 W WindowMagnificationMgr: requestConnection duplicated request: connect=false, mConnectionState=DISCONNECTED
+10-29 15:14:24.714  1721  2288 W CorpusConfigHelper: Invalid input from icing corpus JSON flag.
+10-29 15:14:24.714  1721  2288 W CorpusConfigHelper: android.util.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 123 column 2
+10-29 15:14:24.714  1721  2288 W CorpusConfigHelper: 	at android.util.JsonReader.syntaxError(JsonReader.java:1162)
+10-29 15:14:24.714  1721  2288 W CorpusConfigHelper: 	at android.util.JsonReader.checkLenient(JsonReader.java:840)
+10-29 15:14:24.714  1721  2288 W CorpusConfigHelper: 	at android.util.JsonReader.nextInArray(JsonReader.java:615)
+10-29 15:14:24.714  1721  2288 W CorpusConfigHelper: 	at android.util.JsonReader.peek(JsonReader.java:345)
+10-29 15:14:24.714  1721  2288 W CorpusConfigHelper: 	at android.util.JsonReader.hasNext(JsonReader.java:321)
+10-29 15:14:24.714  1721  2288 W CorpusConfigHelper: 	at com.google.android.apps.gsa.searchbox.c.b.b.k.c(PG:7)
+10-29 15:14:24.714  1721  2288 W CorpusConfigHelper: 	at com.google.android.apps.gsa.searchbox.c.b.b.j.a(Unknown Source:2)
+10-29 15:14:24.714  1721  2288 W CorpusConfigHelper: 	at com.google.android.apps.gsa.search.core.i.r.run(PG:5)
+10-29 15:14:24.714  1721  2288 W CorpusConfigHelper: 	at com.google.android.libraries.gsa.k.a.h.run(PG:2)
+10-29 15:14:24.714  1721  2288 W CorpusConfigHelper: 	at com.google.android.apps.gsa.shared.util.c.a.cf.b(PG:1)
+10-29 15:14:24.714  1721  2288 W CorpusConfigHelper: 	at com.google.android.apps.gsa.shared.util.c.a.ci.run(PG:1)
+10-29 15:14:24.714  1721  2288 W CorpusConfigHelper: 	at com.google.android.libraries.i.ae.run(PG:1)
+10-29 15:14:24.714  1721  2288 W CorpusConfigHelper: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+10-29 15:14:24.714  1721  2288 W CorpusConfigHelper: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+10-29 15:14:24.714  1721  2288 W CorpusConfigHelper: 	at com.google.android.libraries.i.k.run(PG:2)
+10-29 15:14:24.714  1721  2288 W CorpusConfigHelper: 	at com.google.android.libraries.i.p.run(PG:4)
+10-29 15:14:24.714  1721  2288 W CorpusConfigHelper: 	at java.lang.Thread.run(Thread.java:1012)
+10-29 15:14:24.730  1391  3494 I PTCommittedOperation: Receive new configuration for com.google.android.gms.auth_api_phone
+10-29 15:14:24.739  1444  2714 I Icing   : IndexChimeraService.getServiceInterface callingPackage=com.google.android.googlequicksearchbox componentName=agsa_icing_connection serviceId=33
+10-29 15:14:24.746  1444  2881 I Icing   : IndexChimeraService.getServiceInterface callingPackage=com.google.android.googlequicksearchbox componentName=agsa_icing_connection serviceId=32
+10-29 15:14:24.744  1391  3048 I PTCommittedOperation: Receive new configuration for com.google.android.gms.auth_api_proxy
+10-29 15:14:24.752  1391  3496 I PTCommittedOperation: Receive new configuration for com.google.android.client_error_logging
+10-29 15:14:24.759  1598  1598 I AiAiEcho: AppFetcherImpl onPackageChanged com.example.buddy.
+10-29 15:14:24.760  1598  2546 I AiAiEcho: AppIndexer Package:[com.example.buddy] UserProfile:[0] Enabled:[true].
+10-29 15:14:24.760  1598  2546 I AiAiEcho: AppFetcherImplV2 updateApps package:[com.example.buddy], userId:[0], reason:[package is updated.].
+10-29 15:14:24.765  1391  1476 I PTCommittedOperation: Receive new configuration for com.google.android.gms.romanesco
+10-29 15:14:24.768  1444  3509 W Icing   : No valid account for uploading user actions
+10-29 15:14:24.777  1598  2908 W ogle.android.as: Long monitor contention with owner aiai-min-shared-0 (1905) at java.lang.Object erb.b()(PG:2) waiters=0 in java.lang.Object erb.b() for 433ms
+10-29 15:14:24.781  4868  4904 E SurfaceSyncGroup: Failed to receive transaction ready in 1000ms. Marking SurfaceSyncGroup(wmsSync-VRI[UiActivity]#0) as ready
+10-29 15:14:24.781  4868  4904 E SurfaceSyncGroup: Failed to receive transaction ready in 1000ms. Marking SurfaceSyncGroup(VRI[UiActivity]#1) as ready
+10-29 15:14:24.782   525   546 I DropBoxManagerService: add tag=system_server_strictmode isTagEnabled=true flags=0x2
+10-29 15:14:24.783  4601  4613 D CompatibilityChangeReporter: Compat change id reported: 150939131; UID 10129; state: ENABLED
+10-29 15:14:24.784   525   546 I DropBoxManagerService: add tag=system_server_strictmode isTagEnabled=true flags=0x2
+10-29 15:14:24.785   525   823 W ServiceManagerCppClient: Permission failure: android.permission.ROTATE_SURFACE_FLINGER from uid=10192 pid=0
+10-29 15:14:24.786   525   823 D PermissionCache: checking android.permission.ROTATE_SURFACE_FLINGER for uid=10192 => denied (3835 us)
+10-29 15:14:24.786   525   823 W ServiceManagerCppClient: Permission failure: android.permission.INTERNAL_SYSTEM_WINDOW from uid=10192 pid=0
+10-29 15:14:24.786   525   823 D PermissionCache: checking android.permission.INTERNAL_SYSTEM_WINDOW for uid=10192 => denied (389 us)
+10-29 15:14:24.787   525   823 W ServiceManagerCppClient: Permission failure: android.permission.ACCESS_SURFACE_FLINGER from uid=10192 pid=0
+10-29 15:14:24.787   525   823 D PermissionCache: checking android.permission.ACCESS_SURFACE_FLINGER for uid=10192 => denied (138 us)
+10-29 15:14:24.790  1598  1905 W AiAiAutofill: Failed to set whitelist for augmented autofill service.
+10-29 15:14:24.790  1598  1905 W AiAiAutofill: java.lang.SecurityException: caller is not user's Augmented Autofill Service
+10-29 15:14:24.790  1598  1905 W AiAiAutofill: 	at android.view.autofill.AutofillManager.setAugmentedAutofillWhitelist(AutofillManager.java:2676)
+10-29 15:14:24.790  1598  1905 W AiAiAutofill: 	at cjj.c(PG:7)
+10-29 15:14:24.790  1598  1905 W AiAiAutofill: 	at cju.g(PG:8)
+10-29 15:14:24.790  1598  1905 W AiAiAutofill: 	at cju.i(Unknown Source:3)
+10-29 15:14:24.790  1598  1905 W AiAiAutofill: 	at cju.h(PG:2)
+10-29 15:14:24.790  1598  1905 W AiAiAutofill: 	at cjv.a(PG:3)
+10-29 15:14:24.790  1598  1905 W AiAiAutofill: 	at dgq.run(PG:41)
+10-29 15:14:24.790  1598  1905 W AiAiAutofill: 	at dgq.run(PG:69)
+10-29 15:14:24.790  1598  1905 W AiAiAutofill: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:487)
+10-29 15:14:24.790  1598  1905 W AiAiAutofill: 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+10-29 15:14:24.790  1598  1905 W AiAiAutofill: 	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:307)
+10-29 15:14:24.790  1598  1905 W AiAiAutofill: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+10-29 15:14:24.790  1598  1905 W AiAiAutofill: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+10-29 15:14:24.790  1598  1905 W AiAiAutofill: 	at dgq.run(PG:67)
+10-29 15:14:24.790  1598  1905 W AiAiAutofill: 	at java.lang.Thread.run(Thread.java:1012)
+10-29 15:14:24.798  1391  4922 I PTCommittedOperation: Receive new configuration for com.google.android.gms.platformconfigurator
+10-29 15:14:24.833   525   544 I ActivityTaskManager: Displayed com.example.buddy/.ui.UiActivity for user 0: +1s558ms
+10-29 15:14:24.838  1391  4923 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+10-29 15:14:24.888  1391  4923 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+10-29 15:14:24.889  1391  4923 I NamespaceManager: Package com.android.media name not found! Using module version.
+10-29 15:14:24.889  1391  4923 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+10-29 15:14:24.890  1391  4923 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+10-29 15:14:24.890  1391  4923 I NamespaceManager: Package com.android.media name not found! Using module version.
+10-29 15:14:24.891  1391  4923 I NamespaceManager: Package 1 name not found! Using module version.
+10-29 15:14:24.891  1391  4923 I NamespaceManager: Package rkpd name not found! Using module version.
+10-29 15:14:24.891  1391  4923 I NamespaceManager: Package android.companion name not found! Using module version.
+10-29 15:14:24.892  1391  4923 I NamespaceManager: Package com.google.android.aicore name not found! Using module version.
+10-29 15:14:24.892  1391  4923 I NamespaceManager: Package com.google.android.audioproxy name not found! Using module version.
+10-29 15:14:24.892  1391  4923 I NamespaceManager: Package com.google.android.apps.pixel.psi name not found! Using module version.
+10-29 15:14:24.893  1391  4923 I NamespaceManager: Package com.google.android.apps.safetycore name not found! Using module version.
+10-29 15:14:24.893  1391  4923 I NamespaceManager: Package com.google.android.crashrecovery name not found! Using module version.
+10-29 15:14:24.893  1391  4923 I NamespaceManager: Package com.google.android.profiling name not found! Using module version.
+10-29 15:14:24.893  1391  4923 I NamespaceManager: Package com.google.android.bt name not found! Using module version.
+10-29 15:14:24.893  1391  4923 I NamespaceManager: Package com.google.android.nfcservices name not found! Using module version.
+10-29 15:14:24.893  1391  4923 I NamespaceManager: Package com.google.android.webapp name not found! Using module version.
+10-29 15:14:24.894  1391  4923 I NamespaceManager: Package com.google.android.telephonycore name not found! Using module version.
+10-29 15:14:24.894  1391  4923 I NamespaceManager: Package com.google.android.uprobestats name not found! Using module version.
+10-29 15:14:24.910  1444  4918 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-29 15:14:24.941   834   895 W WindowOnBackDispatcher: sendCancelIfRunning: isInProgress=falsecallback=android.view.ViewRootImpl$$ExternalSyntheticLambda17@ee68e37
+10-29 15:14:24.944   525  1124 W InputManager-JNI: Input channel object 'dfcc533 Splash Screen com.example.buddy (client)' was disposed without first being removed with the input manager!
+10-29 15:14:24.947   525  2181 D CoreBackPreview: Window{dfcc533 u0 Splash Screen com.example.buddy EXITING}: Setting back callback null
+10-29 15:14:25.087   834   906 D EGL_emulation: app_time_stats: avg=576.66ms min=5.07ms max=1148.24ms count=2
+10-29 15:14:25.093  1391  3048 I PhenotypeIntentOp: Blockstore feature flags are updated. [CONTEXT service_id=258 ]
+10-29 15:14:25.096  1391  3048 I PhenotypeIntentOp: Scheduling periodic backup task to reflect the config changes from feature flags. [CONTEXT service_id=258 ]
+10-29 15:14:25.096  1391  3048 I CloudSyncBpTkSvc: scheduling a periodic backup task. [CONTEXT service_id=258 ]
+10-29 15:14:25.105   525   597 D CompatibilityChangeReporter: Compat change id reported: 161252188; UID 10192; state: DISABLED
+10-29 15:14:25.107  1444  3509 E native  : E0000 00:00:1793286865.107287    3509 document-store.cc:1358] Failed to update per-doc-data with usage report
+10-29 15:14:25.171  1391  4709 W PhenotypeFlagCommitter: Committing snapshot for com.google.android.gms.presencemanager failed, retrying
+10-29 15:14:25.171  1391  4709 W PhenotypeFlagCommitter: java.util.concurrent.TimeoutException: Timed out waiting for Task
+10-29 15:14:25.171  1391  4709 W PhenotypeFlagCommitter: 	at cfsz.o(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+10-29 15:14:25.171  1391  4709 W PhenotypeFlagCommitter: 	at bwch.j(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+10-29 15:14:25.171  1391  4709 W PhenotypeFlagCommitter: 	at bwch.h(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+10-29 15:14:25.171  1391  4709 W PhenotypeFlagCommitter: 	at abfh.f(:com.google.android.gms@231818047@23.18.18 (190800-535401451):12)
+10-29 15:14:25.171  1391  4709 W PhenotypeFlagCommitter: 	at com.google.android.gms.common.config.PhenotypeUpdateOperation.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):15)
+10-29 15:14:25.171  1391  4709 W PhenotypeFlagCommitter: 	at com.google.android.chimera.IntentOperation.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+10-29 15:14:25.171  1391  4709 W PhenotypeFlagCommitter: 	at zhv.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+10-29 15:14:25.171  1391  4709 W PhenotypeFlagCommitter: 	at hjm.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3)
+10-29 15:14:25.171  1391  4709 W PhenotypeFlagCommitter: 	at hjl.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):11)
+10-29 15:14:25.171  1391  4709 W PhenotypeFlagCommitter: 	at dfhf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+10-29 15:14:25.171  1391  4709 W PhenotypeFlagCommitter: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+10-29 15:14:25.171  1391  4709 W PhenotypeFlagCommitter: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+10-29 15:14:25.171  1391  4709 W PhenotypeFlagCommitter: 	at java.lang.Thread.run(Thread.java:1012)
+10-29 15:14:25.171  1391  4709 W PhenotypeCommitHelper: At PhenotypeCommitHelper commitConfiguration failed com.google.android.gms.presencemanager, retrying=[INVALID: format=%b, type=dnyo, value=true] [CONTEXT service_id=256 ]
+10-29 15:14:25.171  1391  4709 W PhenotypeCommitHelper: java.util.concurrent.TimeoutException: Timed out waiting for Task
+10-29 15:14:25.171  1391  4709 W PhenotypeCommitHelper: 	at cfsz.o(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+10-29 15:14:25.171  1391  4709 W PhenotypeCommitHelper: 	at bwch.j(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+10-29 15:14:25.171  1391  4709 W PhenotypeCommitHelper: 	at bwch.h(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+10-29 15:14:25.171  1391  4709 W PhenotypeCommitHelper: 	at abfh.f(:com.google.android.gms@231818047@23.18.18 (190800-535401451):12)
+10-29 15:14:25.171  1391  4709 W PhenotypeCommitHelper: 	at com.google.android.gms.common.config.PhenotypeUpdateOperation.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):15)
+10-29 15:14:25.171  1391  4709 W PhenotypeCommitHelper: 	at com.google.android.chimera.IntentOperation.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+10-29 15:14:25.171  1391  4709 W PhenotypeCommitHelper: 	at zhv.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+10-29 15:14:25.171  1391  4709 W PhenotypeCommitHelper: 	at hjm.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3)
+10-29 15:14:25.171  1391  4709 W PhenotypeCommitHelper: 	at hjl.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):11)
+10-29 15:14:25.171  1391  4709 W PhenotypeCommitHelper: 	at dfhf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+10-29 15:14:25.171  1391  4709 W PhenotypeCommitHelper: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+10-29 15:14:25.171  1391  4709 W PhenotypeCommitHelper: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+10-29 15:14:25.171  1391  4709 W PhenotypeCommitHelper: 	at java.lang.Thread.run(Thread.java:1012)
+10-29 15:14:25.176  1721  4436 I PBSessionCacheImpl: Deleted sessionId[7570831332429532] from persistence.
+10-29 15:14:25.179  1721  2422 W SearchServiceCore: Abort, client detached.
+10-29 15:14:25.179  1721  2422 W SearchServiceCore: Abort, client detached.
+10-29 15:14:25.179  1721  2422 W SearchServiceCore: Abort, client detached.
+10-29 15:14:25.179  1721  2422 W SearchServiceCore: Abort, client detached.
+10-29 15:14:25.179  1721  2422 W SearchServiceCore: Abort, client detached.
+10-29 15:14:25.183  1391  2543 E NanoAppLogging: Failed to begin contexthub communication
+10-29 15:14:25.189  1391  4937 I Fitness : OnPackageChangedOperation got intent: Intent { act=android.intent.action.PACKAGE_CHANGED dat=package: flg=0x45000010 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.PersistentIntentO
+10-29 15:14:25.189  1083  1154 I ImeTracker: com.google.android.apps.nexuslauncher:c3b70a29: onRequestHide at ORIGIN_CLIENT_HIDE_SOFT_INPUT reason HIDE_SOFT_INPUT
+10-29 15:14:25.190   525  2179 I ImeTracker: com.google.android.apps.nexuslauncher:c3b70a29: onCancelled at PHASE_SERVER_SHOULD_HIDE
+10-29 15:14:25.194  1083  2061 D OneSearchSuggestProvider: Shut down the binder channel
+10-29 15:14:25.195  1083  1383 I IPCThreadState: oneway function results for code 2 on binder at 0x7db7d51c4ea0 will be dropped but finished with status UNKNOWN_TRANSACTION
+10-29 15:14:25.218  1020  1323 D BtGatt.ScanManager: uid 10131 isForeground true scanMode -1
+10-29 15:14:25.219  1020  1323 D BtGatt.ScanManager: uid 10131 isForeground true scanMode -1
+10-29 15:14:25.300  1391  4936 I Fitness : FitCleanupIntentOperation received Intent android.intent.action.PACKAGE_CHANGED [CONTEXT service_id=17 ]

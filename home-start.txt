@@ -1,0 +1,5 @@
+adb: device 'emulator-5554' not found
+app was killed by the system, start 3
+adb: device 'emulator-5554' not found
+app not running
+the emulator died, no picture for home

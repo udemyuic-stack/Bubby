@@ -1,0 +1,150 @@
+10-29 15:19:48.427  1634  1996 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0 (types=[])
+10-29 15:19:48.428  1634  1996 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0 (types=[])
+10-29 15:19:48.428   521  1790 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+10-29 15:19:48.429   521  1790 D PackageManager: Clear ephemeral installer activity
+10-29 15:19:48.430   843   843 W PageIndicator: Total number of pages invalid: 0. Assuming 1 page.
+10-29 15:19:48.431  1409  4948 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+10-29 15:19:48.432  1409  4948 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+10-29 15:19:48.433  1409  4948 I NamespaceManager: Package com.android.media name not found! Using module version.
+10-29 15:19:48.433  1409  4948 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+10-29 15:19:48.434  1409  4948 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+10-29 15:19:48.434  1409  4948 I NamespaceManager: Package com.android.media name not found! Using module version.
+10-29 15:19:48.435  1409  4948 I NamespaceManager: Package 1 name not found! Using module version.
+10-29 15:19:48.436  1409  4948 I NamespaceManager: Package rkpd name not found! Using module version.
+10-29 15:19:48.436  1409  4948 I NamespaceManager: Package android.companion name not found! Using module version.
+10-29 15:19:48.437  1409  4948 I NamespaceManager: Package com.google.android.aicore name not found! Using module version.
+10-29 15:19:48.437  1409  4948 I NamespaceManager: Package com.google.android.audioproxy name not found! Using module version.
+10-29 15:19:48.438  1409  4948 I NamespaceManager: Package com.google.android.apps.pixel.psi name not found! Using module version.
+10-29 15:19:48.439  1409  4948 I NamespaceManager: Package com.google.android.apps.safetycore name not found! Using module version.
+10-29 15:19:48.439  1409  4948 I NamespaceManager: Package com.google.android.crashrecovery name not found! Using module version.
+10-29 15:19:48.440  1409  4948 I NamespaceManager: Package com.google.android.profiling name not found! Using module version.
+10-29 15:19:48.441  1409  4948 I NamespaceManager: Package com.google.android.bt name not found! Using module version.
+10-29 15:19:48.441  1409  4948 I NamespaceManager: Package com.google.android.nfcservices name not found! Using module version.
+10-29 15:19:48.441  1409  4948 I NamespaceManager: Package com.google.android.webapp name not found! Using module version.
+10-29 15:19:48.442  1409  4948 I NamespaceManager: Package com.google.android.telephonycore name not found! Using module version.
+10-29 15:19:48.442  1409  4948 I NamespaceManager: Package com.google.android.uprobestats name not found! Using module version.
+10-29 15:19:48.460  1409  4948 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+10-29 15:19:48.461  1409  4948 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+10-29 15:19:48.462  1409  4948 I NamespaceManager: Package com.android.media name not found! Using module version.
+10-29 15:19:48.462  1409  4948 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+10-29 15:19:48.463  1409  4948 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+10-29 15:19:48.463  1409  4948 I NamespaceManager: Package com.android.media name not found! Using module version.
+10-29 15:19:48.463  1409  4948 I NamespaceManager: Package 1 name not found! Using module version.
+10-29 15:19:48.464  1409  4948 I NamespaceManager: Package rkpd name not found! Using module version.
+10-29 15:19:48.466  1409  4948 I NamespaceManager: Package android.companion name not found! Using module version.
+10-29 15:19:48.467  1409  4948 I NamespaceManager: Package com.google.android.aicore name not found! Using module version.
+10-29 15:19:48.467  1409  4948 I NamespaceManager: Package com.google.android.audioproxy name not found! Using module version.
+10-29 15:19:48.468  1409  4948 I NamespaceManager: Package com.google.android.apps.pixel.psi name not found! Using module version.
+10-29 15:19:48.469  1409  4948 I NamespaceManager: Package com.google.android.apps.safetycore name not found! Using module version.
+10-29 15:19:48.470  1409  4948 I NamespaceManager: Package com.google.android.crashrecovery name not found! Using module version.
+10-29 15:19:48.470  1409  4948 I NamespaceManager: Package com.google.android.profiling name not found! Using module version.
+10-29 15:19:48.471  1409  4948 I NamespaceManager: Package com.google.android.bt name not found! Using module version.
+10-29 15:19:48.471  1409  4948 I NamespaceManager: Package com.google.android.nfcservices name not found! Using module version.
+10-29 15:19:48.472  1409  4948 I NamespaceManager: Package com.google.android.webapp name not found! Using module version.
+10-29 15:19:48.472  1409  4948 I NamespaceManager: Package com.google.android.telephonycore name not found! Using module version.
+10-29 15:19:48.473  1409  4948 I NamespaceManager: Package com.google.android.uprobestats name not found! Using module version.
+10-29 15:19:48.475   521  2023 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+10-29 15:19:48.475   521  2023 D PackageManager: Clear ephemeral installer activity
+10-29 15:19:48.493  1409  4948 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+10-29 15:19:48.495  1409  4948 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+10-29 15:19:48.496  1409  4948 I NamespaceManager: Package com.android.media name not found! Using module version.
+10-29 15:19:48.496  1409  4948 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+10-29 15:19:48.497  1409  4948 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+10-29 15:19:48.497  1409  4948 I NamespaceManager: Package com.android.media name not found! Using module version.
+10-29 15:19:48.498  1409  4948 I NamespaceManager: Package 1 name not found! Using module version.
+10-29 15:19:48.498  1409  4948 I NamespaceManager: Package rkpd name not found! Using module version.
+10-29 15:19:48.499  1409  4948 I NamespaceManager: Package android.companion name not found! Using module version.
+10-29 15:19:48.499  1409  4948 I NamespaceManager: Package com.google.android.aicore name not found! Using module version.
+10-29 15:19:48.501  1409  4948 I NamespaceManager: Package com.google.android.audioproxy name not found! Using module version.
+10-29 15:19:48.501  1409  4948 I NamespaceManager: Package com.google.android.apps.pixel.psi name not found! Using module version.
+10-29 15:19:48.503  1409  4948 I NamespaceManager: Package com.google.android.apps.safetycore name not found! Using module version.
+10-29 15:19:48.503  1409  4948 I NamespaceManager: Package com.google.android.crashrecovery name not found! Using module version.
+10-29 15:19:48.504  1409  4948 I NamespaceManager: Package com.google.android.profiling name not found! Using module version.
+10-29 15:19:48.504  1409  4948 I NamespaceManager: Package com.google.android.bt name not found! Using module version.
+10-29 15:19:48.505  1409  4948 I NamespaceManager: Package com.google.android.nfcservices name not found! Using module version.
+10-29 15:19:48.505  1409  4948 I NamespaceManager: Package com.google.android.webapp name not found! Using module version.
+10-29 15:19:48.506  1409  4948 I NamespaceManager: Package com.google.android.telephonycore name not found! Using module version.
+10-29 15:19:48.506  1409  4948 I NamespaceManager: Package com.google.android.uprobestats name not found! Using module version.
+10-29 15:19:48.515   521   617 I RescueParty: Starting to observe: [android], updated namespace: wifi
+10-29 15:19:48.515   521   547 I PackageWatchdog: Syncing state, reason: observing new packages
+10-29 15:19:48.515   521   547 D PackageWatchdog: rescue-party-observer added the following packages to monitor [android]
+10-29 15:19:48.515   521   547 I PackageWatchdog: Syncing state, reason: updated observers
+10-29 15:19:48.515   521   547 I PackageWatchdog: Not pruning observers, elapsed time: 0ms
+10-29 15:19:48.516   521   521 I PackageWatchdog: Syncing health check requests for packages: {}
+10-29 15:19:48.516   521   521 I ExplicitHealthCheckController: Service not ready to get health check supported packages. Binding...
+10-29 15:19:48.518   521   521 I ExplicitHealthCheckController: Explicit health check service is bound
+10-29 15:19:48.518   521   521 I PackageWatchdog: Syncing health check requests for packages: {}
+10-29 15:19:48.518   521   521 I ExplicitHealthCheckController: Service not ready to get health check supported packages. Binding...
+10-29 15:19:48.518   521   521 I ExplicitHealthCheckController: Not binding to service, service already connecting
+10-29 15:19:48.518   521   547 I PackageWatchdog: Saving observer state to file
+10-29 15:19:48.525   521   521 I ExplicitHealthCheckController: Explicit health check service is connected ComponentInfo{com.google.android.ext.services/android.ext.services.watchdog.ExplicitHealthCheckServiceImpl}
+10-29 15:19:48.526   521   521 I ExplicitHealthCheckController: Service initialized, syncing requests
+10-29 15:19:48.528   521   521 I PackageWatchdog: Syncing health check requests for packages: {}
+10-29 15:19:48.529   521   521 D ExplicitHealthCheckController: Getting health check supported packages
+10-29 15:19:48.534   521   915 I ExplicitHealthCheckController: Explicit health check supported packages [PackageConfig{com.google.android.networkstack, 86400000}]
+10-29 15:19:48.534   521   915 D PackageWatchdog: Received supported packages [PackageConfig{com.google.android.networkstack, 86400000}]
+10-29 15:19:48.534   521   915 D ExplicitHealthCheckController: Getting health check requested packages
+10-29 15:19:48.535   521   915 I ExplicitHealthCheckController: Explicit health check requested packages []
+10-29 15:19:48.535   521   915 I ExplicitHealthCheckController: No more health check requests, unbinding...
+10-29 15:19:48.535   521   915 I ExplicitHealthCheckController: Explicit health check service is unbound
+10-29 15:19:48.539  1409  4948 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+10-29 15:19:48.540  1409  4948 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+10-29 15:19:48.540  1409  4948 I NamespaceManager: Package com.android.media name not found! Using module version.
+10-29 15:19:48.541  1409  4948 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+10-29 15:19:48.541  1409  4948 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+10-29 15:19:48.542  1409  4948 I NamespaceManager: Package com.android.media name not found! Using module version.
+10-29 15:19:48.543  1409  4948 I NamespaceManager: Package 1 name not found! Using module version.
+10-29 15:19:48.543  1409  4948 I NamespaceManager: Package rkpd name not found! Using module version.
+10-29 15:19:48.544  1409  4948 I NamespaceManager: Package android.companion name not found! Using module version.
+10-29 15:19:48.555  1409  4948 I NamespaceManager: Package com.google.android.aicore name not found! Using module version.
+10-29 15:19:48.555  1409  4948 I NamespaceManager: Package com.google.android.audioproxy name not found! Using module version.
+10-29 15:19:48.556  1409  4948 I NamespaceManager: Package com.google.android.apps.pixel.psi name not found! Using module version.
+10-29 15:19:48.559  1409  4948 I NamespaceManager: Package com.google.android.apps.safetycore name not found! Using module version.
+10-29 15:19:48.560  1409  4948 I NamespaceManager: Package com.google.android.crashrecovery name not found! Using module version.
+10-29 15:19:48.560  1409  4948 I NamespaceManager: Package com.google.android.profiling name not found! Using module version.
+10-29 15:19:48.560  1409  4948 I NamespaceManager: Package com.google.android.bt name not found! Using module version.
+10-29 15:19:48.561  1409  4948 I NamespaceManager: Package com.google.android.nfcservices name not found! Using module version.
+10-29 15:19:48.561  1409  4948 I NamespaceManager: Package com.google.android.webapp name not found! Using module version.
+10-29 15:19:48.561  1409  4948 I NamespaceManager: Package com.google.android.telephonycore name not found! Using module version.
+10-29 15:19:48.563  1409  4948 I NamespaceManager: Package com.google.android.uprobestats name not found! Using module version.
+10-29 15:19:48.571  1409  4948 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+10-29 15:19:48.572  1409  4948 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+10-29 15:19:48.572  1409  4948 I NamespaceManager: Package com.android.media name not found! Using module version.
+10-29 15:19:48.572  1409  4948 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+10-29 15:19:48.572  1409  4948 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+10-29 15:19:48.573  1409  4948 I NamespaceManager: Package com.android.media name not found! Using module version.
+10-29 15:19:48.573  1409  4948 I NamespaceManager: Package 1 name not found! Using module version.
+10-29 15:19:48.573  1409  4948 I NamespaceManager: Package rkpd name not found! Using module version.
+10-29 15:19:48.573  1409  4948 I NamespaceManager: Package android.companion name not found! Using module version.
+10-29 15:19:48.573  1409  4948 I NamespaceManager: Package com.google.android.aicore name not found! Using module version.
+10-29 15:19:48.574  1409  4948 I NamespaceManager: Package com.google.android.audioproxy name not found! Using module version.
+10-29 15:19:48.574  1409  4948 I NamespaceManager: Package com.google.android.apps.pixel.psi name not found! Using module version.
+10-29 15:19:48.574  1409  4948 I NamespaceManager: Package com.google.android.apps.safetycore name not found! Using module version.
+10-29 15:19:48.574  1409  4948 I NamespaceManager: Package com.google.android.crashrecovery name not found! Using module version.
+10-29 15:19:48.575  1409  4948 I NamespaceManager: Package com.google.android.profiling name not found! Using module version.
+10-29 15:19:48.575  1409  4948 I NamespaceManager: Package com.google.android.bt name not found! Using module version.
+10-29 15:19:48.575  1409  4948 I NamespaceManager: Package com.google.android.nfcservices name not found! Using module version.
+10-29 15:19:48.576  1409  4948 I NamespaceManager: Package com.google.android.webapp name not found! Using module version.
+10-29 15:19:48.576  1409  4948 I NamespaceManager: Package com.google.android.telephonycore name not found! Using module version.
+10-29 15:19:48.576  1409  4948 I NamespaceManager: Package com.google.android.uprobestats name not found! Using module version.
+10-29 15:19:48.579   521   611 D ActivityManager: freezing 4184 com.google.android.marvin.talkback
+10-29 15:19:48.581  1409  4948 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+10-29 15:19:48.581  1409  4948 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+10-29 15:19:48.581  1409  4948 I NamespaceManager: Package com.android.media name not found! Using module version.
+10-29 15:19:48.581  1409  4948 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+10-29 15:19:48.582  1409  4948 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+10-29 15:19:48.582  1409  4948 I NamespaceManager: Package com.android.media name not found! Using module version.
+10-29 15:19:48.582  1409  4948 I NamespaceManager: Package 1 name not found! Using module version.
+10-29 15:19:48.582  1409  4948 I NamespaceManager: Package rkpd name not found! Using module version.
+10-29 15:19:48.582  1409  4948 I NamespaceManager: Package android.companion name not found! Using module version.
+10-29 15:19:48.582  1409  4948 I NamespaceManager: Package com.google.android.aicore name not found! Using module version.
+10-29 15:19:48.582  1409  4948 I NamespaceManager: Package com.google.android.audioproxy name not found! Using module version.
+10-29 15:19:48.582  1409  4948 I NamespaceManager: Package com.google.android.apps.pixel.psi name not found! Using module version.
+10-29 15:19:48.583  1409  4948 I NamespaceManager: Package com.google.android.apps.safetycore name not found! Using module version.
+10-29 15:19:48.583  1409  4948 I NamespaceManager: Package com.google.android.crashrecovery name not found! Using module version.
+10-29 15:19:48.583  1409  4948 I NamespaceManager: Package com.google.android.profiling name not found! Using module version.
+10-29 15:19:48.583  1409  4948 I NamespaceManager: Package com.google.android.bt name not found! Using module version.
+10-29 15:19:48.583  1409  4948 I NamespaceManager: Package com.google.android.nfcservices name not found! Using module version.
+10-29 15:19:48.583  1409  4948 I NamespaceManager: Package com.google.android.webapp name not found! Using module version.
+10-29 15:19:48.583  1409  4948 I NamespaceManager: Package com.google.android.telephonycore name not found! Using module version.
+10-29 15:19:48.583  1409  4948 I NamespaceManager: Package com.google.android.uprobestats name not found! Using module version.

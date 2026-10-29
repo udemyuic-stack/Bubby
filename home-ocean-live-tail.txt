@@ -1,0 +1,150 @@
+10-29 15:16:40.913  1591  2187 I NgaEntryPointEventSendr: State changed: Disconnected => Connecting
+10-29 15:16:40.914  1591  2187 I NgaEntryPointEventSendr: onServiceConnected
+10-29 15:16:40.914  1776  2843 I A       : Calling beginBinderSession().
+10-29 15:16:40.925  1776  2843 I A       : beginBinderSession(): calling binder
+10-29 15:16:40.930  1591  2187 I NgaEntryPointEventSendr: State changed: Connecting => Ready
+10-29 15:16:40.944  1591  2180 I A       : #onActiveStateChangeEvent, newState: IDLE, previousState: IDLE.
+10-29 15:16:40.951   522  2942 W ActivityManager: Unable to start service Intent { cmp=com.google.android.apps.tachyon/.clientapi.ClientApiService } U=0: not found
+10-29 15:16:40.954  1591  2187 W A       : Routing took 42 ms
+10-29 15:16:40.960   522  2015 D CompatibilityChangeReporter: Compat change id reported: 197654537; UID 10192; state: ENABLED
+10-29 15:16:40.965   522   535 W JobScheduler: Job didn't exist in JobStore: d9945e5 #u0a139/2 com.google.android.youtube/androidx.work.impl.background.systemjob.SystemJobService
+10-29 15:16:40.971  1591  2180 I A       : Successfully initialized all components
+10-29 15:16:40.983  1591  1614 I hbox:interactor: Background young concurrent copying GC freed 38097(2297KB) AllocSpace objects, 5(100KB) LOS objects, 17% free, 8367KB/10164KB, paused 270us,14us total 120.411ms
+10-29 15:16:40.986  1591  2187 I NgaEntryPointEventSendr: State changed: Ready => Disconnected (onOpaDisconnected)
+10-29 15:16:40.987  1776  2530 W A       : UiCallbackStub-onGenericEvent[ServiceEvent = 60] task was not run. Callback from Service received after client was disposed.
+10-29 15:16:40.989  1776  2530 W SearchServiceCore: Abort, client detached.
+10-29 15:16:40.991  1776  2809 I PBSessionCacheImpl: Deleted sessionId[7812723890661957] from persistence.
+10-29 15:16:41.073   832   832 D StatusBarIconController: ignoring old pipeline callbacks, because the new mobile icons are enabled
+10-29 15:16:41.211  5595  5613 D EGL_emulation: app_time_stats: avg=18.05ms min=12.91ms max=29.56ms count=51
+10-29 15:16:41.384   522   550 D OomAdjuster: Not killing cached processes
+10-29 15:16:41.757  5595  5595 I com.example.buddy: Perf: native scene 22 fps
+10-29 15:16:41.818  5716  5716 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+10-29 15:16:41.818  5716  5716 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+10-29 15:16:41.825   403   417 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=5716
+10-29 15:16:41.825   403   417 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (371 us)
+10-29 15:16:41.846   134   134 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+10-29 15:16:41.847  5716  5717 I Gralloc4: mapper 4.x is not supported
+10-29 15:16:42.029     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+10-29 15:16:42.226  5595  5613 D EGL_emulation: app_time_stats: avg=16.97ms min=12.09ms max=25.64ms count=55
+10-29 15:16:42.653   522   610 D ActivityManager: freezing 1047 com.android.settings
+10-29 15:16:43.077   522   610 D ActivityManager: freezing 1760 com.google.android.apps.youtube.music
+10-29 15:16:43.231  5595  5613 D EGL_emulation: app_time_stats: avg=16.15ms min=11.64ms max=24.60ms count=57
+10-29 15:16:43.240   522   610 D ActivityManager: freezing 2491 com.google.android.tts
+10-29 15:16:43.796   522   610 D ActivityManager: freezing 4416 com.google.android.googlequicksearchbox
+10-29 15:16:43.974   522   610 D ActivityManager: freezing 3721 com.google.android.gm
+10-29 15:16:44.006   522   610 D ActivityManager: freezing 4198 com.google.android.marvin.talkback
+10-29 15:16:44.045   522   610 D ActivityManager: freezing 2855 com.google.android.dialer
+10-29 15:16:44.130  1901  1901 V ContactsProvider: Scheduled notifyChange started.
+10-29 15:16:44.131  1022  1022 D BluetoothPbapService:  onChange on contact uri 
+10-29 15:16:44.138  1022  5721 D BluetoothPbapUtils: primaryVersionCounter = 0, secondaryVersionCounter=0
+10-29 15:16:44.170  5720  5720 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+10-29 15:16:44.179  5720  5720 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+10-29 15:16:44.186  5031  5078 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.icing.proxy.IcingInternalCorporaUpdateService started execution. cause:9 exec_start_elapsed_seconds: 91 [CONTEXT service_id=218 ]
+10-29 15:16:44.190   134   134 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+10-29 15:16:44.191  5720  5722 I Gralloc4: mapper 4.x is not supported
+10-29 15:16:44.373     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+10-29 15:16:44.202  5031  5057 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.icing.proxy.IcingInternalCorporaUpdateService finished executing. cause:9 result: 1 elapsed_millis: 33 uptime_millis: 33 exec_start_
+10-29 15:16:44.241   522   610 D ActivityManager: freezing 3857 com.google.android.projection.gearhead:shared
+10-29 15:16:44.247  5595  5613 D EGL_emulation: app_time_stats: avg=17.51ms min=12.72ms max=26.77ms count=53
+10-29 15:16:44.334  5031  5031 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.auth.account.data.service.START pkg=com.google.android.gms }
+10-29 15:16:45.156   522   916 W JobScheduler: Job didn't exist in JobStore: e11c0ce #u0a153/7 com.google.android.contacts/com.google.android.apps.contacts.shortcut.ShortcutJobService
+10-29 15:16:45.271  5595  5613 D EGL_emulation: app_time_stats: avg=17.19ms min=12.52ms max=25.35ms count=55
+10-29 15:16:45.780  5595  5595 I com.example.buddy: Perf: native scene 22 fps
+10-29 15:16:46.153   522  2015 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+10-29 15:16:46.153   522  2015 D PackageManager: Clear ephemeral installer activity
+10-29 15:16:46.158   522  2015 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+10-29 15:16:46.158   522  2015 D PackageManager: Clear ephemeral installer activity
+10-29 15:16:46.277  5595  5613 D EGL_emulation: app_time_stats: avg=17.05ms min=13.24ms max=23.31ms count=55
+10-29 15:16:46.302  5031  5031 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.nearby.exposurenotification.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiServiceNoInstantApps }
+10-29 15:16:46.303  5100  5100 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.ocr.service.internal.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsInternalApiService }
+10-29 15:16:46.895   522   535 D OomAdjuster: Not killing cached processes
+10-29 15:16:46.896  5100  5100 I NearbySharing: SharingTileService destroyed [CONTEXT service_id=194 ]
+10-29 15:16:47.163   522   622 I InputReader: Reconfiguring input devices, changes=KEYBOARD_LAYOUTS
+10-29 15:16:47.175   832   897 D StylusManager: Stylus InputDevice changed: 14 virtio_input_multi_touch_11
+10-29 15:16:47.177  1046  1046 D CarrierSvcBindHelper: onPackageModified: com.google.android.contacts
+10-29 15:16:47.177  1022  1022 V MediaPlayerList: mPackageChangedBroadcastReceiver: action: android.intent.action.PACKAGE_CHANGED
+10-29 15:16:47.177  1022  1022 V MediaPlayerList: mPackageChangedBroadcastReceiver: action: android.intent.action.PACKAGE_CHANGED
+10-29 15:16:47.178  1046  1046 D CarrierSvcBindHelper: No carrier app for: 0
+10-29 15:16:47.182   522   610 D ActivityManager: freezing 3725 com.google.android.configupdater
+10-29 15:16:47.192   522   610 D ActivityManager: freezing 2108 android.process.media
+10-29 15:16:47.218   833  3824 I PermissionControllerServiceImpl: Updating user sensitive for uid 10153
+10-29 15:16:47.221   832   832 D ControlsListingControllerImpl: ServiceConfig reloaded, count: 0
+10-29 15:16:47.224   832   897 D StylusManager: Stylus InputDevice changed: 13 virtio_input_multi_touch_10
+10-29 15:16:47.225   832   897 D StylusManager: Stylus InputDevice changed: 10 virtio_input_multi_touch_7
+10-29 15:16:47.225  1046  1331 D ImsResolver: maybeAddedImsService, packageName: com.google.android.contacts
+10-29 15:16:47.227   832   897 D StylusManager: Stylus InputDevice changed: 7 virtio_input_multi_touch_4
+10-29 15:16:47.227   832   897 D StylusManager: Stylus InputDevice changed: 4 virtio_input_multi_touch_1
+10-29 15:16:47.232   832   897 D StylusManager: Stylus InputDevice changed: 6 virtio_input_multi_touch_3
+10-29 15:16:47.233   832   897 D StylusManager: Stylus InputDevice changed: 11 virtio_input_multi_touch_8
+10-29 15:16:47.233   832   897 D StylusManager: Stylus InputDevice changed: 12 virtio_input_multi_touch_9
+10-29 15:16:47.233   832   897 D StylusManager: Stylus InputDevice changed: 5 virtio_input_multi_touch_2
+10-29 15:16:47.237   832   897 D StylusManager: Stylus InputDevice changed: 8 virtio_input_multi_touch_5
+10-29 15:16:47.238   832   897 D StylusManager: Stylus InputDevice changed: 9 virtio_input_multi_touch_6
+10-29 15:16:47.256   522   603 D ActivityManager: sync unfroze 1760 com.google.android.apps.youtube.music for 6
+10-29 15:16:47.287  5595  5613 D EGL_emulation: app_time_stats: avg=17.42ms min=13.27ms max=27.60ms count=54
+10-29 15:16:47.288   522   550 E system_server: No package ID 7f found for resource ID 0x7f080107.
+10-29 15:16:47.290   522   550 E system_server: No package ID 7f found for resource ID 0x7f150560.
+10-29 15:16:47.298   522   610 D ActivityManager: freezing 4698 com.google.android.settings.intelligence
+10-29 15:16:47.299   522   916 D ConnectivityService: requestNetwork for uid/pid:10156/1760 activeRequest: null callbackRequest: 140 [NetworkRequest [ REQUEST id=141, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 1015
+10-29 15:16:47.308  1586  1586 I AiAiEcho: AppFetcherImpl onPackageChanged com.google.android.contacts.
+10-29 15:16:47.310   522   751 D WifiNetworkFactory: got request NetworkRequest [ REQUEST id=141, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10156 RequestorUid: 10156 RequestorPkg: com.google.android.apps.youtube.m
+10-29 15:16:47.310   522   751 D UntrustedWifiNetworkFactory: got request NetworkRequest [ REQUEST id=141, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10156 RequestorUid: 10156 RequestorPkg: com.google.android.apps.
+10-29 15:16:47.310   522   758 D ConnectivityService: NetReassign [141 : null → 100] [c 0] [a 0] [i 1]
+10-29 15:16:47.310   522   751 D OemPaidWifiNetworkFactory: got request NetworkRequest [ REQUEST id=141, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10156 RequestorUid: 10156 RequestorPkg: com.google.android.apps.yo
+10-29 15:16:47.310   522   751 D MultiInternetWifiNetworkFactory: got request NetworkRequest [ REQUEST id=141, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10156 RequestorUid: 10156 RequestorPkg: com.google.android.a
+10-29 15:16:47.311  1586  2633 I AiAiEcho: AppIndexer Package:[com.google.android.contacts] UserProfile:[0] Enabled:[true].
+10-29 15:16:47.313  1586  2633 I AiAiEcho: AppFetcherImplV2 updateApps package:[com.google.android.contacts], userId:[0], reason:[package is updated.].
+10-29 15:16:47.386  1760  2500 W YouTubeMusic: Could not register for notifications with InnerTube: 
+10-29 15:16:47.386  1760  2500 W YouTubeMusic: abqx: zvm: Precondition check failed.
+10-29 15:16:47.386  1760  2500 W YouTubeMusic: 	at abqn.apply(Unknown Source:4)
+10-29 15:16:47.386  1760  2500 W YouTubeMusic: 	at yyi.r(PG:5)
+10-29 15:16:47.386  1760  2500 W YouTubeMusic: 	at yyi.b(PG:2)
+10-29 15:16:47.386  1760  2500 W YouTubeMusic: 	at abqp.d(PG:4)
+10-29 15:16:47.386  1760  2500 W YouTubeMusic: 	at agsb.c(PG:63)
+10-29 15:16:47.386  1760  2500 W YouTubeMusic: 	at agsb.j(PG:38)
+10-29 15:16:47.386  1760  2500 W YouTubeMusic: 	at agsb.d(PG:3)
+10-29 15:16:47.386  1760  2500 W YouTubeMusic: 	at agrz.run(Unknown Source:2)
+10-29 15:16:47.386  1760  2500 W YouTubeMusic: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:487)
+10-29 15:16:47.386  1760  2500 W YouTubeMusic: 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+10-29 15:16:47.386  1760  2500 W YouTubeMusic: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+10-29 15:16:47.386  1760  2500 W YouTubeMusic: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+10-29 15:16:47.386  1760  2500 W YouTubeMusic: 	at smg.run(PG:2)
+10-29 15:16:47.386  1760  2500 W YouTubeMusic: 	at java.lang.Thread.run(Thread.java:1012)
+10-29 15:16:47.386  1760  2500 W YouTubeMusic: 	at snu.run(PG:5)
+10-29 15:16:47.386  1760  2500 W YouTubeMusic: Caused by: zvm: Precondition check failed.
+10-29 15:16:47.386  1760  2500 W YouTubeMusic: 	at abpb.e(PG:5)
+10-29 15:16:47.386  1760  2500 W YouTubeMusic: 	at zhp.f(PG:1)
+10-29 15:16:47.386  1760  2500 W YouTubeMusic: 	at zhp.e(PG:1)
+10-29 15:16:47.386  1760  2500 W YouTubeMusic: 	at zgl.run(PG:19)
+10-29 15:16:47.386  1760  2500 W YouTubeMusic: 	at aosb.run(PG:3)
+10-29 15:16:47.386  1760  2500 W YouTubeMusic: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+10-29 15:16:47.386  1760  2500 W YouTubeMusic: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+10-29 15:16:47.386  1760  2500 W YouTubeMusic: 	at yxr.run(PG:11)
+10-29 15:16:47.386  1760  2500 W YouTubeMusic: 	at java.lang.Thread.run(Thread.java:1012)
+10-29 15:16:47.386  1760  2500 W YouTubeMusic: Caused by: efc
+10-29 15:16:47.386  1760  2500 W YouTubeMusic: 	at zgl.run(PG:13)
+10-29 15:16:47.386  1760  2500 W YouTubeMusic: 	... 5 more
+10-29 15:16:47.390   522   916 W JobScheduler: Job didn't exist in JobStore: 1a3a3c0 #u0a156/4 com.google.android.apps.youtube.music/androidx.work.impl.background.systemjob.SystemJobService
+10-29 15:16:47.497  1760  2531 W YouTubeMusic: Invalid playback type; streaming data is not playable
+10-29 15:16:47.505  1760  1760 E Widget.RecentlyPlayed: Filling bundle but recently played items are EMPTY.
+10-29 15:16:47.663  4193  4280 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of bdxy@e56ce46
+10-29 15:16:47.676  5031  5728 I Fitness : OnPackageChangedOperation got intent: Intent { act=android.intent.action.PACKAGE_CHANGED dat=package: flg=0x45000010 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.PersistentIntentO
+10-29 15:16:47.686  5031  5735 I Fitness : FitCleanupIntentOperation received Intent android.intent.action.PACKAGE_CHANGED [CONTEXT service_id=17 ]
+10-29 15:16:47.696  5100  5136 I Icing   : IndexChimeraService.getServiceInterface callingPackage=com.google.android.gms componentName=AppsCorpus serviceId=36
+10-29 15:16:47.713  5031  5055 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+10-29 15:16:47.716  5100  5194 D TrafficStats: tagSocket(86) with statsTag=0x30001803, statsUid=-1
+10-29 15:16:47.720  5031  5055 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+10-29 15:16:47.743  5100  5245 I Icing   : Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0
+10-29 15:16:47.744  5100  5245 I Icing   : Indexing com.google.android.gms-apps from com.google.android.gms
+10-29 15:16:47.751  5100  5245 I Icing   : Indexing done com.google.android.gms-apps
+10-29 15:16:48.298  5595  5613 D EGL_emulation: app_time_stats: avg=16.87ms min=11.34ms max=26.09ms count=54
+10-29 15:16:48.507   337   373 I netd    : tetherGetStats() -> {[]} <0.47ms>
+10-29 15:16:48.514   337   373 I netd    : bandwidthRemoveInterfaceQuota(eth0) <0.42ms>
+10-29 15:16:48.514   337   373 I netd    : bandwidthSetInterfaceQuota(eth0, 9223372036854775807) <0.29ms>
+10-29 15:16:48.521   337   373 I netd    : bandwidthSetGlobalAlert(2097152) <0.13ms>
+10-29 15:16:49.317  5595  5613 D EGL_emulation: app_time_stats: avg=16.92ms min=12.06ms max=33.16ms count=54
+10-29 15:16:49.459  5746  5746 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+10-29 15:16:49.460  5746  5746 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+10-29 15:16:49.485   134   134 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+10-29 15:16:49.485  5746  5747 I Gralloc4: mapper 4.x is not supported
+10-29 15:16:49.648     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.

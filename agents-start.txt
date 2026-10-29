@@ -1,0 +1,8 @@
+Starting: Intent { cmp=com.example.buddy/.ui.UiActivity (has extras) }
+Status: ok
+LaunchState: COLD
+Activity: com.example.buddy/.ui.UiActivity
+TotalTime: 1479
+WaitTime: 1488
+Complete
+4994

@@ -1,0 +1,150 @@
+10-29 15:22:00.086  5210  5210 D CompatibilityChangeReporter: Compat change id reported: 160794467; UID 10131; state: ENABLED
+10-29 15:22:00.090  5210  5210 W ProviderHelper: Unknown dynamite feature providerinstaller.dynamite
+10-29 15:22:00.093  5210  5210 I DynamiteModule: Considering local module com.google.android.gms.providerinstaller.dynamite:1 and remote module com.google.android.gms.providerinstaller.dynamite:0
+10-29 15:22:00.093  5210  5210 I DynamiteModule: Selected local version of com.google.android.gms.providerinstaller.dynamite
+10-29 15:22:00.096  5210  5210 V NativeCrypto: Registering com/google/android/gms/org/conscrypt/NativeCrypto's 295 native methods...
+10-29 15:22:00.102  5210  5210 I ProviderInstaller: Installed default security provider GmsCore_OpenSSL
+10-29 15:22:00.113  5210  5210 D CompatibilityChangeReporter: Compat change id reported: 183155436; UID 10131; state: ENABLED
+10-29 15:22:00.113  5210  5210 I GmsApplication: [gms_startup_benchmark] Static start time (ms): 93227, Startup latency (ms): 74, Is system user: true
+10-29 15:22:00.114  5210  5210 I cuir    : Primes not initialized, returning default (no-op) Primes instance which will ignore all calls. Please call Primes.initialize(...) before using any Primes API.
+10-29 15:22:00.114   523  2610 I ActivityManager: Flag disabled. Ignoring finishAttachApplication from uid: 10131. pid: 5210
+10-29 15:22:00.120  5210  5210 I SnapshotHandler: Unable to retrieve flag snapshot for com.google.android.gms.phenotype, using defaults.
+10-29 15:22:00.121  5210  5238 I DynamiteModule: Considering local module com.google.android.gms.googlecertificates:7 and remote module com.google.android.gms.googlecertificates:7
+10-29 15:22:00.121  5210  5238 I DynamiteModule: Selected local version of com.google.android.gms.googlecertificates
+10-29 15:22:00.124  5210  5234 I GmsApplication: Registering the BackgroundBroadcastReceiverSupport receiver.
+10-29 15:22:00.149  5210  5234 I GmsReceiverSupport: Registered Receiver for 15+1 IntentFilters
+10-29 15:22:00.150  5210  5234 I Watchcat: Started
+10-29 15:22:00.152  5210  5234 I GMS_MM_Logger: Start time: 65868
+10-29 15:22:00.154  5210  5241 I ProcessStableCheckInFix: Running fixer!
+10-29 15:22:00.160  5210  5241 I SnapshotHandler: Unable to retrieve flag snapshot for com.google.android.gms.test_process_stable, using defaults.
+10-29 15:22:00.161  5210  5234 I GMS_MM_Logger: Started.
+10-29 15:22:00.165  5210  5210 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.auth.account.data.service.START pkg=com.google.android.gms }
+10-29 15:22:00.165  5210  5210 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.auth.account.data.service.START pkg=com.google.android.gms }
+10-29 15:22:00.168  5210  5210 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.gmscompliance.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentBoundBrokerService }
+10-29 15:22:00.168  5210  5210 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.gmscompliance.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentBoundBrokerService }
+10-29 15:22:00.169  5210  5210 D BoundBrokerSvc: onBind: Intent { act=android.intent.action.RESOLVE_INSTANT_APP_PACKAGE cmp=com.google.android.gms/.chimera.PersistentBoundBrokerService }
+10-29 15:22:00.169  5210  5210 D BoundBrokerSvc: Loading bound service for intent: Intent { act=android.intent.action.RESOLVE_INSTANT_APP_PACKAGE cmp=com.google.android.gms/.chimera.PersistentBoundBrokerService }
+10-29 15:22:00.170  5210  5210 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.semanticlocation.service.START_ODLH pkg=com.google.android.gms }
+10-29 15:22:00.170  5210  5210 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.semanticlocation.service.START_ODLH pkg=com.google.android.gms }
+10-29 15:22:00.171   523   523 D PackageManager: Connected to instant app resolver
+10-29 15:22:00.171   523   551 I PackageManager: Optimistic bind succeeded.
+10-29 15:22:00.171  5210  5210 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.clearcut.bootcount.service.START pkg=com.google.android.gms }
+10-29 15:22:00.171  5210  5210 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.clearcut.bootcount.service.START pkg=com.google.android.gms }
+10-29 15:22:00.172  5210  5210 D BoundBrokerSvc: onBind: Intent { act=android.net.action.RECOMMEND_NETWORKS cmp=com.google.android.gms/.chimera.PersistentBoundBrokerService }
+10-29 15:22:00.172  5210  5210 D BoundBrokerSvc: Loading bound service for intent: Intent { act=android.net.action.RECOMMEND_NETWORKS cmp=com.google.android.gms/.chimera.PersistentBoundBrokerService }
+10-29 15:22:00.173  5210  5210 I ChimeraSrvcProxy: com.google.android.gms.chimera.PersistentBoundBrokerService returning NullBinder for action android.net.action.RECOMMEND_NETWORKS
+10-29 15:22:00.183  4999  5027 D EGL_emulation: app_time_stats: avg=18.47ms min=10.28ms max=27.12ms count=52
+10-29 15:22:00.186  5210  5210 W SystemServiceRegistry: No service published for: persistent_data_block
+10-29 15:22:00.205   523  2412 D CompatibilityChangeReporter: Compat change id reported: 135634846; UID 10131; state: DISABLED
+10-29 15:22:00.206   523   553 D CompatibilityChangeReporter: Compat change id reported: 143937733; UID 10131; state: ENABLED
+10-29 15:22:00.217   337   337 D Zygote  : Forked child process 5254
+10-29 15:22:00.218   523   553 I ActivityManager: Start proc 5254:com.google.android.gms/u0a131 for service {com.google.android.gms/com.google.android.gms.checkin.CheckinApiService}
+10-29 15:22:00.240  5254  5254 I gle.android.gms: Using CollectorTypeCC GC.
+10-29 15:22:00.241  5254  5254 W gle.android.gms: Unexpected CPU variant for x86: x86_64.
+10-29 15:22:00.241  5254  5254 W gle.android.gms: Known variants: atom, sandybridge, silvermont, goldmont, goldmont-plus, tremont, kabylake, default
+10-29 15:22:00.244  5254  5254 E gle.android.gms: Not starting debugger since process cannot load the jdwp agent.
+10-29 15:22:00.255  5210  5210 I AlarmManager: set [name: SystemMemoryCache type: 2 triggerAtMillis: 315360093443 windowMillis: -1 intervalMillis: 0]
+10-29 15:22:00.257  5210  5210 I AlarmManager: set [name: SystemMemoryCache type: 2 triggerAtMillis: 315360093446 windowMillis: -1 intervalMillis: 0]
+10-29 15:22:00.258  5210  5210 I AlarmManager: set [name: SystemMemoryCache type: 2 triggerAtMillis: 315360093447 windowMillis: -1 intervalMillis: 0]
+10-29 15:22:00.269  5210  5210 W SystemServiceRegistry: No service published for: contexthub
+10-29 15:22:00.272  5254  5254 D CompatibilityChangeReporter: Compat change id reported: 171979766; UID 10131; state: ENABLED
+10-29 15:22:00.272  5254  5254 D CompatibilityChangeReporter: Compat change id reported: 242716250; UID 10131; state: DISABLED
+10-29 15:22:00.279  5254  5254 D nativeloader: Configuring clns-6 for other apk /system/framework/org.apache.http.legacy.jar. target_sdk_version=33, uses_libraries=ALL, library_path=/product/priv-app/PrebuiltGmsCore/lib/x86_64:/product/priv
+10-29 15:22:00.280  5254  5254 D nativeloader: Configuring clns-7 for other apk /system/framework/com.android.media.remotedisplay.jar. target_sdk_version=33, uses_libraries=ALL, library_path=/product/priv-app/PrebuiltGmsCore/lib/x86_64:/pro
+10-29 15:22:00.281  5254  5254 D nativeloader: Configuring clns-8 for other apk /system/framework/com.android.location.provider.jar. target_sdk_version=33, uses_libraries=ALL, library_path=/product/priv-app/PrebuiltGmsCore/lib/x86_64:/produ
+10-29 15:22:00.282  5254  5254 D ApplicationLoaders: Returning zygote-cached class loader: /system_ext/framework/androidx.window.extensions.jar
+10-29 15:22:00.282  5254  5254 D ApplicationLoaders: Returning zygote-cached class loader: /system_ext/framework/androidx.window.sidecar.jar
+10-29 15:22:00.288  5254  5254 D nativeloader: InitLlndkLibrariesProduct: libEGL.so:libGLESv1_CM.so:libGLESv2.so:libGLESv3.so:libRS.so:libandroid_net.so:libbinder_ndk.so:libc.so:libcgrouprc.so:libclang_rt.asan-x86_64-android.so:libcom.andro
+10-29 15:22:00.292  5254  5254 D nativeloader: Configuring product-clns-9 for unbundled product apk /product/priv-app/PrebuiltGmsCore/PrebuiltGmsCore.apk. target_sdk_version=33, uses_libraries=, library_path=/product/priv-app/PrebuiltGmsCor
+10-29 15:22:00.292  5254  5254 D nativeloader: InitVndkspLibrariesProduct: android.hardware.common-V2-ndk.so:android.hardware.common.fmq-V1-ndk.so:android.hardware.graphics.allocator-V2-ndk.so:android.hardware.graphics.common-V4-ndk.so:andr
+10-29 15:22:00.310  5254  5254 V GraphicsEnvironment: Currently set values for:
+10-29 15:22:00.310  5254  5254 V GraphicsEnvironment:   angle_gl_driver_selection_pkgs=[]
+10-29 15:22:00.310  5254  5254 V GraphicsEnvironment:   angle_gl_driver_selection_values=[]
+10-29 15:22:00.311  5254  5254 V GraphicsEnvironment: ANGLE GameManagerService for com.google.android.gms: false
+10-29 15:22:00.318  5254  5254 V GraphicsEnvironment: com.google.android.gms is not listed in per-application setting
+10-29 15:22:00.319  5254  5254 V GraphicsEnvironment: Neither updatable production driver nor prerelease driver is supported.
+10-29 15:22:00.347  5210  5259 D CompatibilityChangeReporter: Compat change id reported: 263076149; UID 10131; state: DISABLED
+10-29 15:22:00.352  5210  5210 I AlarmManager: set [name: SystemMemoryCache type: 2 triggerAtMillis: 315360093539 windowMillis: -1 intervalMillis: 0]
+10-29 15:22:00.368  5210  5210 W SystemServiceRegistry: No service published for: contexthub
+10-29 15:22:00.388   523  2412 D CompatibilityChangeReporter: Compat change id reported: 168936375; UID 10131; state: ENABLED
+10-29 15:22:00.389   523  2412 D CompatibilityChangeReporter: Compat change id reported: 73144566; UID 10131; state: ENABLED
+10-29 15:22:00.393  5254  5254 D CompatibilityChangeReporter: Compat change id reported: 160794467; UID 10131; state: ENABLED
+10-29 15:22:00.397  4999  4999 I com.example.buddy: Perf: native scene 22 fps
+10-29 15:22:00.439  5210  5210 I AlarmManager: set [name: SystemMemoryCache type: 2 triggerAtMillis: 315360093628 windowMillis: -1 intervalMillis: 0]
+10-29 15:22:00.446  5210  5210 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+10-29 15:22:00.454   523   542 I ServiceWatcher: [GeofenceProxy] connected to {com.google.android.gms/com.google.android.location.internal.GoogleLocationManagerService}
+10-29 15:22:00.483  5210  5210 W ctxmgr  : [ContextManagerPersistentService]Received null intent [CONTEXT service_id=47 ]
+10-29 15:22:00.496  5254  5254 W ProviderHelper: Unknown dynamite feature providerinstaller.dynamite
+10-29 15:22:00.497  5254  5254 I DynamiteModule: Considering local module com.google.android.gms.providerinstaller.dynamite:1 and remote module com.google.android.gms.providerinstaller.dynamite:0
+10-29 15:22:00.498  5254  5254 I DynamiteModule: Selected local version of com.google.android.gms.providerinstaller.dynamite
+10-29 15:22:00.500  5254  5254 V NativeCrypto: Registering com/google/android/gms/org/conscrypt/NativeCrypto's 295 native methods...
+10-29 15:22:00.532  5210  5259 D CompatibilityChangeReporter: Compat change id reported: 150935354; UID 10131; state: ENABLED
+10-29 15:22:00.542  5254  5254 I ProviderInstaller: Installed default security provider GmsCore_OpenSSL
+10-29 15:22:00.561  5210  5287 D CompatibilityChangeReporter: Compat change id reported: 247079863; UID 10131; state: DISABLED
+10-29 15:22:00.567   523  2610 D ActivityManager: sync unfroze 4156 com.google.android.gms.ui for 6
+10-29 15:22:00.577   523   542 I ServiceWatcher: [HardwareActivityRecognitionProxy] connected to {com.google.android.gms/com.google.android.location.internal.server.HardwareArProviderService}
+10-29 15:22:00.586  5210  5287 D CompatibilityChangeReporter: Compat change id reported: 289878283; UID 10131; state: DISABLED
+10-29 15:22:00.586  4156  4156 I ChimeraModuleLdr: Module config changed, forcing restart due to module com.google.android.gms.core_download
+10-29 15:22:00.588  5210  5259 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+10-29 15:22:00.595  4156  4156 I Process : Sending signal. PID: 4156 SIG: 9
+10-29 15:22:00.611  5210  5210 I Thunderbird: starting outgoing sms listener [CONTEXT service_id=226 ]
+10-29 15:22:00.624  5254  5254 D CompatibilityChangeReporter: Compat change id reported: 183155436; UID 10131; state: ENABLED
+10-29 15:22:00.624  5254  5254 I GmsApplication: [gms_startup_benchmark] Static start time (ms): 93509, Startup latency (ms): 303, Is system user: true
+10-29 15:22:00.625  5254  5254 I cuir    : Primes not initialized, returning default (no-op) Primes instance which will ignore all calls. Please call Primes.initialize(...) before using any Primes API.
+10-29 15:22:00.629   523   593 I ActivityManager: Flag disabled. Ignoring finishAttachApplication from uid: 10131. pid: 5254
+10-29 15:22:00.638  5254  5254 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.checkin.START pkg=com.google.android.gms }
+10-29 15:22:00.638  5254  5254 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.checkin.START pkg=com.google.android.gms }
+10-29 15:22:00.659  5254  5310 I Watchcat: Started
+10-29 15:22:00.660  5254  5310 I GMS_MM_Logger: Start time: 244382
+10-29 15:22:00.660  5254  5310 I GMS_MM_Logger: Started.
+10-29 15:22:00.683   337   337 I Zygote  : Process 4156 exited due to signal 9 (Killed)
+10-29 15:22:00.693  5304  5304 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+10-29 15:22:00.694  5304  5304 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+10-29 15:22:00.708   401   572 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=5304
+10-29 15:22:00.708   401   572 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (379 us)
+10-29 15:22:00.716   523   610 D ActivityManager: freezing 3732 com.google.android.rkpdapp
+10-29 15:22:00.716   523  1282 I ActivityManager: Process com.google.android.gms.ui (pid 4156) has died: fg  SVC 
+10-29 15:22:00.717   523  1282 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.chimera.UiIntentOperationService in 1000ms for start-requested
+10-29 15:22:00.718   523   554 I libprocessgroup: Successfully killed process cgroup uid 10131 pid 4156 in 0ms
+10-29 15:22:00.720  5210  5259 W SystemServiceRegistry: No service published for: wifirtt
+10-29 15:22:00.724   135   135 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+10-29 15:22:00.726  5304  5314 I Gralloc4: mapper 4.x is not supported
+10-29 15:22:00.912     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+10-29 15:22:00.731  5210  5287 I AlarmManager: set [name: SystemMemoryCache type: 2 triggerAtMillis: 315360093919 windowMillis: -1 intervalMillis: 0]
+10-29 15:22:00.733   523  1282 D CompatibilityChangeReporter: Compat change id reported: 171306433; UID 10131; state: ENABLED
+10-29 15:22:00.745   523   542 I ServiceWatcher: [RealLocationTimeZoneProviderProxy] connected to {com.google.android.gms/com.google.android.gms.geotimezone.GeoTimeZoneService}
+10-29 15:22:00.786   523  1408 W AlarmManager: Window length 1383505805528175104ms too long; limiting to 1 day
+10-29 15:22:00.786  5210  5259 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+10-29 15:22:00.790  5210  5259 W SystemServiceRegistry: No service published for: wifirtt
+10-29 15:22:00.824   523  1282 D CompatibilityChangeReporter: Compat change id reported: 229362273; UID 10131; state: DISABLED
+10-29 15:22:00.826   523  1282 D CompatibilityChangeReporter: Compat change id reported: 229362273; UID 10131; state: ENABLED
+10-29 15:22:00.830  5210  5210 W ChimeraUtils: Module com.google.android.gms.nearby missing resource null(0)
+10-29 15:22:00.830  5210  5210 W ChimeraUtils: Module com.google.android.gms.nearby missing resource null(0)
+10-29 15:22:00.848  5210  5210 I NearbySharing: ReceiveSurfaceService created [CONTEXT service_id=194 ]
+10-29 15:22:00.849  5210  5210 I NearbySharing: ReceiveSurfaceService started [CONTEXT service_id=194 ]
+10-29 15:22:00.856  5210  5210 E GCM     : Compat called without init
+10-29 15:22:00.872  5210  5305 W .gms.persistent: Accessing hidden method Landroid/net/ConnectivityManager;->isNetworkTypeMobile(I)Z (max-target-p, reflection, denied)
+10-29 15:22:00.884   523   542 I ServiceWatcher: [fused] connected to {com.google.android.gms/com.google.android.location.fused.FusedLocationService}
+10-29 15:22:00.885   523  2610 I LocationManagerService: fused provider loaded extra attribution tags: [activity_recognition_provider, awareness_provider, current_semantic_location, fused_location_provider, geofencer_provider, network_locat
+10-29 15:22:00.896  5210  5305 W .gms.persistent: Accessing hidden method Landroid/os/PowerManager;->isLightDeviceIdleMode()Z (max-target-s, reflection, denied)
+10-29 15:22:00.898  5210  5210 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.phenotype.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+10-29 15:22:00.898  5210  5210 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.phenotype.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+10-29 15:22:00.900  5210  5210 D BoundBrokerSvc: onBind: Intent { act=com.google.android.contextmanager.service.ContextManagerService.START pkg=com.google.android.gms }
+10-29 15:22:00.900  5210  5210 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.contextmanager.service.ContextManagerService.START pkg=com.google.android.gms }
+10-29 15:22:00.902  5210  5210 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.cast.service.BIND_CAST_DEVICE_CONTROLLER_SERVICE pkg=com.google.android.gms }
+10-29 15:22:00.902  5210  5210 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.cast.service.BIND_CAST_DEVICE_CONTROLLER_SERVICE pkg=com.google.android.gms }
+10-29 15:22:00.908  5254  5319 I Icing   : Storage manager: low false usage 1.58MB avail 4.87GB capacity 5.80GB
+10-29 15:22:00.924  5254  5254 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.pay.service.BIND dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsApiService }
+10-29 15:22:00.924  5254  5254 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.pay.service.BIND dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsApiService }
+10-29 15:22:00.937   523   759 D ConnectivityService: NetReassign [no changes] [c 0] [a 1] [i 0]
+10-29 15:22:00.949  5254  5254 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.wallet.service.BIND pkg=com.google.android.gms }
+10-29 15:22:00.951  5254  5254 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.wallet.service.BIND pkg=com.google.android.gms }
+10-29 15:22:00.953  5210  5287 I CastDatabase: Opening the database
+10-29 15:22:00.974  5210  5210 I CastSocket: Adding new CastClientAuthKeyManager. [CONTEXT service_id=161 ]
+10-29 15:22:00.990  5254  5254 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.languageprofile.service.START pkg=com.google.android.gms }
+10-29 15:22:00.991  5254  5254 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.languageprofile.service.START pkg=com.google.android.gms }
+10-29 15:22:00.996  5210  5210 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.phenotype.service.START pkg=com.google.android.gms }
+10-29 15:22:00.996  5210  5210 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.phenotype.service.START pkg=com.google.android.gms }
+10-29 15:22:01.002  5210  5287 I SQLiteCastStore: 0 CastNetworkInfo instances loaded, 0 CastDeviceInfo instances loaded, 0 paired guest mode devices loaded.
+10-29 15:22:01.022  5254  5254 D BoundBrokerSvc: onBind: Intent { act=com.google.android.mobstore.service.START pkg=com.google.android.gms }
+10-29 15:22:01.022  5254  5254 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.mobstore.service.START pkg=com.google.android.gms }

@@ -1,0 +1,150 @@
+10-29 15:14:53.460  1668  2360 W CorpusConfigHelper: 	at com.google.android.apps.gsa.searchbox.c.b.b.k.c(PG:7)
+10-29 15:14:53.460  1668  2360 W CorpusConfigHelper: 	at com.google.android.apps.gsa.searchbox.c.b.b.j.a(Unknown Source:2)
+10-29 15:14:53.460  1668  2360 W CorpusConfigHelper: 	at com.google.android.apps.gsa.search.core.i.r.run(PG:5)
+10-29 15:14:53.460  1668  2360 W CorpusConfigHelper: 	at com.google.android.libraries.gsa.k.a.h.run(PG:2)
+10-29 15:14:53.460  1668  2360 W CorpusConfigHelper: 	at com.google.android.apps.gsa.shared.util.c.a.cf.b(PG:1)
+10-29 15:14:53.460  1668  2360 W CorpusConfigHelper: 	at com.google.android.apps.gsa.shared.util.c.a.ci.run(PG:1)
+10-29 15:14:53.460  1668  2360 W CorpusConfigHelper: 	at com.google.android.libraries.i.ae.run(PG:1)
+10-29 15:14:53.460  1668  2360 W CorpusConfigHelper: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+10-29 15:14:53.460  1668  2360 W CorpusConfigHelper: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+10-29 15:14:53.460  1668  2360 W CorpusConfigHelper: 	at com.google.android.libraries.i.k.run(PG:2)
+10-29 15:14:53.460  1668  2360 W CorpusConfigHelper: 	at com.google.android.libraries.i.p.run(PG:4)
+10-29 15:14:53.460  1668  2360 W CorpusConfigHelper: 	at java.lang.Thread.run(Thread.java:1012)
+10-29 15:14:53.475  4963  4963 I com.example.buddy: Perf: native scene 29 fps
+10-29 15:14:53.539  4116  4230 I BugleRcsProvisioning: BugleSystemBindingManager: onBuglePhenotypeFlagChanged
+10-29 15:14:53.544  4116  4230 I BugleTransport: onBuglePhenotypeFlagChanged: kicking off updateActiveTransport
+10-29 15:14:53.545  4116  4231 W BugleAction: Null config in BugleSharedPrefs
+10-29 15:14:53.545  4116  4231 W BugleAction: Failed to get msisdn from Bugle
+10-29 15:14:53.545  4116  4231 W BugleAction: Failed to get msisdn from RcsProfileService
+10-29 15:14:53.545  4116  4231 W BugleAction: cksi: Jibe SDK Service not available. Is the Jibe SDK service running? Did you call connect() and wait for the notification before calling an API function?
+10-29 15:14:53.545  4116  4231 W BugleAction: 	at cksa.b(PG:2)
+10-29 15:14:53.545  4116  4231 W BugleAction: 	at com.google.android.rcs.client.profile.RcsProfileService.g(PG:1)
+10-29 15:14:53.545  4116  4231 W BugleAction: 	at com.google.android.rcs.client.profile.RcsProfileService.getMsisdn(PG:3)
+10-29 15:14:53.545  4116  4231 W BugleAction: 	at awsw.aj(PG:17)
+10-29 15:14:53.545  4116  4231 W BugleAction: 	at awsw.z(PG:2)
+10-29 15:14:53.545  4116  4231 W BugleAction: 	at aule.k(PG:1)
+10-29 15:14:53.545  4116  4231 W BugleAction: 	at aulc.call(Unknown Source:2)
+10-29 15:14:53.545  4116  4231 W BugleAction: 	at cnsg.a(PG:1)
+10-29 15:14:53.545  4116  4231 W BugleAction: 	at cnpm.a(PG:3)
+10-29 15:14:53.545  4116  4231 W BugleAction: 	at ctfv.a(PG:1)
+10-29 15:14:53.545  4116  4231 W BugleAction: 	at ctet.run(PG:4)
+10-29 15:14:53.545  4116  4231 W BugleAction: 	at ctfx.run(PG:1)
+10-29 15:14:53.545  4116  4231 W BugleAction: 	at bxfd.run(PG:1)
+10-29 15:14:53.545  4116  4231 W BugleAction: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+10-29 15:14:53.545  4116  4231 W BugleAction: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+10-29 15:14:53.545  4116  4231 W BugleAction: 	at bxef.run(PG:2)
+10-29 15:14:53.545  4116  4231 W BugleAction: 	at java.lang.Thread.run(Thread.java:1012)
+10-29 15:14:53.545  4116  4231 W BugleAction: 	at bxfj.run(PG:5)
+10-29 15:14:53.545  4116  4231 W SubscriptionMetadataUti: Bugle: SubscriptionMetadataUtils get: unexpected subId = -2, replacing with -1
+10-29 15:14:53.545  4116  4231 W SubscriptionMetadataUti: cpwb: FULL
+10-29 15:14:53.545  4116  4231 W SubscriptionMetadataUti: 	at bdsy.h(PG:6)
+10-29 15:14:53.545  4116  4231 W SubscriptionMetadataUti: 	at bdvp.a(PG:1)
+10-29 15:14:53.545  4116  4231 W SubscriptionMetadataUti: 	at bgit.<init>(PG:1)
+10-29 15:14:53.545  4116  4231 W SubscriptionMetadataUti: 	at bgiu.a(PG:1)
+10-29 15:14:53.545  4116  4231 W SubscriptionMetadataUti: 	at awsw.ai(PG:3)
+10-29 15:14:53.545  4116  4231 W SubscriptionMetadataUti: 	at awsw.aj(PG:25)
+10-29 15:14:53.545  4116  4231 W SubscriptionMetadataUti: 	at awsw.z(PG:2)
+10-29 15:14:53.545  4116  4231 W SubscriptionMetadataUti: 	at aule.k(PG:1)
+10-29 15:14:53.545  4116  4231 W SubscriptionMetadataUti: 	at aulc.call(Unknown Source:2)
+10-29 15:14:53.545  4116  4231 W SubscriptionMetadataUti: 	at cnsg.a(PG:1)
+10-29 15:14:53.545  4116  4231 W SubscriptionMetadataUti: 	at cnpm.a(PG:3)
+10-29 15:14:53.545  4116  4231 W SubscriptionMetadataUti: 	at ctfv.a(PG:1)
+10-29 15:14:53.545  4116  4231 W SubscriptionMetadataUti: 	at ctet.run(PG:4)
+10-29 15:14:53.545  4116  4231 W SubscriptionMetadataUti: 	at ctfx.run(PG:1)
+10-29 15:14:53.545  4116  4231 W SubscriptionMetadataUti: 	at bxfd.run(PG:1)
+10-29 15:14:53.545  4116  4231 W SubscriptionMetadataUti: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+10-29 15:14:53.545  4116  4231 W SubscriptionMetadataUti: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+10-29 15:14:53.545  4116  4231 W SubscriptionMetadataUti: 	at bxef.run(PG:2)
+10-29 15:14:53.545  4116  4231 W SubscriptionMetadataUti: 	at java.lang.Thread.run(Thread.java:1012)
+10-29 15:14:53.545  4116  4231 W SubscriptionMetadataUti: 	at bxfj.run(PG:5)
+10-29 15:14:53.546  4116  4231 W SubscriptionMetadataUti: Bugle: SubscriptionMetadataUtils get: unexpected subId = -2, replacing with -1
+10-29 15:14:53.546  4116  4231 W SubscriptionMetadataUti: cpwb: FULL
+10-29 15:14:53.546  4116  4231 W SubscriptionMetadataUti: 	at bdsy.h(PG:6)
+10-29 15:14:53.546  4116  4231 W SubscriptionMetadataUti: 	at bgit.<init>(PG:2)
+10-29 15:14:53.546  4116  4231 W SubscriptionMetadataUti: 	at bgiu.a(PG:1)
+10-29 15:14:53.546  4116  4231 W SubscriptionMetadataUti: 	at awsw.ai(PG:3)
+10-29 15:14:53.546  4116  4231 W SubscriptionMetadataUti: 	at awsw.aj(PG:25)
+10-29 15:14:53.546  4116  4231 W SubscriptionMetadataUti: 	at awsw.z(PG:2)
+10-29 15:14:53.546  4116  4231 W SubscriptionMetadataUti: 	at aule.k(PG:1)
+10-29 15:14:53.546  4116  4231 W SubscriptionMetadataUti: 	at aulc.call(Unknown Source:2)
+10-29 15:14:53.546  4116  4231 W SubscriptionMetadataUti: 	at cnsg.a(PG:1)
+10-29 15:14:53.546  4116  4231 W SubscriptionMetadataUti: 	at cnpm.a(PG:3)
+10-29 15:14:53.546  4116  4231 W SubscriptionMetadataUti: 	at ctfv.a(PG:1)
+10-29 15:14:53.546  4116  4231 W SubscriptionMetadataUti: 	at ctet.run(PG:4)
+10-29 15:14:53.546  4116  4231 W SubscriptionMetadataUti: 	at ctfx.run(PG:1)
+10-29 15:14:53.546  4116  4231 W SubscriptionMetadataUti: 	at bxfd.run(PG:1)
+10-29 15:14:53.546  4116  4231 W SubscriptionMetadataUti: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+10-29 15:14:53.546  4116  4231 W SubscriptionMetadataUti: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+10-29 15:14:53.546  4116  4231 W SubscriptionMetadataUti: 	at bxef.run(PG:2)
+10-29 15:14:53.546  4116  4231 W SubscriptionMetadataUti: 	at java.lang.Thread.run(Thread.java:1012)
+10-29 15:14:53.546  4116  4231 W SubscriptionMetadataUti: 	at bxfj.run(PG:5)
+10-29 15:14:53.546  4116  4546 W BugleRcsEngine: [81] bpxc.w: Unable to send diagnostic log
+10-29 15:14:53.546  4116  4547 I BugleTransport: isChatAvailable: RcsAvailability is CARRIER_SETUP_PENDING (Carrier RCS is not set up)
+10-29 15:14:53.551  4116  4231 W SubscriptionMetadataUti: Bugle: SubscriptionMetadataUtils get: unexpected subId = -2, replacing with -1
+10-29 15:14:53.551  4116  4231 W SubscriptionMetadataUti: cpwb: FULL
+10-29 15:14:53.551  4116  4231 W SubscriptionMetadataUti: 	at bdsy.h(PG:6)
+10-29 15:14:53.551  4116  4231 W SubscriptionMetadataUti: 	at awsw.ai(PG:18)
+10-29 15:14:53.551  4116  4231 W SubscriptionMetadataUti: 	at awsw.aj(PG:25)
+10-29 15:14:53.551  4116  4231 W SubscriptionMetadataUti: 	at awsw.z(PG:2)
+10-29 15:14:53.551  4116  4231 W SubscriptionMetadataUti: 	at aule.k(PG:1)
+10-29 15:14:53.551  4116  4231 W SubscriptionMetadataUti: 	at aulc.call(Unknown Source:2)
+10-29 15:14:53.551  4116  4231 W SubscriptionMetadataUti: 	at cnsg.a(PG:1)
+10-29 15:14:53.551  4116  4231 W SubscriptionMetadataUti: 	at cnpm.a(PG:3)
+10-29 15:14:53.551  4116  4231 W SubscriptionMetadataUti: 	at ctfv.a(PG:1)
+10-29 15:14:53.551  4116  4231 W SubscriptionMetadataUti: 	at ctet.run(PG:4)
+10-29 15:14:53.551  4116  4231 W SubscriptionMetadataUti: 	at ctfx.run(PG:1)
+10-29 15:14:53.551  4116  4231 W SubscriptionMetadataUti: 	at bxfd.run(PG:1)
+10-29 15:14:53.551  4116  4231 W SubscriptionMetadataUti: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+10-29 15:14:53.551  4116  4231 W SubscriptionMetadataUti: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+10-29 15:14:53.551  4116  4231 W SubscriptionMetadataUti: 	at bxef.run(PG:2)
+10-29 15:14:53.551  4116  4231 W SubscriptionMetadataUti: 	at java.lang.Thread.run(Thread.java:1012)
+10-29 15:14:53.551  4116  4231 W SubscriptionMetadataUti: 	at bxfj.run(PG:5)
+10-29 15:14:53.551  4116  4231 I Bugle   : SubscriptionUtilsAsOfLMR1: getActiveSubscriptionInfo(): empty sub info for subscription{id:-1}
+10-29 15:14:53.551  4116  4231 I Bugle   : SubscriptionUtilsAsOfLMR1: getActiveSubscriptionInfo(): empty sub info for subscription{id:-1}
+10-29 15:14:53.551  4116  4231 W Bugle   : SubscriptionUtilsAsOfLMR1: getSelfRawNumber: subInfo is null for subscription{id:-1}
+10-29 15:14:53.557  4116  4201 I BugleRcsEngine: [41] bptz.run: SystemBindingManager: SystemBinding enabled: true
+10-29 15:14:53.557  4116  4201 I BugleRcsEngine: [41] bpua.b: System Binding updated
+10-29 15:14:53.557  4116  4548 W BugleRcsEngine: [83] bpxc.w: Unable to send diagnostic log
+10-29 15:14:53.559  4116  4231 W BugleAction: No default number, returning empty msisdn
+10-29 15:14:53.559  4116  4550 I BugleTransport: updateActiveTransport: refreshing chat transport
+10-29 15:14:53.559  4116  4550 I BugleTransport: RCS Configuration is empty. Enabled transport is Dual Reg [CONTEXT ratelimit_period="5 SECONDS" ]
+10-29 15:14:53.560  4116  4550 I BugleTransport: refreshChatTransport: isChatAvailable: false, enabledTransport: 1, configuration: <empty>
+10-29 15:14:53.562   521  2153 D ConnectivityService: requestNetwork for uid/pid:10156/1666 activeRequest: null callbackRequest: 136 [NetworkRequest [ REQUEST id=137, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 1015
+10-29 15:14:53.567   521   758 D WifiNetworkFactory: got request NetworkRequest [ REQUEST id=137, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10156 RequestorUid: 10156 RequestorPkg: com.google.android.apps.youtube.m
+10-29 15:14:53.567   521   758 D UntrustedWifiNetworkFactory: got request NetworkRequest [ REQUEST id=137, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10156 RequestorUid: 10156 RequestorPkg: com.google.android.apps.
+10-29 15:14:53.568   521   765 D ConnectivityService: NetReassign [137 : null → 100] [c 0] [a 0] [i 1]
+10-29 15:14:53.568   521   758 D OemPaidWifiNetworkFactory: got request NetworkRequest [ REQUEST id=137, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10156 RequestorUid: 10156 RequestorPkg: com.google.android.apps.yo
+10-29 15:14:53.568   521   758 D MultiInternetWifiNetworkFactory: got request NetworkRequest [ REQUEST id=137, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10156 RequestorUid: 10156 RequestorPkg: com.google.android.a
+10-29 15:14:53.571  4116  4550 I RcsClientLib: Connecting RcsEngineLifecycleService
+10-29 15:14:53.577  1490  1543 I Icing   : IndexChimeraService.getServiceInterface callingPackage=com.google.android.googlequicksearchbox componentName=agsa_icing_connection serviceId=32
+10-29 15:14:53.579  1490  3753 I Icing   : IndexChimeraService.getServiceInterface callingPackage=com.google.android.googlequicksearchbox componentName=agsa_icing_connection serviceId=33
+10-29 15:14:53.589  1490  3035 I Icing   : Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0
+10-29 15:14:53.603  4116  4550 W RcsClientLib: No CS.apk RCS service found. Is RCS running in Bugle?
+10-29 15:14:53.611  1490  3035 I Icing   : Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0
+10-29 15:14:53.620  4116  4550 I RcsClientLib: shouldUseCarrierServicesJibeService: false, CarrierServices rcs service found: false
+10-29 15:14:53.629  4116  4550 I RcsClientLib: com.google.android.rcs.client.lifecycle.RcsEngineLifecycleService connected
+10-29 15:14:53.631  4544  4561 I BugleRcsEngine: [37] RcsEngineImpl.triggerStopRcsStack: RcsEngineImpl[DUAL_REG]:[b9a933c1-0793]: triggerStopRcsStack for msisdn:redacted-pii:phone_number[chars:0,last2:]
+10-29 15:14:53.632  1490  5023 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-29 15:14:53.632  1490  5023 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-29 15:14:53.634  1436  5036 I PTCommittedOperation: Receive new configuration for com.google.android.gms.mdisync
+10-29 15:14:53.637  1490  5011 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-29 15:14:53.639  1490  5023 V Backup  : [PhenotypeConfigIO] Phenotype broadcast received for different package
+10-29 15:14:53.640  1490  5031 I SyncIntentOperation: Handling the intent: Intent { act=com.google.android.gms.phenotype.COMMITTED flg=0x10 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras
+10-29 15:14:53.646  1490  5031 I MdiSyncModule: handling relevant flag change...
+10-29 15:14:53.648  1490  5011 I MlBenchmarkInstaller: Intent: com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=340 ]
+10-29 15:14:53.648  1490  5011 I MlBenchmarkInstaller: COMMITTED Extra package name: com.google.android.gms.mdisync [CONTEXT service_id=340 ]
+10-29 15:14:53.650  1490  5012 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-29 15:14:53.651  1490  5012 I LocationHistory: [IntentOperation] Handling action com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=314 ]
+10-29 15:14:53.652  1490  5011 I GmsSyncPolicyEngine: Periodic sync 1 disabled by policy, cancelled.
+10-29 15:14:53.654  1490  5011 I GmsSyncPolicyEngine: Periodic sync 2 disabled by policy, cancelled.
+10-29 15:14:53.654  1490  5011 I GmsSyncPolicyEngine: Periodic sync 3 disabled by policy, cancelled.
+10-29 15:14:53.660  1490  5031 I MdiSyncModule: flag handling completed
+10-29 15:14:53.668  4544  4762 I BugleRcsEngine: [78] brqh.handleMessage: RcsEngineImpl[DUAL_REG]:[b9a933c1-0793]>Handler: handleMessage processing message:[STOP_RCS_STACK] with [non-null]:RcsEngineImpl reference
+10-29 15:14:53.668  4544  4762 I BugleRcsEngine: [78] brqh.handleMessage: RcsEngineImpl[DUAL_REG]:[b9a933c1-0793]>Handler: RCS engine STOP RCS stack
+10-29 15:14:53.668  4544  4762 W BugleRcsEngine: [78] RcsEngineImpl.e: RcsEngineImpl[DUAL_REG]:[b9a933c1-0793]: imsModule is null, shutdown not required
+10-29 15:14:53.668  4544  4762 I BugleRcsEngine: [78] RcsEngineImpl.stopRcsStackInternal: RcsEngineImpl[DUAL_REG]:[b9a933c1-0793]: skipping imsModule.stop
+10-29 15:14:53.670  4544  4762 I BugleRcsEngine: [78] brqh.handleMessage: RcsEngineImpl[DUAL_REG]:[b9a933c1-0793]>Handler: handleMessage processing message:[NOTIFY_UPTIME_IGNORE_STATE_CHANGED] with [non-null]:RcsEngineImpl reference
+10-29 15:14:53.694  4116  4249 I RcsClientLib: Disconnecting RcsEngineLifecycleService
+10-29 15:14:53.701  4544  4762 I BugleRcsEngine: [78] brnl.h: No RCS Configuration was found in Bugle for simID: redacted-pii:sim_id[chars:20,last3:897]
+10-29 15:14:53.705  1666  2747 W YouTubeMusic: Invalid playback type; streaming data is not playable
+10-29 15:14:53.733  1666  1666 E Widget.RecentlyPlayed: Filling bundle but recently played items are EMPTY.

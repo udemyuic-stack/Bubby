@@ -1,0 +1,39 @@
+10-29 15:16:29.848   833   833 I SafetyLabelChangedBroadcastReceiver: received broadcast packageName: com.example.buddy, current user: UserHandle{0}, packageChangeEvent: NEW_INSTALL, intent user: UserHandle{0}
+10-29 15:16:29.859   518   800 I SdkSandboxManager: No SDKs used. Skipping SDK data reconcilation for CallingInfo{mUid=10192, mPackageName='com.example.buddy, mAppProcessToken='null'}
+10-29 15:16:30.154   518  2297 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=com.example.buddy/.ui.UiActivity (has extras)} with LAUNCH_SINGLE_TOP from uid 2000 (BAL_ALLOW_PERMISSION) result code=0
+10-29 15:16:30.222   518  1783 D CoreBackPreview: Window{8435d80 u0 Splash Screen com.example.buddy}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@1a926b0, mPriority=0, mIsAnimationCallback=false}
+10-29 15:16:30.315  1089  1147 I Launcher.IconCache: Database bulk icon loading failed, using fallback bulk icon loading for: ComponentInfo{com.example.buddy/com.example.buddy.ui.UiActivity}
+10-29 15:16:30.325   518   540 I BLASTSyncEngine: Unfinished container: ActivityRecord{ead26e3 u0 com.example.buddy/.ui.UiActivity t8}
+10-29 15:16:30.325   518   540 I BLASTSyncEngine: Unfinished container: Task{431c05d #8 type=standard I=com.example.buddy/.ui.UiActivity}
+10-29 15:16:30.341   518   537 V WindowManager:     info={id=6 t=CHANGE f=0x0 trk=0 r=[0@Point(0, 0)] c=[{WCT{RemoteToken{ca84adf Task{431c05d #8 type=standard I=com.example.buddy/.ui.UiActivity}}} m=OPEN f=MOVE_TO_TOP leash=Surface(name=Task=8)/@0x4919594 sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0},{WCT{RemoteToken{1f2032c Task{a3babc8 #1 type=home}}} m=TO_BACK f=SHOW_WALLPAPER leash=Surface(name=Task=1)/@0xcc595f0 sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0},{WCT{RemoteToken{10af1f5 Display{#0 state=ON size=320x640 ROTATION_0}}} m=CHANGE f=SHOW_WALLPAPER|IS_DISPLAY leash=Surface(name=WindowedMagnification:0:31)/@0x5d4f9e4 sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0}]}
+10-29 15:16:30.354   518   549 I ActivityManager: Start proc 4993:com.example.buddy/u0a192 for next-top-activity {com.example.buddy/com.example.buddy.ui.UiActivity}
+10-29 15:16:30.438   518   547 D AppWidgetServiceImpl: Provider info from ComponentInfo{com.example.buddy/com.example.buddy.AgentWidgets$StatusWidget} won't be persisted.
+10-29 15:16:30.438   518   547 D AppWidgetServiceImpl: Provider info from ComponentInfo{com.example.buddy/com.example.buddy.AgentWidgets$UsageWidget} won't be persisted.
+10-29 15:16:30.438   518   547 D AppWidgetServiceImpl: Provider info from ComponentInfo{com.example.buddy/com.example.buddy.AgentWidgets$DoneWidget} won't be persisted.
+10-29 15:16:30.438   518   547 D AppWidgetServiceImpl: Provider info from ComponentInfo{com.example.buddy/com.example.buddy.AgentWidgets$AgentsWidget} won't be persisted.
+10-29 15:16:30.438   518   547 D AppWidgetServiceImpl: Provider info from ComponentInfo{com.example.buddy/com.example.buddy.AgentWidgets$BarWidget} won't be persisted.
+10-29 15:16:30.438   518   547 D AppWidgetServiceImpl: Provider info from ComponentInfo{com.example.buddy/com.example.buddy.AgentWidgets$MiniWidget} won't be persisted.
+10-29 15:16:30.475  1639  1639 I AiAiEcho: AppFetcherImplV2 updateApps package:[com.example.buddy], userId:[0], reason:[package is added.].
+10-29 15:16:30.481  4993  4993 V GraphicsEnvironment: ANGLE GameManagerService for com.example.buddy: false
+10-29 15:16:30.481  4993  4993 V GraphicsEnvironment: com.example.buddy is not listed in per-application setting
+10-29 15:16:30.826   518  2378 D CoreBackPreview: Window{58d9777 u0 com.example.buddy/com.example.buddy.ui.UiActivity}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@7691db6, mPriority=0, mIsAnimationCallback=false}
+10-29 15:16:31.823  1639  1639 I AiAiEcho: AppFetcherImpl onPackageChanged com.example.buddy.
+10-29 15:16:31.828  1639  2400 I AiAiEcho: AppIndexer Package:[com.example.buddy] UserProfile:[0] Enabled:[true].
+10-29 15:16:31.829  1639  2400 I AiAiEcho: AppFetcherImplV2 updateApps package:[com.example.buddy], userId:[0], reason:[package is updated.].
+10-29 15:16:31.979   518   537 I ActivityTaskManager: Displayed com.example.buddy/.ui.UiActivity for user 0: +2s50ms
+10-29 15:16:32.056   518  3124 D CoreBackPreview: Window{8435d80 u0 Splash Screen com.example.buddy EXITING}: Setting back callback null
+10-29 15:16:32.056   518  1091 W InputManager-JNI: Input channel object '8435d80 Splash Screen com.example.buddy (client)' was disposed without first being removed with the input manager!
+10-29 15:16:33.317  1450  5073 I BlockstoreStorage: Clearing Blockstore Data for package com.example.buddy [CONTEXT service_id=258 ]
+10-29 15:16:33.358  1411  4779 I FontLog : Package com.example.buddy has no metadata [CONTEXT service_id=132 ]
+10-29 15:16:33.960   518  1314 I ImeTracker: com.example.buddy:63729c82: onRequestHide at ORIGIN_SERVER_HIDE_INPUT reason HIDE_UNSPECIFIED_WINDOW
+10-29 15:16:33.961   518  1314 I ImeTracker: com.example.buddy:63729c82: onCancelled at PHASE_SERVER_SHOULD_HIDE
+10-29 15:16:35.111  4993  4993 I com.example.buddy: Perf: native scene 4 fps
+10-29 15:16:39.114  4993  4993 I com.example.buddy: Perf: native scene 17 fps
+10-29 15:16:40.698  5141  5141 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+10-29 15:16:40.704  5141  5141 I AndroidRuntime: Using default boot image
+10-29 15:16:40.704  5141  5141 I AndroidRuntime: Leaving lock profiling enabled
+10-29 15:16:41.130  5141  5141 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+10-29 15:16:42.571  5141  5141 I AccessibilityNodeInfoDumper: Skipping invisible child: android.view.accessibility.AccessibilityNodeInfo@16849; boundsInParent: Rect(0, 0 - 296, 71); boundsInScreen: Rect(12, 662 - 308, 640); boundsInWindow: Rect(12, 662 - 308, 640); packageName: com.example.buddy; className: android.widget.LinearLayout; text: null; error: null; maxTextLength: -1; stateDescription: null; contentDescription: null; tooltipText: null; containerTitle: null; viewIdResName: null; uniqueId: null; checkable: false; checked: false; focusable: true; focused: false; selected: false; clickable: true; longClickable: false; contextClickable: false; enabled: true; password: false; scrollable: false; importantForAccessibility: true; visible: false; actions: [AccessibilityAction: ACTION_FOCUS - null, AccessibilityAction: ACTION_SELECT - null, AccessibilityAction: ACTION_CLEAR_SELECTION - null, AccessibilityAction: ACTION_CLICK - null, AccessibilityAction: ACTION_ACCESSIBILITY_FOCUS - null, AccessibilityAction: ACTION_SHOW_ON_SCREEN - null]; isTextSelectable: false
+10-29 15:16:42.571  5141  5141 I AccessibilityNodeInfoDumper: Skipping invisible child: android.view.accessibility.AccessibilityNodeInfo@18290; boundsInParent: Rect(0, 0 - 288, 286); boundsInScreen: Rect(16, 733 - 304, 640); boundsInWindow: Rect(16, 733 - 304, 640); packageName: com.example.buddy; className: android.widget.LinearLayout; text: null; error: null; maxTextLength: -1; stateDescription: null; contentDescription: null; tooltipText: null; containerTitle: null; viewIdResName: null; uniqueId: null; checkable: false; checked: false; focusable: false; focused: false; selected: false; clickable: false; longClickable: false; contextClickable: false; enabled: true; password: false; scrollable: false; importantForAccessibility: false; visible: false; actions: [AccessibilityAction: ACTION_SELECT - null, AccessibilityAction: ACTION_CLEAR_SELECTION - null, AccessibilityAction: ACTION_ACCESSIBILITY_FOCUS - null, AccessibilityAction: ACTION_SHOW_ON_SCREEN - null]; isTextSelectable: false
+10-29 15:16:42.643  5141  5141 D AndroidRuntime: Shutting down VM
+10-29 15:16:43.140  4993  4993 I com.example.buddy: Perf: native scene 18 fps

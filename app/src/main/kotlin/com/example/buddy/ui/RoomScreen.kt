@@ -40,6 +40,8 @@ class RoomScreen(act: UiActivity) : Screen(act) {
         actions = ctx.row(Gravity.CENTER)
         board = MatchBoardView(ctx, engine)
         board.onMoveShown = { res -> moveShown(res) }
+        board.words = arrayOf(t("Мило!", "Nice!", "Yaxshi!"), t("Отлично!", "Great!", "Ajoyib!"), t("Супер!", "Awesome!", "Zo'r!"),
+            t("Невероятно!", "Incredible!", "Ishonib bo'lmas!"), t("Бум!", "Boom!", "Bum!"), t("Блеск!", "Sparkle!", "Yarqiroq!"))
         board.onRefused = { react("🙈", t("Так нельзя — нужно собрать три в ряд", "Not allowed: a swap has to make three in a row", "Bo'lmaydi: almashtirish uchta qatorni hosil qilishi kerak")) }
         board.onCombo = { n -> react(if (n >= 4) "🤩" else "😎", t("Комбо ×$n!", "Combo ×$n!", "Kombo ×$n!")) }
 
@@ -70,6 +72,7 @@ class RoomScreen(act: UiActivity) : Screen(act) {
         engine.setLevel(lvl.moves, lvl.dustCells())
         for (k in lvl.dustCells()) engine.dust[k] = lvl.dustLayerAt(k)
         board.syncFromEngine(); board.locked = false
+        board.post { board.introDrop() }   // the pieces rain in
         hud(); pickerRows(); actionRows(win = false)
         react("🙂", t("Уровень ${i + 1}: ${goalLine(lvl)}", "Level ${i + 1}: ${goalLine(lvl)}", "${i + 1}-daraja: ${goalLine(lvl)}"))
     }

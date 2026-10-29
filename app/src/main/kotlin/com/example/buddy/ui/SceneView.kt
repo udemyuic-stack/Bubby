@@ -22,7 +22,10 @@ class SceneView(c: Context) : WebView(c) {
     private var pendingSlide: String? = null
     private val client = object : WebViewClient() {
         override fun shouldOverrideUrlLoading(v: WebView, r: WebResourceRequest) = true   // nothing navigates away
-        override fun onPageFinished(v: WebView, url: String?) { pendingSlide?.let { try { v.evaluateJavascript(it, null) } catch (_: Exception) { } } }
+        override fun onPageFinished(v: WebView, url: String?) {
+            pendingSlide?.let { try { v.evaluateJavascript(it, null) } catch (_: Exception) { } }
+            v.evaluateJavascript(Perf.probe("BubbyScene"), null)
+        }
         // the web view's process was killed (low memory): the background just stays still, the app goes on
         override fun onRenderProcessGone(v: WebView, d: android.webkit.RenderProcessGoneDetail): Boolean {
             android.util.Log.w("com.example.buddy", "SceneView: render process gone (crashed=${d.didCrash()})")
@@ -43,6 +46,7 @@ class SceneView(c: Context) : WebView(c) {
         settings.cacheMode = android.webkit.WebSettings.LOAD_NO_CACHE
         setLayerType(LAYER_TYPE_HARDWARE, null)
         webViewClient = client
+        addJavascriptInterface(object { @android.webkit.JavascriptInterface fun fps(n: Int) { post { Perf.report(context, n, "scene") } } }, "BubbyScene")
         webChromeClient = object : android.webkit.WebChromeClient() {
             override fun onConsoleMessage(m: android.webkit.ConsoleMessage): Boolean {
                 if (m.messageLevel() == android.webkit.ConsoleMessage.MessageLevel.ERROR) android.util.Log.w("com.example.buddy", "SceneView console: ${m.message().take(120)} @${m.lineNumber()}")

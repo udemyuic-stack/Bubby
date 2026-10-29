@@ -32,6 +32,7 @@ class HomeWebView(c: Context, private val host: Host) : WebView(c) {
         @JavascriptInterface fun ask(t: String) { if (t.length <= 200) post { host.ask(t) } }
         @JavascriptInterface fun toggle() { post { host.toggle() } }
         @JavascriptInterface fun splash(show: Boolean) { android.util.Log.i("com.example.buddy", "HomeWeb: page says splash show=$show"); post { host.splash(show) } }
+        @JavascriptInterface fun fps(n: Int) { post { Perf.report(context, n, "home page") } }
         @JavascriptInterface fun probe(s: String) { if (s.length < 80) android.util.Log.i("com.example.buddy", "HomeWeb: $s") }
         @JavascriptInterface fun ready() { post { ready = true; queue.forEach { evaluateJavascript(it, null) }; queue.clear() } }
     }
@@ -51,6 +52,7 @@ class HomeWebView(c: Context, private val host: Host) : WebView(c) {
             // one look at the page a few seconds in (CI log: did the splash end?)
             override fun onPageFinished(v: WebView, url: String) {
                 v.evaluateJavascript("setTimeout(function(){BubbyNative.probe('after 3 s splash='+(document.querySelector('.splash')?'on':'off'))},3000)", null)
+                v.evaluateJavascript(Perf.probe("BubbyNative"), null)
             }
             // the web view's process was killed (low memory): never take the app down with it, open the native cards instead
             override fun onRenderProcessGone(v: WebView, d: android.webkit.RenderProcessGoneDetail): Boolean {

@@ -56,6 +56,11 @@ class RoomScreen(act: UiActivity) : Screen(act) {
         c.add(android.widget.HorizontalScrollView(ctx).apply { isHorizontalScrollBarEnabled = false; addView(picker) }, MATCH, WRAP, top = 10)
         index = (unlocked() - 1).coerceIn(0, levels.size - 1)
         start(index)
+        // CI: plays the first legal moves by itself so that the screenshots show the animations and any crash shows in the log
+        if (act.intent.getBooleanExtra("autoplay", false)) {
+            fun step() { board.postDelayed({ if (!over) { engine.findMove()?.let { board.tryMove(it[0], it[1]) }; step() } }, 1300) }
+            step()
+        }
     }
 
     private fun start(i: Int) {

@@ -17,6 +17,7 @@ case "${SCREEN_BASE}" in
   *-newyear) OPEN=${SCREEN_BASE%-newyear}; EXTRA="--es theme newyear";;
   *-ice) OPEN=${SCREEN_BASE%-ice}; EXTRA="--es theme ice";;
 esac
+case "${SCREEN_BASE}" in game-room*) EXTRA="--ez autoplay true";; esac
 ADB=$(command -v adb); adb() { timeout 30 "$ADB" "$@"; }
 mkdir -p shots
 # let the emulator finish its own start-up work (media scan, Google services) before touching it

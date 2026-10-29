@@ -25,6 +25,8 @@ class AgentOrbit(c: Context, private val items: List<Item>) : View(c) {
     override fun onDraw(cv: Canvas) {
         val w = width.toFloat(); val h = height.toFloat()
         val cx = w / 2f; val cy = h / 2f - 4f * d
+        val t = android.os.SystemClock.uptimeMillis() / 1000.0
+        val spin = Math.toRadians(t * 7.0)   // one turn in about 51 s
         val r = minOf(w, h) / 2f - 34f * d
         // rings and tick marks
         p.style = Paint.Style.STROKE; p.strokeWidth = 1f * d; p.color = Theme.rgb(Glass.TEXT2, 46)
@@ -32,7 +34,7 @@ class AgentOrbit(c: Context, private val items: List<Item>) : View(c) {
         cv.drawCircle(cx, cy, r * .66f, p)
         p.color = Theme.rgb(Glass.TEXT2, 30)
         for (i in 0 until 72) {
-            val a = Math.toRadians(i * 5.0)
+            val a = Math.toRadians(i * 5.0) - spin * .6   // the ticks drift the other way, slower
             val r0 = r * .72f; val r1 = r * (if (i % 6 == 0) .8f else .77f)
             cv.drawLine((cx + cos(a) * r0).toFloat(), (cy + sin(a) * r0).toFloat(), (cx + cos(a) * r1).toFloat(), (cy + sin(a) * r1).toFloat(), p)
         }
@@ -49,7 +51,7 @@ class AgentOrbit(c: Context, private val items: List<Item>) : View(c) {
         // the agents
         val n = items.size
         for ((i, it) in items.withIndex()) {
-            val a = -Math.PI / 2 + i * 2 * Math.PI / maxOf(n, 1)
+            val a = -Math.PI / 2 + i * 2 * Math.PI / maxOf(n, 1) + spin
             val x = (cx + cos(a) * r).toFloat(); val y = (cy + sin(a) * r).toFloat()
             val bw = 36f * d; val bh = 29f * d
             if (busy(it.state)) {
@@ -68,5 +70,6 @@ class AgentOrbit(c: Context, private val items: List<Item>) : View(c) {
             p.textAlign = Paint.Align.CENTER; p.textSize = 11.5f * d; p.typeface = glassFont(bold = true)
             cv.drawText(it.name.take(14), x, y + bh / 2 + 13f * d, p)
         }
+        postInvalidateOnAnimation()
     }
 }

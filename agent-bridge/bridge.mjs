@@ -21,6 +21,7 @@ import { planHooks, applyHooks } from "./lib/hooks.mjs";
 import { planAgent, applyAgentPlan, validAgent, INSTALLERS } from "./lib/agents.mjs";
 import { offerable, answersFromPicks } from "./lib/questions.mjs";
 import { createSessions, sessionsMessage, pillIdOf, stepOf, finalLineOf } from "./lib/sessions.mjs";
+import { createRunner } from "./lib/runner.mjs";
 import { createRelayClient, loadRelay, saveRelay, forgetRelay, rotateRelay } from "./lib/relay.mjs";
 
 const HELLO_TIMEOUT_MS = 10_000;
@@ -30,7 +31,7 @@ const FAIL_DELAY_MS = 300;
 const HOOK_LINE_MAX = 4 * 1024 * 1024; // a file edit can be large; hook.mjs keeps it under ~1 MiB
 // only plain tool names can be remembered, and Bash only with its exact (non-empty, single-line) command
 const alwaysOk = (tool, command) => /^[A-Za-z0-9_.:-]{1,60}$/.test(tool ?? "") && tool !== "AskUserQuestion" && (tool !== "Bash" || (typeof command === "string" && command.length > 0 && !command.includes("\n")));
-export const CAPS = ["details", "answers", "diffs", "always"];
+export const CAPS = ["details", "answers", "diffs", "always", "run"];
 // "relay" is offered only on the LAN link, and only when a relay is configured: it hands the phone the relay address and key
 const RELAY_CAP = "relay";
 const DIFF_LINES = 200, DIFF_LINE_CHARS = 400, DIFF_PART = 100;
@@ -64,7 +65,8 @@ export async function startBridge(opts = {}) {
   const approvalTimeout = opts.approvalTimeoutMs ?? APPROVAL_TIMEOUT_MS;
   const log = opts.log ?? (() => {});
   // capabilities this bridge offers (--no-details / --no-answers / --no-diffs turn them off)
-  const enabled = new Set(CAPS.filter((c) => opts.caps?.[c] !== false));
+  const runCfg = opts.run ?? null; // {bin, workdir}: the phone may start a headless Claude Code task (only with --allow-run)
+  const enabled = new Set(CAPS.filter((c) => opts.caps?.[c] !== false && (c !== "run" || runCfg)));
   const relayCfg = opts.relay === false ? null : (opts.relay ?? loadRelay(dir));
   const { key, cert, fp: certFp } = ensureCert(dir);
   let token = loadToken(dir) ?? newToken(dir);
@@ -77,6 +79,12 @@ export async function startBridge(opts = {}) {
   const pending = new Map(); // fingerprint -> {kind, reply, truncated, timer, agent, sessionId, questions, createdAt}
   let phone = null; // {sock, send, caps: Set}
 
+  let lastRun = null;
+  const runner = runCfg ? createRunner({ bin: runCfg.bin, workdir: runCfg.workdir, onState: (st) => {
+    lastRun = st;
+    log(`task ${st.id}: ${st.state}`);
+    phone?.send({ type: "runState", ...st });
+  } }) : null;
   const pushSessions = () => phone?.send(sessionsMessage(sessions.list(phone.caps)));
 
   // usage: plan limits from the statusLine relay (V3 section 1) + today's counters (V2 section 3).
@@ -234,6 +242,7 @@ export async function startBridge(opts = {}) {
       // over the LAN (certificate-pinned) link the phone learns where the relay is and the key for it
       if (caps.has(RELAY_CAP) && relayCfg) send({ type: "relay", url: relayCfg.url, key: relayCfg.rk });
       pushSessions();
+      if (caps.has("run") && lastRun) send({ type: "runState", ...lastRun });
       lastUsageKey = "";
       sendUsage(true);
     };
@@ -303,6 +312,14 @@ export async function startBridge(opts = {}) {
           const answers = answersFromPicks(p.questions, m.picks);
           if (!answers) return; // not an exact match: nothing changes, the question stays open
           return resolve(m.fingerprint, { answers });
+        }
+        case "run": {
+          if (!caps.has("run") || !runner) return;
+          return void runner.start(typeof m.id === "string" ? m.id : "", m.prompt);
+        }
+        case "runStop": {
+          if (!caps.has("run") || !runner) return;
+          return void runner.stop(typeof m.id === "string" ? m.id : "");
         }
         case "getDiff": {
           if (!caps.has("diffs")) return;
@@ -410,6 +427,7 @@ export async function startBridge(opts = {}) {
       clearInterval(usageTick);
       clearTimeout(usageTimer);
       relay?.close();
+      runner?.stopAll();
       codes.stop();
       await mdns?.close();
       for (const fp of [...pending.keys()]) resolve(fp, null);
@@ -431,6 +449,7 @@ const HELP = `node bridge.mjs [options]
   --install-agent NAME  also install hooks for another agent (${Object.keys(INSTALLERS).join(", ")}); see docs/AGENTS-OTHER.md
   --no-details          do not offer session details (project, steps, final line) to the phone
   --no-answers          do not let the phone answer Claude Code's questions
+  --allow-run           let the phone start a Claude Code task here (claude -p) in --workdir DIR (default: the current folder); each tool it uses is asked on the phone
   --no-always           no "Always" button: the phone can only allow one request at a time
   --no-diffs            do not offer the files an agent changed to the phone
   --relay URL           also reach the phone from outside the home network through your own Cloudflare relay (relay/README.md)
@@ -522,6 +541,7 @@ async function main() {
     dir, host: arg("host"), port: arg("port") ? Number(arg("port")) : undefined, name: arg("name"),
     mdns: !has("no-mdns"),
     caps: { details: !has("no-details"), answers: !has("no-answers"), diffs: !has("no-diffs"), always: !has("no-always") },
+    run: has("allow-run") ? { bin: arg("claude-bin") ?? "claude", workdir: arg("workdir") ?? process.cwd() } : null,
     log: (m) => console.log(new Date().toISOString(), m),
     onCode: (code, why) => {
       if (!ready) return; // the first code is part of the banner below
@@ -537,6 +557,7 @@ async function main() {
   console.log(`  Адрес:       ${b.host}:${b.port} (только локальная сеть)`);
   console.log(`  Claude Code: ${claude}`);
   console.log(`  Телефону:    ${b.caps.length ? b.caps.join(", ") : "только сессии и разрешения"}`);
+  if (b.caps.includes("run")) console.log(`  Задачи с телефона: включены (папка ${arg("workdir") ?? process.cwd()})`);
   console.log(`  mDNS:        ${b.mdnsName() ? `${b.mdnsName()}._bubby-agent._tcp.local.` : "выключен"}`);
   console.log(`  Сертификат:  ${b.fp.slice(0, 16)}…`);
   console.log(`  Relay:       ${b.relayUrl() ? `${b.relayUrl()} (телефон получит ключ по домашней сети при первом подключении)` : "выключен (--relay URL, чтобы подключаться вне дома)"}`);

@@ -72,6 +72,14 @@ export function decisionOutput(decision, always) {
   return null;
 }
 
+const RUN_SAFE_TOOLS = new Set(["Read", "Glob", "Grep", "LS", "TodoWrite", "NotebookRead"]);
+
+// PreToolUse answer for a phone-started task: only an explicit "allow" from the phone lets the tool run; no answer = no.
+export function runDecisionOutput(decision) {
+  const allow = decision === "allow";
+  return { hookSpecificOutput: { hookEventName: "PreToolUse", permissionDecision: allow ? "allow" : "deny", permissionDecisionReason: allow ? "Allowed from the phone (Bubby)" : "Not allowed from the phone (Bubby)" } };
+}
+
 // What to print for the bridge's reply. Nothing that allows anything without a decision a person sent from the phone.
 export function replyOutput(payload, env, reply) {
   if (env.agent) return null; // other agents: display only
@@ -129,10 +137,14 @@ async function hookMain(argv) {
   if (payload && typeof payload === "object" && !Array.isArray(payload) && (agent || event || payload.hook_event_name)) {
     if (agent || event || !["SessionStart", "UserPromptSubmit", "PreToolUse", "PostToolUse", "PermissionRequest", "Notification", "Stop", "StopFailure", "SessionEnd"].includes(payload.hook_event_name)) payload = normalizePayload(payload, { agent, event });
     const env = buildEnvelope(payload);
+    // a task started from the phone (headless `claude -p`) has no permission dialog: its tools are asked here, before they run
+    const runAsk = !!env && !env.agent && process.env.BUBBY_RUN === "1" && env.event === "PreToolUse" && !RUN_SAFE_TOOLS.has(env.tool);
+    if (runAsk) env.event = "PermissionRequest";
     if (env) {
       const waits = env.event === "PermissionRequest" && !env.agent;
       const waitMs = Number(process.env.BUBBY_HOOK_WAIT_MS) || HOOK_WAIT_MS;
       const reply = await talk(JSON.stringify(env) + "\n", waits ? waitMs : 2000);
+      if (runAsk) return out(runDecisionOutput(reply?.decision));
       const o = waits ? replyOutput(payload, env, reply) : null;
       if (o) return out(o);
     }

@@ -38,6 +38,12 @@ class SceneView(c: Context) : WebView(c) {
         settings.cacheMode = android.webkit.WebSettings.LOAD_NO_CACHE
         setLayerType(LAYER_TYPE_HARDWARE, null)
         webViewClient = client
+        webChromeClient = object : android.webkit.WebChromeClient() {
+            override fun onConsoleMessage(m: android.webkit.ConsoleMessage): Boolean {
+                if (m.messageLevel() == android.webkit.ConsoleMessage.MessageLevel.ERROR) android.util.Log.w("com.example.buddy", "SceneView console: ${m.message().take(120)} @${m.lineNumber()}")
+                return true
+            }
+        }
         visibility = View.GONE
     }
 

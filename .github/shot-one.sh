@@ -28,12 +28,21 @@ adb install -r bubby.apk
 adb logcat -c
 ( "$ADB" logcat -v threadtime > "shots/$SCREEN-live.txt" 2>&1 & )
 STATIC="--ez static true"; [ -n "$LIVE" ] && STATIC="--ez nosetup true"
-if [ "$SCREEN" = home ]; then
-  timeout 60 "$ADB" shell am start -W -n com.example.buddy/.ui.UiActivity $STATIC > "shots/$SCREEN-start.txt" 2>&1
-else
-  timeout 60 "$ADB" shell am start -W -n com.example.buddy/.ui.UiActivity --es open "$OPEN" $STATIC $EXTRA > "shots/$SCREEN-start.txt" 2>&1
-fi
-sleep 8
+launch() {
+  if [ "$SCREEN" = home ]; then
+    timeout 60 "$ADB" shell am start -W -n com.example.buddy/.ui.UiActivity $STATIC > "shots/$SCREEN-start.txt" 2>&1
+  else
+    timeout 60 "$ADB" shell am start -W -n com.example.buddy/.ui.UiActivity --es open "$OPEN" $STATIC $EXTRA > "shots/$SCREEN-start.txt" 2>&1
+  fi
+  sleep 8
+}
+# Google services sometimes die on the small emulator and Android kills the app with them ("depends on provider ... in dying proc"): start again, up to three times
+for try in 1 2 3; do
+  launch
+  [ -n "$(adb shell pidof com.example.buddy 2>/dev/null | tr -d '\r ')" ] && break
+  echo "app was killed by the system, start $try" >> "shots/$SCREEN-start.txt"
+  sleep 10
+done
 adb shell uiautomator dump /sdcard/ui.xml > /dev/null 2>&1 && adb exec-out cat /sdcard/ui.xml > "shots/$SCREEN-ui.xml" 2>/dev/null
 adb exec-out screencap -p > /tmp/raw.png
 if command -v convert >/dev/null 2>&1; then convert /tmp/raw.png -resize 400x "shots/$SCREEN.png"; else cp /tmp/raw.png "shots/$SCREEN.png"; fi

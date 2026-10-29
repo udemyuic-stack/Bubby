@@ -28,7 +28,9 @@ const SILENCE_MS = 90_000;
 const STALE_SESSION_MS = 30 * 60_000;
 const FAIL_DELAY_MS = 300;
 const HOOK_LINE_MAX = 4 * 1024 * 1024; // a file edit can be large; hook.mjs keeps it under ~1 MiB
-export const CAPS = ["details", "answers", "diffs"];
+// only plain tool names can be remembered, and Bash only with its exact (non-empty, single-line) command
+const alwaysOk = (tool, command) => /^[A-Za-z0-9_.:-]{1,60}$/.test(tool ?? "") && tool !== "AskUserQuestion" && (tool !== "Bash" || (typeof command === "string" && command.length > 0 && !command.includes("\n")));
+export const CAPS = ["details", "answers", "diffs", "always"];
 // "relay" is offered only on the LAN link, and only when a relay is configured: it hands the phone the relay address and key
 const RELAY_CAP = "relay";
 const DIFF_LINES = 200, DIFF_LINE_CHARS = 400, DIFF_PART = 100;
@@ -187,7 +189,7 @@ export async function startBridge(opts = {}) {
     const { command, truncated } = truncateCommand(ev.command);
     const tool = String(ev.tool ?? "").slice(0, 60);
     const fp = fingerprint(PILL_ID, ev.sessionId, tool, command, crypto.randomUUID());
-    wait(fp, { kind: "approval", reply, truncated, agent: null, sessionId: ev.sessionId });
+    wait(fp, { kind: "approval", reply, truncated, agent: null, sessionId: ev.sessionId, tool, command });
     touch(ev, { state: "approval", statusText: "Waiting for your approval" });
     phone.send({ type: "approval", pillId: PILL_ID, fingerprint: fp, tool, command, createdAt: Date.now(), ...(truncated ? { truncated: true } : {}) });
   }
@@ -289,6 +291,9 @@ export async function startBridge(opts = {}) {
           const p = typeof m.fingerprint === "string" ? pending.get(m.fingerprint) : null;
           if (!p || p.kind !== "approval" || (m.decision !== "allow" && m.decision !== "deny")) return;
           if (m.decision === "allow" && p.truncated) return; // answered on the computer
+          // "always": allow and remember it for the rest of this Claude Code session (never for truncated commands)
+          if (m.decision === "allow" && m.always === true && caps.has("always") && !p.truncated && alwaysOk(p.tool, p.command))
+            return resolve(m.fingerprint, { decision: "allow", always: { tool: p.tool, command: p.tool === "Bash" ? p.command : undefined } });
           return resolve(m.fingerprint, { decision: m.decision });
         }
         case "answer": {
@@ -426,6 +431,7 @@ const HELP = `node bridge.mjs [options]
   --install-agent NAME  also install hooks for another agent (${Object.keys(INSTALLERS).join(", ")}); see docs/AGENTS-OTHER.md
   --no-details          do not offer session details (project, steps, final line) to the phone
   --no-answers          do not let the phone answer Claude Code's questions
+  --no-always           no "Always" button: the phone can only allow one request at a time
   --no-diffs            do not offer the files an agent changed to the phone
   --relay URL           also reach the phone from outside the home network through your own Cloudflare relay (relay/README.md)
   --forget-relay        stop using the relay and delete its key
@@ -515,7 +521,7 @@ async function main() {
   const b = await startBridge({
     dir, host: arg("host"), port: arg("port") ? Number(arg("port")) : undefined, name: arg("name"),
     mdns: !has("no-mdns"),
-    caps: { details: !has("no-details"), answers: !has("no-answers"), diffs: !has("no-diffs") },
+    caps: { details: !has("no-details"), answers: !has("no-answers"), diffs: !has("no-diffs"), always: !has("no-always") },
     log: (m) => console.log(new Date().toISOString(), m),
     onCode: (code, why) => {
       if (!ready) return; // the first code is part of the banner below

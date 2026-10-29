@@ -340,7 +340,7 @@ class BuddyService : Service() {
         when (i?.action) {
             Reminders.ACTION_SPEAK -> remind(i.getStringExtra("text").orEmpty())
             ACTION_AGENT_RELOAD -> startAgentLink()
-            ACTION_AGENT_DECIDE -> i.getStringExtra("fp")?.let { fp -> agentLink?.decide(fp, i.getBooleanExtra("allow", false)); resolveLocal(fp) }
+            ACTION_AGENT_DECIDE -> i.getStringExtra("fp")?.let { fp -> agentLink?.decide(fp, i.getBooleanExtra("allow", false), i.getBooleanExtra("always", false)); resolveLocal(fp) }
             // the app asked for the screen lock already; picks is a JSON list of label lists, checked again by AgentLink
             ACTION_AGENT_ANSWER -> i.getStringExtra("fp")?.let { fp ->
                 val picks = try {
@@ -1264,12 +1264,19 @@ class BuddyService : Service() {
         val locked = getSystemService(KeyguardManager::class.java).isKeyguardLocked
         style(true); status.text = t("Нужно разрешение", "Permission needed", "Ruxsat kerak"); setMode("surprised"); setWave(WaveView.NONE)
         hide(input); hide(answer)
+        val canAlways = "always" in agentCaps && !a.truncated && IslandUi.risk(a.tool, a.command) != IslandUi.RISK_HIGH
         approvalHolder.addView(ApprovalCard.build(this, a, locked, onAllow = {
             ConfirmActivity.request(this) { ok ->
                 if (ok) { agentLink?.decide(a.fingerprint, true); resolveLocal(a.fingerprint) }
                 else { status.text = t("Нужен экран блокировки", "Lock screen required", "Ekran qulfi kerak") }
             }
-        }, onDeny = { agentLink?.decide(a.fingerprint, false); resolveLocal(a.fingerprint) }))
+        }, onDeny = { agentLink?.decide(a.fingerprint, false); resolveLocal(a.fingerprint) },
+        onAlways = if (!canAlways) null else ({
+            ConfirmActivity.request(this) { ok ->
+                if (ok) { agentLink?.decide(a.fingerprint, true, true); resolveLocal(a.fingerprint) }
+                else { status.text = t("Нужен экран блокировки", "Lock screen required", "Ekran qulfi kerak") }
+            }
+        })))
         approvalHolder.alpha = 1f; approvalHolder.visibility = View.VISIBLE
         if (announce && ttsOn() && !locked) {
             val l = uiLang()

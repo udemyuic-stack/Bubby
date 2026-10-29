@@ -103,7 +103,7 @@ object ToolRegistry {
             progress = t("Открываю карту", "Opening maps", "Xarita ochilmoqda")),
         Tool("call", "Calls a contact or number (the user confirms on screen).", S, ACTION, CORE, listOf(s("to", ex = "contact or number", req = true)), legacy = true,
             progress = t("Звоню: %s", "Calling %s", "Qo'ng'iroq: %s"), arg = "to"),
-        Tool("message", "SENDS a message (sms, whatsapp or telegram) after a short cancel countdown; the user confirms first. If the recipient or the text is unclear, ask instead of guessing; never claim it was delivered.",
+        Tool("message", "SENDS a message (sms, whatsapp or telegram) after a short cancel countdown; the user confirms first. If the recipient or the text is unclear, ask instead of guessing; never claim it was delivered. The text is exactly what the user wants to say to the recipient: when they only said to send a message/sms without saying what, ask «what should I write?» and never put the word «message», «sms» or «xabar» in the text.",
             S, ACTION, CORE, listOf(s("app", ex = "sms|whatsapp|telegram", enum = listOf("sms", "whatsapp", "telegram")), s("to", ex = "contact or number", req = true), s("text", ex = "...", req = true)), legacy = true,
             note = "SENDS the message by itself after a short cancel countdown the user can tap; announce it naturally («Отправляю Алишеру: …» / \"Sending to Alisher: …\" / \"Alisherga yuboryapman: …\"), never claim it was delivered; if the recipient or the text is unclear, ask instead of guessing",
             progress = t("Готовлю сообщение", "Preparing the message", "Xabar tayyorlanmoqda")),

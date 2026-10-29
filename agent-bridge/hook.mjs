@@ -57,8 +57,17 @@ export function buildEnvelope(payload) {
   return env;
 }
 
-export function decisionOutput(decision) {
-  if (decision === "allow") return { hookSpecificOutput: { hookEventName: "PermissionRequest", decision: { behavior: "allow" } } };
+export function decisionOutput(decision, always) {
+  if (decision === "allow") {
+    const d = { behavior: "allow" };
+    // "always": a session rule (gone when the Claude Code session ends), for this tool, or this exact command for Bash
+    if (always && typeof always.tool === "string" && always.tool) {
+      const rule = { toolName: always.tool };
+      if (always.tool === "Bash") { if (typeof always.command !== "string" || !always.command) return { hookSpecificOutput: { hookEventName: "PermissionRequest", decision: d } }; rule.ruleContent = always.command; }
+      d.updatedPermissions = [{ type: "addRules", rules: [rule], behavior: "allow", destination: "session" }];
+    }
+    return { hookSpecificOutput: { hookEventName: "PermissionRequest", decision: d } };
+  }
   if (decision === "deny") return { hookSpecificOutput: { hookEventName: "PermissionRequest", decision: { behavior: "deny", message: "Denied from the phone (Bubby)" } } };
   return null;
 }
@@ -68,7 +77,7 @@ export function replyOutput(payload, env, reply) {
   if (env.agent) return null; // other agents: display only
   if (env.event !== "PermissionRequest" || !reply || typeof reply !== "object") return null;
   if (env.tool === "AskUserQuestion") return reply.answers ? answerOutput(payload.tool_input, reply.answers) : null;
-  return decisionOutput(reply.decision);
+  return decisionOutput(reply.decision, reply.always);
 }
 
 // Agents that read a JSON object after every hook get "{}" ("no opinion").

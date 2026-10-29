@@ -345,6 +345,10 @@ class AgentsScreen(act: UiActivity) : Screen(act) {
                     com.example.buddy.ConfirmActivity.request(ctx) { ok -> if (ok) decide(ap.fingerprint, true) else ctx.toast(t("Нужен экран блокировки", "Lock screen required", "Ekran qulfi kerak")) }
                 }, 0, WRAP, 1f)
             }, MATCH, WRAP, top = 10)
+            if ("always" in BuddyService.agentCaps && !ap.truncated && com.example.buddy.IslandUi.risk(ap.tool, ap.command) != com.example.buddy.IslandUi.RISK_HIGH)
+                add(ctx.button(t("Всегда (до конца сессии)", "Always (this session)", "Doim (shu sessiya davomida)"), BtnStyle.Outline) {
+                    com.example.buddy.ConfirmActivity.request(ctx) { ok -> if (ok) decide(ap.fingerprint, true, true) else ctx.toast(t("Нужен экран блокировки", "Lock screen required", "Ekran qulfi kerak")) }
+                }, MATCH, WRAP, top = 8)
             add(ctx.text(if (ap.truncated) t("Команда слишком длинная: разрешить можно только на компьютере", "The command is too long: it can only be allowed on the computer", "Buyruq juda uzun: ruxsatni faqat kompyuterda berish mumkin")
                 else t("Разрешить можно только после проверки экрана блокировки", "You can allow only after the lock screen check", "Ruxsat faqat qulf ekrani tekshiruvidan keyin beriladi"), T.Small), MATCH, WRAP, top = 8)
         }, MATCH, WRAP, bottom = 12)
@@ -396,8 +400,8 @@ class AgentsScreen(act: UiActivity) : Screen(act) {
         c.add(ctx.button(t("Отключить", "Disconnect", "Uzish"), BtnStyle.Outline) { unpair() }, MATCH, WRAP, top = 8)
     }
 
-    private fun decide(fp: String, allow: Boolean) {
-        ctx.startService(android.content.Intent(ctx, BuddyService::class.java).setAction(BuddyService.ACTION_AGENT_DECIDE).putExtra("fp", fp).putExtra("allow", allow))
+    private fun decide(fp: String, allow: Boolean, always: Boolean = false) {
+        ctx.startService(android.content.Intent(ctx, BuddyService::class.java).setAction(BuddyService.ACTION_AGENT_DECIDE).putExtra("fp", fp).putExtra("allow", allow).putExtra("always", always))
         content.postDelayed({ refresh() }, 300)
     }
 

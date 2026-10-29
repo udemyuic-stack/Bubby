@@ -249,3 +249,46 @@ test("hook socket is 0600", async () => {
   assert.equal(fs.statSync(sockPath(dir)).mode & 0o777, 0o600);
   await b.close();
 });
+
+test("'always': allow + a session rule for the tool, exact command for Bash; refused without the cap, for multi-line commands and for non-Bash it is tool-wide", async () => {
+  const { b, dir, token } = await start();
+  const phone = await phoneFor(b, token, { caps: ["always"] });
+  await phone.wait((m) => m.type === "welcome");
+  const h1 = runHook(dir, perm("npm test"));
+  const a1 = await phone.wait((m) => m.type === "approval" && m.command === "npm test");
+  phone.send({ type: "decision", fingerprint: a1.fingerprint, decision: "allow", always: true });
+  const d1 = JSON.parse((await h1).out).hookSpecificOutput.decision;
+  assert.equal(d1.behavior, "allow");
+  assert.deepEqual(d1.updatedPermissions, [{ type: "addRules", rules: [{ toolName: "Bash", ruleContent: "npm test" }], behavior: "allow", destination: "session" }]);
+  // another tool: the rule is for the whole tool, with no content
+  const h2 = runHook(dir, { hook_event_name: "PermissionRequest", session_id: "s1", tool_name: "Edit", tool_input: { file_path: "/x/y.js" } });
+  const a2 = await phone.wait((m) => m.type === "approval" && m.tool === "Edit");
+  phone.send({ type: "decision", fingerprint: a2.fingerprint, decision: "allow", always: true });
+  const d2 = JSON.parse((await h2).out).hookSpecificOutput.decision;
+  assert.deepEqual(d2.updatedPermissions[0].rules, [{ toolName: "Edit" }]);
+  // a multi-line Bash command is never remembered: it is allowed once
+  const h3 = runHook(dir, perm("echo a\necho b"));
+  const a3 = await phone.wait((m) => m.type === "approval" && m.tool === "Bash" && m.command.startsWith("echo a"));
+  phone.send({ type: "decision", fingerprint: a3.fingerprint, decision: "allow", always: true });
+  assert.equal(JSON.parse((await h3).out).hookSpecificOutput.decision.updatedPermissions, undefined);
+  phone.close();
+  await b.close();
+});
+
+test("'always' is not offered or honoured when the phone did not ask for it or the bridge turned it off", async () => {
+  const { b, dir, token } = await start();
+  const phone = await phoneFor(b, token); // no caps
+  const w = await phone.wait((m) => m.type === "welcome");
+  assert.ok(!(w.caps ?? []).includes("always"));
+  const h = runHook(dir, perm("ls"));
+  const a = await phone.wait((m) => m.type === "approval");
+  phone.send({ type: "decision", fingerprint: a.fingerprint, decision: "allow", always: true });
+  assert.equal(JSON.parse((await h).out).hookSpecificOutput.decision.updatedPermissions, undefined);
+  phone.close();
+  await b.close();
+  const off = await start({ caps: { always: false } });
+  const p2 = await phoneFor(off.b, off.token, { caps: ["always"] });
+  assert.ok(!((await p2.wait((m) => m.type === "welcome")).caps ?? []).includes("always"));
+  p2.close();
+  await off.b.close();
+});

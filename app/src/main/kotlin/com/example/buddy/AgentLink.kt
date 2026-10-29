@@ -115,15 +115,15 @@ class AgentLink(ctx: Context, val listener: Listener) {
         caps = emptySet()
     }
 
-    fun decide(fingerprint: String, allow: Boolean) {
+    /** [always] = allow and let Claude Code remember it for the rest of its session (only when the bridge offers it). */
+    fun decide(fingerprint: String, allow: Boolean, always: Boolean = false) {
         if (!connected || fingerprint in decided || fingerprint in asked) return
         val timer = pending.remove(fingerprint) ?: return
         main.removeCallbacks(timer)
         decided.add(fingerprint)
-        out.add(
-            JSONObject().put("type", "decision").put("fingerprint", fingerprint)
-                .put("decision", if (allow) "allow" else "deny").toString()
-        )
+        val m = JSONObject().put("type", "decision").put("fingerprint", fingerprint).put("decision", if (allow) "allow" else "deny")
+        if (allow && always && "always" in caps) m.put("always", true)
+        out.add(m.toString())
     }
 
     /**

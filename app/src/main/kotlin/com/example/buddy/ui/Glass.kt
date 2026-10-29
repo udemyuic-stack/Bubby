@@ -52,7 +52,9 @@ class ThemeDef(
     val eye: Int, val rim: Int, val tiles: List<IntArray>, val navyA: Int, val navyB: Int, val amberA: Int, val amberB: Int,
     val mascot: String, val ok: Int, val homeTop: Int = bgTop, val night: Boolean = false, val title: String = id,
     /** Name of the animated scene behind the app (assets/scene/<name>.html), or null. */
-    val scene: String? = null
+    val scene: String? = null,
+    /** True for the five themed looks whose home page is the design's own page (assets/home). */
+    val homePage: Boolean = false
 )
 
 object Theme {
@@ -60,49 +62,49 @@ object Theme {
         0xFF1C2B45.toInt(), 0xFF3B4D6E.toInt(), 0xFFE08A4A.toInt(), 0xFF7A6BD0.toInt(), 0xFFB8672F.toInt(), 0xFF341E1A.toInt(), 0xFF7F9BBD.toInt(), 0xFFE2A0B0.toInt(), 0xFF466496.toInt(),
         0xFFFFFFFF.toInt(), 0xFFFFFFFF.toInt(),
         listOf(intArrayOf(0xFF8D7EE0.toInt(), 0xFF5B4BB0.toInt()), intArrayOf(0xFF58B9A2.toInt(), 0xFF3A8C78.toInt()), intArrayOf(0xFF6FA0EE.toInt(), 0xFF4A74C4.toInt()), intArrayOf(0xFFE48AA8.toInt(), 0xFFBD5F80.toInt())),
-        0xFF34466B.toInt(), 0xFF1C2B45.toInt(), 0x40E08A4A.toInt(), 0x30E08A4A.toInt(), "mochi", 0xFF2F9D73.toInt(), 0xFFDDE6F0.toInt())
+        0xFF34466B.toInt(), 0xFF1C2B45.toInt(), 0x40E08A4A.toInt(), 0x30E08A4A.toInt(), "mochi", 0xFF2F9D73.toInt(), 0xFFDDE6F0.toInt(), scene = "glass")
     val GREEN = ThemeDef("green", 0xFFE2F4D6.toInt(), 0xFFB6E58F.toInt(), 0xFF7FCF45.toInt(), 0xFF6FCF3A.toInt(), 0xFFF6FDF0.toInt(),
         0xFF123D1A.toInt(), 0xFF2F5A38.toInt(), 0xFF2FA83A.toInt(), 0xFF7BC62D.toInt(), 0xFF2F5A38.toInt(), 0xFF082C0E.toInt(), 0xFF78D746.toInt(), 0xFFBEEB3C.toInt(), 0xFF1E6428.toInt(),
         0xFFEAFF7A.toInt(), 0xFFC4F76E.toInt(),
         listOf(intArrayOf(0xFF6FD13A.toInt(), 0xFF2F9A1C.toInt()), intArrayOf(0xFF3FCF8A.toInt(), 0xFF168A52.toInt()), intArrayOf(0xFFB6E03A.toInt(), 0xFF79A812.toInt()), intArrayOf(0xFF5FD6B0.toInt(), 0xFF22987A.toInt())),
-        0xFF2F6B3A.toInt(), 0xFF123D1A.toInt(), 0x70C8F58A.toInt(), 0x50A0E05A.toInt(), "butterfly", 0xFF2FA83A.toInt())
+        0xFF2F6B3A.toInt(), 0xFF123D1A.toInt(), 0x70C8F58A.toInt(), 0x50A0E05A.toInt(), "butterfly", 0xFF2FA83A.toInt(), scene = "green")
     val BLUE = ThemeDef("blue", 0xFFE3EEFF.toInt(), 0xFFA9C6FF.toInt(), 0xFF6A96F2.toInt(), 0xFF4F86F0.toInt(), 0xFFF0F6FF.toInt(),
         0xFF0F2A6B.toInt(), 0xFF2D4C96.toInt(), 0xFF2F66E0.toInt(), 0xFF7A8CF0.toInt(), 0xFF2D4C96.toInt(), 0xFF06165A.toInt(), 0xFF468CFF.toInt(), 0xFF9682F0.toInt(), 0xFF1E46AA.toInt(),
         0xFFD2E8FF.toInt(), 0xFF9CCAFF.toInt(),
         listOf(intArrayOf(0xFF5AA8FF.toInt(), 0xFF2A5FD8.toInt()), intArrayOf(0xFF8D86F0.toInt(), 0xFF4C42C4.toInt()), intArrayOf(0xFF45C8F0.toInt(), 0xFF1A7FD0.toInt()), intArrayOf(0xFFA9A4F4.toInt(), 0xFF6A5CDC.toInt())),
-        0xFF2D4FB0.toInt(), 0xFF0F2A6B.toInt(), 0x66A8BEFA.toInt(), 0x4C8CA0F0.toInt(), "whale", 0xFF2F66E0.toInt())
+        0xFF2D4FB0.toInt(), 0xFF0F2A6B.toInt(), 0x66A8BEFA.toInt(), 0x4C8CA0F0.toInt(), "whale", 0xFF2F66E0.toInt(), scene = "blue")
     /** The "night" look: a dark page, a black island and the white cube mascot (like the notch apps). */
     val NIGHT = ThemeDef("night", 0xFF1B1D24.toInt(), 0xFF14161C.toInt(), 0xFF0E1014.toInt(), 0xFF232A52.toInt(), 0xFF2A2D3A.toInt(),
         0xFFF1F3F8.toInt(), 0xFFA6AEC2.toInt(), 0xFF8C9CFF.toInt(), 0xFFB79CFF.toInt(), 0xFFA6AEC2.toInt(), 0xFF000000.toInt(), 0xFF5B6CFF.toInt(), 0xFFA68BFF.toInt(), 0xFF000000.toInt(),
         0xFFFFFFFF.toInt(), 0xFFFFFFFF.toInt(),
         listOf(intArrayOf(0xFF8F7BFF.toInt(), 0xFF5A47D6.toInt()), intArrayOf(0xFF3FC9A5.toInt(), 0xFF1B8F78.toInt()), intArrayOf(0xFF5B9BFF.toInt(), 0xFF2F63D6.toInt()), intArrayOf(0xFFFF8FB3.toInt(), 0xFFD0507E.toInt())),
-        0xFF3A4070.toInt(), 0xFF22264A.toInt(), 0x667C8CFF.toInt(), 0x555B6CD6.toInt(), "cube", 0xFF4CD08A.toInt(), 0xFF1B1D24.toInt(), night = true)
+        0xFF3A4070.toInt(), 0xFF22264A.toInt(), 0x667C8CFF.toInt(), 0x555B6CD6.toInt(), "cube", 0xFF4CD08A.toInt(), 0xFF1B1D24.toInt(), night = true, scene = "night")
     /** The five themed looks: each has its own animated scene and mascot (space, Halloween, rainy forest, ocean, New Year). */
     val SPACE = ThemeDef("space", 0xFFD8D4F2.toInt(), 0xFFB3ABE0.toInt(), 0xFF8A7FCA.toInt(), 0xFF7B70C4.toInt(), 0xFFF4F0FF.toInt(),
         0xFF1D1A40.toInt(), 0xFF4C4880.toInt(), 0xFFFF9A1F.toInt(), 0xFFFFC93C.toInt(), 0xFF4C4880.toInt(), 0xFF16123A.toInt(), 0xFFFFBE5A.toInt(), 0xFFBEAFFF.toInt(), 0xFF28205A.toInt(),
         0xFFFFFFFF.toInt(), 0xFFFFE2A0.toInt(),
         listOf(intArrayOf(0xFFFFC93C.toInt(), 0xFFFF8A1F.toInt()), intArrayOf(0xFF8FB6FF.toInt(), 0xFF3F5FD0.toInt()), intArrayOf(0xFFC8A8FF.toInt(), 0xFF7350D0.toInt()), intArrayOf(0xFF7FE0D0.toInt(), 0xFF2F9A8A.toInt())),
-        0xFF4C4880.toInt(), 0xFF1D1A40.toInt(), 0x40FF9A1F.toInt(), 0x30FF9A1F.toInt(), "sun", 0xFF2F9D73.toInt(), title = "Space", scene = "space")
+        0xFF4C4880.toInt(), 0xFF1D1A40.toInt(), 0x40FF9A1F.toInt(), 0x30FF9A1F.toInt(), "sun", 0xFF2F9D73.toInt(), title = "Space", scene = "space", homePage = true)
     val HALLOWEEN = ThemeDef("halloween", 0xFFDDD3E8.toInt(), 0xFFBFB0D4.toInt(), 0xFF9884B4.toInt(), 0xFF8A6AA8.toInt(), 0xFFF6F0FC.toInt(),
         0xFF221836.toInt(), 0xFF54466E.toInt(), 0xFFFF7A1A.toInt(), 0xFFFFB04D.toInt(), 0xFF54466E.toInt(), 0xFF1E122C.toInt(), 0xFFFF8C32.toInt(), 0xFFC8AAFF.toInt(), 0xFF321E50.toInt(),
         0xFFFFFFFF.toInt(), 0xFFFFD9A8.toInt(),
         listOf(intArrayOf(0xFFFFB04D.toInt(), 0xFFFF7A1A.toInt()), intArrayOf(0xFFB69CF0.toInt(), 0xFF6A48B8.toInt()), intArrayOf(0xFF8FD6A0.toInt(), 0xFF3C9A5C.toInt()), intArrayOf(0xFFFF8FA8.toInt(), 0xFFC43C66.toInt())),
-        0xFF54466E.toInt(), 0xFF221836.toInt(), 0x40FF7A1A.toInt(), 0x30FF7A1A.toInt(), "pumpkin", 0xFF2F9D73.toInt(), title = "Halloween", scene = "halloween")
+        0xFF54466E.toInt(), 0xFF221836.toInt(), 0x40FF7A1A.toInt(), 0x30FF7A1A.toInt(), "pumpkin", 0xFF2F9D73.toInt(), title = "Halloween", scene = "halloween", homePage = true)
     val FOREST = ThemeDef("forest", 0xFFC7D2DF.toInt(), 0xFFA8B7CA.toInt(), 0xFF8597B0.toInt(), 0xFF6D84A6.toInt(), 0xFFECF2FA.toInt(),
         0xFF1A2840.toInt(), 0xFF46587A.toInt(), 0xFF3F6FB0.toInt(), 0xFF7FA6D6.toInt(), 0xFF46587A.toInt(), 0xFF182234.toInt(), 0xFF82A5D7.toInt(), 0xFFAAC8F0.toInt(), 0xFF283C5F.toInt(),
         0xFFFFFFFF.toInt(), 0xFFE6F0FF.toInt(),
         listOf(intArrayOf(0xFF7FA6D6.toInt(), 0xFF3F6FB0.toInt()), intArrayOf(0xFF8FC1FF.toInt(), 0xFF3D7FC2.toInt()), intArrayOf(0xFFA9B4E6.toInt(), 0xFF5A68B8.toInt()), intArrayOf(0xFF9FD3D6.toInt(), 0xFF3F8F9A.toInt())),
-        0xFF46587A.toInt(), 0xFF1A2840.toInt(), 0x403F6FB0.toInt(), 0x303F6FB0.toInt(), "cloud", 0xFF2F9D73.toInt(), title = "Rainy forest", scene = "forest")
+        0xFF46587A.toInt(), 0xFF1A2840.toInt(), 0x403F6FB0.toInt(), 0x303F6FB0.toInt(), "cloud", 0xFF2F9D73.toInt(), title = "Rainy forest", scene = "forest", homePage = true)
     val OCEAN = ThemeDef("ocean", 0xFFEAFCFF.toInt(), 0xFFB4ECF6.toInt(), 0xFF7CCFE6.toInt(), 0xFF7FD4EA.toInt(), 0xFFECFCFF.toInt(),
         0xFF123048.toInt(), 0xFF3C6680.toInt(), 0xFFFF7A5C.toInt(), 0xFFFFB08A.toInt(), 0xFF3C6680.toInt(), 0xFF0A3250.toInt(), 0xFF78DCE6.toInt(), 0xFFFFBEAA.toInt(), 0xFF144664.toInt(),
         0xFFFFFFFF.toInt(), 0xFFC8F4FF.toInt(),
         listOf(intArrayOf(0xFFFFB08A.toInt(), 0xFFFF7A5C.toInt()), intArrayOf(0xFF7FE0E8.toInt(), 0xFF2A9AB8.toInt()), intArrayOf(0xFF9AE6A0.toInt(), 0xFF3A9A5A.toInt()), intArrayOf(0xFFFFD27A.toInt(), 0xFFE0A030.toInt())),
-        0xFF3C6680.toInt(), 0xFF123048.toInt(), 0x40FF7A5C.toInt(), 0x30FF7A5C.toInt(), "jelly", 0xFF2F9D73.toInt(), title = "Ocean", scene = "ocean")
+        0xFF3C6680.toInt(), 0xFF123048.toInt(), 0x40FF7A5C.toInt(), 0x30FF7A5C.toInt(), "jelly", 0xFF2F9D73.toInt(), title = "Ocean", scene = "ocean", homePage = true)
     val NEWYEAR = ThemeDef("newyear", 0xFFDDE6F0.toInt(), 0xFFCBD8E6.toInt(), 0xFFAEBFD5.toInt(), 0xFF7F9BBD.toInt(), 0xFFF3F6FA.toInt(),
         0xFF1C2B45.toInt(), 0xFF4A5C7D.toInt(), 0xFF4F78B8.toInt(), 0xFF8FB0DE.toInt(), 0xFF4A5C7D.toInt(), 0xFF1C2B45.toInt(), 0xFF96B9EB.toInt(), 0xFFBED7FA.toInt(), 0xFF466496.toInt(),
         0xFFFFFFFF.toInt(), 0xFFD6E6FF.toInt(),
         listOf(intArrayOf(0xFF8FB0DE.toInt(), 0xFF4F78B8.toInt()), intArrayOf(0xFF9FD8E6.toInt(), 0xFF4C9AB8.toInt()), intArrayOf(0xFFB9C4F0.toInt(), 0xFF6B78C8.toInt()), intArrayOf(0xFFA8E6D8.toInt(), 0xFF4AA894.toInt())),
-        0xFF4A5C7D.toInt(), 0xFF1C2B45.toInt(), 0x404F78B8.toInt(), 0x304F78B8.toInt(), "snowman", 0xFF2F9D73.toInt(), title = "New Year", scene = "newyear")
+        0xFF4A5C7D.toInt(), 0xFF1C2B45.toInt(), 0x404F78B8.toInt(), 0x304F78B8.toInt(), "snowman", 0xFF2F9D73.toInt(), title = "New Year", scene = "newyear", homePage = true)
     val ALL = listOf(GLASS, GREEN, BLUE, NIGHT, SPACE, HALLOWEEN, FOREST, OCEAN, NEWYEAR)
 
     var cur: ThemeDef = GLASS
@@ -110,6 +112,9 @@ object Theme {
 
     /** Tile gradient [i] of the theme; the default theme keeps the colours passed in. */
     fun tile(i: Int, a: Int, b: Int): IntArray = if (cur.id == "glass") intArrayOf(a, b) else cur.tiles[i % cur.tiles.size]
+
+    /** The animated scene behind the app is on for this look (and not switched off in Settings). */
+    fun sceneOn(ctx: Context): Boolean = cur.scene != null && Backend.bool(ctx, "scene_anim", true) && (!cur.homePage || WebCompat.ok())
 
     fun byId(id: String) = ALL.firstOrNull { it.id == id } ?: GLASS
 

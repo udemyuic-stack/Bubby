@@ -171,6 +171,8 @@ class SettingsScreen(act: UiActivity) : Screen(act) {
                 Triple("ocean", t("Океан", "Ocean", "Okean"), t("Медуза", "Jellyfish", "Meduza")),
                 Triple("newyear", t("Новый год", "New Year", "Yangi yil"), t("Снеговик", "Snowman", "Qorbobo"))
             )
+            add(sw(t("Живой фон", "Animated background", "Jonli fon"), "scene_anim", true,
+                t("Движущийся фон за страницами. Выключите, чтобы экономить батарею", "A moving background behind the pages. Turn off to save battery", "Sahifalar orqasida harakatlanuvchi fon. Batareyani tejash uchun o'chiring")).apply { }, MATCH, WRAP, bottom = 10)
             for (pair in styles.chunked(2)) {
                 add(ctx.row {
                     for ((i, st) in pair.withIndex()) {

@@ -1,0 +1,29 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"><style>
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:transparent}
+#w{position:fixed;left:0;top:0;width:100%;height:100%;overflow:hidden}
+.a{position:absolute;will-change:transform,opacity}
+
+.cloud{background:radial-gradient(closest-side,rgba(255,255,255,.55),rgba(255,255,255,0));border-radius:50%;filter:blur(6px);animation:drift linear infinite alternate}
+@keyframes drift{from{transform:translateX(-40px)}to{transform:translateX(60px)}}
+.leaf{top:-30px;animation:fall linear infinite}
+@keyframes fall{0%{transform:translate(0,-30px) rotate(0);opacity:0}8%{opacity:.8}50%{transform:translate(var(--dx),44vh) rotate(180deg)}92%{opacity:.7}100%{transform:translate(calc(var(--dx)*-.4),108vh) rotate(380deg);opacity:0}}
+.tree{bottom:-6px;transform-origin:50% 100%;animation:sway 6s ease-in-out infinite alternate}
+@keyframes sway{from{transform:rotate(-1.6deg)}to{transform:rotate(1.6deg)}}
+.fly{border-radius:50%;background:#eaff7a;box-shadow:0 0 10px 3px rgba(220,255,100,.8);animation:fly ease-in-out infinite alternate}
+@keyframes fly{0%{transform:translate(0,0);opacity:.15}50%{opacity:1}100%{transform:translate(var(--fx),var(--fy));opacity:.2}}
+.hill{bottom:0;left:-10%;width:120%;height:18%;background:linear-gradient(#58b83a,#2f8a2a);opacity:.28;border-radius:60% 60% 0 0/100% 100% 0 0}
+</style></head><body><div id="w"></div><script>
+function h(i,k){var x=Math.sin(i*12.9898+k*78.233)*43758.5453;return x-Math.floor(x)}
+var W=document.getElementById('w');
+function el(cls,css,html){var e=document.createElement('div');e.className='a '+cls;e.style.cssText=css;if(html)e.innerHTML=html;W.appendChild(e);return e}
+
+el('hill','');
+for(var i=0;i<4;i++){var s=70+h(i,1)*120;el('cloud','left:'+(h(i,2)*80-10)+'%;top:'+(4+h(i,3)*30)+'%;width:'+s*2+'px;height:'+s*.7+'px;animation-duration:'+(28+h(i,4)*30)+'s;animation-delay:-'+h(i,5)*20+'s')}
+var cols=['#6fcf3a','#9bdc3c','#c9e84a','#4fbf4a','#e4c93a'];
+for(var i=0;i<16;i++){var sz=14+h(i,6)*16;el('leaf','left:'+h(i,7)*100+'%;--dx:'+(h(i,8)*120-60)+'px;animation-duration:'+(9+h(i,9)*9)+'s;animation-delay:-'+h(i,10)*14+'s',
+ '<svg width="'+sz+'" height="'+sz+'" viewBox="0 0 24 24"><path d="M3 21C3 9 11 3 21 3c0 10-6 18-18 18z" fill="'+cols[i%5]+'" opacity=".85"/><path d="M3 21L15 9" stroke="rgba(255,255,255,.5)" stroke-width="1.2" fill="none"/></svg>')}
+for(var i=0;i<3;i++){var x=(i*38)+h(i,11)*8-6,sc=.8+h(i,12)*.5;
+ el('tree','left:'+x+'%;width:'+110*sc+'px;height:'+150*sc+'px;opacity:.26;animation-duration:'+(5+i*1.3)+'s;animation-delay:-'+i*1.7+'s',
+ '<svg width="100%" height="100%" viewBox="0 0 110 150"><rect x="50" y="80" width="10" height="70" rx="4" fill="#4a7a30"/><circle cx="55" cy="52" r="38" fill="#2f9a3a"/><circle cx="32" cy="72" r="26" fill="#3fae3a"/><circle cx="80" cy="70" r="28" fill="#3fae3a"/></svg>')}
+for(var i=0;i<12;i++){el('fly','width:5px;height:5px;left:'+h(i,13)*100+'%;top:'+(40+h(i,14)*55)+'%;--fx:'+(h(i,15)*80-40)+'px;--fy:'+(h(i,16)*-80)+'px;animation-duration:'+(5+h(i,17)*6)+'s;animation-delay:-'+h(i,18)*8+'s')}
+</script></body></html>

@@ -104,3 +104,22 @@ test("a tool of a phone-started task waits for the phone's answer (PreToolUse), 
   assert.equal(runDecisionOutput(undefined).hookSpecificOutput.permissionDecision, "deny");
   phone.close(); await b.close();
 });
+
+test("the phone picks the project among the folders of the root; anything else is refused", async () => {
+  const d = tmp();
+  const bin = fakeClaude(d, `console.log(JSON.stringify({result:"cwd="+process.cwd()}))`);
+  const root = path.join(d, "projects"); fs.mkdirSync(path.join(root, "alpha"), { recursive: true }); fs.mkdirSync(path.join(root, "beta")); fs.mkdirSync(path.join(root, ".hidden")); fs.writeFileSync(path.join(root, "file.txt"), "x");
+  const { b, token } = await start({ run: { bin, workdir: path.join(root, "alpha"), root } });
+  const phone = await fakePhone({ host: b.host, port: b.port, fp: b.fp, token, caps: ["run"] });
+  await phone.wait((m) => m.type === "welcome");
+  const pr = await phone.wait((m) => m.type === "projects");
+  assert.deepEqual(pr.list, ["alpha", "beta"]);
+  phone.send({ type: "run", id: "p1", prompt: "go", project: "beta" });
+  const done = await phone.wait((m) => m.type === "runState" && m.id === "p1" && m.state === "done");
+  assert.match(done.text, /cwd=.*projects\/beta$/);
+  for (const [i, bad] of ["../x", "a/b", ".hidden", "nope", "file.txt"].entries()) {
+    phone.send({ type: "run", id: "x" + i, prompt: "go", project: bad });
+    assert.equal((await phone.wait((m) => m.type === "runState" && m.id === "x" + i)).state, "error");
+  }
+  phone.close(); await b.close();
+});

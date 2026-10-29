@@ -64,6 +64,8 @@ class AgentLink(ctx: Context, val listener: Listener) {
         fun onUsage(u: Usage) {}
         /** State of the task started from the phone: running, done, error or stopped (capability `run`). */
         fun onRun(id: String, state: String, text: String) {}
+        /** The folders of the computer a task can run in, and the default one (capability `run`). */
+        fun onProjects(list: List<String>, current: String) {}
         /** A question from Claude Code (only with the `answers` capability); it ends with [onApprovalResolved]. */
         fun onQuestion(q: AgentQuestion) {}
         /** One part of a diff asked for with [getDiff]. */
@@ -145,9 +147,11 @@ class AgentLink(ctx: Context, val listener: Listener) {
     }
 
     /** Starts a Claude Code task on the computer (capability `run`; the computer must have been started with --allow-run). */
-    fun runTask(id: String, prompt: String): Boolean {
+    fun runTask(id: String, prompt: String, project: String = ""): Boolean {
         if (!connected || "run" !in caps || prompt.isBlank() || prompt.length > 4000) return false
-        out.add(JSONObject().put("type", "run").put("id", id).put("prompt", prompt).toString())
+        val o = JSONObject().put("type", "run").put("id", id).put("prompt", prompt)
+        if (project.isNotEmpty()) o.put("project", project.take(80))
+        out.add(o.toString())
         return true
     }
 
@@ -371,6 +375,13 @@ class AgentLink(ctx: Context, val listener: Listener) {
                     if (j.has("limitsAgeMs")) System.currentTimeMillis() - j.optLong("limitsAgeMs", 0L).coerceAtLeast(0L) else j.optLong("updatedAt", System.currentTimeMillis())
                 )
                 post(g) { listener.onUsage(u) }
+            }
+            "projects" -> if (welcomed && "run" in caps) {
+                val arr = j.optJSONArray("list")
+                val names = ArrayList<String>()
+                if (arr != null) for (i in 0 until minOf(arr.length(), 60)) arr.optString(i).takeIf { it.isNotEmpty() && it.length <= 80 }?.let { names.add(it) }
+                val cur = str(j, "current").take(80)
+                post(g) { listener.onProjects(names, cur) }
             }
             "runState" -> if (welcomed && "run" in caps) {
                 val id = str(j, "id").take(40); val st = str(j, "state"); val tx = str(j, "text").take(4000)

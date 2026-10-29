@@ -22,6 +22,7 @@ import { planAgent, applyAgentPlan, validAgent, INSTALLERS } from "./lib/agents.
 import { offerable, answersFromPicks } from "./lib/questions.mjs";
 import { createSessions, sessionsMessage, pillIdOf, stepOf, finalLineOf } from "./lib/sessions.mjs";
 import { createRunner } from "./lib/runner.mjs";
+import path from "node:path";
 import { createRelayClient, loadRelay, saveRelay, forgetRelay, rotateRelay } from "./lib/relay.mjs";
 
 const HELLO_TIMEOUT_MS = 10_000;
@@ -79,6 +80,21 @@ export async function startBridge(opts = {}) {
   const pending = new Map(); // fingerprint -> {kind, reply, truncated, timer, agent, sessionId, questions, createdAt}
   let phone = null; // {sock, send, caps: Set}
 
+  // folders the phone may pick for a task: the sub-folders of runCfg.root (names only go to the phone)
+  const projectList = () => {
+    if (!runCfg?.root) return [];
+    try {
+      return fs.readdirSync(runCfg.root, { withFileTypes: true })
+        .filter((d) => d.isDirectory() && !d.name.startsWith(".") && d.name !== "node_modules" && d.name.length <= 80)
+        .map((d) => d.name).sort().slice(0, 60);
+    } catch { return []; }
+  };
+  // a project name from the phone -> a folder inside the root, or null (never anything with a slash or ..)
+  const projectDir = (name) => {
+    if (typeof name !== "string" || !name || /[\\/]/.test(name) || name.startsWith(".") || !runCfg?.root) return null;
+    const full = path.join(runCfg.root, name);
+    try { return fs.statSync(full).isDirectory() ? full : null; } catch { return null; }
+  };
   let lastRun = null;
   const runner = runCfg ? createRunner({ bin: runCfg.bin, workdir: runCfg.workdir, onState: (st) => {
     lastRun = st;
@@ -248,6 +264,7 @@ export async function startBridge(opts = {}) {
       // over the LAN (certificate-pinned) link the phone learns where the relay is and the key for it
       if (caps.has(RELAY_CAP) && relayCfg) send({ type: "relay", url: relayCfg.url, key: relayCfg.rk });
       pushSessions();
+      if (caps.has("run")) send({ type: "projects", list: projectList(), current: runCfg?.workdir ? path.basename(runCfg.workdir) : "" });
       if (caps.has("run") && lastRun) send({ type: "runState", ...lastRun });
       lastUsageKey = "";
       sendUsage(true);
@@ -321,7 +338,13 @@ export async function startBridge(opts = {}) {
         }
         case "run": {
           if (!caps.has("run") || !runner) return;
-          return void runner.start(typeof m.id === "string" ? m.id : "", m.prompt);
+          const id = typeof m.id === "string" ? m.id : "";
+          let cwd = runCfg.workdir;
+          if (typeof m.project === "string" && m.project) {
+            cwd = projectDir(m.project);
+            if (!cwd) return void send({ type: "runState", id: id.slice(0, 40), state: "error", text: "unknown project" });
+          }
+          return void runner.start(id, m.prompt, cwd);
         }
         case "runStop": {
           if (!caps.has("run") || !runner) return;
@@ -427,6 +450,7 @@ export async function startBridge(opts = {}) {
     },
     relayState: () => (relay ? relay.state() : "off"),
     relayUrl: () => relayCfg?.url ?? null,
+    runRoot: () => runCfg?.root ?? null,
     limitsAgeMs: () => { const t = limits.snapshot().updatedAt; return t === undefined ? null : Math.max(0, Date.now() - t); },
     flushStats: () => stats.flush(),
     async close() {
@@ -456,7 +480,7 @@ const HELP = `node bridge.mjs [options]
   --install-agent NAME  also install hooks for another agent (${Object.keys(INSTALLERS).join(", ")}); see docs/AGENTS-OTHER.md
   --no-details          do not offer session details (project, steps, final line) to the phone
   --no-answers          do not let the phone answer Claude Code's questions
-  --allow-run           let the phone start a Claude Code task here (claude -p) in --workdir DIR (default: the current folder); each tool it uses is asked on the phone
+  --allow-run           let the phone start a Claude Code task (claude -p); the phone picks the project among the folders of --projects DIR (default: the folder that holds the current one); --workdir DIR is the default project; each tool it uses is asked on the phone
   --no-always           no "Always" button: the phone can only allow one request at a time
   --no-diffs            do not offer the files an agent changed to the phone
   --relay URL           also reach the phone from outside the home network through your own Cloudflare relay (relay/README.md)
@@ -548,7 +572,12 @@ async function main() {
     dir, host: arg("host"), port: arg("port") ? Number(arg("port")) : undefined, name: arg("name"),
     mdns: !has("no-mdns"),
     caps: { details: !has("no-details"), answers: !has("no-answers"), diffs: !has("no-diffs"), always: !has("no-always") },
-    run: has("allow-run") ? { bin: arg("claude-bin") ?? "claude", workdir: arg("workdir") ?? process.cwd() } : null,
+    run: has("allow-run") ? (() => {
+      const wd = path.resolve((arg("workdir") ?? process.cwd()).replace(/^~(?=$|\/)/, os.homedir()));
+      // the folders the phone can choose from: --projects DIR, or the folder that holds this one (where your projects usually are)
+      const root = path.resolve((arg("projects") ?? path.dirname(wd)).replace(/^~(?=$|\/)/, os.homedir()));
+      return { bin: arg("claude-bin") ?? "claude", workdir: wd, root };
+    })() : null,
     log: (m) => console.log(new Date().toISOString(), m),
     onCode: (code, why) => {
       if (!ready) return; // the first code is part of the banner below
@@ -564,7 +593,7 @@ async function main() {
   console.log(`  Адрес:       ${b.host}:${b.port} (только локальная сеть)`);
   console.log(`  Claude Code: ${claude}`);
   console.log(`  Телефону:    ${b.caps.length ? b.caps.join(", ") : "только сессии и разрешения"}`);
-  if (b.caps.includes("run")) console.log(`  Задачи с телефона: включены (папка ${arg("workdir") ?? process.cwd()})`);
+  if (b.caps.includes("run")) console.log(`  Задачи с телефона: включены (проекты: папки в ${b.runRoot?.() ?? "?"})`);
   console.log(`  mDNS:        ${b.mdnsName() ? `${b.mdnsName()}._bubby-agent._tcp.local.` : "выключен"}`);
   console.log(`  Сертификат:  ${b.fp.slice(0, 16)}…`);
   console.log(`  Relay:       ${b.relayUrl() ? `${b.relayUrl()} (телефон получит ключ по домашней сети при первом подключении)` : "выключен (--relay URL, чтобы подключаться вне дома)"}`);

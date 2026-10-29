@@ -23,13 +23,13 @@ export function createRunner({ bin = "claude", workdir, spawn = realSpawn, onSta
 
   return {
     busy: () => !!cur,
-    start(id, prompt) {
+    start(id, prompt, cwd = workdir) {
       if (typeof prompt !== "string" || !prompt.trim() || prompt.length > MAX_PROMPT) { emit(id, "error", "bad task"); return false; }
       if (typeof id !== "string" || !/^[A-Za-z0-9_-]{1,40}$/.test(id)) return false;
       if (cur) { emit(id, "error", "another task is running"); return false; }
       let child;
       try {
-        child = spawn(bin, ["-p", prompt, "--output-format", "json"], { cwd: workdir, env: { ...process.env, BUBBY_RUN: "1" }, stdio: ["ignore", "pipe", "pipe"], windowsHide: true });
+        child = spawn(bin, ["-p", prompt, "--output-format", "json"], { cwd, env: { ...process.env, BUBBY_RUN: "1" }, stdio: ["ignore", "pipe", "pipe"], windowsHide: true });
       } catch (e) { emit(id, "error", String(e.message ?? e)); return false; }
       const run = { id, child, stopped: false, timer: null };
       cur = run;

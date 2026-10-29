@@ -177,6 +177,7 @@ class BuddyService : Service() {
             AgentStats.refreshWidgets(this@BuddyService)
         }
         override fun onSessions(list: List<AgentSession>) { agentSessions = list; AgentStats.refreshWidgets(this@BuddyService) }
+        override fun onProjects(list: List<String>, current: String) { agentProjects = list to current }
         override fun onRun(id: String, state: String, text: String) { agentRun = Triple(id, state, text) }
         override fun onUsage(u: Usage) { agentUsage = u; AgentStats.save(this@BuddyService, u); AgentStats.refreshWidgets(this@BuddyService) }
         override fun onApproval(a: Approval) {
@@ -232,6 +233,8 @@ class BuddyService : Service() {
         @Volatile var agentQuestions: List<AgentQuestion> = emptyList()
         /** The task started from the phone: (id, state, text) or null. */
         @Volatile var agentRun: Triple<String, String, String>? = null
+        /** Folders of the computer a task can run in, and the default one. */
+        @Volatile var agentProjects: Pair<List<String>, String> = emptyList<String>() to ""
         /** What the connected bridge offered (`details`, `answers`, `diffs`); empty for an older bridge or offline. */
         @Volatile var agentCaps: Set<String> = emptySet()
         /** The open diff sheet: gets each part asked for with ACTION_AGENT_GET_DIFF, or null when it could not be asked. */
@@ -347,7 +350,7 @@ class BuddyService : Service() {
             ACTION_AGENT_RELOAD -> startAgentLink()
             ACTION_AGENT_RUN -> {
                 val id = i.getStringExtra("id").orEmpty(); val text = i.getStringExtra("prompt").orEmpty()
-                if (agentLink?.runTask(id, text) == true) agentRun = Triple(id, "running", "") else agentRun = Triple(id, "error", t("Не отправилось: компьютер не принимает задачи (запустите мост с --allow-run)", "Not sent: the computer does not take tasks (start the bridge with --allow-run)", "Yuborilmadi: kompyuter vazifa qabul qilmayapti (bridge'ni --allow-run bilan ishga tushiring)"))
+                if (agentLink?.runTask(id, text, i.getStringExtra("project").orEmpty()) == true) agentRun = Triple(id, "running", "") else agentRun = Triple(id, "error", t("Не отправилось: компьютер не принимает задачи (запустите мост с --allow-run)", "Not sent: the computer does not take tasks (start the bridge with --allow-run)", "Yuborilmadi: kompyuter vazifa qabul qilmayapti (bridge'ni --allow-run bilan ishga tushiring)"))
             }
             ACTION_AGENT_RUN_STOP -> agentLink?.stopTask(i.getStringExtra("id").orEmpty())
             ACTION_AGENT_DECIDE -> i.getStringExtra("fp")?.let { fp -> agentLink?.decide(fp, i.getBooleanExtra("allow", false), i.getBooleanExtra("always", false)); resolveLocal(fp) }

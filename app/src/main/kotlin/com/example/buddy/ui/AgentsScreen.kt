@@ -32,7 +32,7 @@ class AgentsScreen(act: UiActivity) : Screen(act) {
     /** What the page last showed of the live link state; the poll redraws only when it changes. */
     private var shownLive: Any? = null
     private fun live(): Any = listOf(BuddyService.agentDesktop, BuddyService.agentConnected, BuddyService.agentViaRelay, BuddyService.agentSessions, BuddyService.agentUsage, BuddyService.agentApprovals,
-        BuddyService.agentQuestions, BuddyService.agentCaps, BuddyService.agentRun)
+        BuddyService.agentQuestions, BuddyService.agentCaps, BuddyService.agentRun, BuddyService.agentProjects)
     private val openSteps = HashSet<String>()     // sessions whose step list is unfolded
     private val allFiles = HashSet<String>()      // sessions showing every changed file, not only the first few
     private val qSel = HashMap<String, List<Set<Int>>>()   // picks so far per question fingerprint (kept across redraws)
@@ -420,6 +420,7 @@ class AgentsScreen(act: UiActivity) : Screen(act) {
     }
 
     private var taskDraft = ""
+    private var taskProject = ""
 
     private fun runCard(): LinearLayout = ctx.card(pad = 16) {
         val run = BuddyService.agentRun
@@ -438,6 +439,23 @@ class AgentsScreen(act: UiActivity) : Screen(act) {
             isEnabled = !running
         }
         add(field, MATCH, WRAP, top = 10)
+        // the project (a folder of the computer) the task runs in: pick any of them
+        val (projects, current) = BuddyService.agentProjects
+        if (projects.isNotEmpty()) {
+            if (taskProject !in projects) taskProject = if (current in projects) current else projects.first()
+            add(ctx.text(t("Проект", "Project", "Loyiha"), T.Small), MATCH, WRAP, top = 10)
+            val flow = FlowLayout(ctx)
+            for (name in projects) {
+                val on = name == taskProject
+                flow.addView(ctx.row(Gravity.CENTER) {
+                    setPadding(ctx.dp(14), ctx.dp(8), ctx.dp(14), ctx.dp(8))
+                    background = ctx.glass(if (on) GlassKind.Active else GlassKind.Dim, 20f)
+                    add(ctx.text(name, T.Small, if (on) Glass.ON_ACTIVE else Glass.TEXT).apply { maxLines = 1 }, WRAP, WRAP)
+                    if (!running) press { taskProject = name; refresh() }
+                })
+            }
+            add(flow, MATCH, WRAP, top = 4)
+        }
         add(ctx.row {
             if (running) {
                 add(ctx.button(t("Остановить", "Stop", "To'xtatish"), BtnStyle.Outline) {
@@ -452,7 +470,7 @@ class AgentsScreen(act: UiActivity) : Screen(act) {
                         if (ok) {
                             taskDraft = ""
                             ctx.startService(android.content.Intent(ctx, BuddyService::class.java).setAction(BuddyService.ACTION_AGENT_RUN)
-                                .putExtra("id", "t" + System.currentTimeMillis()).putExtra("prompt", text))
+                                .putExtra("id", "t" + System.currentTimeMillis()).putExtra("prompt", text).putExtra("project", taskProject))
                             content.postDelayed({ refresh() }, 300)
                         } else ctx.toast(t("Нужен экран блокировки", "Lock screen required", "Ekran qulfi kerak"))
                     }

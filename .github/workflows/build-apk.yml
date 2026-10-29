@@ -69,7 +69,7 @@ jobs:
           api-level: 34
           arch: x86_64
           target: google_apis
-          ram-size: 2048M
+          ram-size: 3072M
           emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim -camera-back none -camera-front none
           disable-animations: true
           script: timeout 420 bash .github/shot-one.sh ${{ matrix.screen }}
@@ -80,7 +80,7 @@ jobs:
           api-level: 34
           arch: x86_64
           target: google_apis
-          ram-size: 2048M
+          ram-size: 3072M
           emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim -camera-back none -camera-front none
           disable-animations: true
           script: timeout 420 bash .github/shot-one.sh ${{ matrix.screen }}

@@ -23,6 +23,7 @@ class UiActivity : Activity() {
     private lateinit var navFrame: FrameLayout
     private lateinit var bgHome: View
     private lateinit var bgSub: View
+    private var scene: SceneView? = null
     private val tabs = ArrayList<Screen>()
     private var tab = 0
     private val stack = ArrayList<Pair<Screen, View>>()
@@ -43,6 +44,9 @@ class UiActivity : Activity() {
         bgSub = GlassBackground(this, false)
         host.addView(bgHome, FrameLayout.LayoutParams(MATCH, MATCH))
         host.addView(bgSub, FrameLayout.LayoutParams(MATCH, MATCH))
+        if (Theme.cur.scene != null) {
+            scene = try { SceneView(this).also { host.addView(it, FrameLayout.LayoutParams(MATCH, MATCH)) } } catch (_: Throwable) { null }   // no WebView on this phone: plain background
+        }
         shell = col {}
         body = FrameLayout(this)
         shell.add(body, MATCH, 0, 1f)
@@ -175,6 +179,7 @@ class UiActivity : Activity() {
         body.addView(tabs[i].view(), FrameLayout.LayoutParams(MATCH, MATCH))
         setBars(i != 0 && !Glass.NIGHT)
         bgHome.visibility = if (i == 0) View.VISIBLE else View.GONE
+        scene?.setScene(if (i == 4) null else Theme.cur.scene)   // the menu page stays calm
         bgSub.visibility = if (i == 0) View.GONE else View.VISIBLE
         navFrame.removeAllViews()
         if (i != 0) navFrame.addView(buildNav(), FrameLayout.LayoutParams(MATCH, dp(68)))
@@ -206,8 +211,13 @@ class UiActivity : Activity() {
         if (stack.isNotEmpty()) pop() else super.onBackPressed()
     }
 
+    override fun onPause() { super.onPause(); scene?.onAppPause() }
+
+    override fun onDestroy() { try { scene?.destroy() } catch (_: Throwable) { }; super.onDestroy() }
+
     override fun onResume() {
         super.onResume()
+        scene?.onAppResume()
         // the language the user speaks changed (auto mode): draw everything in it
         if (Tr.lang(this) != shownLang) { recreate(); return }
         (stack.lastOrNull()?.first ?: tabs[tab]).onShow()

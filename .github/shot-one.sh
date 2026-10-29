@@ -8,6 +8,11 @@ case "$SCREEN" in
   *-green) OPEN=${SCREEN%-green}; EXTRA="--es theme green";;
   *-blue) OPEN=${SCREEN%-blue}; EXTRA="--es theme blue";;
   *-night) OPEN=${SCREEN%-night}; EXTRA="--es theme night";;
+  *-space) OPEN=${SCREEN%-space}; EXTRA="--es theme space";;
+  *-halloween) OPEN=${SCREEN%-halloween}; EXTRA="--es theme halloween";;
+  *-forest) OPEN=${SCREEN%-forest}; EXTRA="--es theme forest";;
+  *-ocean) OPEN=${SCREEN%-ocean}; EXTRA="--es theme ocean";;
+  *-newyear) OPEN=${SCREEN%-newyear}; EXTRA="--es theme newyear";;
 esac
 ADB=$(command -v adb); adb() { timeout 30 "$ADB" "$@"; }
 mkdir -p shots

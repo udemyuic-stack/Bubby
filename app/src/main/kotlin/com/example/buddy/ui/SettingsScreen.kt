@@ -164,7 +164,12 @@ class SettingsScreen(act: UiActivity) : Screen(act) {
                 Triple("night", t("Ночь", "Night", "Tun"), t("Куб", "Cube", "Kub")),
                 Triple("glass", t("Стекло", "Glass", "Shisha"), t("Мочи", "Mochi", "Mochi")),
                 Triple("green", t("Зелёный", "Green", "Yashil"), t("Мотылёк", "Butterfly", "Kapalak")),
-                Triple("blue", t("Синий", "Blue", "Ko'k"), t("Кит", "Whale", "Kit"))
+                Triple("blue", t("Синий", "Blue", "Ko'k"), t("Кит", "Whale", "Kit")),
+                Triple("space", t("Космос", "Space", "Kosmos"), t("Солнце", "Sun", "Quyosh")),
+                Triple("halloween", t("Хэллоуин", "Halloween", "Halloween"), t("Тыква", "Pumpkin", "Qovoq")),
+                Triple("forest", t("Дождливый лес", "Rainy forest", "Yomg'irli o'rmon"), t("Облако", "Cloud", "Bulut")),
+                Triple("ocean", t("Океан", "Ocean", "Okean"), t("Медуза", "Jellyfish", "Meduza")),
+                Triple("newyear", t("Новый год", "New Year", "Yangi yil"), t("Снеговик", "Snowman", "Qorbobo"))
             )
             for (pair in styles.chunked(2)) {
                 add(ctx.row {

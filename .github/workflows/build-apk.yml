@@ -6,6 +6,11 @@ on:
     tags: ['v*']
     branches: [claude/zen-thompson-qfzrjr, claude/phone-agent, main]
 
+# a newer push replaces the run of the older one: the queue stays short and an old build can never overwrite the newer 'latest' release
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
     # One APK for every phone: the app has no native code, so the same file runs on 32-bit ARM, 64-bit ARM and x86.

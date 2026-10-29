@@ -27,6 +27,10 @@ class Voice(private val ctx: Context, private val h: Handler) {
     /** Called on the main thread with true exactly while TTS audio is being spoken, false otherwise (lip-sync). */
     var onSpeaking: (Boolean) -> Unit = {}
 
+    /** While true the speech goes out on the in-call stream (the call assistant), without taking audio focus. */
+    var callAudio = false
+    private var callAttrs = false
+
     val speaking get() = tts?.isSpeaking == true
 
     /** Other hypotheses of the last recognised utterance (best first, without the winner). */
@@ -216,7 +220,15 @@ class Voice(private val ctx: Context, private val h: Handler) {
                 curId = id
                 onSpoken = done
                 releaseFocus()
-                focusRelease = try { MediaControl.requestFocusForSpeech(ctx) } catch (_: Exception) { null }
+                if (callAudio != callAttrs) {
+                    callAttrs = callAudio
+                    try {
+                        t.setAudioAttributes(android.media.AudioAttributes.Builder()
+                            .setUsage(if (callAudio) android.media.AudioAttributes.USAGE_VOICE_COMMUNICATION else android.media.AudioAttributes.USAGE_ASSISTANT)
+                            .setContentType(android.media.AudioAttributes.CONTENT_TYPE_SPEECH).build())
+                    } catch (_: Exception) {}
+                }
+                if (!callAudio) focusRelease = try { MediaControl.requestFocusForSpeech(ctx) } catch (_: Exception) { null }
                 val r = try { t.speak(text, TextToSpeech.QUEUE_FLUSH, null, id) } catch (_: Exception) { TextToSpeech.ERROR }
                 if (r != TextToSpeech.SUCCESS) end(id)
             }

@@ -202,6 +202,13 @@ class Brain(private val ctx: Context) {
         return Reply(result.emotion, result.lang, stripNotes(result.say), result.actions, false)
     }
 
+    /** One plain chat turn with its own system prompt and no tools (the call assistant, call summaries). Roles: "user" / "assistant". */
+    fun chatOnce(system: String, turns: List<Pair<String, String>>): String {
+        val msgs = turns.map { Msg(it.first, it.second) }
+        val out = client.turn(TurnRequest(system, system, emptyList(), msgs))
+        return out.text.replace(Regex("(?is)<think>.*?</think>"), "").trim()
+    }
+
     /** The "(did: ...)" note is only for the model's own memory; it must never be shown or spoken. */
     private fun stripNotes(s: String) = s.replace(Regex("\\s*\\((did|done|actions)\\s*:[^)]*\\)", RegexOption.IGNORE_CASE), "").trim()
 

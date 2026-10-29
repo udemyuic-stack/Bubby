@@ -194,6 +194,10 @@ class SettingsScreen(act: UiActivity) : Screen(act) {
                     "Mikrofon doim yoniq, batareya tezroq sarflanadi")))
             add(sw(t("Отвечать на звонки сам", "Pick up calls by itself", "Qo'ng'iroqqa o'zi javob berish"), "call_auto", false,
                 t("Если вы молчите, через 7 секунд берёт трубку", "If you say nothing, answers after 7 seconds", "Jim tursangiz, 7 soniyadan keyin o'zi ko'taradi")))
+            add(sw(t("ИИ говорит по телефону", "AI talks on the call", "AI qo'ng'iroqda gaplashadi"), "call_talk", false,
+                t("Если Bubby берёт трубку сам: включает громкую связь и говорит с абонентом, потом присылает итог. Экспериментально",
+                    "When Bubby picks up by itself: turns on the speaker, talks to the caller, then tells you what it was about. Experimental",
+                    "Bubby o'zi ko'targanda: karnayni yoqib, qo'ng'iroq qiluvchi bilan gaplashadi, keyin nima haqida ekanini aytadi. Tajribaviy")))
             add(sw(t("Зачитывать уведомления", "Read notifications aloud", "Bildirishnomalarni ovoz chiqarib o'qish"), "read_notifs", false,
                 t("Нужен доступ к уведомлениям; читает вслух только при включённом экране",
                     "Needs notification access; reads aloud only while the screen is on",

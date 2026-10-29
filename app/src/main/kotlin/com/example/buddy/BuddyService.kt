@@ -432,7 +432,7 @@ class BuddyService : Service() {
         h.post(clock)
         tiltStart()
         startAgentLink()
-        callWatcher = CallWatcher(this, { name -> onRinging(name) }, { onCallEnded() })
+        callWatcher = CallWatcher(this, { name -> onRinging(name) }, { onCallEnded() }, { onCallAnswered() })
         try { callWatcher.start() } catch (_: Exception) {}
         h.postDelayed({ hotKick() }, 1500)
         if (!prefs.getBoolean("coach_done", false)) h.postDelayed({ showCoach() }, 1500)
@@ -1810,7 +1810,7 @@ class BuddyService : Service() {
         focusable(false)
         showCallChips()
         say(text, l) { listenForCall(0) }
-        if (prefs.getBoolean("call_auto", false)) h.postDelayed({ if (calling && !callHandled) callDo("answer") }, 7000)
+        if (prefs.getBoolean("call_auto", false)) h.postDelayed({ if (calling && !callHandled) callDo(if (prefs.getBoolean("call_talk", false)) "talk" else "answer") }, 7000)
     }
 
     private var callHandled = false
@@ -1821,6 +1821,7 @@ class BuddyService : Service() {
         chipsRow.removeAllViews()
         val lp = { LinearLayout.LayoutParams(-2, -2).apply { rightMargin = dp(6) } }
         chipsRow.addView(chip(t("Ответить", "Answer", "Javob berish")) { callDo("answer") }, lp())
+        chipsRow.addView(chip(t("Ответит ИИ", "AI answers", "AI javob beradi")) { callDo("talk") }, lp())
         chipsRow.addView(chip(t("Сбросить", "Decline", "Rad etish")) { callDo("reject") }, lp())
         chipsRow.addView(chip(t("Сбросить + SMS", "Decline + text", "Rad + SMS")) { callDo("reject_text") }, lp())
         chipsScroll.animate().cancel()
@@ -1832,18 +1833,19 @@ class BuddyService : Service() {
         callHandled = true
         releaseCallFocus()
         voice.stopListening(); voice.stopSpeaking()
+        callTalk = kind == "talk"
         val err = when (kind) {
-            "answer" -> actions.run(JSONObject().put("do", "answer_call"))
+            "answer", "talk" -> actions.run(JSONObject().put("do", "answer_call"))
             "reject_text" -> actions.run(JSONObject().put("do", "reject_call").put("text", AutoReply.defaultText(this, "busy")))
             else -> actions.run(JSONObject().put("do", "end_call"))
         }
         chipsRow.removeAllViews(); hide(chipsScroll)
         status.text = err ?: when (kind) {
-            "answer" -> t("Отвечаю", "Answering", "Javob beryapman")
+            "answer", "talk" -> t("Отвечаю", "Answering", "Javob beryapman")
             "reject_text" -> t("Сбросил, пишу", "Declined, texting", "Rad etdim, xabar yuboryapman")
             else -> t("Сбросил", "Declined", "Rad etdim")
         }
-        if (err != null) callHandled = false
+        if (err != null) { callHandled = false; callTalk = false }
     }
 
     private fun listenForCall(attempt: Int) {
@@ -1862,7 +1864,116 @@ class BuddyService : Service() {
         })
     }
 
+    // ---- the AI talks on the call ---------------------------------------------------------------------------------
+    // Android gives apps no access to the call audio, so this works through the speakerphone: the speech goes out loud,
+    // the phone's microphone hears the caller. It depends on the phone letting the recogniser use the microphone in a call.
+    private var callTalk = false
+    private var callSilence = 0
+    private val callLog = ArrayList<Pair<String, String>>()
+    private var callTalkWho: String? = null
+    private val callTalkLimit = Runnable { if (callTalk) callTalkEnd(true) }
+
+    private fun onCallAnswered() {
+        if (!calling) return
+        if (!callTalk) { onCallEnded(); return }
+        callTalkStart()
+    }
+
+    private fun callSystem(): String = "You are Bubby, the phone assistant of the owner of this phone. The owner cannot pick up right now, so you answered. " +
+        "You are on a live call with ${callTalkWho ?: "an unknown caller"}. You are an AI assistant: say so honestly if asked, and never pretend to be the owner. " +
+        "Find out who is calling and what they need, take a message, and say the owner will get back to them. " +
+        "Do not give out personal information, passwords, codes or the owner's whereabouts, and do not agree to payments or promises. " +
+        "Speak the caller's language (Uzbek, Russian or English). Reply with at most two short spoken sentences, no lists, no emojis. " +
+        "Start every reply with a language tag: [uz], [ru] or [en]. When the conversation is finished, say goodbye and add [END] at the very end."
+
+    private fun callTalkStart() {
+        callTalkWho = callName
+        callLog.clear(); callSilence = 0
+        try {
+            val am = getSystemService(Context.AUDIO_SERVICE) as AudioManager
+            @Suppress("DEPRECATION") am.isSpeakerphoneOn = true
+        } catch (_: Exception) {}
+        voice.callAudio = true
+        status.text = t("Разговор", "On the call", "Suhbatda"); setMode("listen")
+        val l = uiLang()
+        val greet = when (l) {
+            "uz" -> "Assalomu alaykum, men Bubby, telefon egasining yordamchisiman. Hozir u javob bera olmaydi. Xabaringizni ayta olasizmi?"
+            "ru" -> "Здравствуйте, я Bubby, помощник владельца телефона. Сейчас он не может ответить. Что передать?"
+            else -> "Hello, this is Bubby, the phone owner's assistant. They can't pick up right now. Can I take a message?"
+        }
+        callLog.add("assistant" to greet)
+        setAnswer(greet, false); show(answer)
+        h.removeCallbacks(callTalkLimit); h.postDelayed(callTalkLimit, 180_000)
+        // a moment for the line and the speaker to settle
+        h.postDelayed({ if (callTalk) say(greet, l) { callTalkListen() } }, 600)
+    }
+
+    private fun callTalkListen() {
+        if (!callTalk) return
+        if (!micOk()) { callTalkEnd(true); return }
+        voice.listen(langTag(), { p -> if (callTalk) setAnswer(p, false) }, { text, _ ->
+            if (callTalk) {
+                if (text.isNullOrBlank()) {
+                    if (++callSilence >= 4) { callTalkEnd(true); return@listen }
+                    h.postDelayed({ callTalkListen() }, 200)
+                } else {
+                    callSilence = 0
+                    callLog.add("user" to text)
+                    setAnswer(text, false)
+                    val turns = ArrayList(callLog)
+                    Thread {
+                        val out = try { brain.chatOnce(callSystem(), turns) } catch (_: Exception) { "" }
+                        h.post { if (callTalk) callTalkReply(out) }
+                    }.start()
+                }
+            }
+        })
+    }
+
+    private fun callTalkReply(raw: String) {
+        if (raw.isBlank()) { callTalkListen(); return }
+        val end = raw.contains("[END]", true)
+        val tag = Regex("^\\s*\\[(uz|ru|en)]", RegexOption.IGNORE_CASE).find(raw)?.groupValues?.get(1)?.lowercase()
+        val text = raw.replace(Regex("\\[(uz|ru|en|END)]", RegexOption.IGNORE_CASE), "").trim()
+        callLog.add("assistant" to text)
+        setAnswer(text, false)
+        say(text, tag ?: uiLang()) { if (end) callTalkEnd(true) else callTalkListen() }
+    }
+
+    /** Ends the conversation (hangs up when [hangUp]) and tells the owner what it was about. */
+    private fun callTalkEnd(hangUp: Boolean) {
+        if (!callTalk) return
+        callTalk = false
+        h.removeCallbacks(callTalkLimit)
+        voice.stopListening(); voice.stopSpeaking()
+        voice.callAudio = false
+        if (hangUp) try { actions.run(JSONObject().put("do", "end_call")) } catch (_: Exception) {}
+        try {
+            val am = getSystemService(Context.AUDIO_SERVICE) as AudioManager
+            @Suppress("DEPRECATION") am.isSpeakerphoneOn = false
+        } catch (_: Exception) {}
+        val log = ArrayList(callLog); val who = callTalkWho
+        if (log.none { it.first == "user" }) { status.text = t("Звонок завершён", "Call ended", "Qo'ng'iroq tugadi"); return }
+        Thread {
+            val l = uiLang()
+            val sum = try {
+                brain.chatOnce("Summarize this phone call for the phone's owner in one or two short sentences, in " +
+                    (when (l) { "uz" -> "Uzbek (Latin)"; "ru" -> "Russian"; else -> "English" }) +
+                    ". Say who called and what they want. The caller: ${who ?: "unknown"}.",
+                    listOf("user" to log.joinToString("\n") { (if (it.first == "user") "Caller: " else "Assistant: ") + it.second }))
+            } catch (_: Exception) { log.filter { it.first == "user" }.joinToString(" ") { it.second } }
+            prefs.edit().putString("last_call_summary", (who ?: "?") + ": " + sum).apply()
+            h.post {
+                h.removeCallbacks(closeTask)
+                style(true); status.text = t("Звонок", "Call", "Qo'ng'iroq"); setMode("happy")
+                setAnswer((who ?: "") + (if (who != null) ": " else "") + sum, false); show(answer)
+                h.postDelayed(closeTask, 30_000)
+            }
+        }.start()
+    }
+
     private fun onCallEnded() {
+        if (callTalk) callTalkEnd(false)
         if (!calling) return
         calling = false; callName = null; callHandled = false
         chipsRow.removeAllViews(); hide(chipsScroll)

@@ -73,7 +73,7 @@ class HomeScreen(act: UiActivity) : Screen(act) {
         // (always: the page reports when it is done, also when it skips the splash)
         island.visibility = View.INVISIBLE; sv.visibility = View.INVISIBLE
         splashCover = listOf(island, sv)
-        root.postDelayed({ w.run("var s=document.querySelector('.splash');if(s)s.click()"); endSplash() }, 4500)   // in case the page never says it is done
+        root.postDelayed({ android.util.Log.i("com.example.buddy", "HomeWeb: fallback fired, splash cover left=${splashCover.size}"); w.run("var s=document.querySelector('.splash');if(s)s.click()"); endSplash() }, 4500)   // in case the page never says it is done
         pushState()
         return root
     }

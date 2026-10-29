@@ -31,7 +31,8 @@ class HomeWebView(c: Context, private val host: Host) : WebView(c) {
         @JavascriptInterface fun nav(n: String) { if (n in setOf("tasks", "calendar", "settings", "more")) post { host.nav(n) } }
         @JavascriptInterface fun ask(t: String) { if (t.length <= 200) post { host.ask(t) } }
         @JavascriptInterface fun toggle() { post { host.toggle() } }
-        @JavascriptInterface fun splash(show: Boolean) { post { host.splash(show) } }
+        @JavascriptInterface fun splash(show: Boolean) { android.util.Log.i("com.example.buddy", "HomeWeb: page says splash show=$show"); post { host.splash(show) } }
+        @JavascriptInterface fun probe(s: String) { if (s.length < 80) android.util.Log.i("com.example.buddy", "HomeWeb: $s") }
         @JavascriptInterface fun ready() { post { ready = true; queue.forEach { evaluateJavascript(it, null) }; queue.clear() } }
     }
 
@@ -47,6 +48,16 @@ class HomeWebView(c: Context, private val host: Host) : WebView(c) {
         addJavascriptInterface(Bridge(), "BubbyNative")
         webViewClient = object : WebViewClient() {
             override fun shouldOverrideUrlLoading(v: WebView, r: WebResourceRequest) = true
+            // frames per second the page really draws (CI log: tells a frozen page from a moving one)
+            override fun onPageFinished(v: WebView, url: String) {
+                v.evaluateJavascript("(function(){var n=0,t0=performance.now();function f(){n++;requestAnimationFrame(f)}requestAnimationFrame(f);setInterval(function(){var d=(performance.now()-t0)/1000;BubbyNative.probe('fps '+Math.round(n/d)+' splash='+(document.querySelector('.splash')?'on':'off'));n=0;t0=performance.now()},1000)})()", null)
+            }
+        }
+        webChromeClient = object : android.webkit.WebChromeClient() {
+            override fun onConsoleMessage(m: android.webkit.ConsoleMessage): Boolean {
+                if (m.messageLevel() == android.webkit.ConsoleMessage.MessageLevel.ERROR) android.util.Log.w("com.example.buddy", "HomeWeb console: ${m.message().take(120)} @${m.lineNumber()}")
+                return true
+            }
         }
     }
 

@@ -38,6 +38,8 @@ if command -v convert >/dev/null 2>&1; then convert /tmp/raw.png -resize 400x "s
 if [ -n "$LIVE" ]; then   # a second picture two seconds later: the page must be moving, not frozen
   sleep 2; adb exec-out screencap -p > /tmp/raw_b.png
   if command -v convert >/dev/null 2>&1; then convert /tmp/raw_b.png -resize 400x "shots/$SCREEN-b.png"; else cp /tmp/raw_b.png "shots/$SCREEN-b.png"; fi
+  sleep 5; adb exec-out screencap -p > /tmp/raw_c.png   # and 7 s after the start: the splash must be gone by now
+  if command -v convert >/dev/null 2>&1; then convert /tmp/raw_c.png -resize 400x "shots/$SCREEN-c.png"; else cp /tmp/raw_c.png "shots/$SCREEN-c.png"; fi
 fi
 if [ "$SCREEN" = settings ] || [ "$SCREEN" = agents-demo ]; then
   SZ=$(adb shell wm size | grep -o '[0-9]*x[0-9]*' | tail -1); W=${SZ%x*}; H=${SZ#*x}

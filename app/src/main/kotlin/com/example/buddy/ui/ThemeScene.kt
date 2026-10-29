@@ -105,6 +105,12 @@ class SceneCanvasView(c: Context) : View(c), SceneHost {
         // a phone too slow for this: the guard (Perf) switches the animated background off
         if (measureStart == 0L) { measureStart = now; frames = 0 } else frames++
         if (now - measureStart > 4000 && active) { Perf.report(context, (frames * 1000L / (now - measureStart)).toInt(), "native scene"); measureStart = now; frames = 0 }
-        if (active && visibility == VISIBLE) postInvalidateOnAnimation()
+        // 30 frames a second are plenty for these slow drifts and half the work of 60: the next frame waits out the rest of its slot
+        if (active && visibility == VISIBLE) postInvalidateDelayed((FRAME_MS - (SystemClock.uptimeMillis() - now)).coerceAtLeast(0L))
+    }
+
+    private companion object {
+        /** Not 33: asking a little early lands on the second vsync (33 ms) instead of slipping to the third (50 ms). */
+        const val FRAME_MS = 26L
     }
 }

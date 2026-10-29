@@ -5,7 +5,7 @@ Written from the CI runs of branch `claude/zen-thompson-qfzrjr`. "Not measured" 
 ## Measured
 | What | Result | Where |
 |---|---|---|
-| Native animated background (all 10 looks) | 29-57 fps on the slow CI emulator (API 34, software GPU); the old WebView background gave 0-13 fps there | CI log line `Perf: native scene N fps` |
+| Native animated background (all 10 looks) | 29-57 fps before the 30 fps cap (now capped at 30 on purpose, half the work) on the slow CI emulator (API 34, software GPU); the old WebView background gave 0-13 fps there | CI log line `Perf: native scene N fps` |
 | Frame-rate guard | two reports under 22 fps in a row switch the background off (Settings > Style turns it on again) | `ui/Perf.kt` |
 | Match-3 rules | 697 checks pass (fill, runs, specials, dust, fuzzed games) | `app/qa-jvm/Match3Test.kt` |
 | Agent bridge | 97 tests pass, including the transcript watcher | `agent-bridge/test` |

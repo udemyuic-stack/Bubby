@@ -9,6 +9,7 @@ import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.BufferedInputStream
+import java.io.Closeable
 import java.io.ByteArrayOutputStream
 import java.io.OutputStream
 import java.net.InetSocketAddress
@@ -79,7 +80,11 @@ class AgentLink(ctx: Context, val listener: Listener) {
 
     @Volatile private var gen = 0
     @Volatile private var connected = false
-    @Volatile private var raw: Socket? = null
+    @Volatile private var raw: Closeable? = null
+    /** True while the connection runs through the relay instead of the home network. */
+    @Volatile var viaRelay = false
+        private set
+
     /** What the bridge offered in this connection's `welcome` (empty for a bridge without capabilities). */
     @Volatile var caps: Set<String> = emptySet()
         private set
@@ -147,7 +152,7 @@ class AgentLink(ctx: Context, val listener: Listener) {
         return true
     }
 
-    private fun closeAsync(s: Socket?) {
+    private fun closeAsync(s: Closeable?) {
         if (s == null) return
         Thread { try { s.close() } catch (e: Exception) { } }.start()
     }
@@ -160,10 +165,15 @@ class AgentLink(ctx: Context, val listener: Listener) {
         var backoff = 1000L
         while (g == gen) {
             var welcomed = false
-            val next = try {
+            var next = try {
                 session(link, g) { welcomed = true }
             } catch (e: Exception) {
                 Next.RETRY
+            }
+            // the computer is not on this network: try the relay, when the computer gave us one
+            if (g == gen && !welcomed && next != Next.FATAL) {
+                val relay = try { PairingStore(app).loadRelay() } catch (e: Exception) { null }
+                if (relay != null) next = try { relaySession(link, relay, g) { welcomed = true } } catch (e: Exception) { Next.RETRY }
             }
             if (g != gen) return
             if (welcomed) {
@@ -185,6 +195,7 @@ class AgentLink(ctx: Context, val listener: Listener) {
 
     private fun dropConnection() {
         connected = false
+        viaRelay = false
         out.clear()
         for ((fp, timer) in pending.toMap()) {
             main.removeCallbacks(timer)
@@ -195,12 +206,14 @@ class AgentLink(ctx: Context, val listener: Listener) {
         asked.clear()
     }
 
+    private val hasRelay get() = try { PairingStore(app).hasRelay() } catch (e: Exception) { false }
+
     private fun session(link: ParsedLink, g: Int, onWelcome: () -> Unit): Next {
         val s = Socket()
         raw = s
         try {
             if (g != gen) return Next.RETRY
-            s.connect(InetSocketAddress(link.host, link.port), 5000)
+            s.connect(InetSocketAddress(link.host, link.port), if (hasRelay) 2500 else 5000)
             s.tcpNoDelay = true
             val ctx = SSLContext.getInstance("TLS")
             ctx.init(null, arrayOf(PinnedTrust(link.fp)), SecureRandom())
@@ -210,8 +223,31 @@ class AgentLink(ctx: Context, val listener: Listener) {
             ssl.soTimeout = 8000
             ssl.startHandshake()
             ssl.soTimeout = TICK_MS
-            val input = BufferedInputStream(ssl.inputStream)
-            val os = ssl.outputStream
+            viaRelay = false
+            return converse(BufferedInputStream(ssl.inputStream), ssl.outputStream, link, g, onWelcome)
+        } finally {
+            closeAsync(s)
+            if (raw === s) raw = null
+        }
+    }
+
+    private fun relaySession(link: ParsedLink, relay: RelayInfo, g: Int, onWelcome: () -> Unit): Next {
+        val ch = RelayChannel(relay.url, relay.key)
+        raw = ch
+        try {
+            if (g != gen) return Next.RETRY
+            viaRelay = true
+            return converse(ch.input, ch.output, link, g, onWelcome)
+        } finally {
+            viaRelay = false
+            closeAsync(ch)
+            if (raw === ch) raw = null
+        }
+    }
+
+    /** The protocol conversation, the same over both transports: hello, then lines in and out until the link ends. */
+    private fun converse(input: java.io.InputStream, os: OutputStream, link: ParsedLink, g: Int, onWelcome: () -> Unit): Next {
+        run {
             out.clear()
             caps = emptySet()
             send(os, JSONObject().put("type", "hello").put("v", 1).put("token", link.token)
@@ -260,9 +296,6 @@ class AgentLink(ctx: Context, val listener: Listener) {
                 if (!housekeeping()) return Next.RETRY
             }
             return Next.RETRY
-        } finally {
-            closeAsync(s)
-            if (raw === s) raw = null
         }
     }
 
@@ -321,6 +354,11 @@ class AgentLink(ctx: Context, val listener: Listener) {
                     str(j, "plan").take(24).ifEmpty { null }, j.optLong("updatedAt", System.currentTimeMillis())
                 )
                 post(g) { listener.onUsage(u) }
+            }
+            // the computer tells us where its relay is (only on the home-network link, which is certificate-pinned)
+            "relay" -> if (welcomed && !viaRelay && "relay" in caps) {
+                val url = str(j, "url"); val key = str(j, "key")
+                if (RelayInfo.valid(url, key)) try { PairingStore(app).saveRelay(RelayInfo(url, key)) } catch (e: Exception) { }
             }
             "approvalResolved" -> if (welcomed) {
                 val fp = str(j, "fingerprint")

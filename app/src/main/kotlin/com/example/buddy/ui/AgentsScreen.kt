@@ -31,7 +31,7 @@ class AgentsScreen(act: UiActivity) : Screen(act) {
 
     /** What the page last showed of the live link state; the poll redraws only when it changes. */
     private var shownLive: Any? = null
-    private fun live(): Any = listOf(BuddyService.agentDesktop, BuddyService.agentConnected, BuddyService.agentSessions, BuddyService.agentUsage, BuddyService.agentApprovals,
+    private fun live(): Any = listOf(BuddyService.agentDesktop, BuddyService.agentConnected, BuddyService.agentViaRelay, BuddyService.agentSessions, BuddyService.agentUsage, BuddyService.agentApprovals,
         BuddyService.agentQuestions, BuddyService.agentCaps)
     private val openSteps = HashSet<String>()     // sessions whose step list is unfolded
     private val allFiles = HashSet<String>()      // sessions showing every changed file, not only the first few
@@ -321,7 +321,7 @@ class AgentsScreen(act: UiActivity) : Screen(act) {
                         add(View(ctx).apply { background = ctx.rounded(color, 6f) }, ctx.dp(11), ctx.dp(11), end = 8)
                         add(ctx.text(AgentWidgets.title(ctx, st), T.Headline).apply { textSize = 21f }, 0, WRAP, 1f)
                     })
-                    add(ctx.text(s.desktop.ifEmpty { t("Компьютер", "Computer", "Kompyuter") } + if (s.connected) "" else " · " + t("нет связи", "offline", "aloqa yo'q"), T.Body), MATCH, WRAP, top = 4)
+                    add(ctx.text(s.desktop.ifEmpty { t("Компьютер", "Computer", "Kompyuter") } + if (!s.connected) " · " + t("нет связи", "offline", "aloqa yo'q") else if (BuddyService.agentViaRelay) " · " + t("через интернет", "via relay", "internet orqali") else "", T.Body), MATCH, WRAP, top = 4)
                     val busy = s.sessions.count { it.state in setOf("working", "thinking", "searching") }
                     add(ctx.text(if (s.sessions.isEmpty()) t("Агентов нет", "No agents running", "Agentlar yo'q")
                         else t("Работает: $busy из ${s.sessions.size}", "Working: $busy of ${s.sessions.size}", "Ishlayapti: $busy / ${s.sessions.size}"), T.Small), MATCH, WRAP, top = 2)

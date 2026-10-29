@@ -21,6 +21,7 @@ import { planHooks, applyHooks } from "./lib/hooks.mjs";
 import { planAgent, applyAgentPlan, validAgent, INSTALLERS } from "./lib/agents.mjs";
 import { offerable, answersFromPicks } from "./lib/questions.mjs";
 import { createSessions, sessionsMessage, pillIdOf, stepOf, finalLineOf } from "./lib/sessions.mjs";
+import { createRelayClient, loadRelay, saveRelay, forgetRelay, rotateRelay } from "./lib/relay.mjs";
 
 const HELLO_TIMEOUT_MS = 10_000;
 const SILENCE_MS = 90_000;
@@ -28,6 +29,8 @@ const STALE_SESSION_MS = 30 * 60_000;
 const FAIL_DELAY_MS = 300;
 const HOOK_LINE_MAX = 4 * 1024 * 1024; // a file edit can be large; hook.mjs keeps it under ~1 MiB
 export const CAPS = ["details", "answers", "diffs"];
+// "relay" is offered only on the LAN link, and only when a relay is configured: it hands the phone the relay address and key
+const RELAY_CAP = "relay";
 const DIFF_LINES = 200, DIFF_LINE_CHARS = 400, DIFF_PART = 100;
 const DIFF_ASKS = 20, DIFF_WINDOW_MS = 10_000;
 
@@ -60,6 +63,7 @@ export async function startBridge(opts = {}) {
   const log = opts.log ?? (() => {});
   // capabilities this bridge offers (--no-details / --no-answers / --no-diffs turn them off)
   const enabled = new Set(CAPS.filter((c) => opts.caps?.[c] !== false));
+  const relayCfg = opts.relay === false ? null : (opts.relay ?? loadRelay(dir));
   const { key, cert, fp: certFp } = ensureCert(dir);
   let token = loadToken(dir) ?? newToken(dir);
   // 6-digit code pairing (docs/AGENTS-V2.md section 2). The code goes only to opts.onCode (the terminal), never to log.
@@ -203,7 +207,7 @@ export async function startBridge(opts = {}) {
 
   // TLS server for the phone
   const socks = new Set();
-  const server = tls.createServer({ key, cert, minVersion: "TLSv1.2" }, (sock) => {
+  const onSocket = (sock, via) => {
     socks.add(sock);
     sock.on("close", () => socks.delete(sock));
     sock.setNoDelay(true);
@@ -215,15 +219,18 @@ export async function startBridge(opts = {}) {
     const offer = (m) => {
       const asked = Array.isArray(m.caps) ? m.caps.filter((c) => typeof c === "string") : [];
       caps = new Set(CAPS.filter((c) => enabled.has(c) && asked.includes(c)));
+      if (relayCfg && via === "lan" && asked.includes(RELAY_CAP)) caps.add(RELAY_CAP);
       return [...caps];
     };
     const authenticated = () => {
       authed = true;
       clearTimeout(helloTimer);
-      phone = { sock, send, caps };
-      log("phone connected");
+      phone = { sock, send, caps, via };
+      log(via === "relay" ? "phone connected (relay)" : "phone connected");
     };
     const afterWelcome = () => {
+      // over the LAN (certificate-pinned) link the phone learns where the relay is and the key for it
+      if (caps.has(RELAY_CAP) && relayCfg) send({ type: "relay", url: relayCfg.url, key: relayCfg.rk });
       pushSessions();
       lastUsageKey = "";
       sendUsage(true);
@@ -260,7 +267,7 @@ export async function startBridge(opts = {}) {
       if (!m || typeof m !== "object") return fail();
       if (closing) return;
       if (!authed) {
-        if (m.type === "pair") return onPair(m);
+        if (m.type === "pair") return via === "lan" ? onPair(m) : fail(); // codes are for the home network only
         if (m.type !== "hello") return fail();
         const expected = loadToken(dir);
         const ok = m.v === PROTOCOL_V && expected && tokenMatches(m.token, expected);
@@ -315,7 +322,11 @@ export async function startBridge(opts = {}) {
       }
     });
     sock.on("error", () => {});
-  });
+  };
+  const server = tls.createServer({ key, cert, minVersion: "TLSv1.2" }, (sock) => onSocket(sock, "lan"));
+
+  // the relay: the phone's frames from outside the home network arrive here as ordinary connections
+  const relay = relayCfg ? createRelayClient({ url: relayCfg.url, rk: relayCfg.rk, log, onConnection: (c) => onSocket(c, "relay"), WebSocket: opts.WebSocket }) : null;
 
   // unix socket for hook.mjs
   ensureDir(dir);
@@ -386,11 +397,14 @@ export async function startBridge(opts = {}) {
       codes.start("new");
       mdns?.update();
     },
+    relayState: () => (relay ? relay.state() : "off"),
+    relayUrl: () => relayCfg?.url ?? null,
     flushStats: () => stats.flush(),
     async close() {
       clearInterval(prune);
       clearInterval(usageTick);
       clearTimeout(usageTimer);
+      relay?.close();
       codes.stop();
       await mdns?.close();
       for (const fp of [...pending.keys()]) resolve(fp, null);
@@ -413,6 +427,8 @@ const HELP = `node bridge.mjs [options]
   --no-details          do not offer session details (project, steps, final line) to the phone
   --no-answers          do not let the phone answer Claude Code's questions
   --no-diffs            do not offer the files an agent changed to the phone
+  --relay URL           also reach the phone from outside the home network through your own Cloudflare relay (relay/README.md)
+  --forget-relay        stop using the relay and delete its key
   --link                also print the old coucou://pair link (contains the token, keep it secret)
   --new-pairing         new token and a new code (the old phone stops working)
   --revoke              delete the token and exit
@@ -486,7 +502,12 @@ async function main() {
     console.log(revokeToken(dir) ? "Токен сопряжения удалён. Телефон больше не сможет подключиться." : "Токена нет.");
     return;
   }
-  if (has("new-pairing")) { ensureDir(dir); newToken(dir); }
+  if (has("new-pairing")) { ensureDir(dir); newToken(dir); rotateRelay(dir); } // a new pairing also changes the relay key
+  if (has("forget-relay")) console.log(forgetRelay(dir) ? "Relay отключён, ключ удалён." : "Relay не был настроен.");
+  if (arg("relay")) {
+    try { const c = saveRelay(dir, arg("relay")); console.log(`Relay: ${c.url}${c.url.startsWith("ws:") ? "  (без TLS: содержимое всё равно зашифровано, но адрес виден в сети)" : ""}`); }
+    catch (e) { console.error("Ошибка:", e.message); process.exit(1); }
+  }
   const claude = await setupClaude({ yes: has("yes"), hooks: !has("no-hooks"), statusLine: !has("no-statusline") });
   if (arg("install-agent")) await setupAgent(arg("install-agent"), has("yes"));
 
@@ -512,6 +533,7 @@ async function main() {
   console.log(`  Телефону:    ${b.caps.length ? b.caps.join(", ") : "только сессии и разрешения"}`);
   console.log(`  mDNS:        ${b.mdnsName() ? `${b.mdnsName()}._bubby-agent._tcp.local.` : "выключен"}`);
   console.log(`  Сертификат:  ${b.fp.slice(0, 16)}…`);
+  console.log(`  Relay:       ${b.relayUrl() ? `${b.relayUrl()} (телефон получит ключ по домашней сети при первом подключении)` : "выключен (--relay URL, чтобы подключаться вне дома)"}`);
   if (b.pairingCode()) {
     printCode(b.pairingCode());
     console.log(`\n  Код одноразовый, действует 5 минут. Компьютера нет в списке? Введите в приложении ${b.host}:${b.port}.`);

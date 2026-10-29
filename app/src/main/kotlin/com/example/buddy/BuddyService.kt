@@ -172,7 +172,7 @@ class BuddyService : Service() {
 
     private val agentListener = object : AgentLink.Listener {
         override fun onStatus(connected: Boolean, desktop: String?) {
-            agentConnected = connected; agentDesktop = desktop
+            agentConnected = connected; agentDesktop = desktop; agentViaRelay = connected && (agentLink?.viaRelay == true)
             agentCaps = if (connected) agentLink?.caps ?: emptySet() else emptySet()
             AgentStats.refreshWidgets(this@BuddyService)
         }
@@ -221,6 +221,7 @@ class BuddyService : Service() {
         @Volatile var running = false
         @Volatile private var crashHookInstalled = false
         @Volatile var agentConnected = false
+        @Volatile var agentViaRelay = false
         @Volatile var agentDesktop: String? = null
         @Volatile var agentSessions: List<AgentSession> = emptyList()
         @Volatile var agentUsage: Usage? = null

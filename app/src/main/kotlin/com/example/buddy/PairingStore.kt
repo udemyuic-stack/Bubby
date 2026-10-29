@@ -61,8 +61,39 @@ class PairingStore(ctx: Context) {
         prefs.edit()
             .putString("host", link.host).putInt("port", link.port).putString("fp", link.fp)
             .putString("name", link.name).putString("tok", enc)
+            .remove("relay_url").remove("relay_key")   // a new pairing: the computer sends its relay again
             .apply()
     }
+
+    /** The relay the computer gave us (address and key), encrypted like the token. */
+    fun saveRelay(r: RelayInfo) {
+        val c = Cipher.getInstance("AES/GCM/NoPadding")
+        c.init(Cipher.ENCRYPT_MODE, key())
+        c.updateAAD("relay".toByteArray())
+        val ct = c.doFinal(r.key.toByteArray())
+        prefs.edit().putString("relay_url", r.url).putString("relay_key", b64(c.iv) + ":" + b64(ct)).apply()
+    }
+
+    fun hasRelay(): Boolean = prefs.contains("relay_key")
+
+    fun loadRelay(): RelayInfo? {
+        val url = prefs.getString("relay_url", null) ?: return null
+        val enc = prefs.getString("relay_key", null) ?: return null
+        return try {
+            val parts = enc.split(':')
+            if (parts.size != 2) throw IllegalStateException()
+            val c = Cipher.getInstance("AES/GCM/NoPadding")
+            c.init(Cipher.DECRYPT_MODE, key(), GCMParameterSpec(128, Base64.decode(parts[0], Base64.NO_WRAP)))
+            c.updateAAD("relay".toByteArray())
+            val k = String(c.doFinal(Base64.decode(parts[1], Base64.NO_WRAP)))
+            if (RelayInfo.valid(url, k)) RelayInfo(url, k) else null
+        } catch (e: Exception) {
+            clearRelay()
+            null
+        }
+    }
+
+    fun clearRelay() { prefs.edit().remove("relay_url").remove("relay_key").apply() }
 
     /** Cheap check (no Keystore work): is a computer paired? */
     fun isPaired(): Boolean = prefs.contains("tok")

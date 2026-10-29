@@ -137,6 +137,7 @@ class RoomScreen(act: UiActivity) : Screen(act) {
             actions.addView(ctx.button(t("Дальше", "Next level", "Keyingi daraja")) { start(index + 1) }, LinearLayout.LayoutParams(0, WRAP, 1f).apply { setMargins(ctx.dp(4), 0, ctx.dp(4), 0) })
         }
         actions.addView(ctx.button(t("Заново", "Restart", "Qaytadan"), BtnStyle.Tonal) { start(index) }, LinearLayout.LayoutParams(0, WRAP, 1f).apply { setMargins(ctx.dp(4), 0, ctx.dp(4), 0) })
+        actions.addView(ctx.button(t("Комната", "My room", "Xonam"), BtnStyle.Tonal) { act.push(RoomShopScreen(act, fromGame = true)) }, LinearLayout.LayoutParams(0, WRAP, 1f).apply { setMargins(ctx.dp(4), 0, ctx.dp(4), 0) })
     }
 
     private fun pickerRows() {

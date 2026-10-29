@@ -14,6 +14,7 @@ object Screens {
         "game-memory" -> GameScreen(act, "memory")
         "game-twenty" -> GameScreen(act, "twenty")
         "game-room" -> RoomScreen(act)
+        "game-room-shop" -> RoomShopScreen(act)
         "agents" -> AgentsScreen(act)
         "runs" -> RunsScreen(act)
         else -> null

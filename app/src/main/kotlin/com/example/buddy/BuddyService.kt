@@ -1233,13 +1233,18 @@ class BuddyService : Service() {
         }
     }
 
+    private var lastToast: android.widget.Toast? = null
     private fun setAnswer(text: String, type: Boolean) {
         typeAnim?.let { it.removeAllListeners(); it.cancel() }
         typeAnim = null
         fullAnswer = text
         answer.text = text
         // the island stays closed while Bubby's own app is in front: the answer would be invisible, so show it as a toast
-        if (!expanded && text.isNotBlank() && com.example.buddy.ui.UiActivity.appInFront) h.post { android.widget.Toast.makeText(this, text.take(300), android.widget.Toast.LENGTH_LONG).show() }
+        if (!expanded && text.isNotBlank() && com.example.buddy.ui.UiActivity.appInFront) h.post {
+            if (expanded || !com.example.buddy.ui.UiActivity.appInFront) return@post
+            lastToast?.cancel()   // one toast at a time: partial results must not queue up
+            lastToast = android.widget.Toast.makeText(this, text.take(300), android.widget.Toast.LENGTH_LONG).also { it.show() }
+        }
         if (!type || text.length < 6 || !IslandUi.animOn(this)) return
         val n = text.length
         val sp = SpannableString(text)

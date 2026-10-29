@@ -46,6 +46,10 @@ class MatchBoardView(c: Context, val engine: Match3Engine) : View(c) {
     private var selected = -1
     private var hint: IntArray? = null
     private var lastTouch = SystemClock.uptimeMillis()
+    private var hintStart = 0L
+    private val wake = Runnable { invalidate() }
+    private val fm = Paint.FontMetrics()
+    private val hsv = FloatArray(3)
 
     private val tileColors = intArrayOf(0xFF6EC1FF.toInt(), 0xFFFFB066.toInt(), 0xFFFFE066.toInt(), 0xFFFF8FB1.toInt(), 0xFF8EE08E.toInt())
     private val emoji = arrayOf("💧", "🖌️", "💡", "🛋️", "🌿")
@@ -62,7 +66,7 @@ class MatchBoardView(c: Context, val engine: Match3Engine) : View(c) {
 
     fun syncFromEngine() {
         for (i in 0 until n) { vType[i] = engine.type[i]; vSpecial[i] = engine.special[i]; vDust[i] = engine.dust[i]; offX[i] = 0f; offY[i] = 0f; scale[i] = 1f; flash[i] = 0f }
-        phase = Phase.IDLE; selected = -1; hint = null
+        phase = Phase.IDLE; selected = -1; hint = null; lastTouch = SystemClock.uptimeMillis()
         invalidate()
     }
 
@@ -90,7 +94,7 @@ class MatchBoardView(c: Context, val engine: Match3Engine) : View(c) {
     }
 
     override fun onTouchEvent(e: MotionEvent): Boolean {
-        if (locked || phase != Phase.IDLE) return true
+        if (locked || phase != Phase.IDLE) { downCell = -1; return true }
         lastTouch = SystemClock.uptimeMillis(); hint = null
         when (e.actionMasked) {
             MotionEvent.ACTION_DOWN -> {
@@ -118,6 +122,7 @@ class MatchBoardView(c: Context, val engine: Match3Engine) : View(c) {
             }
             MotionEvent.ACTION_CANCEL -> downCell = -1
         }
+        if (e.actionMasked == MotionEvent.ACTION_UP) downCell = -1
         return true
     }
 
@@ -188,7 +193,7 @@ class MatchBoardView(c: Context, val engine: Match3Engine) : View(c) {
 
     private fun startPop() {
         val s = result!!.steps[stepIndex]
-        if (s.combo >= 3) onCombo?.invoke(s.combo)
+        if (s.combo >= 3) { val cb = s.combo; post { onCombo?.invoke(cb) } }
         if (s.fired.isNotEmpty()) performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
         begin(Phase.POP, if (s.fired.isNotEmpty()) 280 else 190)
     }
@@ -230,7 +235,8 @@ class MatchBoardView(c: Context, val engine: Match3Engine) : View(c) {
         board.color = if (Glass.NIGHT) Glass.white(.08f) else Glass.white(.45f)
         rect.set(0f, 0f, w, h); cv.drawRoundRect(rect, cell * .35f, cell * .35f, board)
         // hint after a few seconds without a touch
-        if (phase == Phase.IDLE && !locked && hint == null && now - lastTouch > 8000) hint = engine.findMove()
+        if (phase == Phase.IDLE && !locked && hint == null && now - lastTouch > 8000) { hint = engine.findMove(); hintStart = now; lastTouch = now }
+        if (hint != null && now - hintStart > 5000) { hint = null; lastTouch = now }   // the pulse stops after five seconds, then the wait starts again
         val pad = cell * 0.06f
         val rowsCols = engine.w
         for (i in 0 until n) {
@@ -262,7 +268,7 @@ class MatchBoardView(c: Context, val engine: Match3Engine) : View(c) {
             else {
                 drawGlyph(cv, emoji[t % emoji.size], -cell * .17f, -cell * .17f, cell * .3f)
                 val sym = when (sp) { Match3Engine.ROLLER_H -> "↔"; Match3Engine.ROLLER_V -> "↕"; Match3Engine.SPLASH -> "✹"; else -> "★" }
-                if (sp == Match3Engine.SPARKLE) mark.color = Color.HSVToColor(floatArrayOf(((now / 6) % 360).toFloat(), .35f, 1f)) else mark.color = Color.WHITE
+                if (sp == Match3Engine.SPARKLE) { hsv[0] = ((now / 6) % 360).toFloat(); hsv[1] = .35f; hsv[2] = 1f; mark.color = Color.HSVToColor(hsv) } else mark.color = Color.WHITE
                 cv.drawText(sym, cell * .06f, cell * .2f, mark)
                 ring.color = Color.WHITE; ring.alpha = 220
                 cv.drawCircle(0f, 0f, half * .98f, ring)
@@ -282,14 +288,15 @@ class MatchBoardView(c: Context, val engine: Match3Engine) : View(c) {
                 else -> { rect.set(0f, 0f, w, h); cv.drawRect(rect, tile) }
             }
         }
+        removeCallbacks(wake)
         if (phase != Phase.IDLE || (hint != null && !locked)) postInvalidateOnAnimation()
-        else if (!locked && hint == null) postInvalidateDelayed(1000)   // wakes up for the hint
+        else if (!locked && now - lastTouch <= 8000) postDelayed(wake, (8000 - (now - lastTouch)).coerceAtLeast(100))   // one wake-up for the hint
     }
 
     private fun drawGlyph(cv: Canvas, text: String, dx: Float, dy: Float, size: Float) {
         glyph.textSize = size
-        val m = glyph.fontMetrics
-        cv.drawText(text, dx, dy - (m.ascent + m.descent) / 2f, glyph)
+        glyph.getFontMetrics(fm)
+        cv.drawText(text, dx, dy - (fm.ascent + fm.descent) / 2f, glyph)
         glyph.textSize = cell * 0.52f
     }
 }

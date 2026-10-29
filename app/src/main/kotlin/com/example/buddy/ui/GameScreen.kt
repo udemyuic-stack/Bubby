@@ -153,9 +153,11 @@ class GameScreen(act: UiActivity, private val kind: String) : Screen(act) {
         }
         lateinit var showButtons: (List<Pair<String, String>>) -> Unit
         fun status() { counter.text = if (asked == 0) "" else t("Вопрос $asked из 20", "Question $asked of 20", "$asked/20-savol") }
+        var lastSent = ""
         fun ask(userSays: String) {
             if (busy) return
             busy = true
+            lastSent = userSays
             turns += "user" to userSays
             react("🤔", t("Думаю…", "Thinking…", "O'ylayapman…"))
             showButtons(emptyList())
@@ -180,7 +182,6 @@ class GameScreen(act: UiActivity, private val kind: String) : Screen(act) {
                 }
             }.start()
         }
-        var lastSent = ""
         showButtons = { list ->
             answers.removeAllViews()
             var i = 0
@@ -233,18 +234,22 @@ class GameScreen(act: UiActivity, private val kind: String) : Screen(act) {
             val best = prefs.getInt("best_memory", 0)
             info.text = t("Ходов: $moves" + (if (best > 0) " · рекорд: $best" else ""), "Moves: $moves" + (if (best > 0) " · best: $best" else ""), "Yurishlar: $moves" + (if (best > 0) " · rekord: $best" else ""))
         }
+        var gen = 0   // a new deal makes every pending flip and unflip of the old one do nothing
         fun flip(i: Int, up: Boolean, then: () -> Unit = {}) {
             val v = cards[i]
+            val g = gen
             v.animate().cancel()
-            v.animate().rotationY(90f).setDuration(90).withEndAction {
+            v.animate().setInterpolator(android.view.animation.LinearInterpolator()).rotationY(90f).setDuration(90).withEndAction {
+                if (g != gen) return@withEndAction
                 v.text = if (up) values[i] else "?"
                 v.rotationY = -90f
-                v.animate().rotationY(0f).setDuration(90).withEndAction { then() }.start()
+                v.animate().setInterpolator(android.view.animation.LinearInterpolator()).rotationY(0f).setDuration(90).withEndAction { if (g == gen) then() }.start()
             }.start()
         }
         fun deal() {
+            gen++
             values = (faces + faces).shuffled()
-            for (i in 0 until 16) { matched[i] = false; cards[i].text = "?"; cards[i].rotationY = 0f; cards[i].alpha = 1f }
+            for (i in 0 until 16) { cards[i].animate().cancel(); matched[i] = false; cards[i].text = "?"; cards[i].rotationY = 0f; cards[i].alpha = 1f; cards[i].scaleX = 1f; cards[i].scaleY = 1f }
             first = -1; busy = false; moves = 0; pairs = 0
             status()
             react("🧐", t("Найди все пары!", "Find all the pairs!", "Hamma juftlarni top!"))
@@ -268,7 +273,8 @@ class GameScreen(act: UiActivity, private val kind: String) : Screen(act) {
                     } else react("😄", t("Пара!", "A pair!", "Juft!"))
                 } else {
                     react("😬", t("Не то…", "Not those…", "Bular emas…"))
-                    cards[i].postDelayed({ flip(a, false); flip(i, false) { busy = false } }, 650)
+                    val g = gen
+                    cards[i].postDelayed({ if (g == gen) { flip(a, false); flip(i, false) { busy = false } } }, 650)
                 }
             }
         }
@@ -281,7 +287,7 @@ class GameScreen(act: UiActivity, private val kind: String) : Screen(act) {
                     textSize = 30f; gravity = Gravity.CENTER
                     background = ctx.rounded(P.container, 20f, P.outlineVariant)
                     cameraDistance = ctx.dpf(8000f)
-                    press { tap(idx) }
+                    setOnClickListener { tap(idx) }   // not press{}: its animations would cancel the flip and its end action
                 }
                 cards += cell
                 row.addView(cell, LinearLayout.LayoutParams(0, ctx.dp(74), 1f).apply { setMargins(ctx.dp(4), ctx.dp(4), ctx.dp(4), ctx.dp(4)) })

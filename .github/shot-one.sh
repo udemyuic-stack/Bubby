@@ -25,7 +25,7 @@ PXW=$(adb shell wm size | grep -o "[0-9]*x[0-9]*" | tail -1 | cut -dx -f1); adb 
 adb install -r bubby.apk
 adb logcat -c
 ( "$ADB" logcat -v threadtime > "shots/$SCREEN-live.txt" 2>&1 & )
-STATIC="--ez static true"; [ -n "$LIVE" ] && STATIC=""
+STATIC="--ez static true"; [ -n "$LIVE" ] && STATIC="--ez nosetup true"
 if [ "$SCREEN" = home ]; then
   timeout 60 "$ADB" shell am start -W -n com.example.buddy/.ui.UiActivity $STATIC > "shots/$SCREEN-start.txt" 2>&1
 else

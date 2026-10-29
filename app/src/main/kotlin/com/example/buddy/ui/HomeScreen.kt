@@ -142,7 +142,7 @@ class HomeScreen(act: UiActivity) : Screen(act) {
         // the microphone was granted after the floating service started: poke it so it re-declares the microphone type
         if (running && perms["mic"] == true && perms["overlay"] == true && !micPoked) { micPoked = true; Backend.startBuddy(ctx) }
         if (perms["mic"] != true) micPoked = false
-        if (firstShow) { firstShow = false; if (missing && !act.intent.getBooleanExtra("static", false)) content.post { act.open("setup") } }
+        if (firstShow) { firstShow = false; if (missing && !act.intent.getBooleanExtra("static", false) && !act.intent.getBooleanExtra("nosetup", false)) content.post { act.open("setup") } }
 
         if (web == null && themedRoot == null) {
         // ---- the glass scene: island, mascot, core and the fan of petals (laid out on a 390-wide grid) ----

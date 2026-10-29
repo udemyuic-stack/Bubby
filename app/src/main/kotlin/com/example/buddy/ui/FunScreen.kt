@@ -17,6 +17,7 @@ class FunScreen(act: UiActivity) : Screen(act) {
     private fun games() = listOf(
         t("Угадай число", "Guess the number", "Sonni top") to "guess",
         t("Камень-ножницы-бумага", "Rock-paper-scissors", "Tosh-qaychi-qog'oz") to "rps",
+        t("Комната Bubby", "Bubby's room", "Bubby xonasi") to "room",
         t("Найди пару", "Memory match", "Juftini top") to "memory",
         t("20 вопросов", "20 questions", "20 ta savol") to "twenty",
         t("Загадки", "Riddles", "Topishmoqlar") to null,
@@ -68,7 +69,7 @@ class FunScreen(act: UiActivity) : Screen(act) {
                 background = ctx.rounded(P.alpha(accents[i % accents.size], if (P.dark) 70 else 48), 30f)
                 add(ctx.text(g, T.Label), WRAP, WRAP)
                 press {
-                    if (kind != null) act.push(GameScreen(act, kind))
+                    if (kind == "room") act.push(RoomScreen(act)) else if (kind != null) act.push(GameScreen(act, kind))
                     else {
                         val err = Backend.startGame(ctx, g)
                         ctx.toast(err ?: t("Нажмите на Bubby и говорите", "Tap Bubby and speak", "Bubby ni bosing va gapiring"))

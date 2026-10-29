@@ -294,7 +294,7 @@ class GameScreen(act: UiActivity, private val kind: String) : Screen(act) {
 }
 
 /** A quick sideways shake: the input was wrong. */
-private fun View.shake() {
+internal fun View.shake() {
     animate().cancel()
     animate().translationX(-context.dpf(10f)).setDuration(60).withEndAction {
         animate().translationX(context.dpf(10f)).setDuration(90).withEndAction { animate().translationX(0f).setDuration(60).start() }.start()

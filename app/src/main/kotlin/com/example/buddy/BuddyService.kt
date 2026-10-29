@@ -383,7 +383,7 @@ class BuddyService : Service() {
                     val untrusted = i.getBooleanExtra("untrusted", false)
                     cancelTap(); errorPinned = false
                     voice.stopListening(); voice.stopSpeaking(); h.removeCallbacks(closeTask)
-                    style(true); ask(t, false, untrusted)
+                    style(true, force = i.getBooleanExtra("game", false)); ask(t, false, untrusted)
                 }
             }
         }
@@ -1133,7 +1133,7 @@ class BuddyService : Service() {
         // inside Bubby's own app the island does not pop open over the page by itself (the app shows the answer itself);
         // what the user asked for with a tap or the voice, an agent's question or request, Bubby's own confirmations,
         // reminders and phone calls (force) still open it
-        if (exp && !force && com.example.buddy.ui.UiActivity.appInFront && !calling && approvals.isEmpty() && questions.isEmpty()) return
+        if (exp && !force && com.example.buddy.ui.UiActivity.appInFront && !calling && approvals.isEmpty() && questions.isEmpty() && !gameOn()) return
         val was = expanded
         if (exp && !was) preExpandY = lp.y
         expanded = exp

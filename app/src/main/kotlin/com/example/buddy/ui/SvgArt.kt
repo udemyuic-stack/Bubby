@@ -36,9 +36,9 @@ object SvgArt {
         synchronized(cache) {
             if (cache.containsKey(name)) return cache[name]
             val a = try {
-                val c = app ?: return null
-                Art(name, c.assets.open("mascot/$name.svg").bufferedReader().use { it.readText() })
-            } catch (e: Exception) { null }
+                val c = app ?: run { android.util.Log.w("com.example.buddy", "SvgArt: no context for $name"); return null }
+                Art(name, c.assets.open("mascot/$name.svg").bufferedReader().use { it.readText() }).also { if (!it.ok) android.util.Log.w("com.example.buddy", "SvgArt: $name did not parse: ${it.error}") }
+            } catch (e: Exception) { android.util.Log.w("com.example.buddy", "SvgArt: $name failed: $e"); null }
             cache[name] = a
             return a
         }
@@ -77,7 +77,10 @@ class Art(val name: String, svg: String) {
     /** True when something moves, so the view must keep redrawing. */
     val animated = true
 
-    init { try { parse(svg) } catch (e: Exception) { root = null } }
+    var error: String? = null
+    val ok get() = root != null
+
+    init { try { parse(svg) } catch (e: Exception) { root = null; error = e.toString() + " at " + (e.stackTrace.firstOrNull()?.toString() ?: "") } }
 
     // ---------------------------------------------------------------------------------------------------------- parsing
 
@@ -327,7 +330,7 @@ class Art(val name: String, svg: String) {
     fun draw(cv: Canvas, t: Float, blinkClosed: Float = 0f) {
         val r = root ?: return
         time = t; blink = blinkClosed; alphaMul = 1f
-        node(cv, r)
+        try { node(cv, r) } catch (e: Exception) { if (error == null) { error = e.toString(); android.util.Log.w("com.example.buddy", "SvgArt: $name draw failed: $e") } }
     }
 
     private fun node(cv: Canvas, n: Node) {

@@ -179,34 +179,51 @@ class UiActivity : Activity() {
         body.addView(tabs[i].view(), FrameLayout.LayoutParams(MATCH, MATCH))
         setBars(i != 0 && !Glass.NIGHT)
         bgHome.visibility = if (i == 0) View.VISIBLE else View.GONE
-        // every page has the scene behind it (it slides a little from page to page, like in the design); the themed home page carries its own
-        scene?.setScene(if (i == 0 && (tabs[0] as HomeScreen).themed) null else Theme.cur.scene)
-        scene?.slideTo(i)
         (tabs[0] as HomeScreen).let { if (i == 0) it.wakeWeb() else it.restWeb() }
         bgSub.visibility = if (i == 0) View.GONE else View.VISIBLE
         navFrame.removeAllViews()
         if (i != 0) navFrame.addView(buildNav(), FrameLayout.LayoutParams(MATCH, dp(68)))
         tabs[i].onShow()
+        updateChrome()
+    }
+
+    /**
+     * With a themed look the animated scene is behind every page, also the pushed ones (they are see-through then): it slides a little
+     * from page to page like in the design; the themed home page carries its own scene.
+     */
+    private fun updateChrome() {
+        val sc = scene ?: return
+        val pushed = stack.isNotEmpty()
+        sc.setScene(if (tab == 0 && !pushed && (tabs[0] as HomeScreen).themed) null else Theme.cur.scene)
+        sc.slideTo(if (pushed) 5 else tab)
+        shell.visibility = if (pushed) View.INVISIBLE else View.VISIBLE
+        navFrame.visibility = if (pushed) View.INVISIBLE else View.VISIBLE
+        bgHome.visibility = if (tab == 0 && !pushed) View.VISIBLE else View.GONE
+        bgSub.visibility = if (tab == 0 && !pushed) View.GONE else View.VISIBLE
     }
 
     // ---- pushed screens ------------------------------------------------------------------------------------------
 
     fun push(s: Screen) {
-        val page = pageFor(this, s)
+        val page = pageFor(this, s, plain = scene != null)
         page.setPadding(0, insetTop, 0, insetBottom)
+        if (scene != null) stack.lastOrNull()?.second?.visibility = View.INVISIBLE   // see-through pages: the one below must not show
         host.addView(page, FrameLayout.LayoutParams(MATCH, MATCH))
         stack += s to page
         page.alpha = 0f
         page.translationX = dp(40).toFloat()
         page.animate().alpha(1f).translationX(0f).setDuration(220).start()
         s.onShow()
+        updateChrome()
     }
 
     fun pop() {
         if (stack.isEmpty()) return
         val (_, page) = stack.removeAt(stack.size - 1)
         page.animate().alpha(0f).translationX(dp(40).toFloat()).setDuration(160).withEndAction { host.removeView(page) }.start()
+        stack.lastOrNull()?.second?.visibility = View.VISIBLE
         (stack.lastOrNull()?.first ?: tabs[tab]).onShow()
+        updateChrome()
     }
 
     @Deprecated("Deprecated in Java")

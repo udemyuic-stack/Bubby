@@ -101,9 +101,9 @@ abstract class Screen(val act: UiActivity) {
 }
 
 /** Wraps a pushed [Screen] with a top bar. */
-fun pageFor(act: UiActivity, s: Screen): FrameLayout {
+fun pageFor(act: UiActivity, s: Screen, plain: Boolean = false): FrameLayout {
     val frame = FrameLayout(act)
-    frame.addView(GlassBackground(act, false), FrameLayout.LayoutParams(MATCH, MATCH))
+    if (!plain) frame.addView(GlassBackground(act, false), FrameLayout.LayoutParams(MATCH, MATCH))   // plain: the activity's own background and animated scene show through
     val box = act.col()
     val bar = act.row {
         setPadding(act.dp(10), act.dp(8), act.dp(16), act.dp(6))

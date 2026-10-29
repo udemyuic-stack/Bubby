@@ -240,7 +240,7 @@ class Match3Engine(val w: Int = 7, val h: Int = 8, val colors: Int = 5, seed: Lo
         while (again) {
             again = false
             for (i in 0 until w * h) {
-                if (!marks[i] || done[i] || i in keep || special[i] == NONE) continue
+                if (!marks[i] || done[i] || special[i] == NONE) continue   // also a special that sits where a new special is born still fires first
                 done[i] = true; again = true
                 fired += i
                 when (special[i]) {

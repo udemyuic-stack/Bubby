@@ -117,7 +117,7 @@ class RoomScreen(act: UiActivity) : Screen(act) {
     private fun win() {
         over = true; board.locked = true
         val lvl = levels[index]
-        val stars = when { engine.movesLeft * 100 >= lvl.moves * 50 -> 3; engine.movesLeft * 100 >= lvl.moves * 25 -> 2; else -> 1 }
+        val stars = when { engine.movesLeft * 100 >= lvl.moves * 30 -> 3; engine.movesLeft * 100 >= lvl.moves * 10 -> 2; else -> 1 }
         if (stars > starsOf(index)) prefs.edit().putInt("bm_stars_$index", stars).apply()
         if (index + 2 > unlocked()) prefs.edit().putInt("bm_level", minOf(levels.size, index + 2)).apply()
         react("🥳", "⭐".repeat(stars) + "  " + t("Комната стала уютнее!", "The room got cosier!", "Xona yanada shinam bo'ldi!"))

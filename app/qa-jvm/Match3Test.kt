@@ -128,6 +128,15 @@ fun main() {
         check("two rollers: a cross", res.valid && (0 until W).all { res.steps[0].cleared.contains(at(3, it)) } && (0 until H).all { res.steps[0].cleared.contains(at(it, 4)) })
     }
 
+    // ---- a special sitting where a new special is born still fires (found by the balance fuzzer) ----
+    run {
+        val e = Match3Engine(seed = 20); calm(e); e.movesLeft = 5
+        e.type[at(3, 0)] = 4; e.type[at(3, 1)] = 4; e.type[at(3, 3)] = 4; e.type[at(4, 2)] = 4; e.special[at(4, 2)] = Match3Engine.ROLLER_H
+        val res = e.swap(at(4, 2), at(3, 2))
+        check("special on the anchor: valid", res.valid)
+        check("special on the anchor: it fired", res.steps[0].fired.contains(at(3, 2)), "fired ${res.steps[0].fired}")
+    }
+
     // ---- dust ----
     run {
         val e = Match3Engine(seed = 11); calm(e)

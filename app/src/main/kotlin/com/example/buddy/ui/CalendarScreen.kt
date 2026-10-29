@@ -88,6 +88,9 @@ class CalendarScreen(act: UiActivity) : Screen(act) {
         ) { CalendarStore(ctx).delete(e.id); refresh() }
     }
 
+    private var slideDir = 0
+    private var bounceDay: Long? = null
+
     private fun dayStrip(events: List<CalEvent>): View {
         val row = ctx.row {
             setPadding(ctx.dp(12), ctx.dp(4), ctx.dp(12), ctx.dp(8))
@@ -108,7 +111,8 @@ class CalendarScreen(act: UiActivity) : Screen(act) {
                     add(ctx.text(short[c.mondayDow() - 1], T.Small, if (isSel) fg else Glass.TEXT_LABEL).apply { textSize = 12f }, WRAP, WRAP)
                     add(ctx.text("${c.get(Calendar.DAY_OF_MONTH)}", T.Title, fg).apply { textSize = 20f }, WRAP, WRAP, top = 2)
                     add(View(ctx).apply { background = ctx.rounded(if (has) dot else 0, 4f) }, ctx.dp(6), ctx.dp(6), top = 6)
-                    press { selected = if (isSel) null else day; refresh() }
+                    if (bounceDay == day) post { translationY = -ctx.dpf(6f); animate().translationY(0f).setDuration(450).setInterpolator(android.view.animation.OvershootInterpolator(3f)).start() }
+                    press { slideDir = if (selected == null || (selected ?: 0L) < day) 1 else -1; bounceDay = if (isSel) null else day; selected = if (isSel) null else day; refresh() }
                 }, ctx.dp(56), ctx.dp(80), end = 8)
             }
         }
@@ -159,16 +163,22 @@ class CalendarScreen(act: UiActivity) : Screen(act) {
             c.add(ctx.emptyState(
                 if (selected == null) t("Событий нет", "No events", "Tadbirlar yo'q") else t("В этот день пусто", "Nothing on this day", "Bu kunda hech narsa yo'q"),
                 if (selected == null) t("На 14 дней вперёд ничего не запланировано.", "Nothing planned for the next 14 days.", "Keyingi 14 kunda hech narsa rejalashtirilmagan.")
-                else t("Нажмите «Событие», чтобы добавить.", "Tap “Event” to add one.", "Qo'shish uchun «Tadbir» ni bosing.")
+                else t("Нажмите «Событие», чтобы добавить.", "Tap “Event” to add one.", "Qo'shish uchun «Tadbir» ni bosing."),
+                sleepy = true
             ))
+            slideDir = 0; bounceDay = null
             return
         }
         var lastDay = -1L
         for (e in shown) {
             val d = cal(e.startMillis).apply { set(Calendar.HOUR_OF_DAY, 0); set(Calendar.MINUTE, 0); set(Calendar.SECOND, 0); set(Calendar.MILLISECOND, 0) }.timeInMillis
             if (d != lastDay) { lastDay = d; c.add(ctx.text(fmtDayHeader(ctx, e.startMillis), T.Label, Glass.DATE), MATCH, WRAP, top = 10, bottom = 8, start = 4) }
-            c.add(eventCard(e), MATCH, WRAP, bottom = 8)
+            val card = eventCard(e)
+            c.add(card, MATCH, WRAP, bottom = 8)
+            if (slideDir != 0) { card.alpha = 0f; card.translationX = slideDir * ctx.dpf(40f)
+                card.animate().alpha(1f).translationX(0f).setStartDelay(55L * minOf(c.childCount, 8)).setDuration(450).setInterpolator(android.view.animation.DecelerateInterpolator(1.6f)).start() }
         }
+        slideDir = 0; bounceDay = null
         c.add(ctx.text(t("Нажмите на событие, чтобы удалить", "Tap an event to delete it", "O'chirish uchun tadbirni bosing"), T.Small).apply { gravity = Gravity.CENTER }, MATCH, WRAP, top = 6)
     }
 }

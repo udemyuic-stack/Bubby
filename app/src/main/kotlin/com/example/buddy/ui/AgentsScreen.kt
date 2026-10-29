@@ -31,8 +31,8 @@ class AgentsScreen(act: UiActivity) : Screen(act) {
 
     /** What the page last showed of the live link state; the poll redraws only when it changes. */
     private var shownLive: Any? = null
-    private fun live(): Any = listOf(BuddyService.agentDesktop, BuddyService.agentConnected, BuddyService.agentSessions, BuddyService.agentUsage, BuddyService.agentApprovals,
-        BuddyService.agentQuestions, BuddyService.agentCaps)
+    private fun live(): Any = listOf(BuddyService.agentDesktop, BuddyService.agentConnected, BuddyService.agentViaRelay, BuddyService.agentSessions, BuddyService.agentUsage, BuddyService.agentApprovals,
+        BuddyService.agentQuestions, BuddyService.agentCaps, BuddyService.agentRun, BuddyService.agentProjects)
     private val openSteps = HashSet<String>()     // sessions whose step list is unfolded
     private val allFiles = HashSet<String>()      // sessions showing every changed file, not only the first few
     private val qSel = HashMap<String, List<Set<Int>>>()   // picks so far per question fingerprint (kept across redraws)
@@ -40,18 +40,24 @@ class AgentsScreen(act: UiActivity) : Screen(act) {
 
     override fun onShow() {
         reshow()
+        // the link pushes every change: redraw at once (bursts of messages become one redraw); the slow poll below is only a safety net
+        BuddyService.agentChanged = { content.removeCallbacks(redraw); content.postDelayed(redraw, 120) }
         if (polling) return
         polling = true
         val tick = object : Runnable {
             override fun run() {
                 // gone, or the app went to the background: stop (onShow starts it again on return)
-                if (!content.isAttachedToWindow || content.windowVisibility != View.VISIBLE) { polling = false; return }
-                // the pairing check decrypts the token through the Keystore: only done when the live state really changed
-                if (live() != shownLive && Backend.agentStatus(ctx).paired) refresh()
+                if (!content.isAttachedToWindow || content.windowVisibility != View.VISIBLE) { polling = false; BuddyService.agentChanged = null; return }
+                redraw.run()
                 content.postDelayed(this, 2000)
             }
         }
         content.postDelayed(tick, 2000)
+    }
+
+    /** Redraws only when something the page shows has changed (the pairing check decrypts the token through the Keystore). */
+    private val redraw = Runnable {
+        if (content.isAttachedToWindow && live() != shownLive && Backend.agentStatus(ctx).paired) refresh()
     }
 
     private fun stateInfo(s: String): Pair<String, Int> = when (s) {
@@ -321,12 +327,29 @@ class AgentsScreen(act: UiActivity) : Screen(act) {
                         add(View(ctx).apply { background = ctx.rounded(color, 6f) }, ctx.dp(11), ctx.dp(11), end = 8)
                         add(ctx.text(AgentWidgets.title(ctx, st), T.Headline).apply { textSize = 21f }, 0, WRAP, 1f)
                     })
-                    add(ctx.text(s.desktop.ifEmpty { t("Компьютер", "Computer", "Kompyuter") } + if (s.connected) "" else " · " + t("нет связи", "offline", "aloqa yo'q"), T.Body), MATCH, WRAP, top = 4)
+                    add(ctx.text(s.desktop.ifEmpty { t("Компьютер", "Computer", "Kompyuter") } + if (!s.connected) " · " + t("нет связи", "offline", "aloqa yo'q") else if (BuddyService.agentViaRelay) " · " + t("через интернет", "via relay", "internet orqali") else "", T.Body), MATCH, WRAP, top = 4)
                     val busy = s.sessions.count { it.state in setOf("working", "thinking", "searching") }
                     add(ctx.text(if (s.sessions.isEmpty()) t("Агентов нет", "No agents running", "Agentlar yo'q")
                         else t("Работает: $busy из ${s.sessions.size}", "Working: $busy of ${s.sessions.size}", "Ishlayapti: $busy / ${s.sessions.size}"), T.Small), MATCH, WRAP, top = 2)
                 }, 0, WRAP, 1f)
             })
+        }, MATCH, WRAP, bottom = 12)
+
+        // a task for Claude Code, started from the phone (only when the computer allows it)
+        if ("run" in BuddyService.agentCaps) c.add(runCard(), MATCH, WRAP, bottom = 12)
+        else if (s.connected) c.add(ctx.card(pad = 16) {
+            add(ctx.row {
+                add(ctx.icon(R.drawable.ic_bolt, P.primary, 24), WRAP, WRAP, end = 10)
+                add(ctx.text(t("Задачи для Claude Code с телефона", "Tasks for Claude Code from the phone", "Telefondan Claude Code'ga vazifa"), T.Title), 0, WRAP, 1f)
+            })
+            add(ctx.text(t("Компьютер пока не принимает задачи. Остановите мост и запустите так:", "The computer does not take tasks yet. Stop the bridge and start it like this:", "Kompyuter hali vazifa qabul qilmayapti. Bridge'ni to'xtatib, shunday ishga tushiring:"), T.Small), MATCH, WRAP, top = 8)
+            val cmd = "node agent-bridge/bridge.mjs --allow-run --workdir ~/project/my-app"
+            add(ctx.text(cmd, T.Body).apply { typeface = android.graphics.Typeface.MONOSPACE; textSize = 12.5f; setTextIsSelectable(true)
+                background = ctx.rounded(P.container, 12f); setPadding(ctx.dp(10), ctx.dp(8), ctx.dp(10), ctx.dp(8)) }, MATCH, WRAP, top = 8)
+            add(ctx.button(t("Копировать команду", "Copy the command", "Buyruqni nusxalash"), BtnStyle.Outline) {
+                (ctx.getSystemService(android.content.Context.CLIPBOARD_SERVICE) as android.content.ClipboardManager).setPrimaryClip(android.content.ClipData.newPlainText("bubby", cmd))
+                ctx.toast(t("Скопировано", "Copied", "Nusxalandi"))
+            }, MATCH, WRAP, top = 8)
         }, MATCH, WRAP, bottom = 12)
 
         // requests waiting for an answer
@@ -345,6 +368,10 @@ class AgentsScreen(act: UiActivity) : Screen(act) {
                     com.example.buddy.ConfirmActivity.request(ctx) { ok -> if (ok) decide(ap.fingerprint, true) else ctx.toast(t("Нужен экран блокировки", "Lock screen required", "Ekran qulfi kerak")) }
                 }, 0, WRAP, 1f)
             }, MATCH, WRAP, top = 10)
+            if ("always" in BuddyService.agentCaps && !ap.truncated && com.example.buddy.IslandUi.risk(ap.tool, ap.command) != com.example.buddy.IslandUi.RISK_HIGH)
+                add(ctx.button(t("Всегда (до конца сессии)", "Always (this session)", "Doim (shu sessiya davomida)"), BtnStyle.Outline) {
+                    com.example.buddy.ConfirmActivity.request(ctx) { ok -> if (ok) decide(ap.fingerprint, true, true) else ctx.toast(t("Нужен экран блокировки", "Lock screen required", "Ekran qulfi kerak")) }
+                }, MATCH, WRAP, top = 8)
             add(ctx.text(if (ap.truncated) t("Команда слишком длинная: разрешить можно только на компьютере", "The command is too long: it can only be allowed on the computer", "Buyruq juda uzun: ruxsatni faqat kompyuterda berish mumkin")
                 else t("Разрешить можно только после проверки экрана блокировки", "You can allow only after the lock screen check", "Ruxsat faqat qulf ekrani tekshiruvidan keyin beriladi"), T.Small), MATCH, WRAP, top = 8)
         }, MATCH, WRAP, bottom = 12)
@@ -356,7 +383,9 @@ class AgentsScreen(act: UiActivity) : Screen(act) {
         // usage rings and done today
         val u = AgentStats.current(ctx)
         fun ringCard(value: Float?, resets: Long, title: String): LinearLayout = statCard(title,
-            if (value == null) t("нет данных", "no data", "ma'lumot yo'q") else AgentWidgets.until(ctx, resets).let { r -> if (r.isEmpty()) "" else t("сброс через $r", "resets in $r", "$r dan keyin yangilanadi") }) {
+            if (value == null) t("нет данных", "no data", "ma'lumot yo'q") else (AgentWidgets.until(ctx, resets).let { r -> if (r.isEmpty()) "" else t("сброс через $r", "resets in $r", "$r dan keyin yangilanadi") } +
+                // numbers only change when Claude Code answers: say how old they are instead of looking live
+                AgentWidgets.ago(ctx, u?.updatedAt ?: 0L).let { a -> if (a.isEmpty()) "" else "\n" + t("обновлено $a", "updated $a", "yangilangan: $a") }).trim()) {
             add(RingGauge(ctx).apply { setValue(value) }, ctx.dp(112), ctx.dp(112))
         }
         c.add(ctx.row(Gravity.TOP) {
@@ -396,8 +425,76 @@ class AgentsScreen(act: UiActivity) : Screen(act) {
         c.add(ctx.button(t("Отключить", "Disconnect", "Uzish"), BtnStyle.Outline) { unpair() }, MATCH, WRAP, top = 8)
     }
 
-    private fun decide(fp: String, allow: Boolean) {
-        ctx.startService(android.content.Intent(ctx, BuddyService::class.java).setAction(BuddyService.ACTION_AGENT_DECIDE).putExtra("fp", fp).putExtra("allow", allow))
+    private var taskDraft = ""
+    private var taskProject = ""
+
+    private fun runCard(): LinearLayout = ctx.card(pad = 16) {
+        val run = BuddyService.agentRun
+        val running = run?.second == "running"
+        add(ctx.row {
+            add(ctx.icon(R.drawable.ic_bolt, P.primary, 24), WRAP, WRAP, end = 10)
+            add(ctx.text(t("Задача для Claude Code", "Task for Claude Code", "Claude Code uchun vazifa"), T.Title), 0, WRAP, 1f)
+        })
+        val field = ctx.field(t("Что сделать на компьютере?", "What should it do on the computer?", "Kompyuterda nima qilsin?")).apply {
+            setText(taskDraft); minLines = 2; maxLines = 5
+            addTextChangedListener(object : android.text.TextWatcher {
+                override fun afterTextChanged(e: android.text.Editable?) { taskDraft = e?.toString().orEmpty() }
+                override fun beforeTextChanged(s: CharSequence?, a: Int, b: Int, c: Int) {}
+                override fun onTextChanged(s: CharSequence?, a: Int, b: Int, c: Int) {}
+            })
+            isEnabled = !running
+        }
+        add(field, MATCH, WRAP, top = 10)
+        // the project (a folder of the computer) the task runs in: pick any of them
+        val (projects, current) = BuddyService.agentProjects
+        if (projects.isNotEmpty()) {
+            if (taskProject !in projects) taskProject = if (current in projects) current else projects.first()
+            add(ctx.text(t("Проект", "Project", "Loyiha"), T.Small), MATCH, WRAP, top = 10)
+            val flow = FlowLayout(ctx)
+            for (name in projects) {
+                val on = name == taskProject
+                flow.addView(ctx.row(Gravity.CENTER) {
+                    setPadding(ctx.dp(14), ctx.dp(8), ctx.dp(14), ctx.dp(8))
+                    background = ctx.glass(if (on) GlassKind.Active else GlassKind.Dim, 20f)
+                    add(ctx.text(name, T.Small, if (on) Glass.ON_ACTIVE else Glass.TEXT).apply { maxLines = 1 }, WRAP, WRAP)
+                    if (!running) press { taskProject = name; refresh() }
+                })
+            }
+            add(flow, MATCH, WRAP, top = 4)
+        }
+        add(ctx.row {
+            if (running) {
+                add(ctx.button(t("Остановить", "Stop", "To'xtatish"), BtnStyle.Outline) {
+                    ctx.startService(android.content.Intent(ctx, BuddyService::class.java).setAction(BuddyService.ACTION_AGENT_RUN_STOP).putExtra("id", run!!.first))
+                }, MATCH, WRAP)
+            } else {
+                add(ctx.button(t("Отправить", "Send", "Yuborish")) {
+                    val text = field.text.toString().trim()
+                    if (text.isEmpty()) { ctx.toast(t("Напишите задачу", "Write the task", "Vazifani yozing")); return@button }
+                    // the lock screen (PIN, pattern, fingerprint) must confirm first, like allowing a request
+                    com.example.buddy.ConfirmActivity.request(ctx) { ok ->
+                        if (ok) {
+                            taskDraft = ""
+                            ctx.startService(android.content.Intent(ctx, BuddyService::class.java).setAction(BuddyService.ACTION_AGENT_RUN)
+                                .putExtra("id", "t" + System.currentTimeMillis()).putExtra("prompt", text).putExtra("project", taskProject))
+                            content.postDelayed({ refresh() }, 300)
+                        } else ctx.toast(t("Нужен экран блокировки", "Lock screen required", "Ekran qulfi kerak"))
+                    }
+                }, MATCH, WRAP)
+            }
+        }, MATCH, WRAP, top = 8)
+        if (run != null) {
+            val label = when (run.second) { "running" -> t("Работает…", "Working…", "Ishlayapti…"); "done" -> t("Готово", "Done", "Tayyor")
+                "stopped" -> t("Остановлено", "Stopped", "To'xtatildi"); else -> t("Ошибка", "Error", "Xato") }
+            add(ctx.text(label, T.Label), MATCH, WRAP, top = 12)
+            if (run.third.isNotEmpty()) add(ctx.text(run.third, T.Body).apply { setTextIsSelectable(true); maxLines = 14; ellipsize = android.text.TextUtils.TruncateAt.END
+                background = ctx.rounded(P.container, 12f); setPadding(ctx.dp(10), ctx.dp(8), ctx.dp(10), ctx.dp(8)) }, MATCH, WRAP, top = 6)
+            add(ctx.text(t("Каждое действие задачи спросит разрешение на телефоне", "Each action of the task asks for permission on the phone", "Vazifaning har bir amali telefondan ruxsat so'raydi"), T.Small), MATCH, WRAP, top = 8)
+        }
+    }
+
+    private fun decide(fp: String, allow: Boolean, always: Boolean = false) {
+        ctx.startService(android.content.Intent(ctx, BuddyService::class.java).setAction(BuddyService.ACTION_AGENT_DECIDE).putExtra("fp", fp).putExtra("allow", allow).putExtra("always", always))
         content.postDelayed({ refresh() }, 300)
     }
 

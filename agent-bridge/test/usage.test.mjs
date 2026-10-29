@@ -84,7 +84,7 @@ test("statusLine relay: only rate_limits reaches the bridge; the user's own stat
   assert.equal(r.out, "my line");
   assert.deepEqual(JSON.parse(fs.readFileSync(recv, "utf8")), payload, "same payload on its stdin");
   const u = await phone.wait((m) => m.type === "usage" && m.fiveHour);
-  assert.deepEqual(Object.keys(u), ["type", "fiveHour", "sevenDay", "doneToday", "updatedAt"]);
+  assert.deepEqual(Object.keys(u), ["type", "fiveHour", "sevenDay", "doneToday", "updatedAt", "limitsAgeMs"]);
   assert.deepEqual(u.fiveHour, { used: 0.68, resetsAt: (sec(NOW) + 3600) * 1000 });
   assert.equal(u.sevenDay.used, 0.425);
   assert.ok(Math.abs(u.updatedAt - Date.now()) < 5000);
@@ -204,4 +204,32 @@ test("the OAuth path is gone: nothing reads Claude's credentials", () => {
     const src = fs.readFileSync(path.join(root, f), "utf8");
     assert.ok(!src.includes(".credentials.json") && !src.includes("api/oauth"), f);
   }
+});
+
+test("usage carries the age of the limit numbers (measured on the computer); a new status line makes them fresh again", async () => {
+  const root = tmpRoot();
+  const dir = path.join(root, "b");
+  fs.mkdirSync(dir, { recursive: true });
+  // numbers saved three hours ago, then the bridge starts again: they must look old, not live
+  fs.writeFileSync(path.join(dir, "limits.json"), JSON.stringify({ fiveHour: { used: 0.5, resetsAt: Date.now() + 3600_000 }, updatedAt: Date.now() - 3 * 3600_000 }));
+  const { b, logs } = await startWith(dir);
+  const phone = await connect(b, dir);
+  const first = await phone.wait((m) => m.type === "usage");
+  assert.equal(first.fiveHour.used, 0.5);
+  assert.ok(first.limitsAgeMs > 2.9 * 3600_000 && first.limitsAgeMs < 3.1 * 3600_000, `age ${first.limitsAgeMs}`);
+  assert.ok(b.limitsAgeMs() > 2.9 * 3600_000);
+  // Claude Code answers: the status line brings 57 %
+  await statusLine(dir, { session_id: "s1", rate_limits: { five_hour: { used_percentage: 57, resets_at: sec(NOW) + 3600 } } });
+  const fresh = await phone.wait((m) => m.type === "usage" && m.fiveHour?.used === 0.57);
+  assert.ok(fresh.limitsAgeMs < 5000, `age ${fresh.limitsAgeMs}`);
+  assert.ok(logs.some((l) => /limits: 5 h 57%/.test(l)));
+  phone.close(); await b.close();
+});
+
+test("without any limits there is no age field", async () => {
+  const { b, dir } = await startWith();
+  const phone = await connect(b, dir);
+  const u = await phone.wait((m) => m.type === "usage");
+  assert.equal(u.limitsAgeMs, undefined);
+  phone.close(); await b.close();
 });

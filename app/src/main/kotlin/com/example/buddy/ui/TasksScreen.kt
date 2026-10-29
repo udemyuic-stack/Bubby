@@ -90,9 +90,11 @@ class TasksScreen(act: UiActivity) : Screen(act) {
         press(onToggle)
     }
 
+    private var seen: Set<String>? = null
+
     private fun tile(task: Task): View = ctx.card(pad = 12, radius = 22f, onClick = { edit(task) }, onLong = { confirmDelete(task) }) {
         add(ctx.row {
-            add(checkBox(task.done) { Backend.setTaskDone(ctx, task.id, !task.done); refresh() }, WRAP, WRAP, end = 4)
+            add(checkBox(task.done) { if (!task.done) this@card.burst(); Backend.setTaskDone(ctx, task.id, !task.done); content.postDelayed({ refresh() }, if (task.done) 0L else 280L) }, WRAP, WRAP, end = 4)
             add(ctx.col {
                 add(ctx.text(task.title, T.Title, if (task.done) P.onSurfaceVariant else P.onSurface).apply {
                     if (task.done) paintFlags = paintFlags or android.graphics.Paint.STRIKE_THRU_TEXT_FLAG
@@ -119,8 +121,17 @@ class TasksScreen(act: UiActivity) : Screen(act) {
             ))
             return
         }
-        if (open.isNotEmpty()) { c.add(ctx.section(t("Нужно сделать", "To do", "Bajarish kerak"))); for (x in open) c.add(tile(x), MATCH, WRAP, bottom = 8) }
-        if (done.isNotEmpty()) { c.add(ctx.section(t("Готово", "Done", "Tayyor"))); for (x in done) c.add(tile(x), MATCH, WRAP, bottom = 8) }
+        // a task that was not there before drops in (slides down and settles), like in the designs
+        val before = seen
+        seen = all.map { it.id.toString() }.toSet()
+        fun add(x: Task) {
+            val v = tile(x)
+            c.add(v, MATCH, WRAP, bottom = 8)
+            if (before != null && x.id.toString() !in before) { v.alpha = 0f; v.translationY = -ctx.dpf(30f); v.scaleX = .9f; v.scaleY = .9f
+                v.animate().alpha(1f).translationY(0f).scaleX(1f).scaleY(1f).setDuration(600).setInterpolator(android.view.animation.OvershootInterpolator(2f)).start() }
+        }
+        if (open.isNotEmpty()) { c.add(ctx.section(t("Нужно сделать", "To do", "Bajarish kerak"))); for (x in open) add(x) }
+        if (done.isNotEmpty()) { c.add(ctx.section(t("Готово", "Done", "Tayyor"))); for (x in done) add(x) }
         c.add(ctx.text(t("Долгое нажатие — удалить", "Long press to delete", "O'chirish uchun uzoq bosing"), T.Small).apply { gravity = Gravity.CENTER }, MATCH, WRAP, top = 6)
     }
 }

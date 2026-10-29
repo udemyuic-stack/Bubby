@@ -9,6 +9,12 @@ object Screens {
         "outfits" -> OutfitsScreen(act)
         "music" -> MusicScreen(act)
         "fun" -> FunScreen(act)
+        "game-guess" -> GameScreen(act, "guess")
+        "game-rps" -> GameScreen(act, "rps")
+        "game-memory" -> GameScreen(act, "memory")
+        "game-twenty" -> GameScreen(act, "twenty")
+        "game-room" -> RoomScreen(act)
+        "game-room-shop" -> RoomShopScreen(act)
         "agents" -> AgentsScreen(act)
         "runs" -> RunsScreen(act)
         else -> null

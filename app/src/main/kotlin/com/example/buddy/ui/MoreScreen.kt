@@ -50,7 +50,7 @@ class MoreScreen(act: UiActivity) : Screen(act) {
             add(View(ctx).apply { background = ctx.rounded(if (ignoring) Glass.OK else P.warning, 3f) }, ctx.dp(10), ctx.dp(24), end = 12)
             add(ctx.text(if (ignoring) t("Не засыпать: включено", "Stay awake: on", "Uxlamaslik: yoqilgan")
             else t("Не засыпать: выключено — нажмите, чтобы исправить", "Stay awake: off — tap to fix", "Uxlamaslik: o'chiq — tuzatish uchun bosing"), T.Body), 0, WRAP, 1f)
-            press { Backend.openSettings(act, "battery") }
+            press { if (!ignoring) sleepZ(); Backend.openSettings(act, "battery") }
         }, MATCH, WRAP)
 
         c.add(ctx.linkRow(t("Что сделал Bubby", "What Bubby did", "Bubby nima qildi"), t("Шаги последних задач на телефоне", "Steps of the latest tasks on the phone", "Telefondagi so'nggi vazifalar qadamlari"), R.drawable.ic_schedule, P.primary) { act.open("runs") }, MATCH, WRAP, top = 4)

@@ -198,7 +198,7 @@ fun Backend.setTaskDone(ctx: Context, id: String, done: Boolean) {
 fun Backend.startGame(ctx: Context, name: String): String? {
     if (!android.provider.Settings.canDrawOverlays(ctx)) return Tr.t(ctx, "Нужно разрешение «Поверх других окон»", "The \"Display over other apps\" permission is required", "\"Boshqa oynalar ustida ko'rsatish\" ruxsati kerak")
     ctx.startForegroundService(android.content.Intent(ctx, BuddyService::class.java).setAction(BuddyService.ACTION_ASK)
-        .putExtra("text", Tr.t(ctx, "Давай сыграем: $name", "Let's play: $name", "Keling, o'ynaymiz: $name")))
+        .putExtra("text", Tr.t(ctx, "Давай сыграем: $name", "Let's play: $name", "Keling, o'ynaymiz: $name")).putExtra("game", true))
     return null
 }
 

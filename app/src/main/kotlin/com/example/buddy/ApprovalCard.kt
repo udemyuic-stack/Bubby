@@ -11,7 +11,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 
 object ApprovalCard {
-    fun build(ctx: Context, a: Approval, locked: Boolean, onAllow: () -> Unit, onDeny: () -> Unit, riskLevel: Int? = null): View {
+    fun build(ctx: Context, a: Approval, locked: Boolean, onAllow: () -> Unit, onDeny: () -> Unit, riskLevel: Int? = null, onAlways: (() -> Unit)? = null): View {
         val u = ctx.resources.displayMetrics.density
         fun dp(v: Int) = (v * u).toInt()
         var used = false
@@ -92,6 +92,12 @@ object ApprovalCard {
             )
         }
         body.addView(row, LinearLayout.LayoutParams(-1, -2).apply { topMargin = dp(10) })
+        if (onAlways != null && !a.truncated) {
+            body.addView(
+                button(Tr.t(ctx, "Всегда (до конца сессии)", "Always (this session)", "Doim (shu sessiya davomida)"), 0xFF2C3A33.toInt(), 0xFFBFF3D2.toInt(), onAlways),
+                LinearLayout.LayoutParams(-1, -2).apply { topMargin = dp(8) }
+            )
+        }
 
         val bar = View(ctx).apply {
             background = GradientDrawable().apply { setColor(accent); cornerRadius = dp(2).toFloat() }

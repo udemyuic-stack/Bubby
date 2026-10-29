@@ -341,3 +341,54 @@ class Tilt3D(c: Context, private val still: Boolean = false) : FrameLayout(c) {
         return true
     }
 }
+
+
+// ---- reactions from the designs ---------------------------------------------------------------------------------------
+
+/** Eight dots flying out of the view's centre and fading, like the sparkle when something is tapped. */
+fun View.burst(color: Int = Glass.ACCENT) {
+    val decor = rootView as? ViewGroup ?: return
+    val loc = IntArray(2); getLocationOnScreen(loc)
+    val dloc = IntArray(2); decor.getLocationOnScreen(dloc)
+    val cx = loc[0] - dloc[0] + width / 2f; val cy = loc[1] - dloc[1] + height / 2f
+    val d = context.dp(8)
+    for (i in 0 until 8) {
+        val dot = View(context).apply {
+            background = GradientDrawable().apply { shape = GradientDrawable.OVAL; setColor(color) }
+            isClickable = false
+        }
+        decor.addView(dot, FrameLayout.LayoutParams(d, d).apply { leftMargin = (cx - d / 2f).toInt(); topMargin = (cy - d / 2f).toInt() })
+        val a = i / 8.0 * 2 * PI
+        val r = context.dpf(48f)
+        dot.animate().translationX((cos(a) * r).toFloat()).translationY((sin(a) * r).toFloat()).alpha(0f).scaleX(.3f).scaleY(.3f)
+            .setDuration(750).setInterpolator(DecelerateInterpolator(1.6f)).withEndAction { decor.removeView(dot) }.start()
+    }
+}
+
+/** The little hop with a wobble when a mascot is tapped. */
+fun View.jump() {
+    animate().cancel()
+    animate().translationY(-context.dpf(14f)).rotation(-7f).scaleX(1.1f).scaleY(1.1f).setDuration(220).setInterpolator(DecelerateInterpolator())
+        .withEndAction { animate().translationY(0f).rotation(0f).scaleX(1f).scaleY(1f).setDuration(480).setInterpolator(OvershootInterpolator(3f)).start() }.start()
+}
+
+/** A sticker or a tile pops: bigger, a turn, back. */
+fun View.sticker() {
+    animate().cancel()
+    animate().scaleX(1.25f).scaleY(1.25f).rotation(12f).setDuration(200)
+        .withEndAction { animate().scaleX(1f).scaleY(1f).rotation(0f).setDuration(300).setInterpolator(OvershootInterpolator(3f)).start() }.start()
+    burst()
+}
+
+/** "Z z Z" drifting up from the view (when stay-awake is off: the phone may fall asleep). */
+fun View.sleepZ() {
+    val decor = rootView as? ViewGroup ?: return
+    val loc = IntArray(2); getLocationOnScreen(loc)
+    val dloc = IntArray(2); decor.getLocationOnScreen(dloc)
+    for ((k, z) in listOf("Z", "z", "Z").withIndex()) {
+        val tv = android.widget.TextView(context).apply { text = z; textSize = 20f; setTextColor(Glass.TEXT); typeface = glassFont(bold = true); isClickable = false }
+        decor.addView(tv, FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT).apply {
+            leftMargin = loc[0] - dloc[0] + context.dp(24 + k * 14); topMargin = loc[1] - dloc[1] + context.dp(8) })
+        tv.animate().translationY(-context.dpf(50f)).alpha(0f).setStartDelay(k * 250L).setDuration(1400).withEndAction { decor.removeView(tv) }.start()
+    }
+}

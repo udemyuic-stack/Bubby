@@ -21,7 +21,9 @@ class BuddyNotifications : NotificationListenerService() {
         val title: String,
         val text: String,
         val whenMs: Long,
-        val canReply: Boolean
+        val canReply: Boolean,
+        /** From the phone's text-message (SMS) app. */
+        val sms: Boolean = false
     )
 
     private class Entry(val item: Item, val action: Notification.Action?)
@@ -143,7 +145,7 @@ class BuddyNotifications : NotificationListenerService() {
                     if (a.remoteInputs?.isNotEmpty() == true && a.actionIntent != null) { act = a; break }
                 }
             }
-            val item = Item(sbn.key, app, title, text, sbn.postTime, act != null)
+            val item = Item(sbn.key, app, title, text, sbn.postTime, act != null, isSmsApp(sbn.packageName))
             synchronized(lock) {
                 entries.removeAll { it.item.key == item.key }
                 entries.add(Entry(item, act))
@@ -153,12 +155,21 @@ class BuddyNotifications : NotificationListenerService() {
                 try {
                     AutoReply.onNotification(applicationContext, item, n.category, ex.getBoolean(Notification.EXTRA_IS_GROUP_CONVERSATION, false))
                 } catch (e: Exception) { }
-                val read = getSharedPreferences("buddy", Context.MODE_PRIVATE).getBoolean("read_notifs", false)
+                val pr = getSharedPreferences("buddy", Context.MODE_PRIVATE)
+                // text messages have their own switch: reading them aloud is off unless asked for
+                val read = if (item.sms) pr.getBoolean("read_sms_aloud", false) else pr.getBoolean("read_notifs", false)
                 val cb = onNew
                 if (read && cb != null) main.post { try { cb(item) } catch (e: Exception) { } }
             }
         } catch (e: Exception) { }
     }
+
+    private val smsPkgs = setOf("com.google.android.apps.messaging", "com.android.mms", "com.android.messaging", "com.samsung.android.messaging",
+        "com.miui.mms", "com.oneplus.mms", "com.coloros.mms", "com.huawei.message", "com.sonyericsson.conversations", "com.motorola.messaging")
+
+    private fun isSmsApp(pkg: String): Boolean = pkg in smsPkgs || try {
+        pkg == android.provider.Telephony.Sms.getDefaultSmsPackage(applicationContext)
+    } catch (e: Exception) { false }
 
     private fun extractText(ex: Bundle): String {
         val msgs = try { ex.getParcelableArray(Notification.EXTRA_MESSAGES) } catch (e: Exception) { null }

@@ -414,9 +414,23 @@ class Actions(private val ctx: Context) {
         "Я открыл чат, нажмите «Отправить»", "I opened the chat, press send", "Chatni ochdim, «Yuborish» tugmasini bosing")
 
     /** Sends [text] by itself (after a cancel countdown). Resolves the recipient off the main thread. */
+    /**
+     * "Send an sms to Ali" has no text in it: the model sometimes fills the slot with the word for the thing itself
+     * ("message", "sms", "xabar"...). That is not something to send, so the text counts as missing and Bubby asks.
+     */
+    private fun cleanMessageText(raw: String): String {
+        var t = raw.trim().replace(Regex("^(message|sms|xabar|text|сообщение|смс)\\s*[:：-]\\s*", RegexOption.IGNORE_CASE), "").trim()
+        val bare = t.lowercase().trim('.', '!', '?', ' ', '"', '\'', '«', '»')
+        if (bare in PLACEHOLDER_TEXTS) t = ""
+        return t
+    }
+
+    private val PLACEHOLDER_TEXTS = setOf("message", "a message", "sms", "text", "text message", "msg", "xabar", "xabar matni", "matn", "sms matni", "sms xabar",
+        "сообщение", "смс", "текст", "текст сообщения", "...", "…", "your message", "message text", "test message", "hello world")
+
     private fun message(a: JSONObject): String? {
         val app = s(a, "app").lowercase().ifEmpty { "sms" }
-        val text = s(a, "text")
+        val text = cleanMessageText(s(a, "text"))
         val to = s(a, "to")
         val force = a.optInt("_force_delay", 0).coerceIn(0, 30)
         val alive = onPending != null   // liveness of the service, captured at call time

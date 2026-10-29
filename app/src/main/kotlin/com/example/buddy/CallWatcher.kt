@@ -16,11 +16,14 @@ import android.telephony.TelephonyManager
 class CallWatcher(
     private val ctx: Context,
     private val onRinging: (name: String?) -> Unit,
-    private val onEnded: () -> Unit
+    private val onEnded: () -> Unit,
+    /** The call was picked up (by the user, by a tap or by Bubby). */
+    private val onAnswered: () -> Unit = {}
 ) {
     private val handler = Handler(Looper.getMainLooper())
     private var registered = false
     private var ringing = false
+    private var offhook = false
     private var announced = false
     private var pending: Runnable? = null
 
@@ -50,11 +53,19 @@ class CallWatcher(
                     handler.postDelayed(r, 800)
                 }
             }
-            TelephonyManager.EXTRA_STATE_IDLE, TelephonyManager.EXTRA_STATE_OFFHOOK -> {
+            TelephonyManager.EXTRA_STATE_OFFHOOK -> {
                 pending?.let { handler.removeCallbacks(it) }
                 pending = null
                 if (ringing) {
-                    ringing = false; announced = false
+                    ringing = false; announced = false; offhook = true
+                    onAnswered()
+                }
+            }
+            TelephonyManager.EXTRA_STATE_IDLE -> {
+                pending?.let { handler.removeCallbacks(it) }
+                pending = null
+                if (ringing || offhook) {
+                    ringing = false; announced = false; offhook = false
                     onEnded()
                 }
             }
@@ -93,7 +104,7 @@ class CallWatcher(
     fun stop() {
         pending?.let { handler.removeCallbacks(it) }
         pending = null
-        ringing = false; announced = false
+        ringing = false; announced = false; offhook = false
         if (!registered) return
         try { ctx.unregisterReceiver(receiver) } catch (_: Exception) { }
         registered = false

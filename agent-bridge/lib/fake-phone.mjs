@@ -64,3 +64,35 @@ export async function pairByCode({ host, port, code, caps, ...rest }) {
   const reply = await p.wait((m) => m.type === "paired" || m.type === "error");
   return { phone: p, reply };
 }
+
+// A phone that comes in through the relay (docs/RELAY.md): WebSocket + end-to-end encryption, same interface as fakePhone.
+export async function fakeRelayPhone({ url, rk, token, caps = [], autoHello = true, WebSocket: WS = globalThis.WebSocket }) {
+  const { derive, createSender, createReceiver, open } = await import("./relay-crypto.mjs");
+  const { room, key } = derive(rk);
+  const sender = createSender(key, "p2b");
+  const recv = createReceiver();
+  const msgs = [], waiters = [];
+  const ws = new WS(`${url.replace(/\/$/, "")}/r/${room}?role=phone`);
+  const control = [];
+  const wait = (pred, ms = 3000) => new Promise((res, rej) => {
+    const hit = msgs.find(pred);
+    if (hit) return res(hit);
+    const w = { pred, res };
+    waiters.push(w);
+    setTimeout(() => { waiters.splice(waiters.indexOf(w), 1); rej(new Error("timeout waiting for message")); }, ms);
+  });
+  ws.onmessage = (ev) => {
+    const text = String(ev.data);
+    if (text.startsWith("{")) { control.push(JSON.parse(text)); return; }
+    const m = open(key, "b2p", text);
+    if (!m || !recv.accept(m)) return;
+    if (m.x) { msgs.push({ type: "__closed" }); return; }
+    const j = JSON.parse(m.l);
+    msgs.push(j);
+    for (const w of [...waiters]) if (w.pred(j)) { waiters.splice(waiters.indexOf(w), 1); w.res(j); }
+  };
+  await new Promise((res, rej) => { ws.onopen = res; ws.onerror = () => rej(new Error("relay connect failed")); });
+  const send = (o) => ws.send(sender.line(JSON.stringify(o)));
+  if (autoHello) send({ type: "hello", v: 1, token, device: "fake-phone", caps });
+  return { send, wait, msgs, control, raw: (t) => ws.send(t), sender, close: () => ws.close() };
+}

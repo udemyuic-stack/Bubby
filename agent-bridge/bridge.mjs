@@ -21,13 +21,21 @@ import { planHooks, applyHooks } from "./lib/hooks.mjs";
 import { planAgent, applyAgentPlan, validAgent, INSTALLERS } from "./lib/agents.mjs";
 import { offerable, answersFromPicks } from "./lib/questions.mjs";
 import { createSessions, sessionsMessage, pillIdOf, stepOf, finalLineOf } from "./lib/sessions.mjs";
+import { createTranscriptWatcher } from "./lib/transcripts.mjs";
+import { createRunner } from "./lib/runner.mjs";
+import path from "node:path";
+import { createRelayClient, loadRelay, saveRelay, forgetRelay, rotateRelay } from "./lib/relay.mjs";
 
 const HELLO_TIMEOUT_MS = 10_000;
 const SILENCE_MS = 90_000;
 const STALE_SESSION_MS = 30 * 60_000;
 const FAIL_DELAY_MS = 300;
 const HOOK_LINE_MAX = 4 * 1024 * 1024; // a file edit can be large; hook.mjs keeps it under ~1 MiB
-export const CAPS = ["details", "answers", "diffs"];
+// only plain tool names can be remembered, and Bash only with its exact (non-empty, single-line) command
+const alwaysOk = (tool, command) => /^[A-Za-z0-9_.:-]{1,60}$/.test(tool ?? "") && tool !== "AskUserQuestion" && (tool !== "Bash" || (typeof command === "string" && command.length > 0 && !command.includes("\n")));
+export const CAPS = ["details", "answers", "diffs", "always", "run"];
+// "relay" is offered only on the LAN link, and only when a relay is configured: it hands the phone the relay address and key
+const RELAY_CAP = "relay";
 const DIFF_LINES = 200, DIFF_LINE_CHARS = 400, DIFF_PART = 100;
 const DIFF_ASKS = 20, DIFF_WINDOW_MS = 10_000;
 
@@ -59,7 +67,9 @@ export async function startBridge(opts = {}) {
   const approvalTimeout = opts.approvalTimeoutMs ?? APPROVAL_TIMEOUT_MS;
   const log = opts.log ?? (() => {});
   // capabilities this bridge offers (--no-details / --no-answers / --no-diffs turn them off)
-  const enabled = new Set(CAPS.filter((c) => opts.caps?.[c] !== false));
+  const runCfg = opts.run ?? null; // {bin, workdir}: the phone may start a headless Claude Code task (only with --allow-run)
+  const enabled = new Set(CAPS.filter((c) => opts.caps?.[c] !== false && (c !== "run" || runCfg)));
+  const relayCfg = opts.relay === false ? null : (opts.relay ?? loadRelay(dir));
   const { key, cert, fp: certFp } = ensureCert(dir);
   let token = loadToken(dir) ?? newToken(dir);
   // 6-digit code pairing (docs/AGENTS-V2.md section 2). The code goes only to opts.onCode (the terminal), never to log.
@@ -71,6 +81,27 @@ export async function startBridge(opts = {}) {
   const pending = new Map(); // fingerprint -> {kind, reply, truncated, timer, agent, sessionId, questions, createdAt}
   let phone = null; // {sock, send, caps: Set}
 
+  // folders the phone may pick for a task: the sub-folders of runCfg.root (names only go to the phone)
+  const projectList = () => {
+    if (!runCfg?.root) return [];
+    try {
+      return fs.readdirSync(runCfg.root, { withFileTypes: true })
+        .filter((d) => d.isDirectory() && !d.name.startsWith(".") && d.name !== "node_modules" && d.name.length <= 80)
+        .map((d) => d.name).sort().slice(0, 60);
+    } catch { return []; }
+  };
+  // a project name from the phone -> a folder inside the root, or null (never anything with a slash or ..)
+  const projectDir = (name) => {
+    if (typeof name !== "string" || !name || /[\\/]/.test(name) || name.startsWith(".") || !runCfg?.root) return null;
+    const full = path.join(runCfg.root, name);
+    try { return fs.statSync(full).isDirectory() ? full : null; } catch { return null; }
+  };
+  let lastRun = null;
+  const runner = runCfg ? createRunner({ bin: runCfg.bin, workdir: runCfg.workdir, onState: (st) => {
+    lastRun = st;
+    log(`task ${st.id}: ${st.state}`);
+    phone?.send({ type: "runState", ...st });
+  } }) : null;
   const pushSessions = () => phone?.send(sessionsMessage(sessions.list(phone.caps)));
 
   // usage: plan limits from the statusLine relay (V3 section 1) + today's counters (V2 section 3).
@@ -90,12 +121,14 @@ export async function startBridge(opts = {}) {
       ...(s.tokensToday !== undefined && { tokensToday: s.tokensToday }),
       ...(r.plan && { plan: r.plan }),
       updatedAt: r.updatedAt ?? Date.now(),
+      // how old the limit numbers are, so the phone does not depend on this computer's clock; absent without limits
+      ...(r.updatedAt !== undefined && { limitsAgeMs: Math.max(0, Date.now() - r.updatedAt) }),
     };
   };
   const sendUsage = (force) => {
     if (!phone) return;
     const m = usageMessage();
-    const k = JSON.stringify({ ...m, updatedAt: r0(m) });
+    const k = JSON.stringify({ ...m, updatedAt: r0(m), limitsAgeMs: undefined });
     if (!force && k === lastUsageKey) return;
     lastUsageKey = k;
     lastUsageAt = Date.now();
@@ -129,9 +162,31 @@ export async function startBridge(opts = {}) {
     if (s && (s.state === "approval" || s.state === "question")) touch({ agent: p.agent, sessionId: p.sessionId }, { state: "working", statusText: "Working" });
   };
 
+  // Claude Code sessions that started before the hooks were installed never call them: they are followed through their
+  // transcript files instead, until a hook event for the same session arrives (hooks then take over).
+  const followed = new Set();
+  const watcher = opts.transcripts ? createTranscriptWatcher({
+    root: typeof opts.transcripts === "string" ? opts.transcripts : undefined,
+    intervalMs: opts.transcriptsMs,
+    skip: (id) => !followed.has(id) && !!sessions.get(null, id),
+    onSession: (id, i) => {
+      followed.add(id);
+      if (i.step) sessions.step(null, stepOf(i.step.name, i.step.text));
+      sessions.touch(null, id, { state: i.state, statusText: i.statusText, project: i.project, steps: (sessions.get(null, id)?.steps ?? 0) + (i.step ? 1 : 0) });
+      pushSessions();
+    },
+    onEnd: (id) => { if (followed.delete(id)) { sessions.end(null, id); pushSessions(); } },
+  }) : null;
+  watcher?.start();
+
   function onEvent(ev, reply) {
+    followed.delete(ev.sessionId);
     if (ev.event === "StatusLine") {
-      if (limits.update(ev.rateLimits)) scheduleUsage();
+      if (limits.update(ev.rateLimits)) {
+        const u = limits.snapshot();
+        log(`limits: 5 h ${u.fiveHour ? Math.round(u.fiveHour.used * 100) + "%" : "-"}, 7 d ${u.sevenDay ? Math.round(u.sevenDay.used * 100) + "%" : "-"} (from Claude Code's status line)`);
+        scheduleUsage();
+      }
       return reply(null);
     }
     const s = sessions.get(ev.agent, ev.sessionId);
@@ -183,7 +238,7 @@ export async function startBridge(opts = {}) {
     const { command, truncated } = truncateCommand(ev.command);
     const tool = String(ev.tool ?? "").slice(0, 60);
     const fp = fingerprint(PILL_ID, ev.sessionId, tool, command, crypto.randomUUID());
-    wait(fp, { kind: "approval", reply, truncated, agent: null, sessionId: ev.sessionId });
+    wait(fp, { kind: "approval", reply, truncated, agent: null, sessionId: ev.sessionId, tool, command });
     touch(ev, { state: "approval", statusText: "Waiting for your approval" });
     phone.send({ type: "approval", pillId: PILL_ID, fingerprint: fp, tool, command, createdAt: Date.now(), ...(truncated ? { truncated: true } : {}) });
   }
@@ -203,7 +258,7 @@ export async function startBridge(opts = {}) {
 
   // TLS server for the phone
   const socks = new Set();
-  const server = tls.createServer({ key, cert, minVersion: "TLSv1.2" }, (sock) => {
+  const onSocket = (sock, via) => {
     socks.add(sock);
     sock.on("close", () => socks.delete(sock));
     sock.setNoDelay(true);
@@ -215,16 +270,21 @@ export async function startBridge(opts = {}) {
     const offer = (m) => {
       const asked = Array.isArray(m.caps) ? m.caps.filter((c) => typeof c === "string") : [];
       caps = new Set(CAPS.filter((c) => enabled.has(c) && asked.includes(c)));
+      if (relayCfg && via === "lan" && asked.includes(RELAY_CAP)) caps.add(RELAY_CAP);
       return [...caps];
     };
     const authenticated = () => {
       authed = true;
       clearTimeout(helloTimer);
-      phone = { sock, send, caps };
-      log("phone connected");
+      phone = { sock, send, caps, via };
+      log(via === "relay" ? "phone connected (relay)" : "phone connected");
     };
     const afterWelcome = () => {
+      // over the LAN (certificate-pinned) link the phone learns where the relay is and the key for it
+      if (caps.has(RELAY_CAP) && relayCfg) send({ type: "relay", url: relayCfg.url, key: relayCfg.rk });
       pushSessions();
+      if (caps.has("run")) send({ type: "projects", list: projectList(), current: runCfg?.workdir ? path.basename(runCfg.workdir) : "" });
+      if (caps.has("run") && lastRun) send({ type: "runState", ...lastRun });
       lastUsageKey = "";
       sendUsage(true);
     };
@@ -260,7 +320,7 @@ export async function startBridge(opts = {}) {
       if (!m || typeof m !== "object") return fail();
       if (closing) return;
       if (!authed) {
-        if (m.type === "pair") return onPair(m);
+        if (m.type === "pair") return via === "lan" ? onPair(m) : fail(); // codes are for the home network only
         if (m.type !== "hello") return fail();
         const expected = loadToken(dir);
         const ok = m.v === PROTOCOL_V && expected && tokenMatches(m.token, expected);
@@ -282,6 +342,9 @@ export async function startBridge(opts = {}) {
           const p = typeof m.fingerprint === "string" ? pending.get(m.fingerprint) : null;
           if (!p || p.kind !== "approval" || (m.decision !== "allow" && m.decision !== "deny")) return;
           if (m.decision === "allow" && p.truncated) return; // answered on the computer
+          // "always": allow and remember it for the rest of this Claude Code session (never for truncated commands)
+          if (m.decision === "allow" && m.always === true && caps.has("always") && !p.truncated && alwaysOk(p.tool, p.command))
+            return resolve(m.fingerprint, { decision: "allow", always: { tool: p.tool, command: p.tool === "Bash" ? p.command : undefined } });
           return resolve(m.fingerprint, { decision: m.decision });
         }
         case "answer": {
@@ -291,6 +354,20 @@ export async function startBridge(opts = {}) {
           const answers = answersFromPicks(p.questions, m.picks);
           if (!answers) return; // not an exact match: nothing changes, the question stays open
           return resolve(m.fingerprint, { answers });
+        }
+        case "run": {
+          if (!caps.has("run") || !runner) return;
+          const id = typeof m.id === "string" ? m.id : "";
+          let cwd = runCfg.workdir;
+          if (typeof m.project === "string" && m.project) {
+            cwd = projectDir(m.project);
+            if (!cwd) return void send({ type: "runState", id: id.slice(0, 40), state: "error", text: "unknown project" });
+          }
+          return void runner.start(id, m.prompt, cwd);
+        }
+        case "runStop": {
+          if (!caps.has("run") || !runner) return;
+          return void runner.stop(typeof m.id === "string" ? m.id : "");
         }
         case "getDiff": {
           if (!caps.has("diffs")) return;
@@ -315,7 +392,11 @@ export async function startBridge(opts = {}) {
       }
     });
     sock.on("error", () => {});
-  });
+  };
+  const server = tls.createServer({ key, cert, minVersion: "TLSv1.2" }, (sock) => onSocket(sock, "lan"));
+
+  // the relay: the phone's frames from outside the home network arrive here as ordinary connections
+  const relay = relayCfg ? createRelayClient({ url: relayCfg.url, rk: relayCfg.rk, log, onConnection: (c) => onSocket(c, "relay"), WebSocket: opts.WebSocket }) : null;
 
   // unix socket for hook.mjs
   ensureDir(dir);
@@ -386,11 +467,18 @@ export async function startBridge(opts = {}) {
       codes.start("new");
       mdns?.update();
     },
+    relayState: () => (relay ? relay.state() : "off"),
+    relayUrl: () => relayCfg?.url ?? null,
+    runRoot: () => runCfg?.root ?? null,
+    limitsAgeMs: () => { const t = limits.snapshot().updatedAt; return t === undefined ? null : Math.max(0, Date.now() - t); },
     flushStats: () => stats.flush(),
     async close() {
       clearInterval(prune);
       clearInterval(usageTick);
+      watcher?.stop();
       clearTimeout(usageTimer);
+      relay?.close();
+      runner?.stopAll();
       codes.stop();
       await mdns?.close();
       for (const fp of [...pending.keys()]) resolve(fp, null);
@@ -412,14 +500,19 @@ const HELP = `node bridge.mjs [options]
   --install-agent NAME  also install hooks for another agent (${Object.keys(INSTALLERS).join(", ")}); see docs/AGENTS-OTHER.md
   --no-details          do not offer session details (project, steps, final line) to the phone
   --no-answers          do not let the phone answer Claude Code's questions
+  --allow-run           let the phone start a Claude Code task (claude -p); the phone picks the project among the folders of --projects DIR (default: the folder that holds the current one); --workdir DIR is the default project; each tool it uses is asked on the phone
+  --no-always           no "Always" button: the phone can only allow one request at a time
   --no-diffs            do not offer the files an agent changed to the phone
+  --relay URL           also reach the phone from outside the home network through your own Cloudflare relay (relay/README.md)
+  --forget-relay        stop using the relay and delete its key
   --link                also print the old coucou://pair link (contains the token, keep it secret)
   --new-pairing         new token and a new code (the old phone stops working)
   --revoke              delete the token and exit
   --host IPv4           LAN address to listen on (default: first private IPv4)
   --port N              TCP port (default 47821)
   --name NAME           computer name shown on the phone (default: host name)
-  --no-mdns             do not advertise over mDNS`;
+  --no-mdns             do not advertise over mDNS
+  --no-transcripts      do not follow Claude Code sessions through their transcript files (hooks only)`;
 
 const headline = (code) => `Open Bubby on your phone → Agents → tap this computer → type ${code}`;
 
@@ -486,7 +579,12 @@ async function main() {
     console.log(revokeToken(dir) ? "Токен сопряжения удалён. Телефон больше не сможет подключиться." : "Токена нет.");
     return;
   }
-  if (has("new-pairing")) { ensureDir(dir); newToken(dir); }
+  if (has("new-pairing")) { ensureDir(dir); newToken(dir); rotateRelay(dir); } // a new pairing also changes the relay key
+  if (has("forget-relay")) console.log(forgetRelay(dir) ? "Relay отключён, ключ удалён." : "Relay не был настроен.");
+  if (arg("relay")) {
+    try { const c = saveRelay(dir, arg("relay")); console.log(`Relay: ${c.url}${c.url.startsWith("ws:") ? "  (без TLS: содержимое всё равно зашифровано, но адрес виден в сети)" : ""}`); }
+    catch (e) { console.error("Ошибка:", e.message); process.exit(1); }
+  }
   const claude = await setupClaude({ yes: has("yes"), hooks: !has("no-hooks"), statusLine: !has("no-statusline") });
   if (arg("install-agent")) await setupAgent(arg("install-agent"), has("yes"));
 
@@ -494,7 +592,14 @@ async function main() {
   const b = await startBridge({
     dir, host: arg("host"), port: arg("port") ? Number(arg("port")) : undefined, name: arg("name"),
     mdns: !has("no-mdns"),
-    caps: { details: !has("no-details"), answers: !has("no-answers"), diffs: !has("no-diffs") },
+    transcripts: !has("no-transcripts"),
+    caps: { details: !has("no-details"), answers: !has("no-answers"), diffs: !has("no-diffs"), always: !has("no-always") },
+    run: has("allow-run") ? (() => {
+      const wd = path.resolve((arg("workdir") ?? process.cwd()).replace(/^~(?=$|\/)/, os.homedir()));
+      // the folders the phone can choose from: --projects DIR, or the folder that holds this one (where your projects usually are)
+      const root = path.resolve((arg("projects") ?? path.dirname(wd)).replace(/^~(?=$|\/)/, os.homedir()));
+      return { bin: arg("claude-bin") ?? "claude", workdir: wd, root };
+    })() : null,
     log: (m) => console.log(new Date().toISOString(), m),
     onCode: (code, why) => {
       if (!ready) return; // the first code is part of the banner below
@@ -510,8 +615,12 @@ async function main() {
   console.log(`  Адрес:       ${b.host}:${b.port} (только локальная сеть)`);
   console.log(`  Claude Code: ${claude}`);
   console.log(`  Телефону:    ${b.caps.length ? b.caps.join(", ") : "только сессии и разрешения"}`);
+  if (b.caps.includes("run")) console.log(`  Задачи с телефона: включены (проекты: папки в ${b.runRoot?.() ?? "?"})`);
   console.log(`  mDNS:        ${b.mdnsName() ? `${b.mdnsName()}._bubby-agent._tcp.local.` : "выключен"}`);
   console.log(`  Сертификат:  ${b.fp.slice(0, 16)}…`);
+  console.log(`  Relay:       ${b.relayUrl() ? `${b.relayUrl()} (телефон получит ключ по домашней сети при первом подключении)` : "выключен (--relay URL, чтобы подключаться вне дома)"}`);
+  { const a = b.limitsAgeMs();
+    console.log(`  Лимиты:      ${a === null ? "ещё не получены: обновятся, когда Claude Code напишет ответ (статус-строка)" : `последние данные ${a < 90_000 ? "только что" : Math.round(a / 60_000) + " мин назад"}; обновляются при каждом ответе Claude Code`}`); }
   if (b.pairingCode()) {
     printCode(b.pairingCode());
     console.log(`\n  Код одноразовый, действует 5 минут. Компьютера нет в списке? Введите в приложении ${b.host}:${b.port}.`);

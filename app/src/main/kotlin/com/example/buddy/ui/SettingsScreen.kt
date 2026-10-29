@@ -164,8 +164,16 @@ class SettingsScreen(act: UiActivity) : Screen(act) {
                 Triple("night", t("Ночь", "Night", "Tun"), t("Куб", "Cube", "Kub")),
                 Triple("glass", t("Стекло", "Glass", "Shisha"), t("Мочи", "Mochi", "Mochi")),
                 Triple("green", t("Зелёный", "Green", "Yashil"), t("Мотылёк", "Butterfly", "Kapalak")),
-                Triple("blue", t("Синий", "Blue", "Ko'k"), t("Кит", "Whale", "Kit"))
+                Triple("blue", t("Синий", "Blue", "Ko'k"), t("Акула", "Shark", "Akula")),
+                Triple("space", t("Космос", "Space", "Kosmos"), t("Солнце", "Sun", "Quyosh")),
+                Triple("halloween", t("Хэллоуин", "Halloween", "Halloween"), t("Тыква", "Pumpkin", "Qovoq")),
+                Triple("forest", t("Дождливый лес", "Rainy forest", "Yomg'irli o'rmon"), t("Облако", "Cloud", "Bulut")),
+                Triple("ocean", t("Океан", "Ocean", "Okean"), t("Медуза", "Jellyfish", "Meduza")),
+                Triple("newyear", t("Новый год", "New Year", "Yangi yil"), t("Снеговик", "Snowman", "Qorbobo")),
+                Triple("ice", t("Ледник", "Glacier", "Muzlik"), t("Мочи", "Mochi", "Mochi"))
             )
+            add(sw(t("Живой фон", "Animated background", "Jonli fon"), "scene_anim", true,
+                t("Движущийся фон за страницами. Выключите, чтобы экономить батарею", "A moving background behind the pages. Turn off to save battery", "Sahifalar orqasida harakatlanuvchi fon. Batareyani tejash uchun o'chiring")).apply { }, MATCH, WRAP, bottom = 10)
             for (pair in styles.chunked(2)) {
                 add(ctx.row {
                     for ((i, st) in pair.withIndex()) {
@@ -192,10 +200,20 @@ class SettingsScreen(act: UiActivity) : Screen(act) {
                 t("Микрофон всегда включён, батарея садится быстрее",
                     "The microphone stays on and the battery drains faster",
                     "Mikrofon doim yoniq, batareya tezroq sarflanadi")))
+            add(sw(t("Отвечать на звонки сам", "Pick up calls by itself", "Qo'ng'iroqqa o'zi javob berish"), "call_auto", false,
+                t("Если вы молчите, через 7 секунд берёт трубку", "If you say nothing, answers after 7 seconds", "Jim tursangiz, 7 soniyadan keyin o'zi ko'taradi")))
+            add(sw(t("ИИ говорит по телефону", "AI talks on the call", "AI qo'ng'iroqda gaplashadi"), "call_talk", false,
+                t("Если Bubby берёт трубку сам: включает громкую связь и говорит с абонентом, потом присылает итог. Экспериментально",
+                    "When Bubby picks up by itself: turns on the speaker, talks to the caller, then tells you what it was about. Experimental",
+                    "Bubby o'zi ko'targanda: karnayni yoqib, qo'ng'iroq qiluvchi bilan gaplashadi, keyin nima haqida ekanini aytadi. Tajribaviy")))
             add(sw(t("Зачитывать уведомления", "Read notifications aloud", "Bildirishnomalarni ovoz chiqarib o'qish"), "read_notifs", false,
                 t("Нужен доступ к уведомлениям; читает вслух только при включённом экране",
                     "Needs notification access; reads aloud only while the screen is on",
-                    "Bildirishnomalarga ruxsat kerak; faqat ekran yoniq paytida o'qiydi")))
+                    "Bildirishnomalarga ruxsat kerak; faqat ekran yoniq paytida o'qiydi. SMS lar bunga kirmaydi")))
+            add(sw(t("Зачитывать входящие SMS", "Read incoming SMS aloud", "Kelgan SMS larni ovoz chiqarib o'qish"), "read_sms_aloud", false,
+                t("Отдельный переключатель: SMS не читаются вслух, пока он выключен", "Its own switch: SMS are never read aloud while it is off", "Alohida tugma: o'chiq bo'lsa, SMS lar hech qachon ovoz chiqarib o'qilmaydi")))
+            add(sw(t("Читать вслух только в наушниках", "Read aloud only in headphones", "Faqat quloqchinda o'qish"), "read_private", true,
+                t("Сообщения не звучат на весь дом или туалет", "Messages are never played on the speaker for others to hear", "Xabarlar karnayda boshqalarga eshitilmaydi")))
             add(sw(t("Режим учёбы", "Study mode", "O'qish rejimi"), "study", false,
                 t("Bubby объясняет шаг за шагом и проверяет вас вопросами", "Bubby explains step by step and quizzes you",
                     "Bubby bosqichma-bosqich tushuntiradi va savollar bilan tekshiradi")))

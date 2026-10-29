@@ -1,0 +1,20 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"><style>
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:transparent}
+#w{position:fixed;left:0;top:0;width:100%;height:100%;overflow:hidden}
+.a{position:absolute;will-change:transform,opacity}
+
+.orb{bottom:-60px;border-radius:50%;border:1.2px solid rgba(255,255,255,.65);background:radial-gradient(circle at 32% 28%,rgba(255,255,255,.55),rgba(255,255,255,.12) 55%,rgba(200,220,245,.18));animation:up linear infinite}
+@keyframes up{0%{transform:translate(0,0) scale(.9);opacity:0}12%{opacity:.85}50%{transform:translate(var(--ox),-52vh) scale(1)}100%{transform:translate(calc(var(--ox)*-.6),-118vh) scale(1.05);opacity:0}}
+.sweep{top:-10%;width:34%;height:130%;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.28),rgba(255,255,255,0));transform:rotate(18deg);animation:sw 16s ease-in-out infinite}
+@keyframes sw{0%,100%{transform:translateX(-120%) rotate(18deg)}50%{transform:translateX(330%) rotate(18deg)}}
+.dust{border-radius:50%;background:rgba(255,255,255,.85);animation:dust ease-in-out infinite alternate}
+@keyframes dust{from{transform:translate(0,0);opacity:.15}to{transform:translate(var(--dx),var(--dy));opacity:.8}}
+</style></head><body><div id="w"></div><script>
+function h(i,k){var x=Math.sin(i*12.9898+k*78.233)*43758.5453;return x-Math.floor(x)}
+var W=document.getElementById('w');
+function el(cls,css,html){var e=document.createElement('div');e.className='a '+cls;e.style.cssText=css;if(html)e.innerHTML=html;W.appendChild(e);return e}
+
+el('sweep','left:0');el('sweep','left:40%;animation-delay:-8s;opacity:.7');
+for(var i=0;i<12;i++){var d=22+h(i,1)*60;el('orb','left:'+h(i,2)*100+'%;width:'+d+'px;height:'+d+'px;--ox:'+(h(i,3)*70-35)+'px;animation-duration:'+(16+h(i,4)*18)+'s;animation-delay:-'+h(i,5)*24+'s')}
+for(var i=0;i<26;i++){var s=1.5+h(i,6)*2;el('dust','left:'+h(i,7)*100+'%;top:'+h(i,8)*100+'%;width:'+s+'px;height:'+s+'px;--dx:'+(h(i,9)*40-20)+'px;--dy:'+(h(i,10)*-50)+'px;animation-duration:'+(5+h(i,11)*6)+'s;animation-delay:-'+h(i,12)*8+'s')}
+</script></body></html>

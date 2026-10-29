@@ -16,14 +16,121 @@ import java.util.Calendar
 private val REQUIRED = listOf("mic", "overlay")
 
 class HomeScreen(act: UiActivity) : Screen(act) {
+    private companion object { var splashSeen = false }
+
     private var busy = false
     private var micPoked = false
     private var firstShow = true
 
     override val padH = 0
     override fun title() = "Bubby"
-    override fun onShow() { reshow() }
+    private var shownOnce = false
+    // coming back to the home page: the petals fly out of the core again, like in the designs
+    override fun onShow() { reshow(); web?.wake(); if (shownOnce && web != null && splashCover.isEmpty()) web?.run("bubbyBloom()"); shownOnce = true }
     override fun onPermissionResult() { refresh() }
+
+    /** The mockup page of a themed look, when this look has one and the phone has a WebView. */
+    private var web: HomeWebView? = null
+    private var themedRoot: View? = null
+    private var cardsScroll: android.widget.ScrollView? = null
+    val themed: Boolean get() = themedRoot != null
+    fun restWeb() { web?.rest() }
+    fun wakeWeb() { web?.wake() }
+
+    /** The themed page fills the whole screen, also under the status bar: the native island and cards and the page's own frame move down by the bar. */
+    private var topInset = 0
+    private var islandView: View? = null
+    fun applyTopInset(px: Int) {
+        topInset = px
+        val sc = ctx.resources.displayMetrics.widthPixels / 390f
+        islandView?.let { (it.layoutParams as? FrameLayout.LayoutParams)?.let { lp -> lp.topMargin = px; it.layoutParams = lp } }
+        cardsScroll?.let { (it.layoutParams as? FrameLayout.LayoutParams)?.let { lp -> lp.topMargin = (664 * sc).toInt() + px; it.layoutParams = lp } }
+        web?.run("bubbyInset(" + (px / ctx.resources.displayMetrics.density) + ")")
+    }
+    fun destroyWeb() { web?.destroy() }
+
+    override fun view(): View {
+        themedRoot?.let { return it }
+        val theme = Theme.cur.scene
+        if (theme != null && Theme.cur.homePage && Theme.sceneOn(ctx) && !ThemeScenes.ready(theme)) {   // the native home is used as soon as the look has a native scene
+            val r = try { buildThemed(theme) } catch (_: Throwable) { null }
+            if (r != null) { themedRoot = r; return r }
+            web = null
+        }
+        return super.view()
+    }
+
+    private fun buildThemed(theme: String): View {
+        val still = act.intent.getBooleanExtra("static", false)
+        val sc = ctx.resources.displayMetrics.widthPixels / 390f
+        val w = HomeWebView(ctx, object : HomeWebView.Host {
+            override fun nav(name: String) { act.showTab(when (name) { "tasks" -> 1; "calendar" -> 2; "settings" -> 3; else -> 4 }) }
+            override fun ask(text: String) { send(if (text.trim().lowercase() == "привет") t("Привет!", "Hello!", "Salom!") else text) }
+            override fun toggle() { this@HomeScreen.toggle() }
+            override fun splash(show: Boolean) { if (!show) endSplash() }
+        })
+        web = w
+        val withSplash = !splashSeen && !still
+        splashSeen = true
+        w.load(theme, withSplash)
+        val island = Island(ctx, sc, still, { txt -> send(txt) }) { open -> w.run("bubbyIsland(" + open + ")") }
+        content = ctx.col { setPadding(0, 0, 0, ctx.dp(16) + act.bottomInset) }
+        render(content)
+        val sv = ctx.scroll(content)
+        cardsScroll = sv
+        val root = FrameLayout(ctx)
+        root.addView(w, FrameLayout.LayoutParams(MATCH, MATCH))
+        root.addView(island, FrameLayout.LayoutParams(MATCH, (134 * sc).toInt()).apply { topMargin = topInset })
+        root.addView(sv, FrameLayout.LayoutParams(MATCH, MATCH).apply { topMargin = (664 * sc).toInt() + topInset })
+        islandView = island
+        if (topInset > 0) w.run("bubbyInset(" + (topInset / ctx.resources.displayMetrics.density) + ")")
+        // the page's own loading splash covers the screen at first: the island and the cards wait for it
+        // (always: the page reports when it is done, also when it skips the splash)
+        island.visibility = View.INVISIBLE; sv.visibility = View.INVISIBLE
+        splashCover = listOf(island, sv)
+        root.postDelayed({ android.util.Log.i("com.example.buddy", "HomeWeb: fallback fired, splash cover left=${splashCover.size}"); w.run("var s=document.querySelector('.splash');if(s){s.click();setTimeout(function(){s.remove();var h=document.getElementById('s-home');if(h)h.style.visibility=''},900)}"); endSplash() }, 4500)   // in case the page never says it is done
+        pushState()
+        return root
+    }
+
+    private var splashCover: List<View> = emptyList()
+    private var pendingSetup = false   // first launch without a key or permissions: the setup opens after the splash, not under it
+    private fun endSplash() {
+        splashCover.forEach { v -> v.visibility = View.VISIBLE; v.alpha = 0f; v.animate().alpha(1f).setDuration(400).start() }
+        splashCover = emptyList()
+        if (pendingSetup) { pendingSetup = false; content.postDelayed({ act.open("setup") }, 700) }
+    }
+
+    /** Tells the page what the app knows: running or not, and the words in the user's language. */
+    private fun pushState() {
+        val w = web ?: return
+        val o = org.json.JSONObject()
+            .put("running", Backend.running())
+            .put("run", t("Запустить", "Start", "Ishga tushirish")).put("stop", t("Остановить", "Stop", "To'xtatish"))
+            .put("on", t("Помощник работает", "Assistant is on", "Yordamchi ishlayapti")).put("off", t("Помощник выключен", "Assistant is off", "Yordamchi o'chiq"))
+        val labels = org.json.JSONArray()
+        fun l(ru: String, to: String) = labels.put(org.json.JSONArray().put(ru).put(to))
+        l("Задачи", t("Задачи", "Tasks", "Vazifalar")); l("Ещё", t("Ещё", "More", "Yana")); l("Календарь", t("Календарь", "Calendar", "Kalendar"))
+        l("Настройки", t("Настройки", "Settings", "Sozlamalar")); l("Проверить", t("Проверить:<br>привет", "Test:<br>hello", "Tekshirish:<br>salom"))
+        o.put("labels", labels)
+        o.put("splashHint", t("Нажмите, чтобы пропустить", "Tap to skip", "O'tkazish uchun bosing"))
+        o.put("splashSub", when (Theme.cur.id) {
+            "space" -> t("твоё солнце всегда рядом ☀️", "your sun is always near ☀️", "quyoshing doim yoningda ☀️")
+            "halloween" -> t("бу! счастливого Хэллоуина 🎃", "boo! happy Halloween 🎃", "bu! Halloween muborak 🎃")
+            "forest" -> t("даже в дождь — рядом ☔", "near you, even in the rain ☔", "yomg'irda ham yoningda ☔")
+            "ocean" -> t("медуза Bubby рядом 🌊", "your jellyfish Bubby is near 🌊", "meduza Bubby yoningda 🌊")
+            "ice", "green", "blue" -> t("твой живой помощник", "your living assistant", "jonli yordamching")
+            else -> t("С Новым годом! 🎄", "Happy New Year! 🎄", "Yangi yil muborak! 🎄")
+        })
+        w.run("bubbyHome(" + o + ")")
+    }
+
+    override fun refresh() {
+        if (themedRoot == null) { super.refresh(); return }
+        content.removeAllViews()
+        render(content)
+        pushState()
+    }
 
     private fun toggle() {
         if (busy) return
@@ -53,8 +160,9 @@ class HomeScreen(act: UiActivity) : Screen(act) {
         // the microphone was granted after the floating service started: poke it so it re-declares the microphone type
         if (running && perms["mic"] == true && perms["overlay"] == true && !micPoked) { micPoked = true; Backend.startBuddy(ctx) }
         if (perms["mic"] != true) micPoked = false
-        if (firstShow) { firstShow = false; if (missing && !act.intent.getBooleanExtra("static", false)) content.post { act.open("setup") } }
+        if (firstShow) { firstShow = false; if (missing && !act.intent.getBooleanExtra("static", false) && !act.intent.getBooleanExtra("nosetup", false)) { if (web != null) pendingSetup = true else content.post { act.open("setup") } } }
 
+        if (web == null && themedRoot == null) {
         // ---- the glass scene: island, mascot, core and the fan of petals (laid out on a 390-wide grid) ----
         val still = act.intent.getBooleanExtra("static", false)
         val sc = ctx.resources.displayMetrics.widthPixels / 390f
@@ -83,6 +191,19 @@ class HomeScreen(act: UiActivity) : Screen(act) {
         scene.put(mascot, 110f, 66f, 170f, 136f)
         scene.put(nameV, 0f, 204f, 390f, 40f)
         scene.put(statusBox, 0f, 250f, 390f, 32f)
+        // one tap: Bubby stops speaking (messages, replies, notifications) and only shows text
+        val muteV = ctx.text("", T.Small, 0xFFF1ECEA.toInt()).apply {
+            setTextSize(android.util.TypedValue.COMPLEX_UNIT_PX, 12f * sc); gravity = Gravity.CENTER
+            setPadding((12 * sc).toInt(), (6 * sc).toInt(), (12 * sc).toInt(), (6 * sc).toInt())
+        }
+        fun paintMute() {
+            val silent = Backend.bool(ctx, "silent", false)
+            muteV.text = if (silent) t("Тихо", "Silent", "Jim") else t("Звук", "Sound", "Ovoz")
+            muteV.background = ctx.rounded(if (silent) Glass.white(.34f) else Glass.white(.14f), 20f, Glass.white(.3f))
+        }
+        paintMute()
+        muteV.press { Backend.setBool(ctx, "silent", !Backend.bool(ctx, "silent", false)); paintMute() }
+        scene.put(muteV, 296f, 250f, 78f, 32f)
         scene.put(CollarView(ctx, sc), 0f, 380f, 390f, 140f)
         fun petal(kind: GlassKind, icon: Int, label: String, l: Float, tp: Float, w: Float, h: Float, ang: Float, tc: Int, size: Int = 12, bold: Boolean = false, go: () -> Unit) {
             scene.put(PetalView(ctx, kind, icon, label, ang, tc, size, bold, sc).apply { press(go) }, l, tp, w, h)
@@ -97,6 +218,7 @@ class HomeScreen(act: UiActivity) : Screen(act) {
             264f, 379f, 116f, 106f, 12f, Glass.ON_ACTIVE, 13, true) { toggle() }
         scene.alpha = if (busy) 0.7f else 1f
         c.add(scene)
+        }
 
         // ---- cards ----
         if (!hasAi) {

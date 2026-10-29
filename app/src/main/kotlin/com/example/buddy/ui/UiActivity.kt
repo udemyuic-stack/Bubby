@@ -17,14 +17,23 @@ private val TAB_NAMES = listOf("home", "tasks", "calendar", "settings", "more")
 
 /** The whole app UI: five tabs and a stack of pushed screens, built with plain Views. */
 class UiActivity : Activity() {
+    companion object {
+        /** True while the app's own screen is in front: the floating island then stays closed unless an agent needs an answer. */
+        @Volatile @JvmStatic var appInFront = false
+    }
+
     private lateinit var host: FrameLayout
     private lateinit var shell: LinearLayout
     private lateinit var body: FrameLayout
     private lateinit var navFrame: FrameLayout
     private lateinit var bgHome: View
     private lateinit var bgSub: View
+    private var scene: SceneHost? = null
     private val tabs = ArrayList<Screen>()
     private var tab = 0
+    private var tabShown = false
+    private var touchX = -1f
+    private var touchY = -1f
     private val stack = ArrayList<Pair<Screen, View>>()
     private var shownLang = ""
     private var insetTop = 0
@@ -43,6 +52,12 @@ class UiActivity : Activity() {
         bgSub = GlassBackground(this, false)
         host.addView(bgHome, FrameLayout.LayoutParams(MATCH, MATCH))
         host.addView(bgSub, FrameLayout.LayoutParams(MATCH, MATCH))
+        if (Theme.sceneOn(this)) {
+            // a finished native scene (Canvas, no JavaScript) when the look has one, the old web page otherwise
+            scene = try {
+                (if (ThemeScenes.ready(Theme.cur.scene)) SceneCanvasView(this) else SceneView(this)).also { host.addView(it.view, FrameLayout.LayoutParams(MATCH, MATCH)) }
+            } catch (_: Throwable) { null }   // no WebView on this phone: plain background
+        }
         shell = col {}
         body = FrameLayout(this)
         shell.add(body, MATCH, 0, 1f)
@@ -101,7 +116,10 @@ class UiActivity : Activity() {
     }
 
     private fun applyInsets() {
-        shell.setPadding(0, insetTop, 0, 0)
+        // the themed home page reaches under the status bar (its own background fills the top)
+        val home = tabs.isNotEmpty() && tab == 0 && stack.isEmpty() && (tabs[0] as HomeScreen).themed
+        shell.setPadding(0, if (home) 0 else insetTop, 0, 0)
+        if (tabs.isNotEmpty()) (tabs[0] as HomeScreen).applyTopInset(insetTop)
         navFrame.setPadding(dp(12), 0, dp(12), dp(18) + insetBottom)
         for (s in tabs) s.applyNavInset(insetBottom)
         for ((_, v) in stack) v.setPadding(0, insetTop, 0, insetBottom)
@@ -169,36 +187,83 @@ class UiActivity : Activity() {
         return bar
     }
 
+    override fun dispatchTouchEvent(ev: android.view.MotionEvent): Boolean {
+        if (ev.actionMasked == android.view.MotionEvent.ACTION_DOWN) { touchX = ev.rawX; touchY = ev.rawY }
+        return super.dispatchTouchEvent(ev)
+    }
+
+    /** A ring spreading from where the finger touched, and the new page opening as a circle from the same spot (like the designs). */
+    private fun revealFromTouch() {
+        if (touchX < 0f || intent?.getBooleanExtra("static", false) == true || Build.VERSION.SDK_INT < 21) return
+        try {
+            val loc = IntArray(2); body.getLocationOnScreen(loc)
+            val cx = (touchX - loc[0]).toInt().coerceIn(0, maxOf(1, body.width)); val cy = (touchY - loc[1]).toInt().coerceIn(0, maxOf(1, body.height))
+            val r = Math.hypot(maxOf(cx, body.width - cx).toDouble(), maxOf(cy, body.height - cy).toDouble()).toFloat()
+            body.post { try { android.view.ViewAnimationUtils.createCircularReveal(body, cx, cy, 0f, r).apply { duration = 650; interpolator = android.view.animation.DecelerateInterpolator(1.4f) }.start() } catch (_: Exception) { } }
+            val ring = View(this).apply {
+                background = android.graphics.drawable.GradientDrawable().apply { shape = android.graphics.drawable.GradientDrawable.OVAL; setColor(Color.TRANSPARENT); setStroke(dp(2), Glass.white(.85f)) }
+                isClickable = false
+            }
+            host.addView(ring, FrameLayout.LayoutParams(dp(40), dp(40)).apply { leftMargin = (touchX - dp(20)).toInt(); topMargin = (touchY - dp(20)).toInt() })
+            ring.animate().scaleX(9f).scaleY(9f).alpha(0f).setDuration(750).withEndAction { host.removeView(ring) }.start()
+        } catch (_: Exception) { }
+    }
+
     fun showTab(i: Int) {
+        val changed = tabShown && i != tab
         tab = i
         body.removeAllViews()
         body.addView(tabs[i].view(), FrameLayout.LayoutParams(MATCH, MATCH))
         setBars(i != 0 && !Glass.NIGHT)
         bgHome.visibility = if (i == 0) View.VISIBLE else View.GONE
+        (tabs[0] as HomeScreen).let { if (i == 0) it.wakeWeb() else it.restWeb() }
         bgSub.visibility = if (i == 0) View.GONE else View.VISIBLE
         navFrame.removeAllViews()
         if (i != 0) navFrame.addView(buildNav(), FrameLayout.LayoutParams(MATCH, dp(68)))
         tabs[i].onShow()
+        updateChrome()
+        if (changed) revealFromTouch()
+        tabShown = true
+    }
+
+    /**
+     * With a themed look the animated scene is behind every page, also the pushed ones (they are see-through then): it slides a little
+     * from page to page like in the design; the themed home page carries its own scene.
+     */
+    private fun updateChrome() {
+        applyInsets()
+        val sc = scene ?: return
+        val pushed = stack.isNotEmpty()
+        sc.setScene(if (tab == 0 && !pushed && (tabs[0] as HomeScreen).themed) null else Theme.cur.scene)
+        sc.slideTo(if (pushed) 5 else tab)
+        shell.visibility = if (pushed) View.INVISIBLE else View.VISIBLE
+        navFrame.visibility = if (pushed) View.INVISIBLE else View.VISIBLE
+        bgHome.visibility = if (tab == 0 && !pushed) View.VISIBLE else View.GONE
+        bgSub.visibility = if (tab == 0 && !pushed) View.GONE else View.VISIBLE
     }
 
     // ---- pushed screens ------------------------------------------------------------------------------------------
 
     fun push(s: Screen) {
-        val page = pageFor(this, s)
+        val page = pageFor(this, s, plain = scene != null)
         page.setPadding(0, insetTop, 0, insetBottom)
+        if (scene != null) stack.lastOrNull()?.second?.visibility = View.INVISIBLE   // see-through pages: the one below must not show
         host.addView(page, FrameLayout.LayoutParams(MATCH, MATCH))
         stack += s to page
         page.alpha = 0f
         page.translationX = dp(40).toFloat()
         page.animate().alpha(1f).translationX(0f).setDuration(220).start()
         s.onShow()
+        updateChrome()
     }
 
     fun pop() {
         if (stack.isEmpty()) return
         val (_, page) = stack.removeAt(stack.size - 1)
         page.animate().alpha(0f).translationX(dp(40).toFloat()).setDuration(160).withEndAction { host.removeView(page) }.start()
+        stack.lastOrNull()?.second?.visibility = View.VISIBLE
         (stack.lastOrNull()?.first ?: tabs[tab]).onShow()
+        updateChrome()
     }
 
     @Deprecated("Deprecated in Java")
@@ -206,8 +271,15 @@ class UiActivity : Activity() {
         if (stack.isNotEmpty()) pop() else super.onBackPressed()
     }
 
+    override fun onPause() { super.onPause(); appInFront = false; scene?.onAppPause(); (tabs[0] as HomeScreen).restWeb() }
+
+    override fun onDestroy() { try { scene?.release() } catch (_: Throwable) { }; try { (tabs[0] as HomeScreen).destroyWeb() } catch (_: Throwable) { }; super.onDestroy() }
+
     override fun onResume() {
         super.onResume()
+        appInFront = true
+        scene?.onAppResume()
+        if (tab == 0) (tabs[0] as HomeScreen).wakeWeb()
         // the language the user speaks changed (auto mode): draw everything in it
         if (Tr.lang(this) != shownLang) { recreate(); return }
         (stack.lastOrNull()?.first ?: tabs[tab]).onShow()

@@ -172,27 +172,33 @@ class BuddyService : Service() {
 
     private val agentListener = object : AgentLink.Listener {
         override fun onStatus(connected: Boolean, desktop: String?) {
-            agentConnected = connected; agentDesktop = desktop
+            agentConnected = connected; agentDesktop = desktop; agentViaRelay = connected && (agentLink?.viaRelay == true)
             agentCaps = if (connected) agentLink?.caps ?: emptySet() else emptySet()
             AgentStats.refreshWidgets(this@BuddyService)
+            agentChanged?.invoke()
         }
-        override fun onSessions(list: List<AgentSession>) { agentSessions = list; AgentStats.refreshWidgets(this@BuddyService) }
-        override fun onUsage(u: Usage) { agentUsage = u; AgentStats.save(this@BuddyService, u); AgentStats.refreshWidgets(this@BuddyService) }
+        override fun onSessions(list: List<AgentSession>) { agentSessions = list; AgentStats.refreshWidgets(this@BuddyService); agentChanged?.invoke() }
+        override fun onProjects(list: List<String>, current: String) { agentProjects = list to current; agentChanged?.invoke() }
+        override fun onRun(id: String, state: String, text: String) { agentRun = Triple(id, state, text); agentChanged?.invoke() }
+        override fun onUsage(u: Usage) { agentUsage = u; AgentStats.save(this@BuddyService, u); AgentStats.refreshWidgets(this@BuddyService); agentChanged?.invoke() }
         override fun onApproval(a: Approval) {
             if (approvals.none { it.fingerprint == a.fingerprint }) approvals.add(a)
             publishApprovals()
             showApproval(announce = true)
+            agentChanged?.invoke()
         }
         override fun onApprovalResolved(fp: String) {
             approvals.removeAll { it.fingerprint == fp }
             questions.removeAll { it.fingerprint == fp }
             publishApprovals()
             showApproval(announce = false)
+            agentChanged?.invoke()
         }
         override fun onQuestion(q: AgentQuestion) {
             if (questions.none { it.fingerprint == q.fingerprint }) questions.add(q)
             publishApprovals()
             showApproval(announce = true)
+            agentChanged?.invoke()
         }
         override fun onDiff(d: DiffPart) { agentDiffSink?.invoke(d) }
     }
@@ -221,6 +227,7 @@ class BuddyService : Service() {
         @Volatile var running = false
         @Volatile private var crashHookInstalled = false
         @Volatile var agentConnected = false
+        @Volatile var agentViaRelay = false
         @Volatile var agentDesktop: String? = null
         @Volatile var agentSessions: List<AgentSession> = emptyList()
         @Volatile var agentUsage: Usage? = null
@@ -228,8 +235,14 @@ class BuddyService : Service() {
         @Volatile var agentApprovals: List<Approval> = emptyList()
         /** Questions from Claude Code waiting for an answer (answers go back through ACTION_AGENT_ANSWER). */
         @Volatile var agentQuestions: List<AgentQuestion> = emptyList()
+        /** The task started from the phone: (id, state, text) or null. */
+        @Volatile var agentRun: Triple<String, String, String>? = null
+        /** Folders of the computer a task can run in, and the default one. */
+        @Volatile var agentProjects: Pair<List<String>, String> = emptyList<String>() to ""
         /** What the connected bridge offered (`details`, `answers`, `diffs`); empty for an older bridge or offline. */
         @Volatile var agentCaps: Set<String> = emptySet()
+        /** Called on the main thread whenever anything about the computer's agents changed; the open Agents page redraws at once. */
+        @Volatile var agentChanged: (() -> Unit)? = null
         /** The open diff sheet: gets each part asked for with ACTION_AGENT_GET_DIFF, or null when it could not be asked. */
         @Volatile var agentDiffSink: ((DiffPart?) -> Unit)? = null
         const val ACTION_AGENT_ANSWER = "com.example.buddy.AGENT_ANSWER"
@@ -241,6 +254,8 @@ class BuddyService : Service() {
         const val ACTION_TOGGLE_QUIET = "com.example.buddy.TOGGLE_QUIET"
         const val ACTION_AGENT_RELOAD = "com.example.buddy.AGENT_RELOAD"
         const val ACTION_AGENT_DECIDE = "com.example.buddy.AGENT_DECIDE"
+        const val ACTION_AGENT_RUN = "com.example.buddy.AGENT_RUN"
+        const val ACTION_AGENT_RUN_STOP = "com.example.buddy.AGENT_RUN_STOP"
         const val ACTION_LISTEN = "com.example.buddy.LISTEN"
         private val WAKE_NAMES = setOf("bubby", "buby", "bubbi", "bubi", "buuby", "буби", "бубби", "бабби", "бубы", "бубя")
         // close to "bubby"/"buby" in spelling but ordinary words
@@ -339,7 +354,12 @@ class BuddyService : Service() {
         when (i?.action) {
             Reminders.ACTION_SPEAK -> remind(i.getStringExtra("text").orEmpty())
             ACTION_AGENT_RELOAD -> startAgentLink()
-            ACTION_AGENT_DECIDE -> i.getStringExtra("fp")?.let { fp -> agentLink?.decide(fp, i.getBooleanExtra("allow", false)); resolveLocal(fp) }
+            ACTION_AGENT_RUN -> {
+                val id = i.getStringExtra("id").orEmpty(); val text = i.getStringExtra("prompt").orEmpty()
+                if (agentLink?.runTask(id, text, i.getStringExtra("project").orEmpty()) == true) agentRun = Triple(id, "running", "") else agentRun = Triple(id, "error", t("Не отправилось: компьютер не принимает задачи (запустите мост с --allow-run)", "Not sent: the computer does not take tasks (start the bridge with --allow-run)", "Yuborilmadi: kompyuter vazifa qabul qilmayapti (bridge'ni --allow-run bilan ishga tushiring)"))
+            }
+            ACTION_AGENT_RUN_STOP -> agentLink?.stopTask(i.getStringExtra("id").orEmpty())
+            ACTION_AGENT_DECIDE -> i.getStringExtra("fp")?.let { fp -> agentLink?.decide(fp, i.getBooleanExtra("allow", false), i.getBooleanExtra("always", false)); resolveLocal(fp) }
             // the app asked for the screen lock already; picks is a JSON list of label lists, checked again by AgentLink
             ACTION_AGENT_ANSWER -> i.getStringExtra("fp")?.let { fp ->
                 val picks = try {
@@ -369,7 +389,7 @@ class BuddyService : Service() {
                     val untrusted = i.getBooleanExtra("untrusted", false)
                     cancelTap(); errorPinned = false
                     voice.stopListening(); voice.stopSpeaking(); h.removeCallbacks(closeTask)
-                    style(true); ask(t, false, untrusted)
+                    style(true, force = i.getBooleanExtra("game", false)); ask(t, false, untrusted)
                 }
             }
         }
@@ -432,7 +452,7 @@ class BuddyService : Service() {
         h.post(clock)
         tiltStart()
         startAgentLink()
-        callWatcher = CallWatcher(this, { name -> onRinging(name) }, { onCallEnded() })
+        callWatcher = CallWatcher(this, { name -> onRinging(name) }, { onCallEnded() }, { onCallAnswered() })
         try { callWatcher.start() } catch (_: Exception) {}
         h.postDelayed({ hotKick() }, 1500)
         if (!prefs.getBoolean("coach_done", false)) h.postDelayed({ showCoach() }, 1500)
@@ -461,7 +481,7 @@ class BuddyService : Service() {
     }
     private fun micOk() = checkSelfPermission(Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED
     private fun voiceOn() = prefs.getBoolean("voice", true) && micOk()
-    private fun ttsOn() = prefs.getBoolean("tts", true)
+    private fun ttsOn() = prefs.getBoolean("tts", true) && !prefs.getBoolean("silent", false)
     private fun conv() = prefs.getBoolean("conv", false)
 
     private fun tagOf(l: String?): String? = when (l) {
@@ -628,8 +648,11 @@ class BuddyService : Service() {
     }
 
     // while the agent works the wake-word loop also listens for "stop"
-    private fun hotWanted() = prefs.getBoolean("hotword", true) && micOk() && screenOn && (calm() || (busy && agentStepping && !localApproval)) && !inPhoneCall() &&
+    private fun hotWanted() = prefs.getBoolean("hotword", true) && micOk() && screenOn && (calm() || (busy && agentStepping && !localApproval)) && !inPhoneCall() && !powerSaving() &&
         SystemClock.elapsedRealtime() >= hotPausedUntil && !voice.talking && !voice.listening && holdAnim == null
+
+    /** Battery saver on: the always-listening wake word rests (tapping the mascot still works). */
+    private fun powerSaving() = try { (getSystemService(POWER_SERVICE) as android.os.PowerManager).isPowerSaveMode } catch (_: Exception) { false }
 
     private fun hotKick() {
         if (!hotWanted()) { hotStop(); return }
@@ -1112,7 +1135,11 @@ class BuddyService : Service() {
         clamp()
     }
 
-    private fun style(exp: Boolean) {
+    private fun style(exp: Boolean, force: Boolean = false) {
+        // inside Bubby's own app the island does not pop open over the page by itself (the app shows the answer itself);
+        // what the user asked for with a tap or the voice, an agent's question or request, Bubby's own confirmations,
+        // reminders and phone calls (force) still open it
+        if (exp && !force && com.example.buddy.ui.UiActivity.appInFront && !calling && approvals.isEmpty() && questions.isEmpty() && !gameOn()) return
         val was = expanded
         if (exp && !was) preExpandY = lp.y
         expanded = exp
@@ -1212,11 +1239,18 @@ class BuddyService : Service() {
         }
     }
 
+    private var lastToast: android.widget.Toast? = null
     private fun setAnswer(text: String, type: Boolean) {
         typeAnim?.let { it.removeAllListeners(); it.cancel() }
         typeAnim = null
         fullAnswer = text
         answer.text = text
+        // the island stays closed while Bubby's own app is in front: the answer would be invisible, so show it as a toast
+        if (!expanded && text.isNotBlank() && com.example.buddy.ui.UiActivity.appInFront) h.post {
+            if (expanded || !com.example.buddy.ui.UiActivity.appInFront) return@post
+            lastToast?.cancel()   // one toast at a time: partial results must not queue up
+            lastToast = android.widget.Toast.makeText(this, text.take(300), android.widget.Toast.LENGTH_LONG).also { it.show() }
+        }
         if (!type || text.length < 6 || !IslandUi.animOn(this)) return
         val n = text.length
         val sp = SpannableString(text)
@@ -1258,14 +1292,21 @@ class BuddyService : Service() {
         h.removeCallbacks(closeTask)
         voice.stopListening()
         val locked = getSystemService(KeyguardManager::class.java).isKeyguardLocked
-        style(true); status.text = t("Нужно разрешение", "Permission needed", "Ruxsat kerak"); setMode("surprised"); setWave(WaveView.NONE)
+        style(true, force = true); status.text = t("Нужно разрешение", "Permission needed", "Ruxsat kerak"); setMode("surprised"); setWave(WaveView.NONE)
         hide(input); hide(answer)
+        val canAlways = "always" in agentCaps && !a.truncated && IslandUi.risk(a.tool, a.command) != IslandUi.RISK_HIGH
         approvalHolder.addView(ApprovalCard.build(this, a, locked, onAllow = {
             ConfirmActivity.request(this) { ok ->
                 if (ok) { agentLink?.decide(a.fingerprint, true); resolveLocal(a.fingerprint) }
                 else { status.text = t("Нужен экран блокировки", "Lock screen required", "Ekran qulfi kerak") }
             }
-        }, onDeny = { agentLink?.decide(a.fingerprint, false); resolveLocal(a.fingerprint) }))
+        }, onDeny = { agentLink?.decide(a.fingerprint, false); resolveLocal(a.fingerprint) },
+        onAlways = if (!canAlways) null else ({
+            ConfirmActivity.request(this) { ok ->
+                if (ok) { agentLink?.decide(a.fingerprint, true, true); resolveLocal(a.fingerprint) }
+                else { status.text = t("Нужен экран блокировки", "Lock screen required", "Ekran qulfi kerak") }
+            }
+        })))
         approvalHolder.alpha = 1f; approvalHolder.visibility = View.VISIBLE
         if (announce && ttsOn() && !locked) {
             val l = uiLang()
@@ -1279,7 +1320,7 @@ class BuddyService : Service() {
         h.removeCallbacks(closeTask)
         voice.stopListening()
         val locked = getSystemService(KeyguardManager::class.java).isKeyguardLocked
-        style(true); status.text = t("У Claude вопрос", "Claude has a question", "Claude'da savol bor"); setMode("surprised"); setWave(WaveView.NONE)
+        style(true, force = true); status.text = t("У Claude вопрос", "Claude has a question", "Claude'da savol bor"); setMode("surprised"); setWave(WaveView.NONE)
         hide(input); hide(answer)
         approvalHolder.addView(QuestionCard.build(this, q, locked, onSend = { picks ->
             ConfirmActivity.requestAnswer(this) { ok ->
@@ -1351,7 +1392,7 @@ class BuddyService : Service() {
         if (calling || busy || expanded || waiting()) { h.postDelayed({ showCoach() }, 15000); return }
         prefs.edit().putBoolean("coach_done", true).apply()
         h.removeCallbacks(closeTask)
-        style(true); status.text = t("Привет, я Bubby!", "Hi, I'm Bubby!", "Salom, men Bubby!"); setMode("excited"); setWave(WaveView.NONE)
+        style(true, force = true); status.text = t("Привет, я Bubby!", "Hi, I'm Bubby!", "Salom, men Bubby!"); setMode("excited"); setWave(WaveView.NONE)
         hide(input)
         setAnswer(t("Нажмите — говорите. Удерживайте — пишите. Тяните — переносите. Двумя пальцами — размер", "Tap to talk. Hold to type. Drag to move. Pinch to resize", "Bosing — gapiring. Bosib turing — yozing. Tortib — ko'chiring. Ikki barmoq bilan — o'lcham"), false); show(answer)
         errorPinned = true
@@ -1393,7 +1434,7 @@ class BuddyService : Service() {
     private fun startVoice() {
         h.removeCallbacks(closeTask); errorPinned = false
         retryFgMic()
-        style(true); status.text = sListen(); setMode("listen"); setWave(WaveView.LISTEN)
+        style(true, force = true); status.text = sListen(); setMode("listen"); setWave(WaveView.LISTEN)
         hide(input); hide(answer)
         focusable(false)
         var woke = false
@@ -1418,7 +1459,7 @@ class BuddyService : Service() {
     private fun openInput() {
         h.removeCallbacks(closeTask); errorPinned = false
         voice.stopListening()
-        style(true); input.hint = t("Спросите…", "Ask me…", "So'rang…"); status.text = t("Пишите…", "Type here…", "Yozing…"); setMode("listen"); setWave(WaveView.NONE)
+        style(true, force = true); input.hint = t("Спросите…", "Ask me…", "So'rang…"); status.text = t("Пишите…", "Type here…", "Yozing…"); setMode("listen"); setWave(WaveView.NONE)
         hide(answer); show(input)
         focusable(true)
         input.requestFocus()
@@ -1511,7 +1552,7 @@ class BuddyService : Service() {
         fun answer(ok: Boolean) { if (latch.count == 0L) return; yes = ok; latch.countDown(); approvalHolder.visibility = View.GONE; approvalHolder.removeAllViews(); setMode("think") }
         h.post {
             voice.stopListening()
-            style(true); status.text = t("Можно посмотреть экран?", "May I look at the screen?", "Ekranga qarasam bo'ladimi?"); setMode("curious"); setWave(WaveView.NONE)
+            style(true, force = true); status.text = t("Можно посмотреть экран?", "May I look at the screen?", "Ekranga qarasam bo'ladimi?"); setMode("curious"); setWave(WaveView.NONE)
             hide(input); hide(answer)
             approvalHolder.removeAllViews()
             val a = Approval("screen-consent", "screen-consent", t("Чтение экрана", "Reading the screen", "Ekranni o'qish"),
@@ -1567,7 +1608,7 @@ class BuddyService : Service() {
             voice.stopListening()
             localApproval = true
             h.removeCallbacks(askDeadline); h.postDelayed(askDeadline, 120_000L)
-            style(true); status.text = t("Подтвердите", "Please confirm", "Tasdiqlang"); setMode("surprised"); setWave(WaveView.NONE)
+            style(true, force = true); status.text = t("Подтвердите", "Please confirm", "Tasdiqlang"); setMode("surprised"); setWave(WaveView.NONE)
             flashBadge("approval", 60_000L)
             hide(input); hide(answer)
             approvalHolder.removeAllViews()
@@ -1776,7 +1817,7 @@ class BuddyService : Service() {
         h.removeCallbacks(closeTask)
         voice.stopListening()
         val prefix = t("Напоминание: ", "Reminder: ", "Eslatma: ")
-        style(true); status.text = t("Напоминание", "Reminder", "Eslatma"); setMode("excited")
+        style(true, force = true); status.text = t("Напоминание", "Reminder", "Eslatma"); setMode("excited")
         hide(input); setAnswer(prefix + text, true); show(answer)
         focusable(false)
         if (ttsOn()) say(prefix + text, uiLang()) { h.postDelayed(closeTask, 4000) }
@@ -1805,10 +1846,47 @@ class BuddyService : Service() {
         }
         releaseCallFocus()
         callFocusRelease = try { MediaControl.requestFocusForSpeech(this) } catch (_: Exception) { null }
-        style(true); status.text = t("Звонок", "Call", "Qo'ng'iroq"); setMode("surprised")
+        style(true, force = true); status.text = t("Звонок", "Call", "Qo'ng'iroq"); setMode("surprised")
         hide(input); setAnswer(text, true); show(answer)
         focusable(false)
+        showCallChips()
         say(text, l) { listenForCall(0) }
+        if (prefs.getBoolean("call_auto", false)) h.postDelayed({ if (calling && !callHandled) callDo(if (prefs.getBoolean("call_talk", false)) "talk" else "answer") }, 7000)
+    }
+
+    private var callHandled = false
+
+    /** Answer / decline buttons for the ringing call, so it also works by touch when the voice is not heard over the ringtone. */
+    private fun showCallChips() {
+        callHandled = false
+        chipsRow.removeAllViews()
+        val lp = { LinearLayout.LayoutParams(-2, -2).apply { rightMargin = dp(6) } }
+        chipsRow.addView(chip(t("Ответить", "Answer", "Javob berish")) { callDo("answer") }, lp())
+        chipsRow.addView(chip(t("Ответит ИИ", "AI answers", "AI javob beradi")) { callDo("talk") }, lp())
+        chipsRow.addView(chip(t("Сбросить", "Decline", "Rad etish")) { callDo("reject") }, lp())
+        chipsRow.addView(chip(t("Сбросить + SMS", "Decline + text", "Rad + SMS")) { callDo("reject_text") }, lp())
+        chipsScroll.animate().cancel()
+        chipsScroll.alpha = 1f; chipsScroll.translationY = 0f; chipsScroll.visibility = View.VISIBLE
+    }
+
+    private fun callDo(kind: String) {
+        if (!calling || callHandled) return
+        callHandled = true
+        releaseCallFocus()
+        voice.stopListening(); voice.stopSpeaking()
+        callTalk = kind == "talk"
+        val err = when (kind) {
+            "answer", "talk" -> actions.run(JSONObject().put("do", "answer_call"))
+            "reject_text" -> actions.run(JSONObject().put("do", "reject_call").put("text", AutoReply.defaultText(this, "busy")))
+            else -> actions.run(JSONObject().put("do", "end_call"))
+        }
+        chipsRow.removeAllViews(); hide(chipsScroll)
+        status.text = err ?: when (kind) {
+            "answer", "talk" -> t("Отвечаю", "Answering", "Javob beryapman")
+            "reject_text" -> t("Сбросил, пишу", "Declined, texting", "Rad etdim, xabar yuboryapman")
+            else -> t("Сбросил", "Declined", "Rad etdim")
+        }
+        if (err != null) { callHandled = false; callTalk = false }
     }
 
     private fun listenForCall(attempt: Int) {
@@ -1818,23 +1896,128 @@ class BuddyService : Service() {
             if (calling) {
                 val t = text?.lowercase().orEmpty()
                 when {
-                    CallWatcher.looksLikeRejectAndText(t) -> {
-                        releaseCallFocus()
-                        val driving = Regex("rul|за рул|driv").containsMatchIn(t)
-                        val err = actions.run(JSONObject().put("do", "reject_call").put("text", AutoReply.defaultText(this, if (driving) "driving" else "busy")))
-                        status.text = if (err == null) t("Сбросил, пишу", "Declined, texting", "Rad etdim, xabar yuboryapman") else err
-                    }
-                    CallWatcher.looksLikeReject(t) -> { releaseCallFocus(); actions.run(JSONObject().put("do", "end_call")); status.text = t("Сбросил", "Declined", "Rad etdim") }
-                    CallWatcher.looksLikeAnswer(t) -> { releaseCallFocus(); actions.run(JSONObject().put("do", "answer_call")); status.text = t("Отвечаю", "Answering", "Javob beryapman") }
-                    attempt < 8 -> h.postDelayed({ listenForCall(attempt + 1) }, 300)
+                    CallWatcher.looksLikeRejectAndText(t) -> callDo("reject_text")
+                    CallWatcher.looksLikeReject(t) -> callDo("reject")
+                    CallWatcher.looksLikeAnswer(t) -> callDo("answer")
+                    attempt < 25 && !callHandled -> h.postDelayed({ listenForCall(attempt + 1) }, 300)
                 }
             }
         })
     }
 
-    private fun onCallEnded() {
+    // ---- the AI talks on the call ---------------------------------------------------------------------------------
+    // Android gives apps no access to the call audio, so this works through the speakerphone: the speech goes out loud,
+    // the phone's microphone hears the caller. It depends on the phone letting the recogniser use the microphone in a call.
+    private var callTalk = false
+    private var callSilence = 0
+    private val callLog = ArrayList<Pair<String, String>>()
+    private var callTalkWho: String? = null
+    private val callTalkLimit = Runnable { if (callTalk) callTalkEnd(true) }
+
+    private fun onCallAnswered() {
         if (!calling) return
-        calling = false; callName = null
+        if (!callTalk) { onCallEnded(); return }
+        callTalkStart()
+    }
+
+    private fun callSystem(): String = "You are Bubby, the phone assistant of the owner of this phone. The owner cannot pick up right now, so you answered. " +
+        "You are on a live call with ${callTalkWho ?: "an unknown caller"}. You are an AI assistant: say so honestly if asked, and never pretend to be the owner. " +
+        "Find out who is calling and what they need, take a message, and say the owner will get back to them. " +
+        "Do not give out personal information, passwords, codes or the owner's whereabouts, and do not agree to payments or promises. " +
+        "Speak the caller's language (Uzbek, Russian or English). Reply with at most two short spoken sentences, no lists, no emojis. " +
+        "Start every reply with a language tag: [uz], [ru] or [en]. When the conversation is finished, say goodbye and add [END] at the very end."
+
+    private fun callTalkStart() {
+        callTalkWho = callName
+        callLog.clear(); callSilence = 0
+        try {
+            val am = getSystemService(Context.AUDIO_SERVICE) as AudioManager
+            @Suppress("DEPRECATION") am.isSpeakerphoneOn = true
+        } catch (_: Exception) {}
+        voice.callAudio = true
+        status.text = t("Разговор", "On the call", "Suhbatda"); setMode("listen")
+        val l = uiLang()
+        val greet = when (l) {
+            "uz" -> "Assalomu alaykum, men Bubby, telefon egasining yordamchisiman. Hozir u javob bera olmaydi. Xabaringizni ayta olasizmi?"
+            "ru" -> "Здравствуйте, я Bubby, помощник владельца телефона. Сейчас он не может ответить. Что передать?"
+            else -> "Hello, this is Bubby, the phone owner's assistant. They can't pick up right now. Can I take a message?"
+        }
+        callLog.add("assistant" to greet)
+        setAnswer(greet, false); show(answer)
+        h.removeCallbacks(callTalkLimit); h.postDelayed(callTalkLimit, 180_000)
+        // a moment for the line and the speaker to settle
+        h.postDelayed({ if (callTalk) say(greet, l) { callTalkListen() } }, 600)
+    }
+
+    private fun callTalkListen() {
+        if (!callTalk) return
+        if (!micOk()) { callTalkEnd(true); return }
+        voice.listen(langTag(), { p -> if (callTalk) setAnswer(p, false) }, { text, _ ->
+            if (callTalk) {
+                if (text.isNullOrBlank()) {
+                    if (++callSilence >= 4) { callTalkEnd(true); return@listen }
+                    h.postDelayed({ callTalkListen() }, 200)
+                } else {
+                    callSilence = 0
+                    callLog.add("user" to text)
+                    setAnswer(text, false)
+                    val turns = ArrayList(callLog)
+                    Thread {
+                        val out = try { brain.chatOnce(callSystem(), turns) } catch (_: Exception) { "" }
+                        h.post { if (callTalk) callTalkReply(out) }
+                    }.start()
+                }
+            }
+        })
+    }
+
+    private fun callTalkReply(raw: String) {
+        if (raw.isBlank()) { callTalkListen(); return }
+        val end = raw.contains("[END]", true)
+        val tag = Regex("^\\s*\\[(uz|ru|en)]", RegexOption.IGNORE_CASE).find(raw)?.groupValues?.get(1)?.lowercase()
+        val text = raw.replace(Regex("\\[(uz|ru|en|END)]", RegexOption.IGNORE_CASE), "").trim()
+        callLog.add("assistant" to text)
+        setAnswer(text, false)
+        say(text, tag ?: uiLang()) { if (end) callTalkEnd(true) else callTalkListen() }
+    }
+
+    /** Ends the conversation (hangs up when [hangUp]) and tells the owner what it was about. */
+    private fun callTalkEnd(hangUp: Boolean) {
+        if (!callTalk) return
+        callTalk = false
+        h.removeCallbacks(callTalkLimit)
+        voice.stopListening(); voice.stopSpeaking()
+        voice.callAudio = false
+        if (hangUp) try { actions.run(JSONObject().put("do", "end_call")) } catch (_: Exception) {}
+        try {
+            val am = getSystemService(Context.AUDIO_SERVICE) as AudioManager
+            @Suppress("DEPRECATION") am.isSpeakerphoneOn = false
+        } catch (_: Exception) {}
+        val log = ArrayList(callLog); val who = callTalkWho
+        if (log.none { it.first == "user" }) { status.text = t("Звонок завершён", "Call ended", "Qo'ng'iroq tugadi"); return }
+        Thread {
+            val l = uiLang()
+            val sum = try {
+                brain.chatOnce("Summarize this phone call for the phone's owner in one or two short sentences, in " +
+                    (when (l) { "uz" -> "Uzbek (Latin)"; "ru" -> "Russian"; else -> "English" }) +
+                    ". Say who called and what they want. The caller: ${who ?: "unknown"}.",
+                    listOf("user" to log.joinToString("\n") { (if (it.first == "user") "Caller: " else "Assistant: ") + it.second }))
+            } catch (_: Exception) { log.filter { it.first == "user" }.joinToString(" ") { it.second } }
+            prefs.edit().putString("last_call_summary", (who ?: "?") + ": " + sum).apply()
+            h.post {
+                h.removeCallbacks(closeTask)
+                style(true, force = true); status.text = t("Звонок", "Call", "Qo'ng'iroq"); setMode("happy")
+                setAnswer((who ?: "") + (if (who != null) ": " else "") + sum, false); show(answer)
+                h.postDelayed(closeTask, 30_000)
+            }
+        }.start()
+    }
+
+    private fun onCallEnded() {
+        if (callTalk) callTalkEnd(false)
+        if (!calling) return
+        calling = false; callName = null; callHandled = false
+        chipsRow.removeAllViews(); hide(chipsScroll)
         releaseCallFocus()
         voice.stopListening(); voice.stopSpeaking()
         collapse()
@@ -2036,9 +2219,19 @@ class BuddyService : Service() {
     }
 
     // ---- notifications aloud ------------------------------------------------------------------------------------
+    /** Headphones (wired, USB or Bluetooth) are the audio output right now. */
+    private fun headsetOn(): Boolean = try {
+        (getSystemService(AUDIO_SERVICE) as AudioManager).getDevices(AudioManager.GET_DEVICES_OUTPUTS).any {
+            it.type in setOf(android.media.AudioDeviceInfo.TYPE_WIRED_HEADSET, android.media.AudioDeviceInfo.TYPE_WIRED_HEADPHONES,
+                android.media.AudioDeviceInfo.TYPE_BLUETOOTH_A2DP, android.media.AudioDeviceInfo.TYPE_BLUETOOTH_SCO,
+                android.media.AudioDeviceInfo.TYPE_USB_HEADSET, android.media.AudioDeviceInfo.TYPE_BLE_HEADSET)
+        }
+    } catch (_: Throwable) { false }
+
     private fun onNotifItem(item: BuddyNotifications.Item) {
-        if (!running || !prefs.getBoolean("read_notifs", false) || prefs.getBoolean("quiet", false)) return
+        if (!running || !prefs.getBoolean(if (item.sms) "read_sms_aloud" else "read_notifs", false) || prefs.getBoolean("quiet", false)) return
         if (!screenOn || calling || !calm() || voice.listening || voice.talking || choiceActive || replying) return
+        if (prefs.getBoolean("read_private", true) && !headsetOn()) return   // nobody else should hear a message read aloud
         if (try { getSystemService(KeyguardManager::class.java).isKeyguardLocked } catch (_: Exception) { false }) return
         var body = if (item.title.isBlank()) item.text else if (item.text.isBlank()) item.title else item.title + " — " + item.text
         body = (item.app + ": " + body).trim()

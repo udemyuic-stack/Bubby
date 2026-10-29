@@ -53,7 +53,7 @@ class RunsScreen(act: UiActivity) : Screen(act) {
             c.add(ctx.emptyState(t("Пока пусто", "Nothing yet", "Hozircha bo'sh"),
                 t("Попросите Bubby сделать что-то на телефоне, например «открой настройки и включи тёмную тему». Здесь будет видно каждый шаг.",
                     "Ask Bubby to do something on the phone, like \"open settings and turn on dark mode\". Every step will show up here.",
-                    "Bubby'dan telefonda biror narsa qilishni so'rang, masalan «sozlamalarni ochib, tungi rejimni yoq». Har bir qadam shu yerda ko'rinadi.")), MATCH, WRAP)
+                    "Bubby'dan telefonda biror narsa qilishni so'rang, masalan «sozlamalarni ochib, tungi rejimni yoq». Har bir qadam shu yerda ko'rinadi."), sleepy = true), MATCH, WRAP)
             return
         }
         c.add(ctx.text(t("Последние задачи. Тексты с экрана и ключи здесь не хранятся.", "Recent tasks. Screen texts and keys are never stored here.",

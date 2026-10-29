@@ -51,7 +51,7 @@ abstract class Screen(val act: UiActivity) {
 
     protected fun t(ru: String, en: String, uz: String): String = Tr.t(ctx, ru, en, uz)
 
-    fun view(): View {
+    open fun view(): View {
         root?.let { return it }
         val f = fab()
         content = ctx.col { setPadding(ctx.dp(padH), ctx.dp(if (padH == 0) 0 else 8), ctx.dp(padH), ctx.dp((if (f != null) 100 else 28) + (if (inTab) 90 else 0)) + act.bottomInset) }
@@ -84,7 +84,7 @@ abstract class Screen(val act: UiActivity) {
      */
     protected fun reshow() { if (!fresh) refresh() }
 
-    fun refresh() {
+    open fun refresh() {
         if (scroll == null) return
         val y = scroll!!.scrollY
         content.removeAllViews()

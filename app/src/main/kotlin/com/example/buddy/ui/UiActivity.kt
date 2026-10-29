@@ -179,7 +179,9 @@ class UiActivity : Activity() {
         body.addView(tabs[i].view(), FrameLayout.LayoutParams(MATCH, MATCH))
         setBars(i != 0 && !Glass.NIGHT)
         bgHome.visibility = if (i == 0) View.VISIBLE else View.GONE
-        scene?.setScene(if (i == 4) null else Theme.cur.scene)   // the menu page stays calm
+        // the menu page stays calm; the themed home page carries its own scene
+        scene?.setScene(if (i == 4 || (i == 0 && (tabs[0] as HomeScreen).themed)) null else Theme.cur.scene)
+        (tabs[0] as HomeScreen).let { if (i == 0) it.wakeWeb() else it.restWeb() }
         bgSub.visibility = if (i == 0) View.GONE else View.VISIBLE
         navFrame.removeAllViews()
         if (i != 0) navFrame.addView(buildNav(), FrameLayout.LayoutParams(MATCH, dp(68)))
@@ -211,13 +213,14 @@ class UiActivity : Activity() {
         if (stack.isNotEmpty()) pop() else super.onBackPressed()
     }
 
-    override fun onPause() { super.onPause(); scene?.onAppPause() }
+    override fun onPause() { super.onPause(); scene?.onAppPause(); (tabs[0] as HomeScreen).restWeb() }
 
-    override fun onDestroy() { try { scene?.destroy() } catch (_: Throwable) { }; super.onDestroy() }
+    override fun onDestroy() { try { scene?.destroy() } catch (_: Throwable) { }; try { (tabs[0] as HomeScreen).destroyWeb() } catch (_: Throwable) { }; super.onDestroy() }
 
     override fun onResume() {
         super.onResume()
         scene?.onAppResume()
+        if (tab == 0) (tabs[0] as HomeScreen).wakeWeb()
         // the language the user speaks changed (auto mode): draw everything in it
         if (Tr.lang(this) != shownLang) { recreate(); return }
         (stack.lastOrNull()?.first ?: tabs[tab]).onShow()

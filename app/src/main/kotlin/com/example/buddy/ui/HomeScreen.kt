@@ -22,8 +22,73 @@ class HomeScreen(act: UiActivity) : Screen(act) {
 
     override val padH = 0
     override fun title() = "Bubby"
-    override fun onShow() { reshow() }
+    override fun onShow() { reshow(); web?.wake() }
     override fun onPermissionResult() { refresh() }
+
+    /** The mockup page of a themed look, when this look has one and the phone has a WebView. */
+    private var web: HomeWebView? = null
+    private var themedRoot: View? = null
+    private var cardsScroll: android.widget.ScrollView? = null
+    val themed: Boolean get() = themedRoot != null
+    fun restWeb() { web?.rest() }
+    fun wakeWeb() { web?.wake() }
+    fun destroyWeb() { web?.destroy() }
+
+    override fun view(): View {
+        themedRoot?.let { return it }
+        val theme = Theme.cur.scene
+        if (theme != null) {
+            val r = try { buildThemed(theme) } catch (_: Throwable) { null }
+            if (r != null) { themedRoot = r; return r }
+            web = null
+        }
+        return super.view()
+    }
+
+    private fun buildThemed(theme: String): View {
+        val still = act.intent.getBooleanExtra("static", false)
+        val sc = ctx.resources.displayMetrics.widthPixels / 390f
+        val w = HomeWebView(ctx, object : HomeWebView.Host {
+            override fun nav(name: String) { act.showTab(when (name) { "tasks" -> 1; "calendar" -> 2; "settings" -> 3; else -> 4 }) }
+            override fun ask(text: String) { send(if (text.trim().lowercase() == "привет") t("Привет!", "Hello!", "Salom!") else text) }
+            override fun toggle() { this@HomeScreen.toggle() }
+        })
+        web = w
+        w.load(theme)
+        val island = Island(ctx, sc, still, { txt -> send(txt) }) { open -> w.run("bubbyIsland(" + open + ")") }
+        content = ctx.col { setPadding(0, 0, 0, ctx.dp(16) + act.bottomInset) }
+        render(content)
+        val sv = ctx.scroll(content)
+        cardsScroll = sv
+        val root = FrameLayout(ctx)
+        root.addView(w, FrameLayout.LayoutParams(MATCH, MATCH))
+        root.addView(island, FrameLayout.LayoutParams(MATCH, (134 * sc).toInt()))
+        root.addView(sv, FrameLayout.LayoutParams(MATCH, MATCH).apply { topMargin = (664 * sc).toInt() })
+        pushState()
+        return root
+    }
+
+    /** Tells the page what the app knows: running or not, and the words in the user's language. */
+    private fun pushState() {
+        val w = web ?: return
+        val o = org.json.JSONObject()
+            .put("running", Backend.running())
+            .put("run", t("Запустить", "Start", "Ishga tushirish")).put("stop", t("Остановить", "Stop", "To'xtatish"))
+            .put("on", t("Помощник работает", "Assistant is on", "Yordamchi ishlayapti")).put("off", t("Помощник выключен", "Assistant is off", "Yordamchi o'chiq"))
+        val labels = org.json.JSONArray()
+        fun l(ru: String, to: String) = labels.put(org.json.JSONArray().put(ru).put(to))
+        l("Задачи", t("Задачи", "Tasks", "Vazifalar")); l("Ещё", t("Ещё", "More", "Yana")); l("Календарь", t("Календарь", "Calendar", "Kalendar"))
+        l("Настройки", t("Настройки", "Settings", "Sozlamalar")); l("Проверить", t("Проверить:<br>привет", "Test:<br>hello", "Tekshirish:<br>salom"))
+        o.put("labels", labels)
+        w.run("bubbyHome(" + o + ")")
+    }
+
+    override fun refresh() {
+        if (themedRoot == null) { super.refresh(); return }
+        content.removeAllViews()
+        render(content)
+        pushState()
+    }
 
     private fun toggle() {
         if (busy) return
@@ -55,6 +120,7 @@ class HomeScreen(act: UiActivity) : Screen(act) {
         if (perms["mic"] != true) micPoked = false
         if (firstShow) { firstShow = false; if (missing && !act.intent.getBooleanExtra("static", false)) content.post { act.open("setup") } }
 
+        if (web == null && themedRoot == null) {
         // ---- the glass scene: island, mascot, core and the fan of petals (laid out on a 390-wide grid) ----
         val still = act.intent.getBooleanExtra("static", false)
         val sc = ctx.resources.displayMetrics.widthPixels / 390f
@@ -110,6 +176,7 @@ class HomeScreen(act: UiActivity) : Screen(act) {
             264f, 379f, 116f, 106f, 12f, Glass.ON_ACTIVE, 13, true) { toggle() }
         scene.alpha = if (busy) 0.7f else 1f
         c.add(scene)
+        }
 
         // ---- cards ----
         if (!hasAi) {

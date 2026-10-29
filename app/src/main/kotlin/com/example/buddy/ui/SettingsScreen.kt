@@ -201,7 +201,9 @@ class SettingsScreen(act: UiActivity) : Screen(act) {
             add(sw(t("Зачитывать уведомления", "Read notifications aloud", "Bildirishnomalarni ovoz chiqarib o'qish"), "read_notifs", false,
                 t("Нужен доступ к уведомлениям; читает вслух только при включённом экране",
                     "Needs notification access; reads aloud only while the screen is on",
-                    "Bildirishnomalarga ruxsat kerak; faqat ekran yoniq paytida o'qiydi")))
+                    "Bildirishnomalarga ruxsat kerak; faqat ekran yoniq paytida o'qiydi. SMS lar bunga kirmaydi")))
+            add(sw(t("Зачитывать входящие SMS", "Read incoming SMS aloud", "Kelgan SMS larni ovoz chiqarib o'qish"), "read_sms_aloud", false,
+                t("Отдельный переключатель: SMS не читаются вслух, пока он выключен", "Its own switch: SMS are never read aloud while it is off", "Alohida tugma: o'chiq bo'lsa, SMS lar hech qachon ovoz chiqarib o'qilmaydi")))
             add(sw(t("Режим учёбы", "Study mode", "O'qish rejimi"), "study", false,
                 t("Bubby объясняет шаг за шагом и проверяет вас вопросами", "Bubby explains step by step and quizzes you",
                     "Bubby bosqichma-bosqich tushuntiradi va savollar bilan tekshiradi")))

@@ -2190,7 +2190,7 @@ class BuddyService : Service() {
 
     // ---- notifications aloud ------------------------------------------------------------------------------------
     private fun onNotifItem(item: BuddyNotifications.Item) {
-        if (!running || !prefs.getBoolean("read_notifs", false) || prefs.getBoolean("quiet", false)) return
+        if (!running || !prefs.getBoolean(if (item.sms) "read_sms_aloud" else "read_notifs", false) || prefs.getBoolean("quiet", false)) return
         if (!screenOn || calling || !calm() || voice.listening || voice.talking || choiceActive || replying) return
         if (try { getSystemService(KeyguardManager::class.java).isKeyguardLocked } catch (_: Exception) { false }) return
         var body = if (item.title.isBlank()) item.text else if (item.text.isBlank()) item.title else item.title + " — " + item.text

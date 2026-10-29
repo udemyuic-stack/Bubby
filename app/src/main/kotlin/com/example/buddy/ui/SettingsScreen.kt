@@ -192,6 +192,8 @@ class SettingsScreen(act: UiActivity) : Screen(act) {
                 t("Микрофон всегда включён, батарея садится быстрее",
                     "The microphone stays on and the battery drains faster",
                     "Mikrofon doim yoniq, batareya tezroq sarflanadi")))
+            add(sw(t("Отвечать на звонки сам", "Pick up calls by itself", "Qo'ng'iroqqa o'zi javob berish"), "call_auto", false,
+                t("Если вы молчите, через 7 секунд берёт трубку", "If you say nothing, answers after 7 seconds", "Jim tursangiz, 7 soniyadan keyin o'zi ko'taradi")))
             add(sw(t("Зачитывать уведомления", "Read notifications aloud", "Bildirishnomalarni ovoz chiqarib o'qish"), "read_notifs", false,
                 t("Нужен доступ к уведомлениям; читает вслух только при включённом экране",
                     "Needs notification access; reads aloud only while the screen is on",

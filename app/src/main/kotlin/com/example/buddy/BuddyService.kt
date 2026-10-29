@@ -1808,7 +1808,42 @@ class BuddyService : Service() {
         style(true); status.text = t("Звонок", "Call", "Qo'ng'iroq"); setMode("surprised")
         hide(input); setAnswer(text, true); show(answer)
         focusable(false)
+        showCallChips()
         say(text, l) { listenForCall(0) }
+        if (prefs.getBoolean("call_auto", false)) h.postDelayed({ if (calling && !callHandled) callDo("answer") }, 7000)
+    }
+
+    private var callHandled = false
+
+    /** Answer / decline buttons for the ringing call, so it also works by touch when the voice is not heard over the ringtone. */
+    private fun showCallChips() {
+        callHandled = false
+        chipsRow.removeAllViews()
+        val lp = { LinearLayout.LayoutParams(-2, -2).apply { rightMargin = dp(6) } }
+        chipsRow.addView(chip(t("Ответить", "Answer", "Javob berish")) { callDo("answer") }, lp())
+        chipsRow.addView(chip(t("Сбросить", "Decline", "Rad etish")) { callDo("reject") }, lp())
+        chipsRow.addView(chip(t("Сбросить + SMS", "Decline + text", "Rad + SMS")) { callDo("reject_text") }, lp())
+        chipsScroll.animate().cancel()
+        chipsScroll.alpha = 1f; chipsScroll.translationY = 0f; chipsScroll.visibility = View.VISIBLE
+    }
+
+    private fun callDo(kind: String) {
+        if (!calling || callHandled) return
+        callHandled = true
+        releaseCallFocus()
+        voice.stopListening(); voice.stopSpeaking()
+        val err = when (kind) {
+            "answer" -> actions.run(JSONObject().put("do", "answer_call"))
+            "reject_text" -> actions.run(JSONObject().put("do", "reject_call").put("text", AutoReply.defaultText(this, "busy")))
+            else -> actions.run(JSONObject().put("do", "end_call"))
+        }
+        chipsRow.removeAllViews(); hide(chipsScroll)
+        status.text = err ?: when (kind) {
+            "answer" -> t("Отвечаю", "Answering", "Javob beryapman")
+            "reject_text" -> t("Сбросил, пишу", "Declined, texting", "Rad etdim, xabar yuboryapman")
+            else -> t("Сбросил", "Declined", "Rad etdim")
+        }
+        if (err != null) callHandled = false
     }
 
     private fun listenForCall(attempt: Int) {
@@ -1818,15 +1853,10 @@ class BuddyService : Service() {
             if (calling) {
                 val t = text?.lowercase().orEmpty()
                 when {
-                    CallWatcher.looksLikeRejectAndText(t) -> {
-                        releaseCallFocus()
-                        val driving = Regex("rul|за рул|driv").containsMatchIn(t)
-                        val err = actions.run(JSONObject().put("do", "reject_call").put("text", AutoReply.defaultText(this, if (driving) "driving" else "busy")))
-                        status.text = if (err == null) t("Сбросил, пишу", "Declined, texting", "Rad etdim, xabar yuboryapman") else err
-                    }
-                    CallWatcher.looksLikeReject(t) -> { releaseCallFocus(); actions.run(JSONObject().put("do", "end_call")); status.text = t("Сбросил", "Declined", "Rad etdim") }
-                    CallWatcher.looksLikeAnswer(t) -> { releaseCallFocus(); actions.run(JSONObject().put("do", "answer_call")); status.text = t("Отвечаю", "Answering", "Javob beryapman") }
-                    attempt < 8 -> h.postDelayed({ listenForCall(attempt + 1) }, 300)
+                    CallWatcher.looksLikeRejectAndText(t) -> callDo("reject_text")
+                    CallWatcher.looksLikeReject(t) -> callDo("reject")
+                    CallWatcher.looksLikeAnswer(t) -> callDo("answer")
+                    attempt < 25 && !callHandled -> h.postDelayed({ listenForCall(attempt + 1) }, 300)
                 }
             }
         })
@@ -1834,7 +1864,8 @@ class BuddyService : Service() {
 
     private fun onCallEnded() {
         if (!calling) return
-        calling = false; callName = null
+        calling = false; callName = null; callHandled = false
+        chipsRow.removeAllViews(); hide(chipsScroll)
         releaseCallFocus()
         voice.stopListening(); voice.stopSpeaking()
         collapse()

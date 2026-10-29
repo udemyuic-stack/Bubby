@@ -23,6 +23,11 @@ class SceneView(c: Context) : WebView(c) {
     private val client = object : WebViewClient() {
         override fun shouldOverrideUrlLoading(v: WebView, r: WebResourceRequest) = true   // nothing navigates away
         override fun onPageFinished(v: WebView, url: String?) { pendingSlide?.let { try { v.evaluateJavascript(it, null) } catch (_: Exception) { } } }
+        // the web view's process was killed (low memory): the background just stays still, the app goes on
+        override fun onRenderProcessGone(v: WebView, d: android.webkit.RenderProcessGoneDetail): Boolean {
+            android.util.Log.w("com.example.buddy", "SceneView: render process gone (crashed=${d.didCrash()})")
+            return true
+        }
     }
 
 

@@ -63,6 +63,19 @@ jobs:
           sudo udevadm control --reload-rules
           sudo udevadm trigger --name-match=kvm
       - uses: reactivecircus/android-emulator-runner@v2
+        id: first
+        continue-on-error: true   # the emulator sometimes dies on its own (device offline): one more try below
+        with:
+          api-level: 34
+          arch: x86_64
+          target: google_apis
+          ram-size: 2048M
+          emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim -camera-back none -camera-front none
+          disable-animations: true
+          script: timeout 420 bash .github/shot-one.sh ${{ matrix.screen }}
+      - name: Second try (the emulator died)
+        uses: reactivecircus/android-emulator-runner@v2
+        if: steps.first.outcome == 'failure'
         with:
           api-level: 34
           arch: x86_64

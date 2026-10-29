@@ -1129,10 +1129,11 @@ class BuddyService : Service() {
         clamp()
     }
 
-    private fun style(exp: Boolean) {
-        // inside Bubby's own app the island does not pop open over the page (the app shows everything itself);
-        // only an agent's question or request, or a phone call, still opens it
-        if (exp && com.example.buddy.ui.UiActivity.appInFront && !calling && approvals.isEmpty() && questions.isEmpty()) return
+    private fun style(exp: Boolean, force: Boolean = false) {
+        // inside Bubby's own app the island does not pop open over the page by itself (the app shows the answer itself);
+        // what the user asked for with a tap or the voice, an agent's question or request, Bubby's own confirmations,
+        // reminders and phone calls (force) still open it
+        if (exp && !force && com.example.buddy.ui.UiActivity.appInFront && !calling && approvals.isEmpty() && questions.isEmpty()) return
         val was = expanded
         if (exp && !was) preExpandY = lp.y
         expanded = exp
@@ -1237,6 +1238,8 @@ class BuddyService : Service() {
         typeAnim = null
         fullAnswer = text
         answer.text = text
+        // the island stays closed while Bubby's own app is in front: the answer would be invisible, so show it as a toast
+        if (!expanded && text.isNotBlank() && com.example.buddy.ui.UiActivity.appInFront) h.post { android.widget.Toast.makeText(this, text.take(300), android.widget.Toast.LENGTH_LONG).show() }
         if (!type || text.length < 6 || !IslandUi.animOn(this)) return
         val n = text.length
         val sp = SpannableString(text)
@@ -1278,7 +1281,7 @@ class BuddyService : Service() {
         h.removeCallbacks(closeTask)
         voice.stopListening()
         val locked = getSystemService(KeyguardManager::class.java).isKeyguardLocked
-        style(true); status.text = t("Нужно разрешение", "Permission needed", "Ruxsat kerak"); setMode("surprised"); setWave(WaveView.NONE)
+        style(true, force = true); status.text = t("Нужно разрешение", "Permission needed", "Ruxsat kerak"); setMode("surprised"); setWave(WaveView.NONE)
         hide(input); hide(answer)
         val canAlways = "always" in agentCaps && !a.truncated && IslandUi.risk(a.tool, a.command) != IslandUi.RISK_HIGH
         approvalHolder.addView(ApprovalCard.build(this, a, locked, onAllow = {
@@ -1306,7 +1309,7 @@ class BuddyService : Service() {
         h.removeCallbacks(closeTask)
         voice.stopListening()
         val locked = getSystemService(KeyguardManager::class.java).isKeyguardLocked
-        style(true); status.text = t("У Claude вопрос", "Claude has a question", "Claude'da savol bor"); setMode("surprised"); setWave(WaveView.NONE)
+        style(true, force = true); status.text = t("У Claude вопрос", "Claude has a question", "Claude'da savol bor"); setMode("surprised"); setWave(WaveView.NONE)
         hide(input); hide(answer)
         approvalHolder.addView(QuestionCard.build(this, q, locked, onSend = { picks ->
             ConfirmActivity.requestAnswer(this) { ok ->
@@ -1378,7 +1381,7 @@ class BuddyService : Service() {
         if (calling || busy || expanded || waiting()) { h.postDelayed({ showCoach() }, 15000); return }
         prefs.edit().putBoolean("coach_done", true).apply()
         h.removeCallbacks(closeTask)
-        style(true); status.text = t("Привет, я Bubby!", "Hi, I'm Bubby!", "Salom, men Bubby!"); setMode("excited"); setWave(WaveView.NONE)
+        style(true, force = true); status.text = t("Привет, я Bubby!", "Hi, I'm Bubby!", "Salom, men Bubby!"); setMode("excited"); setWave(WaveView.NONE)
         hide(input)
         setAnswer(t("Нажмите — говорите. Удерживайте — пишите. Тяните — переносите. Двумя пальцами — размер", "Tap to talk. Hold to type. Drag to move. Pinch to resize", "Bosing — gapiring. Bosib turing — yozing. Tortib — ko'chiring. Ikki barmoq bilan — o'lcham"), false); show(answer)
         errorPinned = true
@@ -1420,7 +1423,7 @@ class BuddyService : Service() {
     private fun startVoice() {
         h.removeCallbacks(closeTask); errorPinned = false
         retryFgMic()
-        style(true); status.text = sListen(); setMode("listen"); setWave(WaveView.LISTEN)
+        style(true, force = true); status.text = sListen(); setMode("listen"); setWave(WaveView.LISTEN)
         hide(input); hide(answer)
         focusable(false)
         var woke = false
@@ -1445,7 +1448,7 @@ class BuddyService : Service() {
     private fun openInput() {
         h.removeCallbacks(closeTask); errorPinned = false
         voice.stopListening()
-        style(true); input.hint = t("Спросите…", "Ask me…", "So'rang…"); status.text = t("Пишите…", "Type here…", "Yozing…"); setMode("listen"); setWave(WaveView.NONE)
+        style(true, force = true); input.hint = t("Спросите…", "Ask me…", "So'rang…"); status.text = t("Пишите…", "Type here…", "Yozing…"); setMode("listen"); setWave(WaveView.NONE)
         hide(answer); show(input)
         focusable(true)
         input.requestFocus()
@@ -1538,7 +1541,7 @@ class BuddyService : Service() {
         fun answer(ok: Boolean) { if (latch.count == 0L) return; yes = ok; latch.countDown(); approvalHolder.visibility = View.GONE; approvalHolder.removeAllViews(); setMode("think") }
         h.post {
             voice.stopListening()
-            style(true); status.text = t("Можно посмотреть экран?", "May I look at the screen?", "Ekranga qarasam bo'ladimi?"); setMode("curious"); setWave(WaveView.NONE)
+            style(true, force = true); status.text = t("Можно посмотреть экран?", "May I look at the screen?", "Ekranga qarasam bo'ladimi?"); setMode("curious"); setWave(WaveView.NONE)
             hide(input); hide(answer)
             approvalHolder.removeAllViews()
             val a = Approval("screen-consent", "screen-consent", t("Чтение экрана", "Reading the screen", "Ekranni o'qish"),
@@ -1594,7 +1597,7 @@ class BuddyService : Service() {
             voice.stopListening()
             localApproval = true
             h.removeCallbacks(askDeadline); h.postDelayed(askDeadline, 120_000L)
-            style(true); status.text = t("Подтвердите", "Please confirm", "Tasdiqlang"); setMode("surprised"); setWave(WaveView.NONE)
+            style(true, force = true); status.text = t("Подтвердите", "Please confirm", "Tasdiqlang"); setMode("surprised"); setWave(WaveView.NONE)
             flashBadge("approval", 60_000L)
             hide(input); hide(answer)
             approvalHolder.removeAllViews()
@@ -1803,7 +1806,7 @@ class BuddyService : Service() {
         h.removeCallbacks(closeTask)
         voice.stopListening()
         val prefix = t("Напоминание: ", "Reminder: ", "Eslatma: ")
-        style(true); status.text = t("Напоминание", "Reminder", "Eslatma"); setMode("excited")
+        style(true, force = true); status.text = t("Напоминание", "Reminder", "Eslatma"); setMode("excited")
         hide(input); setAnswer(prefix + text, true); show(answer)
         focusable(false)
         if (ttsOn()) say(prefix + text, uiLang()) { h.postDelayed(closeTask, 4000) }
@@ -1832,7 +1835,7 @@ class BuddyService : Service() {
         }
         releaseCallFocus()
         callFocusRelease = try { MediaControl.requestFocusForSpeech(this) } catch (_: Exception) { null }
-        style(true); status.text = t("Звонок", "Call", "Qo'ng'iroq"); setMode("surprised")
+        style(true, force = true); status.text = t("Звонок", "Call", "Qo'ng'iroq"); setMode("surprised")
         hide(input); setAnswer(text, true); show(answer)
         focusable(false)
         showCallChips()
@@ -1992,7 +1995,7 @@ class BuddyService : Service() {
             prefs.edit().putString("last_call_summary", (who ?: "?") + ": " + sum).apply()
             h.post {
                 h.removeCallbacks(closeTask)
-                style(true); status.text = t("Звонок", "Call", "Qo'ng'iroq"); setMode("happy")
+                style(true, force = true); status.text = t("Звонок", "Call", "Qo'ng'iroq"); setMode("happy")
                 setAnswer((who ?: "") + (if (who != null) ": " else "") + sum, false); show(answer)
                 h.postDelayed(closeTask, 30_000)
             }

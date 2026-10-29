@@ -48,9 +48,15 @@ class HomeWebView(c: Context, private val host: Host) : WebView(c) {
         addJavascriptInterface(Bridge(), "BubbyNative")
         webViewClient = object : WebViewClient() {
             override fun shouldOverrideUrlLoading(v: WebView, r: WebResourceRequest) = true
-            // frames per second the page really draws (CI log: tells a frozen page from a moving one)
+            // one look at the page a few seconds in (CI log: did the splash end?)
             override fun onPageFinished(v: WebView, url: String) {
-                v.evaluateJavascript("(function(){var n=0,t0=performance.now();function f(){n++;requestAnimationFrame(f)}requestAnimationFrame(f);setInterval(function(){var d=(performance.now()-t0)/1000;BubbyNative.probe('fps '+Math.round(n/d)+' splash='+(document.querySelector('.splash')?'on':'off'));n=0;t0=performance.now()},1000)})()", null)
+                v.evaluateJavascript("setTimeout(function(){BubbyNative.probe('after 3 s splash='+(document.querySelector('.splash')?'on':'off'))},3000)", null)
+            }
+            // the web view's process was killed (low memory): never take the app down with it, open the native cards instead
+            override fun onRenderProcessGone(v: WebView, d: android.webkit.RenderProcessGoneDetail): Boolean {
+                android.util.Log.w("com.example.buddy", "HomeWeb: render process gone (crashed=${d.didCrash()})")
+                post { host.splash(false) }
+                return true
             }
         }
         webChromeClient = object : android.webkit.WebChromeClient() {

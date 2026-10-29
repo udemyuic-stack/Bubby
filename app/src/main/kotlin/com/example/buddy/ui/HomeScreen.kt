@@ -79,9 +79,11 @@ class HomeScreen(act: UiActivity) : Screen(act) {
     }
 
     private var splashCover: List<View> = emptyList()
+    private var pendingSetup = false   // first launch without a key or permissions: the setup opens after the splash, not under it
     private fun endSplash() {
         splashCover.forEach { v -> v.visibility = View.VISIBLE; v.alpha = 0f; v.animate().alpha(1f).setDuration(400).start() }
         splashCover = emptyList()
+        if (pendingSetup) { pendingSetup = false; content.postDelayed({ act.open("setup") }, 700) }
     }
 
     /** Tells the page what the app knows: running or not, and the words in the user's language. */
@@ -102,6 +104,7 @@ class HomeScreen(act: UiActivity) : Screen(act) {
             "halloween" -> t("бу! счастливого Хэллоуина 🎃", "boo! happy Halloween 🎃", "bu! Halloween muborak 🎃")
             "forest" -> t("даже в дождь — рядом ☔", "near you, even in the rain ☔", "yomg'irda ham yoningda ☔")
             "ocean" -> t("медуза Bubby рядом 🌊", "your jellyfish Bubby is near 🌊", "meduza Bubby yoningda 🌊")
+            "ice", "green", "blue" -> t("твой живой помощник", "your living assistant", "jonli yordamching")
             else -> t("С Новым годом! 🎄", "Happy New Year! 🎄", "Yangi yil muborak! 🎄")
         })
         w.run("bubbyHome(" + o + ")")
@@ -142,7 +145,7 @@ class HomeScreen(act: UiActivity) : Screen(act) {
         // the microphone was granted after the floating service started: poke it so it re-declares the microphone type
         if (running && perms["mic"] == true && perms["overlay"] == true && !micPoked) { micPoked = true; Backend.startBuddy(ctx) }
         if (perms["mic"] != true) micPoked = false
-        if (firstShow) { firstShow = false; if (missing && !act.intent.getBooleanExtra("static", false) && !act.intent.getBooleanExtra("nosetup", false)) content.post { act.open("setup") } }
+        if (firstShow) { firstShow = false; if (missing && !act.intent.getBooleanExtra("static", false) && !act.intent.getBooleanExtra("nosetup", false)) { if (web != null) pendingSetup = true else content.post { act.open("setup") } } }
 
         if (web == null && themedRoot == null) {
         // ---- the glass scene: island, mascot, core and the fan of petals (laid out on a 390-wide grid) ----

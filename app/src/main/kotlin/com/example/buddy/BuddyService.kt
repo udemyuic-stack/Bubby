@@ -628,8 +628,11 @@ class BuddyService : Service() {
     }
 
     // while the agent works the wake-word loop also listens for "stop"
-    private fun hotWanted() = prefs.getBoolean("hotword", true) && micOk() && screenOn && (calm() || (busy && agentStepping && !localApproval)) && !inPhoneCall() &&
+    private fun hotWanted() = prefs.getBoolean("hotword", true) && micOk() && screenOn && (calm() || (busy && agentStepping && !localApproval)) && !inPhoneCall() && !powerSaving() &&
         SystemClock.elapsedRealtime() >= hotPausedUntil && !voice.talking && !voice.listening && holdAnim == null
+
+    /** Battery saver on: the always-listening wake word rests (tapping the mascot still works). */
+    private fun powerSaving() = try { (getSystemService(POWER_SERVICE) as android.os.PowerManager).isPowerSaveMode } catch (_: Exception) { false }
 
     private fun hotKick() {
         if (!hotWanted()) { hotStop(); return }

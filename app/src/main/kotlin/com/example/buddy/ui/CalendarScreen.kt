@@ -159,7 +159,8 @@ class CalendarScreen(act: UiActivity) : Screen(act) {
             c.add(ctx.emptyState(
                 if (selected == null) t("Событий нет", "No events", "Tadbirlar yo'q") else t("В этот день пусто", "Nothing on this day", "Bu kunda hech narsa yo'q"),
                 if (selected == null) t("На 14 дней вперёд ничего не запланировано.", "Nothing planned for the next 14 days.", "Keyingi 14 kunda hech narsa rejalashtirilmagan.")
-                else t("Нажмите «Событие», чтобы добавить.", "Tap “Event” to add one.", "Qo'shish uchun «Tadbir» ni bosing.")
+                else t("Нажмите «Событие», чтобы добавить.", "Tap “Event” to add one.", "Qo'shish uchun «Tadbir» ni bosing."),
+                sleepy = true
             ))
             return
         }

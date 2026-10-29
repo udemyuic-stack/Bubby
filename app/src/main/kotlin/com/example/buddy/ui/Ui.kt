@@ -272,7 +272,7 @@ fun Context.gradient(colors: IntArray, radiusDp: Float, orientation: GradientDra
     GradientDrawable(orientation, colors).apply { cornerRadius = dpf(radiusDp) }
 
 /** The mascot with a title and a hint, for lists with nothing in them. */
-fun Context.emptyState(title: String, message: String, bubble: String? = null): View = col {
+fun Context.emptyState(title: String, message: String, bubble: String? = null, sleepy: Boolean = false): View = col {
     gravity = Gravity.CENTER_HORIZONTAL
     setPadding(dp(24), dp(24), dp(24), dp(24))
     if (bubble != null) {
@@ -286,7 +286,18 @@ fun Context.emptyState(title: String, message: String, bubble: String? = null): 
     // the glass mascot needs a dark patch behind it to be seen on the light page
     val stage = FrameLayout(this@emptyState).apply {
         background = SpotDrawable()
-        add(MochiView(this@emptyState), dp(170), dp(136), Gravity.CENTER)
+        // alive: it bobs gently, can be poked, and sleeps (eyes shut) on screens where nothing is going on
+        val m = MochiView(this@emptyState).apply { pokeable = true; if (sleepy) squash = .9f }
+        add(m, dp(170), dp(136), Gravity.CENTER)
+        post {
+            try {
+                android.animation.ObjectAnimator.ofFloat(m, View.TRANSLATION_Y, 0f, -dp(6).toFloat()).apply {
+                    duration = if (sleepy) 2600 else 1700; repeatMode = android.animation.ValueAnimator.REVERSE
+                    repeatCount = android.animation.ValueAnimator.INFINITE; interpolator = android.view.animation.AccelerateDecelerateInterpolator()
+                    if ((context as? UiActivity)?.intent?.getBooleanExtra("static", false) != true) start()
+                }
+            } catch (_: Exception) {}
+        }
     }
     add(stage, dp(240), dp(220))
     add(text(title, T.Title).apply { gravity = Gravity.CENTER; textSize = 22f; typeface = glassFont() }, MATCH, WRAP, top = 8)

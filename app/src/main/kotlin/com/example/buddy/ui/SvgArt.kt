@@ -178,7 +178,13 @@ class Art(val name: String, svg: String) {
     private fun num(s: String?): Float = s?.trim()?.removeSuffix("px")?.let { if (it.endsWith("%")) (it.dropLast(1).toFloatOrNull() ?: 0f) / 100f else it.toFloatOrNull() } ?: 0f
 
     private fun color(s: String, alpha: Float = 1f): Int {
-        val v = s.trim()
+        var v = s.trim()
+        if (v.startsWith("var(")) {   // the looks' own colours (the mockups colour the mascots through CSS variables)
+            val t = Theme.cur
+            val name = v.removePrefix("var(--").substringBefore(')').substringBefore(',')
+            val rgb = when (name) { "eye" -> t.eye; "rim" -> t.rim; "accent" -> t.accent; "accent2" -> t.accent2; "ink" -> t.ink; "ink2" -> t.ink2; else -> Color.WHITE }
+            v = String.format("#%06X", rgb and 0xFFFFFF)
+        }
         var c = Color.BLACK; var a = 1f
         try {
             when {

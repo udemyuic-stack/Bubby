@@ -462,7 +462,7 @@ class BuddyService : Service() {
     }
     private fun micOk() = checkSelfPermission(Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED
     private fun voiceOn() = prefs.getBoolean("voice", true) && micOk()
-    private fun ttsOn() = prefs.getBoolean("tts", true)
+    private fun ttsOn() = prefs.getBoolean("tts", true) && !prefs.getBoolean("silent", false)
     private fun conv() = prefs.getBoolean("conv", false)
 
     private fun tagOf(l: String?): String? = when (l) {

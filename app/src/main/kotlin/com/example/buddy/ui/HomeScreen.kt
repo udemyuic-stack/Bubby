@@ -83,6 +83,19 @@ class HomeScreen(act: UiActivity) : Screen(act) {
         scene.put(mascot, 110f, 66f, 170f, 136f)
         scene.put(nameV, 0f, 204f, 390f, 40f)
         scene.put(statusBox, 0f, 250f, 390f, 32f)
+        // one tap: Bubby stops speaking (messages, replies, notifications) and only shows text
+        val muteV = ctx.text("", T.Small, 0xFFF1ECEA.toInt()).apply {
+            setTextSize(android.util.TypedValue.COMPLEX_UNIT_PX, 12f * sc); gravity = Gravity.CENTER
+            setPadding((12 * sc).toInt(), (6 * sc).toInt(), (12 * sc).toInt(), (6 * sc).toInt())
+        }
+        fun paintMute() {
+            val silent = Backend.bool(ctx, "silent", false)
+            muteV.text = if (silent) t("Тихо", "Silent", "Jim") else t("Звук", "Sound", "Ovoz")
+            muteV.background = ctx.rounded(if (silent) Glass.white(.34f) else Glass.white(.14f), 20f, Glass.white(.3f))
+        }
+        paintMute()
+        muteV.press { Backend.setBool(ctx, "silent", !Backend.bool(ctx, "silent", false)); paintMute() }
+        scene.put(muteV, 296f, 250f, 78f, 32f)
         scene.put(CollarView(ctx, sc), 0f, 380f, 390f, 140f)
         fun petal(kind: GlassKind, icon: Int, label: String, l: Float, tp: Float, w: Float, h: Float, ang: Float, tc: Int, size: Int = 12, bold: Boolean = false, go: () -> Unit) {
             scene.put(PetalView(ctx, kind, icon, label, ang, tc, size, bold, sc).apply { press(go) }, l, tp, w, h)

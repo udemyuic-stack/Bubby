@@ -2189,9 +2189,19 @@ class BuddyService : Service() {
     }
 
     // ---- notifications aloud ------------------------------------------------------------------------------------
+    /** Headphones (wired, USB or Bluetooth) are the audio output right now. */
+    private fun headsetOn(): Boolean = try {
+        (getSystemService(AUDIO_SERVICE) as AudioManager).getDevices(AudioManager.GET_DEVICES_OUTPUTS).any {
+            it.type in setOf(android.media.AudioDeviceInfo.TYPE_WIRED_HEADSET, android.media.AudioDeviceInfo.TYPE_WIRED_HEADPHONES,
+                android.media.AudioDeviceInfo.TYPE_BLUETOOTH_A2DP, android.media.AudioDeviceInfo.TYPE_BLUETOOTH_SCO,
+                android.media.AudioDeviceInfo.TYPE_USB_HEADSET, android.media.AudioDeviceInfo.TYPE_BLE_HEADSET)
+        }
+    } catch (_: Throwable) { false }
+
     private fun onNotifItem(item: BuddyNotifications.Item) {
         if (!running || !prefs.getBoolean(if (item.sms) "read_sms_aloud" else "read_notifs", false) || prefs.getBoolean("quiet", false)) return
         if (!screenOn || calling || !calm() || voice.listening || voice.talking || choiceActive || replying) return
+        if (prefs.getBoolean("read_private", true) && !headsetOn()) return   // nobody else should hear a message read aloud
         if (try { getSystemService(KeyguardManager::class.java).isKeyguardLocked } catch (_: Exception) { false }) return
         var body = if (item.title.isBlank()) item.text else if (item.text.isBlank()) item.title else item.title + " — " + item.text
         body = (item.app + ": " + body).trim()

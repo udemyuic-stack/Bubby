@@ -28,7 +28,7 @@ class UiActivity : Activity() {
     private lateinit var navFrame: FrameLayout
     private lateinit var bgHome: View
     private lateinit var bgSub: View
-    private var scene: SceneView? = null
+    private var scene: SceneHost? = null
     private val tabs = ArrayList<Screen>()
     private var tab = 0
     private var tabShown = false
@@ -53,7 +53,10 @@ class UiActivity : Activity() {
         host.addView(bgHome, FrameLayout.LayoutParams(MATCH, MATCH))
         host.addView(bgSub, FrameLayout.LayoutParams(MATCH, MATCH))
         if (Theme.sceneOn(this)) {
-            scene = try { SceneView(this).also { host.addView(it, FrameLayout.LayoutParams(MATCH, MATCH)) } } catch (_: Throwable) { null }   // no WebView on this phone: plain background
+            // a finished native scene (Canvas, no JavaScript) when the look has one, the old web page otherwise
+            scene = try {
+                (if (ThemeScenes.ready(Theme.cur.scene)) SceneCanvasView(this) else SceneView(this)).also { host.addView(it.view, FrameLayout.LayoutParams(MATCH, MATCH)) }
+            } catch (_: Throwable) { null }   // no WebView on this phone: plain background
         }
         shell = col {}
         body = FrameLayout(this)
@@ -270,7 +273,7 @@ class UiActivity : Activity() {
 
     override fun onPause() { super.onPause(); appInFront = false; scene?.onAppPause(); (tabs[0] as HomeScreen).restWeb() }
 
-    override fun onDestroy() { try { scene?.destroy() } catch (_: Throwable) { }; try { (tabs[0] as HomeScreen).destroyWeb() } catch (_: Throwable) { }; super.onDestroy() }
+    override fun onDestroy() { try { scene?.release() } catch (_: Throwable) { }; try { (tabs[0] as HomeScreen).destroyWeb() } catch (_: Throwable) { }; super.onDestroy() }
 
     override fun onResume() {
         super.onResume()

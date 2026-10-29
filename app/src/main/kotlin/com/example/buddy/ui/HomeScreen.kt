@@ -52,7 +52,7 @@ class HomeScreen(act: UiActivity) : Screen(act) {
     override fun view(): View {
         themedRoot?.let { return it }
         val theme = Theme.cur.scene
-        if (theme != null && Theme.cur.homePage && Theme.sceneOn(ctx)) {
+        if (theme != null && Theme.cur.homePage && Theme.sceneOn(ctx) && !ThemeScenes.ready(theme)) {   // the native home is used as soon as the look has a native scene
             val r = try { buildThemed(theme) } catch (_: Throwable) { null }
             if (r != null) { themedRoot = r; return r }
             web = null

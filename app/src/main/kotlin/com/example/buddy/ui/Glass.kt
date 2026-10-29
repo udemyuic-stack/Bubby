@@ -119,7 +119,7 @@ object Theme {
     fun tile(i: Int, a: Int, b: Int): IntArray = if (cur.id == "glass") intArrayOf(a, b) else cur.tiles[i % cur.tiles.size]
 
     /** The animated scene behind the app is on for this look (and not switched off in Settings). */
-    fun sceneOn(ctx: Context): Boolean = cur.scene != null && Backend.bool(ctx, "scene_anim", true) && (!cur.homePage || WebCompat.ok())
+    fun sceneOn(ctx: Context): Boolean = cur.scene != null && Backend.bool(ctx, "scene_anim", true) && (ThemeScenes.ready(cur.scene) || !cur.homePage || WebCompat.ok())
 
     fun byId(id: String) = ALL.firstOrNull { it.id == id } ?: GLASS
 

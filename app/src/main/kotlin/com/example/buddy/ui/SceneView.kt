@@ -15,7 +15,10 @@ import android.webkit.WebViewClient
  * from the network. It rests (no frames) while the app is in the background or the scene is hidden.
  */
 @SuppressLint("SetJavaScriptEnabled")
-class SceneView(c: Context) : WebView(c) {
+class SceneView(c: Context) : WebView(c), SceneHost {
+    override val view: View get() = this
+    override fun release() { try { destroy() } catch (_: Throwable) { } }
+
     private var loaded: String? = null
     private var wanted: String? = null
     private var active = true
@@ -61,7 +64,7 @@ class SceneView(c: Context) : WebView(c) {
     override fun dispatchTouchEvent(e: MotionEvent) = false
 
     /** Shows the scene [name] (assets/scene/<name>.html) or hides the view when null. */
-    fun setScene(name: String?) {
+    override fun setScene(name: String?) {
         wanted = name
         if (name == null) { visibility = View.GONE; pauseWeb(); return }
         if (loaded != name) { loaded = name; loadUrl("file:///android_asset/scene/$name.html") }
@@ -70,14 +73,14 @@ class SceneView(c: Context) : WebView(c) {
     }
 
     /** The scene drifts 8 px per page, as in the mockups. */
-    fun slideTo(page: Int) {
+    override fun slideTo(page: Int) {
         val js = "(function(){var s=document.querySelector('.scene');if(s&&s.animate)s.animate({translate:['" + (-page * 8) + "px 0']},{duration:900,easing:'cubic-bezier(.22,1,.36,1)',fill:'forwards'})})()"
         try { evaluateJavascript(js, null) } catch (_: Exception) { }
         pendingSlide = js
     }
 
-    fun onAppResume() { active = true; if (wanted != null) resumeWeb() }
-    fun onAppPause() { active = false; pauseWeb() }
+    override fun onAppResume() { active = true; if (wanted != null) resumeWeb() }
+    override fun onAppPause() { active = false; pauseWeb() }
 
     private fun resumeWeb() { try { onResume() } catch (_: Exception) { } }
     private fun pauseWeb() { try { onPause() } catch (_: Exception) { } }

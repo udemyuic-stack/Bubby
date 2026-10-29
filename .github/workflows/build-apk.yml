@@ -97,6 +97,25 @@ jobs:
           if grep -q "FATAL EXCEPTION" shots/*-log.txt 2>/dev/null; then echo "::error::the app crashed on ${{ matrix.screen }}"; grep -h -A8 "FATAL EXCEPTION" shots/*-log.txt | head -30; exit 1; fi
           if [ ! -s "shots/${{ matrix.screen }}.png" ]; then echo "::warning::the emulator died on ${{ matrix.screen }}: no picture (not an app problem)"; fi
 
+  release:
+    # The APK is published as soon as it is built, whatever the emulator screenshots do: one fixed download link, always the newest build.
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: bubby
+      - name: Publish the APK as the "latest" release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release delete latest --repo "$GITHUB_REPOSITORY" --yes --cleanup-tag 2>/dev/null || true
+          gh release create latest bubby.apk --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --prerelease \
+            --title "Latest build #${{ github.run_number }} (${GITHUB_REF_NAME})" \
+            --notes "Build #${{ github.run_number }} of ${GITHUB_REF_NAME}, commit ${GITHUB_SHA}. Download bubby.apk and install it over the old one."
+
   publish:
     # Collects the screenshots of every screen on the ci-screenshots branch.
     needs: smoke

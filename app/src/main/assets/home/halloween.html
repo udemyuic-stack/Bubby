@@ -422,7 +422,7 @@ pills[3].onclick=()=>send('поставь будильник на 7');
 (()=>{const B=window.BubbyNative;
  const hm=R('home');
  [...hm.children].forEach(c=>{if(c.querySelector&&c.querySelector('input'))c.style.visibility='hidden';if(c.style&&c.style.top==='668px')c.style.display='none'});
- const mascot=$('.an.big',hm),box=mascot.parentElement,nameEl=[...box.children].find(e=>e.textContent.trim()==='Bubby');
+ const box=[...hm.children].find(c=>c.style&&c.style.top==='134px'),mascot=box.firstElementChild,nameEl=[...box.children].find(e=>e.textContent.trim()==='Bubby');
  let openNow=false;
  window.bubbyHome=(o)=>{
   if(o.splashSub){const e=$('.sp-sub');if(e)e.textContent=o.splashSub}

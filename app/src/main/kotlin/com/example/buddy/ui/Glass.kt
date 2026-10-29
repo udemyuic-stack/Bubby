@@ -67,12 +67,12 @@ object Theme {
         0xFF123D1A.toInt(), 0xFF2F5A38.toInt(), 0xFF2FA83A.toInt(), 0xFF7BC62D.toInt(), 0xFF2F5A38.toInt(), 0xFF082C0E.toInt(), 0xFF78D746.toInt(), 0xFFBEEB3C.toInt(), 0xFF1E6428.toInt(),
         0xFFEAFF7A.toInt(), 0xFFC4F76E.toInt(),
         listOf(intArrayOf(0xFF6FD13A.toInt(), 0xFF2F9A1C.toInt()), intArrayOf(0xFF3FCF8A.toInt(), 0xFF168A52.toInt()), intArrayOf(0xFFB6E03A.toInt(), 0xFF79A812.toInt()), intArrayOf(0xFF5FD6B0.toInt(), 0xFF22987A.toInt())),
-        0xFF2F6B3A.toInt(), 0xFF123D1A.toInt(), 0x70C8F58A.toInt(), 0x50A0E05A.toInt(), "butterfly", 0xFF2FA83A.toInt(), scene = "green")
+        0xFF2F6B3A.toInt(), 0xFF123D1A.toInt(), 0x70C8F58A.toInt(), 0x50A0E05A.toInt(), "butterfly", 0xFF2FA83A.toInt(), scene = "green", homePage = true)
     val BLUE = ThemeDef("blue", 0xFFE3EEFF.toInt(), 0xFFA9C6FF.toInt(), 0xFF6A96F2.toInt(), 0xFF4F86F0.toInt(), 0xFFF0F6FF.toInt(),
         0xFF0F2A6B.toInt(), 0xFF2D4C96.toInt(), 0xFF2F66E0.toInt(), 0xFF7A8CF0.toInt(), 0xFF2D4C96.toInt(), 0xFF06165A.toInt(), 0xFF468CFF.toInt(), 0xFF9682F0.toInt(), 0xFF1E46AA.toInt(),
         0xFFD2E8FF.toInt(), 0xFF9CCAFF.toInt(),
         listOf(intArrayOf(0xFF5AA8FF.toInt(), 0xFF2A5FD8.toInt()), intArrayOf(0xFF8D86F0.toInt(), 0xFF4C42C4.toInt()), intArrayOf(0xFF45C8F0.toInt(), 0xFF1A7FD0.toInt()), intArrayOf(0xFFA9A4F4.toInt(), 0xFF6A5CDC.toInt())),
-        0xFF2D4FB0.toInt(), 0xFF0F2A6B.toInt(), 0x66A8BEFA.toInt(), 0x4C8CA0F0.toInt(), "whale", 0xFF2F66E0.toInt(), scene = "blue")
+        0xFF2D4FB0.toInt(), 0xFF0F2A6B.toInt(), 0x66A8BEFA.toInt(), 0x4C8CA0F0.toInt(), "shark", 0xFF2F66E0.toInt(), scene = "blue", homePage = true)
     /** The "night" look: a dark page, a black island and the white cube mascot (like the notch apps). */
     val NIGHT = ThemeDef("night", 0xFF1B1D24.toInt(), 0xFF14161C.toInt(), 0xFF0E1014.toInt(), 0xFF232A52.toInt(), 0xFF2A2D3A.toInt(),
         0xFFF1F3F8.toInt(), 0xFFA6AEC2.toInt(), 0xFF8C9CFF.toInt(), 0xFFB79CFF.toInt(), 0xFFA6AEC2.toInt(), 0xFF000000.toInt(), 0xFF5B6CFF.toInt(), 0xFFA68BFF.toInt(), 0xFF000000.toInt(),
@@ -105,7 +105,12 @@ object Theme {
         0xFFFFFFFF.toInt(), 0xFFD6E6FF.toInt(),
         listOf(intArrayOf(0xFF8FB0DE.toInt(), 0xFF4F78B8.toInt()), intArrayOf(0xFF9FD8E6.toInt(), 0xFF4C9AB8.toInt()), intArrayOf(0xFFB9C4F0.toInt(), 0xFF6B78C8.toInt()), intArrayOf(0xFFA8E6D8.toInt(), 0xFF4AA894.toInt())),
         0xFF4A5C7D.toInt(), 0xFF1C2B45.toInt(), 0x404F78B8.toInt(), 0x304F78B8.toInt(), "snowman", 0xFF2F9D73.toInt(), title = "New Year", scene = "newyear", homePage = true)
-    val ALL = listOf(GLASS, GREEN, BLUE, NIGHT, SPACE, HALLOWEEN, FOREST, OCEAN, NEWYEAR)
+    val ICE = ThemeDef("ice", 0xFFDDE6F0.toInt(), 0xFFCBD8E6.toInt(), 0xFFAEBFD5.toInt(), 0xFF7F9BBD.toInt(), 0xFFF3F6FA.toInt(),
+        0xFF1C2B45.toInt(), 0xFF4A5C7D.toInt(), 0xFF4F78B8.toInt(), 0xFF8FB0DE.toInt(), 0xFF4A5C7D.toInt(), 0xFF1C2B45.toInt(), 0xFF96B9EB.toInt(), 0xFFBED7FA.toInt(), 0xFF466496.toInt(),
+        0xFFFFFFFF.toInt(), 0xFFD6E6FF.toInt(),
+        listOf(intArrayOf(0xFF8FB0DE.toInt(), 0xFF4F78B8.toInt()), intArrayOf(0xFF9FD8E6.toInt(), 0xFF4C9AB8.toInt()), intArrayOf(0xFFB9C4F0.toInt(), 0xFF6B78C8.toInt()), intArrayOf(0xFFA8E6D8.toInt(), 0xFF4AA894.toInt())),
+        0xFF4A5C7D.toInt(), 0xFF1C2B45.toInt(), 0x404F78B8.toInt(), 0x304F78B8.toInt(), "mochi", 0xFF2F9D73.toInt(), title = "Glacier", scene = "ice", homePage = true)
+    val ALL = listOf(GLASS, GREEN, BLUE, NIGHT, SPACE, HALLOWEEN, FOREST, OCEAN, NEWYEAR, ICE)
 
     var cur: ThemeDef = GLASS
         private set
@@ -332,7 +337,7 @@ class GlassBackground(c: Context, private val home: Boolean) : View(c) {
  * The mascots of the three looks (glass mochi, butterfly, whale), drawn on a 170x136 canvas. Used by [MochiView] in the app
  * and by the floating assistant (BuddyView), so the same character is everywhere.
  */
-private val ART = setOf("sun", "pumpkin", "cloud", "jelly", "snowman")
+private val ART = setOf("sun", "pumpkin", "cloud", "jelly", "snowman", "butterfly", "shark")
 
 class GlassCritter(val kind: String = Theme.cur.mascot, private val def: ThemeDef = Theme.cur) {
     private val body = Paint(Paint.ANTI_ALIAS_FLAG)

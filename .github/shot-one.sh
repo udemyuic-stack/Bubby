@@ -13,6 +13,7 @@ case "$SCREEN" in
   *-forest) OPEN=${SCREEN%-forest}; EXTRA="--es theme forest";;
   *-ocean) OPEN=${SCREEN%-ocean}; EXTRA="--es theme ocean";;
   *-newyear) OPEN=${SCREEN%-newyear}; EXTRA="--es theme newyear";;
+  *-ice) OPEN=${SCREEN%-ice}; EXTRA="--es theme ice";;
 esac
 ADB=$(command -v adb); adb() { timeout 30 "$ADB" "$@"; }
 mkdir -p shots

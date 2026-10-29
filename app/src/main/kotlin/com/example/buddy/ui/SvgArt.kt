@@ -396,6 +396,17 @@ class Art(val name: String, svg: String) {
             "pom" -> about(cv, 134f, -10f, rot = -12f + 26f * ease(tri(t, 3f)))
             "nose" -> { val b = n.bounds ?: RectF(84f, 84f, 116f, 97f)
                 val r = keys(t, 4f, floatArrayOf(0f, .8f, .85f, .9f, .95f, 1f), floatArrayOf(0f, 0f, -8f, 7f, -3f, 0f)); about(cv, b.left, b.centerY(), rot = r) }
+            "bf" -> { val at = floatArrayOf(0f, .25f, .5f, .75f, 1f)
+                about(cv, 85f, 70f, rot = keys(t, 4.4f, at, floatArrayOf(-2f, 2f, -1f, 3f, -2f)), tx = keys(t, 4.4f, at, floatArrayOf(0f, 4f, 0f, -4f, 0f)), ty = keys(t, 4.4f, at, floatArrayOf(0f, -8f, -3f, -9f, 0f))) }
+            "wh" -> { val at = floatArrayOf(0f, .5f, 1f)
+                about(cv, 85f, 70f, rot = keys(t, 5.5f, at, floatArrayOf(-1.5f, 1.5f, -1.5f)), tx = keys(t, 5.5f, at, floatArrayOf(-6f, 6f, -6f)), ty = keys(t, 5.5f, at, floatArrayOf(0f, -6f, 0f))) }
+            "bf-wings" -> about(cv, 85f, 72f, sx = keys(t, 2.6f, floatArrayOf(0f, .08f, .16f, .24f, .34f, 1f), floatArrayOf(1f, .38f, .95f, .38f, 1f, 1f)))
+            "bf-ant" -> about(cv, 85f, 44f, rot = -5f + 10f * ease(tri(t, 4.4f)))
+            "sk-tail" -> { val p = ease(tri(t, 1.6f)); about(cv, 40f, 72f, rot = -15f + 28f * p, sy = .94f + .1f * p) }
+            "sk-fin" -> about(cv, 98f, 88f, rot = -8f + 18f * ease(tri(t, 3.2f)))
+            "sk-gill" -> a = .3f + .7f * ease(tri(t, 2.4f))
+            "sk-eye" -> { val b = n.bounds; val sy = keys(t, 5f, floatArrayOf(0f, .94f, .97f, 1f), floatArrayOf(1f, 1f, .1f, 1f))
+                if (b != null) { cv.translate(b.centerX(), b.centerY()); cv.scale(1f, sy); cv.translate(-b.centerX(), -b.centerY()) } }
             "cheek" -> if (name == "snowman") a = .35f + .35f * ease(tri(t, 6f))
             "eye" -> {
                 val bl = keys(t, 4.6f, floatArrayOf(0f, .86f, .9f, .94f, 1f), floatArrayOf(1f, 1f, .2f, 1.2f, 1f))

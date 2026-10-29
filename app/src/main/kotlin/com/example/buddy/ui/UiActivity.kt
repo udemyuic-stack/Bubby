@@ -44,7 +44,7 @@ class UiActivity : Activity() {
         bgSub = GlassBackground(this, false)
         host.addView(bgHome, FrameLayout.LayoutParams(MATCH, MATCH))
         host.addView(bgSub, FrameLayout.LayoutParams(MATCH, MATCH))
-        if (Theme.cur.scene != null) {
+        if (Theme.cur.scene != null && WebCompat.ok()) {
             scene = try { SceneView(this).also { host.addView(it, FrameLayout.LayoutParams(MATCH, MATCH)) } } catch (_: Throwable) { null }   // no WebView on this phone: plain background
         }
         shell = col {}

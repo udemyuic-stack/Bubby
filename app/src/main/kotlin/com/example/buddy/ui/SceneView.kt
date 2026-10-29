@@ -56,3 +56,20 @@ class SceneView(c: Context) : WebView(c) {
     private fun resumeWeb() { try { onResume(); resumeTimers() } catch (_: Exception) { } }
     private fun pauseWeb() { try { onPause(); pauseTimers() } catch (_: Exception) { } }
 }
+
+/** The mockup pages use modern CSS (individual transform properties, inset): they need a WebView of Chrome 105 or newer. */
+object WebCompat {
+    private var cached: Boolean? = null
+    fun ok(): Boolean {
+        cached?.let { return it }
+        val r = try {
+            if (android.os.Build.VERSION.SDK_INT < 26) false
+            else {
+                val v = android.webkit.WebView.getCurrentWebViewPackage()?.versionName ?: ""
+                (v.substringBefore('.').toIntOrNull() ?: 0) >= 105
+            }
+        } catch (_: Throwable) { false }
+        cached = r
+        return r
+    }
+}

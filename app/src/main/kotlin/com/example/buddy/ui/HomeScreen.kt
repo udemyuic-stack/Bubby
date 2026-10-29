@@ -37,7 +37,7 @@ class HomeScreen(act: UiActivity) : Screen(act) {
     override fun view(): View {
         themedRoot?.let { return it }
         val theme = Theme.cur.scene
-        if (theme != null) {
+        if (theme != null && WebCompat.ok()) {
             val r = try { buildThemed(theme) } catch (_: Throwable) { null }
             if (r != null) { themedRoot = r; return r }
             web = null

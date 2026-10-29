@@ -63,6 +63,8 @@ private class Node(val tag: String, val attrs: Map<String, String>) {
     fun attr(k: String) = attrs[k]
 }
 
+private val INHERIT = listOf("fill", "stroke", "stroke-width", "stroke-linecap", "stroke-linejoin", "fill-opacity", "stroke-opacity")
+
 private class Stop(val off: Float, val color: Int)
 private class Grad(val radial: Boolean, val a: FloatArray, val stops: List<Stop>)
 
@@ -83,8 +85,6 @@ class Art(val name: String, svg: String) {
     init { try { parse(svg) } catch (e: Exception) { root = null; error = e.toString() + " at " + (e.stackTrace.firstOrNull()?.toString() ?: "") } }
 
     // ---------------------------------------------------------------------------------------------------------- parsing
-
-    private val INHERIT = listOf("fill", "stroke", "stroke-width", "stroke-linecap", "stroke-linejoin", "fill-opacity", "stroke-opacity")
 
     private fun parse(svg: String) {
         val p = Xml.newPullParser()

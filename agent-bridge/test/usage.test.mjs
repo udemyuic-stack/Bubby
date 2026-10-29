@@ -84,7 +84,7 @@ test("statusLine relay: only rate_limits reaches the bridge; the user's own stat
   assert.equal(r.out, "my line");
   assert.deepEqual(JSON.parse(fs.readFileSync(recv, "utf8")), payload, "same payload on its stdin");
   const u = await phone.wait((m) => m.type === "usage" && m.fiveHour);
-  assert.deepEqual(Object.keys(u), ["type", "fiveHour", "sevenDay", "doneToday", "updatedAt"]);
+  assert.deepEqual(Object.keys(u), ["type", "fiveHour", "sevenDay", "doneToday", "updatedAt", "limitsAgeMs"]);
   assert.deepEqual(u.fiveHour, { used: 0.68, resetsAt: (sec(NOW) + 3600) * 1000 });
   assert.equal(u.sevenDay.used, 0.425);
   assert.ok(Math.abs(u.updatedAt - Date.now()) < 5000);

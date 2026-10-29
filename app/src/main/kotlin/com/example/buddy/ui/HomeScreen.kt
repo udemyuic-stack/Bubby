@@ -70,11 +70,10 @@ class HomeScreen(act: UiActivity) : Screen(act) {
         root.addView(island, FrameLayout.LayoutParams(MATCH, (134 * sc).toInt()))
         root.addView(sv, FrameLayout.LayoutParams(MATCH, MATCH).apply { topMargin = (664 * sc).toInt() })
         // the page's own loading splash covers the screen at first: the island and the cards wait for it
-        if (withSplash) {
-            island.visibility = View.INVISIBLE; sv.visibility = View.INVISIBLE
-            splashCover = listOf(island, sv)
-            root.postDelayed({ w.run("var s=document.querySelector('.splash');if(s)s.click()"); endSplash() }, 4500)   // in case the page never says it is done
-        }
+        // (always: the page reports when it is done, also when it skips the splash)
+        island.visibility = View.INVISIBLE; sv.visibility = View.INVISIBLE
+        splashCover = listOf(island, sv)
+        root.postDelayed({ w.run("var s=document.querySelector('.splash');if(s)s.click()"); endSplash() }, 4500)   // in case the page never says it is done
         pushState()
         return root
     }

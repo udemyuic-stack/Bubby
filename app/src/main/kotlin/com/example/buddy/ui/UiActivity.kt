@@ -17,6 +17,11 @@ private val TAB_NAMES = listOf("home", "tasks", "calendar", "settings", "more")
 
 /** The whole app UI: five tabs and a stack of pushed screens, built with plain Views. */
 class UiActivity : Activity() {
+    companion object {
+        /** True while the app's own screen is in front: the floating island then stays closed unless an agent needs an answer. */
+        @Volatile @JvmStatic var appInFront = false
+    }
+
     private lateinit var host: FrameLayout
     private lateinit var shell: LinearLayout
     private lateinit var body: FrameLayout
@@ -259,12 +264,13 @@ class UiActivity : Activity() {
         if (stack.isNotEmpty()) pop() else super.onBackPressed()
     }
 
-    override fun onPause() { super.onPause(); scene?.onAppPause(); (tabs[0] as HomeScreen).restWeb() }
+    override fun onPause() { super.onPause(); appInFront = false; scene?.onAppPause(); (tabs[0] as HomeScreen).restWeb() }
 
     override fun onDestroy() { try { scene?.destroy() } catch (_: Throwable) { }; try { (tabs[0] as HomeScreen).destroyWeb() } catch (_: Throwable) { }; super.onDestroy() }
 
     override fun onResume() {
         super.onResume()
+        appInFront = true
         scene?.onAppResume()
         if (tab == 0) (tabs[0] as HomeScreen).wakeWeb()
         // the language the user speaks changed (auto mode): draw everything in it

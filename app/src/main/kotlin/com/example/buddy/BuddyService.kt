@@ -1130,6 +1130,9 @@ class BuddyService : Service() {
     }
 
     private fun style(exp: Boolean) {
+        // inside Bubby's own app the island does not pop open over the page (the app shows everything itself);
+        // only an agent's question or request, or a phone call, still opens it
+        if (exp && com.example.buddy.ui.UiActivity.appInFront && !calling && approvals.isEmpty() && questions.isEmpty()) return
         val was = expanded
         if (exp && !was) preExpandY = lp.y
         expanded = exp

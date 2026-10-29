@@ -51,7 +51,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        screen: [home, tasks, calendar, settings, more, ai, setup, outfits, music, agents, agents-demo, agents-diff, fun, permissions, runs, home-green, home-blue, tasks-green, settings-blue, more-green, calendar-blue, home-night, tasks-night, settings-night, more-night, home-space, home-halloween, home-forest, home-ocean, home-newyear, tasks-space, tasks-halloween, settings-ocean, calendar-newyear, more-forest, home-ice, tasks-ice, tasks-blue]
+        screen: [home, tasks, calendar, settings, more, ai, setup, outfits, music, agents, agents-demo, agents-diff, fun, permissions, runs, home-green, home-blue, tasks-green, settings-blue, more-green, calendar-blue, home-night, tasks-night, settings-night, more-night, home-space, home-halloween, home-forest, home-ocean, home-newyear, tasks-space, tasks-halloween, settings-ocean, calendar-newyear, more-forest, home-ice, tasks-ice, tasks-blue, home-newyear-live, home-space-live, home-green-live, home-ocean-live]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/download-artifact@v4
@@ -64,9 +64,9 @@ jobs:
           sudo udevadm trigger --name-match=kvm
       - uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 30
+          api-level: 34
           arch: x86_64
-          target: default
+          target: google_apis
           ram-size: 2048M
           emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim -camera-back none -camera-front none
           disable-animations: true

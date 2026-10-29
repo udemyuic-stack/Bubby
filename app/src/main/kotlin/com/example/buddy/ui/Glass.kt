@@ -548,7 +548,7 @@ class MochiView(c: Context, withHalo: Boolean = true) : View(c) {
             android.view.MotionEvent.ACTION_DOWN -> { popAt = 0L; pressTo(1f, 90); return true }
             android.view.MotionEvent.ACTION_UP, android.view.MotionEvent.ACTION_CANCEL -> {
                 pressTo(0f, 0); popAt = android.os.SystemClock.uptimeMillis(); invalidate()
-                if (e.actionMasked == android.view.MotionEvent.ACTION_UP) performClick()
+                if (e.actionMasked == android.view.MotionEvent.ACTION_UP) { performClick(); jump(); burst(Glass.ACCENT) }
                 return true
             }
         }

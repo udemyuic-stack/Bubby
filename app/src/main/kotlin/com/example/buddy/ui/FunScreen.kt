@@ -84,7 +84,7 @@ class FunScreen(act: UiActivity) : Screen(act) {
                     }
                     tiles[m] = img
                     add(img, MATCH, MATCH)
-                    press { share(m) }
+                    press { sticker(); share(m) }
                 }
                 row.addView(tile, LinearLayout.LayoutParams(0, ctx.dp(78), 1f).apply { setMargins(ctx.dp(4), ctx.dp(4), ctx.dp(4), ctx.dp(4)) })
             }

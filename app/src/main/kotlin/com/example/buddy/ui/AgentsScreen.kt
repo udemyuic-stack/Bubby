@@ -331,6 +331,20 @@ class AgentsScreen(act: UiActivity) : Screen(act) {
 
         // a task for Claude Code, started from the phone (only when the computer allows it)
         if ("run" in BuddyService.agentCaps) c.add(runCard(), MATCH, WRAP, bottom = 12)
+        else if (s.connected) c.add(ctx.card(pad = 16) {
+            add(ctx.row {
+                add(ctx.icon(R.drawable.ic_bolt, P.primary, 24), WRAP, WRAP, end = 10)
+                add(ctx.text(t("Задачи для Claude Code с телефона", "Tasks for Claude Code from the phone", "Telefondan Claude Code'ga vazifa"), T.Title), 0, WRAP, 1f)
+            })
+            add(ctx.text(t("Компьютер пока не принимает задачи. Остановите мост и запустите так:", "The computer does not take tasks yet. Stop the bridge and start it like this:", "Kompyuter hali vazifa qabul qilmayapti. Bridge'ni to'xtatib, shunday ishga tushiring:"), T.Small), MATCH, WRAP, top = 8)
+            val cmd = "node agent-bridge/bridge.mjs --allow-run --workdir ~/project/my-app"
+            add(ctx.text(cmd, T.Body).apply { typeface = android.graphics.Typeface.MONOSPACE; textSize = 12.5f; setTextIsSelectable(true)
+                background = ctx.rounded(P.container, 12f); setPadding(ctx.dp(10), ctx.dp(8), ctx.dp(10), ctx.dp(8)) }, MATCH, WRAP, top = 8)
+            add(ctx.button(t("Копировать команду", "Copy the command", "Buyruqni nusxalash"), BtnStyle.Outline) {
+                (ctx.getSystemService(android.content.Context.CLIPBOARD_SERVICE) as android.content.ClipboardManager).setPrimaryClip(android.content.ClipData.newPlainText("bubby", cmd))
+                ctx.toast(t("Скопировано", "Copied", "Nusxalandi"))
+            }, MATCH, WRAP, top = 8)
+        }, MATCH, WRAP, bottom = 12)
 
         // requests waiting for an answer
         for (ap in BuddyService.agentApprovals) c.add(ctx.card(pad = 16, fill = P.warning.let { P.alpha(it, 40) }, stroke = P.warning) {
@@ -363,7 +377,9 @@ class AgentsScreen(act: UiActivity) : Screen(act) {
         // usage rings and done today
         val u = AgentStats.current(ctx)
         fun ringCard(value: Float?, resets: Long, title: String): LinearLayout = statCard(title,
-            if (value == null) t("нет данных", "no data", "ma'lumot yo'q") else AgentWidgets.until(ctx, resets).let { r -> if (r.isEmpty()) "" else t("сброс через $r", "resets in $r", "$r dan keyin yangilanadi") }) {
+            if (value == null) t("нет данных", "no data", "ma'lumot yo'q") else (AgentWidgets.until(ctx, resets).let { r -> if (r.isEmpty()) "" else t("сброс через $r", "resets in $r", "$r dan keyin yangilanadi") } +
+                // numbers only change when Claude Code answers: say how old they are instead of looking live
+                AgentWidgets.ago(ctx, u?.updatedAt ?: 0L).let { a -> if (a.isEmpty()) "" else "\n" + t("обновлено $a", "updated $a", "yangilangan: $a") }).trim()) {
             add(RingGauge(ctx).apply { setValue(value) }, ctx.dp(112), ctx.dp(112))
         }
         c.add(ctx.row(Gravity.TOP) {

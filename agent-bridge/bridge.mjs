@@ -104,12 +104,14 @@ export async function startBridge(opts = {}) {
       ...(s.tokensToday !== undefined && { tokensToday: s.tokensToday }),
       ...(r.plan && { plan: r.plan }),
       updatedAt: r.updatedAt ?? Date.now(),
+      // how old the limit numbers are, so the phone does not depend on this computer's clock; absent without limits
+      ...(r.updatedAt !== undefined && { limitsAgeMs: Math.max(0, Date.now() - r.updatedAt) }),
     };
   };
   const sendUsage = (force) => {
     if (!phone) return;
     const m = usageMessage();
-    const k = JSON.stringify({ ...m, updatedAt: r0(m) });
+    const k = JSON.stringify({ ...m, updatedAt: r0(m), limitsAgeMs: undefined });
     if (!force && k === lastUsageKey) return;
     lastUsageKey = k;
     lastUsageAt = Date.now();
@@ -145,7 +147,11 @@ export async function startBridge(opts = {}) {
 
   function onEvent(ev, reply) {
     if (ev.event === "StatusLine") {
-      if (limits.update(ev.rateLimits)) scheduleUsage();
+      if (limits.update(ev.rateLimits)) {
+        const u = limits.snapshot();
+        log(`limits: 5 h ${u.fiveHour ? Math.round(u.fiveHour.used * 100) + "%" : "-"}, 7 d ${u.sevenDay ? Math.round(u.sevenDay.used * 100) + "%" : "-"} (from Claude Code's status line)`);
+        scheduleUsage();
+      }
       return reply(null);
     }
     const s = sessions.get(ev.agent, ev.sessionId);
@@ -421,6 +427,7 @@ export async function startBridge(opts = {}) {
     },
     relayState: () => (relay ? relay.state() : "off"),
     relayUrl: () => relayCfg?.url ?? null,
+    limitsAgeMs: () => { const t = limits.snapshot().updatedAt; return t === undefined ? null : Math.max(0, Date.now() - t); },
     flushStats: () => stats.flush(),
     async close() {
       clearInterval(prune);
@@ -561,6 +568,8 @@ async function main() {
   console.log(`  mDNS:        ${b.mdnsName() ? `${b.mdnsName()}._bubby-agent._tcp.local.` : "выключен"}`);
   console.log(`  Сертификат:  ${b.fp.slice(0, 16)}…`);
   console.log(`  Relay:       ${b.relayUrl() ? `${b.relayUrl()} (телефон получит ключ по домашней сети при первом подключении)` : "выключен (--relay URL, чтобы подключаться вне дома)"}`);
+  { const a = b.limitsAgeMs();
+    console.log(`  Лимиты:      ${a === null ? "ещё не получены: обновятся, когда Claude Code напишет ответ (статус-строка)" : `последние данные ${a < 90_000 ? "только что" : Math.round(a / 60_000) + " мин назад"}; обновляются при каждом ответе Claude Code`}`); }
   if (b.pairingCode()) {
     printCode(b.pairingCode());
     console.log(`\n  Код одноразовый, действует 5 минут. Компьютера нет в списке? Введите в приложении ${b.host}:${b.port}.`);

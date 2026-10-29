@@ -122,6 +122,19 @@ object AgentWidgets {
         "working" -> "think"; "approval", "question" -> "surprised"; "problem" -> "sad"; "finished" -> "happy"; "offline" -> "sleepy"; else -> "idle"
     }
 
+    /** "5 min ago" for data older than [afterMin] minutes, "" for fresh data. */
+    fun ago(ctx: Context, at: Long, afterMin: Int = 10): String {
+        if (at <= 0L) return ""
+        val m = ((System.currentTimeMillis() - at) / 60_000L)
+        if (m < afterMin) return ""
+        val h = m / 60
+        return when {
+            h >= 48 -> Tr.t(ctx, "${h / 24} д назад", "${h / 24} d ago", "${h / 24} kun oldin")
+            h >= 1 -> Tr.t(ctx, "$h ч назад", "$h h ago", "$h soat oldin")
+            else -> Tr.t(ctx, "$m мин назад", "$m min ago", "$m daq oldin")
+        }
+    }
+
     /** "2 h 10 min" until [at], or "" when unknown. */
     fun until(ctx: Context, at: Long): String {
         if (at <= 0L) return ""
@@ -259,7 +272,8 @@ object AgentWidgets {
         p.style = Paint.Style.FILL
         text(cv, p, if (used != null) "${(used * 100).toInt()}%" else "—", cx, cy + 8f * d, 26f * d, 0xFFFFFFFF.toInt(), true, true)
         val reset = until(ctx, u?.fiveHourResets ?: 0L)
-        text(cv, p, "Claude · 5 h" + if (reset.isNotEmpty()) "  ·  $reset" else "", cx, h * 0.88f, 11.5f * d, 0xCCFFFFFF.toInt(), false, true, w - 16f * d)
+        val old = if (used != null) ago(ctx, u?.updatedAt ?: 0L) else ""
+        text(cv, p, "Claude · 5 h" + (if (reset.isNotEmpty()) "  ·  $reset" else "") + if (old.isNotEmpty()) "  ·  $old" else "", cx, h * 0.88f, 11.5f * d, 0xCCFFFFFF.toInt(), false, true, w - 16f * d)
         val seven = u?.sevenDay
         if (seven != null) text(cv, p, "7 d: ${(seven * 100).toInt()}%", cx, h * 0.97f, 10.5f * d, 0x99FFFFFF.toInt(), false, true)
     }

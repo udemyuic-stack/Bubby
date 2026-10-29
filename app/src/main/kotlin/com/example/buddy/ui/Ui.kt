@@ -88,7 +88,7 @@ fun View.pressLong(onLong: (() -> Unit)?, onClick: () -> Unit) {
         when (e.actionMasked) {
             MotionEvent.ACTION_DOWN -> {
                 longFired = false
-                v.animate().scaleX(0.97f).scaleY(0.97f).setDuration(80).start()
+                v.animate().cancel(); v.animate().scaleX(0.94f).scaleY(0.94f).setDuration(90).start()
                 if (onLong != null) v.postDelayed(long, 550)
             }
             MotionEvent.ACTION_MOVE -> {
@@ -96,7 +96,7 @@ fun View.pressLong(onLong: (() -> Unit)?, onClick: () -> Unit) {
             }
             MotionEvent.ACTION_UP -> {
                 v.removeCallbacks(long)
-                v.animate().scaleX(1f).scaleY(1f).setDuration(120).start()
+                v.animate().scaleX(1f).scaleY(1f).setDuration(280).setInterpolator(android.view.animation.OvershootInterpolator(3f)).start()
                 if (!longFired && e.x in 0f..v.width.toFloat() && e.y in 0f..v.height.toFloat()) { v.performClick(); onClick() }
             }
             MotionEvent.ACTION_CANCEL -> { v.removeCallbacks(long); v.animate().scaleX(1f).scaleY(1f).setDuration(120).start() }
@@ -254,13 +254,22 @@ class GlassToggle(c: Context) : View(c) {
     private val p = android.graphics.Paint(android.graphics.Paint.ANTI_ALIAS_FLAG)
     private val on = GlassDrawable(GlassKind.Navy, 15f, null, false, c.resources.displayMetrics.density)
     private val off = GlassDrawable(GlassKind.Dim, 15f, null, false, c.resources.displayMetrics.density)
+    private var ring = 0f   // 0..1: the glow that spreads from the track when the switch turns on
     fun toggle() {
         isChecked = !isChecked
         onChange?.invoke(isChecked)
+        if (isChecked) android.animation.ValueAnimator.ofFloat(0f, 1f).apply { duration = 600; addUpdateListener { ring = it.animatedValue as Float; invalidate() }; start() }
     }
     override fun onDraw(cv: android.graphics.Canvas) {
         val d = if (isChecked) on else off
         d.setBounds(0, 0, width, height); d.draw(cv)
+        if (ring > 0f && ring < 1f) {
+            p.style = android.graphics.Paint.Style.STROKE; p.strokeWidth = 2f * resources.displayMetrics.density
+            p.color = Theme.rgb(Theme.cur.glow, ((1f - ring) * 200).toInt())
+            val g = ring * 10f * resources.displayMetrics.density
+            cv.drawRoundRect(-g, -g, width + g, height + g, height / 2f + g, height / 2f + g, p)
+            p.style = android.graphics.Paint.Style.FILL
+        }
         val r = height * .4f
         val x = height / 2f + pos * (width - height)
         p.color = 0x33000000; cv.drawCircle(x, height / 2f + 1.5f, r, p)

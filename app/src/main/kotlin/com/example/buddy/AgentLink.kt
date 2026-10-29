@@ -366,7 +366,9 @@ class AgentLink(ctx: Context, val listener: Listener) {
                     f, fr, w, wr,
                     if (j.has("doneToday") && !j.isNull("doneToday")) j.optInt("doneToday", 0).coerceAtLeast(0) else null,
                     if (j.has("tokensToday") && !j.isNull("tokensToday")) j.optLong("tokensToday", 0L).coerceAtLeast(0L) else null,
-                    str(j, "plan").take(24).ifEmpty { null }, j.optLong("updatedAt", System.currentTimeMillis())
+                    str(j, "plan").take(24).ifEmpty { null },
+                    // the age is measured on the computer: no dependence on the two clocks agreeing
+                    if (j.has("limitsAgeMs")) System.currentTimeMillis() - j.optLong("limitsAgeMs", 0L).coerceAtLeast(0L) else j.optLong("updatedAt", System.currentTimeMillis())
                 )
                 post(g) { listener.onUsage(u) }
             }

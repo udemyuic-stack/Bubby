@@ -276,3 +276,22 @@ All three are far over the 16.6 ms budget on every tab, so the problem is not on
 Method pitfall for the next person: on the Home tab the bottom tab bar does not exist (the radial menu is used), so a tap at the tab bar position does nothing there. Several early "tab" measurements were really the Home tab.
 
 Not yet explained: frame times grew from 30 ms to about 70 ms during one long session in the earlier runs, but a fresh start is faster. Memory growth or WebView re-creation over time is a suspect and still has to be checked with `dumpsys meminfo` over a session.
+
+## Part 10: Looks measured so far (second pass, stopped here on purpose)
+
+Same method as Part 9: fresh start, animated background ON, 6 s windows, `dumpsys gfxinfo`. Values are p50 frame time and the share of janky frames. The budget is 16.6 ms.
+
+- Blue: Settings 73 ms (88%), Tasks 81 ms (75%), Calendar 97 ms (96%), More 93 ms (100%), Home 150 ms (78%).
+- Space: Settings 400 ms (100%), Tasks 400 ms (100%), Calendar 400 ms (100%), More 400 ms (100%), Home 700 ms (100%). About 2.5 frames per second on every tab and 1.4 on Home. This is the slowest look and is close to frozen.
+- Halloween: Settings 129 ms (100%), Tasks 81 ms (77%), Calendar 89 ms (91%), More 97 ms (100%), Home 150 ms (100%).
+- Rainy forest: Settings 350 ms (100%), Tasks 300 ms (100%), Calendar 250 ms (58%), More 350 ms (100%), Home 200 ms (100%). About 3 to 5 fps.
+
+Earlier in this report: Night 77 to 89 ms, Glass 73 to 77 ms, Green 73 to 77 ms (Part 9).
+
+Ranking from the data, worst first: Space, Rainy forest, Halloween and Blue, Night, Glass and Green. Every look is far above 16.6 ms on every tab, so the fix cannot be limited to one scene.
+
+Defect seen while the second pass was running. Right after a look is selected and the Home tab is opened, screenshots of Space and Halloween show only the scene: the radial menu, the mascot, the name and the Start tile are missing, and a light vertical strip is visible at the right edge, like a page slide that did not finish. The phone looked stuck on one page to the user. Either the home page is not drawn for several seconds after a look change, or the transition is starved by the scene WebView. Needs a re-check with a screen recording: for each look, how many seconds pass between the tap on the look card and a complete Home. Screenshots: `specs/screens/home-blank-space.png`, `specs/screens/home-blank-halloween.png`.
+
+Not measured: Ocean, New Year, Glacier. Memory over a session (`dumpsys meminfo`) was not taken. The Home blank-page defect is not reproduced under controlled conditions yet.
+
+Next update starts from here: measure the three missing looks, take meminfo, record the look-change transition, then ask for approval of the spec before any code change.

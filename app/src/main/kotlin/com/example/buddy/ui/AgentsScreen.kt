@@ -40,18 +40,24 @@ class AgentsScreen(act: UiActivity) : Screen(act) {
 
     override fun onShow() {
         reshow()
+        // the link pushes every change: redraw at once (bursts of messages become one redraw); the slow poll below is only a safety net
+        BuddyService.agentChanged = { content.removeCallbacks(redraw); content.postDelayed(redraw, 120) }
         if (polling) return
         polling = true
         val tick = object : Runnable {
             override fun run() {
                 // gone, or the app went to the background: stop (onShow starts it again on return)
-                if (!content.isAttachedToWindow || content.windowVisibility != View.VISIBLE) { polling = false; return }
-                // the pairing check decrypts the token through the Keystore: only done when the live state really changed
-                if (live() != shownLive && Backend.agentStatus(ctx).paired) refresh()
+                if (!content.isAttachedToWindow || content.windowVisibility != View.VISIBLE) { polling = false; BuddyService.agentChanged = null; return }
+                redraw.run()
                 content.postDelayed(this, 2000)
             }
         }
         content.postDelayed(tick, 2000)
+    }
+
+    /** Redraws only when something the page shows has changed (the pairing check decrypts the token through the Keystore). */
+    private val redraw = Runnable {
+        if (content.isAttachedToWindow && live() != shownLive && Backend.agentStatus(ctx).paired) refresh()
     }
 
     private fun stateInfo(s: String): Pair<String, Int> = when (s) {

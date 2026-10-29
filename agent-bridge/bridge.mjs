@@ -21,6 +21,7 @@ import { planHooks, applyHooks } from "./lib/hooks.mjs";
 import { planAgent, applyAgentPlan, validAgent, INSTALLERS } from "./lib/agents.mjs";
 import { offerable, answersFromPicks } from "./lib/questions.mjs";
 import { createSessions, sessionsMessage, pillIdOf, stepOf, finalLineOf } from "./lib/sessions.mjs";
+import { createTranscriptWatcher } from "./lib/transcripts.mjs";
 import { createRunner } from "./lib/runner.mjs";
 import path from "node:path";
 import { createRelayClient, loadRelay, saveRelay, forgetRelay, rotateRelay } from "./lib/relay.mjs";
@@ -161,7 +162,25 @@ export async function startBridge(opts = {}) {
     if (s && (s.state === "approval" || s.state === "question")) touch({ agent: p.agent, sessionId: p.sessionId }, { state: "working", statusText: "Working" });
   };
 
+  // Claude Code sessions that started before the hooks were installed never call them: they are followed through their
+  // transcript files instead, until a hook event for the same session arrives (hooks then take over).
+  const followed = new Set();
+  const watcher = opts.transcripts ? createTranscriptWatcher({
+    root: typeof opts.transcripts === "string" ? opts.transcripts : undefined,
+    intervalMs: opts.transcriptsMs,
+    skip: (id) => !followed.has(id) && !!sessions.get(null, id),
+    onSession: (id, i) => {
+      followed.add(id);
+      if (i.step) sessions.step(null, stepOf(i.step.name, i.step.text));
+      sessions.touch(null, id, { state: i.state, statusText: i.statusText, project: i.project, steps: (sessions.get(null, id)?.steps ?? 0) + (i.step ? 1 : 0) });
+      pushSessions();
+    },
+    onEnd: (id) => { if (followed.delete(id)) { sessions.end(null, id); pushSessions(); } },
+  }) : null;
+  watcher?.start();
+
   function onEvent(ev, reply) {
+    followed.delete(ev.sessionId);
     if (ev.event === "StatusLine") {
       if (limits.update(ev.rateLimits)) {
         const u = limits.snapshot();
@@ -456,6 +475,7 @@ export async function startBridge(opts = {}) {
     async close() {
       clearInterval(prune);
       clearInterval(usageTick);
+      watcher?.stop();
       clearTimeout(usageTimer);
       relay?.close();
       runner?.stopAll();
@@ -491,7 +511,8 @@ const HELP = `node bridge.mjs [options]
   --host IPv4           LAN address to listen on (default: first private IPv4)
   --port N              TCP port (default 47821)
   --name NAME           computer name shown on the phone (default: host name)
-  --no-mdns             do not advertise over mDNS`;
+  --no-mdns             do not advertise over mDNS
+  --no-transcripts      do not follow Claude Code sessions through their transcript files (hooks only)`;
 
 const headline = (code) => `Open Bubby on your phone → Agents → tap this computer → type ${code}`;
 
@@ -571,6 +592,7 @@ async function main() {
   const b = await startBridge({
     dir, host: arg("host"), port: arg("port") ? Number(arg("port")) : undefined, name: arg("name"),
     mdns: !has("no-mdns"),
+    transcripts: !has("no-transcripts"),
     caps: { details: !has("no-details"), answers: !has("no-answers"), diffs: !has("no-diffs"), always: !has("no-always") },
     run: has("allow-run") ? (() => {
       const wd = path.resolve((arg("workdir") ?? process.cwd()).replace(/^~(?=$|\/)/, os.homedir()));

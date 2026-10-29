@@ -175,26 +175,30 @@ class BuddyService : Service() {
             agentConnected = connected; agentDesktop = desktop; agentViaRelay = connected && (agentLink?.viaRelay == true)
             agentCaps = if (connected) agentLink?.caps ?: emptySet() else emptySet()
             AgentStats.refreshWidgets(this@BuddyService)
+            agentChanged?.invoke()
         }
-        override fun onSessions(list: List<AgentSession>) { agentSessions = list; AgentStats.refreshWidgets(this@BuddyService) }
-        override fun onProjects(list: List<String>, current: String) { agentProjects = list to current }
-        override fun onRun(id: String, state: String, text: String) { agentRun = Triple(id, state, text) }
-        override fun onUsage(u: Usage) { agentUsage = u; AgentStats.save(this@BuddyService, u); AgentStats.refreshWidgets(this@BuddyService) }
+        override fun onSessions(list: List<AgentSession>) { agentSessions = list; AgentStats.refreshWidgets(this@BuddyService); agentChanged?.invoke() }
+        override fun onProjects(list: List<String>, current: String) { agentProjects = list to current; agentChanged?.invoke() }
+        override fun onRun(id: String, state: String, text: String) { agentRun = Triple(id, state, text); agentChanged?.invoke() }
+        override fun onUsage(u: Usage) { agentUsage = u; AgentStats.save(this@BuddyService, u); AgentStats.refreshWidgets(this@BuddyService); agentChanged?.invoke() }
         override fun onApproval(a: Approval) {
             if (approvals.none { it.fingerprint == a.fingerprint }) approvals.add(a)
             publishApprovals()
             showApproval(announce = true)
+            agentChanged?.invoke()
         }
         override fun onApprovalResolved(fp: String) {
             approvals.removeAll { it.fingerprint == fp }
             questions.removeAll { it.fingerprint == fp }
             publishApprovals()
             showApproval(announce = false)
+            agentChanged?.invoke()
         }
         override fun onQuestion(q: AgentQuestion) {
             if (questions.none { it.fingerprint == q.fingerprint }) questions.add(q)
             publishApprovals()
             showApproval(announce = true)
+            agentChanged?.invoke()
         }
         override fun onDiff(d: DiffPart) { agentDiffSink?.invoke(d) }
     }
@@ -237,6 +241,8 @@ class BuddyService : Service() {
         @Volatile var agentProjects: Pair<List<String>, String> = emptyList<String>() to ""
         /** What the connected bridge offered (`details`, `answers`, `diffs`); empty for an older bridge or offline. */
         @Volatile var agentCaps: Set<String> = emptySet()
+        /** Called on the main thread whenever anything about the computer's agents changed; the open Agents page redraws at once. */
+        @Volatile var agentChanged: (() -> Unit)? = null
         /** The open diff sheet: gets each part asked for with ACTION_AGENT_GET_DIFF, or null when it could not be asked. */
         @Volatile var agentDiffSink: ((DiffPart?) -> Unit)? = null
         const val ACTION_AGENT_ANSWER = "com.example.buddy.AGENT_ANSWER"

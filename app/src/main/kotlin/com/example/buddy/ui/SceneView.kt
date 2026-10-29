@@ -19,6 +19,12 @@ class SceneView(c: Context) : WebView(c) {
     private var loaded: String? = null
     private var wanted: String? = null
     private var active = true
+    private var pendingSlide: String? = null
+    private val client = object : WebViewClient() {
+        override fun shouldOverrideUrlLoading(v: WebView, r: WebResourceRequest) = true   // nothing navigates away
+        override fun onPageFinished(v: WebView, url: String?) { pendingSlide?.let { try { v.evaluateJavascript(it, null) } catch (_: Exception) { } } }
+    }
+
 
     init {
         setBackgroundColor(Color.TRANSPARENT)
@@ -31,9 +37,7 @@ class SceneView(c: Context) : WebView(c) {
         settings.blockNetworkLoads = true
         settings.cacheMode = android.webkit.WebSettings.LOAD_NO_CACHE
         setLayerType(LAYER_TYPE_HARDWARE, null)
-        webViewClient = object : WebViewClient() {
-            override fun shouldOverrideUrlLoading(v: WebView, r: WebResourceRequest) = true   // nothing navigates away
-        }
+        webViewClient = client
         visibility = View.GONE
     }
 
@@ -48,6 +52,13 @@ class SceneView(c: Context) : WebView(c) {
         if (loaded != name) { loaded = name; loadUrl("file:///android_asset/scene/$name.html") }
         visibility = View.VISIBLE
         if (active) resumeWeb()
+    }
+
+    /** The scene drifts 8 px per page, as in the mockups. */
+    fun slideTo(page: Int) {
+        val js = "(function(){var s=document.querySelector('.scene');if(s&&s.animate)s.animate({translate:['" + (-page * 8) + "px 0']},{duration:900,easing:'cubic-bezier(.22,1,.36,1)',fill:'forwards'})})()"
+        try { evaluateJavascript(js, null) } catch (_: Exception) { }
+        pendingSlide = js
     }
 
     fun onAppResume() { active = true; if (wanted != null) resumeWeb() }

@@ -179,8 +179,9 @@ class UiActivity : Activity() {
         body.addView(tabs[i].view(), FrameLayout.LayoutParams(MATCH, MATCH))
         setBars(i != 0 && !Glass.NIGHT)
         bgHome.visibility = if (i == 0) View.VISIBLE else View.GONE
-        // the menu page stays calm; the themed home page carries its own scene
-        scene?.setScene(if (i == 4 || (i == 0 && (tabs[0] as HomeScreen).themed)) null else Theme.cur.scene)
+        // every page has the scene behind it (it slides a little from page to page, like in the design); the themed home page carries its own
+        scene?.setScene(if (i == 0 && (tabs[0] as HomeScreen).themed) null else Theme.cur.scene)
+        scene?.slideTo(i)
         (tabs[0] as HomeScreen).let { if (i == 0) it.wakeWeb() else it.restWeb() }
         bgSub.visibility = if (i == 0) View.GONE else View.VISIBLE
         navFrame.removeAllViews()

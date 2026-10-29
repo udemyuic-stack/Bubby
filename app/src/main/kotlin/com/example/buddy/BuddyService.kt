@@ -177,6 +177,7 @@ class BuddyService : Service() {
             AgentStats.refreshWidgets(this@BuddyService)
         }
         override fun onSessions(list: List<AgentSession>) { agentSessions = list; AgentStats.refreshWidgets(this@BuddyService) }
+        override fun onRun(id: String, state: String, text: String) { agentRun = Triple(id, state, text) }
         override fun onUsage(u: Usage) { agentUsage = u; AgentStats.save(this@BuddyService, u); AgentStats.refreshWidgets(this@BuddyService) }
         override fun onApproval(a: Approval) {
             if (approvals.none { it.fingerprint == a.fingerprint }) approvals.add(a)
@@ -229,6 +230,8 @@ class BuddyService : Service() {
         @Volatile var agentApprovals: List<Approval> = emptyList()
         /** Questions from Claude Code waiting for an answer (answers go back through ACTION_AGENT_ANSWER). */
         @Volatile var agentQuestions: List<AgentQuestion> = emptyList()
+        /** The task started from the phone: (id, state, text) or null. */
+        @Volatile var agentRun: Triple<String, String, String>? = null
         /** What the connected bridge offered (`details`, `answers`, `diffs`); empty for an older bridge or offline. */
         @Volatile var agentCaps: Set<String> = emptySet()
         /** The open diff sheet: gets each part asked for with ACTION_AGENT_GET_DIFF, or null when it could not be asked. */
@@ -242,6 +245,8 @@ class BuddyService : Service() {
         const val ACTION_TOGGLE_QUIET = "com.example.buddy.TOGGLE_QUIET"
         const val ACTION_AGENT_RELOAD = "com.example.buddy.AGENT_RELOAD"
         const val ACTION_AGENT_DECIDE = "com.example.buddy.AGENT_DECIDE"
+        const val ACTION_AGENT_RUN = "com.example.buddy.AGENT_RUN"
+        const val ACTION_AGENT_RUN_STOP = "com.example.buddy.AGENT_RUN_STOP"
         const val ACTION_LISTEN = "com.example.buddy.LISTEN"
         private val WAKE_NAMES = setOf("bubby", "buby", "bubbi", "bubi", "buuby", "буби", "бубби", "бабби", "бубы", "бубя")
         // close to "bubby"/"buby" in spelling but ordinary words
@@ -340,6 +345,11 @@ class BuddyService : Service() {
         when (i?.action) {
             Reminders.ACTION_SPEAK -> remind(i.getStringExtra("text").orEmpty())
             ACTION_AGENT_RELOAD -> startAgentLink()
+            ACTION_AGENT_RUN -> {
+                val id = i.getStringExtra("id").orEmpty(); val text = i.getStringExtra("prompt").orEmpty()
+                if (agentLink?.runTask(id, text) == true) agentRun = Triple(id, "running", "") else agentRun = Triple(id, "error", t("Не отправилось: компьютер не принимает задачи (запустите мост с --allow-run)", "Not sent: the computer does not take tasks (start the bridge with --allow-run)", "Yuborilmadi: kompyuter vazifa qabul qilmayapti (bridge'ni --allow-run bilan ishga tushiring)"))
+            }
+            ACTION_AGENT_RUN_STOP -> agentLink?.stopTask(i.getStringExtra("id").orEmpty())
             ACTION_AGENT_DECIDE -> i.getStringExtra("fp")?.let { fp -> agentLink?.decide(fp, i.getBooleanExtra("allow", false), i.getBooleanExtra("always", false)); resolveLocal(fp) }
             // the app asked for the screen lock already; picks is a JSON list of label lists, checked again by AgentLink
             ACTION_AGENT_ANSWER -> i.getStringExtra("fp")?.let { fp ->

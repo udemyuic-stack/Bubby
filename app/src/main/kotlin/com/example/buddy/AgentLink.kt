@@ -62,6 +62,8 @@ class AgentLink(ctx: Context, val listener: Listener) {
         fun onApproval(a: Approval)
         fun onApprovalResolved(fp: String)
         fun onUsage(u: Usage) {}
+        /** State of the task started from the phone: running, done, error or stopped (capability `run`). */
+        fun onRun(id: String, state: String, text: String) {}
         /** A question from Claude Code (only with the `answers` capability); it ends with [onApprovalResolved]. */
         fun onQuestion(q: AgentQuestion) {}
         /** One part of a diff asked for with [getDiff]. */
@@ -139,6 +141,19 @@ class AgentLink(ctx: Context, val listener: Listener) {
         decided.add(fingerprint)
         out.add(JSONObject().put("type", "answer").put("fingerprint", fingerprint)
             .put("picks", JSONArray().apply { for (p in picks) put(JSONArray(p)) }).toString())
+        return true
+    }
+
+    /** Starts a Claude Code task on the computer (capability `run`; the computer must have been started with --allow-run). */
+    fun runTask(id: String, prompt: String): Boolean {
+        if (!connected || "run" !in caps || prompt.isBlank() || prompt.length > 4000) return false
+        out.add(JSONObject().put("type", "run").put("id", id).put("prompt", prompt).toString())
+        return true
+    }
+
+    fun stopTask(id: String): Boolean {
+        if (!connected || "run" !in caps) return false
+        out.add(JSONObject().put("type", "runStop").put("id", id).toString())
         return true
     }
 
@@ -354,6 +369,10 @@ class AgentLink(ctx: Context, val listener: Listener) {
                     str(j, "plan").take(24).ifEmpty { null }, j.optLong("updatedAt", System.currentTimeMillis())
                 )
                 post(g) { listener.onUsage(u) }
+            }
+            "runState" -> if (welcomed && "run" in caps) {
+                val id = str(j, "id").take(40); val st = str(j, "state"); val tx = str(j, "text").take(4000)
+                if (id.isNotEmpty() && st in setOf("running", "done", "error", "stopped")) post(g) { listener.onRun(id, st, tx) }
             }
             // the computer tells us where its relay is (only on the home-network link, which is certificate-pinned)
             "relay" -> if (welcomed && !viaRelay && "relay" in caps) {

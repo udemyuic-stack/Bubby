@@ -36,7 +36,7 @@ data class DiffPart(
 
 object AgentProto {
     /** What this phone understands; it uses only those that `welcome.caps` offers back. */
-    val CAPS = listOf("details", "answers", "diffs", "relay", "always")
+    val CAPS = listOf("details", "answers", "diffs", "relay", "always", "run")
 
     const val MAX_SESSIONS = 50
     const val MAX_AGENT = 40

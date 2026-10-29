@@ -32,7 +32,7 @@ class AgentsScreen(act: UiActivity) : Screen(act) {
     /** What the page last showed of the live link state; the poll redraws only when it changes. */
     private var shownLive: Any? = null
     private fun live(): Any = listOf(BuddyService.agentDesktop, BuddyService.agentConnected, BuddyService.agentViaRelay, BuddyService.agentSessions, BuddyService.agentUsage, BuddyService.agentApprovals,
-        BuddyService.agentQuestions, BuddyService.agentCaps)
+        BuddyService.agentQuestions, BuddyService.agentCaps, BuddyService.agentRun)
     private val openSteps = HashSet<String>()     // sessions whose step list is unfolded
     private val allFiles = HashSet<String>()      // sessions showing every changed file, not only the first few
     private val qSel = HashMap<String, List<Set<Int>>>()   // picks so far per question fingerprint (kept across redraws)
@@ -329,6 +329,9 @@ class AgentsScreen(act: UiActivity) : Screen(act) {
             })
         }, MATCH, WRAP, bottom = 12)
 
+        // a task for Claude Code, started from the phone (only when the computer allows it)
+        if ("run" in BuddyService.agentCaps) c.add(runCard(), MATCH, WRAP, bottom = 12)
+
         // requests waiting for an answer
         for (ap in BuddyService.agentApprovals) c.add(ctx.card(pad = 16, fill = P.warning.let { P.alpha(it, 40) }, stroke = P.warning) {
             add(ctx.row {
@@ -398,6 +401,56 @@ class AgentsScreen(act: UiActivity) : Screen(act) {
             }
         }, MATCH, WRAP, bottom = 8)
         c.add(ctx.button(t("Отключить", "Disconnect", "Uzish"), BtnStyle.Outline) { unpair() }, MATCH, WRAP, top = 8)
+    }
+
+    private var taskDraft = ""
+
+    private fun runCard(): LinearLayout = ctx.card(pad = 16) {
+        val run = BuddyService.agentRun
+        val running = run?.second == "running"
+        add(ctx.row {
+            add(ctx.icon(R.drawable.ic_bolt, P.primary, 24), WRAP, WRAP, end = 10)
+            add(ctx.text(t("Задача для Claude Code", "Task for Claude Code", "Claude Code uchun vazifa"), T.Title), 0, WRAP, 1f)
+        })
+        val field = ctx.field(t("Что сделать на компьютере?", "What should it do on the computer?", "Kompyuterda nima qilsin?")).apply {
+            setText(taskDraft); minLines = 2; maxLines = 5
+            addTextChangedListener(object : android.text.TextWatcher {
+                override fun afterTextChanged(e: android.text.Editable?) { taskDraft = e?.toString().orEmpty() }
+                override fun beforeTextChanged(s: CharSequence?, a: Int, b: Int, c: Int) {}
+                override fun onTextChanged(s: CharSequence?, a: Int, b: Int, c: Int) {}
+            })
+            isEnabled = !running
+        }
+        add(field, MATCH, WRAP, top = 10)
+        add(ctx.row {
+            if (running) {
+                add(ctx.button(t("Остановить", "Stop", "To'xtatish"), BtnStyle.Outline) {
+                    ctx.startService(android.content.Intent(ctx, BuddyService::class.java).setAction(BuddyService.ACTION_AGENT_RUN_STOP).putExtra("id", run!!.first))
+                }, MATCH, WRAP)
+            } else {
+                add(ctx.button(t("Отправить", "Send", "Yuborish")) {
+                    val text = field.text.toString().trim()
+                    if (text.isEmpty()) { ctx.toast(t("Напишите задачу", "Write the task", "Vazifani yozing")); return@button }
+                    // the lock screen (PIN, pattern, fingerprint) must confirm first, like allowing a request
+                    com.example.buddy.ConfirmActivity.request(ctx) { ok ->
+                        if (ok) {
+                            taskDraft = ""
+                            ctx.startService(android.content.Intent(ctx, BuddyService::class.java).setAction(BuddyService.ACTION_AGENT_RUN)
+                                .putExtra("id", "t" + System.currentTimeMillis()).putExtra("prompt", text))
+                            content.postDelayed({ refresh() }, 300)
+                        } else ctx.toast(t("Нужен экран блокировки", "Lock screen required", "Ekran qulfi kerak"))
+                    }
+                }, MATCH, WRAP)
+            }
+        }, MATCH, WRAP, top = 8)
+        if (run != null) {
+            val label = when (run.second) { "running" -> t("Работает…", "Working…", "Ishlayapti…"); "done" -> t("Готово", "Done", "Tayyor")
+                "stopped" -> t("Остановлено", "Stopped", "To'xtatildi"); else -> t("Ошибка", "Error", "Xato") }
+            add(ctx.text(label, T.Label), MATCH, WRAP, top = 12)
+            if (run.third.isNotEmpty()) add(ctx.text(run.third, T.Body).apply { setTextIsSelectable(true); maxLines = 14; ellipsize = android.text.TextUtils.TruncateAt.END
+                background = ctx.rounded(P.container, 12f); setPadding(ctx.dp(10), ctx.dp(8), ctx.dp(10), ctx.dp(8)) }, MATCH, WRAP, top = 6)
+            add(ctx.text(t("Каждое действие задачи спросит разрешение на телефоне", "Each action of the task asks for permission on the phone", "Vazifaning har bir amali telefondan ruxsat so'raydi"), T.Small), MATCH, WRAP, top = 8)
+        }
     }
 
     private fun decide(fp: String, allow: Boolean, always: Boolean = false) {

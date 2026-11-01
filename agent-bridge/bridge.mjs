@@ -22,7 +22,10 @@ import { planAgent, applyAgentPlan, validAgent, INSTALLERS } from "./lib/agents.
 import { offerable, answersFromPicks } from "./lib/questions.mjs";
 import { createSessions, sessionsMessage, pillIdOf, stepOf, finalLineOf } from "./lib/sessions.mjs";
 import { createTranscriptWatcher } from "./lib/transcripts.mjs";
-import { createRunner } from "./lib/runner.mjs";
+import { createRunner, MAX_PROMPT } from "./lib/runner.mjs";
+import { openTerminal, terminalAvailable } from "./lib/terminal.mjs";
+import { createRunHistory } from "./lib/runHistory.mjs";
+import { createDesktopSessions } from "./lib/desktopSessions.mjs";
 import path from "node:path";
 import { createRelayClient, loadRelay, saveRelay, forgetRelay, rotateRelay } from "./lib/relay.mjs";
 
@@ -33,7 +36,7 @@ const FAIL_DELAY_MS = 300;
 const HOOK_LINE_MAX = 4 * 1024 * 1024; // a file edit can be large; hook.mjs keeps it under ~1 MiB
 // only plain tool names can be remembered, and Bash only with its exact (non-empty, single-line) command
 const alwaysOk = (tool, command) => /^[A-Za-z0-9_.:-]{1,60}$/.test(tool ?? "") && tool !== "AskUserQuestion" && (tool !== "Bash" || (typeof command === "string" && command.length > 0 && !command.includes("\n")));
-export const CAPS = ["details", "answers", "diffs", "always", "run"];
+export const CAPS = ["details", "answers", "diffs", "always", "run", "runlive"];
 // "relay" is offered only on the LAN link, and only when a relay is configured: it hands the phone the relay address and key
 const RELAY_CAP = "relay";
 const DIFF_LINES = 200, DIFF_LINE_CHARS = 400, DIFF_PART = 100;
@@ -68,7 +71,7 @@ export async function startBridge(opts = {}) {
   const log = opts.log ?? (() => {});
   // capabilities this bridge offers (--no-details / --no-answers / --no-diffs turn them off)
   const runCfg = opts.run ?? null; // {bin, workdir}: the phone may start a headless Claude Code task (only with --allow-run)
-  const enabled = new Set(CAPS.filter((c) => opts.caps?.[c] !== false && (c !== "run" || runCfg)));
+  const enabled = new Set(CAPS.filter((c) => opts.caps?.[c] !== false && (!["run", "runlive"].includes(c) || runCfg)));
   const relayCfg = opts.relay === false ? null : (opts.relay ?? loadRelay(dir));
   const { key, cert, fp: certFp } = ensureCert(dir);
   let token = loadToken(dir) ?? newToken(dir);
@@ -96,12 +99,51 @@ export async function startBridge(opts = {}) {
     const full = path.join(runCfg.root, name);
     try { return fs.statSync(full).isDirectory() ? full : null; } catch { return null; }
   };
+  const insideRoot = (dir) => {
+    if (typeof dir !== "string" || !path.isAbsolute(dir) || !runCfg?.root) return false;
+    const rel = path.relative(path.resolve(runCfg.root), path.resolve(dir));
+    if (rel.startsWith("..") || path.isAbsolute(rel)) return false;
+    try { return fs.statSync(dir).isDirectory(); } catch { return false; }
+  };
+  const desktop = opts.desktopSessions ?? createDesktopSessions();
+  const desktopMessage = () => ({ type: "desktopSessions", list: desktop.list().map((s) => ({ id: s.id, title: s.title, project: path.basename(s.cwd), at: s.lastActivityAt })) });
   let lastRun = null;
+  const history = runCfg ? createRunHistory(dir) : null;
+  const runMeta = new Map();
+  const ownSessions = new Map();
+  const runsMessage = () => ({ type: "runs", list: history?.list() ?? [] });
+  const recordRun = (st) => {
+    if (st.sessionId) {
+      ownSessions.set(st.sessionId, { id: st.sessionId, cwd: runMeta.get(st.id)?.cwd ?? runCfg.workdir });
+      if (ownSessions.size > 50) ownSessions.delete(ownSessions.keys().next().value);
+    }
+    if (!["done", "error", "stopped"].includes(st.state)) return;
+    const meta = runMeta.get(st.id);
+    runMeta.delete(st.id);
+    if (history?.add({ ...st, project: meta ? path.basename(meta.cwd) : "", prompt: meta?.prompt ?? "", at: Date.now() }) && phone?.caps.has("run")) phone.send(runsMessage());
+  };
   const runner = runCfg ? createRunner({ bin: runCfg.bin, workdir: runCfg.workdir, onState: (st) => {
+    if (st.state === "progress") { if (phone?.caps.has("runlive")) phone.send({ type: "runState", ...st }); return; }
     lastRun = st;
     log(`task ${st.id}: ${st.state}`);
     phone?.send({ type: "runState", ...st });
+    recordRun(st);
   } }) : null;
+  const startHeadless = (id, prompt, cwd, resumeId) => {
+    if (typeof id === "string" && typeof prompt === "string") runMeta.set(id, { cwd, prompt });
+    if (!runner.start(id, prompt, cwd, resumeId, Boolean(phone?.caps.has("runlive")))) runMeta.delete(id);
+  };
+  const useTerminal = () => Boolean(runCfg?.terminal) && (runCfg.terminalAvailable ?? terminalAvailable)();
+  const openOnComputer = async (id, prompt, cwd, resumeId) => {
+    const runId = typeof id === "string" ? id.slice(0, 40) : "";
+    const report = (st) => { lastRun = st; log(`task ${st.id}: ${st.state} (terminal)`); phone?.send({ type: "runState", ...st }); recordRun(st); };
+    if (typeof prompt === "string") runMeta.set(runId, { cwd, prompt });
+    if (!/^[A-Za-z0-9_-]{1,40}$/.test(runId)) return;
+    if (typeof prompt !== "string" || !prompt.trim() || prompt.length > MAX_PROMPT) return report({ id: runId, state: "error", text: "bad task" });
+    const sessionId = resumeId ?? crypto.randomUUID();
+    const r = await (runCfg.openTerminal ?? openTerminal)({ cwd, bin: runCfg.bin, prompt, sessionId, resume: Boolean(resumeId) });
+    report(r.ok ? { id: runId, state: "done", text: "Opened in a terminal on the computer", sessionId } : { id: runId, state: "error", text: r.reason });
+  };
   const pushSessions = () => phone?.send(sessionsMessage(sessions.list(phone.caps)));
 
   // usage: plan limits from the statusLine relay (V3 section 1) + today's counters (V2 section 3).
@@ -284,6 +326,8 @@ export async function startBridge(opts = {}) {
       if (caps.has(RELAY_CAP) && relayCfg) send({ type: "relay", url: relayCfg.url, key: relayCfg.rk });
       pushSessions();
       if (caps.has("run")) send({ type: "projects", list: projectList(), current: runCfg?.workdir ? path.basename(runCfg.workdir) : "" });
+      if (caps.has("run")) send(desktopMessage());
+      if (caps.has("run")) send(runsMessage());
       if (caps.has("run") && lastRun) send({ type: "runState", ...lastRun });
       lastUsageKey = "";
       sendUsage(true);
@@ -363,7 +407,20 @@ export async function startBridge(opts = {}) {
             cwd = projectDir(m.project);
             if (!cwd) return void send({ type: "runState", id: id.slice(0, 40), state: "error", text: "unknown project" });
           }
-          return void runner.start(id, m.prompt, cwd);
+          if (m.sessionId === undefined || m.sessionId === null || m.sessionId === "") return void (useTerminal() ? openOnComputer(id, m.prompt, cwd, null) : startHeadless(id, m.prompt, cwd, null));
+          const target = desktop.find(m.sessionId) ?? ownSessions.get(m.sessionId) ?? null;
+          if (!target) return void send({ type: "runState", id: id.slice(0, 40), state: "error", text: "unknown session" });
+          if (!insideRoot(target.cwd)) return void send({ type: "runState", id: id.slice(0, 40), state: "error", text: "that session is outside the allowed projects folder" });
+          if (desktop.busy(target.id)) return void send({ type: "runState", id: id.slice(0, 40), state: "error", text: "that session is busy in Claude Desktop, try again in a few minutes" });
+          return void (useTerminal() ? openOnComputer(id, m.prompt, target.cwd, target.id) : startHeadless(id, m.prompt, target.cwd, target.id));
+        }
+        case "runs": {
+          if (!caps.has("run")) return;
+          return void send(runsMessage());
+        }
+        case "desktopSessions": {
+          if (!caps.has("run")) return;
+          return void send(desktopMessage());
         }
         case "runStop": {
           if (!caps.has("run") || !runner) return;
@@ -501,6 +558,7 @@ const HELP = `node bridge.mjs [options]
   --no-details          do not offer session details (project, steps, final line) to the phone
   --no-answers          do not let the phone answer Claude Code's questions
   --allow-run           let the phone start a Claude Code task (claude -p); the phone picks the project among the folders of --projects DIR (default: the folder that holds the current one); --workdir DIR is the default project; each tool it uses is asked on the phone
+  --terminal            with --allow-run: a task from the phone opens in a Ghostty window on this computer (interactive claude); without it, or with no screen, it runs headless
   --no-always           no "Always" button: the phone can only allow one request at a time
   --no-diffs            do not offer the files an agent changed to the phone
   --relay URL           also reach the phone from outside the home network through your own Cloudflare relay (relay/README.md)
@@ -598,7 +656,7 @@ async function main() {
       const wd = path.resolve((arg("workdir") ?? process.cwd()).replace(/^~(?=$|\/)/, os.homedir()));
       // the folders the phone can choose from: --projects DIR, or the folder that holds this one (where your projects usually are)
       const root = path.resolve((arg("projects") ?? path.dirname(wd)).replace(/^~(?=$|\/)/, os.homedir()));
-      return { bin: arg("claude-bin") ?? "claude", workdir: wd, root };
+      return { bin: arg("claude-bin") ?? "claude", workdir: wd, root, terminal: has("terminal") };
     })() : null,
     log: (m) => console.log(new Date().toISOString(), m),
     onCode: (code, why) => {

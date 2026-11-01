@@ -24,7 +24,7 @@ class RoomShopScreen(act: UiActivity, private val fromGame: Boolean = false) : S
     private fun loadStars(): Int {
         val list = ArrayList<Int>()
         for (i in 0 until MatchLevels.all.size) list.add(prefs.getInt("bm_stars_$i", 0))
-        return RoomItems.starsTotal(list)
+        return RoomItems.starsTotal(list) + DailyStreak.bonus(ctx)
     }
 
     private fun save() { prefs.edit().putString(RoomItems.PREF_KEY, RoomItems.serialize(owned)).apply() }

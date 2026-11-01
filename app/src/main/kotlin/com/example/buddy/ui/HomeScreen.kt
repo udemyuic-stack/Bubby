@@ -244,6 +244,11 @@ class HomeScreen(act: UiActivity) : Screen(act) {
         paintMute()
         muteV.press { Backend.setBool(ctx, "silent", !Backend.bool(ctx, "silent", false)); paintMute() }
         scene.put(muteV, 296f, 250f, 78f, 32f)
+        if (home == null && Theme.cur.id == "glass") {
+            val shatter = ShatterOverlay(ctx)
+            scene.put(shatter, 0f, 0f, 390f, 668f)
+            mascot.onPoke = { px, py -> shatter.tap(mascot.left + px, mascot.top + py) }
+        }
         if (home == null) {
         scene.put(CollarView(ctx, sc), 0f, 380f, 390f, 140f)
         fun petal(kind: GlassKind, icon: Int, label: String, l: Float, tp: Float, w: Float, h: Float, ang: Float, tc: Int, size: Int = 12, bold: Boolean = false, go: () -> Unit) {

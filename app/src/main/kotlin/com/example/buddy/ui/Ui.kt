@@ -204,7 +204,34 @@ fun Context.field(hint: String, value: String = "", multiline: Boolean = false, 
             else -> InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_CAP_SENTENCES
         }
         if (multiline) { minLines = 3; gravity = Gravity.TOP }
+        keepVisible()
     }
+
+fun EditText.keepVisible() {
+    setOnFocusChangeListener { v, focused ->
+        if (focused) v.postDelayed({
+            if (v.isAttachedToWindow) v.requestRectangleOnScreen(android.graphics.Rect(0, 0, v.width, v.height + v.context.dp(24)))
+        }, 350)
+    }
+}
+
+fun Context.isOnline(): Boolean {
+    val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as? android.net.ConnectivityManager ?: return true
+    val caps = cm.getNetworkCapabilities(cm.activeNetwork ?: return false) ?: return false
+    return caps.hasCapability(android.net.NetworkCapabilities.NET_CAPABILITY_INTERNET)
+}
+
+fun android.app.Activity.runIfAlive(block: () -> Unit) {
+    runOnUiThread { if (!isFinishing && !isDestroyed) block() }
+}
+
+fun Context.offlineCard(message: String, retry: () -> Unit): View = card(pad = 12, fill = P.errorContainer, stroke = 0) {
+    add(row(Gravity.CENTER_VERTICAL) {
+        add(icon(R.drawable.ic_wifi, P.onErrorContainer, 22), WRAP, WRAP, end = 8)
+        add(text(message, T.Body, P.onErrorContainer), 0, WRAP, 1f)
+        add(button(com.example.buddy.Tr.t(this@offlineCard, "Повторить", "Retry", "Qayta urinish"), BtnStyle.Text) { retry() }, WRAP, WRAP)
+    })
+}
 
 fun Context.toast(s: String) = Toast.makeText(this, s, Toast.LENGTH_SHORT).show()
 

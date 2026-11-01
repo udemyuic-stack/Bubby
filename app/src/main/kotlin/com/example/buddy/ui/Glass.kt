@@ -509,7 +509,7 @@ class GlassCritter(val kind: String = Theme.cur.mascot, private val def: ThemeDe
     val animated get() = kind in ART
 
     fun draw(cv: Canvas) {
-        if (kind in ART) { val a = SvgArt.get(kind); if (a != null) { a.draw(cv, android.os.SystemClock.uptimeMillis() / 1000f, squash); return } }
+        if (kind in ART) { val a = SvgArt.get(kind); if (a != null) { a.tapP = -1f; a.draw(cv, android.os.SystemClock.uptimeMillis() / 1000f, squash); return } }
         if (kind == "cube") { drawCube(cv); return }
         if (kind != "mochi") { drawCritter(cv); return }
         if (withHalo) {
@@ -553,6 +553,7 @@ class MochiView(c: Context, withHalo: Boolean = true) : View(c) {
         set(v) { field = v; invalidate() }
     var mini = false
     /** Tap reaction (like pressing the little round-screen pet): flatten under the finger, spring back with sparks, eyes pop open. */
+    var onPoke: ((Float, Float) -> Unit)? = null
     var pokeable = false
         set(v) { field = v; if (v) isClickable = true }
     private var press = 0f            // 0..1 how flat it is under the finger
@@ -573,7 +574,7 @@ class MochiView(c: Context, withHalo: Boolean = true) : View(c) {
             android.view.MotionEvent.ACTION_DOWN -> { popAt = 0L; pressTo(1f, 90); return true }
             android.view.MotionEvent.ACTION_UP, android.view.MotionEvent.ACTION_CANCEL -> {
                 pressTo(0f, 0); popAt = android.os.SystemClock.uptimeMillis(); invalidate()
-                if (e.actionMasked == android.view.MotionEvent.ACTION_UP) { performClick(); jump(); burst(Glass.ACCENT) }
+                if (e.actionMasked == android.view.MotionEvent.ACTION_UP) { performClick(); jump(); burst(Glass.ACCENT); onPoke?.invoke(e.x, e.y) }
                 return true
             }
         }

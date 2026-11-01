@@ -1,0 +1,150 @@
+11-01 13:41:52.147  5078  5093 I PeopleGalProvider: Method 1 finished successfully.
+11-01 13:41:52.170  2856  4264 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+11-01 13:41:52.170  2856  4264 W libc    : Access denied finding property "service.adb.tls.port"
+11-01 13:41:52.174  5022  5340 I Fitness : OnPackageChangedOperation got intent: Intent { act=android.intent.action.PACKAGE_CHANGED dat=package: flg=0x45000010 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.PersistentIntentO
+11-01 13:41:52.174  5022  5341 I Fitness : FitCleanupIntentOperation received Intent android.intent.action.PACKAGE_CHANGED [CONTEXT service_id=17 ]
+11-01 13:41:52.176  5022  5216 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-01 13:41:52.176  5022  5216 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-01 13:41:52.169  2856  2856 W binder:2856_6: type=1400 audit(0.0:44): avc:  denied  { read } for  name="u:object_r:system_adbd_prop:s0" dev="tmpfs" ino=292 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:system_adbd_prop:s0 tcl
+11-01 13:41:52.169  2856  2856 W binder:2856_6: type=1400 audit(0.0:45): avc:  denied  { read } for  name="u:object_r:adbd_prop:s0" dev="tmpfs" ino=60 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:adbd_prop:s0 tclass=file permis
+11-01 13:41:52.213  5022  5341 I Fitness : OnPackageChangedOperation got intent: Intent { act=android.intent.action.PACKAGE_CHANGED dat=package: flg=0x45000010 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.PersistentIntentO
+11-01 13:41:52.225  5022  5340 I Fitness : FitCleanupIntentOperation received Intent android.intent.action.PACKAGE_CHANGED [CONTEXT service_id=17 ]
+11-01 13:41:52.235  5022  5054 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-01 13:41:52.239  5022  5054 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-01 13:41:52.239  5078  5149 I Icing   : updateResources: need to parse arkh{com.google.android.gms}
+11-01 13:41:52.265  5022  5062 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService started execution. cause:5 exec_start_elapsed_seconds: 97 [CONTEXT service_id=218 ]
+11-01 13:41:52.269   337  5448 I resolv  : GetAddrInfoHandler::run: {100 786532 100 983140 10131 0}
+11-01 13:41:52.272  5078  5149 I Icing   : Indexing com.google.android.gms-apps from com.google.android.gms
+11-01 13:41:52.273   337  5450 I resolv  : res_nmkquery: (QUERY, IN, A)
+11-01 13:41:52.273   337  5450 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7b109d0cf430
+11-01 13:41:52.273   337  5450 I resolv  : doQuery: rcode=0, ancount=8, return value=164
+11-01 13:41:52.274   337  5449 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+11-01 13:41:52.274   337  5449 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7b104d0d5450
+11-01 13:41:52.274   337  5449 I resolv  : doQuery: rcode=0, ancount=8, return value=260
+11-01 13:41:52.286  5078  5152 D TrafficStats: tagSocket(154) with statsTag=0x30003000, statsUid=-1
+11-01 13:41:52.289  5078  5149 I Icing   : Indexing done com.google.android.gms-apps
+11-01 13:41:52.290  5078  5149 I Icing   : Indexing com.google.android.gms-apps from com.google.android.gms
+11-01 13:41:52.291  5078  5149 I Icing   : Indexing done com.google.android.gms-apps
+11-01 13:41:52.300  5022  5188 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.phenotype.service.sync.PhenotypeConfigurator started execution. cause:5 exec_start_elapsed_seconds: 97 [CONTEXT service_id=218 ]
+11-01 13:41:52.304  5022  5062 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService finished executing. cause:5 result: 1 elapsed_millis: 67 uptime_millis: 67 exec_start_elapsed_seconds: 97
+11-01 13:41:52.307  5078  5152 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+11-01 13:41:52.308  5078  5152 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-01 13:41:52.308  5078  5152 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-01 13:41:52.341  5022  5188 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.auth.account.be.legacy.AuthCronService started execution. cause:5 exec_start_elapsed_seconds: 97 [CONTEXT service_id=218 ]
+11-01 13:41:52.362  5078  5152 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+11-01 13:41:52.363  5078  5152 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-01 13:41:52.363  5078  5152 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-01 13:41:52.365  5022  5188 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.auth.account.be.legacy.AuthCronService finished executing. cause:5 result: 3 elapsed_millis: 32 uptime_millis: 32 exec_start_elapsed
+11-01 13:41:52.397  5022  5062 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.tapandpay.gcmtask.TapAndPayGcmTaskService started execution. cause:5 exec_start_elapsed_seconds: 97 [CONTEXT service_id=218 ]
+11-01 13:41:52.399  5022  5188 V NFC     : this device does not have NFC support
+11-01 13:41:52.399  5022  5188 W TapAndPay: NfcAdapter is null while obtaining CardEmulation instance. [CONTEXT service_id=79 ]
+11-01 13:41:52.399  5022  5188 W TapAndPay: java.lang.NullPointerException: NfcAdapter is null
+11-01 13:41:52.399  5022  5188 W TapAndPay: 	at android.nfc.cardemulation.CardEmulation.getInstance(CardEmulation.java:152)
+11-01 13:41:52.399  5022  5188 W TapAndPay: 	at cdoy.<init>(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-01 13:41:52.399  5022  5188 W TapAndPay: 	at com.google.android.gms.tapandpay.hce.task.TapAndPayAidRegistrationTaskOperation.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):5)
+11-01 13:41:52.399  5022  5188 W TapAndPay: 	at com.google.android.gms.tapandpay.gcmtask.TapAndPayGcmTaskChimeraService.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+11-01 13:41:52.399  5022  5188 W TapAndPay: 	at avzs.call(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+11-01 13:41:52.399  5022  5188 W TapAndPay: 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+11-01 13:41:52.399  5022  5188 W TapAndPay: 	at aced.c(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+11-01 13:41:52.399  5022  5188 W TapAndPay: 	at aced.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):7)
+11-01 13:41:52.399  5022  5188 W TapAndPay: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-01 13:41:52.399  5022  5188 W TapAndPay: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-01 13:41:52.399  5022  5188 W TapAndPay: 	at acjn.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-01 13:41:52.399  5022  5188 W TapAndPay: 	at java.lang.Thread.run(Thread.java:1012)
+11-01 13:41:52.401  5022  5188 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.tapandpay.gcmtask.TapAndPayGcmTaskService finished executing. cause:5 result: 3 elapsed_millis: 13 uptime_millis: 13 exec_start_elap
+11-01 13:41:52.432   833   903 D EGL_emulation: app_time_stats: avg=9479.89ms min=9479.89ms max=9479.89ms count=1
+11-01 13:41:52.460  5022  5062 W .gms.persistent: Accessing hidden method Landroid/net/ConnectivityManager;->isNetworkSupported(I)Z (max-target-p, reflection, denied)
+11-01 13:41:52.461  5022  5076 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.tapandpay.gcmtask.TapAndPayGcmTaskService started execution. cause:5 exec_start_elapsed_seconds: 97 [CONTEXT service_id=218 ]
+11-01 13:41:52.468  5022  5188 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.tapandpay.gcmtask.TapAndPayGcmTaskService finished executing. cause:5 result: 1 elapsed_millis: 31 uptime_millis: 31 exec_start_elap
+11-01 13:41:52.495  5022  5076 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.tapandpay.gcmtask.TapAndPayGcmTaskService started execution. cause:5 exec_start_elapsed_seconds: 97 [CONTEXT service_id=218 ]
+11-01 13:41:52.498  5022  5062 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.tapandpay.gcmtask.TapAndPayGcmTaskService finished executing. cause:5 result: 1 elapsed_millis: 14 uptime_millis: 14 exec_start_elap
+11-01 13:41:52.522  5022  5076 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.tapandpay.gcmtask.TapAndPayGcmTaskService started execution. cause:5 exec_start_elapsed_seconds: 97 [CONTEXT service_id=218 ]
+11-01 13:41:52.531  5022  5062 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.tapandpay.gcmtask.TapAndPayGcmTaskService finished executing. cause:5 result: 1 elapsed_millis: 20 uptime_millis: 20 exec_start_elap
+11-01 13:41:52.546  5022  5076 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.tapandpay.gcmtask.TapAndPayGcmTaskService started execution. cause:5 exec_start_elapsed_seconds: 97 [CONTEXT service_id=218 ]
+11-01 13:41:52.551  5022  5188 W ChimeraUtils: Module com.google.android.gms.tapandpay missing resource null(0)
+11-01 13:41:52.558  5022  5188 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.tapandpay.gcmtask.TapAndPayGcmTaskService finished executing. cause:5 result: 1 elapsed_millis: 19 uptime_millis: 19 exec_start_elap
+11-01 13:41:52.578  5078  5152 E Pay     : [SeTosMigration] payCapabilities gating flag: enabled [CONTEXT service_id=198 ]
+11-01 13:41:52.579  5078  5152 E Pay     : [SeTosMigration] payCapabilities RoW use_wallet: true, use_wallet_jp: false [CONTEXT service_id=198 ]
+11-01 13:41:52.586  5022  5076 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.pay.gcmtask.PayGcmTaskService started execution. cause:5 exec_start_elapsed_seconds: 97 [CONTEXT service_id=218 ]
+11-01 13:41:52.589  5022  5188 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.pay.gcmtask.PayGcmTaskService finished executing. cause:5 result: 1 elapsed_millis: 18 uptime_millis: 18 exec_start_elapsed_seconds:
+11-01 13:41:52.620   521  2378 D CompatibilityChangeReporter: Compat change id reported: 266524688; UID 10132; state: DISABLED
+11-01 13:41:52.621   521  2378 D ConnectivityService: requestNetwork for uid/pid:10132/1764 activeRequest: null callbackRequest: 144 [NetworkRequest [ REQUEST id=144, [ Transports: CELLULAR Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_
+11-01 13:41:52.626  5022  5076 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.pay.gcmtask.PayGcmTaskService started execution. cause:5 exec_start_elapsed_seconds: 97 [CONTEXT service_id=218 ]
+11-01 13:41:52.632   337   380 I netd    : networkSetPermissionForNetwork(101, 0) <7.92ms>
+11-01 13:41:52.656   521   764 D ConnectivityService: NetReassign [144 : null → 101] [c 1] [a 27] [i 7]
+11-01 13:41:52.657   521   764 D ConnectivityService: reportNetworkConnectivity(100, false) by 10132
+11-01 13:41:52.659   977  2147 D NetworkMonitor/100: Forcing reevaluation for UID 10132. Dns signal count: 0
+11-01 13:41:52.664   977  5462 D TrafficStats: tagSocket(68) with statsTag=0xffffff81, statsUid=-1
+11-01 13:41:52.666  5022  5062 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.pay.gcmtask.PayGcmTaskService finished executing. cause:5 result: 1 elapsed_millis: 54 uptime_millis: 54 exec_start_elapsed_seconds:
+11-01 13:41:52.667   977  5462 D TrafficStats: tagSocket(68) with statsTag=0xffffff81, statsUid=-1
+11-01 13:41:52.667   977  5461 D TrafficStats: tagSocket(75) with statsTag=0xffffff81, statsUid=-1
+11-01 13:41:52.668   977  5461 D TrafficStats: tagSocket(75) with statsTag=0xffffff81, statsUid=-1
+11-01 13:41:52.671   337  5463 I resolv  : ResNSendHandler::run: 0 / {100 983140 100 983140 1073 1}
+11-01 13:41:52.671   337  5463 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7b104d0d2510
+11-01 13:41:52.673   337  5465 I resolv  : ResNSendHandler::run: 0 / {100 983140 100 983140 1073 1}
+11-01 13:41:52.673   337  5465 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7b11dd0d62b0
+11-01 13:41:52.674   977   977 D TrafficStats: tagSocket(75) with statsTag=0xffffffff, statsUid=-1
+11-01 13:41:52.675   977   977 D TrafficStats: tagSocket(75) with statsTag=0xffffffff, statsUid=-1
+11-01 13:41:52.675   977   977 D TrafficStats: tagSocket(75) with statsTag=0xffffffff, statsUid=-1
+11-01 13:41:52.676  4963  4963 I com.example.buddy: Perf: native scene 29 fps
+11-01 13:41:52.690   977   977 D TrafficStats: tagSocket(75) with statsTag=0xffffffff, statsUid=-1
+11-01 13:41:52.690   977   977 D TrafficStats: tagSocket(75) with statsTag=0xffffffff, statsUid=-1
+11-01 13:41:52.691   977   977 D TrafficStats: tagSocket(75) with statsTag=0xffffffff, statsUid=-1
+11-01 13:41:52.691   977   977 D TrafficStats: tagSocket(75) with statsTag=0xffffffff, statsUid=-1
+11-01 13:41:52.691   337  5464 I resolv  : ResNSendHandler::run: 0 / {100 983140 100 983140 1073 1}
+11-01 13:41:52.692   337  5464 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7b120d0d9af0
+11-01 13:41:52.692   977   977 D TrafficStats: tagSocket(75) with statsTag=0xffffffff, statsUid=-1
+11-01 13:41:52.693   977   977 D TrafficStats: tagSocket(75) with statsTag=0xffffffff, statsUid=-1
+11-01 13:41:52.694   977   977 D TrafficStats: tagSocket(75) with statsTag=0xffffffff, statsUid=-1
+11-01 13:41:52.694   977   977 D TrafficStats: tagSocket(75) with statsTag=0xffffffff, statsUid=-1
+11-01 13:41:52.695   977   977 D TrafficStats: tagSocket(75) with statsTag=0xffffffff, statsUid=-1
+11-01 13:41:52.696   977   977 D TrafficStats: tagSocket(75) with statsTag=0xffffffff, statsUid=-1
+11-01 13:41:52.696   977   977 D TrafficStats: tagSocket(75) with statsTag=0xffffffff, statsUid=-1
+11-01 13:41:52.701   977   977 D TrafficStats: tagSocket(75) with statsTag=0xffffffff, statsUid=-1
+11-01 13:41:52.702   977   977 D TrafficStats: tagSocket(75) with statsTag=0xffffffff, statsUid=-1
+11-01 13:41:52.703   977  5461 D NetworkMonitor/100: PROBE_DNS www.google.com 35ms OK 142.251.155.119,142.251.154.119,142.251.156.119,142.251.150.119,142.251.153.119,142.251.157.119,142.251.152.119,142.251.151.119,2001:4860:4827:7700::,2001
+11-01 13:41:52.703   337  5466 I resolv  : ResNSendHandler::run: 0 / {100 983140 100 983140 1073 1}
+11-01 13:41:52.704   337  5466 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7b120d0d9770
+11-01 13:41:52.704   977   977 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-01 13:41:52.705   977   977 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-01 13:41:52.705   977  5462 D NetworkMonitor/100: PROBE_DNS connectivitycheck.gstatic.com 41ms OK 192.178.209.94,2607:f8b0:4001:c62::5e
+11-01 13:41:52.708   337  5468 I resolv  : GetAddrInfoHandler::run: {100 983140 100 983140 1073 1}
+11-01 13:41:52.717   337  5469 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+11-01 13:41:52.717   337  5469 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7b120d0d9af0
+11-01 13:41:52.717   337  5469 I resolv  : doQuery: rcode=0, ancount=1, return value=75
+11-01 13:41:52.718   337  5467 I resolv  : GetAddrInfoHandler::run: {100 983140 100 983140 1073 1}
+11-01 13:41:52.722   337  5471 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+11-01 13:41:52.722   337  5471 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7b104d0d2510
+11-01 13:41:52.722   337  5471 I resolv  : doQuery: rcode=0, ancount=8, return value=256
+11-01 13:41:52.723   337  5470 I resolv  : res_nmkquery: (QUERY, IN, A)
+11-01 13:41:52.723   337  5470 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7b120d0d9770
+11-01 13:41:52.723   337  5472 I resolv  : res_nmkquery: (QUERY, IN, A)
+11-01 13:41:52.723   337  5470 I resolv  : doQuery: rcode=0, ancount=1, return value=63
+11-01 13:41:52.723   337  5472 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7b11dd0d62b0
+11-01 13:41:52.724   337  5472 I resolv  : doQuery: rcode=0, ancount=8, return value=160
+11-01 13:41:52.725   977  5462 D TrafficStats: tagSocket(68) with statsTag=0xffffff81, statsUid=-1
+11-01 13:41:52.726   977  5461 D TrafficStats: tagSocket(107) with statsTag=0xffffff81, statsUid=-1
+11-01 13:41:52.734  5022  5076 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.pay.gcmtask.PayGcmTaskService started execution. cause:5 exec_start_elapsed_seconds: 98 [CONTEXT service_id=218 ]
+11-01 13:41:52.737  5078  5152 I Pay     : Device does not support HCE. [CONTEXT service_id=198 ]
+11-01 13:41:52.743  5022  5062 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.pay.gcmtask.PayGcmTaskService finished executing. cause:5 result: 2 elapsed_millis: 35 uptime_millis: 35 exec_start_elapsed_seconds:
+11-01 13:41:52.782   977  5462 D NetworkMonitor/100: PROBE_HTTP http://connectivitycheck.gstatic.com/generate_204 time=75ms ret=204 request={Connection=[close], User-Agent=[Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gec
+11-01 13:41:52.782  5022  5076 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.pay.gcmtask.PayGcmTaskService started execution. cause:5 exec_start_elapsed_seconds: 98 [CONTEXT service_id=218 ]
+11-01 13:41:52.788   977  5461 D NetworkMonitor/100: PROBE_HTTPS https://www.google.com/generate_204 time=84ms ret=204 request={Connection=[close], User-Agent=[Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60
+11-01 13:41:52.789   977  5460 D NetworkMonitor/100: isCaptivePortal: isSuccessful()=true isPortal()=false RedirectUrl=null isPartialConnectivity()=false Time=130ms
+11-01 13:41:52.791  5022  5062 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.pay.gcmtask.PayGcmTaskService finished executing. cause:5 result: 1 elapsed_millis: 20 uptime_millis: 20 exec_start_elapsed_seconds:
+11-01 13:41:52.791   521   764 D ConnectivityService: [100 WIFI] validation passed
+11-01 13:41:52.824  5022  5076 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.pay.gcmtask.PayGcmTaskService started execution. cause:5 exec_start_elapsed_seconds: 98 [CONTEXT service_id=218 ]
+11-01 13:41:52.825  5459  5459 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+11-01 13:41:52.826  5459  5459 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-01 13:41:52.832   402   620 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=5459
+11-01 13:41:52.832   402   620 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (257 us)
+11-01 13:41:52.835  5022  5062 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.pay.gcmtask.PayGcmTaskService finished executing. cause:5 result: 1 elapsed_millis: 14 uptime_millis: 14 exec_start_elapsed_seconds:
+11-01 13:41:52.848   138   138 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-01 13:41:52.848  5459  5473 I Gralloc4: mapper 4.x is not supported
+11-01 13:41:53.005     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+11-01 13:41:52.869  5022  5076 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.clearcut.uploader.QosUploaderService started execution. cause:5 exec_start_elapsed_seconds: 98 [CONTEXT service_id=218 ]
+11-01 13:41:52.891  5022  5076 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.clearcut.uploader.QosUploaderService finished executing. cause:5 result: 1 elapsed_millis: 39 uptime_millis: 39 exec_start_elapsed_s
+11-01 13:41:52.925   833   833 D StatusBarIconController: ignoring old pipeline callbacks, because the new mobile icons are enabled
+11-01 13:41:52.957  4963  4987 D EGL_emulation: app_time_stats: avg=35.51ms min=11.08ms max=139.51ms count=28
+11-01 13:41:52.973  5022  5188 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.udc.service.UdcContextInitService started execution. cause:5 exec_start_elapsed_seconds: 98 [CONTEXT service_id=218 ]
+11-01 13:41:53.006  5022  5076 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.udc.service.UdcContextInitService finished executing. cause:5 result: 1 elapsed_millis: 52 uptime_millis: 52 exec_start_elapsed_seco

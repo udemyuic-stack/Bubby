@@ -1,0 +1,150 @@
+11-01 13:41:53.338  4126  5088 I BugleRcsWorker: [seqId=0][workId=3463ea1f-8dc1-4705-baa8-f0f2bf48c46e] RCS provisioning task has finished with result Success {mOutputData=Data {}}
+11-01 13:41:53.341   519   519 I ExplicitHealthCheckController: Explicit health check service is connected ComponentInfo{com.google.android.ext.services/android.ext.services.watchdog.ExplicitHealthCheckServiceImpl}
+11-01 13:41:53.342   519   519 I ExplicitHealthCheckController: Service initialized, syncing requests
+11-01 13:41:53.342   519   519 I PackageWatchdog: Syncing health check requests for packages: {}
+11-01 13:41:53.342   519   519 D ExplicitHealthCheckController: Getting health check supported packages
+11-01 13:41:53.345   519   910 I ExplicitHealthCheckController: Explicit health check supported packages [PackageConfig{com.google.android.networkstack, 86400000}]
+11-01 13:41:53.345   519   910 D PackageWatchdog: Received supported packages [PackageConfig{com.google.android.networkstack, 86400000}]
+11-01 13:41:53.345   519   910 D ExplicitHealthCheckController: Getting health check requested packages
+11-01 13:41:53.346   519   910 I ExplicitHealthCheckController: Explicit health check requested packages []
+11-01 13:41:53.346   519   910 I ExplicitHealthCheckController: No more health check requests, unbinding...
+11-01 13:41:53.348   519   910 I ExplicitHealthCheckController: Explicit health check service is unbound
+11-01 13:41:53.350  4126  4640 I BugleRcsEngine: [105] brfq.d: (PEv2-SM-Bugle-240859738): quit [29e885db-3630-4f3d-8393-5544578b5e09]
+11-01 13:41:53.353   519   910 D CompatibilityChangeReporter: Compat change id reported: 182734110; UID 10131; state: ENABLED
+11-01 13:41:53.353   519   910 D CompatibilityChangeReporter: Compat change id reported: 149924527; UID 10131; state: ENABLED
+11-01 13:41:53.354   519   910 D CompatibilityChangeReporter: Compat change id reported: 132649864; UID 10131; state: DISABLED
+11-01 13:41:53.359   519   548 I PackageWatchdog: Syncing state, reason: updated observers
+11-01 13:41:53.359   519   519 I PackageWatchdog: Syncing health check requests for packages: {}
+11-01 13:41:53.359   519   519 I ExplicitHealthCheckController: Service not ready to get health check supported packages. Binding...
+11-01 13:41:53.362   519   519 I ExplicitHealthCheckController: Explicit health check service is bound
+11-01 13:41:53.370   519   519 I ExplicitHealthCheckController: Explicit health check service is connected ComponentInfo{com.google.android.ext.services/android.ext.services.watchdog.ExplicitHealthCheckServiceImpl}
+11-01 13:41:53.370   519   519 I ExplicitHealthCheckController: Service initialized, syncing requests
+11-01 13:41:53.370   519   519 I PackageWatchdog: Syncing health check requests for packages: {}
+11-01 13:41:53.371   519   519 D ExplicitHealthCheckController: Getting health check supported packages
+11-01 13:41:53.371   519   909 I ExplicitHealthCheckController: Explicit health check supported packages [PackageConfig{com.google.android.networkstack, 86400000}]
+11-01 13:41:53.371   519   909 D PackageWatchdog: Received supported packages [PackageConfig{com.google.android.networkstack, 86400000}]
+11-01 13:41:53.371   519   909 D ExplicitHealthCheckController: Getting health check requested packages
+11-01 13:41:53.372   519   909 I ExplicitHealthCheckController: Explicit health check requested packages []
+11-01 13:41:53.372   519   909 I ExplicitHealthCheckController: No more health check requests, unbinding...
+11-01 13:41:53.372  4126  5088 I BugleRcsEngine: [120] brfq.d: (PEv2-SM-Bugle-240859738): transitionTo: destState=bqjk [29e885db-3630-4f3d-8393-5544578b5e09]
+11-01 13:41:53.373  4126  5088 I BugleRcsEngine: [120] brfq.d: (PEv2-SM-Bugle-240859738): Exit ReplayRequestState [29e885db-3630-4f3d-8393-5544578b5e09]
+11-01 13:41:53.378   519   909 I ExplicitHealthCheckController: Explicit health check service is unbound
+11-01 13:41:53.380  4126  5088 W BugleRcsEngine: [120] bpxc.w: Unable to send diagnostic log
+11-01 13:41:53.381   519   548 I PackageWatchdog: Syncing state, reason: observing new packages
+11-01 13:41:53.381   519   519 I PackageWatchdog: Syncing health check requests for packages: {}
+11-01 13:41:53.381   519   519 I ExplicitHealthCheckController: Service not ready to get health check supported packages. Binding...
+11-01 13:41:53.389   519   519 I ExplicitHealthCheckController: Explicit health check service is bound
+11-01 13:41:53.389   519   519 I ExplicitHealthCheckController: Explicit health check service is connected ComponentInfo{com.google.android.ext.services/android.ext.services.watchdog.ExplicitHealthCheckServiceImpl}
+11-01 13:41:53.390   519   519 I ExplicitHealthCheckController: Service initialized, syncing requests
+11-01 13:41:53.390  4126  5088 W BugleRcsEngine: [120] brfq.e: (PEv2-SM-Bugle-240859738): onQuitting [29e885db-3630-4f3d-8393-5544578b5e09]
+11-01 13:41:53.391  4126  5088 I BugleRcsEngine: [120] brjv.b: RcsAvailabilityManager: Calculating Rcs Availability
+11-01 13:41:53.429  4126  5088 I BugleRcsEngine: [120] brnl.C: Bugle is default SMS app: true
+11-01 13:41:53.429   519   548 D PackageWatchdog: rescue-party-observer added the following packages to monitor [com.android.settings]
+11-01 13:41:53.429   519   519 I PackageWatchdog: Syncing health check requests for packages: {}
+11-01 13:41:53.429   519   519 D ExplicitHealthCheckController: Getting health check supported packages
+11-01 13:41:53.430   519   824 I ExplicitHealthCheckController: Explicit health check supported packages [PackageConfig{com.google.android.networkstack, 86400000}]
+11-01 13:41:53.430   519   824 D PackageWatchdog: Received supported packages [PackageConfig{com.google.android.networkstack, 86400000}]
+11-01 13:41:53.430   519   824 D ExplicitHealthCheckController: Getting health check requested packages
+11-01 13:41:53.432   519   824 I ExplicitHealthCheckController: Explicit health check requested packages []
+11-01 13:41:53.432   519   824 I ExplicitHealthCheckController: No more health check requests, unbinding...
+11-01 13:41:53.445   519   824 I ExplicitHealthCheckController: Explicit health check service is unbound
+11-01 13:41:53.461  4126  5088 I BugleRcsEngine: [120] brjv.b: Bugle has minimum required RCS permissions: true
+11-01 13:41:53.465   519   548 I PackageWatchdog: Syncing state, reason: updated observers
+11-01 13:41:53.471  4126  5088 I BugleRcsEngine: [120] brnl.B: Rcs is enabled from user settings: true
+11-01 13:41:53.471  4126  5088 I BugleRcsEngine: [120] brox.b: Using config server URL from bqas
+11-01 13:41:53.472  4126  5088 I BugleRcsEngine: [120] brnl.e: No RCS Configuration was found in Bugle for simID: redacted-pii:sim_id[chars:20,last3:897]
+11-01 13:41:53.473  4126  5088 I BugleRcsEngine: [120] brnl.e: No RCS Configuration was found in Bugle for simID: redacted-pii:sim_id[chars:20,last3:897]
+11-01 13:41:53.479  4126  4647 I BugleRcsEngine: [110] brnl.e: No RCS Configuration was found in Bugle for simID: redacted-pii:sim_id[chars:20,last3:897]
+11-01 13:41:53.494   519   519 I PackageWatchdog: Syncing health check requests for packages: {}
+11-01 13:41:53.494   519   519 I ExplicitHealthCheckController: Service not ready to get health check supported packages. Binding...
+11-01 13:41:53.495   519   519 I ExplicitHealthCheckController: Explicit health check service is bound
+11-01 13:41:53.497   519   519 I ExplicitHealthCheckController: Explicit health check service is connected ComponentInfo{com.google.android.ext.services/android.ext.services.watchdog.ExplicitHealthCheckServiceImpl}
+11-01 13:41:53.497   519   519 I ExplicitHealthCheckController: Service initialized, syncing requests
+11-01 13:41:53.497   519   519 I PackageWatchdog: Syncing health check requests for packages: {}
+11-01 13:41:53.497   519   519 D ExplicitHealthCheckController: Getting health check supported packages
+11-01 13:41:53.498   519   909 I ExplicitHealthCheckController: Explicit health check supported packages [PackageConfig{com.google.android.networkstack, 86400000}]
+11-01 13:41:53.498   519   909 D PackageWatchdog: Received supported packages [PackageConfig{com.google.android.networkstack, 86400000}]
+11-01 13:41:53.498   519   909 D ExplicitHealthCheckController: Getting health check requested packages
+11-01 13:41:53.505   519   548 I PackageWatchdog: Saving observer state to file
+11-01 13:41:53.508   519   909 I ExplicitHealthCheckController: Explicit health check requested packages []
+11-01 13:41:53.508   519   909 I ExplicitHealthCheckController: No more health check requests, unbinding...
+11-01 13:41:53.509  4126  5088 I BugleRcsEngine: [120] brjv.b: Config state is not ACCEPTED, provisioning still in progress
+11-01 13:41:53.509   519   909 I ExplicitHealthCheckController: Explicit health check service is unbound
+11-01 13:41:53.511  4126  4648 I WM-WorkerWrapper: Worker result SUCCESS for Work [ id=2f7ce0d2-6c0d-4829-9a94-22c46bd81c75, tags={ com.google.android.apps.messaging.rcsprovisioning.RcsProvisioningListenableWorker, provisioning } ]
+11-01 13:41:53.514  4126  5088 I BugleRcsEngine: [120] brjv.b: RcsAvailabilityManager: Rcs Availability still CARRIER_SETUP_PENDING (Carrier RCS is not set up)
+11-01 13:41:53.523  4126  5088 W BugleRcsEngine: [120] bpxc.w: Unable to send diagnostic log
+11-01 13:41:53.531  1426  4734 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-01 13:41:53.534  1426  4734 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-01 13:41:53.534  1426  4734 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:41:53.534  1426  4734 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-01 13:41:53.535  1426  4734 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-01 13:41:53.535  1426  4734 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-01 13:41:53.535  1426  4734 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:41:53.547  1426  4734 I NamespaceManager: Package 1 name not found! Using module version.
+11-01 13:41:53.570  4126  4647 I BugleRcsEngine: [110] zzo.l: Scheduled provisioning task with 4160 seconds delay, APPEND policy, trigger is STATE_MACHINE_REPLAY, workerId is 31640e5c-2875-4601-8354-32e26a8e7bbb
+11-01 13:41:53.585  1426  3498 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-01 13:41:53.585  1426  3498 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-01 13:41:53.585  1426  3498 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:41:53.585  1426  3498 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-01 13:41:53.586  1426  3498 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-01 13:41:53.586  1426  3498 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-01 13:41:53.586  1426  3498 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:41:53.586  1426  3498 I NamespaceManager: Package 1 name not found! Using module version.
+11-01 13:41:53.599   519   519 I AutofillManagerService: Ignoring change on package_deny_list_for_unimportant_view
+11-01 13:41:53.617   519   539 D AutofillUI: destroySaveUiUiThread(): already destroyed
+11-01 13:41:53.620   519   519 D AutofillManagerServiceImpl: Set component for user 0 as ComponentInfo{com.google.android.gms/com.google.android.gms.autofill.service.AutofillService} and info as ServiceInfo{213763e com.google.android.gms.au
+11-01 13:41:53.620   519   519 D AutofillManagerServiceImpl: Set component for user 0 as ComponentInfo{com.google.android.gms/com.google.android.gms.autofill.service.AutofillService} and info as ServiceInfo{5e249b5 com.google.android.gms.au
+11-01 13:41:53.620   519   519 I AutofillManagerService: Ignoring change on trigger_fill_request_on_filtered_important_views
+11-01 13:41:53.620   519   519 I AutofillManagerService: Ignoring change on package_and_activity_allowlist_for_triggering_fill_request
+11-01 13:41:53.620   519   519 I AutofillManagerService: Ignoring change on multiline_filter_enabled
+11-01 13:41:53.620   519   519 I AutofillManagerService: Ignoring change on augmented_autofill_mode
+11-01 13:41:53.620   519   519 I AutofillManagerService: Ignoring change on autofill_dialog_hints
+11-01 13:41:53.620   519   519 I AutofillManagerService: Ignoring change on include_all_views_in_assist_structure
+11-01 13:41:53.620   519   519 I AutofillManagerService: Ignoring change on should_enable_autofill_on_all_view_types
+11-01 13:41:53.620   519   519 I AutofillManagerService: Ignoring change on autofill_save_dialog_landscape_body_height_max_percent
+11-01 13:41:53.620   519   519 I AutofillManagerService: Ignoring change on non_autofillable_ime_action_ids
+11-01 13:41:53.620   519   519 I AutofillManagerService: Ignoring change on autofill_save_dialog_portrait_body_height_max_percent
+11-01 13:41:53.620   519   519 I AutofillManagerService: Ignoring change on include_all_autofill_type_not_none_views_in_assist_structure
+11-01 13:41:53.620   519   519 I AutofillManagerService: Ignoring change on trigger_fill_request_on_unimportant_view
+11-01 13:41:53.620   519   519 I AutofillManagerService: Ignoring change on autofill_dialog_enabled
+11-01 13:41:53.622   519   539 D AutofillUI: destroySaveUiUiThread(): already destroyed
+11-01 13:41:53.624   519   519 W ServiceConnector.Impl: mayInterruptIfRunning not supported - ignoring
+11-01 13:41:53.625  1665  1665 D AugmentedAutofillService: handleOnConnected(): debug=true, verbose=false
+11-01 13:41:53.657  1426  3498 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-01 13:41:53.657  1426  3498 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-01 13:41:53.658  1426  3498 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:41:53.658  1426  3498 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-01 13:41:53.658  1426  3498 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-01 13:41:53.659  1426  3498 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-01 13:41:53.659  1426  3498 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:41:53.659  1426  3498 I NamespaceManager: Package 1 name not found! Using module version.
+11-01 13:41:53.682  1426  4734 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-01 13:41:53.682  1426  4734 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-01 13:41:53.683  1426  4734 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:41:53.683  1426  4734 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-01 13:41:53.683  1426  4734 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-01 13:41:53.686  1665  3041 I AiAiAutofill: Connected AiAiAugmentedAutofillService.
+11-01 13:41:53.690  1426  4734 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-01 13:41:53.691  1426  4734 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:41:53.693  1426  4734 I NamespaceManager: Package 1 name not found! Using module version.
+11-01 13:41:53.712  1426  4734 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-01 13:41:53.716  1426  4734 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-01 13:41:53.720  1426  4734 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:41:53.720  1426  4734 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-01 13:41:53.720  1426  4734 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-01 13:41:53.720  1426  4734 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-01 13:41:53.720  1426  4734 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:41:53.721  1426  4734 I NamespaceManager: Package 1 name not found! Using module version.
+11-01 13:41:53.722  1426  4734 W PhenotypeConfigurationU: Update for unknown DeviceConfig package com.google.android.libraries.mdi.sync#com.google.android.gms [CONTEXT service_id=204 ]
+11-01 13:41:53.722  1426  4734 W PhenotypeConfigurationU: bwix: No package exists for config package: com.google.android.libraries.mdi.sync#com.google.android.gms
+11-01 13:41:53.722  1426  4734 W PhenotypeConfigurationU: 	at com.google.android.gms.platformconfigurator.PhenotypeConfigurationUpdateListener.b(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+11-01 13:41:53.722  1426  4734 W PhenotypeConfigurationU: 	at com.google.android.gms.platformconfigurator.PhenotypeConfigurationUpdateListener.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+11-01 13:41:53.722  1426  4734 W PhenotypeConfigurationU: 	at com.google.android.gms.platformconfigurator.PhenotypeConfigurationUpdateListener.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):21)
+11-01 13:41:53.722  1426  4734 W PhenotypeConfigurationU: 	at com.google.android.chimera.IntentOperation.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-01 13:41:53.722  1426  4734 W PhenotypeConfigurationU: 	at zhv.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+11-01 13:41:53.722  1426  4734 W PhenotypeConfigurationU: 	at hjm.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3)
+11-01 13:41:53.722  1426  4734 W PhenotypeConfigurationU: 	at hjl.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):11)
+11-01 13:41:53.722  1426  4734 W PhenotypeConfigurationU: 	at dfhf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-01 13:41:53.722  1426  4734 W PhenotypeConfigurationU: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-01 13:41:53.722  1426  4734 W PhenotypeConfigurationU: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-01 13:41:53.722  1426  4734 W PhenotypeConfigurationU: 	at java.lang.Thread.run(Thread.java:1012)

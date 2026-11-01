@@ -1,0 +1,150 @@
+11-01 13:47:07.387  4066  4248 W SubscriptionMetadataUti: 	at java.lang.Thread.run(Thread.java:1012)
+11-01 13:47:07.387  4066  4248 W SubscriptionMetadataUti: 	at bxfj.run(PG:5)
+11-01 13:47:07.387  4066  4248 W SubscriptionMetadataUti: Bugle: SubscriptionMetadataUtils get: unexpected subId = -2, replacing with -1
+11-01 13:47:07.387  4066  4248 W SubscriptionMetadataUti: cpwb: FULL
+11-01 13:47:07.387  4066  4248 W SubscriptionMetadataUti: 	at bdsy.h(PG:6)
+11-01 13:47:07.387  4066  4248 W SubscriptionMetadataUti: 	at bgit.<init>(PG:2)
+11-01 13:47:07.387  4066  4248 W SubscriptionMetadataUti: 	at bgiu.a(PG:1)
+11-01 13:47:07.387  4066  4248 W SubscriptionMetadataUti: 	at awsw.ai(PG:3)
+11-01 13:47:07.387  4066  4248 W SubscriptionMetadataUti: 	at awsw.aj(PG:25)
+11-01 13:47:07.387  4066  4248 W SubscriptionMetadataUti: 	at awsw.z(PG:2)
+11-01 13:47:07.387  4066  4248 W SubscriptionMetadataUti: 	at aule.k(PG:1)
+11-01 13:47:07.387  4066  4248 W SubscriptionMetadataUti: 	at aulc.call(Unknown Source:2)
+11-01 13:47:07.387  4066  4248 W SubscriptionMetadataUti: 	at cnsg.a(PG:1)
+11-01 13:47:07.387  4066  4248 W SubscriptionMetadataUti: 	at cnpm.a(PG:3)
+11-01 13:47:07.387  4066  4248 W SubscriptionMetadataUti: 	at ctfv.a(PG:1)
+11-01 13:47:07.387  4066  4248 W SubscriptionMetadataUti: 	at ctet.run(PG:4)
+11-01 13:47:07.387  4066  4248 W SubscriptionMetadataUti: 	at ctfx.run(PG:1)
+11-01 13:47:07.387  4066  4248 W SubscriptionMetadataUti: 	at bxfd.run(PG:1)
+11-01 13:47:07.387  4066  4248 W SubscriptionMetadataUti: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-01 13:47:07.387  4066  4248 W SubscriptionMetadataUti: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-01 13:47:07.387  4066  4248 W SubscriptionMetadataUti: 	at bxef.run(PG:2)
+11-01 13:47:07.387  4066  4248 W SubscriptionMetadataUti: 	at java.lang.Thread.run(Thread.java:1012)
+11-01 13:47:07.387  4066  4248 W SubscriptionMetadataUti: 	at bxfj.run(PG:5)
+11-01 13:47:07.391  4066  4215 I BugleTransport: isChatAvailable: RcsAvailability is CARRIER_SETUP_PENDING (Carrier RCS is not set up)
+11-01 13:47:07.393  4066  4248 W SubscriptionMetadataUti: Bugle: SubscriptionMetadataUtils get: unexpected subId = -2, replacing with -1
+11-01 13:47:07.393  4066  4248 W SubscriptionMetadataUti: cpwb: FULL
+11-01 13:47:07.393  4066  4248 W SubscriptionMetadataUti: 	at bdsy.h(PG:6)
+11-01 13:47:07.393  4066  4248 W SubscriptionMetadataUti: 	at awsw.ai(PG:18)
+11-01 13:47:07.393  4066  4248 W SubscriptionMetadataUti: 	at awsw.aj(PG:25)
+11-01 13:47:07.393  4066  4248 W SubscriptionMetadataUti: 	at awsw.z(PG:2)
+11-01 13:47:07.393  4066  4248 W SubscriptionMetadataUti: 	at aule.k(PG:1)
+11-01 13:47:07.393  4066  4248 W SubscriptionMetadataUti: 	at aulc.call(Unknown Source:2)
+11-01 13:47:07.393  4066  4248 W SubscriptionMetadataUti: 	at cnsg.a(PG:1)
+11-01 13:47:07.393  4066  4248 W SubscriptionMetadataUti: 	at cnpm.a(PG:3)
+11-01 13:47:07.393  4066  4248 W SubscriptionMetadataUti: 	at ctfv.a(PG:1)
+11-01 13:47:07.393  4066  4248 W SubscriptionMetadataUti: 	at ctet.run(PG:4)
+11-01 13:47:07.393  4066  4248 W SubscriptionMetadataUti: 	at ctfx.run(PG:1)
+11-01 13:47:07.393  4066  4248 W SubscriptionMetadataUti: 	at bxfd.run(PG:1)
+11-01 13:47:07.393  4066  4248 W SubscriptionMetadataUti: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-01 13:47:07.393  4066  4248 W SubscriptionMetadataUti: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-01 13:47:07.393  4066  4248 W SubscriptionMetadataUti: 	at bxef.run(PG:2)
+11-01 13:47:07.393  4066  4248 W SubscriptionMetadataUti: 	at java.lang.Thread.run(Thread.java:1012)
+11-01 13:47:07.393  4066  4248 W SubscriptionMetadataUti: 	at bxfj.run(PG:5)
+11-01 13:47:07.393  4066  4248 I Bugle   : SubscriptionUtilsAsOfLMR1: getActiveSubscriptionInfo(): empty sub info for subscription{id:-1}
+11-01 13:47:07.393  4066  4248 I Bugle   : SubscriptionUtilsAsOfLMR1: getActiveSubscriptionInfo(): empty sub info for subscription{id:-1}
+11-01 13:47:07.393  4066  4248 W Bugle   : SubscriptionUtilsAsOfLMR1: getSelfRawNumber: subInfo is null for subscription{id:-1}
+11-01 13:47:07.395  4066  4206 I BugleRcsEngine: [41] bptz.run: SystemBindingManager: SystemBinding enabled: true
+11-01 13:47:07.396  4066  4206 I BugleRcsEngine: [41] bpua.b: System Binding updated
+11-01 13:47:07.396  4066  4760 W BugleRcsEngine: [106] bpxc.w: Unable to send diagnostic log
+11-01 13:47:07.403  4066  4248 W BugleAction: No default number, returning empty msisdn
+11-01 13:47:07.403  4066  4215 I BugleTransport: updateActiveTransport: refreshing chat transport
+11-01 13:47:07.403  4066  4215 I BugleTransport: RCS Configuration is empty. Enabled transport is Dual Reg [CONTEXT ratelimit_period="5 SECONDS" skipped=3 ]
+11-01 13:47:07.404  4066  4215 I BugleTransport: refreshChatTransport: isChatAvailable: false, enabledTransport: 1, configuration: <empty>
+11-01 13:47:07.404  4066  4760 I RcsClientLib: Connecting RcsEngineLifecycleService
+11-01 13:47:07.412  4066  4760 W RcsClientLib: No CS.apk RCS service found. Is RCS running in Bugle?
+11-01 13:47:07.412   521   618 I RescueParty: Starting to observe: [android], updated namespace: adservices
+11-01 13:47:07.413   521   551 I PackageWatchdog: Syncing state, reason: observing new packages
+11-01 13:47:07.413   521   551 D PackageWatchdog: rescue-party-observer added the following packages to monitor [android]
+11-01 13:47:07.413   521   551 I PackageWatchdog: Syncing state, reason: updated observers
+11-01 13:47:07.413   521   551 I PackageWatchdog: Not pruning observers, elapsed time: 0ms
+11-01 13:47:07.413   521   551 I PackageWatchdog: Saving observer state to file
+11-01 13:47:07.414  1548  1586 I .apps.wellbeing: Background young concurrent copying GC freed 109313(5069KB) AllocSpace objects, 0(0B) LOS objects, 40% free, 7031KB/11MB, paused 24us,8us total 208.170ms
+11-01 13:47:07.418  4066  4760 I RcsClientLib: shouldUseCarrierServicesJibeService: false, CarrierServices rcs service found: false
+11-01 13:47:07.424  4066  4760 I RcsClientLib: com.google.android.rcs.client.lifecycle.RcsEngineLifecycleService connected
+11-01 13:47:07.430   521   521 I PackageWatchdog: Syncing health check requests for packages: {}
+11-01 13:47:07.430   521   521 I ExplicitHealthCheckController: Service not ready to get health check supported packages. Binding...
+11-01 13:47:07.431   521   521 I ExplicitHealthCheckController: Explicit health check service is bound
+11-01 13:47:07.434  1419  1428 I .gms.persistent: Background concurrent copying GC freed 717951(25MB) AllocSpace objects, 12(2208KB) LOS objects, 50% free, 18MB/36MB, paused 5.634ms,24us total 317.069ms
+11-01 13:47:07.435   521   521 I ExplicitHealthCheckController: Explicit health check service is connected ComponentInfo{com.google.android.ext.services/android.ext.services.watchdog.ExplicitHealthCheckServiceImpl}
+11-01 13:47:07.435   521   521 I ExplicitHealthCheckController: Service initialized, syncing requests
+11-01 13:47:07.436  4705  5001 I BugleRcsEngine: [73] RcsEngineImpl.triggerStopRcsStack: RcsEngineImpl[DUAL_REG]:[fe3ca63a-fe51]: triggerStopRcsStack for msisdn:redacted-pii:phone_number[chars:0,last2:]
+11-01 13:47:07.436  4705  4747 I BugleRcsEngine: [63] brqh.handleMessage: RcsEngineImpl[DUAL_REG]:[fe3ca63a-fe51]>Handler: handleMessage processing message:[STOP_RCS_STACK] with [non-null]:RcsEngineImpl reference
+11-01 13:47:07.436  4705  4747 I BugleRcsEngine: [63] brqh.handleMessage: RcsEngineImpl[DUAL_REG]:[fe3ca63a-fe51]>Handler: RCS engine STOP RCS stack
+11-01 13:47:07.436  4705  4747 W BugleRcsEngine: [63] RcsEngineImpl.e: RcsEngineImpl[DUAL_REG]:[fe3ca63a-fe51]: imsModule is null, shutdown not required
+11-01 13:47:07.436  4705  4747 I BugleRcsEngine: [63] RcsEngineImpl.stopRcsStackInternal: RcsEngineImpl[DUAL_REG]:[fe3ca63a-fe51]: skipping imsModule.stop
+11-01 13:47:07.436  4705  4747 I BugleRcsEngine: [63] brqh.handleMessage: RcsEngineImpl[DUAL_REG]:[fe3ca63a-fe51]>Handler: handleMessage processing message:[NOTIFY_UPTIME_IGNORE_STATE_CHANGED] with [non-null]:RcsEngineImpl reference
+11-01 13:47:07.439   521   521 I PackageWatchdog: Syncing health check requests for packages: {}
+11-01 13:47:07.439   521   521 D ExplicitHealthCheckController: Getting health check supported packages
+11-01 13:47:07.457   521  1794 I ExplicitHealthCheckController: Explicit health check supported packages [PackageConfig{com.google.android.networkstack, 86400000}]
+11-01 13:47:07.457   521  1794 D PackageWatchdog: Received supported packages [PackageConfig{com.google.android.networkstack, 86400000}]
+11-01 13:47:07.457   521  1794 D ExplicitHealthCheckController: Getting health check requested packages
+11-01 13:47:07.458   521  1794 I ExplicitHealthCheckController: Explicit health check requested packages []
+11-01 13:47:07.458   521  1794 I ExplicitHealthCheckController: No more health check requests, unbinding...
+11-01 13:47:07.465   521  1794 I ExplicitHealthCheckController: Explicit health check service is unbound
+11-01 13:47:07.466  4705  4747 I BugleRcsEngine: [63] brnl.h: No RCS Configuration was found in Bugle for simID: redacted-pii:sim_id[chars:20,last3:897]
+11-01 13:47:07.470   156  3732 I keystore2: system/security/keystore2/src/watchdog.rs:319 - Watchdog thread idle -> terminating. Have a great day.
+11-01 13:47:07.472  4066  4246 I RcsClientLib: Disconnecting RcsEngineLifecycleService
+11-01 13:47:07.474  1419  4798 I PackageUpdateTaskChimer: Scheduling Phenotype config package catchup updates to be 86400 seconds from now (1793540827474) [CONTEXT service_id=51 ]
+11-01 13:47:07.477  1419  4798 I HeterodyneSyncScheduler: Scheduling adaptive one off task with window [14400, 604800] in seconds [CONTEXT service_id=51 ]
+11-01 13:47:07.502  1548  1823 W TimedProcessReaper: Scheduling killing of process to refresh configuration
+11-01 13:47:07.521  5180  5180 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+11-01 13:47:07.521  5180  5180 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-01 13:47:07.533  3147  3147 I PhenotypeBackgroundRecv: Skipping com.google.android.dialer which doesn't use ProcessStable flags.
+11-01 13:47:07.539  1419  5107 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-01 13:47:07.539  1419  5107 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-01 13:47:07.540  1419  5107 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:47:07.540   399   415 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=5180
+11-01 13:47:07.540   399   415 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (5378 us)
+11-01 13:47:07.541  1419  5107 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-01 13:47:07.542  1419  5107 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-01 13:47:07.542  1419  5107 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-01 13:47:07.543  1419  5107 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:47:07.543  1419  5107 I NamespaceManager: Package 1 name not found! Using module version.
+11-01 13:47:07.546  1548  1670 I PhenotypeBackgroundRecv: Successfully updated snapshot for com.google.android.libraries.performance.primes#com.google.android.apps.wellbeing
+11-01 13:47:07.757     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+11-01 13:47:07.562   135   135 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-01 13:47:07.563  5180  5182 I Gralloc4: mapper 4.x is not supported
+11-01 13:47:07.572  1792  2678 W TimedProcessReaper: Scheduling killing of process to refresh configuration
+11-01 13:47:07.584  1792  1792 I BgTaskExecutorImpl: Starting EXCLUSIVE background task FETCH_CONFIGS_FROM_PHENOTYPE.
+11-01 13:47:07.590  1548  1823 W TimedProcessReaper: Scheduling killing of process to refresh configuration
+11-01 13:47:07.636   521   618 I RescueParty: Starting to observe: [android, com.google.android.permissioncontroller, com.android.settings, com.android.systemui], updated namespace: privacy
+11-01 13:47:07.636   521   551 I PackageWatchdog: Syncing state, reason: observing new packages
+11-01 13:47:07.636   521   551 D PackageWatchdog: rescue-party-observer added the following packages to monitor [android, com.google.android.permissioncontroller, com.android.settings, com.android.systemui]
+11-01 13:47:07.636   521   551 I PackageWatchdog: Syncing state, reason: updated observers
+11-01 13:47:07.636   521   551 I PackageWatchdog: Not pruning observers, elapsed time: 0ms
+11-01 13:47:07.636   521   551 I PackageWatchdog: Saving observer state to file
+11-01 13:47:07.640   521  2812 W ProcessStats: Tracking association SourceState{420904b android.process.acore/10085 BFgs #8144} whose proc state 4 is better than process ProcessState{be55f1f com.google.android.contacts/10155 pkg=com.google.
+11-01 13:47:07.652   521   521 I PackageWatchdog: Syncing health check requests for packages: {}
+11-01 13:47:07.663  4705  4890 W TimedProcessReaper: Scheduling killing of process to refresh configuration
+11-01 13:47:07.677   521   521 I ExplicitHealthCheckController: Service not ready to get health check supported packages. Binding...
+11-01 13:47:07.679   521   521 I ExplicitHealthCheckController: Explicit health check service is bound
+11-01 13:47:07.680   521   521 I ExplicitHealthCheckController: Explicit health check service is connected ComponentInfo{com.google.android.ext.services/android.ext.services.watchdog.ExplicitHealthCheckServiceImpl}
+11-01 13:47:07.680   521   521 I ExplicitHealthCheckController: Service initialized, syncing requests
+11-01 13:47:07.680   521   521 I PackageWatchdog: Syncing health check requests for packages: {}
+11-01 13:47:07.680   521   521 D ExplicitHealthCheckController: Getting health check supported packages
+11-01 13:47:07.684   521  2812 I ExplicitHealthCheckController: Explicit health check supported packages [PackageConfig{com.google.android.networkstack, 86400000}]
+11-01 13:47:07.684   521  2812 D PackageWatchdog: Received supported packages [PackageConfig{com.google.android.networkstack, 86400000}]
+11-01 13:47:07.684   521  2812 D ExplicitHealthCheckController: Getting health check requested packages
+11-01 13:47:07.702   521  2814 I ExplicitHealthCheckController: Explicit health check requested packages []
+11-01 13:47:07.702   521  2814 I ExplicitHealthCheckController: No more health check requests, unbinding...
+11-01 13:47:07.712   521  2814 I ExplicitHealthCheckController: Explicit health check service is unbound
+11-01 13:47:07.741  3147  3996 W TimedProcessReaper: Scheduling killing of process to refresh configuration
+11-01 13:47:07.743  3147  3147 I PhenotypeBackgroundRecv: Skipping com.google.android.dialer.directboot#com.google.android.dialer which doesn't use ProcessStable flags.
+11-01 13:47:07.747  4066  4209 I BuglePhenotype: Notify about updates in current package [CONTEXT current_package_name="com.google.android.ims.library" ]
+11-01 13:47:07.749  4066  4209 I Bugle   : RcsAvailabilityUtilForProvisioningEngineV2: onCsLibPhenotypeUpdated
+11-01 13:47:07.763  4534  4771 I PhenotypeBackgroundRecv: Successfully updated snapshot for com.google.android.libraries.notifications.platform#com.google.android.googlequicksearchbox
+11-01 13:47:07.765  4534  4534 I PhenotypeBackgroundRecv: Skipping com.google.android.apps.search.transcription.device#com.google.android.googlequicksearchbox which doesn't use ProcessStable flags.
+11-01 13:47:07.768  4534  4534 I PhenotypeBackgroundRecv: Skipping com.google.android.apps.search.assistant.user#com.google.android.googlequicksearchbox which doesn't use ProcessStable flags.
+11-01 13:47:07.769  4534  4534 I PhenotypeBackgroundRecv: Skipping com.google.android.googlequicksearchbox which doesn't use ProcessStable flags.
+11-01 13:47:07.772  1542  1542 I PhenotypeModule: PhenotypeModule.receiveBroadcast():373 onReceive() urgent = false
+11-01 13:47:07.773  1542  1542 I PhenotypeModule: PhenotypeModule.maybeFetchAndUpdate():166 maybeFetchAndUpdate: start new task to fetch
+11-01 13:47:07.774  1542  1542 I PhenotypeBackgroundRecv: Skipping com.google.android.inputmethod.latin#com.google.android.inputmethod.latin which doesn't use ProcessStable flags.
+11-01 13:47:07.806  1792  2679 W TimedProcessReaper: Scheduling killing of process to refresh configuration
+11-01 13:47:07.811  4066  4209 I BugleRcsProvisioning: RcsProvisioningTrigger: onCsLibPhenotypeUpdated, enableProvisioningTaskInBugle = true
+11-01 13:47:07.811  4066  4209 I BugleRcsProvisioning: RcsProvisioningTrigger: updateRcsAvailability : hint = CSLIB_PHENOTYPE_UPDATE
+11-01 13:47:07.813   521   960 W JobScheduler: Job didn't exist in JobStore: 945b9d3 #u0a132/-43 com.google.android.googlequicksearchbox/com.google.android.apps.gsa.tasks.BackgroundTasksJobService
+11-01 13:47:07.815  4066  4209 I Bugle   : RcsAvailabilityUtilForProvisioningEngineV2: updateAvailabilityAsync, hint: CSLIB_PHENOTYPE_UPDATE
+11-01 13:47:07.815  4066  4209 I Bugle   : RcsAvailabilityUtilForProvisioningEngineV2: swapAvailabilityUpdater, provisioningTaskInBugle: true, activeRcsAvailabilityUpdater: awuh
+11-01 13:47:07.815  4066  4209 I BugleRcsProvisioning: RcsAvailabilityUpdaterLocal: updateAvailabilityAsync: scheduling updateRcsAvailability call, hint: CSLIB_PHENOTYPE_UPDATE, enableWelcomePopupWithoutGoogleTos: false, reshowSuccessPopup:
+11-01 13:47:07.815  4066  4209 I BugleRcsProvisioning: scheduleProvisioning using legacy code path

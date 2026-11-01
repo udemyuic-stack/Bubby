@@ -1,0 +1,150 @@
+11-01 13:44:27.138  1420  3676 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-01 13:44:27.139  1420  3676 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-01 13:44:27.140  1420  3676 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:44:27.141  1420  3676 I NamespaceManager: Package 1 name not found! Using module version.
+11-01 13:44:27.170  1420  1496 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.gcm.gmsproc.GcmInGmsTaskService finished executing. cause:5 result: 1 elapsed_millis: 1070 uptime_millis: 1070 exec_start_elapsed_se
+11-01 13:44:27.199   516   516 I PackageWatchdog: Syncing health check requests for packages: {}
+11-01 13:44:27.200   516   516 I ExplicitHealthCheckController: Service not ready to get health check supported packages. Binding...
+11-01 13:44:27.202   516   516 I ExplicitHealthCheckController: Explicit health check service is bound
+11-01 13:44:27.205   516   516 I ExplicitHealthCheckController: Explicit health check service is connected ComponentInfo{com.google.android.ext.services/android.ext.services.watchdog.ExplicitHealthCheckServiceImpl}
+11-01 13:44:27.206   516   516 I ExplicitHealthCheckController: Service initialized, syncing requests
+11-01 13:44:27.206   516   516 I PackageWatchdog: Syncing health check requests for packages: {}
+11-01 13:44:27.207   516   516 D ExplicitHealthCheckController: Getting health check supported packages
+11-01 13:44:27.210   516  1991 I ExplicitHealthCheckController: Explicit health check supported packages [PackageConfig{com.google.android.networkstack, 86400000}]
+11-01 13:44:27.210   516  1991 D PackageWatchdog: Received supported packages [PackageConfig{com.google.android.networkstack, 86400000}]
+11-01 13:44:27.210   516  1991 D ExplicitHealthCheckController: Getting health check requested packages
+11-01 13:44:27.212   516  2360 I ExplicitHealthCheckController: Explicit health check requested packages []
+11-01 13:44:27.212   516  2360 I ExplicitHealthCheckController: No more health check requests, unbinding...
+11-01 13:44:27.212   516  2360 I ExplicitHealthCheckController: Explicit health check service is unbound
+11-01 13:44:27.264  1420  4990 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-01 13:44:27.265  1420  4990 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-01 13:44:27.266  1420  4990 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:44:27.266  1420  4990 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-01 13:44:27.266  1420  4990 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-01 13:44:27.266  1420  4990 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-01 13:44:27.267  1420  4990 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:44:27.272  2636  5107 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+11-01 13:44:27.273  2636  5107 W libc    : Access denied finding property "service.adb.tls.port"
+11-01 13:44:27.251  2636  2636 W binder:2636_9: type=1400 audit(0.0:38): avc:  denied  { read } for  name="u:object_r:system_adbd_prop:s0" dev="tmpfs" ino=292 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:system_adbd_prop:s0 tcl
+11-01 13:44:27.283   332  5124 I resolv  : GetAddrInfoHandler::run: {100 786532 100 983140 10131 0}
+11-01 13:44:27.271  2636  2636 W binder:2636_9: type=1400 audit(0.0:39): avc:  denied  { read } for  name="u:object_r:adbd_prop:s0" dev="tmpfs" ino=60 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:adbd_prop:s0 tclass=file permis
+11-01 13:44:27.284  2636  5107 D TrafficStats: tagSocket(120) with statsTag=0x1809, statsUid=-1
+11-01 13:44:27.286  1420  4990 I NamespaceManager: Package 1 name not found! Using module version.
+11-01 13:44:27.286  2636  5107 D TrafficStats: tagSocket(120) with statsTag=0x1809, statsUid=-1
+11-01 13:44:27.287  2636  5107 D TrafficStats: tagSocket(120) with statsTag=0x1809, statsUid=-1
+11-01 13:44:27.318  5122  5122 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+11-01 13:44:27.320  5122  5122 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-01 13:44:27.328   396   424 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=5122
+11-01 13:44:27.328   396   424 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (4963 us)
+11-01 13:44:27.366   134   134 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-01 13:44:27.367  5122  5126 I Gralloc4: mapper 4.x is not supported
+11-01 13:44:27.533     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+11-01 13:44:27.390  1776  2628 W YouTubeMusic: Could not register for notifications with InnerTube: 
+11-01 13:44:27.390  1776  2628 W YouTubeMusic: abqx: zvm: Precondition check failed.
+11-01 13:44:27.390  1776  2628 W YouTubeMusic: 	at abqn.apply(Unknown Source:4)
+11-01 13:44:27.390  1776  2628 W YouTubeMusic: 	at yyi.r(PG:5)
+11-01 13:44:27.390  1776  2628 W YouTubeMusic: 	at yyi.b(PG:2)
+11-01 13:44:27.390  1776  2628 W YouTubeMusic: 	at abqp.d(PG:4)
+11-01 13:44:27.390  1776  2628 W YouTubeMusic: 	at agsb.c(PG:63)
+11-01 13:44:27.390  1776  2628 W YouTubeMusic: 	at agsb.j(PG:38)
+11-01 13:44:27.390  1776  2628 W YouTubeMusic: 	at agsb.d(PG:3)
+11-01 13:44:27.390  1776  2628 W YouTubeMusic: 	at agrz.run(Unknown Source:2)
+11-01 13:44:27.390  1776  2628 W YouTubeMusic: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:487)
+11-01 13:44:27.390  1776  2628 W YouTubeMusic: 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+11-01 13:44:27.390  1776  2628 W YouTubeMusic: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-01 13:44:27.390  1776  2628 W YouTubeMusic: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-01 13:44:27.390  1776  2628 W YouTubeMusic: 	at smg.run(PG:2)
+11-01 13:44:27.390  1776  2628 W YouTubeMusic: 	at java.lang.Thread.run(Thread.java:1012)
+11-01 13:44:27.390  1776  2628 W YouTubeMusic: 	at snu.run(PG:5)
+11-01 13:44:27.390  1776  2628 W YouTubeMusic: Caused by: zvm: Precondition check failed.
+11-01 13:44:27.390  1776  2628 W YouTubeMusic: 	at abpb.e(PG:5)
+11-01 13:44:27.390  1776  2628 W YouTubeMusic: 	at zhp.f(PG:1)
+11-01 13:44:27.390  1776  2628 W YouTubeMusic: 	at zhp.e(PG:1)
+11-01 13:44:27.390  1776  2628 W YouTubeMusic: 	at zgl.run(PG:19)
+11-01 13:44:27.390  1776  2628 W YouTubeMusic: 	at aosb.run(PG:3)
+11-01 13:44:27.390  1776  2628 W YouTubeMusic: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-01 13:44:27.390  1776  2628 W YouTubeMusic: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-01 13:44:27.390  1776  2628 W YouTubeMusic: 	at yxr.run(PG:11)
+11-01 13:44:27.390  1776  2628 W YouTubeMusic: 	at java.lang.Thread.run(Thread.java:1012)
+11-01 13:44:27.390  1776  2628 W YouTubeMusic: Caused by: efc
+11-01 13:44:27.390  1776  2628 W YouTubeMusic: 	at zgl.run(PG:13)
+11-01 13:44:27.390  1776  2628 W YouTubeMusic: 	... 5 more
+11-01 13:44:27.400  1420  4994 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-01 13:44:27.400  1420  4994 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-01 13:44:27.400  1420  4994 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:44:27.401  1420  4994 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-01 13:44:27.422  1420  4994 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-01 13:44:27.452  1420  4994 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-01 13:44:27.458  1420  4994 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:44:27.460  1420  4994 I NamespaceManager: Package 1 name not found! Using module version.
+11-01 13:44:27.492  1420  2695 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-01 13:44:27.527  1420  1497 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService started execution. cause:5 exec_start_elapsed_seconds: 97 [CONTEXT service_id=218 ]
+11-01 13:44:27.551  1420  1497 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService finished executing. cause:5 result: 1 elapsed_millis: 95 uptime_millis: 95 exec_start_elapsed_seconds: 97
+11-01 13:44:27.570  1420  4994 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-01 13:44:27.575  1420  4994 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-01 13:44:27.580  1420  4994 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:44:27.581  1420  4994 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-01 13:44:27.582  1420  4994 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-01 13:44:27.582  1420  4994 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-01 13:44:27.583  1420  4994 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:44:27.583  1420  4994 I NamespaceManager: Package 1 name not found! Using module version.
+11-01 13:44:27.595  1420  2695 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-01 13:44:27.637   516  2125 D OomAdjuster: Not killing cached processes
+11-01 13:44:27.639  1420  2695 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-01 13:44:27.655  1468  4969 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-01 13:44:27.655  1468  4969 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-01 13:44:27.665  1420  3676 I PTCommittedOperation: Receive new configuration for com.google.android.gms.people
+11-01 13:44:27.667  1420  4994 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-01 13:44:27.668  1468  4969 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-01 13:44:27.686  1468  4967 I SyncIntentOperation: Handling the intent: Intent { act=com.google.android.gms.phenotype.COMMITTED flg=0x10 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras
+11-01 13:44:27.692  1468  4971 I MdiSyncModule: flag handling is skipping irrelevant intent.
+11-01 13:44:27.692  1468  4971 I MlBenchmarkInstaller: Intent: com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=340 ]
+11-01 13:44:27.692  1468  4971 I MlBenchmarkInstaller: COMMITTED Extra package name: com.google.android.gms.people [CONTEXT service_id=340 ]
+11-01 13:44:27.703  1468  4967 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-01 13:44:27.704  1420  4994 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-01 13:44:27.704  1420  4994 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:44:27.706  1468  4969 V Backup  : [PhenotypeConfigIO] Phenotype broadcast received for different package
+11-01 13:44:27.708  1420  4994 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-01 13:44:27.711  1468  4971 W PeoplePU: getServiceInfo failed.
+11-01 13:44:27.711  1468  4971 W PeoplePU: android.content.pm.PackageManager$NameNotFoundException: ComponentInfo{com.google.android.gms/com.google.android.gms.people.sync.focus.ContactsSyncAdapterService}
+11-01 13:44:27.711  1468  4971 W PeoplePU: 	at android.app.ApplicationPackageManager.getServiceInfo(ApplicationPackageManager.java:616)
+11-01 13:44:27.711  1468  4971 W PeoplePU: 	at android.app.ApplicationPackageManager.getServiceInfo(ApplicationPackageManager.java:599)
+11-01 13:44:27.711  1468  4971 W PeoplePU: 	at bvox.b(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3)
+11-01 13:44:27.711  1468  4971 W PeoplePU: 	at bvgq.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3)
+11-01 13:44:27.711  1468  4971 W PeoplePU: 	at com.google.android.gms.people.service.SettingsChangedBroadcastIntentOperation.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):11)
+11-01 13:44:27.711  1468  4971 W PeoplePU: 	at com.google.android.chimera.IntentOperation.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-01 13:44:27.711  1468  4971 W PeoplePU: 	at zhv.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+11-01 13:44:27.711  1468  4971 W PeoplePU: 	at hjm.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3)
+11-01 13:44:27.711  1468  4971 W PeoplePU: 	at hjl.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):11)
+11-01 13:44:27.711  1468  4971 W PeoplePU: 	at dfhf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-01 13:44:27.711  1468  4971 W PeoplePU: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-01 13:44:27.711  1468  4971 W PeoplePU: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-01 13:44:27.711  1468  4971 W PeoplePU: 	at java.lang.Thread.run(Thread.java:1012)
+11-01 13:44:27.711  1420  4994 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-01 13:44:27.712  1468  4967 I LocationHistory: [IntentOperation] Module is disabled [CONTEXT service_id=314 ]
+11-01 13:44:27.712  1468  4971 W PeoplePU: getComponentEnabledSetting failed.
+11-01 13:44:27.712  1468  4971 W PeoplePU: java.lang.IllegalArgumentException: Unknown component: ComponentInfo{com.google.android.syncadapters.contacts/com.google.android.syncadapters.contacts.ContactsSyncAdapterService}
+11-01 13:44:27.712  1468  4971 W PeoplePU: 	at android.os.Parcel.createExceptionOrNull(Parcel.java:3061)
+11-01 13:44:27.712  1468  4971 W PeoplePU: 	at android.os.Parcel.createException(Parcel.java:3041)
+11-01 13:44:27.712  1468  4971 W PeoplePU: 	at android.os.Parcel.readException(Parcel.java:3024)
+11-01 13:44:27.712  1468  4971 W PeoplePU: 	at android.os.Parcel.readException(Parcel.java:2966)
+11-01 13:44:27.712  1468  4971 W PeoplePU: 	at android.content.pm.IPackageManager$Stub$Proxy.getComponentEnabledSetting(IPackageManager.java:6034)
+11-01 13:44:27.712  1468  4971 W PeoplePU: 	at android.app.ApplicationPackageManager.getComponentEnabledSetting(ApplicationPackageManager.java:3097)
+11-01 13:44:27.712  1468  4971 W PeoplePU: 	at bvox.b(:com.google.android.gms@231818047@23.18.18 (190800-535401451):1)
+11-01 13:44:27.712  1468  4971 W PeoplePU: 	at bvgq.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):5)
+11-01 13:44:27.712  1468  4971 W PeoplePU: 	at com.google.android.gms.people.service.SettingsChangedBroadcastIntentOperation.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):11)
+11-01 13:44:27.712  1468  4971 W PeoplePU: 	at com.google.android.chimera.IntentOperation.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-01 13:44:27.712  1468  4971 W PeoplePU: 	at zhv.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+11-01 13:44:27.712  1468  4971 W PeoplePU: 	at hjm.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3)
+11-01 13:44:27.712  1468  4971 W PeoplePU: 	at hjl.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):11)
+11-01 13:44:27.712  1468  4971 W PeoplePU: 	at dfhf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-01 13:44:27.712  1468  4971 W PeoplePU: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-01 13:44:27.712  1468  4971 W PeoplePU: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-01 13:44:27.712  1468  4971 W PeoplePU: 	at java.lang.Thread.run(Thread.java:1012)
+11-01 13:44:27.712  1468  4971 W PeoplePU: Caused by: android.os.RemoteException: Remote stack trace:
+11-01 13:44:27.712  1468  4971 W PeoplePU: 	at com.android.server.pm.ComputerEngine.getComponentEnabledSettingInternal(ComputerEngine.java:5159)
+11-01 13:44:27.712  1468  4971 W PeoplePU: 	at com.android.server.pm.ComputerEngine.getComponentEnabledSetting(ComputerEngine.java:5141)
+11-01 13:44:27.712  1468  4971 W PeoplePU: 	at com.android.server.pm.IPackageManagerBase.getComponentEnabledSetting(IPackageManagerBase.java:388)
+11-01 13:44:27.712  1468  4971 W PeoplePU: 	at android.content.pm.IPackageManager$Stub.onTransact(IPackageManager.java:3012)
+11-01 13:44:27.712  1468  4971 W PeoplePU: 	at com.android.server.pm.PackageManagerService$IPackageManagerImpl.onTransact(PackageManagerService.java:6334)
+11-01 13:44:27.712  1468  4971 W PeoplePU: 

@@ -1,0 +1,150 @@
+11-01 13:47:14.869  1729  2398 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.s3.p.run(PG:1)
+11-01 13:47:14.869  1729  2398 E cr_CronetUrlRequestContext: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:487)
+11-01 13:47:14.869  1729  2398 E cr_CronetUrlRequestContext: 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+11-01 13:47:14.869  1729  2398 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.shared.util.c.a.e.run(PG:2)
+11-01 13:47:14.869  1729  2398 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.shared.util.c.a.bi.run(PG:1)
+11-01 13:47:14.869  1729  2398 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.shared.util.c.a.bi.run(PG:1)
+11-01 13:47:14.869  1729  2398 E cr_CronetUrlRequestContext: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-01 13:47:14.869  1729  2398 E cr_CronetUrlRequestContext: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-01 13:47:14.869  1729  2398 E cr_CronetUrlRequestContext: 	at java.lang.Thread.run(Thread.java:1012)
+11-01 13:47:14.869  1729  2398 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.shared.util.c.a.l.run(PG:5)
+11-01 13:47:14.873  1729  1729 E A       : onError
+11-01 13:47:14.873  1729  1729 E A       : com.google.android.apps.gsa.shared.speech.a.m: errorCode: 65561, engine: 2
+11-01 13:47:14.873  1729  1729 E A       : 	at com.google.android.apps.gsa.staticplugins.dc.a.e.a(PG:3)
+11-01 13:47:14.873  1729  1729 E A       : 	at com.google.android.apps.gsa.s3.n.hh(PG:1)
+11-01 13:47:14.873  1729  1729 E A       : 	at com.google.cd.g.a.f.e(PG:2)
+11-01 13:47:14.873  1729  1729 E A       : 	at com.google.android.apps.gsa.speech.k.a.g.d(PG:22)
+11-01 13:47:14.873  1729  1729 E A       : 	at com.google.android.apps.gsa.speech.k.a.g.ks(PG:6)
+11-01 13:47:14.873  1729  1729 E A       : 	at com.google.android.apps.gsa.s3.o.e(PG:14)
+11-01 13:47:14.873  1729  1729 E A       : 	at com.google.android.apps.gsa.s3.p.run(PG:1)
+11-01 13:47:14.873  1729  1729 E A       : 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:487)
+11-01 13:47:14.873  1729  1729 E A       : 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+11-01 13:47:14.873  1729  1729 E A       : 	at com.google.android.apps.gsa.shared.util.c.a.e.run(PG:2)
+11-01 13:47:14.873  1729  1729 E A       : 	at com.google.android.apps.gsa.shared.util.c.a.bi.run(PG:1)
+11-01 13:47:14.873  1729  1729 E A       : 	at com.google.android.apps.gsa.shared.util.c.a.bi.run(PG:1)
+11-01 13:47:14.873  1729  1729 E A       : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-01 13:47:14.873  1729  1729 E A       : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-01 13:47:14.873  1729  1729 E A       : 	at java.lang.Thread.run(Thread.java:1012)
+11-01 13:47:14.873  1729  1729 E A       : 	at com.google.android.apps.gsa.shared.util.c.a.l.run(PG:5)
+11-01 13:47:14.873  1729  1729 E A       : Caused by: com.google.android.apps.gsa.shared.speech.a.o: errorCode: 65586, engine: 2
+11-01 13:47:14.873  1729  1729 E A       : 	... 15 more
+11-01 13:47:14.873  1729  1729 E A       : Caused by: com.google.android.apps.gsa.shared.speech.a.k: errorCode: 401, engine: 2
+11-01 13:47:14.873  1729  1729 E A       : 	at com.google.android.apps.gsa.assistant.shared.n.h.a(PG:5)
+11-01 13:47:14.873  1729  1729 E A       : 	at com.google.android.apps.gsa.s3.producers.j.hE(PG:2)
+11-01 13:47:14.873  1729  1729 E A       : 	at com.google.android.apps.gsa.speech.k.a.g.d(PG:16)
+11-01 13:47:14.873  1729  1729 E A       : 	... 12 more
+11-01 13:47:14.875  1729  2926 I A       : [Upload] Connected
+11-01 13:47:14.879  1729  1729 W A       : Failed to sync device settings.
+11-01 13:47:14.879  1729  1729 I A       : Retrying to sync device settings.
+11-01 13:47:14.884   523  1875 W JobScheduler: Job didn't exist in JobStore: 2eb10d3 #u0a132/-353 com.google.android.googlequicksearchbox/com.google.android.apps.gsa.tasks.BackgroundTasksJobService
+11-01 13:47:14.939  4461  4461 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.auth.proximity.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentBoundBrokerService }
+11-01 13:47:15.037  1706  2599 W YouTubeMusic: Invalid playback type; streaming data is not playable
+11-01 13:47:15.048  1706  1706 E Widget.RecentlyPlayed: Filling bundle but recently played items are EMPTY.
+11-01 13:47:15.083   158  4423 I keystore2: system/security/keystore2/src/watchdog.rs:319 - Watchdog thread idle -> terminating. Have a great day.
+11-01 13:47:15.106   523   532 I system_server: Background young concurrent copying GC freed 1129722(23MB) AllocSpace objects, 7(140KB) LOS objects, 45% free, 26MB/49MB, paused 3.671ms,86us total 124.328ms
+11-01 13:47:15.222  4461  5028 I Fitness : OnPackageChangedOperation got intent: Intent { act=android.intent.action.PACKAGE_CHANGED dat=package: flg=0x45000010 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.PersistentIntentO
+11-01 13:47:15.226  4461  4646 I Fitness : FitCleanupIntentOperation received Intent android.intent.action.PACKAGE_CHANGED [CONTEXT service_id=17 ]
+11-01 13:47:15.255  4461  4704 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-01 13:47:15.276  4461  4704 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-01 13:47:15.282  4461  4704 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-01 13:47:15.305  4461  4738 E PhenotypeFlagCommitter: Retrieving snapshot for com.google.android.gms.lockbox failed
+11-01 13:47:15.305  4461  4738 E PhenotypeFlagCommitter: java.util.concurrent.TimeoutException: Timed out waiting for Task
+11-01 13:47:15.305  4461  4738 E PhenotypeFlagCommitter: 	at cfsz.o(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+11-01 13:47:15.305  4461  4738 E PhenotypeFlagCommitter: 	at bwch.e(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-01 13:47:15.305  4461  4738 E PhenotypeFlagCommitter: 	at bwch.j(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-01 13:47:15.305  4461  4738 E PhenotypeFlagCommitter: 	at bwch.k(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-01 13:47:15.305  4461  4738 E PhenotypeFlagCommitter: 	at bwch.j(:com.google.android.gms@231818047@23.18.18 (190800-535401451):8)
+11-01 13:47:15.305  4461  4738 E PhenotypeFlagCommitter: 	at bwch.h(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-01 13:47:15.305  4461  4738 E PhenotypeFlagCommitter: 	at com.google.android.gms.lockbox.LockboxIntentOperation.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):5)
+11-01 13:47:15.305  4461  4738 E PhenotypeFlagCommitter: 	at com.google.android.chimera.IntentOperation.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-01 13:47:15.305  4461  4738 E PhenotypeFlagCommitter: 	at zhv.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+11-01 13:47:15.305  4461  4738 E PhenotypeFlagCommitter: 	at hjm.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3)
+11-01 13:47:15.305  4461  4738 E PhenotypeFlagCommitter: 	at hjl.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):11)
+11-01 13:47:15.305  4461  4738 E PhenotypeFlagCommitter: 	at dfhf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-01 13:47:15.305  4461  4738 E PhenotypeFlagCommitter: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-01 13:47:15.305  4461  4738 E PhenotypeFlagCommitter: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-01 13:47:15.305  4461  4738 E PhenotypeFlagCommitter: 	at java.lang.Thread.run(Thread.java:1012)
+11-01 13:47:15.315  4461  4859 I LockboxIntentOp: Completed task: true [CONTEXT service_id=26 ]
+11-01 13:47:15.336   523   537 D OomAdjuster: Not killing cached processes
+11-01 13:47:15.680  4461  4461 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.auth.proximity.devicesyncservice.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentBoundBrokerService }
+11-01 13:47:15.725  4810  4826 D EGL_emulation: app_time_stats: avg=29.40ms min=4.52ms max=56.94ms count=32
+11-01 13:47:15.756  4507  4507 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.auth.cryptauth.cryptauthservice.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsBoundBrokerService }
+11-01 13:47:16.256   523   553 D ActivityManager: sync unfroze 2741 com.google.android.tts for 3
+11-01 13:47:16.267  4507  4844 I Icing   : Indexing com.google.android.gms-apps from com.google.android.gms
+11-01 13:47:16.275  2741  2996 I PhenotypeBackgroundRecv: Successfully updated snapshot for com.google.android.libraries.consentverifier#com.google.android.tts
+11-01 13:47:16.286  2741  2993 I PhenotypeBackgroundRecv: Successfully updated snapshot for com.google.android.libraries.performance.primes#com.google.android.tts
+11-01 13:47:16.294  2741  2741 I PhenotypeBackgroundRecv: Skipping com.google.android.gms.icing.mdd#com.google.android.tts which doesn't use ProcessStable flags.
+11-01 13:47:16.401  4507  4844 I Icing   : Indexing done com.google.android.gms-apps
+11-01 13:47:16.407  4507  4844 I Icing   : Indexing com.google.android.gms-internal.3p:MobileApplication from com.google.android.gms
+11-01 13:47:16.420  1558  1783 I PhenotypeBackgroundRecv: Successfully updated snapshot for com.google.android.libraries.consentverifier#com.google.android.apps.wellbeing
+11-01 13:47:16.426  4507  4844 I Icing   : Indexing done com.google.android.gms-internal.3p:MobileApplication
+11-01 13:47:16.686   523   553 D ActivityManager: sync unfroze 3870 com.google.android.settings.intelligence for 3
+11-01 13:47:16.745  4810  4826 D EGL_emulation: app_time_stats: avg=27.62ms min=4.81ms max=56.71ms count=35
+11-01 13:47:16.871   523   553 D ActivityManager: sync unfroze 4099 com.google.android.googlequicksearchbox for 3
+11-01 13:47:16.907  1558  1588 I .apps.wellbeing: Background young concurrent copying GC freed 51920(2424KB) AllocSpace objects, 0(0B) LOS objects, 22% free, 8739KB/11MB, paused 34us,54us total 149.220ms
+11-01 13:47:16.915  4461  4467 I .gms.persistent: Background young concurrent copying GC freed 226063(11MB) AllocSpace objects, 4(96KB) LOS objects, 37% free, 16MB/26MB, paused 510us,17us total 267.072ms
+11-01 13:47:16.947   523   768 D ConnectivityService: reportNetworkConnectivity(100, false) by 10132
+11-01 13:47:16.948  1006  2644 D NetworkMonitor/100: Forcing reevaluation for UID 10132. Dns signal count: 0
+11-01 13:47:16.951  4461  4533 I PackageUpdateTaskChimer: Scheduling Phenotype config package catchup updates to be 86400 seconds from now (1793540836950) [CONTEXT service_id=51 ]
+11-01 13:47:16.963  1006  5058 D TrafficStats: tagSocket(68) with statsTag=0xffffff81, statsUid=-1
+11-01 13:47:16.965  1006  5058 D TrafficStats: tagSocket(68) with statsTag=0xffffff81, statsUid=-1
+11-01 13:47:16.968  1006  5057 D TrafficStats: tagSocket(75) with statsTag=0xffffff81, statsUid=-1
+11-01 13:47:16.969  1006  5057 D TrafficStats: tagSocket(75) with statsTag=0xffffff81, statsUid=-1
+11-01 13:47:16.970   335  5059 I resolv  : ResNSendHandler::run: 0 / {100 983140 100 983140 1073 1}
+11-01 13:47:16.971   335  5059 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x786c510aed30
+11-01 13:47:16.975   335  5060 I resolv  : ResNSendHandler::run: 0 / {100 983140 100 983140 1073 1}
+11-01 13:47:16.975   335  5060 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x786c510aff90
+11-01 13:47:16.975  1006  1006 D TrafficStats: tagSocket(107) with statsTag=0xffffffff, statsUid=-1
+11-01 13:47:16.976   335  5061 I resolv  : ResNSendHandler::run: 0 / {100 983140 100 983140 1073 1}
+11-01 13:47:16.976   335  5061 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x786af10b39d0
+11-01 13:47:17.016  1006  1006 D TrafficStats: tagSocket(107) with statsTag=0xffffffff, statsUid=-1
+11-01 13:47:17.018  4507  4507 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.mdd.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsBoundBrokerService }
+11-01 13:47:17.018  1006  5058 D NetworkMonitor/100: PROBE_DNS connectivitycheck.gstatic.com 55ms OK 172.253.63.94,2607:f8b0:4004:c17::5e
+11-01 13:47:17.019   335  5062 I resolv  : ResNSendHandler::run: 0 / {100 983140 100 983140 1073 1}
+11-01 13:47:17.019   335  5062 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x786ba10b1570
+11-01 13:47:17.021  1006  1006 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-01 13:47:17.022  1006  1006 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-01 13:47:17.022  1006  1006 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-01 13:47:17.023  1006  1006 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-01 13:47:17.023  1006  1006 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-01 13:47:17.024  1006  1006 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-01 13:47:17.024  1006  1006 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-01 13:47:17.024   335  5063 I resolv  : GetAddrInfoHandler::run: {100 983140 100 983140 1073 1}
+11-01 13:47:17.025  1006  1006 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-01 13:47:17.026  1006  1006 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-01 13:47:17.029  1006  1006 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-01 13:47:17.030  1006  1006 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-01 13:47:17.030  1006  1006 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-01 13:47:17.031  1006  1006 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-01 13:47:17.031  1006  1006 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-01 13:47:17.032  1006  1006 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-01 13:47:17.032  1006  1006 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-01 13:47:17.033   335  5064 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+11-01 13:47:17.033   335  5064 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x786c510aed30
+11-01 13:47:17.033   335  5064 I resolv  : doQuery: rcode=0, ancount=1, return value=75
+11-01 13:47:17.033   335  5065 I resolv  : res_nmkquery: (QUERY, IN, A)
+11-01 13:47:17.033   335  5065 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x786c510aff90
+11-01 13:47:17.033   335  5065 I resolv  : doQuery: rcode=0, ancount=1, return value=63
+11-01 13:47:17.034  1006  5058 D TrafficStats: tagSocket(68) with statsTag=0xffffff81, statsUid=-1
+11-01 13:47:17.040  1006  5057 D NetworkMonitor/100: PROBE_DNS www.google.com 67ms OK 142.251.153.119,142.251.156.119,142.251.157.119,142.251.154.119,142.251.155.119,142.251.150.119,142.251.152.119,142.251.151.119,2001:4860:4826:7700::,2001
+11-01 13:47:17.047   335  5066 I resolv  : GetAddrInfoHandler::run: {100 983140 100 983140 1073 1}
+11-01 13:47:17.050   335  5068 I resolv  : res_nmkquery: (QUERY, IN, A)
+11-01 13:47:17.051   335  5068 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x786ba10b1570
+11-01 13:47:17.051   335  5068 I resolv  : doQuery: rcode=0, ancount=8, return value=160
+11-01 13:47:17.051   335  5067 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+11-01 13:47:17.051   335  5067 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x786af10b39d0
+11-01 13:47:17.051   335  5067 I resolv  : doQuery: rcode=0, ancount=8, return value=256
+11-01 13:47:17.052  1006  5057 D TrafficStats: tagSocket(75) with statsTag=0xffffff81, statsUid=-1
+11-01 13:47:17.058  1006  5058 D NetworkMonitor/100: PROBE_HTTP http://connectivitycheck.gstatic.com/generate_204 time=38ms ret=204 request={Connection=[close], User-Agent=[Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gec
+11-01 13:47:17.222  4507  4507 I NearbySharing: SharingTileService destroyed [CONTEXT service_id=194 ]
+11-01 13:47:17.300  1006  5057 D NetworkMonitor/100: PROBE_HTTPS https://www.google.com/generate_204 time=257ms ret=204 request={Connection=[close], User-Agent=[Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/6
+11-01 13:47:17.304  1006  5056 D NetworkMonitor/100: isCaptivePortal: isSuccessful()=true isPortal()=false RedirectUrl=null isPartialConnectivity()=false Time=343ms
+11-01 13:47:17.318   523   768 D ConnectivityService: [100 WIFI] validation passed
+11-01 13:47:17.566  5071  5071 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+11-01 13:47:17.567  5071  5071 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-01 13:47:17.612   136   136 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-01 13:47:17.613  5071  5072 I Gralloc4: mapper 4.x is not supported
+11-01 13:47:17.809     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+11-01 13:47:17.639  4507  4582 D TrafficStats: tagSocket(109) with statsTag=0x30001803, statsUid=-1
+11-01 13:47:17.711  4461  4467 I .gms.persistent: Background concurrent copying GC freed 280292(14MB) AllocSpace objects, 1(20KB) LOS objects, 49% free, 12MB/25MB, paused 25us,18us total 235.405ms
+11-01 13:47:17.766  4810  4826 D EGL_emulation: app_time_stats: avg=30.30ms min=4.42ms max=53.85ms count=32

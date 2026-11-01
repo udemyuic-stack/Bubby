@@ -1,0 +1,150 @@
+11-01 13:44:29.495  1624  2261 I NgaEntryPointEventSendr: State changed: Connecting => Ready
+11-01 13:44:29.497   519  2810 D CompatibilityChangeReporter: Compat change id reported: 197654537; UID 10192; state: ENABLED
+11-01 13:44:29.501   519  2154 W BatteryExternalStatsWorker: error reading Bluetooth stats: 11
+11-01 13:44:29.511  5308  5384 I LocationHistory: [IntentOperation] Module is disabled [CONTEXT service_id=314 ]
+11-01 13:44:29.514  5241  5278 I NearbySharing: A SendSurface(BACKGROUND) has been registered [CONTEXT service_id=194 ]
+11-01 13:44:29.518  1624  2254 W A       : Routing took 47 ms
+11-01 13:44:29.559  5308  5443 I NearbySharing: Granted slice and Uri permissions to android [CONTEXT service_id=194 ]
+11-01 13:44:29.560   519   610 D ActivityManager: freezing 3729 com.google.android.projection.gearhead:shared
+11-01 13:44:29.561  5241  5278 I NearbySharing: Stopping scanning because Nearby Sharing is disabled. [CONTEXT service_id=194 ]
+11-01 13:44:29.564   519   533 W ActivityManager: Unable to start service Intent { cmp=com.google.android.apps.tachyon/.clientapi.ClientApiService } U=0: not found
+11-01 13:44:29.576  5241  5278 I NearbySharing: Failed to stop scanning because we're not scanning. [CONTEXT service_id=194 ]
+11-01 13:44:29.606  5308  5385 D libEGL  : loaded /vendor/lib64/egl/libGLESv2_emulation.so
+11-01 13:44:29.609  1624  2254 I A       : Successfully initialized all components
+11-01 13:44:29.637  5241  5467 I Nearby  : is blocked device type false, isAuto=false, isIot=false, isLatchsky=false, isChinaWearable=false, isTv=false, isWearable=false (supportWearOs=false), isChromeOsDevice=false (supportChromeOs=false) 
+11-01 13:44:29.733   519   610 D ActivityManager: freezing 2624 com.android.chrome
+11-01 13:44:29.734   519   610 D ActivityManager: freezing 1748 com.google.android.youtube
+11-01 13:44:29.737  1624  2261 I NgaEntryPointEventSendr: State changed: Ready => Disconnected (onOpaDisconnected)
+11-01 13:44:29.739  1741  2516 I PBSessionCacheImpl: Deleted sessionId[7658792516444840] from persistence.
+11-01 13:44:29.750  1741  2516 W A       : UiCallbackStub-onGenericEvent[ServiceEvent = 60] task was not run. Callback from Service received after client was disposed.
+11-01 13:44:29.759  1741  2516 W SearchServiceCore: Abort, client detached.
+11-01 13:44:29.851  5241  5241 W .gms.persistent: Long monitor contention with owner highpool[4] (5408) at java.io.InputStream android.content.res.AssetManager.openNonAsset(int, java.lang.String, int)(AssetManager.java:1027) waiters=0 in bo
+11-01 13:44:29.868  5241  5467 I Nearby  : is blocked device type false, isAuto=false, isIot=false, isLatchsky=false, isChinaWearable=false, isTv=false, isWearable=false (supportWearOs=false), isChromeOsDevice=false (supportChromeOs=false) 
+11-01 13:44:29.881  5241  5278 I NearbySharing: Can't stop advertising FastInitiation. Not advertising. [CONTEXT service_id=194 ]
+11-01 13:44:29.881  5241  5278 I NearbySharing: Stopping Fast Init advertisement because we're not scanning in the foreground. [CONTEXT service_id=194 ]
+11-01 13:44:29.881  5241  5278 I NearbySharing: Stopping advertising because Nearby Sharing is disabled. [CONTEXT service_id=194 ]
+11-01 13:44:29.919  5241  5467 I Nearby  : is blocked device type false, isAuto=false, isIot=false, isLatchsky=false, isChinaWearable=false, isTv=false, isWearable=false (supportWearOs=false), isChromeOsDevice=false (supportChromeOs=false) 
+11-01 13:44:29.982  5241  5501 I AlarmManager: set [name: SystemMemoryCache type: 2 triggerAtMillis: 315360091090 windowMillis: -1 intervalMillis: 0]
+11-01 13:44:30.054  5241  5241 I NearbyDiscovery: DiscoveryService created [CONTEXT service_id=265 ]
+11-01 13:44:30.118  5241  5473 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-01 13:44:30.121  5241  5473 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-01 13:44:30.121  5241  5473 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:44:30.122  5241  5473 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-01 13:44:30.122  5241  5473 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-01 13:44:30.124  5241  5473 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-01 13:44:30.124  5241  5473 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:44:30.124  5241  5473 I NamespaceManager: Package 1 name not found! Using module version.
+11-01 13:44:30.131  1624  1664 I hbox:interactor: Background young concurrent copying GC freed 37251(2230KB) AllocSpace objects, 7(140KB) LOS objects, 20% free, 8067KB/10154KB, paused 26us,24us total 734.592ms
+11-01 13:44:30.138  5241  5473 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-01 13:44:30.138  5241  5473 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-01 13:44:30.140  5241  5473 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:44:30.140  5241  5473 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-01 13:44:30.141  5241  5473 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-01 13:44:30.146  5241  5473 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-01 13:44:30.149  5084  5108 D EGL_emulation: app_time_stats: avg=22.90ms min=11.42ms max=37.69ms count=43
+11-01 13:44:30.153  5241  5297 W .gms.persistent: Long monitor contention with owner netscheduler-queue-handler (5364) at void bytb.o(int)(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4) waiters=0 in int bytb.r(byps) for 1.
+11-01 13:44:30.160  5241  5364 D CompatibilityChangeReporter: Compat change id reported: 150939131; UID 10131; state: ENABLED
+11-01 13:44:30.163  5241  5473 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:44:30.179  5241  5473 I NamespaceManager: Package 1 name not found! Using module version.
+11-01 13:44:30.236  5241  5278 I NearbySharing: Failed to scan for fast initiation because we're already scanning with isHighPowerAllowed=false. [CONTEXT service_id=194 ]
+11-01 13:44:30.240  4791  4791 W rules.WifiRx: FenceState currentState is not true
+11-01 13:44:30.254  4791  4791 W rules.WifiRx: FenceState currentState is not true
+11-01 13:44:30.331  5241  5241 W ChimeraUtils: Module com.google.android.gms.nearby missing resource null(0)
+11-01 13:44:30.353  5241  5241 W ChimeraUtils: Module com.google.android.gms.nearby missing resource null(0)
+11-01 13:44:30.358  5241  5241 D BluetoothAdapter: registerBluetoothConnectionCallback()
+11-01 13:44:30.360  5241  5241 I NearbyShared: BTConnStateMgr: BluetoothConnectionCallback registered.
+11-01 13:44:30.364  5241  5241 I NearbyFastPair: NearbyAppHelper: Check Mainline Tethering module version code. [CONTEXT service_id=265 ]
+11-01 13:44:30.374  5241  5241 I NearbyFastPair: NearbyAppHelper: Tethering package version code: 340818080 [CONTEXT service_id=265 ]
+11-01 13:44:30.381  5241  5278 I NearbySharing: Dismissing HUN as there's no device nearby. [CONTEXT service_id=194 ]
+11-01 13:44:30.381  5241  5278 I NearbySharing: Cancelling in use notification [CONTEXT service_id=194 ]
+11-01 13:44:30.392  5241  5409 I NearbyFastPair: DynamicSupportModule: onSupportStateUpdate start [CONTEXT service_id=265 ]
+11-01 13:44:30.392  5241  5409 I NearbyFastPair: DynamicSupportModule: onSupportStateUpdate end [CONTEXT service_id=265 ]
+11-01 13:44:30.392  5241  5409 I NearbyFastPair: DynamicSupportModule: onSupportStateUpdate start [CONTEXT service_id=265 ]
+11-01 13:44:30.394  5241  5409 I NearbyFastPair: DynamicSupportModule: onSupportStateUpdate end [CONTEXT service_id=265 ]
+11-01 13:44:30.399  5241  5510 I NearbyDiscovery: FastPair: HeadsetPieceImage, grant permission files:0 [CONTEXT service_id=265 ]
+11-01 13:44:30.399  5241  5510 I NearbyDiscovery: FastPairController: Skip event stream initialization, fast pair is disabled [CONTEXT service_id=265 ]
+11-01 13:44:30.402  5308  5385 I NnApiDriverManager: Registering application with GPU 'Android Emulator OpenGL ES Translator (Google SwiftShader)' by 'Google (Google Inc.)' [CONTEXT service_id=301 ]
+11-01 13:44:30.404  5241  5278 I NearbySharing: Broadcasting NearbySharing state change. [CONTEXT service_id=194 ]
+11-01 13:44:30.430  5513  5513 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+11-01 13:44:30.430  5513  5513 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-01 13:44:30.443   398   414 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=5513
+11-01 13:44:30.443   398   414 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (5226 us)
+11-01 13:44:30.458   333   362 I netd    : tetherGetStats() -> {[]} <1.01ms>
+11-01 13:44:30.462   135   135 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-01 13:44:30.462  5513  5521 I Gralloc4: mapper 4.x is not supported
+11-01 13:44:30.651     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+11-01 13:44:30.496  5308  5308 D BoundBrokerSvc: onBind: Intent { act=com.google.android.mdh.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsBoundBrokerService }
+11-01 13:44:30.496  5308  5308 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.mdh.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsBoundBrokerService }
+11-01 13:44:30.504   333   362 I netd    : bandwidthSetGlobalAlert(2097152) <0.12ms>
+11-01 13:44:30.506   333   362 I netd    : bandwidthRemoveInterfaceQuota(eth0) <0.61ms>
+11-01 13:44:30.507   333   362 I netd    : bandwidthSetInterfaceQuota(eth0, 9223372036854775807) <0.41ms>
+11-01 13:44:30.527  1728  2471 W YouTubeMusic: Could not register for notifications with InnerTube: 
+11-01 13:44:30.527  1728  2471 W YouTubeMusic: abqx: zvm: Precondition check failed.
+11-01 13:44:30.527  1728  2471 W YouTubeMusic: 	at abqn.apply(Unknown Source:4)
+11-01 13:44:30.527  1728  2471 W YouTubeMusic: 	at yyi.r(PG:5)
+11-01 13:44:30.527  1728  2471 W YouTubeMusic: 	at yyi.b(PG:2)
+11-01 13:44:30.527  1728  2471 W YouTubeMusic: 	at abqp.d(PG:4)
+11-01 13:44:30.527  1728  2471 W YouTubeMusic: 	at agsb.c(PG:63)
+11-01 13:44:30.527  1728  2471 W YouTubeMusic: 	at agsb.j(PG:38)
+11-01 13:44:30.527  1728  2471 W YouTubeMusic: 	at agsb.d(PG:3)
+11-01 13:44:30.527  1728  2471 W YouTubeMusic: 	at agrz.run(Unknown Source:2)
+11-01 13:44:30.527  1728  2471 W YouTubeMusic: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:487)
+11-01 13:44:30.527  1728  2471 W YouTubeMusic: 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+11-01 13:44:30.527  1728  2471 W YouTubeMusic: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-01 13:44:30.527  1728  2471 W YouTubeMusic: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-01 13:44:30.527  1728  2471 W YouTubeMusic: 	at smg.run(PG:2)
+11-01 13:44:30.527  1728  2471 W YouTubeMusic: 	at java.lang.Thread.run(Thread.java:1012)
+11-01 13:44:30.527  1728  2471 W YouTubeMusic: 	at snu.run(PG:5)
+11-01 13:44:30.527  1728  2471 W YouTubeMusic: Caused by: zvm: Precondition check failed.
+11-01 13:44:30.527  1728  2471 W YouTubeMusic: 	at abpb.e(PG:5)
+11-01 13:44:30.527  1728  2471 W YouTubeMusic: 	at zhp.f(PG:1)
+11-01 13:44:30.527  1728  2471 W YouTubeMusic: 	at zhp.e(PG:1)
+11-01 13:44:30.527  1728  2471 W YouTubeMusic: 	at zgl.run(PG:19)
+11-01 13:44:30.527  1728  2471 W YouTubeMusic: 	at aosb.run(PG:3)
+11-01 13:44:30.527  1728  2471 W YouTubeMusic: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-01 13:44:30.527  1728  2471 W YouTubeMusic: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-01 13:44:30.527  1728  2471 W YouTubeMusic: 	at yxr.run(PG:11)
+11-01 13:44:30.527  1728  2471 W YouTubeMusic: 	at java.lang.Thread.run(Thread.java:1012)
+11-01 13:44:30.527  1728  2471 W YouTubeMusic: Caused by: efc
+11-01 13:44:30.527  1728  2471 W YouTubeMusic: 	at zgl.run(PG:13)
+11-01 13:44:30.527  1728  2471 W YouTubeMusic: 	... 5 more
+11-01 13:44:30.535  5308  5308 D BoundBrokerSvc: onBind: Intent { act=com.google.android.mdh.service.listener.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsBoundBrokerService }
+11-01 13:44:30.535  5308  5308 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.mdh.service.listener.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsBoundBrokerService }
+11-01 13:44:30.569  5241  5366 I Nearby  : is blocked device type false, isAuto=false, isIot=false, isLatchsky=false, isChinaWearable=false, isTv=false, isWearable=false (supportWearOs=false), isChromeOsDevice=false (supportChromeOs=false) 
+11-01 13:44:30.576  5241  5510 I Nearby  : is blocked device type false, isAuto=false, isIot=false, isLatchsky=false, isChinaWearable=false, isTv=false, isWearable=false (supportWearOs=false), isChromeOsDevice=false (supportChromeOs=false) 
+11-01 13:44:30.577  5241  5510 I NearbyDiscovery: DiscoveryController, showNotification, itemSize=0 [CONTEXT service_id=265 ]
+11-01 13:44:30.579  5241  5510 I NearbyDiscovery: Show notifications: 0 total, no changes since last shown, no-op. [CONTEXT service_id=265 ]
+11-01 13:44:30.581  5241  5366 I NearbyShared: FastPairSlice: enableBindServiceForDiscoveryItem called, isBind = false
+11-01 13:44:30.601  5308  5482 I NearbyDiscovery: FastPairSlice: Created under nearby module. [CONTEXT service_id=265 ]
+11-01 13:44:30.619  5241  5516 I GCoreUlr: WorldUpdater received intent Intent { act=com.google.android.location.reporting.ACTION_UPDATE_WORLD cmp=com.google.android.gms/com.google.android.location.reporting.service.DispatchingService (has 
+11-01 13:44:30.625  5308  5482 I FastPair: ServiceBindHelper.onSlicePinned, pin slice, uri = content://com.google.android.gms.nearby.fastpair/method_bind_service_for_discovery_item?is_bind=false
+11-01 13:44:30.640  5241  5516 I GCoreUlr: WorldUpdater:android.location.PROVIDERS_CHANGED: Ensuring that reporting is stopped because of reasons: (no Google accounts)
+11-01 13:44:30.642  5241  5516 I GCoreUlr: Unbound from all signal providers.
+11-01 13:44:30.643  4157  4267 D cevx    : Starting download: https://www.gstatic.com/messages/smarts/multitask_experiment/smartreply_only_20200301_control_tfmobile.pb_1591622697782
+11-01 13:44:30.643  4157  4267 V cevx    : Is http uri, downloading (uri: https://www.gstatic.com/messages/smarts/multitask_experiment/smartreply_only_20200301_control_tfmobile.pb_1591622697782)
+11-01 13:44:30.681  4157  4267 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793540644730_bbb626669e3a164d27de7b986e5069213
+11-01 13:44:30.688  4157  4625 D cevx    : Starting download: https://www.gstatic.com/messages/smarts/multitask_experiment/smartreply_only_20200301_con0038_div025_emp_neg035.pb_1591622697782
+11-01 13:44:30.688  4157  4625 V cevx    : Is http uri, downloading (uri: https://www.gstatic.com/messages/smarts/multitask_experiment/smartreply_only_20200301_con0038_div025_emp_neg035.pb_1591622697782)
+11-01 13:44:30.692  5241  5241 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.contextmanager.service.ContextManagerService.START pkg=com.google.android.gms }
+11-01 13:44:30.695  5241  5241 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.auth.account.data.service.START pkg=com.google.android.gms }
+11-01 13:44:30.697  5308  5308 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.findmydevice.spot.service.management.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsApiService }
+11-01 13:44:30.697  5308  5308 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.findmydevice.spot.service.management.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsApiService }
+11-01 13:44:30.708  5241  5366 I Nearby  : is blocked device type false, isAuto=false, isIot=false, isLatchsky=false, isChinaWearable=false, isTv=false, isWearable=false (supportWearOs=false), isChromeOsDevice=false (supportChromeOs=false) 
+11-01 13:44:30.718  4157  4625 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793540644731_bb9bee380c8d4cc4725e60df7b630a83e
+11-01 13:44:30.731  5241  5276 W .gms.persistent: Long monitor contention with owner GoogleApiHandler (5268) at boolean abnp.d(abno, android.content.ServiceConnection, java.lang.String, java.util.concurrent.Executor)(:com.google.android.gms
+11-01 13:44:30.732  4157  4267 D cevx    : Starting download: https://www.gstatic.com/messages/smarts/multitask_experiment/photo_intent_suggest_20201118_th060.pb_1605907326457
+11-01 13:44:30.732  4157  4267 V cevx    : Is http uri, downloading (uri: https://www.gstatic.com/messages/smarts/multitask_experiment/photo_intent_suggest_20201118_th060.pb_1605907326457)
+11-01 13:44:30.741  5241  5409 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-01 13:44:30.744  5241  5367 W .gms.persistent: Long monitor contention with owner netscheduler-queue-handler (5364) at void android.os.MessageQueue.removeMessages(android.os.Handler, java.lang.Runnable, java.lang.Object)(MessageQueue.jav
+11-01 13:44:30.744  5241  5361 W .gms.persistent: Long monitor contention with owner lowpool[6] (5367) at void android.database.sqlite.SQLiteConnectionPool.releaseConnection(android.database.sqlite.SQLiteConnection)(SQLiteConnectionPool.jav
+11-01 13:44:30.746  5241  5281 W .gms.persistent: Long monitor contention with owner lowpool[6] (5367) at void android.database.sqlite.SQLiteConnectionPool.releaseConnection(android.database.sqlite.SQLiteConnection)(SQLiteConnectionPool.jav
+11-01 13:44:30.766  5241  5516 I GCoreUlr: WorldUpdater received intent Intent { act=com.google.android.location.reporting.ACTION_UPDATE_WORLD cmp=com.google.android.gms/com.google.android.location.reporting.service.DispatchingService (has 
+11-01 13:44:30.771  4157  4267 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793540644732_0daf57a7b816d6ecb9890344e6cebdd21
+11-01 13:44:30.780  5308  5359 I Icing   : Using regular flags by method 2
+11-01 13:44:30.781  4157  4625 D cevx    : Starting download: https://www.gstatic.com/messages/smarts/multitask_experiment/multi_lite_9heads_plus_photo_suggest_20201118.tflite_1605907326457
+11-01 13:44:30.781  4157  4625 V cevx    : Is http uri, downloading (uri: https://www.gstatic.com/messages/smarts/multitask_experiment/multi_lite_9heads_plus_photo_suggest_20201118.tflite_1605907326457)
+11-01 13:44:30.781  5241  5516 I GCoreUlr: WorldUpdater:android.location.PROVIDERS_CHANGED: Ensuring that reporting is stopped because of reasons: (no Google accounts)
+11-01 13:44:30.788  5241  5409 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-01 13:44:30.796  5241  5409 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-01 13:44:30.796  4157  4745 D cevx    : Starting download: https://www.gstatic.com/messages/smarts/multitask_experiment/photo_intent_suggest_20201118_th040.pb_1605907326457
+11-01 13:44:30.796  4157  4745 V cevx    : Is http uri, downloading (uri: https://www.gstatic.com/messages/smarts/multitask_experiment/photo_intent_suggest_20201118_th040.pb_1605907326457)

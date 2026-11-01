@@ -1,0 +1,150 @@
+11-01 13:41:46.935  5146  5350 I NamespaceManager: Package com.google.android.profiling name not found! Using module version.
+11-01 13:41:46.936  5146  5350 I NamespaceManager: Package com.google.android.bt name not found! Using module version.
+11-01 13:41:46.938  5146  5350 I NamespaceManager: Package com.google.android.nfcservices name not found! Using module version.
+11-01 13:41:46.941  5146  5350 I NamespaceManager: Package com.google.android.webapp name not found! Using module version.
+11-01 13:41:46.944  5146  5350 I NamespaceManager: Package com.google.android.telephonycore name not found! Using module version.
+11-01 13:41:46.956   519   548 D CompatibilityChangeReporter: Compat change id reported: 135634846; UID 10131; state: DISABLED
+11-01 13:41:46.957   519   549 D CompatibilityChangeReporter: Compat change id reported: 143937733; UID 10131; state: ENABLED
+11-01 13:41:46.975  5146  5350 I NamespaceManager: Package com.google.android.uprobestats name not found! Using module version.
+11-01 13:41:46.976  5198  5268 E PhenotypeRegOp: Attempting to overwrite config package for com.google.android.gms.udc [CONTEXT service_id=231 ]
+11-01 13:41:46.984  5146  5171 W Nearby  : Failed to open content://com.android.contacts/profile because the Cursor was empty [CONTEXT service_id=49 ]
+11-01 13:41:46.986  5146  5171 W NearbySharing: Cannot set visibility on DisabledNearbySharingProvider. [CONTEXT service_id=194 ]
+11-01 13:41:46.991   336   336 D Zygote  : Forked child process 5374
+11-01 13:41:46.993   519   549 I ActivityManager: Start proc 5374:com.google.android.gms.ui/u0a131 for service {com.google.android.gms/com.google.android.gms.chimera.UiIntentOperationService}
+11-01 13:41:46.994  5198  5277 I ChimeraConfigurator: Detected pending changes for urgent request: [tflite_dynamite]. Pending module sets: container:2318189190800,tflite_dynamite:2640104055100800+tflite_dynamite
+11-01 13:41:47.024  5198  5277 I GmsDebugLogger: [73] 1801
+11-01 13:41:47.029  5198  5277 W ZappDownloader: No successful module downloads for requested features [tflite_dynamite].
+11-01 13:41:47.030  5198  5277 I GmsDebugLogger: [30] [TfliteDynamiteDynamite.integ:264010405100800]
+11-01 13:41:47.049  5146  5182 W AsyncOperation: operation=CommitToConfigurationOperationCall, opStatusCode=29501 [CONTEXT service_id=51 ]
+11-01 13:41:47.049  5146  5182 W AsyncOperation: OperationException[Status{statusCode=Stale snapshot for com.google.android.libraries.consentverifier#com.google.android.gms(change count changed - expected 4  but was 1), resolution=null}]
+11-01 13:41:47.049  5146  5182 W AsyncOperation: 	at bwfc.e(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+11-01 13:41:47.049  5146  5182 W AsyncOperation: 	at bwfc.f(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-01 13:41:47.049  5146  5182 W AsyncOperation: 	at avsy.eo(:com.google.android.gms@231818047@23.18.18 (190800-535401451):1)
+11-01 13:41:47.049  5146  5182 W AsyncOperation: 	at avtf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):14)
+11-01 13:41:47.049  5146  5182 W AsyncOperation: 	at dfhf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-01 13:41:47.049  5146  5182 W AsyncOperation: 	at aced.c(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+11-01 13:41:47.049  5146  5182 W AsyncOperation: 	at aced.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):7)
+11-01 13:41:47.049  5146  5182 W AsyncOperation: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-01 13:41:47.049  5146  5182 W AsyncOperation: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-01 13:41:47.049  5146  5182 W AsyncOperation: 	at acjn.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-01 13:41:47.049  5146  5182 W AsyncOperation: 	at java.lang.Thread.run(Thread.java:1012)
+11-01 13:41:47.059  5146  5339 I PTCommittedOperation: Receive new configuration for com.google.android.gms.platformconfigurator
+11-01 13:41:47.068  5146  5184 W MobStoreFlagStore: Failed to commit due to stale snapshot for com.google.android.libraries.consentverifier#com.google.android.gms, triggering flag update. Experiments may be delayed til next app start.
+11-01 13:41:47.073  5198  5277 W ChimeraConfigService: Retry attempt was throttled. [CONTEXT service_id=264 ]
+11-01 13:41:47.080  5374  5374 I .android.gms.ui: Using CollectorTypeCC GC.
+11-01 13:41:47.081  5198  5277 I GmsDebugLogger: [83] 1 [tflite_dynamite]
+11-01 13:41:47.081  5374  5374 W .android.gms.ui: Unexpected CPU variant for x86: x86_64.
+11-01 13:41:47.081  5374  5374 W .android.gms.ui: Known variants: atom, sandybridge, silvermont, goldmont, goldmont-plus, tremont, kabylake, default
+11-01 13:41:47.287     0     0 I binder  : 5277:5198 cannot find target node
+11-01 13:41:47.292     0     0 I binder  : 5198:5277 transaction async to 0:0 failed 446907/29189/-22, size 160-0 line 3210
+11-01 13:41:47.097  5198  5277 E IPCThreadState: Binder transaction failure: 446907/29189/-22
+11-01 13:41:47.101  5146  5340 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-01 13:41:47.103  5146  5340 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-01 13:41:47.105  5146  5197 I AlarmManager: setExactAndAllowWhileIdle [name: GCM_HB_ALARM type: 2 triggerAtMillis: 624822]
+11-01 13:41:47.113  5146  5340 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:41:47.115  5146  5340 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-01 13:41:47.116  5146  5171 I NearbySharing: Broadcasting NearbySharing state change. [CONTEXT service_id=194 ]
+11-01 13:41:47.117  5146  5340 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-01 13:41:47.117   519   896 D CompatibilityChangeReporter: Compat change id reported: 229362273; UID 10131; state: DISABLED
+11-01 13:41:47.117   519   896 D CompatibilityChangeReporter: Compat change id reported: 229362273; UID 10131; state: ENABLED
+11-01 13:41:47.117  5146  5171 I NearbySharing: Screen is unlocked [CONTEXT service_id=194 ]
+11-01 13:41:47.119  5146  5340 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:41:47.120  5146  5340 I NamespaceManager: Package 1 name not found! Using module version.
+11-01 13:41:47.120  5146  5340 I NamespaceManager: Package rkpd name not found! Using module version.
+11-01 13:41:47.121  5146  5340 I NamespaceManager: Package android.companion name not found! Using module version.
+11-01 13:41:47.121  5146  5340 I NamespaceManager: Package com.google.android.aicore name not found! Using module version.
+11-01 13:41:47.124  5146  5340 I NamespaceManager: Package com.google.android.audioproxy name not found! Using module version.
+11-01 13:41:47.124  5146  5340 I NamespaceManager: Package com.google.android.apps.pixel.psi name not found! Using module version.
+11-01 13:41:47.128  5146  5171 I NearbySharing: Stopping scanning because Bluetooth is disabled. [CONTEXT service_id=194 ]
+11-01 13:41:47.129  5198  5277 E ChimeraUPLUtils: Failed to invoke updateComplete: android.os.DeadObjectException
+11-01 13:41:47.130  5198  5313 I Icing   : Query from package: com.google.android.gms, component: AppsCorpus, restrict package: com.google.android.gms, start: 0, num: 100
+11-01 13:41:47.130  5198  5198 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.common.BIND_SHARED_PREFS pkg=com.google.android.gms }
+11-01 13:41:47.131  5198  5198 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.common.BIND_SHARED_PREFS pkg=com.google.android.gms }
+11-01 13:41:47.136  5198  5277 I ChimeraConfigurator: Starting update, reason: 4 urgentFeatures: vision.ocr:-1
+11-01 13:41:47.139  5146  5171 I NearbySharing: Failed to stop scanning because we're not scanning. [CONTEXT service_id=194 ]
+11-01 13:41:47.150  5146  5171 I NearbySharing: Can't stop advertising FastInitiation. Not advertising. [CONTEXT service_id=194 ]
+11-01 13:41:47.152  5374  5374 E .android.gms.ui: Not starting debugger since process cannot load the jdwp agent.
+11-01 13:41:47.170  5376  5376 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+11-01 13:41:47.170  5376  5376 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-01 13:41:47.173  5146  5340 I NamespaceManager: Package com.google.android.apps.safetycore name not found! Using module version.
+11-01 13:41:47.174  5146  5171 I NearbySharing: Stopping Fast Init advertisement because Bluetooth is off. [CONTEXT service_id=194 ]
+11-01 13:41:47.183   400   414 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=5376
+11-01 13:41:47.183   400   414 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (211 us)
+11-01 13:41:47.188  5198  5271 I SnapshotHandler: Unable to retrieve flag snapshot for com.google.android.gms.esim#com.google.android.gms, using defaults.
+11-01 13:41:47.190  5198  5271 I EsimModuleInit: onHandleIntent action: com.google.android.gms.chimera.container.CONTAINER_UPDATED [CONTEXT service_id=333 ]
+11-01 13:41:47.196   135   135 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-01 13:41:47.196  5376  5391 I Gralloc4: mapper 4.x is not supported
+11-01 13:41:47.392     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+11-01 13:41:47.204  4918  4918 I com.example.buddy: Perf: native scene 30 fps
+11-01 13:41:47.209  5198  5198 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.common.BIND_SHARED_PREFS pkg=com.google.android.gms }
+11-01 13:41:47.210  5374  5374 D CompatibilityChangeReporter: Compat change id reported: 171979766; UID 10131; state: ENABLED
+11-01 13:41:47.210  5374  5374 D CompatibilityChangeReporter: Compat change id reported: 242716250; UID 10131; state: DISABLED
+11-01 13:41:47.216  5374  5374 D nativeloader: Configuring clns-6 for other apk /system/framework/org.apache.http.legacy.jar. target_sdk_version=33, uses_libraries=ALL, library_path=/product/priv-app/PrebuiltGmsCore/lib/x86_64:/product/priv
+11-01 13:41:47.217  5374  5374 D nativeloader: Configuring clns-7 for other apk /system/framework/com.android.media.remotedisplay.jar. target_sdk_version=33, uses_libraries=ALL, library_path=/product/priv-app/PrebuiltGmsCore/lib/x86_64:/pro
+11-01 13:41:47.218  5374  5374 D nativeloader: Configuring clns-8 for other apk /system/framework/com.android.location.provider.jar. target_sdk_version=33, uses_libraries=ALL, library_path=/product/priv-app/PrebuiltGmsCore/lib/x86_64:/produ
+11-01 13:41:47.218  5374  5374 D ApplicationLoaders: Returning zygote-cached class loader: /system_ext/framework/androidx.window.extensions.jar
+11-01 13:41:47.218  5374  5374 D ApplicationLoaders: Returning zygote-cached class loader: /system_ext/framework/androidx.window.sidecar.jar
+11-01 13:41:47.227  5146  5185 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService finished executing. cause:9 result: 1 elapsed_millis: 850 uptime_millis: 850 exec_start_elapsed_seconds: 
+11-01 13:41:47.227  5146  5340 I NamespaceManager: Package com.google.android.crashrecovery name not found! Using module version.
+11-01 13:41:47.235  5146  5294 W SystemServiceRegistry: No service published for: wifirtt
+11-01 13:41:47.253  5198  5198 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.feedback.internal.IFeedbackService dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsBoundBrokerService }
+11-01 13:41:47.253  5198  5198 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.feedback.internal.IFeedbackService dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsBoundBrokerService }
+11-01 13:41:47.254  5374  5374 W .android.gms.ui: Suspending all threads took: 12.901ms
+11-01 13:41:47.259  5374  5374 D nativeloader: InitLlndkLibrariesProduct: libEGL.so:libGLESv1_CM.so:libGLESv2.so:libGLESv3.so:libRS.so:libandroid_net.so:libbinder_ndk.so:libc.so:libcgrouprc.so:libclang_rt.asan-x86_64-android.so:libcom.andro
+11-01 13:41:47.259  5374  5374 D nativeloader: Configuring product-clns-9 for unbundled product apk /product/priv-app/PrebuiltGmsCore/PrebuiltGmsCore.apk. target_sdk_version=33, uses_libraries=, library_path=/product/priv-app/PrebuiltGmsCor
+11-01 13:41:47.259  5374  5374 D nativeloader: InitVndkspLibrariesProduct: android.hardware.common-V2-ndk.so:android.hardware.common.fmq-V1-ndk.so:android.hardware.graphics.allocator-V2-ndk.so:android.hardware.graphics.common-V4-ndk.so:andr
+11-01 13:41:47.278  5146  5171 I NearbySharing: Stopping advertising because Bluetooth is disabled. [CONTEXT service_id=194 ]
+11-01 13:41:47.280  5374  5374 V GraphicsEnvironment: Currently set values for:
+11-01 13:41:47.280  5374  5374 V GraphicsEnvironment:   angle_gl_driver_selection_pkgs=[]
+11-01 13:41:47.280  5374  5374 V GraphicsEnvironment:   angle_gl_driver_selection_values=[]
+11-01 13:41:47.281  5374  5374 V GraphicsEnvironment: ANGLE GameManagerService for com.google.android.gms: false
+11-01 13:41:47.281  5374  5374 V GraphicsEnvironment: com.google.android.gms is not listed in per-application setting
+11-01 13:41:47.281  5374  5374 V GraphicsEnvironment: Neither updatable production driver nor prerelease driver is supported.
+11-01 13:41:47.285  5198  5270 I EnterpriseLoader: [ConditionsChecker] ZT config not present. [CONTEXT service_id=225 ]
+11-01 13:41:47.305  5198  5277 I ChimeraConfigurator: Detected pending changes for urgent request: [vision.ocr]. Pending module sets: container:2318189190800+mlkit.ocr.common,tflite_dynamite:2640104055100800+tflite_dynamite,vision_ocr:23160
+11-01 13:41:47.320  5198  5277 I GmsDebugLogger: [73] 1801
+11-01 13:41:47.325  5198  5277 W ZappDownloader: No successful module downloads for requested features [vision.ocr].
+11-01 13:41:47.325  5198  5277 I GmsDebugLogger: [30] [VisionOcrDynamite.integ:231602402100000],[TfliteDynamiteDynamite.integ:264010405100800],[MlkitOcrCommon.optional:231818100800]
+11-01 13:41:47.326  5374  5374 D CompatibilityChangeReporter: Compat change id reported: 160794467; UID 10131; state: ENABLED
+11-01 13:41:47.327  5198  5277 W ChimeraConfigService: Retry attempt was throttled. [CONTEXT service_id=264 ]
+11-01 13:41:47.327  5198  5277 I GmsDebugLogger: [83] 1 [vision.ocr]
+11-01 13:41:47.526     0     0 I binder  : 5277:5198 cannot find target node
+11-01 13:41:47.527     0     0 I binder  : 5198:5277 transaction async to 0:0 failed 447659/29189/-22, size 160-0 line 3210
+11-01 13:41:47.330  5198  5277 E IPCThreadState: Binder transaction failure: 447659/29189/-22
+11-01 13:41:47.330  5198  5277 E ChimeraUPLUtils: Failed to invoke updateComplete: android.os.DeadObjectException
+11-01 13:41:47.332  5198  5276 I ChimeraConfigurator: Starting update, reason: 4 urgentFeatures: maps_core:-1
+11-01 13:41:47.334  5374  5374 W ProviderHelper: Unknown dynamite feature providerinstaller.dynamite
+11-01 13:41:47.334  5374  5374 I DynamiteModule: Considering local module com.google.android.gms.providerinstaller.dynamite:1 and remote module com.google.android.gms.providerinstaller.dynamite:0
+11-01 13:41:47.334  5374  5374 I DynamiteModule: Selected local version of com.google.android.gms.providerinstaller.dynamite
+11-01 13:41:47.341  5374  5374 V NativeCrypto: Registering com/google/android/gms/org/conscrypt/NativeCrypto's 295 native methods...
+11-01 13:41:47.354  5198  5276 I ChimeraConfigurator: Detected pending changes for urgent request: [maps_core]. Pending module sets: container:2318189190800+maps_core
+11-01 13:41:47.361  5374  5374 I ProviderInstaller: Installed default security provider GmsCore_OpenSSL
+11-01 13:41:47.381  5146  5213 I NearbyMessages: OfflineCache: old scanner cache is not enabled [CONTEXT service_id=62 ]
+11-01 13:41:47.382  5374  5374 D CompatibilityChangeReporter: Compat change id reported: 183155436; UID 10131; state: ENABLED
+11-01 13:41:47.382  5374  5374 I GmsApplication: [gms_startup_benchmark] Static start time (ms): 95000, Startup latency (ms): 99, Is system user: true
+11-01 13:41:47.382  5374  5374 I cuir    : Primes not initialized, returning default (no-op) Primes instance which will ignore all calls. Please call Primes.initialize(...) before using any Primes API.
+11-01 13:41:47.383   519   592 I ActivityManager: Flag disabled. Ignoring finishAttachApplication from uid: 10131. pid: 5374
+11-01 13:41:47.394  5374  5407 I GMS_MM_Logger: Start time: 207575
+11-01 13:41:47.394  5374  5407 I GMS_MM_Logger: Started.
+11-01 13:41:47.401  5198  5276 I GmsDebugLogger: [73] 1801
+11-01 13:41:47.412  5198  5243 W Icing   : Failed to get Lockbox signed-in status: java.util.concurrent.TimeoutException: Timed out waiting for Task
+11-01 13:41:47.412  5198  5243 W Icing   : getSignedInTimestampMs: Falling back to default value
+11-01 13:41:47.412  5198  5243 W Icing   : No valid account for uploading user actions
+11-01 13:41:47.415  5198  5276 W ZappDownloader: No successful module downloads for requested features [maps_core].
+11-01 13:41:47.415  5198  5276 I GmsDebugLogger: [30] [MapsCoreDynamite.integ:231112103100800]
+11-01 13:41:47.418  5198  5276 W ChimeraConfigService: Retry attempt was throttled. [CONTEXT service_id=264 ]
+11-01 13:41:47.418  5198  5276 I GmsDebugLogger: [83] 1 [maps_core]
+11-01 13:41:47.425  5198  5276 I ChimeraConfigurator: Starting update, reason: 4 urgentFeatures: mlkit.barcode.ui:0
+11-01 13:41:47.433  5146  5340 I NamespaceManager: Package com.google.android.profiling name not found! Using module version.
+11-01 13:41:47.435  5146  5340 I NamespaceManager: Package com.google.android.bt name not found! Using module version.
+11-01 13:41:47.436  5146  5340 I NamespaceManager: Package com.google.android.nfcservices name not found! Using module version.
+11-01 13:41:47.444  5146  5171 I NearbySharing: Can't stop scanning for FastInitiation. Not scanning. [CONTEXT service_id=194 ]
+11-01 13:41:47.444  5146  5171 I NearbySharing: Cancelling in use notification [CONTEXT service_id=194 ]
+11-01 13:41:47.444  5198  5292 I MlBenchmarkInstaller: Intent: com.google.android.gms.chimera.container.CONTAINER_UPDATED [CONTEXT service_id=340 ]
+11-01 13:41:47.445  5146  5340 I NamespaceManager: Package com.google.android.webapp name not found! Using module version.
+11-01 13:41:47.445  5146  5340 I NamespaceManager: Package com.google.android.telephonycore name not found! Using module version.
+11-01 13:41:47.446  5146  5171 I NearbySharing: Fast Initiation Scanning has stopped [CONTEXT service_id=194 ]
+11-01 13:41:47.446  5146  5171 I NearbySharing: Stopping FastInitiation scanning because Bluetooth is disabled. [CONTEXT service_id=194 ]
+11-01 13:41:47.449  5146  5340 I NamespaceManager: Package com.google.android.uprobestats name not found! Using module version.
+11-01 13:41:47.451  5146  5171 I NearbySharing: Dismissing HUN as there's no device nearby. [CONTEXT service_id=194 ]
+11-01 13:41:47.451  5146  5171 I NearbySharing: Cancelling in use notification [CONTEXT service_id=194 ]

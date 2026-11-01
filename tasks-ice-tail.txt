@@ -1,0 +1,150 @@
+11-01 13:45:50.622  5234  5294 I LocationHistory: [IntentOperation] Handling action android.location.PROVIDERS_CHANGED [CONTEXT service_id=314 ]
+11-01 13:45:50.622  5234  5294 I LocationHistory: [IntentOperation] Device settings changed to ENABLED. Scheduling periodic tasks. [CONTEXT service_id=314 ]
+11-01 13:45:50.623  5234  5294 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.deidentifieddata.storevisits.StoreVisitsProcessingService.StoreVisitsProcessing is scheduled to run EVERY_6_HOURS [C
+11-01 13:45:50.623  5234  5294 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.deidentifieddata.wifi.WifiPlaceVisitProcessingService.WifiPlaceVisit is scheduled to run EVERY_DAY [CONTEXT service_
+11-01 13:45:50.623  5234  5294 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.deidentifieddata.uploads.BatchDeidentifiedDataUploadService.BatchDeidentifiedDataUpload is scheduled to run EVERY_6_
+11-01 13:45:50.624  5234  5294 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.geller.GellerCleanupService.GellerCleanup is scheduled to run EVERY_DAY [CONTEXT service_id=173 ]
+11-01 13:45:50.624  5234  5294 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.settings.LocationHistoryActiveProcessingService.LocationHistoryActiveProcessing is scheduled to run EVERY_DAY [CONTE
+11-01 13:45:50.624  5234  5294 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.pulp.PulpInferenceService.PulpInference is scheduled to run EVERY_7_DAYS [CONTEXT service_id=173 ]
+11-01 13:45:50.625  5234  5294 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.pulp.PulpMddDownloadScheduleService.PulpMddRefreshDownloadTask is scheduled to run EVERY_DAY [CONTEXT service_id=173
+11-01 13:45:50.626  5234  5294 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.pulp.PulpMddMaintenanceService.PulpMddMaintenanceTask is scheduled to run EVERY_DAY [CONTEXT service_id=173 ]
+11-01 13:45:50.627  5154  5352 I Nearby  : is blocked device type false, isAuto=false, isIot=false, isLatchsky=false, isChinaWearable=false, isTv=false, isWearable=false (supportWearOs=false), isChromeOsDevice=false (supportChromeOs=false) 
+11-01 13:45:50.628  5234  5294 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.federated.FederatedScheduleService.FederatedLocation is scheduled to run EVERY_DAY [CONTEXT service_id=173 ]
+11-01 13:45:50.629  5234  5294 W GmsTaskScheduler: com.google.android.gms.semanticlocationhistory.federated.FederatedTaskIdentityDataService is not available. This may cause the task to be lost.
+11-01 13:45:50.634  5234  5294 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.federated.FederatedTaskIdentityDataService.FederatedLocation is scheduled to run EVERY_DAY [CONTEXT service_id=173 ]
+11-01 13:45:50.635  5234  5294 W GmsTaskScheduler: com.google.android.gms.semanticlocationhistory.federated.FederatedJobHistoryService is not available. This may cause the task to be lost.
+11-01 13:45:50.635  5234  5294 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.federated.FederatedJobHistoryService.FederatedLocation is scheduled to run EVERY_DAY [CONTEXT service_id=173 ]
+11-01 13:45:50.636  5234  5294 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.db.OdlhDatabaseCleanupJob.OdlhDatabaseCleanup is scheduled to run EVERY_DAY [CONTEXT service_id=173 ]
+11-01 13:45:50.636  5234  5294 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.edit.EditMergeJob.EditMergeJob is scheduled to run EVERY_DAY [CONTEXT service_id=173 ]
+11-01 13:45:50.636  5234  5294 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.edit.EditUploadJob.EditUploadJob is scheduled to run EVERY_DAY [CONTEXT service_id=173 ]
+11-01 13:45:50.637  5234  5294 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.deidentifieddata.historicalbusyness.HistoricalBusynessProcessingService.HistoricalBusyness is scheduled to run EVERY
+11-01 13:45:50.637  5234  5294 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.db.OdlhRemovedAccountsCleanupJob.OdlhRemovedAccountsCleanup is scheduled to run EVERY_DAY [CONTEXT service_id=173 ]
+11-01 13:45:50.638  5234  5294 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.db.OdlhUserEditSyncJob.OdlhUserEditSync is scheduled to run EVERY_DAY [CONTEXT service_id=173 ]
+11-01 13:45:50.638  5234  5294 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.federated.regionfetcher.RegionMddMaintenanceService.RegionMddMaintenanceTask is scheduled to run EVERY_DAY [CONTEXT 
+11-01 13:45:50.639  5234  5294 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.federated.regionfetcher.RegionMddDownloadScheduleService.RegionMddRefreshDownloadTask is scheduled to run EVERY_6_HO
+11-01 13:45:50.641  5154  5154 I NearbyDiscovery: DiscoveryService created [CONTEXT service_id=265 ]
+11-01 13:45:50.648  5154  5254 I NearbyMessages: OfflineCache: old scanner cache is not enabled [CONTEXT service_id=62 ]
+11-01 13:45:50.656  5234  5277 I Icing   : Post-init done
+11-01 13:45:50.677  4063  4560 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f636_200d_1f32b_fe0f/lottie.json
+11-01 13:45:50.677  4063  4560 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f636_200d_1f32b_fe0f/lottie.json)
+11-01 13:45:50.692  5234  5277 I Icing   : Indexing com.google.android.gms-internal.3p:MobileApplication from com.google.android.gms
+11-01 13:45:50.694  4063  4200 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1fae5/lottie.json
+11-01 13:45:50.695  4063  4200 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1fae5/lottie.json)
+11-01 13:45:50.699  5390  5390 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+11-01 13:45:50.699  5390  5390 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-01 13:45:50.700   398   804 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=5390
+11-01 13:45:50.701   398   804 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (214 us)
+11-01 13:45:50.707  4063  4560 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793540721591
+11-01 13:45:50.710   515  2244 D ActivityManager: sync unfroze 4064 com.google.android.gms.ui for 6
+11-01 13:45:50.726  5154  5392 I AlarmManager: set [name: SystemMemoryCache type: 2 triggerAtMillis: 315360094012 windowMillis: -1 intervalMillis: 0]
+11-01 13:45:50.726  5154  5339 I NearbySharing: Can't stop scanning for FastInitiation. Not scanning. [CONTEXT service_id=194 ]
+11-01 13:45:50.727  5154  5154 W ChimeraUtils: Module com.google.android.gms.nearby missing resource null(0)
+11-01 13:45:50.727  5154  5154 W ChimeraUtils: Module com.google.android.gms.nearby missing resource null(0)
+11-01 13:45:50.728  5154  5339 I NearbySharing: Cancelling in use notification [CONTEXT service_id=194 ]
+11-01 13:45:50.922     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+11-01 13:45:50.729   135   135 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-01 13:45:50.729  5390  5401 I Gralloc4: mapper 4.x is not supported
+11-01 13:45:50.731  5154  5339 I NearbySharing: Fast Initiation Scanning has stopped [CONTEXT service_id=194 ]
+11-01 13:45:50.731  5154  5339 I NearbySharing: Stopping FastInitiation scanning because Bluetooth is disabled. [CONTEXT service_id=194 ]
+11-01 13:45:50.731  5154  5339 I NearbySharing: Dismissing HUN as there's no device nearby. [CONTEXT service_id=194 ]
+11-01 13:45:50.731  5154  5339 I NearbySharing: Cancelling in use notification [CONTEXT service_id=194 ]
+11-01 13:45:50.734  5154  5397 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService started execution. cause:9 exec_start_elapsed_seconds: 93 [CONTEXT service_id=218 ]
+11-01 13:45:50.739   515  2244 D CompatibilityChangeReporter: Compat change id reported: 172251878; UID 10131; state: ENABLED
+11-01 13:45:50.739  5154  5339 I NearbySharing: Bluetooth is enabled [CONTEXT service_id=194 ]
+11-01 13:45:50.739  5154  5339 I NearbySharing: Stopping scanning because Nearby Sharing is disabled. [CONTEXT service_id=194 ]
+11-01 13:45:50.739  5154  5339 I NearbySharing: Failed to stop scanning because we're not scanning. [CONTEXT service_id=194 ]
+11-01 13:45:50.740  5154  5339 I NearbySharing: Can't stop advertising FastInitiation. Not advertising. [CONTEXT service_id=194 ]
+11-01 13:45:50.740  5154  5339 I NearbySharing: Stopping Fast Init advertisement because we're not scanning in the foreground. [CONTEXT service_id=194 ]
+11-01 13:45:50.740  5154  5339 I NearbySharing: Stopping advertising because Nearby Sharing is disabled. [CONTEXT service_id=194 ]
+11-01 13:45:50.741  5154  5339 I NearbySharing: Starting scanning for Fast Initiation. [CONTEXT service_id=194 ]
+11-01 13:45:50.741  5154  5339 D BluetoothAdapter: isLeEnabled(): ON
+11-01 13:45:50.744  4063  4200 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793540721592
+11-01 13:45:50.760  4064  4064 I ChimeraModuleLdr: Module config changed, forcing restart due to module com.google.android.gms.core_download
+11-01 13:45:50.760  4064  4064 I Process : Sending signal. PID: 4064 SIG: 9
+11-01 13:45:50.761   515  2244 D CompatibilityChangeReporter: Compat change id reported: 241766793; UID 10131; state: DISABLED
+11-01 13:45:50.762   515  2244 D CompatibilityChangeReporter: Compat change id reported: 161252188; UID 10131; state: DISABLED
+11-01 13:45:50.775  5154  5154 D BluetoothAdapter: registerBluetoothConnectionCallback()
+11-01 13:45:50.779   515  3381 E IPCThreadState: Binder transaction failure: 510212/29189/-3
+11-01 13:45:50.784  5053  5053 I com.example.buddy: Perf: native scene 29 fps
+11-01 13:45:50.972     0     0 I binder_alloc: 4064: binder_alloc_buf, no vma
+11-01 13:45:50.793   515  3381 E AppOps  : Could not forward noteOp of 111 to com.google.android.gms/10131(nearby_fast_pair)
+11-01 13:45:50.793   515  3381 E AppOps  : android.os.DeadObjectException
+11-01 13:45:50.793   515  3381 E AppOps  : 	at android.os.BinderProxy.transactNative(Native Method)
+11-01 13:45:50.793   515  3381 E AppOps  : 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+11-01 13:45:50.793   515  3381 E AppOps  : 	at com.android.internal.app.IAppOpsAsyncNotedCallback$Stub$Proxy.opNoted(IAppOpsAsyncNotedCallback.java:118)
+11-01 13:45:50.793   515  3381 E AppOps  : 	at com.android.server.appop.AppOpsService.lambda$collectAsyncNotedOp$3(AppOpsService.java:2898)
+11-01 13:45:50.793   515  3381 E AppOps  : 	at com.android.server.appop.AppOpsService.$r8$lambda$j7JuBmeFuvKV9Ixgv9xHNEaV-DA(AppOpsService.java:0)
+11-01 13:45:50.793   515  3381 E AppOps  : 	at com.android.server.appop.AppOpsService$$ExternalSyntheticLambda14.accept(R8$$SyntheticClass:0)
+11-01 13:45:50.793   515  3381 E AppOps  : 	at android.os.RemoteCallbackList.broadcast(RemoteCallbackList.java:333)
+11-01 13:45:50.793   515  3381 E AppOps  : 	at com.android.server.appop.AppOpsService.collectAsyncNotedOp(AppOpsService.java:2896)
+11-01 13:45:50.793   515  3381 E AppOps  : 	at com.android.server.appop.AppOpsService.noteOperationUnchecked(AppOpsService.java:2714)
+11-01 13:45:50.793   515  3381 E AppOps  : 	at com.android.server.appop.AppOpsService.noteOperationImpl(AppOpsService.java:2617)
+11-01 13:45:50.793   515  3381 E AppOps  : 	at com.android.server.appop.AppOpsService.-$$Nest$mnoteOperationImpl(AppOpsService.java:0)
+11-01 13:45:50.793   515  3381 E AppOps  : 	at com.android.server.appop.AppOpsService$CheckOpsDelegateDispatcher.$r8$lambda$-zO2p3wazaltMFolMcvKOcU7eN4(AppOpsService.java:0)
+11-01 13:45:50.793   515  3381 E AppOps  : 	at com.android.server.appop.AppOpsService$CheckOpsDelegateDispatcher$$ExternalSyntheticLambda3.apply(R8$$SyntheticClass:0)
+11-01 13:45:50.793   515  3381 E AppOps  : 	at com.android.server.policy.AppOpsPolicy.noteOperation(AppOpsPolicy.java:235)
+11-01 13:45:50.793   515  3381 E AppOps  : 	at com.android.server.appop.AppOpsService$CheckOpsDelegateDispatcher.noteOperation(AppOpsService.java:6434)
+11-01 13:45:50.793   515  3381 E AppOps  : 	at com.android.server.appop.AppOpsService.noteOperation(AppOpsService.java:2598)
+11-01 13:45:50.793   515  3381 E AppOps  : 	at android.app.AppOpsManager.noteOpNoThrow(AppOpsManager.java:8420)
+11-01 13:45:50.793   515  3381 E AppOps  : 	at com.android.server.pm.permission.PermissionManagerService$PermissionCheckerService.performOpTransaction(PermissionManagerService.java:1665)
+11-01 13:45:50.793   515  3381 E AppOps  : 	at com.android.server.pm.permission.PermissionManagerService$PermissionCheckerService.checkRuntimePermission(PermissionManagerService.java:1365)
+11-01 13:45:50.793   515  3381 E AppOps  : 	at com.android.server.pm.permission.PermissionManagerService$PermissionCheckerService.checkPermission(PermissionManagerService.java:1204)
+11-01 13:45:50.793   515  3381 E AppOps  : 	at com.android.server.pm.permission.PermissionManagerService$PermissionCheckerService.checkPermission(PermissionManagerService.java:1068)
+11-01 13:45:50.793   515  3381 E AppOps  : 	at android.permission.IPermissionChecker$Stub.onTransact(IPermissionChecker.java:87)
+11-01 13:45:50.793   515  3381 E AppOps  : 	at android.os.Binder.execTransactInternal(Binder.java:1344)
+11-01 13:45:50.793   515  3381 E AppOps  : 	at android.os.Binder.execTransact(Binder.java:1275)
+11-01 13:45:50.794  5154  5154 I NearbyShared: BTConnStateMgr: BluetoothConnectionCallback registered.
+11-01 13:45:50.796   515  1830 I ActivityManager: Process com.google.android.gms.ui (pid 4064) has died: fg  SVC 
+11-01 13:45:50.796   515   546 I libprocessgroup: Successfully killed process cgroup uid 10131 pid 4064 in 0ms
+11-01 13:45:50.797   515  1830 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.chimera.UiIntentOperationService in 1000ms for start-requested
+11-01 13:45:50.800  5154  5154 I NearbyFastPair: NearbyAppHelper: Check Mainline Tethering module version code. [CONTEXT service_id=265 ]
+11-01 13:45:50.800  5154  5154 I NearbyFastPair: NearbyAppHelper: Tethering package version code: 340818080 [CONTEXT service_id=265 ]
+11-01 13:45:50.805  5154  5200 I NearbyFastPair: DynamicSupportModule: onSupportStateUpdate start [CONTEXT service_id=265 ]
+11-01 13:45:50.807   335   335 I Zygote  : Process 4064 exited due to signal 9 (Killed)
+11-01 13:45:50.831  5154  5352 I Nearby  : is blocked device type false, isAuto=false, isIot=false, isLatchsky=false, isChinaWearable=false, isTv=false, isWearable=false (supportWearOs=false), isChromeOsDevice=false (supportChromeOs=false) 
+11-01 13:45:50.842  1021  1504 D BtGatt.GattService: registerScanner() - UUID=152200d1-a1d6-4115-adcd-2dcdf8dfa7ce
+11-01 13:45:50.842  1021  1504 I bt_stack: [INFO:le_scanning_manager.cc(155)] RegisterScanner in shim layer
+11-01 13:45:50.842  1021  1263 D BtGatt.GattService: onScannerRegistered() - UUID=152200d1-a1d6-4115-adcd-2dcdf8dfa7ce, scannerId=1, status=0
+11-01 13:45:50.844  5154  5319 D BluetoothLeScanner: onScannerRegistered() - status=0 scannerId=1 mScannerId=0
+11-01 13:45:50.859  1021  1504 D BtGatt.GattService: start scan with filters
+11-01 13:45:50.863  4063  4213 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f910/lottie.json
+11-01 13:45:50.863  4063  4213 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f910/lottie.json)
+11-01 13:45:50.863  1021  1504 D BtGatt.GattService: enforcePrivilegedPermissionIfNeeded([BluetoothLeScanFilter [mDeviceName=null, mDeviceAddress=null, mUuid=null, mUuidMask=null, mServiceSolicitationUuid=null, mServiceSolicitationUuidMask=
+11-01 13:45:50.864  1021  1504 D BtGatt.ScanManager: startScan()  [ScanClient scanModeApp -1 scanModeUsed -1 [appScanStats com.google.uid.shared:10131]]
+11-01 13:45:50.864  1021  1504 D ActivityAttributionService: notifyActivityAttributionInfo UID=1002 packageName=com.google.android.bluetooth deviceAddress=no_active_device_address
+11-01 13:45:50.864  1021  1504 I bt_btif : packages/modules/Bluetooth/system/btif/src/bluetooth.cc:829 get_profile_interface: get_profile_interface: id = activity_attribution
+11-01 13:45:50.864  1021  1330 D BtGatt.ScanManager: handling starting scan
+11-01 13:45:50.865  5154  5339 I NearbySharing: Started scanning for FastInitiation with mode: SCAN_MODE_OPPORTUNISTIC [CONTEXT service_id=194 ]
+11-01 13:45:50.868  5154  5339 I NearbySharing: Fast Initiation Scanning has started [CONTEXT service_id=194 ]
+11-01 13:45:50.871  5154  5339 I NearbySharing: Dismissing HUN as there's no device nearby. [CONTEXT service_id=194 ]
+11-01 13:45:50.871  5154  5339 I NearbySharing: Cancelling in use notification [CONTEXT service_id=194 ]
+11-01 13:45:50.875  5154  5352 I Nearby  : is blocked device type false, isAuto=false, isIot=false, isLatchsky=false, isChinaWearable=false, isTv=false, isWearable=false (supportWearOs=false), isChromeOsDevice=false (supportChromeOs=false) 
+11-01 13:45:50.884  4063  4213 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793540721593
+11-01 13:45:50.887  5154  5375 I Fitness : OnPackageChangedOperation got intent: Intent { act=android.intent.action.PACKAGE_CHANGED dat=package: flg=0x45000010 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.PersistentIntentO
+11-01 13:45:50.901  5154  5374 I Fitness : FitCleanupIntentOperation received Intent android.intent.action.PACKAGE_CHANGED [CONTEXT service_id=17 ]
+11-01 13:45:50.917  4063  4560 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1fae1/lottie.json
+11-01 13:45:50.917  4063  4560 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1fae1/lottie.json)
+11-01 13:45:50.923  5154  5195 W GmsPipelineLogger: GmsPipelineLogger Failed to obtain device id [CONTEXT service_id=256 ]
+11-01 13:45:50.923  5154  5195 W GmsPipelineLogger: java.lang.NullPointerException
+11-01 13:45:50.923  5154  5195 W GmsPipelineLogger: 	at dhat.y(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-01 13:45:50.923  5154  5195 W GmsPipelineLogger: 	at avot.b(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+11-01 13:45:50.923  5154  5195 W GmsPipelineLogger: 	at avot.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-01 13:45:50.923  5154  5195 W GmsPipelineLogger: 	at avor.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-01 13:45:50.923  5154  5195 W GmsPipelineLogger: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:487)
+11-01 13:45:50.923  5154  5195 W GmsPipelineLogger: 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+11-01 13:45:50.923  5154  5195 W GmsPipelineLogger: 	at aced.c(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+11-01 13:45:50.923  5154  5195 W GmsPipelineLogger: 	at aced.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):7)
+11-01 13:45:50.923  5154  5195 W GmsPipelineLogger: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-01 13:45:50.923  5154  5195 W GmsPipelineLogger: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-01 13:45:50.923  5154  5195 W GmsPipelineLogger: 	at acjn.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-01 13:45:50.923  5154  5195 W GmsPipelineLogger: 	at java.lang.Thread.run(Thread.java:1012)
+11-01 13:45:50.938  4063  4560 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793540721594
+11-01 13:45:50.940  4063  4213 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f914/lottie.json
+11-01 13:45:50.940  4063  4213 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f914/lottie.json)
+11-01 13:45:50.959  5154  5197 I NearbySharing: A new client has bound to the NearbySharingService ClientBridge for calling package com.google.android.gms [CONTEXT service_id=194 ]
+11-01 13:45:50.967  4063  4213 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793540721595
+11-01 13:45:50.978  4063  4200 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1fae2/lottie.json
+11-01 13:45:50.978  4063  4200 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1fae2/lottie.json)
+11-01 13:45:51.000  4063  4560 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f92b/lottie.json
+11-01 13:45:51.010  4063  4560 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f92b/lottie.json)
+11-01 13:45:51.011  5234  5268 W gle.android.gms: Long monitor contention with owner GoogleApiHandler (5272) at dlqv acea.h(java.util.concurrent.Callable, long, java.util.concurrent.TimeUnit)(:com.google.android.gms@231818047@23.18.18 (1908

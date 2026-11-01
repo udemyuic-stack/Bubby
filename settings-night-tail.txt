@@ -1,0 +1,150 @@
+11-01 13:41:56.074  1406  5060 I NamespaceManager: Package 1 name not found! Using module version.
+11-01 13:41:56.075   134   134 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-01 13:41:56.076   522  1215 D PackageWatchdog: Received supported packages [PackageConfig{com.google.android.networkstack, 86400000}]
+11-01 13:41:56.272     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+11-01 13:41:56.078   522  1215 D ExplicitHealthCheckController: Getting health check requested packages
+11-01 13:41:56.081  5158  5159 I Gralloc4: mapper 4.x is not supported
+11-01 13:41:56.083   522   818 I ExplicitHealthCheckController: Explicit health check requested packages []
+11-01 13:41:56.083   522   818 I ExplicitHealthCheckController: No more health check requests, unbinding...
+11-01 13:41:56.085   522   536 I ExplicitHealthCheckController: Explicit health check supported packages [PackageConfig{com.google.android.networkstack, 86400000}]
+11-01 13:41:56.085   522   536 D PackageWatchdog: Received supported packages [PackageConfig{com.google.android.networkstack, 86400000}]
+11-01 13:41:56.088   522  1215 I ExplicitHealthCheckController: Explicit health check requested packages []
+11-01 13:41:56.090   522   818 I ExplicitHealthCheckController: Explicit health check service is unbound
+11-01 13:41:56.090   522   536 I ExplicitHealthCheckController: Service not ready to get health check requested packages. Binding...
+11-01 13:41:56.107   522   536 I ExplicitHealthCheckController: Explicit health check service is bound
+11-01 13:41:56.107   522  1215 I ExplicitHealthCheckController: No more health check requests, unbinding...
+11-01 13:41:56.108   522  1215 I ExplicitHealthCheckController: Explicit health check service is unbound
+11-01 13:41:56.121   522   522 I ExplicitHealthCheckController: Explicit health check service is connected ComponentInfo{com.google.android.ext.services/android.ext.services.watchdog.ExplicitHealthCheckServiceImpl}
+11-01 13:41:56.122   522   522 I ExplicitHealthCheckController: Service initialized, syncing requests
+11-01 13:41:56.125   522   522 I PackageWatchdog: Syncing health check requests for packages: {}
+11-01 13:41:56.125   522   522 D ExplicitHealthCheckController: Getting health check supported packages
+11-01 13:41:56.127   522   536 I ExplicitHealthCheckController: Explicit health check supported packages [PackageConfig{com.google.android.networkstack, 86400000}]
+11-01 13:41:56.127   522   536 D PackageWatchdog: Received supported packages [PackageConfig{com.google.android.networkstack, 86400000}]
+11-01 13:41:56.127   522   536 D ExplicitHealthCheckController: Getting health check requested packages
+11-01 13:41:56.127   522   536 I ExplicitHealthCheckController: Explicit health check requested packages []
+11-01 13:41:56.128   522   536 I ExplicitHealthCheckController: No more health check requests, unbinding...
+11-01 13:41:56.129   522   536 I ExplicitHealthCheckController: Explicit health check service is unbound
+11-01 13:41:56.134   522   616 I RescueParty: Starting to observe: [com.google.android.permissioncontroller], updated namespace: permissions
+11-01 13:41:56.136   522   551 I PackageWatchdog: Syncing state, reason: observing new packages
+11-01 13:41:56.140   522   551 D PackageWatchdog: rescue-party-observer added the following packages to monitor [com.google.android.permissioncontroller]
+11-01 13:41:56.140   522   551 I PackageWatchdog: Syncing state, reason: updated observers
+11-01 13:41:56.140   522   551 I PackageWatchdog: Not pruning observers, elapsed time: 0ms
+11-01 13:41:56.140   522   551 I PackageWatchdog: Saving observer state to file
+11-01 13:41:56.170   522   522 I PackageWatchdog: Syncing health check requests for packages: {}
+11-01 13:41:56.170   522   522 I ExplicitHealthCheckController: Service not ready to get health check supported packages. Binding...
+11-01 13:41:56.174   522   522 I ExplicitHealthCheckController: Explicit health check service is bound
+11-01 13:41:56.183   522   522 I ExplicitHealthCheckController: Explicit health check service is connected ComponentInfo{com.google.android.ext.services/android.ext.services.watchdog.ExplicitHealthCheckServiceImpl}
+11-01 13:41:56.183   522   522 I ExplicitHealthCheckController: Service initialized, syncing requests
+11-01 13:41:56.183   522   522 I PackageWatchdog: Syncing health check requests for packages: {}
+11-01 13:41:56.183   522   522 D ExplicitHealthCheckController: Getting health check supported packages
+11-01 13:41:56.184   522   536 I ExplicitHealthCheckController: Explicit health check supported packages [PackageConfig{com.google.android.networkstack, 86400000}]
+11-01 13:41:56.184   522   536 D PackageWatchdog: Received supported packages [PackageConfig{com.google.android.networkstack, 86400000}]
+11-01 13:41:56.184   522   536 D ExplicitHealthCheckController: Getting health check requested packages
+11-01 13:41:56.186   522   536 I ExplicitHealthCheckController: Explicit health check requested packages []
+11-01 13:41:56.186   522   536 I ExplicitHealthCheckController: No more health check requests, unbinding...
+11-01 13:41:56.188   522   536 I ExplicitHealthCheckController: Explicit health check service is unbound
+11-01 13:41:56.197  1406  5103 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-01 13:41:56.198  1406  5103 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-01 13:41:56.199  1406  5103 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:41:56.200  1406  5103 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-01 13:41:56.201  1406  5103 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-01 13:41:56.202  1406  5103 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-01 13:41:56.202  1406  5103 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:41:56.202  1406  5103 I NamespaceManager: Package 1 name not found! Using module version.
+11-01 13:41:56.204   522   616 I RescueParty: Starting to observe: [android, com.android.systemui], updated namespace: app_compat
+11-01 13:41:56.205   522   551 I PackageWatchdog: Syncing state, reason: observing new packages
+11-01 13:41:56.206   522   551 D PackageWatchdog: rescue-party-observer added the following packages to monitor [android, com.android.systemui]
+11-01 13:41:56.206   522   522 I PackageWatchdog: Syncing health check requests for packages: {}
+11-01 13:41:56.206   522   522 I ExplicitHealthCheckController: Service not ready to get health check supported packages. Binding...
+11-01 13:41:56.207   522   522 I ExplicitHealthCheckController: Explicit health check service is bound
+11-01 13:41:56.207   522   551 I PackageWatchdog: Syncing state, reason: updated observers
+11-01 13:41:56.207   522   522 I PackageWatchdog: Syncing health check requests for packages: {}
+11-01 13:41:56.207   522   522 I ExplicitHealthCheckController: Service not ready to get health check supported packages. Binding...
+11-01 13:41:56.207   522   522 I ExplicitHealthCheckController: Not binding to service, service already connecting
+11-01 13:41:56.207   522   551 I PackageWatchdog: Saving observer state to file
+11-01 13:41:56.218  1406  5103 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-01 13:41:56.218  1406  5103 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-01 13:41:56.218  1406  5103 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:41:56.219  1406  5103 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-01 13:41:56.219  1406  5103 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-01 13:41:56.219  1406  5103 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-01 13:41:56.219  1406  5103 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:41:56.219  1406  5103 I NamespaceManager: Package 1 name not found! Using module version.
+11-01 13:41:56.221   522   522 I ExplicitHealthCheckController: Explicit health check service is connected ComponentInfo{com.google.android.ext.services/android.ext.services.watchdog.ExplicitHealthCheckServiceImpl}
+11-01 13:41:56.221   522   522 I ExplicitHealthCheckController: Service initialized, syncing requests
+11-01 13:41:56.221   522   522 I PackageWatchdog: Syncing health check requests for packages: {}
+11-01 13:41:56.221   522   522 D ExplicitHealthCheckController: Getting health check supported packages
+11-01 13:41:56.222   522   536 I ExplicitHealthCheckController: Explicit health check supported packages [PackageConfig{com.google.android.networkstack, 86400000}]
+11-01 13:41:56.222   522   536 D PackageWatchdog: Received supported packages [PackageConfig{com.google.android.networkstack, 86400000}]
+11-01 13:41:56.222   522   536 D ExplicitHealthCheckController: Getting health check requested packages
+11-01 13:41:56.223   522   536 I ExplicitHealthCheckController: Explicit health check requested packages []
+11-01 13:41:56.223   522   536 I ExplicitHealthCheckController: No more health check requests, unbinding...
+11-01 13:41:56.223   522   536 I ExplicitHealthCheckController: Explicit health check service is unbound
+11-01 13:41:56.239  1406  5103 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-01 13:41:56.239  1406  5103 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-01 13:41:56.240  1406  5103 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:41:56.240  1406  5103 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-01 13:41:56.241  1406  5103 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-01 13:41:56.241  1406  5103 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-01 13:41:56.241  1406  5103 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:41:56.242  1406  5103 I NamespaceManager: Package 1 name not found! Using module version.
+11-01 13:41:56.263  1406  5060 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-01 13:41:56.264  1406  5060 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-01 13:41:56.266  1406  5060 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:41:56.266  1406  5060 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-01 13:41:56.266  1406  5060 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-01 13:41:56.266  1406  5060 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-01 13:41:56.266  1406  5060 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:41:56.266  1406  5060 I NamespaceManager: Package 1 name not found! Using module version.
+11-01 13:41:56.269  4874  4895 D EGL_emulation: app_time_stats: avg=34.07ms min=23.07ms max=47.38ms count=30
+11-01 13:41:56.290  1406  5060 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-01 13:41:56.291  1406  5060 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-01 13:41:56.291  1406  5060 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:41:56.291  1406  5060 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-01 13:41:56.292  1406  5060 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-01 13:41:56.292  1406  5060 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-01 13:41:56.292  1406  5060 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:41:56.292  1406  5060 I NamespaceManager: Package 1 name not found! Using module version.
+11-01 13:41:56.312  1406  5060 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-01 13:41:56.313  1406  5060 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-01 13:41:56.313  1406  5060 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:41:56.313  1406  5060 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-01 13:41:56.313  1406  5060 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-01 13:41:56.314  1406  5060 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-01 13:41:56.314  1406  5060 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:41:56.314  1406  5060 I NamespaceManager: Package 1 name not found! Using module version.
+11-01 13:41:56.320  1406  5060 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-01 13:41:56.320  1406  5060 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-01 13:41:56.320  1406  5060 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:41:56.320  1406  5060 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-01 13:41:56.320  1406  5060 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-01 13:41:56.321  1406  5060 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-01 13:41:56.321  1406  5060 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:41:56.322  1406  5060 I NamespaceManager: Package 1 name not found! Using module version.
+11-01 13:41:56.327   522   616 I RescueParty: Starting to observe: [android], updated namespace: wifi
+11-01 13:41:56.328   522   551 I PackageWatchdog: Syncing state, reason: observing new packages
+11-01 13:41:56.328   522   551 D PackageWatchdog: rescue-party-observer added the following packages to monitor [android]
+11-01 13:41:56.328   522   551 I PackageWatchdog: Syncing state, reason: updated observers
+11-01 13:41:56.328   522   551 I PackageWatchdog: Not pruning observers, elapsed time: 0ms
+11-01 13:41:56.328   522   551 I PackageWatchdog: Saving observer state to file
+11-01 13:41:56.336   522   522 I PackageWatchdog: Syncing health check requests for packages: {}
+11-01 13:41:56.336   522   522 I ExplicitHealthCheckController: Service not ready to get health check supported packages. Binding...
+11-01 13:41:56.337   522   522 I ExplicitHealthCheckController: Explicit health check service is bound
+11-01 13:41:56.340   522   522 I ExplicitHealthCheckController: Explicit health check service is connected ComponentInfo{com.google.android.ext.services/android.ext.services.watchdog.ExplicitHealthCheckServiceImpl}
+11-01 13:41:56.340   522   522 I ExplicitHealthCheckController: Service initialized, syncing requests
+11-01 13:41:56.341   522   522 I PackageWatchdog: Syncing health check requests for packages: {}
+11-01 13:41:56.341   522   522 D ExplicitHealthCheckController: Getting health check supported packages
+11-01 13:41:56.341  1406  5060 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-01 13:41:56.342   522  1215 I ExplicitHealthCheckController: Explicit health check supported packages [PackageConfig{com.google.android.networkstack, 86400000}]
+11-01 13:41:56.342   522  1215 D PackageWatchdog: Received supported packages [PackageConfig{com.google.android.networkstack, 86400000}]
+11-01 13:41:56.342   522  1215 D ExplicitHealthCheckController: Getting health check requested packages
+11-01 13:41:56.342   522  1215 I ExplicitHealthCheckController: Explicit health check requested packages []
+11-01 13:41:56.342   522  1215 I ExplicitHealthCheckController: No more health check requests, unbinding...
+11-01 13:41:56.342   522  1215 I ExplicitHealthCheckController: Explicit health check service is unbound
+11-01 13:41:56.355  1406  5060 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-01 13:41:56.355  1406  5060 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:41:56.356  1406  5060 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-01 13:41:56.356  1406  5060 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-01 13:41:56.357  1406  5060 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-01 13:41:56.357  1406  5060 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:41:56.359  1406  5060 I NamespaceManager: Package 1 name not found! Using module version.

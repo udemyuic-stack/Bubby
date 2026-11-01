@@ -1,0 +1,150 @@
+11-01 13:44:29.099  1642  2338 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:29.100  1642  2338 I A       : setNavBarVisible: GestureNavBarVisible{navbarVisible=true}
+11-01 13:44:29.100  1642  2338 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:29.100  1642  2338 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:29.100  1642  2338 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:29.100  1642  2338 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:29.100  1642  2338 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:29.100  1642  2338 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:29.100  1642  2338 I A       : onDisabled. Registered: false
+11-01 13:44:29.103  1642  2338 I A       : on opa visibility changed false
+11-01 13:44:29.103  1642  2338 I A       : on opa visibility changed false
+11-01 13:44:29.112  1642  2320 I A       : Initialize
+11-01 13:44:29.118   831   831 W PageIndicator: Total number of pages invalid: 0. Assuming 1 page.
+11-01 13:44:29.131   522   608 D ActivityManager: freezing 3835 com.google.android.gm
+11-01 13:44:29.141  5218  5339 I ChimeraConfigurator: Detected pending changes for urgent request: [vision.ocr]. Pending module sets: container:2318189190800+mlkit.ocr.common,tflite_dynamite:2640104055100800+tflite_dynamite,vision_ocr:23160
+11-01 13:44:29.147  1642  2320 I NgaEntryPointEventSendr: setupConnection
+11-01 13:44:29.151  1754  1754 I A       : Creating pss binder().
+11-01 13:44:29.151  1642  2338 I A       : State changed: IDLE => IDLE by NGA_STATE_CHANGED and N/A with Optional.empty
+11-01 13:44:29.164  1642  2338 I A       : Recognizer choice: (recognizer_type: 1, recognizer_mode: 1, choice_reason: 4)
+11-01 13:44:29.172  1642  2338 I A       : onActiveStateChangeEvent: IDLE => IDLE
+11-01 13:44:29.177  5218  5339 I GmsDebugLogger: [73] 1801
+11-01 13:44:29.182  1642  2338 W A       : Missing generator mapping for generator GENERATOR_CONTEXTUAL_SUGGESTIONS
+11-01 13:44:29.182  1642  2338 W A       : Missing generator mapping for generator GENERATOR_FRE_SUGGESTIONS_ON_TIMEOUT
+11-01 13:44:29.182  1642  2338 W A       : Missing generator mapping for generator GENERATOR_FRE_SUGGESTIONS_ON_INVOCATION
+11-01 13:44:29.183  1642  2320 I NgaEntryPointEventSendr: State changed: Disconnected => Connecting
+11-01 13:44:29.183  1642  2320 I NgaEntryPointEventSendr: onServiceConnected
+11-01 13:44:29.183  1754  2685 I A       : Calling beginBinderSession().
+11-01 13:44:29.186  1642  2338 I A       : #onActiveStateChangeEvent, newState: IDLE, previousState: IDLE.
+11-01 13:44:29.192  1642  2338 I A       : stopListening(NGA_PAUSED_UNKNOWN_REASON, NGA_CREATE), idleOverride=NOT_LISTENING
+11-01 13:44:29.198  1754  2685 I A       : beginBinderSession(): calling binder
+11-01 13:44:29.205  1642  2320 I NgaEntryPointEventSendr: State changed: Connecting => Ready
+11-01 13:44:29.224   522   608 D ActivityManager: freezing 4184 com.google.android.marvin.talkback
+11-01 13:44:29.225  1642  2338 W A       : Routing took 0 ms
+11-01 13:44:29.227   522  3068 W ActivityManager: Unable to start service Intent { cmp=com.google.android.apps.tachyon/.clientapi.ClientApiService } U=0: not found
+11-01 13:44:29.228  5218  5339 W ZappDownloader: No successful module downloads for requested features [vision.ocr].
+11-01 13:44:29.232  5218  5339 I GmsDebugLogger: [30] [VisionOcrDynamite.integ:231602402100000],[TfliteDynamiteDynamite.integ:264010405100800],[MlkitOcrCommon.optional:231818100800]
+11-01 13:44:29.235  1642  2320 I A       : Successfully initialized all components
+11-01 13:44:29.255  5218  5339 W ChimeraConfigService: Retry attempt was throttled. [CONTEXT service_id=264 ]
+11-01 13:44:29.256  5218  5339 I GmsDebugLogger: [83] 1 [vision.ocr]
+11-01 13:44:29.261  5218  5339 E IPCThreadState: Binder transaction failure: 457993/29189/-22
+11-01 13:44:29.261  5218  5339 E ChimeraUPLUtils: Failed to invoke updateComplete: android.os.DeadObjectException
+11-01 13:44:29.275  5218  5339 I ChimeraConfigurator: Starting update, reason: 4 urgentFeatures: maps_core:-1
+11-01 13:44:29.313  1754  2515 W A       : UiCallbackStub-onGenericEvent[ServiceEvent = 241] task was not run. Callback from Service received after client was disposed.
+11-01 13:44:29.314  1642  2338 I NgaEntryPointEventSendr: State changed: Ready => Disconnected (onOpaDisconnected)
+11-01 13:44:29.316  1754  2515 W A       : UiCallbackStub-onGenericEvent[ServiceEvent = 241] task was not run. Callback from Service received after client was disposed.
+11-01 13:44:29.344  1754  2934 I PBSessionCacheImpl: Deleted sessionId[7715967121082303] from persistence.
+11-01 13:44:29.344  1754  2515 W A       : UiCallbackStub-onGenericEvent[ServiceEvent = 60] task was not run. Callback from Service received after client was disposed.
+11-01 13:44:29.347  1754  2515 W SearchServiceCore: Abort, client detached.
+11-01 13:44:29.380  5218  5339 I ChimeraConfigurator: Detected pending changes for urgent request: [maps_core]. Pending module sets: container:2318189190800+maps_core
+11-01 13:44:29.383  1642  1654 I hbox:interactor: Background young concurrent copying GC freed 41021(2411KB) AllocSpace objects, 7(140KB) LOS objects, 23% free, 7958KB/10MB, paused 2.115ms,11us total 155.041ms
+11-01 13:44:29.397  1642  1642 V ClearcutMetricXmitter: Transmission is done.
+11-01 13:44:29.407  5218  5339 I GmsDebugLogger: [73] 1801
+11-01 13:44:29.412  5218  5339 W ZappDownloader: No successful module downloads for requested features [maps_core].
+11-01 13:44:29.412  5218  5339 I GmsDebugLogger: [30] [MapsCoreDynamite.integ:231112103100800]
+11-01 13:44:29.442  5218  5339 W ChimeraConfigService: Retry attempt was throttled. [CONTEXT service_id=264 ]
+11-01 13:44:29.442  5218  5339 I GmsDebugLogger: [83] 1 [maps_core]
+11-01 13:44:29.449  5218  5339 I ChimeraConfigurator: Starting update, reason: 4 urgentFeatures: mlkit.barcode.ui:0
+11-01 13:44:29.501  5129  5158 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService started execution. cause:9 exec_start_elapsed_seconds: 102 [CONTEXT service_id=218 ]
+11-01 13:44:29.508  5020  5036 D EGL_emulation: app_time_stats: avg=21.71ms min=3.71ms max=45.36ms count=44
+11-01 13:44:29.542  5218  5339 I ChimeraConfigurator: Detected pending changes for urgent request: [mlkit.barcode.ui]. Pending module sets: container:2318189190800+mlkit.barcode.ui+vision.barcode,tflite_dynamite:2640104055100800+tflite_dyna
+11-01 13:44:29.580  5218  5339 I GmsDebugLogger: [73] 1801
+11-01 13:44:29.608  5218  5339 W ZappDownloader: No successful module downloads for requested features [mlkit.barcode.ui].
+11-01 13:44:29.608  5218  5339 I GmsDebugLogger: [30] [VisionBarcode.optional:231818100800],[TfliteDynamiteDynamite.integ:264010405100800],[MlkitBarcodeUi.optional:231818100000]
+11-01 13:44:29.632  5129  5177 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService finished executing. cause:9 result: 1 elapsed_millis: 155 uptime_millis: 155 exec_start_elapsed_seconds: 
+11-01 13:44:29.633  5218  5339 W ChimeraConfigService: Retry attempt was throttled. [CONTEXT service_id=264 ]
+11-01 13:44:29.633  5218  5339 I GmsDebugLogger: [83] 1 [mlkit.barcode.ui]
+11-01 13:44:29.636  5218  5332 I ChimeraConfigurator: Starting update, reason: 4 urgentFeatures: tflite_dynamite:-1
+11-01 13:44:29.669  5218  5332 I ChimeraConfigurator: Detected pending changes for urgent request: [tflite_dynamite]. Pending module sets: container:2318189190800,tflite_dynamite:2640104055100800+tflite_dynamite
+11-01 13:44:29.693   338  5441 I resolv  : GetAddrInfoHandler::run: {101 786533 101 983141 10131 0}
+11-01 13:44:29.693  2908  3002 D TrafficStats: tagSocket(104) with statsTag=0x1809, statsUid=-1
+11-01 13:44:29.708  5218  5332 I GmsDebugLogger: [73] 1801
+11-01 13:44:29.715  5129  5129 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.auth.account.data.service.START pkg=com.google.android.gms }
+11-01 13:44:29.717  2908  3002 D TrafficStats: tagSocket(104) with statsTag=0x1809, statsUid=-1
+11-01 13:44:29.721  1507  1507 V ContactsProvider: Scheduled notifyChange started.
+11-01 13:44:29.722  1021  1021 D BluetoothPbapService:  onChange on contact uri 
+11-01 13:44:29.724  2908  3002 D TrafficStats: tagSocket(104) with statsTag=0x1809, statsUid=-1
+11-01 13:44:29.729  5129  5129 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.usagereporting.service.START pkg=com.google.android.gms }
+11-01 13:44:29.759  5218  5332 W ZappDownloader: No successful module downloads for requested features [tflite_dynamite].
+11-01 13:44:29.772  5218  5332 I GmsDebugLogger: [30] [TfliteDynamiteDynamite.integ:264010405100800]
+11-01 13:44:29.784  5218  5332 W ChimeraConfigService: Retry attempt was throttled. [CONTEXT service_id=264 ]
+11-01 13:44:29.784  5218  5332 I GmsDebugLogger: [83] 1 [tflite_dynamite]
+11-01 13:44:29.788  1021  5442 D BluetoothPbapUtils: primaryVersionCounter = 0, secondaryVersionCounter=0
+11-01 13:44:29.991     0     0 W binder_debug: 2 callbacks suppressed
+11-01 13:44:29.991     0     0 I binder  : 5332:5218 cannot find target node
+11-01 13:44:29.993     0     0 I binder  : 5218:5332 transaction async to 0:0 failed 459623/29189/-22, size 160-0 line 3210
+11-01 13:44:29.794  5218  5332 E IPCThreadState: Binder transaction failure: 459623/29189/-22
+11-01 13:44:29.794  5218  5332 E ChimeraUPLUtils: Failed to invoke updateComplete: android.os.DeadObjectException
+11-01 13:44:29.796  5218  5339 I ChimeraConfigurator: Starting update, reason: 4 urgentFeatures: vision.ocr:-1
+11-01 13:44:29.833  5218  5229 I gle.android.gms: Compiler allocated 4732KB to compile boolean zec.j(int, zdr, java.util.List, zeb)
+11-01 13:44:29.849  5218  5339 I ChimeraConfigurator: Detected pending changes for urgent request: [vision.ocr]. Pending module sets: container:2318189190800+mlkit.ocr.common,tflite_dynamite:2640104055100800+tflite_dynamite,vision_ocr:23160
+11-01 13:44:29.899  5218  5339 I GmsDebugLogger: [73] 1801
+11-01 13:44:29.930  5129  5208 W .gms.persistent: Long monitor contention with owner lowpool[3] (5177) at void byui.f(byps, byps)(:com.google.android.gms@231818047@23.18.18 (190800-535401451):5) waiters=0 in void byui.f(byps, byps) for 186m
+11-01 13:44:29.943  5218  5339 W ZappDownloader: No successful module downloads for requested features [vision.ocr].
+11-01 13:44:29.943  5218  5339 I GmsDebugLogger: [30] [VisionOcrDynamite.integ:231602402100000],[TfliteDynamiteDynamite.integ:264010405100800],[MlkitOcrCommon.optional:231818100800]
+11-01 13:44:29.946  5129  5239 I DynamiteModule: Considering local module com.google.android.gms.cronet_dynamite:0 and remote module com.google.android.gms.cronet_dynamite:2411
+11-01 13:44:29.946  5129  5239 I DynamiteModule: Selected remote version of com.google.android.gms.cronet_dynamite, version >= 2411
+11-01 13:44:29.951  5129  5239 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000001/CronetDynamite.dm': No such file or directory
+11-01 13:44:29.961  5218  5339 W ChimeraConfigService: Retry attempt was throttled. [CONTEXT service_id=264 ]
+11-01 13:44:29.963  5218  5339 I GmsDebugLogger: [83] 1 [vision.ocr]
+11-01 13:44:29.966  5218  5327 W Vision  : Request for optional module download of ocr failed. Request again.
+11-01 13:44:29.967  5218  5327 W Vision  : Would have logged:
+11-01 13:44:29.967  5218  5327 W Vision  : # dsae@37884fe7
+11-01 13:44:29.967  5218  5327 I Vision  : Schedule retrying download ocr at 103075 with backoff 10 seconds
+11-01 13:44:29.976  5218  5339 I ChimeraConfigurator: Starting update, reason: 4 urgentFeatures: tflite_dynamite:-1
+11-01 13:44:30.031  5218  5339 I ChimeraConfigurator: Detected pending changes for urgent request: [tflite_dynamite]. Pending module sets: container:2318189190800,tflite_dynamite:2640104055100800+tflite_dynamite
+11-01 13:44:30.038   522   608 D ActivityManager: freezing 3785 com.google.android.projection.gearhead:shared
+11-01 13:44:30.046   522   608 D ActivityManager: freezing 2769 com.android.chrome
+11-01 13:44:30.047   522   608 D ActivityManager: freezing 1760 com.google.android.youtube
+11-01 13:44:30.083  5218  5339 I GmsDebugLogger: [73] 1801
+11-01 13:44:30.085  5218  5339 W ZappDownloader: No successful module downloads for requested features [tflite_dynamite].
+11-01 13:44:30.087  5218  5339 I GmsDebugLogger: [30] [TfliteDynamiteDynamite.integ:264010405100800]
+11-01 13:44:30.102  5218  5339 W ChimeraConfigService: Retry attempt was throttled. [CONTEXT service_id=264 ]
+11-01 13:44:30.103  5218  5339 I GmsDebugLogger: [83] 1 [tflite_dynamite]
+11-01 13:44:30.161  5129  5239 W .gms.persistent: Verification of org.chromium.net.ExperimentalUrlRequest$Builder hn.newUrlRequestBuilder(java.lang.String, org.chromium.net.UrlRequest$Callback, java.util.concurrent.Executor) took 132.222ms 
+11-01 13:44:30.179  5451  5451 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+11-01 13:44:30.179  5451  5451 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-01 13:44:30.182  5129  5239 D nativeloader: Configuring clns-10 for other apk . target_sdk_version=33, uses_libraries=ALL, library_path=/data/user_de/0/com.google.android.gms/app_chimera/m/00000001/CronetDynamite.apk!/lib/x86_64:/data/us
+11-01 13:44:30.187  5129  5239 I cr_CronetLibraryLoader: Cronet version: 113.0.5672.51, arch: x86_64
+11-01 13:44:30.193   402   416 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=5451
+11-01 13:44:30.193   402   416 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (301 us)
+11-01 13:44:30.196   522  3069 D ConnectivityService: requestNetwork for uid/pid:10131/5129 activeRequest: null callbackRequest: 138 [NetworkRequest [ REQUEST id=139, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 1013
+11-01 13:44:30.197   522   755 D WifiNetworkFactory: got request NetworkRequest [ REQUEST id=139, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10131 RequestorUid: 10131 RequestorPkg: com.google.android.gms Underlying
+11-01 13:44:30.198   522   755 D UntrustedWifiNetworkFactory: got request NetworkRequest [ REQUEST id=139, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10131 RequestorUid: 10131 RequestorPkg: com.google.android.gms U
+11-01 13:44:30.198   522   755 D OemPaidWifiNetworkFactory: got request NetworkRequest [ REQUEST id=139, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10131 RequestorUid: 10131 RequestorPkg: com.google.android.gms Und
+11-01 13:44:30.199   522   755 D MultiInternetWifiNetworkFactory: got request NetworkRequest [ REQUEST id=139, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10131 RequestorUid: 10131 RequestorPkg: com.google.android.g
+11-01 13:44:30.199   522   762 D ConnectivityService: NetReassign [139 : null → 101] [c 1] [a 0] [i 2]
+11-01 13:44:30.201  5129  5177 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.icing.proxy.IcingInternalCorporaUpdateService started execution. cause:5 exec_start_elapsed_seconds: 103 [CONTEXT service_id=218 ]
+11-01 13:44:30.205   522   762 D ConnectivityService: NetReassign [no changes] [c 2] [a 0] [i 1]
+11-01 13:44:30.213   135   135 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-01 13:44:30.213  5451  5452 I Gralloc4: mapper 4.x is not supported
+11-01 13:44:30.414     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+11-01 13:44:30.249  5129  5239 W GmsUrlRequestImpl: Content-Type header is overwritten.
+11-01 13:44:30.295  5129  5177 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.icing.proxy.IcingInternalCorporaUpdateService finished executing. cause:5 result: 1 elapsed_millis: 127 uptime_millis: 127 exec_star
+11-01 13:44:30.317   338  5460 I resolv  : GetAddrInfoHandler::run: {101 786533 101 983141 10131 0}
+11-01 13:44:30.322   338  5461 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+11-01 13:44:30.322   338  5461 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7d419883ef10
+11-01 13:44:30.322   338  5461 I resolv  : doQuery: rcode=0, ancount=8, return value=264
+11-01 13:44:30.343   338  5462 I resolv  : res_nmkquery: (QUERY, IN, A)
+11-01 13:44:30.343   338  5462 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7d4088838cf0
+11-01 13:44:30.343   338  5462 I resolv  : doQuery: rcode=0, ancount=8, return value=168
+11-01 13:44:30.344  5129  5456 D TrafficStats: tagSocket(186) with statsTag=0x401, statsUid=10131
+11-01 13:44:30.346  5129  5456 D TrafficStats: tagSocket(186) with statsTag=0x401, statsUid=10131
+11-01 13:44:30.349  5129  5456 D TrafficStats: tagSocket(186) with statsTag=0x401, statsUid=10131
+11-01 13:44:30.354  5129  5456 D TrafficStats: tagSocket(186) with statsTag=0x401, statsUid=10131
+11-01 13:44:30.356  5129  5456 D TrafficStats: tagSocket(186) with statsTag=0x401, statsUid=10131
+11-01 13:44:30.358  5129  5456 D TrafficStats: tagSocket(186) with statsTag=0x401, statsUid=10131
+11-01 13:44:30.360  5129  5456 D TrafficStats: tagSocket(186) with statsTag=0x401, statsUid=10131
+11-01 13:44:30.361  5129  5456 D TrafficStats: tagSocket(186) with statsTag=0x401, statsUid=10131
+11-01 13:44:30.362  5129  5456 D TrafficStats: tagSocket(186) with statsTag=0x401, statsUid=10131
+11-01 13:44:30.419  5020  5020 I com.example.buddy: Perf: native scene 20 fps

@@ -1,0 +1,150 @@
+11-01 13:44:27.791   523  2141 D CompatibilityChangeReporter: Compat change id reported: 132649864; UID 2000; state: DISABLED
+11-01 13:44:27.793  1610  2163 W MediaProvider: isAppCloneUserPair for user 0: false
+11-01 13:44:27.797  5601  5601 W AccessibilityNodeInfoDumper: Fetch time: 8ms
+11-01 13:44:27.798  1506  1623 I AiAiEcho: Settings changed for uri: content://settings/secure/accessibility_enabled
+11-01 13:44:27.799  1506  1895 I AiAiEcho: Predicting[0]: 
+11-01 13:44:27.799  1506  1895 I AiAiEcho: EchoTargets: 
+11-01 13:44:27.799  1506  1895 I AiAiEcho: Filtered by AiAi flag check: 
+11-01 13:44:27.799  1506  1895 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+11-01 13:44:27.799  1506  1895 I AiAiEcho: Predicting[0]: 
+11-01 13:44:27.799  1506  1895 I AiAiEcho: EchoTargets: 
+11-01 13:44:27.799  1506  1895 I AiAiEcho: Filtered by AiAi flag check: 
+11-01 13:44:27.799  1506  1895 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+11-01 13:44:27.800   523  2141 W WindowMagnificationMgr: requestConnection duplicated request: connect=false, mConnectionState=DISCONNECTED
+11-01 13:44:27.800  1506  1895 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0 (types=[])
+11-01 13:44:27.800  1506  1895 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0 (types=[])
+11-01 13:44:27.800   826   826 W PageIndicator: Total number of pages invalid: 0. Assuming 1 page.
+11-01 13:44:27.801   523  2141 D AccessibilityManagerService: restoreCurrentUserForTestAutomationIfNeededLocked(): ignoring because device doesn't support visible background users
+11-01 13:44:27.808   523  2877 W ProcessStats: Tracking association SourceState{4a0a318 com.google.android.gms/10131 BFgs #11846} whose proc state 4 is better than process ProcessState{6a6f171 android.process.acore/10085 pkg=com.android.pro
+11-01 13:44:27.809   523   523 D BatterySaverPolicy: accessibility changed to false, updating policy.
+11-01 13:44:27.809  1543  2302 I A       : NGA enabled in interactor.
+11-01 13:44:27.810  1543  2302 I A       : Nga state changed to NgaStateDetails{state=ENABLED, isSpecialExperience=false}
+11-01 13:44:27.810  1518  4988 I A       : Initializing all components
+11-01 13:44:27.811  1518  4988 I A       : APA or Classic session decision: SessionDecision(sessionVariance=CLASSIC, platformVariance=CLASSIC, justification=CURRENT_PLATFORM_VARIANCE).
+11-01 13:44:27.811  1518  4988 I A       : [Memory] eligibility: StashEligibility{6}
+11-01 13:44:27.813  1518  2214 I A       : onIsEnabledChanged, isEnabled: false
+11-01 13:44:27.813  1518  2214 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:27.813  1518  2214 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:27.813  1518  2214 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:27.813  1518  2214 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:27.813  1518  2214 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:27.813  1518  2214 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:27.813  1518  2214 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:27.813  1518  2214 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:27.813  1518  2214 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:27.813  1518  2214 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:27.813  1518  2214 I A       : onOpaVisibilityChanged: false
+11-01 13:44:27.813  1518  2214 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:27.813  1518  2214 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:27.813  1518  2214 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:27.813  1518  2214 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:27.813  1518  2214 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:27.813  1518  2214 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:27.814  1518  2214 I A       : Setting session to type: NO_SESSION
+11-01 13:44:27.814  1518  2214 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:27.814  1518  2214 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:27.814  1518  2214 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:27.814  1518  2214 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:27.814  1518  2214 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:27.814  1518  2214 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:27.814  1518  2214 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:27.814  1518  2214 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:27.814  1518  2214 I A       : setNavBarVisible: GestureNavBarVisible{navbarVisible=true}
+11-01 13:44:27.814  1518  2214 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:27.814  1518  2214 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:27.814  1518  2214 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:27.814  1518  2214 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:27.814  1518  2214 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:27.814  1518  2214 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:27.814  1518  2214 I A       : onDisabled. Registered: false
+11-01 13:44:27.820  5601  5601 D AndroidRuntime: Shutting down VM
+11-01 13:44:27.832  1518  2214 I NgaEntryPointEventSendr: setupConnection
+11-01 13:44:27.835  1543  1543 I A       : Creating pss binder().
+11-01 13:44:27.846  1518  2214 I NgaEntryPointEventSendr: State changed: Disconnected => Connecting
+11-01 13:44:27.848  1518  2202 I A       : State changed: IDLE => IDLE by NGA_STATE_CHANGED and N/A with Optional.empty
+11-01 13:44:27.849  1518  2214 I NgaEntryPointEventSendr: onServiceConnected
+11-01 13:44:27.851  1543  2569 I A       : Calling beginBinderSession().
+11-01 13:44:27.853  1543  2569 I A       : beginBinderSession(): calling binder
+11-01 13:44:27.853  1518  2214 I NgaEntryPointEventSendr: State changed: Connecting => Ready
+11-01 13:44:27.856   523  2141 W ActivityManager: Unable to start service Intent { cmp=com.google.android.apps.tachyon/.clientapi.ClientApiService } U=0: not found
+11-01 13:44:27.860  4989  5375 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService started execution. cause:9 exec_start_elapsed_seconds: 85 [CONTEXT service_id=218 ]
+11-01 13:44:27.864  1518  2214 I A       : on opa visibility changed false
+11-01 13:44:27.865  1518  2202 I A       : Recognizer choice: (recognizer_type: 1, recognizer_mode: 1, choice_reason: 4)
+11-01 13:44:27.866  1518  2202 I A       : onActiveStateChangeEvent: IDLE => IDLE
+11-01 13:44:27.868  1518  2202 W A       : Missing generator mapping for generator GENERATOR_CONTEXTUAL_SUGGESTIONS
+11-01 13:44:27.868  1518  2202 W A       : Missing generator mapping for generator GENERATOR_FRE_SUGGESTIONS_ON_TIMEOUT
+11-01 13:44:27.869  1518  2202 W A       : Missing generator mapping for generator GENERATOR_FRE_SUGGESTIONS_ON_INVOCATION
+11-01 13:44:27.870  1543  2684 I PBSessionCacheImpl: Deleted sessionId[6787979307243097] from persistence.
+11-01 13:44:27.871  1543  2684 W A       : UiCallbackStub-onGenericEvent[ServiceEvent = 60] task was not run. Callback from Service received after client was disposed.
+11-01 13:44:27.873  1543  2684 W SearchServiceCore: Abort, client detached.
+11-01 13:44:27.879  4989  5043 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService finished executing. cause:9 result: 1 elapsed_millis: 55 uptime_millis: 55 exec_start_elapsed_seconds: 85
+11-01 13:44:27.880  1518  2214 I A       : on opa visibility changed false
+11-01 13:44:27.882  1518  2214 I A       : Initialize
+11-01 13:44:27.884  1518  2202 I A       : #onActiveStateChangeEvent, newState: IDLE, previousState: IDLE.
+11-01 13:44:27.889  1518  2214 I NgaEntryPointEventSendr: State changed: Ready => Disconnected (onOpaDisconnected)
+11-01 13:44:27.890  1518  2214 I A       : stopListening(NGA_PAUSED_UNKNOWN_REASON, NGA_CREATE), idleOverride=NOT_LISTENING
+11-01 13:44:27.891  1518  2214 W A       : Routing took 7 ms
+11-01 13:44:27.894   523  2877 D CompatibilityChangeReporter: Compat change id reported: 197654537; UID 10192; state: ENABLED
+11-01 13:44:27.896  1518  2214 I A       : Successfully initialized all components
+11-01 13:44:28.298  5517  5536 D EGL_emulation: app_time_stats: avg=17.23ms min=2.91ms max=67.82ms count=58
+11-01 13:44:28.362   523   759 D ConnectivityService: reportNetworkConnectivity(101, false) by 10132
+11-01 13:44:28.363   968  2814 D NetworkMonitor/101: Forcing reevaluation for UID 10132. Dns signal count: 0
+11-01 13:44:28.364   968  5621 D TrafficStats: tagSocket(68) with statsTag=0xffffff81, statsUid=-1
+11-01 13:44:28.364   968  5622 D TrafficStats: tagSocket(105) with statsTag=0xffffff81, statsUid=-1
+11-01 13:44:28.364   968  5622 D TrafficStats: tagSocket(105) with statsTag=0xffffff81, statsUid=-1
+11-01 13:44:28.364   968  5621 D TrafficStats: tagSocket(68) with statsTag=0xffffff81, statsUid=-1
+11-01 13:44:28.365   336  5623 I resolv  : ResNSendHandler::run: 0 / {101 983141 101 983141 1073 1}
+11-01 13:44:28.365   336  5623 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x70bc7708fcf0
+11-01 13:44:28.366   336  5624 I resolv  : ResNSendHandler::run: 0 / {101 983141 101 983141 1073 1}
+11-01 13:44:28.368   336  5625 I resolv  : ResNSendHandler::run: 0 / {101 983141 101 983141 1073 1}
+11-01 13:44:28.368   336  5625 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x70bc7708f510
+11-01 13:44:28.368   336  5626 I resolv  : ResNSendHandler::run: 0 / {101 983141 101 983141 1073 1}
+11-01 13:44:28.369   968   968 D TrafficStats: tagSocket(75) with statsTag=0xffffffff, statsUid=-1
+11-01 13:44:28.369   968   968 D TrafficStats: tagSocket(75) with statsTag=0xffffffff, statsUid=-1
+11-01 13:44:28.370   968  5622 D NetworkMonitor/101: PROBE_DNS connectivitycheck.gstatic.com 5ms OK 64.233.181.94,2607:f8b0:4001:c68::5e
+11-01 13:44:28.371   336  5624 I resolv  : res_nsend: used send_dg 256 terrno: 0
+11-01 13:44:28.371   336  5626 I resolv  : res_nsend: used send_dg 160 terrno: 0
+11-01 13:44:28.372   968   968 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-01 13:44:28.372   968   968 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-01 13:44:28.372   968   968 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-01 13:44:28.372   968   968 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-01 13:44:28.372   968   968 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-01 13:44:28.372   968   968 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-01 13:44:28.373   968   968 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-01 13:44:28.373   968   968 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-01 13:44:28.373   968   968 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-01 13:44:28.373   968   968 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-01 13:44:28.373   968   968 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-01 13:44:28.373   968   968 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-01 13:44:28.374   968   968 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-01 13:44:28.374   968   968 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-01 13:44:28.374   968   968 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-01 13:44:28.375   968   968 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-01 13:44:28.375   968  5621 D NetworkMonitor/101: PROBE_DNS www.google.com 11ms OK 142.251.153.119,142.251.154.119,142.251.157.119,142.251.151.119,142.251.156.119,142.251.150.119,142.251.152.119,142.251.155.119,2001:4860:4827:7700::,2001
+11-01 13:44:28.376   336  5627 I resolv  : GetAddrInfoHandler::run: {101 983141 101 983141 1073 1}
+11-01 13:44:28.376   336  5628 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+11-01 13:44:28.376   336  5628 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x70bc7708fcf0
+11-01 13:44:28.376   336  5628 I resolv  : doQuery: rcode=0, ancount=1, return value=75
+11-01 13:44:28.377   336  5629 I resolv  : res_nmkquery: (QUERY, IN, A)
+11-01 13:44:28.377   336  5629 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x70bc7708f510
+11-01 13:44:28.377   336  5630 I resolv  : GetAddrInfoHandler::run: {101 983141 101 983141 1073 1}
+11-01 13:44:28.377   336  5629 I resolv  : doQuery: rcode=0, ancount=1, return value=63
+11-01 13:44:28.378   968  5622 D TrafficStats: tagSocket(68) with statsTag=0xffffff81, statsUid=-1
+11-01 13:44:28.378   336  5631 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+11-01 13:44:28.378   336  5631 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x70bcc7091850
+11-01 13:44:28.378   336  5631 I resolv  : doQuery: rcode=0, ancount=8, return value=256
+11-01 13:44:28.378   336  5632 I resolv  : res_nmkquery: (QUERY, IN, A)
+11-01 13:44:28.378   336  5632 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x70bb2708c250
+11-01 13:44:28.378   336  5632 I resolv  : doQuery: rcode=0, ancount=8, return value=160
+11-01 13:44:28.379   968  5621 D TrafficStats: tagSocket(75) with statsTag=0xffffff81, statsUid=-1
+11-01 13:44:28.424   968  5621 D NetworkMonitor/101: PROBE_HTTPS https://www.google.com/generate_204 time=48ms ret=204 request={Connection=[close], User-Agent=[Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60
+11-01 13:44:28.426   968  5620 D NetworkMonitor/101: isCaptivePortal: isSuccessful()=true isPortal()=false RedirectUrl=null isPartialConnectivity()=false Time=63ms
+11-01 13:44:28.428   523   759 D ConnectivityService: [101 WIFI] validation passed
+11-01 13:44:28.437   968  5622 D NetworkMonitor/101: PROBE_HTTP http://connectivitycheck.gstatic.com/generate_204 time=63ms ret=204 request={Connection=[close], User-Agent=[Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gec
+11-01 13:44:28.744  5638  5638 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+11-01 13:44:28.744  5638  5638 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-01 13:44:28.745   402   415 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=5638
+11-01 13:44:28.745   402   415 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (167 us)
+11-01 13:44:28.758   134   134 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-01 13:44:28.758  5638  5639 I Gralloc4: mapper 4.x is not supported
+11-01 13:44:28.953     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.

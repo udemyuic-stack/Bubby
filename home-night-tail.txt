@@ -1,0 +1,150 @@
+11-01 13:44:19.000  1753  2300 I A       : Refusing EXCLUSIVE task 24, it is already pending. Try again in 303 seconds.
+11-01 13:44:19.004  1753  2309 I A       : NGA enabled in interactor.
+11-01 13:44:19.004  1753  2307 I FedAssExpListener: Fed-ass not supported for signed out users.
+11-01 13:44:19.004  1753  2307 I FedAssExpListener: Successfully processed experiments changed.
+11-01 13:44:19.007  1753  2300 I OpaEligibilityChecker: send OpaEligibilityChange broadcast to CommonBroadcastReceiver
+11-01 13:44:19.012  1753  2572 W SearchServiceCore: Abort, client detached.
+11-01 13:44:19.012  1753  2572 W SearchServiceCore: Abort, client detached.
+11-01 13:44:19.014  1753  2300 W CorpusConfigHelper: Invalid input from icing corpus JSON flag.
+11-01 13:44:19.014  1753  2300 W CorpusConfigHelper: android.util.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 123 column 2
+11-01 13:44:19.014  1753  2300 W CorpusConfigHelper: 	at android.util.JsonReader.syntaxError(JsonReader.java:1162)
+11-01 13:44:19.014  1753  2300 W CorpusConfigHelper: 	at android.util.JsonReader.checkLenient(JsonReader.java:840)
+11-01 13:44:19.014  1753  2300 W CorpusConfigHelper: 	at android.util.JsonReader.nextInArray(JsonReader.java:615)
+11-01 13:44:19.014  1753  2300 W CorpusConfigHelper: 	at android.util.JsonReader.peek(JsonReader.java:345)
+11-01 13:44:19.014  1753  2300 W CorpusConfigHelper: 	at android.util.JsonReader.hasNext(JsonReader.java:321)
+11-01 13:44:19.014  1753  2300 W CorpusConfigHelper: 	at com.google.android.apps.gsa.searchbox.c.b.b.k.c(PG:7)
+11-01 13:44:19.014  1753  2300 W CorpusConfigHelper: 	at com.google.android.apps.gsa.searchbox.c.b.b.j.a(Unknown Source:2)
+11-01 13:44:19.014  1753  2300 W CorpusConfigHelper: 	at com.google.android.apps.gsa.search.core.i.r.run(PG:5)
+11-01 13:44:19.014  1753  2300 W CorpusConfigHelper: 	at com.google.android.libraries.gsa.k.a.h.run(PG:2)
+11-01 13:44:19.014  1753  2300 W CorpusConfigHelper: 	at com.google.android.apps.gsa.shared.util.c.a.cf.b(PG:1)
+11-01 13:44:19.014  1753  2300 W CorpusConfigHelper: 	at com.google.android.apps.gsa.shared.util.c.a.ci.run(PG:1)
+11-01 13:44:19.014  1753  2300 W CorpusConfigHelper: 	at com.google.android.libraries.i.ae.run(PG:1)
+11-01 13:44:19.014  1753  2300 W CorpusConfigHelper: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-01 13:44:19.014  1753  2300 W CorpusConfigHelper: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-01 13:44:19.014  1753  2300 W CorpusConfigHelper: 	at com.google.android.libraries.i.k.run(PG:2)
+11-01 13:44:19.014  1753  2300 W CorpusConfigHelper: 	at com.google.android.libraries.i.p.run(PG:4)
+11-01 13:44:19.014  1753  2300 W CorpusConfigHelper: 	at java.lang.Thread.run(Thread.java:1012)
+11-01 13:44:19.038  5161  5263 I Icing   : IndexChimeraService.getServiceInterface callingPackage=com.google.android.googlequicksearchbox componentName=agsa_icing_connection serviceId=32
+11-01 13:44:19.041  5161  5265 I Icing   : IndexChimeraService.getServiceInterface callingPackage=com.google.android.googlequicksearchbox componentName=agsa_icing_connection serviceId=33
+11-01 13:44:19.048  5161  5256 W Icing   : No valid account for uploading user actions
+11-01 13:44:19.067  5032  5061 I NearbyFastPair: DynamicSupportModule: onSupportStateUpdate end [CONTEXT service_id=265 ]
+11-01 13:44:19.072  5161  5256 I Icing   : Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0
+11-01 13:44:19.073  4567  4591 W TimedProcessReaper: Scheduling killing of process to refresh configuration
+11-01 13:44:19.074  5161  5256 W Icing   : No valid account for uploading user actions
+11-01 13:44:19.082  4126  4762 I BugleRcsProvisioning: BugleSystemBindingManager: onBuglePhenotypeFlagChanged
+11-01 13:44:19.082  4126  4762 I BugleTransport: onBuglePhenotypeFlagChanged: kicking off updateActiveTransport
+11-01 13:44:19.084  4126  4763 W BugleRcsEngine: [106] bpxc.w: Unable to send diagnostic log
+11-01 13:44:19.084  4126  4761 W BugleAction: Null config in BugleSharedPrefs
+11-01 13:44:19.084  4126  4761 W BugleAction: Failed to get msisdn from Bugle
+11-01 13:44:19.084  4126  4761 W BugleAction: Failed to get msisdn from RcsProfileService
+11-01 13:44:19.085  4126  4761 W BugleAction: cksi: Jibe SDK Service not available. Is the Jibe SDK service running? Did you call connect() and wait for the notification before calling an API function?
+11-01 13:44:19.085  4126  4761 W BugleAction: 	at cksa.b(PG:2)
+11-01 13:44:19.085  4126  4761 W BugleAction: 	at com.google.android.rcs.client.profile.RcsProfileService.g(PG:1)
+11-01 13:44:19.085  4126  4761 W BugleAction: 	at com.google.android.rcs.client.profile.RcsProfileService.getMsisdn(PG:3)
+11-01 13:44:19.085  4126  4761 W BugleAction: 	at awsw.aj(PG:17)
+11-01 13:44:19.085  4126  4761 W BugleAction: 	at awsw.z(PG:2)
+11-01 13:44:19.085  4126  4761 W BugleAction: 	at aule.k(PG:1)
+11-01 13:44:19.085  4126  4761 W BugleAction: 	at aulc.call(Unknown Source:2)
+11-01 13:44:19.085  4126  4761 W BugleAction: 	at cnsg.a(PG:1)
+11-01 13:44:19.085  4126  4761 W BugleAction: 	at cnpm.a(PG:3)
+11-01 13:44:19.085  4126  4761 W BugleAction: 	at ctfv.a(PG:1)
+11-01 13:44:19.085  4126  4761 W BugleAction: 	at ctet.run(PG:4)
+11-01 13:44:19.085  4126  4761 W BugleAction: 	at ctfx.run(PG:1)
+11-01 13:44:19.085  4126  4761 W BugleAction: 	at bxfd.run(PG:1)
+11-01 13:44:19.085  4126  4761 W BugleAction: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-01 13:44:19.085  4126  4761 W BugleAction: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-01 13:44:19.085  4126  4761 W BugleAction: 	at bxef.run(PG:2)
+11-01 13:44:19.085  4126  4761 W BugleAction: 	at java.lang.Thread.run(Thread.java:1012)
+11-01 13:44:19.085  4126  4761 W BugleAction: 	at bxfj.run(PG:5)
+11-01 13:44:19.085  4126  4760 I BugleTransport: isChatAvailable: RcsAvailability is CARRIER_SETUP_PENDING (Carrier RCS is not set up)
+11-01 13:44:19.086  4126  4761 W SubscriptionMetadataUti: Bugle: SubscriptionMetadataUtils get: unexpected subId = -2, replacing with -1
+11-01 13:44:19.086  4126  4761 W SubscriptionMetadataUti: cpwb: FULL
+11-01 13:44:19.086  4126  4761 W SubscriptionMetadataUti: 	at bdsy.h(PG:6)
+11-01 13:44:19.086  4126  4761 W SubscriptionMetadataUti: 	at bdvp.a(PG:1)
+11-01 13:44:19.086  4126  4761 W SubscriptionMetadataUti: 	at bgit.<init>(PG:1)
+11-01 13:44:19.086  4126  4761 W SubscriptionMetadataUti: 	at bgiu.a(PG:1)
+11-01 13:44:19.086  4126  4761 W SubscriptionMetadataUti: 	at awsw.ai(PG:3)
+11-01 13:44:19.086  4126  4761 W SubscriptionMetadataUti: 	at awsw.aj(PG:25)
+11-01 13:44:19.086  4126  4761 W SubscriptionMetadataUti: 	at awsw.z(PG:2)
+11-01 13:44:19.086  4126  4761 W SubscriptionMetadataUti: 	at aule.k(PG:1)
+11-01 13:44:19.086  4126  4761 W SubscriptionMetadataUti: 	at aulc.call(Unknown Source:2)
+11-01 13:44:19.086  4126  4761 W SubscriptionMetadataUti: 	at cnsg.a(PG:1)
+11-01 13:44:19.086  4126  4761 W SubscriptionMetadataUti: 	at cnpm.a(PG:3)
+11-01 13:44:19.086  4126  4761 W SubscriptionMetadataUti: 	at ctfv.a(PG:1)
+11-01 13:44:19.086  4126  4761 W SubscriptionMetadataUti: 	at ctet.run(PG:4)
+11-01 13:44:19.086  4126  4761 W SubscriptionMetadataUti: 	at ctfx.run(PG:1)
+11-01 13:44:19.086  4126  4761 W SubscriptionMetadataUti: 	at bxfd.run(PG:1)
+11-01 13:44:19.086  4126  4761 W SubscriptionMetadataUti: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-01 13:44:19.086  4126  4761 W SubscriptionMetadataUti: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-01 13:44:19.086  4126  4761 W SubscriptionMetadataUti: 	at bxef.run(PG:2)
+11-01 13:44:19.086  4126  4761 W SubscriptionMetadataUti: 	at java.lang.Thread.run(Thread.java:1012)
+11-01 13:44:19.086  4126  4761 W SubscriptionMetadataUti: 	at bxfj.run(PG:5)
+11-01 13:44:19.086  4126  4761 W SubscriptionMetadataUti: Bugle: SubscriptionMetadataUtils get: unexpected subId = -2, replacing with -1
+11-01 13:44:19.086  4126  4761 W SubscriptionMetadataUti: cpwb: FULL
+11-01 13:44:19.086  4126  4761 W SubscriptionMetadataUti: 	at bdsy.h(PG:6)
+11-01 13:44:19.086  4126  4761 W SubscriptionMetadataUti: 	at bgit.<init>(PG:2)
+11-01 13:44:19.086  4126  4761 W SubscriptionMetadataUti: 	at bgiu.a(PG:1)
+11-01 13:44:19.086  4126  4761 W SubscriptionMetadataUti: 	at awsw.ai(PG:3)
+11-01 13:44:19.086  4126  4761 W SubscriptionMetadataUti: 	at awsw.aj(PG:25)
+11-01 13:44:19.086  4126  4761 W SubscriptionMetadataUti: 	at awsw.z(PG:2)
+11-01 13:44:19.086  4126  4761 W SubscriptionMetadataUti: 	at aule.k(PG:1)
+11-01 13:44:19.086  4126  4761 W SubscriptionMetadataUti: 	at aulc.call(Unknown Source:2)
+11-01 13:44:19.086  4126  4761 W SubscriptionMetadataUti: 	at cnsg.a(PG:1)
+11-01 13:44:19.086  4126  4761 W SubscriptionMetadataUti: 	at cnpm.a(PG:3)
+11-01 13:44:19.086  4126  4761 W SubscriptionMetadataUti: 	at ctfv.a(PG:1)
+11-01 13:44:19.086  4126  4761 W SubscriptionMetadataUti: 	at ctet.run(PG:4)
+11-01 13:44:19.086  4126  4761 W SubscriptionMetadataUti: 	at ctfx.run(PG:1)
+11-01 13:44:19.086  4126  4761 W SubscriptionMetadataUti: 	at bxfd.run(PG:1)
+11-01 13:44:19.086  4126  4761 W SubscriptionMetadataUti: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-01 13:44:19.086  4126  4761 W SubscriptionMetadataUti: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-01 13:44:19.086  4126  4761 W SubscriptionMetadataUti: 	at bxef.run(PG:2)
+11-01 13:44:19.086  4126  4761 W SubscriptionMetadataUti: 	at java.lang.Thread.run(Thread.java:1012)
+11-01 13:44:19.086  4126  4761 W SubscriptionMetadataUti: 	at bxfj.run(PG:5)
+11-01 13:44:19.093  4126  4761 W SubscriptionMetadataUti: Bugle: SubscriptionMetadataUtils get: unexpected subId = -2, replacing with -1
+11-01 13:44:19.093  4126  4761 W SubscriptionMetadataUti: cpwb: FULL
+11-01 13:44:19.093  4126  4761 W SubscriptionMetadataUti: 	at bdsy.h(PG:6)
+11-01 13:44:19.093  4126  4761 W SubscriptionMetadataUti: 	at awsw.ai(PG:18)
+11-01 13:44:19.093  4126  4761 W SubscriptionMetadataUti: 	at awsw.aj(PG:25)
+11-01 13:44:19.093  4126  4761 W SubscriptionMetadataUti: 	at awsw.z(PG:2)
+11-01 13:44:19.093  4126  4761 W SubscriptionMetadataUti: 	at aule.k(PG:1)
+11-01 13:44:19.093  4126  4761 W SubscriptionMetadataUti: 	at aulc.call(Unknown Source:2)
+11-01 13:44:19.093  4126  4761 W SubscriptionMetadataUti: 	at cnsg.a(PG:1)
+11-01 13:44:19.093  4126  4761 W SubscriptionMetadataUti: 	at cnpm.a(PG:3)
+11-01 13:44:19.093  4126  4761 W SubscriptionMetadataUti: 	at ctfv.a(PG:1)
+11-01 13:44:19.093  4126  4761 W SubscriptionMetadataUti: 	at ctet.run(PG:4)
+11-01 13:44:19.093  4126  4761 W SubscriptionMetadataUti: 	at ctfx.run(PG:1)
+11-01 13:44:19.093  4126  4761 W SubscriptionMetadataUti: 	at bxfd.run(PG:1)
+11-01 13:44:19.093  4126  4761 W SubscriptionMetadataUti: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-01 13:44:19.093  4126  4761 W SubscriptionMetadataUti: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-01 13:44:19.093  4126  4761 W SubscriptionMetadataUti: 	at bxef.run(PG:2)
+11-01 13:44:19.093  4126  4761 W SubscriptionMetadataUti: 	at java.lang.Thread.run(Thread.java:1012)
+11-01 13:44:19.093  4126  4761 W SubscriptionMetadataUti: 	at bxfj.run(PG:5)
+11-01 13:44:19.093  4126  4761 I Bugle   : SubscriptionUtilsAsOfLMR1: getActiveSubscriptionInfo(): empty sub info for subscription{id:-1}
+11-01 13:44:19.094  4126  4761 I Bugle   : SubscriptionUtilsAsOfLMR1: getActiveSubscriptionInfo(): empty sub info for subscription{id:-1}
+11-01 13:44:19.094  4126  4761 W Bugle   : SubscriptionUtilsAsOfLMR1: getSelfRawNumber: subInfo is null for subscription{id:-1}
+11-01 13:44:19.094  4126  4196 I BugleRcsEngine: [43] bptz.run: SystemBindingManager: SystemBinding enabled: true
+11-01 13:44:19.094  4126  4196 I BugleRcsEngine: [43] bpua.b: System Binding updated
+11-01 13:44:19.095  4126  4766 W BugleRcsEngine: [109] bpxc.w: Unable to send diagnostic log
+11-01 13:44:19.104  4126  4761 W BugleAction: No default number, returning empty msisdn
+11-01 13:44:19.105  4126  4760 I BugleTransport: updateActiveTransport: refreshing chat transport
+11-01 13:44:19.106  4126  4760 I BugleTransport: RCS Configuration is empty. Enabled transport is Dual Reg [CONTEXT ratelimit_period="5 SECONDS" skipped=4 ]
+11-01 13:44:19.106  4126  4760 I BugleTransport: refreshChatTransport: isChatAvailable: false, enabledTransport: 1, configuration: <empty>
+11-01 13:44:19.106  4126  4761 I RcsClientLib: Connecting RcsEngineLifecycleService
+11-01 13:44:19.108  4126  4761 W RcsClientLib: No CS.apk RCS service found. Is RCS running in Bugle?
+11-01 13:44:19.109  4126  4761 I RcsClientLib: shouldUseCarrierServicesJibeService: false, CarrierServices rcs service found: false
+11-01 13:44:19.120  5161  5256 I Icing   : Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0
+11-01 13:44:19.124  4126  4762 I RcsClientLib: com.google.android.rcs.client.lifecycle.RcsEngineLifecycleService connected
+11-01 13:44:19.138  4567  5654 I BugleRcsEngine: [82] RcsEngineImpl.triggerStopRcsStack: RcsEngineImpl[DUAL_REG]:[5dd1d50f-4bb1]: triggerStopRcsStack for msisdn:redacted-pii:phone_number[chars:0,last2:]
+11-01 13:44:19.139  4126  4274 I RcsClientLib: Disconnecting RcsEngineLifecycleService
+11-01 13:44:19.141  4567  4642 I BugleRcsEngine: [75] brqh.handleMessage: RcsEngineImpl[DUAL_REG]:[5dd1d50f-4bb1]>Handler: handleMessage processing message:[STOP_RCS_STACK] with [non-null]:RcsEngineImpl reference
+11-01 13:44:19.141  4567  4642 I BugleRcsEngine: [75] brqh.handleMessage: RcsEngineImpl[DUAL_REG]:[5dd1d50f-4bb1]>Handler: RCS engine STOP RCS stack
+11-01 13:44:19.141  4567  4642 W BugleRcsEngine: [75] RcsEngineImpl.e: RcsEngineImpl[DUAL_REG]:[5dd1d50f-4bb1]: imsModule is null, shutdown not required
+11-01 13:44:19.141  4567  4642 I BugleRcsEngine: [75] RcsEngineImpl.stopRcsStackInternal: RcsEngineImpl[DUAL_REG]:[5dd1d50f-4bb1]: skipping imsModule.stop
+11-01 13:44:19.141  4567  4642 I BugleRcsEngine: [75] brqh.handleMessage: RcsEngineImpl[DUAL_REG]:[5dd1d50f-4bb1]>Handler: handleMessage processing message:[NOTIFY_UPTIME_IGNORE_STATE_CHANGED] with [non-null]:RcsEngineImpl reference
+11-01 13:44:19.157  4567  4642 I BugleRcsEngine: [75] brnl.h: No RCS Configuration was found in Bugle for simID: redacted-pii:sim_id[chars:20,last3:897]
+11-01 13:44:19.172  3093  3195 I PhenotypeBackgroundRecv: Successfully updated snapshot for com.google.android.libraries.internal.growth.growthkit#com.google.android.dialer
+11-01 13:44:19.174  5433  5450 D EGL_emulation: app_time_stats: avg=33.88ms min=20.28ms max=51.43ms count=30
+11-01 13:44:19.177  3093  3093 I PhenotypeBackgroundRecv: Skipping com.google.android.gms.icing.mdd#com.google.android.dialer which doesn't use ProcessStable flags.
+11-01 13:44:19.181  3093  3194 I PhenotypeBackgroundRecv: Successfully updated snapshot for com.google.android.libraries.notifications.platform#com.google.android.dialer
+11-01 13:44:19.245   522  2502 W JobScheduler: Job didn't exist in JobStore: f3fa675 #u0a154/7 com.google.android.contacts/com.google.android.apps.contacts.shortcut.ShortcutJobService
+11-01 13:44:19.279  1753  2572 W SearchServiceCore: Abort, client detached.

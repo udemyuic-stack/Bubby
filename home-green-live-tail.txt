@@ -1,0 +1,150 @@
+11-01 13:47:24.909  1025  1025 D BluetoothPbapService:  onChange on contact uri 
+11-01 13:47:24.913  1479  5166 I GalProviderController: setting component enabled=1 for com.google.android.gms.people.service.galprovider.PeopleGalProvider
+11-01 13:47:24.915  1479  5166 I GalProviderController: Setting component enabled succeeds.
+11-01 13:47:24.919  1479  5166 I PeopleGalProvider: Gal directories started.
+11-01 13:47:24.919  1479  5166 I PeopleGalProvider: Method 1 completed.
+11-01 13:47:24.919  1479  5166 I PeopleGalProvider: Method 1 finished successfully.
+11-01 13:47:24.921  1776  1776 I A       : Refusing EXCLUSIVE task 21, it is already pending. Try again in 358 seconds.
+11-01 13:47:24.927  1776  1776 I A       : Refusing EXCLUSIVE task 21, it is already pending. Try again in 358 seconds.
+11-01 13:47:24.942  1776  1776 I A       : Refusing EXCLUSIVE task 21, it is already pending. Try again in 358 seconds.
+11-01 13:47:24.942  2087  5188 D DownloadManager: [10] Starting
+11-01 13:47:24.949   519   894 W ProcessStats: Tracking association SourceState{d6cbda6 com.google.android.apps.messaging/10130 BFgs #8028} whose proc state 4 is better than process ProcessState{f1c3487 com.google.android.gms.unstable/10131
+11-01 13:47:24.963  1025  5187 D BluetoothPbapUtils: primaryVersionCounter = 0, secondaryVersionCounter=0
+11-01 13:47:24.977  2087  5188 D TrafficStats: tagSocket(81) with statsTag=0xffffff01, statsUid=10129
+11-01 13:47:25.001  1479  5166 W ChimeraUtils: Module com.google.android.gms.people missing resource null(0)
+11-01 13:47:25.030  1426  5126 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-01 13:47:25.051  1426  5126 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-01 13:47:25.108  2087  5182 D DownloadManager: [9] Finished with status SUCCESS
+11-01 13:47:25.122  2087  5191 D DownloadManager: [11] Starting
+11-01 13:47:25.135  2087  5191 D TrafficStats: tagSocket(76) with statsTag=0xffffff01, statsUid=10129
+11-01 13:47:25.148  1426  5126 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-01 13:47:25.216  1426  4800 W BpBinder: Large outgoing transaction of 329812 bytes, interface descriptor , code 4
+11-01 13:47:25.244  1776  2279 W A       : Can't format flag AndroidGsaVelourJars__velour_birthdaydoodle_jar__name to integer.
+11-01 13:47:25.245  2087  5188 D DownloadManager: [10] Finished with status SUCCESS
+11-01 13:47:25.263  1426  4817 W .gms.persistent: Long monitor contention with owner [com.google.android.gms.chimera.container.intentoperation.PersistentIntentOperationChimeraService-Executor] processing com.google.android.gms.platformconfi
+11-01 13:47:25.285  1426  4977 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-01 13:47:25.294  1426  4977 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-01 13:47:25.295  1426  4977 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:47:25.296  1426  4977 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-01 13:47:25.296  1426  4977 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-01 13:47:25.296  1426  4977 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-01 13:47:25.297  1426  4977 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:47:25.307  1426  4977 I NamespaceManager: Package 1 name not found! Using module version.
+11-01 13:47:25.310  1479  5151 I Icing   : Indexing com.google.android.gms-apps from com.google.android.gms
+11-01 13:47:25.313  2087  5195 D DownloadManager: [12] Starting
+11-01 13:47:25.334  2087  5195 D TrafficStats: tagSocket(79) with statsTag=0xffffff01, statsUid=10129
+11-01 13:47:25.362  1776  2279 W A       : Can't format flag AndroidGsaVelourJars__velour_call_jar__name to integer.
+11-01 13:47:25.362  1776  2279 W A       : Can't format flag AndroidGsaVelourJars__velour_canvas_jar__name to integer.
+11-01 13:47:25.362  1776  2279 W A       : Can't format flag AndroidGsaVelourJars__velour_chkpkg_jar__name to integer.
+11-01 13:47:25.363  1776  2279 W A       : Can't format flag AndroidGsaVelourJars__velour_crashtest_jar__name to integer.
+11-01 13:47:25.363  1776  2279 W A       : Can't format flag AndroidGsaVelourJars__velour_dining_jar__name to integer.
+11-01 13:47:25.363  1776  2279 W A       : Can't format flag AndroidGsaVelourJars__velour_doodle_notifications_jar__name to integer.
+11-01 13:47:25.363  1776  2279 W A       : Can't format flag AndroidGsaVelourJars__velour_imageviewer_jar__name to integer.
+11-01 13:47:25.363  1776  2279 W A       : Can't format flag AndroidGsaVelourJars__velour_ipa_jar__name to integer.
+11-01 13:47:25.363  1776  2279 W A       : Can't format flag AndroidGsaVelourJars__velour_jslocation_jar__name to integer.
+11-01 13:47:25.363  1776  2279 W A       : Can't format flag AndroidGsaVelourJars__velour_localintent_jar__name to integer.
+11-01 13:47:25.363  1776  2279 W A       : Can't format flag AndroidGsaVelourJars__velour_messaging_jar__name to integer.
+11-01 13:47:25.363  1776  2279 W A       : Can't format flag AndroidGsaVelourJars__velour_nativesrp_activity_jar__name to integer.
+11-01 13:47:25.363  1776  2279 W A       : Can't format flag AndroidGsaVelourJars__velour_nativesrp_presenter_jar__name to integer.
+11-01 13:47:25.363  1776  2279 W A       : Can't format flag AndroidGsaVelourJars__velour_nowcontent_jar__name to integer.
+11-01 13:47:25.363  1776  2279 W A       : Can't format flag AndroidGsaVelourJars__velour_recents_activity_jar__name to integer.
+11-01 13:47:25.364  1776  2279 W A       : Can't format flag AndroidGsaVelourJars__velour_save_jar__name to integer.
+11-01 13:47:25.364  1776  2279 W A       : Can't format flag AndroidGsaVelourJars__velour_searchresults_activity_jar__name to integer.
+11-01 13:47:25.364  1776  2279 W A       : Can't format flag AndroidGsaVelourJars__velour_test_jar__name to integer.
+11-01 13:47:25.364  1776  2279 W A       : Can't format flag AndroidGsaVelourJars__velour_weather_jar__name to integer.
+11-01 13:47:25.364  1776  2279 W A       : Can't format flag bindle_flags__bloblobber_blob to integer.
+11-01 13:47:25.364  1776  2279 W A       : Can't format flag bindle_flags__velour_jar to integer.
+11-01 13:47:25.371  3572  4704 I ConfigUpdater: Update downloaded, starting installation
+11-01 13:47:25.373  1479  5151 I Icing   : Indexing done com.google.android.gms-apps
+11-01 13:47:25.376  1479  5151 I Icing   : Indexing com.google.android.gms-internal.3p:MobileApplication from com.google.android.gms
+11-01 13:47:25.378  1479  5151 I Icing   : Indexing done com.google.android.gms-internal.3p:MobileApplication
+11-01 13:47:25.379  1426  1433 I .gms.persistent: Background young concurrent copying GC freed 186753(7780KB) AllocSpace objects, 18(1524KB) LOS objects, 9% free, 34MB/38MB, paused 38us,33us total 777.029ms
+11-01 13:47:25.384  1426  2697 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-01 13:47:25.403  1776  2257 I A       : Refusing EXCLUSIVE task 24, it is already pending. Try again in 305 seconds.
+11-01 13:47:25.407  1426  2018 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.icing.proxy.IcingInternalCorporaUpdateService started execution. cause:9 exec_start_elapsed_seconds: 105 [CONTEXT service_id=218 ]
+11-01 13:47:25.424  1426  5060 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.icing.proxy.IcingInternalCorporaUpdateService finished executing. cause:9 result: 1 elapsed_millis: 229 uptime_millis: 229 exec_star
+11-01 13:47:25.447  1776  2286 I FedAssExpListener: Fed-ass not supported for signed out users.
+11-01 13:47:25.452  1776  2286 I FedAssExpListener: Successfully processed experiments changed.
+11-01 13:47:25.452  1776  2285 I A       : NGA enabled in interactor.
+11-01 13:47:25.485  1426  2697 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-01 13:47:25.491  1426  2697 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-01 13:47:25.515  4893  4915 D EGL_emulation: app_time_stats: avg=47.48ms min=11.38ms max=71.08ms count=21
+11-01 13:47:25.518  1776  2257 I OpaEligibilityChecker: send OpaEligibilityChange broadcast to CommonBroadcastReceiver
+11-01 13:47:25.623  3572  4704 I ConfigUpdater: doneInstall
+11-01 13:47:25.626  1479  3542 I Icing   : Indexing com.google.android.gms-apps from com.google.android.gms
+11-01 13:47:25.628  1479  3542 I Icing   : Indexing done com.google.android.gms-apps
+11-01 13:47:25.646  1776  2257 W CorpusConfigHelper: Invalid input from icing corpus JSON flag.
+11-01 13:47:25.646  1776  2257 W CorpusConfigHelper: android.util.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 123 column 2
+11-01 13:47:25.646  1776  2257 W CorpusConfigHelper: 	at android.util.JsonReader.syntaxError(JsonReader.java:1162)
+11-01 13:47:25.646  1776  2257 W CorpusConfigHelper: 	at android.util.JsonReader.checkLenient(JsonReader.java:840)
+11-01 13:47:25.646  1776  2257 W CorpusConfigHelper: 	at android.util.JsonReader.nextInArray(JsonReader.java:615)
+11-01 13:47:25.646  1776  2257 W CorpusConfigHelper: 	at android.util.JsonReader.peek(JsonReader.java:345)
+11-01 13:47:25.646  1776  2257 W CorpusConfigHelper: 	at android.util.JsonReader.hasNext(JsonReader.java:321)
+11-01 13:47:25.646  1776  2257 W CorpusConfigHelper: 	at com.google.android.apps.gsa.searchbox.c.b.b.k.c(PG:7)
+11-01 13:47:25.646  1776  2257 W CorpusConfigHelper: 	at com.google.android.apps.gsa.searchbox.c.b.b.j.a(Unknown Source:2)
+11-01 13:47:25.646  1776  2257 W CorpusConfigHelper: 	at com.google.android.apps.gsa.search.core.i.r.run(PG:5)
+11-01 13:47:25.646  1776  2257 W CorpusConfigHelper: 	at com.google.android.libraries.gsa.k.a.h.run(PG:2)
+11-01 13:47:25.646  1776  2257 W CorpusConfigHelper: 	at com.google.android.apps.gsa.shared.util.c.a.cf.b(PG:1)
+11-01 13:47:25.646  1776  2257 W CorpusConfigHelper: 	at com.google.android.apps.gsa.shared.util.c.a.ci.run(PG:1)
+11-01 13:47:25.646  1776  2257 W CorpusConfigHelper: 	at com.google.android.libraries.i.ae.run(PG:1)
+11-01 13:47:25.646  1776  2257 W CorpusConfigHelper: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-01 13:47:25.646  1776  2257 W CorpusConfigHelper: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-01 13:47:25.646  1776  2257 W CorpusConfigHelper: 	at com.google.android.libraries.i.k.run(PG:2)
+11-01 13:47:25.646  1776  2257 W CorpusConfigHelper: 	at com.google.android.libraries.i.p.run(PG:4)
+11-01 13:47:25.646  1776  2257 W CorpusConfigHelper: 	at java.lang.Thread.run(Thread.java:1012)
+11-01 13:47:25.677  2087  3125 V DownloadManager: Deleting /data/data/com.android.providers.downloads/cache/08202014-metadata.txt via provider delete
+11-01 13:47:25.678  1479  3542 I Icing   : Indexing com.google.android.gms-internal.3p:MobileApplication from com.google.android.gms
+11-01 13:47:25.682  1671  1724 W ModernMediaScanner: Failed to visit /data/data/com.android.providers.downloads/cache/08202014-metadata.txt: java.nio.file.NoSuchFileException: /data/data/com.android.providers.downloads/cache/08202014-metada
+11-01 13:47:25.686  1479  3542 I Icing   : Indexing done com.google.android.gms-internal.3p:MobileApplication
+11-01 13:47:25.689  1671  1724 I MediaProvider: Scanned internal due to REASON_DEMAND, found 0 items in 7ms, 0 inserts 0 updates 0 deletes
+11-01 13:47:25.751  2087  3125 V DownloadManager: Deleting /data/data/com.android.providers.downloads/cache/08202014-pins.txt via provider delete
+11-01 13:47:25.757  1479  4443 I Icing   : IndexChimeraService.getServiceInterface callingPackage=com.google.android.googlequicksearchbox componentName=agsa_icing_connection serviceId=33
+11-01 13:47:25.757  1671  1724 W ModernMediaScanner: Failed to visit /data/data/com.android.providers.downloads/cache/08202014-pins.txt: java.nio.file.NoSuchFileException: /data/data/com.android.providers.downloads/cache/08202014-pins.txt
+11-01 13:47:25.757  1671  1724 I MediaProvider: Scanned internal due to REASON_DEMAND, found 0 items in 4ms, 0 inserts 0 updates 0 deletes
+11-01 13:47:25.768  1479  3651 I Icing   : IndexChimeraService.getServiceInterface callingPackage=com.google.android.googlequicksearchbox componentName=agsa_icing_connection serviceId=32
+11-01 13:47:25.769  5197  5197 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+11-01 13:47:25.772  5197  5197 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-01 13:47:26.002     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+11-01 13:47:25.807   136   136 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-01 13:47:25.807  5197  5200 I Gralloc4: mapper 4.x is not supported
+11-01 13:47:25.854  1426  3197 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-01 13:47:25.861  1053  1053 D CarrierSvcBindHelper: onPackageModified: com.google.android.gms
+11-01 13:47:25.862  1025  1025 V MediaPlayerList: mPackageChangedBroadcastReceiver: action: android.intent.action.PACKAGE_CHANGED
+11-01 13:47:25.862  1025  1025 V MediaPlayerList: mPackageChangedBroadcastReceiver: action: android.intent.action.PACKAGE_CHANGED
+11-01 13:47:25.902  1053  1053 D CarrierSvcBindHelper: No carrier app for: 0
+11-01 13:47:25.903   519   621 I InputReader: Reconfiguring input devices, changes=KEYBOARD_LAYOUTS
+11-01 13:47:25.970   519   814 W Looper  : Slow dispatch took 106ms android.perm h=android.os.Handler c=com.android.internal.infra.ServiceConnector$Impl$$ExternalSyntheticLambda2@a21265e m=0
+11-01 13:47:25.971   832   907 D StylusManager: Stylus InputDevice changed: 13 virtio_input_multi_touch_10
+11-01 13:47:25.977   834   859 I PermissionControllerServiceImpl: Updating user sensitive for uid 10131
+11-01 13:47:25.983   832   832 D ControlsListingControllerImpl: ServiceConfig reloaded, count: 0
+11-01 13:47:26.018   519   609 I RoleService: Granting default roles...
+11-01 13:47:26.039  1426  3197 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-01 13:47:26.064  1053  1354 D ImsResolver: maybeAddedImsService, packageName: com.google.android.gms
+11-01 13:47:26.075  1479  3542 W Icing   : No valid account for uploading user actions
+11-01 13:47:26.101   832   907 D StylusManager: Stylus InputDevice changed: 12 virtio_input_multi_touch_9
+11-01 13:47:26.196  1426  2688 W .gms.persistent: Long monitor contention with owner lowpool[18] (5060) at void cdch.o()(:com.google.android.gms@231818047@23.18.18 (190800-535401451):29) waiters=0 in void cdch.r(java.lang.String, long) for 
+11-01 13:47:26.211   519  5199 I ConfigUpdateInstallReceiver: Couldn't find current metadata, assuming first update
+11-01 13:47:26.211   519  5199 I ConfigUpdateInstallReceiver: Failed to read current content, assuming first update!
+11-01 13:47:26.211   519  5199 I ConfigUpdateInstallReceiver: Found new update, installing...
+11-01 13:47:26.254   834  5201 E RoleControllerServiceImpl: Default/fallback role holder package doesn't qualify for the role, package: com.google.android.gms.supervision, role: android.app.role.SYSTEM_SUPERVISION
+11-01 13:47:26.272   832   907 D StylusManager: Stylus InputDevice changed: 11 virtio_input_multi_touch_8
+11-01 13:47:26.283   519  5199 W ContentProviderHelper: Slow operation: 72ms so far, now at getContentProviderImpl: after updateOomAdj
+11-01 13:47:26.283   519  5199 W ContentProviderHelper: Slow operation: 72ms so far, now at getContentProviderImpl: done!
+11-01 13:47:26.286   834  5201 I Role    : com.google.android.gms not qualified for android.app.role.SYSTEM_CALL_STREAMING due to missing RequiredComponent{mIntentFilterData=IntentFilterData{mAction='android.telecom.CallStreamingService', m
+11-01 13:47:26.286   834  5201 E RoleControllerServiceImpl: Default/fallback role holder package doesn't qualify for the role, package: com.google.android.gms, role: android.app.role.SYSTEM_CALL_STREAMING
+11-01 13:47:26.290   834  5201 W Role    : Default holder doesn't have required signing certificate: com.google.android.apps.work.clouddpc:23962F4B43B9857638EA66F4D419518EAE282491ACDA4B94707BD59003C45E58
+11-01 13:47:26.311  4161  4267 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of bdxy@5814fb6
+11-01 13:47:26.346  1479  4321 I PeopleGalProvider: Gal directories started.
+11-01 13:47:26.350  1479  4321 I PeopleGalProvider: Method 1 completed.
+11-01 13:47:26.351  1479  4321 I PeopleGalProvider: Method 1 finished successfully.
+11-01 13:47:26.357  1426  3295 I Fitness : OnPackageChangedOperation got intent: Intent { act=android.intent.action.PACKAGE_CHANGED dat=package: flg=0x45000010 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.PersistentIntentO
+11-01 13:47:26.381  1426  5181 I Fitness : FitCleanupIntentOperation received Intent android.intent.action.PACKAGE_CHANGED [CONTEXT service_id=17 ]
+11-01 13:47:26.399  1426  3197 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-01 13:47:26.412   519  1827 W JobScheduler: Job didn't exist in JobStore: c681c88 #u0a153/7 com.google.android.contacts/com.google.android.apps.contacts.shortcut.ShortcutJobService
+11-01 13:47:26.433   519  5199 I ConfigUpdateInstallReceiver: Installation successful
+11-01 13:47:26.434  1479  3542 I Icing   : Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0
+11-01 13:47:26.485   832   907 D StylusManager: Stylus InputDevice changed: 6 virtio_input_multi_touch_3
+11-01 13:47:26.493   832   907 D StylusManager: Stylus InputDevice changed: 8 virtio_input_multi_touch_5
+11-01 13:47:26.498   832   907 D StylusManager: Stylus InputDevice changed: 5 virtio_input_multi_touch_2
+11-01 13:47:26.507   519  2598 D OomAdjuster: Not killing cached processes
+11-01 13:47:26.511   832   907 D StylusManager: Stylus InputDevice changed: 10 virtio_input_multi_touch_7

@@ -1,0 +1,150 @@
+11-01 13:41:46.197  5139  5166 W GmsStrictMode: 	at android.app.ContextImpl.getPreferencesDir(ContextImpl.java:735)
+11-01 13:41:46.197  5139  5166 W GmsStrictMode: 	at android.app.ContextImpl.getSharedPreferencesPath(ContextImpl.java:962)
+11-01 13:41:46.197  5139  5166 W GmsStrictMode: 	at android.app.ContextImpl.getSharedPreferences(ContextImpl.java:583)
+11-01 13:41:46.197  5139  5166 W GmsStrictMode: 	at android.content.ContextWrapper.getSharedPreferences(ContextWrapper.java:221)
+11-01 13:41:46.197  5139  5166 W GmsStrictMode: 	at android.content.ContextWrapper.getSharedPreferences(ContextWrapper.java:221)
+11-01 13:41:46.197  5139  5166 W GmsStrictMode: 	at avqz.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-01 13:41:46.197  5139  5166 W GmsStrictMode: 	at avrc.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):18)
+11-01 13:41:46.197  5139  5166 W GmsStrictMode: 	at ytb.d(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-01 13:41:46.197  5139  5166 W GmsStrictMode: 	at xng.<init>(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3)
+11-01 13:41:46.197  5139  5166 W GmsStrictMode: 	at xng.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3)
+11-01 13:41:46.197  5139  5166 W GmsStrictMode: 	at com.google.android.gms.cast.service.CastChimeraService.onCreate(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-01 13:41:46.197  5139  5166 W GmsStrictMode: 	at hio.onCreate(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-01 13:41:46.197  5139  5166 W GmsStrictMode: 	at zhi.onCreate(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-01 13:41:46.197  5139  5166 W GmsStrictMode: 	at hhx.onBind(:com.google.android.gms@231818047@23.18.18 (190800-535401451):10)
+11-01 13:41:46.197  5139  5166 W GmsStrictMode: 	at hia.onBind(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3)
+11-01 13:41:46.197  5139  5166 W GmsStrictMode: 	at zhe.f(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-01 13:41:46.197  5139  5166 W GmsStrictMode: 	at zhe.onBind(:com.google.android.gms@231818047@23.18.18 (190800-535401451):1)
+11-01 13:41:46.197  5139  5166 W GmsStrictMode: 	at zdg.onBind(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3)
+11-01 13:41:46.197  5139  5166 W GmsStrictMode: 	at android.app.ActivityThread.handleBindService(ActivityThread.java:4681)
+11-01 13:41:46.197  5139  5166 W GmsStrictMode: 	at android.app.ActivityThread.-$$Nest$mhandleBindService(Unknown Source:0)
+11-01 13:41:46.197  5139  5166 W GmsStrictMode: 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2272)
+11-01 13:41:46.197  5139  5166 W GmsStrictMode: 	at android.os.Handler.dispatchMessage(Handler.java:106)
+11-01 13:41:46.197  5139  5166 W GmsStrictMode: 	at android.os.Looper.loopOnce(Looper.java:205)
+11-01 13:41:46.197  5139  5166 W GmsStrictMode: 	at android.os.Looper.loop(Looper.java:294)
+11-01 13:41:46.197  5139  5166 W GmsStrictMode: 	at android.app.ActivityThread.main(ActivityThread.java:8177)
+11-01 13:41:46.197  5139  5166 W GmsStrictMode: 	at java.lang.reflect.Method.invoke(Native Method)
+11-01 13:41:46.197  5139  5166 W GmsStrictMode: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:552)
+11-01 13:41:46.197  5139  5166 W GmsStrictMode: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:971)
+11-01 13:41:46.198  5139  5139 D BoundBrokerSvc: onRebind: Intent { act=com.google.android.gms.clearcut.bootcount.service.START pkg=com.google.android.gms }
+11-01 13:41:46.198  5139  5166 W GmsStrictMode: DISK_READ [CONTEXT service_id=256 ]
+11-01 13:41:46.198  5139  5166 W GmsStrictMode: android.os.strictmode.DiskReadViolation
+11-01 13:41:46.198  5139  5166 W GmsStrictMode: 	at android.os.StrictMode$AndroidBlockGuardPolicy.onReadFromDisk(StrictMode.java:1666)
+11-01 13:41:46.198  5139  5166 W GmsStrictMode: 	at libcore.io.BlockGuardOs.access(BlockGuardOs.java:74)
+11-01 13:41:46.198  5139  5166 W GmsStrictMode: 	at libcore.io.ForwardingOs.access(ForwardingOs.java:128)
+11-01 13:41:46.198  5139  5166 W GmsStrictMode: 	at android.app.ActivityThread$AndroidOs.access(ActivityThread.java:8054)
+11-01 13:41:46.198  5139  5166 W GmsStrictMode: 	at java.io.UnixFileSystem.checkAccess(UnixFileSystem.java:313)
+11-01 13:41:46.198  5139  5166 W GmsStrictMode: 	at java.io.File.exists(File.java:813)
+11-01 13:41:46.198  5139  5166 W GmsStrictMode: 	at android.app.ContextImpl.ensurePrivateDirExists(ContextImpl.java:790)
+11-01 13:41:46.198  5139  5166 W GmsStrictMode: 	at android.app.ContextImpl.ensurePrivateDirExists(ContextImpl.java:781)
+11-01 13:41:46.198  5139  5166 W GmsStrictMode: 	at android.app.ContextImpl.getPreferencesDir(ContextImpl.java:737)
+11-01 13:41:46.198  5139  5166 W GmsStrictMode: 	at android.app.ContextImpl.getSharedPreferencesPath(ContextImpl.java:962)
+11-01 13:41:46.198  5139  5166 W GmsStrictMode: 	at android.app.ContextImpl.getSharedPreferences(ContextImpl.java:583)
+11-01 13:41:46.198  5139  5166 W GmsStrictMode: 	at android.content.ContextWrapper.getSharedPreferences(ContextWrapper.java:221)
+11-01 13:41:46.198  5139  5166 W GmsStrictMode: 	at android.content.ContextWrapper.getSharedPreferences(ContextWrapper.java:221)
+11-01 13:41:46.198  5139  5166 W GmsStrictMode: 	at avqz.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-01 13:41:46.198  5139  5166 W GmsStrictMode: 	at avrc.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):18)
+11-01 13:41:46.198  5139  5166 W GmsStrictMode: 	at ytb.d(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-01 13:41:46.198  5139  5166 W GmsStrictMode: 	at xng.<init>(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3)
+11-01 13:41:46.198  5139  5166 W GmsStrictMode: 	at xng.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3)
+11-01 13:41:46.198  5139  5166 W GmsStrictMode: 	at com.google.android.gms.cast.service.CastChimeraService.onCreate(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-01 13:41:46.198  5139  5166 W GmsStrictMode: 	at hio.onCreate(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-01 13:41:46.198  5139  5166 W GmsStrictMode: 	at zhi.onCreate(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-01 13:41:46.198  5139  5166 W GmsStrictMode: 	at hhx.onBind(:com.google.android.gms@231818047@23.18.18 (190800-535401451):10)
+11-01 13:41:46.198  5139  5166 W GmsStrictMode: 	at hia.onBind(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3)
+11-01 13:41:46.198  5139  5166 W GmsStrictMode: 	at zhe.f(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-01 13:41:46.198  5139  5166 W GmsStrictMode: 	at zhe.onBind(:com.google.android.gms@231818047@23.18.18 (190800-535401451):1)
+11-01 13:41:46.198  5139  5166 W GmsStrictMode: 	at zdg.onBind(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3)
+11-01 13:41:46.198  5139  5166 W GmsStrictMode: 	at android.app.ActivityThread.handleBindService(ActivityThread.java:4681)
+11-01 13:41:46.198  5139  5166 W GmsStrictMode: 	at android.app.ActivityThread.-$$Nest$mhandleBindService(Unknown Source:0)
+11-01 13:41:46.198  5139  5166 W GmsStrictMode: 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2272)
+11-01 13:41:46.198  5139  5166 W GmsStrictMode: 	at android.os.Handler.dispatchMessage(Handler.java:106)
+11-01 13:41:46.198  5139  5166 W GmsStrictMode: 	at android.os.Looper.loopOnce(Looper.java:205)
+11-01 13:41:46.198  5139  5166 W GmsStrictMode: 	at android.os.Looper.loop(Looper.java:294)
+11-01 13:41:46.198  5139  5166 W GmsStrictMode: 	at android.app.ActivityThread.main(ActivityThread.java:8177)
+11-01 13:41:46.198  5139  5166 W GmsStrictMode: 	at java.lang.reflect.Method.invoke(Native Method)
+11-01 13:41:46.198  5139  5166 W GmsStrictMode: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:552)
+11-01 13:41:46.198  5139  5166 W GmsStrictMode: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:971)
+11-01 13:41:46.213  5242  5337 I Icing   : IndexChimeraService.getServiceInterface callingPackage=com.google.android.googlequicksearchbox componentName=AMBIENT_ASSISTANT serviceId=32
+11-01 13:41:46.217  5242  5337 I Icing   : IndexChimeraService.getServiceInterface callingPackage=com.google.android.googlequicksearchbox componentName=null serviceId=36
+11-01 13:41:46.249  5242  5285 W Icing   : No valid account for uploading user actions
+11-01 13:41:46.254  5139  5186 I SQLiteCastStore: 0 CastNetworkInfo instances loaded, 0 CastDeviceInfo instances loaded, 0 paired guest mode devices loaded.
+11-01 13:41:46.264  5242  5285 I Icing   : Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0
+11-01 13:41:46.299  5242  5285 W Icing   : No valid account for uploading user actions
+11-01 13:41:46.333  5242  5285 I Icing   : Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0
+11-01 13:41:46.357  1051  1051 D TelephonyManager: requestModemActivityInfo: Sending result to app: ModemActivityInfo{ mTimestamp=96417 mSleepTimeMs=0 mIdleTimeMs=96399 mActivityStatsTechSpecificInfo=[{mRat=UNKNOWN,mFrequencyRange=UNKNOWN,m
+11-01 13:41:46.371  5139  5422 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+11-01 13:41:46.371  5139  5422 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-01 13:41:46.371  5139  5422 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-01 13:41:46.423  5042  5042 I com.example.buddy: Perf: native scene 19 fps
+11-01 13:41:46.526  5139  5185 W .gms.persistent: Long monitor contention with owner netscheduler-queue-handler (5206) at void bytb.o(int)(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4) waiters=0 in int bytb.r(byps) for 41
+11-01 13:41:46.567  1531  1531 V ContactsProvider: Scheduled notifyChange started.
+11-01 13:41:46.576  5242  5254 D CompatibilityChangeReporter: Compat change id reported: 150939131; UID 10131; state: ENABLED
+11-01 13:41:46.582  1027  1027 D BluetoothPbapService:  onChange on contact uri 
+11-01 13:41:46.589  5242  5293 I Icing   : Indexing com.google.android.gms-apps from com.google.android.gms
+11-01 13:41:46.593  5139  5168 W GlsClientGrpc: Voilatile gRPC failure INVALID_ARGUMENT: Application credential header not valid. Please fix the client to pass a valid application credential header. [CONTEXT service_id=6 ]
+11-01 13:41:46.593  5139  5168 W GlsClientGrpc: enms: INVALID_ARGUMENT: Application credential header not valid. Please fix the client to pass a valid application credential header.
+11-01 13:41:46.593  5139  5168 W GlsClientGrpc: 	at enmr.h(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-01 13:41:46.593  5139  5168 W GlsClientGrpc: 	at abxw.u(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-01 13:41:46.593  5139  5168 W GlsClientGrpc: 	at abxw.e(:com.google.android.gms@231818047@23.18.18 (190800-535401451):17)
+11-01 13:41:46.593  5139  5168 W GlsClientGrpc: 	at abxw.g(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-01 13:41:46.593  5139  5168 W GlsClientGrpc: 	at cyeg.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):27)
+11-01 13:41:46.593  5139  5168 W GlsClientGrpc: 	at czpd.call(:com.google.android.gms@231818047@23.18.18 (190800-535401451):78)
+11-01 13:41:46.593  5139  5168 W GlsClientGrpc: 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+11-01 13:41:46.593  5139  5168 W GlsClientGrpc: 	at aced.c(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+11-01 13:41:46.593  5139  5168 W GlsClientGrpc: 	at aced.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):7)
+11-01 13:41:46.593  5139  5168 W GlsClientGrpc: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-01 13:41:46.593  5139  5168 W GlsClientGrpc: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-01 13:41:46.593  5139  5168 W GlsClientGrpc: 	at acjn.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-01 13:41:46.593  5139  5168 W GlsClientGrpc: 	at java.lang.Thread.run(Thread.java:1012)
+11-01 13:41:46.639  1027  5437 D BluetoothPbapUtils: primaryVersionCounter = 0, secondaryVersionCounter=0
+11-01 13:41:46.686  5242  5355 I ChimeraCfgMgr: Updating module config: container:2318189190800 -> container:2318189190800
+11-01 13:41:46.687  5242  5355 E DowngradeHelper: isModuleDowngradeRequired false
+11-01 13:41:46.752   520  1730 D CompatibilityChangeReporter: Compat change id reported: 229362273; UID 10131; state: DISABLED
+11-01 13:41:46.753   520  1730 D CompatibilityChangeReporter: Compat change id reported: 229362273; UID 10131; state: ENABLED
+11-01 13:41:46.766  5242  5355 I GmsDebugLogger: [46] container:2318189190800
+11-01 13:41:46.801  5242  5293 I Icing   : Indexing done com.google.android.gms-apps
+11-01 13:41:46.821  5443  5443 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+11-01 13:41:46.822  5443  5443 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-01 13:41:46.826   401   569 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=5443
+11-01 13:41:46.827   401   569 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (1153 us)
+11-01 13:41:46.833  5139  5145 I .gms.persistent: Background concurrent copying GC freed 640981(33MB) AllocSpace objects, 89(2320KB) LOS objects, 49% free, 16MB/32MB, paused 187us,22us total 816.779ms
+11-01 13:41:46.838  5242  5355 I ChimeraConfigurator: Checking 1 listeners. All downloaded: false
+11-01 13:41:46.838  5242  5355 I GmsDebugLogger: [83] 1 [tflite_dynamite]
+11-01 13:41:47.066     0     0 W binder_debug: 4 callbacks suppressed
+11-01 13:41:47.066     0     0 I binder  : 5355:5242 cannot find target node
+11-01 13:41:47.069     0     0 I binder  : 5242:5355 transaction async to 0:0 failed 447594/29189/-22, size 160-0 line 3210
+11-01 13:41:46.876  5242  5355 E IPCThreadState: Binder transaction failure: 447594/29189/-22
+11-01 13:41:46.876  5242  5355 E ChimeraUPLUtils: Failed to invoke updateComplete: android.os.DeadObjectException
+11-01 13:41:47.080     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+11-01 13:41:46.889   136   136 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-01 13:41:46.889  5443  5444 I Gralloc4: mapper 4.x is not supported
+11-01 13:41:46.897  5242  5360 I ChimeraConfigurator: Starting update, reason: 4 urgentFeatures: vision.ocr:-1
+11-01 13:41:46.928  5242  5360 I ChimeraConfigurator: Detected pending changes for urgent request: [vision.ocr]. Pending module sets: container:2318189190800+mlkit.ocr.common,tflite_dynamite:2640104055100800+tflite_dynamite,vision_ocr:23160
+11-01 13:41:46.934  5242  5360 I GmsDebugLogger: [73] 1801
+11-01 13:41:46.935  5242  5360 W ZappDownloader: No successful module downloads for requested features [vision.ocr].
+11-01 13:41:46.935  5242  5360 I GmsDebugLogger: [30] [VisionOcrDynamite.integ:231602402100000],[TfliteDynamiteDynamite.integ:264010405100800],[MlkitOcrCommon.optional:231818100800]
+11-01 13:41:46.937  5242  5360 W ChimeraConfigService: Retry attempt was throttled. [CONTEXT service_id=264 ]
+11-01 13:41:46.937  5242  5360 I GmsDebugLogger: [83] 1 [vision.ocr]
+11-01 13:41:47.136     0     0 I binder  : 5360:5242 cannot find target node
+11-01 13:41:47.138     0     0 I binder  : 5242:5360 transaction async to 0:0 failed 447768/29189/-22, size 160-0 line 3210
+11-01 13:41:46.942  5242  5360 E IPCThreadState: Binder transaction failure: 447768/29189/-22
+11-01 13:41:46.943  5242  5360 E ChimeraUPLUtils: Failed to invoke updateComplete: android.os.DeadObjectException
+11-01 13:41:46.979  5042  5061 D EGL_emulation: app_time_stats: avg=23.64ms min=2.61ms max=60.22ms count=39
+11-01 13:41:46.988  5242  5360 I ChimeraConfigurator: Starting update, reason: 4 urgentFeatures: maps_core:-1
+11-01 13:41:47.073  5242  5360 I ChimeraConfigurator: Detected pending changes for urgent request: [maps_core]. Pending module sets: container:2318189190800+maps_core
+11-01 13:41:47.143   520   530 W JavaBinder: BinderProxy is being destroyed but the application did not call unlinkToDeath to unlink all of its death recipients beforehand.  Releasing leaked death recipient: com.android.server.am.ActivityMa
+11-01 13:41:47.144   520   530 I BpBinder: onLastStrongRef automatically unlinking death recipients: 
+11-01 13:41:47.144   520   530 W JavaBinder: BinderProxy is being destroyed but the application did not call unlinkToDeath to unlink all of its death recipients beforehand.  Releasing leaked death recipient: com.android.server.am.ActivityMa
+11-01 13:41:47.145   520   530 I BpBinder: onLastStrongRef automatically unlinking death recipients: 
+11-01 13:41:47.195  5242  5360 I GmsDebugLogger: [73] 1801
+11-01 13:41:47.197  5242  5360 W ZappDownloader: No successful module downloads for requested features [maps_core].
+11-01 13:41:47.197  5242  5360 I GmsDebugLogger: [30] [MapsCoreDynamite.integ:231112103100800]
+11-01 13:41:47.199  5242  5360 W ChimeraConfigService: Retry attempt was throttled. [CONTEXT service_id=264 ]
+11-01 13:41:47.200  5242  5360 I GmsDebugLogger: [83] 1 [maps_core]
+11-01 13:41:47.201  5242  5355 I ChimeraConfigurator: Starting update, reason: 4 urgentFeatures: mlkit.barcode.ui:0
+11-01 13:41:47.222  5242  5355 I ChimeraConfigurator: Detected pending changes for urgent request: [mlkit.barcode.ui]. Pending module sets: container:2318189190800+mlkit.barcode.ui+vision.barcode,tflite_dynamite:2640104055100800+tflite_dyna
+11-01 13:41:47.237  5242  5355 I GmsDebugLogger: [73] 1801
+11-01 13:41:47.241  5242  5355 W ZappDownloader: No successful module downloads for requested features [mlkit.barcode.ui].
+11-01 13:41:47.248  5242  5355 I GmsDebugLogger: [30] [VisionBarcode.optional:231818100800],[TfliteDynamiteDynamite.integ:264010405100800],[MlkitBarcodeUi.optional:231818100000]
+11-01 13:41:47.271  5242  5355 W ChimeraConfigService: Retry attempt was throttled. [CONTEXT service_id=264 ]

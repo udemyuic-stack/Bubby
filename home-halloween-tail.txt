@@ -1,0 +1,150 @@
+11-01 13:44:41.296   334  5631 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x73ff377ce990
+11-01 13:44:41.296   334  5631 I resolv  : doQuery: rcode=0, ancount=8, return value=272
+11-01 13:44:41.296   334  5630 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+11-01 13:44:41.296   334  5630 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x73feb77d1760
+11-01 13:44:41.296   334  5630 I resolv  : doQuery: rcode=0, ancount=8, return value=368
+11-01 13:44:41.297   968  5623 D TrafficStats: tagSocket(75) with statsTag=0xffffff81, statsUid=-1
+11-01 13:44:41.311   334  5625 I resolv  : res_nsend: used send_dg 104 terrno: 0
+11-01 13:44:41.312   968   968 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-01 13:44:41.313   968   968 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-01 13:44:41.313   968  5624 D NetworkMonitor/100: PROBE_DNS connectivitycheck.gstatic.com 27ms OK 142.250.73.99,2607:f8b0:400a:800::2003
+11-01 13:44:41.314   334  5632 I resolv  : GetAddrInfoHandler::run: {100 983140 100 983140 1073 1}
+11-01 13:44:41.314   334  5634 I resolv  : res_nmkquery: (QUERY, IN, A)
+11-01 13:44:41.314   334  5633 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+11-01 13:44:41.314   334  5633 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x73ff677d9890
+11-01 13:44:41.315   334  5633 I resolv  : doQuery: rcode=0, ancount=1, return value=104
+11-01 13:44:41.315   334  5634 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x73ff677da4f0
+11-01 13:44:41.315   334  5634 I resolv  : doQuery: rcode=0, ancount=1, return value=92
+11-01 13:44:41.315   968  5624 D TrafficStats: tagSocket(68) with statsTag=0xffffff81, statsUid=-1
+11-01 13:44:41.330   968  5624 D NetworkMonitor/100: PROBE_HTTP http://connectivitycheck.gstatic.com/generate_204 time=16ms ret=204 request={Connection=[close], User-Agent=[Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gec
+11-01 13:44:41.331   968  5623 D NetworkMonitor/100: PROBE_HTTPS https://www.google.com/generate_204 time=35ms ret=204 request={Connection=[close], User-Agent=[Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60
+11-01 13:44:41.332   968  5622 D NetworkMonitor/100: isCaptivePortal: isSuccessful()=true isPortal()=false RedirectUrl=null isPartialConnectivity()=false Time=47ms
+11-01 13:44:41.334   520   754 D ConnectivityService: [100 WIFI] validation passed
+11-01 13:44:41.346   520  1751 W BatteryExternalStatsWorker: error reading Bluetooth stats: 11
+11-01 13:44:41.446   158   950 I keystore2: system/security/keystore2/src/watchdog.rs:319 - Watchdog thread idle -> terminating. Have a great day.
+11-01 13:44:41.593  4871  4871 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.feedback.internal.IFeedbackService dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsBoundBrokerService }
+11-01 13:44:42.048   520   605 D ActivityManager: freezing 3355 com.google.android.gms.unstable
+11-01 13:44:42.178  1586  2111 D CompatibilityChangeReporter: Compat change id reported: 183155436; UID 10184; state: ENABLED
+11-01 13:44:42.178   520  1074 D CompatibilityChangeReporter: Compat change id reported: 149924527; UID 2000; state: ENABLED
+11-01 13:44:42.178   520  1074 D CompatibilityChangeReporter: Compat change id reported: 132649864; UID 2000; state: DISABLED
+11-01 13:44:42.180  1586  2111 W MediaProvider: isAppCloneUserPair for user 0: false
+11-01 13:44:42.185  5556  5576 D EGL_emulation: app_time_stats: avg=12.41ms min=3.89ms max=28.20ms count=56
+11-01 13:44:42.193  5606  5606 I AccessibilityNodeInfoDumper: Skipping invisible child: android.view.accessibility.AccessibilityNodeInfo@f3ea; boundsInParent: Rect(0, 0 - 296, 71); boundsInScreen: Rect(12, 662 - 308, 640); boundsInWindow: R
+11-01 13:44:42.193  5606  5606 I AccessibilityNodeInfoDumper: Skipping invisible child: android.view.accessibility.AccessibilityNodeInfo@10e31; boundsInParent: Rect(0, 0 - 288, 300); boundsInScreen: Rect(16, 733 - 304, 640); boundsInWindow:
+11-01 13:44:42.195  5606  5606 W AccessibilityNodeInfoDumper: Fetch time: 18ms
+11-01 13:44:42.196   520   937 W WindowMagnificationMgr: requestConnection duplicated request: connect=false, mConnectionState=DISCONNECTED
+11-01 13:44:42.196   520   937 D AccessibilityManagerService: restoreCurrentUserForTestAutomationIfNeededLocked(): ignoring because device doesn't support visible background users
+11-01 13:44:42.196   520   520 D BatterySaverPolicy: accessibility changed to false, updating policy.
+11-01 13:44:42.196  1578  1609 I AiAiEcho: Settings changed for uri: content://settings/secure/accessibility_enabled
+11-01 13:44:42.197  1578  1711 I AiAiEcho: Predicting[0]: 
+11-01 13:44:42.197  1578  1711 I AiAiEcho: EchoTargets: 
+11-01 13:44:42.197  1578  1711 I AiAiEcho: Filtered by AiAi flag check: 
+11-01 13:44:42.197  1578  1711 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+11-01 13:44:42.197  1578  1711 I AiAiEcho: Predicting[0]: 
+11-01 13:44:42.197  1578  1711 I AiAiEcho: EchoTargets: 
+11-01 13:44:42.197  1578  1711 I AiAiEcho: Filtered by AiAi flag check: 
+11-01 13:44:42.197  1578  1711 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+11-01 13:44:42.197  1693  2248 I A       : NGA enabled in interactor.
+11-01 13:44:42.197  1693  2248 I A       : Nga state changed to NgaStateDetails{state=ENABLED, isSpecialExperience=false}
+11-01 13:44:42.197  1578  1711 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0 (types=[])
+11-01 13:44:42.197  1578  1711 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0 (types=[])
+11-01 13:44:42.198  5606  5606 D AndroidRuntime: Shutting down VM
+11-01 13:44:42.200  1581  3041 I A       : Initializing all components
+11-01 13:44:42.201   827   827 W PageIndicator: Total number of pages invalid: 0. Assuming 1 page.
+11-01 13:44:42.204  1581  3041 I A       : APA or Classic session decision: SessionDecision(sessionVariance=CLASSIC, platformVariance=CLASSIC, justification=CURRENT_PLATFORM_VARIANCE).
+11-01 13:44:42.204  1581  3041 I A       : [Memory] eligibility: StashEligibility{6}
+11-01 13:44:42.209  1581  2180 I A       : State changed: IDLE => IDLE by NGA_STATE_CHANGED and N/A with Optional.empty
+11-01 13:44:42.211  1581  2137 I A       : onIsEnabledChanged, isEnabled: false
+11-01 13:44:42.211  1581  2137 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:42.211  1581  2137 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:42.211  1581  2137 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:42.211  1581  2137 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:42.211  1581  2137 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:42.211  1581  2137 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:42.211  1581  2137 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:42.211  1581  2137 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:42.211  1581  2137 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:42.212  1581  2137 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:42.212  1581  2137 I A       : onOpaVisibilityChanged: false
+11-01 13:44:42.212  1581  2137 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:42.212  1581  2137 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:42.212  1581  2137 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:42.212  1581  2137 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:42.213  1581  2137 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:42.213  1581  2137 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:42.213  1581  2137 I A       : Setting session to type: NO_SESSION
+11-01 13:44:42.213  1581  2137 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:42.214  1581  2137 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:42.214  1581  2137 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:42.214  1581  2137 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:42.214  1581  2137 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:42.214  1581  2137 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:42.214  1581  2137 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:42.214  1581  2137 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:42.214  1581  2137 I A       : setNavBarVisible: GestureNavBarVisible{navbarVisible=true}
+11-01 13:44:42.214  1581  2137 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:42.214  1581  2137 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:42.214  1581  2137 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:42.214  1581  2137 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:42.214  1581  2137 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:42.214  1581  2137 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:42.214  1581  2137 I A       : onDisabled. Registered: false
+11-01 13:44:42.228  1581  2180 I A       : Recognizer choice: (recognizer_type: 1, recognizer_mode: 1, choice_reason: 4)
+11-01 13:44:42.247  1581  2180 I A       : onActiveStateChangeEvent: IDLE => IDLE
+11-01 13:44:42.248  1581  2137 I A       : Initialize
+11-01 13:44:42.250  1581  2137 I A       : on opa visibility changed false
+11-01 13:44:42.251  1581  2137 I A       : on opa visibility changed false
+11-01 13:44:42.255  1581  2137 I A       : stopListening(NGA_PAUSED_UNKNOWN_REASON, NGA_CREATE), idleOverride=NOT_LISTENING
+11-01 13:44:42.258  1581  2180 W A       : Missing generator mapping for generator GENERATOR_CONTEXTUAL_SUGGESTIONS
+11-01 13:44:42.258  1581  2180 W A       : Missing generator mapping for generator GENERATOR_FRE_SUGGESTIONS_ON_TIMEOUT
+11-01 13:44:42.258  1581  2180 W A       : Missing generator mapping for generator GENERATOR_FRE_SUGGESTIONS_ON_INVOCATION
+11-01 13:44:42.260  1581  2137 I NgaEntryPointEventSendr: setupConnection
+11-01 13:44:42.261  4854  5071 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService started execution. cause:9 exec_start_elapsed_seconds: 86 [CONTEXT service_id=218 ]
+11-01 13:44:42.263  4871  4871 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.ocr.service.internal.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsInternalApiService }
+11-01 13:44:42.266  1581  2180 I A       : #onActiveStateChangeEvent, newState: IDLE, previousState: IDLE.
+11-01 13:44:42.269  1693  1693 I A       : Creating pss binder().
+11-01 13:44:42.270  1581  2137 I NgaEntryPointEventSendr: State changed: Disconnected => Connecting
+11-01 13:44:42.271  1581  2137 I NgaEntryPointEventSendr: onServiceConnected
+11-01 13:44:42.271  1693  2335 I A       : Calling beginBinderSession().
+11-01 13:44:42.273   520  1751 D CompatibilityChangeReporter: Compat change id reported: 197654537; UID 10192; state: ENABLED
+11-01 13:44:42.273  1693  2335 I A       : beginBinderSession(): calling binder
+11-01 13:44:42.274  1581  2137 I NgaEntryPointEventSendr: State changed: Connecting => Ready
+11-01 13:44:42.275  1581  2180 W A       : Routing took 14 ms
+11-01 13:44:42.277   520  1751 W ActivityManager: Unable to start service Intent { cmp=com.google.android.apps.tachyon/.clientapi.ClientApiService } U=0: not found
+11-01 13:44:42.281  4854  4950 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService finished executing. cause:9 result: 1 elapsed_millis: 41 uptime_millis: 41 exec_start_elapsed_seconds: 86
+11-01 13:44:42.282  1581  2180 I A       : Successfully initialized all components
+11-01 13:44:42.286  1693  2468 I PBSessionCacheImpl: Deleted sessionId[7447686283922715] from persistence.
+11-01 13:44:42.288  1693  2468 W A       : UiCallbackStub-onGenericEvent[ServiceEvent = 60] task was not run. Callback from Service received after client was disposed.
+11-01 13:44:42.290  1581  2137 I NgaEntryPointEventSendr: State changed: Ready => Disconnected (onOpaDisconnected)
+11-01 13:44:42.308  1693  2468 W SearchServiceCore: Abort, client detached.
+11-01 13:44:42.817  1693  2423 W A       : [Download] response code: 400
+11-01 13:44:42.997  4871  4871 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.auth.cryptauth.cryptauthservice.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsBoundBrokerService }
+11-01 13:44:43.131  5643  5643 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+11-01 13:44:43.131  5643  5643 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-01 13:44:43.133   399  1070 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=5643
+11-01 13:44:43.133   399  1070 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (234 us)
+11-01 13:44:43.158   520   547 W ProcessStats: Tracking association SourceState{ac83e36 com.google.android.gms/10131 Service #9657} whose proc state 8 is better than process ProcessState{a1cabb1 android.process.acore/10084 pkg=com.android.p
+11-01 13:44:43.164   139   139 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-01 13:44:43.165  5643  5644 I Gralloc4: mapper 4.x is not supported
+11-01 13:44:43.351     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+11-01 13:44:43.171   334  5650 I resolv  : GetAddrInfoHandler::run: {100 786532 100 983140 10131 0}
+11-01 13:44:43.172   334  5651 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+11-01 13:44:43.172   334  5651 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x73ff677dca10
+11-01 13:44:43.172   334  5651 I resolv  : doQuery: rcode=0, ancount=2, return value=146
+11-01 13:44:43.173   334  5652 I resolv  : res_nmkquery: (QUERY, IN, A)
+11-01 13:44:43.173   334  5652 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x73ff677d77f0
+11-01 13:44:43.174   334  5652 I resolv  : doQuery: rcode=0, ancount=2, return value=134
+11-01 13:44:43.174  4854  5211 D TrafficStats: tagSocket(281) with statsTag=0x407, statsUid=-1
+11-01 13:44:43.176  4871  5005 I ChimeraConfigurator: Starting update, reason: 4 urgentFeatures: vision.ocr:-1
+11-01 13:44:43.178  4854  5211 D TrafficStats: tagSocket(281) with statsTag=0x407, statsUid=-1
+11-01 13:44:43.185  4871  5005 I ChimeraConfigurator: Detected pending changes for urgent request: [vision.ocr]. Pending module sets: container:2318189190800+mlkit.ocr.common,tflite_dynamite:2640104055100800+tflite_dynamite,vision_ocr:23160
+11-01 13:44:43.198  4871  5005 I GmsDebugLogger: [73] 1801
+11-01 13:44:43.199  4871  5005 W ZappDownloader: No successful module downloads for requested features [vision.ocr].
+11-01 13:44:43.200  4871  5005 I GmsDebugLogger: [30] [VisionOcrDynamite.integ:231602402100000],[TfliteDynamiteDynamite.integ:264010405100800],[MlkitOcrCommon.optional:231818100800]
+11-01 13:44:43.201  4871  5005 W ChimeraConfigService: Retry attempt was throttled. [CONTEXT service_id=264 ]
+11-01 13:44:43.201  4871  5005 I GmsDebugLogger: [83] 1 [vision.ocr]
+11-01 13:44:43.202  4871  5011 W Vision  : Request for optional module download of ocr failed. Request again.
+11-01 13:44:43.202  4871  5011 W Vision  : Would have logged:
+11-01 13:44:43.202  4871  5011 W Vision  : # dsae@37884fe7
+11-01 13:44:43.202  4871  5011 I Vision  : Schedule retrying download ocr at 87761 with backoff 20 seconds
+11-01 13:44:43.206  5556  5576 D EGL_emulation: app_time_stats: avg=11.50ms min=3.87ms max=29.63ms count=58

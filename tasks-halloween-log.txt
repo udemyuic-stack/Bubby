@@ -1,0 +1,47 @@
+11-01 13:41:39.553   519  1829 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=com.example.buddy/.ui.UiActivity (has extras)} with LAUNCH_SINGLE_TOP from uid 2000 (BAL_ALLOW_PERMISSION) result code=0
+11-01 13:41:39.581   519   550 I ActivityManager: Start proc 4890:com.example.buddy/u0a192 for next-top-activity {com.example.buddy/com.example.buddy.ui.UiActivity}
+11-01 13:41:39.589   519  2273 D CoreBackPreview: Window{a845751 u0 Splash Screen com.example.buddy}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@a575a90, mPriority=0, mIsAnimationCallback=false}
+11-01 13:41:39.655  4890  4890 V GraphicsEnvironment: ANGLE GameManagerService for com.example.buddy: false
+11-01 13:41:39.655  4890  4890 V GraphicsEnvironment: com.example.buddy is not listed in per-application setting
+11-01 13:41:39.768   519   538 V WindowManager:     info={id=6 t=CHANGE f=0x0 trk=0 r=[0@Point(0, 0)] c=[{WCT{RemoteToken{8d8c697 Task{e8ae2e #8 type=standard I=com.example.buddy/.ui.UiActivity}}} m=OPEN f=MOVE_TO_TOP leash=Surface(name=Task=8)/@0x3e949bb sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0},{WCT{RemoteToken{98c084 Task{8d659d5 #1 type=home}}} m=TO_BACK f=SHOW_WALLPAPER leash=Surface(name=Task=1)/@0x7b31c3f sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0},{WCT{RemoteToken{5ca606d Display{#0 state=ON size=320x640 ROTATION_0}}} m=CHANGE f=SHOW_WALLPAPER|IS_DISPLAY leash=Surface(name=WindowedMagnification:0:31)/@0x94dc801 sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0}]}
+11-01 13:41:39.924   519   909 D CoreBackPreview: Window{f16419b u0 com.example.buddy/com.example.buddy.ui.UiActivity}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@7b21750, mPriority=0, mIsAnimationCallback=false}
+11-01 13:41:40.012   519   548 E AppHibernationService: Package com.example.buddy is not installed for user 0
+11-01 13:41:40.014   519   548 E AppHibernationService: Package com.example.buddy is not installed for any user
+11-01 13:41:40.014   519   548 E AppHibernationService: Package com.example.buddy is not installed for user 0
+11-01 13:41:40.015   519   548 E AppHibernationService: Package com.example.buddy is not installed for any user
+11-01 13:41:40.594   519   804 I SdkSandboxManager: No SDKs used. Skipping SDK data reconcilation for CallingInfo{mUid=10192, mPackageName='com.example.buddy, mAppProcessToken='null'}
+11-01 13:41:40.949  1665  1665 I AiAiEcho: AppFetcherImplV2 updateApps package:[com.example.buddy], userId:[0], reason:[package is added.].
+11-01 13:41:40.998   519  1850 I WindowManager: finishDrawing of relaunch: Window{f16419b u0 com.example.buddy/com.example.buddy.ui.UiActivity} 435ms
+11-01 13:41:41.021   519   548 D AppWidgetServiceImpl: Provider info from ComponentInfo{com.example.buddy/com.example.buddy.AgentWidgets$StatusWidget} won't be persisted.
+11-01 13:41:41.050   519   538 I ActivityTaskManager: Displayed com.example.buddy/.ui.UiActivity for user 0: +1s495ms
+11-01 13:41:41.050   519   548 D AppWidgetServiceImpl: Provider info from ComponentInfo{com.example.buddy/com.example.buddy.AgentWidgets$UsageWidget} won't be persisted.
+11-01 13:41:41.050   519   548 D AppWidgetServiceImpl: Provider info from ComponentInfo{com.example.buddy/com.example.buddy.AgentWidgets$DoneWidget} won't be persisted.
+11-01 13:41:41.050   519   548 D AppWidgetServiceImpl: Provider info from ComponentInfo{com.example.buddy/com.example.buddy.AgentWidgets$AgentsWidget} won't be persisted.
+11-01 13:41:41.050   519   548 D AppWidgetServiceImpl: Provider info from ComponentInfo{com.example.buddy/com.example.buddy.AgentWidgets$BarWidget} won't be persisted.
+11-01 13:41:41.050   519   548 D AppWidgetServiceImpl: Provider info from ComponentInfo{com.example.buddy/com.example.buddy.AgentWidgets$MiniWidget} won't be persisted.
+11-01 13:41:41.180   519  2273 D CoreBackPreview: Window{a845751 u0 Splash Screen com.example.buddy}: Setting back callback null
+11-01 13:41:41.180   519  1829 W InputManager-JNI: Input channel object 'a845751 Splash Screen com.example.buddy (client)' was disposed without first being removed with the input manager!
+11-01 13:41:42.619   519   548 D AppWidgetServiceImpl: Provider info from ComponentInfo{com.example.buddy/com.example.buddy.AgentWidgets$StatusWidget} won't be persisted.
+11-01 13:41:42.619   519   548 D AppWidgetServiceImpl: Provider info from ComponentInfo{com.example.buddy/com.example.buddy.AgentWidgets$UsageWidget} won't be persisted.
+11-01 13:41:42.619   519   548 D AppWidgetServiceImpl: Provider info from ComponentInfo{com.example.buddy/com.example.buddy.AgentWidgets$DoneWidget} won't be persisted.
+11-01 13:41:42.619   519   548 D AppWidgetServiceImpl: Provider info from ComponentInfo{com.example.buddy/com.example.buddy.AgentWidgets$AgentsWidget} won't be persisted.
+11-01 13:41:42.619   519   548 D AppWidgetServiceImpl: Provider info from ComponentInfo{com.example.buddy/com.example.buddy.AgentWidgets$BarWidget} won't be persisted.
+11-01 13:41:42.619   519   548 D AppWidgetServiceImpl: Provider info from ComponentInfo{com.example.buddy/com.example.buddy.AgentWidgets$MiniWidget} won't be persisted.
+11-01 13:41:42.653  1665  1665 I AiAiEcho: AppFetcherImpl onPackageChanged com.example.buddy.
+11-01 13:41:42.655  1665  3409 I AiAiEcho: AppIndexer Package:[com.example.buddy] UserProfile:[0] Enabled:[true].
+11-01 13:41:42.655  1665  3409 I AiAiEcho: AppFetcherImplV2 updateApps package:[com.example.buddy], userId:[0], reason:[package is updated.].
+11-01 13:41:43.489   519  2273 D CoreBackPreview: Window{f16419b u0 com.example.buddy/com.example.buddy.ui.UiActivity}: Setting back callback null
+11-01 13:41:43.495   519  2273 W InputManager-JNI: Input channel object 'f16419b com.example.buddy/com.example.buddy.ui.UiActivity (client)' was disposed without first being removed with the input manager!
+11-01 13:41:43.561   519  2273 D CoreBackPreview: Window{5418c06 u0 com.example.buddy/com.example.buddy.ui.UiActivity}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@1c620f4, mPriority=0, mIsAnimationCallback=false}
+11-01 13:41:43.945   519  1216 I ImeTracker: com.example.buddy:e9e96949: onRequestHide at ORIGIN_SERVER_HIDE_INPUT reason HIDE_UNSPECIFIED_WINDOW
+11-01 13:41:43.946   519  1216 I ImeTracker: com.example.buddy:e9e96949: onCancelled at PHASE_SERVER_SHOULD_HIDE
+11-01 13:41:46.475   836   836 I SafetyLabelChangedBroadcastReceiver: received broadcast packageName: com.example.buddy, current user: UserHandle{0}, packageChangeEvent: NEW_INSTALL, intent user: UserHandle{0}
+11-01 13:41:47.288  1426  4730 I FontLog : Package com.example.buddy has no metadata [CONTEXT service_id=132 ]
+11-01 13:41:47.398  1494  4994 I BlockstoreStorage: Clearing Blockstore Data for package com.example.buddy [CONTEXT service_id=258 ]
+11-01 13:41:47.617  4890  4890 I com.example.buddy: Perf: native scene 19 fps
+11-01 13:41:49.888  5082  5082 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-01 13:41:49.898  5082  5082 I AndroidRuntime: Using default boot image
+11-01 13:41:49.898  5082  5082 I AndroidRuntime: Leaving lock profiling enabled
+11-01 13:41:50.360  5082  5082 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-01 13:41:51.650  4890  4890 I com.example.buddy: Perf: native scene 21 fps
+11-01 13:41:51.819  5082  5082 D AndroidRuntime: Shutting down VM

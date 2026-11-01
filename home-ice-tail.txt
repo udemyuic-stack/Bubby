@@ -1,0 +1,150 @@
+11-01 13:44:10.438  1733  1733 W A       : 	at kotlinx.coroutines.bk.run(PG:14)
+11-01 13:44:10.438  1733  1733 W A       : 	at com.google.apps.tiktok.coroutines.f.run(PG:1)
+11-01 13:44:10.438  1733  1733 W A       : 	at com.google.android.libraries.i.ae.run(PG:1)
+11-01 13:44:10.438  1733  1733 W A       : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-01 13:44:10.438  1733  1733 W A       : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-01 13:44:10.438  1733  1733 W A       : 	at com.google.android.libraries.i.k.run(PG:2)
+11-01 13:44:10.438  1733  1733 W A       : 	at com.google.android.libraries.i.p.run(PG:4)
+11-01 13:44:10.438  1733  1733 W A       : 	at java.lang.Thread.run(Thread.java:1012)
+11-01 13:44:10.438  1733  1733 W A       : Caused by: DiscoverPrecheckException(precheckFailureReason=com.google.android.apps.search.googleapp.discover.w.a.c@d4cc15b)
+11-01 13:44:10.438  1733  1733 W A       : 	at com.google.android.apps.search.googleapp.discover.w.bb.d(PG:16)
+11-01 13:44:10.438  1733  1733 W A       : 	at com.google.android.apps.search.googleapp.discover.w.ax.invokeSuspend(PG:5)
+11-01 13:44:10.438  1733  1733 W A       : 	at com.google.android.apps.search.googleapp.discover.w.ax.invoke(PG:1)
+11-01 13:44:10.438  1733  1733 W A       : 	at kotlinx.coroutines.f.b.a(PG:1)
+11-01 13:44:10.438  1733  1733 W A       : 	at kotlinx.coroutines.m.a(PG:11)
+11-01 13:44:10.438  1733  1733 W A       : 	at com.google.android.apps.search.googleapp.discover.w.bb.c(PG:2)
+11-01 13:44:10.438  1733  1733 W A       : 	at com.google.android.apps.search.googleapp.discover.v.am.invokeSuspend(PG:5)
+11-01 13:44:10.438  1733  1733 W A       : 	at com.google.android.apps.search.googleapp.discover.v.am.invoke(PG:1)
+11-01 13:44:10.438  1733  1733 W A       : 	at kotlinx.coroutines.f.b.a(PG:1)
+11-01 13:44:10.438  1733  1733 W A       : 	at kotlinx.coroutines.m.a(PG:11)
+11-01 13:44:10.438  1733  1733 W A       : 	at com.google.android.apps.search.googleapp.discover.v.al.invokeSuspend(PG:4)
+11-01 13:44:10.438  1733  1733 W A       : 	... 9 more
+11-01 13:44:10.448  1094  2020 D OneSearchSuggestProvider: Shut down the binder channel
+11-01 13:44:10.449  1094  4955 I IPCThreadState: oneway function results for code 2 on binder at 0x785f40007480 will be dropped but finished with status UNKNOWN_TRANSACTION
+11-01 13:44:10.450  1094  1094 D SearchTargetUtil:  query= size=15
+11-01 13:44:10.450  1094  1094 D SearchTargetUtil: layoutType=short_icon_row resultType=131072 packageName=com.google.android.googlequicksearchbox extras=Bundle{suggestion_type=33,suggest_truncate_start=false,is_answer=false,is_entity=false
+11-01 13:44:10.450  1094  1094 D SearchTargetUtil: layoutType=short_icon_row resultType=131072 packageName=com.google.android.googlequicksearchbox extras=Bundle{suggestion_type=33,suggest_truncate_start=false,is_answer=false,is_entity=false
+11-01 13:44:10.450  1094  1094 D SearchTargetUtil: layoutType=short_icon_row resultType=131072 packageName=com.google.android.googlequicksearchbox extras=Bundle{suggestion_type=33,suggest_truncate_start=false,is_answer=false,is_entity=false
+11-01 13:44:10.450  1094  1094 D SearchTargetUtil: layoutType=short_icon_row resultType=131072 packageName=com.google.android.googlequicksearchbox extras=Bundle{suggestion_type=33,suggest_truncate_start=false,is_answer=false,is_entity=false
+11-01 13:44:10.450  1094  1094 D SearchTargetUtil: layoutType=short_icon_row resultType=131072 packageName=com.google.android.googlequicksearchbox extras=Bundle{suggestion_type=33,suggest_truncate_start=false,is_answer=false,is_entity=false
+11-01 13:44:10.450  1094  1094 D SearchTargetUtil: layoutType=short_icon_row resultType=131072 packageName=com.google.android.googlequicksearchbox extras=Bundle{suggestion_type=33,suggest_truncate_start=false,is_answer=false,is_entity=false
+11-01 13:44:10.450  1094  1094 D SearchTargetUtil: layoutType=short_icon_row resultType=131072 packageName=com.google.android.googlequicksearchbox extras=Bundle{suggestion_type=33,suggest_truncate_start=false,is_answer=false,is_entity=false
+11-01 13:44:10.450  1094  1094 D SearchTargetUtil: layoutType=short_icon_row resultType=131072 packageName=com.google.android.googlequicksearchbox extras=Bundle{suggestion_type=33,suggest_truncate_start=false,is_answer=false,is_entity=false
+11-01 13:44:10.450  1094  1094 D SearchTargetUtil: layoutType=short_icon_row resultType=131072 packageName=com.google.android.googlequicksearchbox extras=Bundle{suggestion_type=33,suggest_truncate_start=false,is_answer=false,is_entity=false
+11-01 13:44:10.450  1094  1094 D SearchTargetUtil: layoutType=extra_tall_icon_row resultType=131072 packageName=com.google.android.googlequicksearchbox extras=Bundle{bitmap_url=data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgH
+11-01 13:44:10.451  1094  1094 D SearchTargetUtil: layoutType=short_icon_row resultType=131072 packageName=com.google.android.googlequicksearchbox extras=Bundle{suggestion_type=33,suggest_truncate_start=false,is_answer=false,is_entity=false
+11-01 13:44:10.451  1094  1094 D SearchTargetUtil: layoutType=short_icon_row resultType=131072 packageName=com.google.android.googlequicksearchbox extras=Bundle{suggestion_type=33,suggest_truncate_start=false,is_answer=false,is_entity=false
+11-01 13:44:10.451  1094  1094 D SearchTargetUtil: layoutType=short_icon_row resultType=131072 packageName=com.google.android.googlequicksearchbox extras=Bundle{suggestion_type=33,suggest_truncate_start=false,is_answer=false,is_entity=false
+11-01 13:44:10.451  1094  1094 D SearchTargetUtil: layoutType=short_icon_row resultType=131072 packageName=com.google.android.googlequicksearchbox extras=Bundle{suggestion_type=33,suggest_truncate_start=false,is_answer=false,is_entity=false
+11-01 13:44:10.451  1094  1094 D SearchTargetUtil: layoutType=short_icon_row resultType=131072 packageName=com.google.android.googlequicksearchbox extras=Bundle{suggestion_type=33,suggest_truncate_start=false,is_answer=false,is_entity=false
+11-01 13:44:10.468  1020  1231 D BtGatt.ScanManager: uid 10132 isForeground true scanMode -1
+11-01 13:44:10.468  1020  1231 D BtGatt.ScanManager: uid 10132 isForeground true scanMode -1
+11-01 13:44:10.515  1094  1128 I ImeTracker: com.google.android.apps.nexuslauncher:cb0c302d: onRequestHide at ORIGIN_CLIENT_HIDE_SOFT_INPUT reason HIDE_SOFT_INPUT
+11-01 13:44:10.519   522  2041 I ImeTracker: com.google.android.apps.nexuslauncher:cb0c302d: onCancelled at PHASE_SERVER_SHOULD_HIDE
+11-01 13:44:10.545   522   609 D ActivityManager: freezing 1969 com.google.android.partnersetup
+11-01 13:44:10.545  1491  4912 E PhenotypeFlagCommitter: Retrieving snapshot for com.google.android.gms.people failed
+11-01 13:44:10.545  1491  4912 E PhenotypeFlagCommitter: java.util.concurrent.TimeoutException: Timed out waiting for Task
+11-01 13:44:10.545  1491  4912 E PhenotypeFlagCommitter: 	at cfsz.o(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+11-01 13:44:10.545  1491  4912 E PhenotypeFlagCommitter: 	at bwch.e(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-01 13:44:10.545  1491  4912 E PhenotypeFlagCommitter: 	at bwch.j(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-01 13:44:10.545  1491  4912 E PhenotypeFlagCommitter: 	at bwch.k(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-01 13:44:10.545  1491  4912 E PhenotypeFlagCommitter: 	at bwch.j(:com.google.android.gms@231818047@23.18.18 (190800-535401451):8)
+11-01 13:44:10.545  1491  4912 E PhenotypeFlagCommitter: 	at bwch.h(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-01 13:44:10.545  1491  4912 E PhenotypeFlagCommitter: 	at buqd.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+11-01 13:44:10.545  1491  4912 E PhenotypeFlagCommitter: 	at com.google.android.chimera.IntentOperation.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-01 13:44:10.545  1491  4912 E PhenotypeFlagCommitter: 	at zhv.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+11-01 13:44:10.545  1491  4912 E PhenotypeFlagCommitter: 	at hjm.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3)
+11-01 13:44:10.545  1491  4912 E PhenotypeFlagCommitter: 	at hjl.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):11)
+11-01 13:44:10.545  1491  4912 E PhenotypeFlagCommitter: 	at dfhf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-01 13:44:10.545  1491  4912 E PhenotypeFlagCommitter: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-01 13:44:10.545  1491  4912 E PhenotypeFlagCommitter: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-01 13:44:10.545  1491  4912 E PhenotypeFlagCommitter: 	at java.lang.Thread.run(Thread.java:1012)
+11-01 13:44:10.556  1417  4989 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-01 13:44:10.590  1417  4989 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-01 13:44:10.604   522   609 D ActivityManager: freezing 2874 com.google.android.tts
+11-01 13:44:10.611  1733  1733 W FontsContract: Platform version of downloadable fonts is deprecated. Please use androidx version instead.
+11-01 13:44:10.619  1417  1432 I FontLog : Received query Google Sans:500, URI content://com.google.android.gms.fonts [CONTEXT service_id=132 ]
+11-01 13:44:10.619  1417  1432 I FontLog : Query [Google Sans:500] resolved to {Google Sans, wdth 100.0, wght 500, ital 0.0, bestEffort false} [CONTEXT service_id=132 ]
+11-01 13:44:10.620  1417  1432 I FontLog : Font PFD returned from cache for {Google Sans, wdth 100.0, wght 500, ital 0.0, bestEffort false} [CONTEXT service_id=132 ]
+11-01 13:44:10.620  1417  1432 I FontLog : Fetch {Google Sans, wdth 100.0, wght 500, ital 0.0, bestEffort false} end status Status{statusCode=SUCCESS, resolution=null} [CONTEXT service_id=132 ]
+11-01 13:44:10.624  1417  1432 I FontLog : Pulling font file for id = 6, cache size = 6 [CONTEXT service_id=132 ]
+11-01 13:44:10.635  1417  2625 E PhenotypeFlagCommitter: Retrieving snapshot for com.google.android.gms.phenotype failed
+11-01 13:44:10.635  1417  2625 E PhenotypeFlagCommitter: java.util.concurrent.TimeoutException: Timed out waiting for Task
+11-01 13:44:10.635  1417  2625 E PhenotypeFlagCommitter: 	at cfsz.o(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+11-01 13:44:10.635  1417  2625 E PhenotypeFlagCommitter: 	at bwch.e(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-01 13:44:10.635  1417  2625 E PhenotypeFlagCommitter: 	at bwch.j(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-01 13:44:10.635  1417  2625 E PhenotypeFlagCommitter: 	at bwch.k(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-01 13:44:10.635  1417  2625 E PhenotypeFlagCommitter: 	at bwch.j(:com.google.android.gms@231818047@23.18.18 (190800-535401451):8)
+11-01 13:44:10.635  1417  2625 E PhenotypeFlagCommitter: 	at bwch.h(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-01 13:44:10.635  1417  2625 E PhenotypeFlagCommitter: 	at bwel.c(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+11-01 13:44:10.635  1417  2625 E PhenotypeFlagCommitter: 	at com.google.android.gms.phenotype.sync.HeterodyneSyncTaskChimeraService.d(:com.google.android.gms@231818047@23.18.18 (190800-535401451):77)
+11-01 13:44:10.635  1417  2625 E PhenotypeFlagCommitter: 	at com.google.android.gms.phenotype.sync.HeterodyneSyncTaskChimeraService.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):10)
+11-01 13:44:10.635  1417  2625 E PhenotypeFlagCommitter: 	at avzs.call(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+11-01 13:44:10.635  1417  2625 E PhenotypeFlagCommitter: 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+11-01 13:44:10.635  1417  2625 E PhenotypeFlagCommitter: 	at aced.c(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+11-01 13:44:10.635  1417  2625 E PhenotypeFlagCommitter: 	at aced.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):7)
+11-01 13:44:10.635  1417  2625 E PhenotypeFlagCommitter: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-01 13:44:10.635  1417  2625 E PhenotypeFlagCommitter: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-01 13:44:10.635  1417  2625 E PhenotypeFlagCommitter: 	at acjn.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-01 13:44:10.635  1417  2625 E PhenotypeFlagCommitter: 	at java.lang.Thread.run(Thread.java:1012)
+11-01 13:44:10.636  1417  3362 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.phenotype.service.sync.PhenotypeConfigurator finished executing. cause:5 result: 1 elapsed_millis: 11383 uptime_millis: 11383 exec_s
+11-01 13:44:10.688   522   609 D ActivityManager: freezing 2933 com.google.android.gms.unstable
+11-01 13:44:10.706  1417  1532 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-01 13:44:10.764   831  4686 I PermissionControllerServiceImpl: Updating user sensitive for user 0
+11-01 13:44:10.791  1491  1491 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.asterism.service.START pkg=com.google.android.gms }
+11-01 13:44:10.855   830   891 D EGL_emulation: app_time_stats: avg=501.81ms min=153.32ms max=850.30ms count=2
+11-01 13:44:10.873  1733  1733 W View    : requestLayout() improperly called by android.widget.FrameLayout{be0d90 V.E...... ......ID 0,0-320,155 #7f0b0fee app:id/googleapp_discover_header_container} during layout: running second layout pass
+11-01 13:44:10.932  1733  2935 I PBSessionCacheImpl: Deleted sessionId[7623608144343233] from persistence.
+11-01 13:44:10.944  1733  2620 W SearchServiceCore: Abort, client detached.
+11-01 13:44:10.951  1733  2620 W SearchServiceCore: Abort, client detached.
+11-01 13:44:10.951  1733  2620 W SearchServiceCore: Abort, client detached.
+11-01 13:44:10.951  1733  2620 W SearchServiceCore: Abort, client detached.
+11-01 13:44:10.952  1733  2620 W SearchServiceCore: Abort, client detached.
+11-01 13:44:10.996  1417  1532 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-01 13:44:11.049  1733  1807 W earchbox:search: Cleared Reference was only reachable from finalizer (only reported once)
+11-01 13:44:11.053  1733  1807 I earchbox:search: Background concurrent copying GC freed 271620(11MB) AllocSpace objects, 22(1940KB) LOS objects, 50% free, 18MB/36MB, paused 33us,35us total 398.893ms
+11-01 13:44:11.083  1417  1532 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-01 13:44:11.122  1417  2625 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.auth.account.be.legacy.AuthCronService started execution. cause:5 exec_start_elapsed_seconds: 89 [CONTEXT service_id=218 ]
+11-01 13:44:11.166  1417  3214 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-01 13:44:11.297  1491  3661 I GCM-GMS : Registering GMS for direct boot.
+11-01 13:44:11.304  1417  3362 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.gcm.gmsproc.GcmInGmsTaskService started execution. cause:5 exec_start_elapsed_seconds: 89 [CONTEXT service_id=218 ]
+11-01 13:44:11.307  1417  3214 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-01 13:44:11.351  1417  2625 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.auth.account.be.legacy.AuthCronService finished executing. cause:5 result: 3 elapsed_millis: 308 uptime_millis: 308 exec_start_elaps
+11-01 13:44:11.364  1417  3214 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-01 13:44:11.450   522   531 I system_server: Background young concurrent copying GC freed 867350(21MB) AllocSpace objects, 5(1340KB) LOS objects, 42% free, 28MB/48MB, paused 33us,55us total 246.662ms
+11-01 13:44:11.454   522   541 I DropBoxManagerService: add tag=system_server_strictmode isTagEnabled=true flags=0x2
+11-01 13:44:11.552  1417  4989 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-01 13:44:11.581  1417  4989 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-01 13:44:11.616  1417  4989 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-01 13:44:11.667  1491  3661 I GCM-GMS : Got GMS direct boot token.
+11-01 13:44:11.671  1417  3359 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.gcm.gmsproc.GcmInGmsTaskService finished executing. cause:5 result: 1 elapsed_millis: 531 uptime_millis: 531 exec_start_elapsed_seco
+11-01 13:44:11.719  1417  1532 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-01 13:44:11.739  1417  1532 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-01 13:44:11.757  1417  1532 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-01 13:44:11.813   522   609 D ActivityManager: freezing 1735 com.google.android.youtube
+11-01 13:44:11.845  1417  4989 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-01 13:44:11.973   522  3237 E TaskPersister: File error accessing recents directory (directory doesn't exist?).
+11-01 13:44:12.216  1491  1491 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.chimera.container.moduleinstall.ModuleInstallService.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsApiService }
+11-01 13:44:12.216  1491  1491 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.ocr.service.internal.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsInternalApiService }
+11-01 13:44:12.644     0     0 I servicemanager: Notifying artd they don't (previously: do) have clients when we now have no record of a client
+11-01 13:44:12.447  4965  4968 I AidlLazyServiceRegistrar: Process has 0 (of 1 available) client(s) in use after notification artd has clients: 0
+11-01 13:44:12.447  4965  4968 I AidlLazyServiceRegistrar: Trying to shut down the service. No clients in use for any service in process.
+11-01 13:44:12.646     0     0 I servicemanager: Unregistering artd
+11-01 13:44:12.647     0     0 I BpBinder: onLastStrongRef automatically unlinking death recipients:
+11-01 13:44:12.450  4965  4968 I AidlLazyServiceRegistrar: Unregistered all clients and exiting
+11-01 13:44:12.650     0     0 I init    : Service 'artd' (pid 4965) exited with status 0 oneshot service took 4.431000 seconds in background
+11-01 13:44:12.652     0     0 I init    : Sending signal 9 to service 'artd' (pid 4965) process group...
+11-01 13:44:12.654     0     0 I libprocessgroup: Successfully killed process cgroup uid 1082 pid 4965 in 0ms
+11-01 13:44:13.534   522   620 I InputDispatcher: 668365 com.example.buddy/com.example.buddy.ui.UiActivity (server) spent 3146ms processing FocusEvent(hasFocus=true)
+11-01 13:44:13.534  5001  5001 I Choreographer: Skipped 258 frames!  The application may be doing too much work on its main thread.
+11-01 13:44:13.546  5001  5014 I OpenGLRenderer: Davey! duration=4328ms; Flags=1, FrameTimelineVsyncId=5052, IntendedVsync=87641046863, Vsync=87641046863, InputEventId=0, HandleInputStart=87648935029, AnimationStart=87648935279, PerformTrav
+11-01 13:44:13.547   522  2585 D CompatibilityChangeReporter: Compat change id reported: 214016041; UID 10192; state: ENABLED
+11-01 13:44:13.548   522  2585 I ImeTracker: com.example.buddy:4b305b5c: onRequestHide at ORIGIN_SERVER_HIDE_INPUT reason HIDE_UNSPECIFIED_WINDOW
+11-01 13:44:13.548   522  2585 I ImeTracker: com.example.buddy:4b305b5c: onCancelled at PHASE_SERVER_SHOULD_HIDE
+11-01 13:44:13.548  5001  5001 I com.example.buddy: Perf: native scene 0 fps
+11-01 13:44:13.553  1551  1551 I GoogleInputMethodService: GoogleInputMethodService.onFinishInput():3227 
+11-01 13:44:13.554  1551  1551 I GoogleInputMethodService: GoogleInputMethodService.updateDeviceLockedStatus():2087 repeatCheckTimes = 0, unlocked = true
+11-01 13:44:13.554  1551  1551 I GoogleInputMethodService: GoogleInputMethodService.onStartInput():1877 onStartInput(EditorInfo{inputType=0x0(NULL) imeOptions=0x0 privateImeOptions=null actionName=UNSPECIFIED actionLabel=null actionId=0 ini
+11-01 13:44:13.554  1551  1551 I GoogleInputMethodService: GoogleInputMethodService.shouldHideHeaderOnInitialState():4008 ShouldHideHeaderOnInitialState = false
+11-01 13:44:13.556  1551  1551 I GoogleInputMethodService: GoogleInputMethodService.updateDeviceLockedStatus():2087 repeatCheckTimes = 2, unlocked = true
+11-01 13:44:13.595  5001  5019 I OpenGLRenderer: Davey! duration=4350ms; Flags=0, FrameTimelineVsyncId=5067, IntendedVsync=87657713529, Vsync=91957713357, InputEventId=0, HandleInputStart=91971134172, AnimationStart=91971134813, PerformTrav

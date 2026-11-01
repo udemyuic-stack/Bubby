@@ -1,0 +1,150 @@
+11-01 13:41:47.890   521  2185 E AppOps  : 	at com.android.server.am.ActiveServices.shouldAllowFgsStartForegroundNoBindingCheckLocked(ActiveServices.java:7977)
+11-01 13:41:47.890   521  2185 E AppOps  : 	at com.android.server.am.ActiveServices.shouldAllowFgsStartForegroundWithBindingCheckLocked(ActiveServices.java:7795)
+11-01 13:41:47.890   521  2185 E AppOps  : 	at com.android.server.am.ActiveServices.setFgsRestrictionLocked(ActiveServices.java:7474)
+11-01 13:41:47.890   521  2185 E AppOps  : 	at com.android.server.am.ActiveServices.bindServiceLocked(ActiveServices.java:3744)
+11-01 13:41:47.890   521  2185 E AppOps  : 	at com.android.server.am.ActivityManagerService.bindServiceInstance(ActivityManagerService.java:13404)
+11-01 13:41:47.890   521  2185 E AppOps  : 	at com.android.server.am.ActivityManagerService.bindServiceInstance(ActivityManagerService.java:13368)
+11-01 13:41:47.890   521  2185 E AppOps  : 	at android.app.ContextImpl.bindServiceCommon(ContextImpl.java:2127)
+11-01 13:41:47.890   521  2185 E AppOps  : 	at android.app.ContextImpl.bindServiceAsUser(ContextImpl.java:2040)
+11-01 13:41:47.890   521  2185 E AppOps  : 	at com.android.server.ExplicitHealthCheckController.bindService(ExplicitHealthCheckController.java:345)
+11-01 13:41:47.890   521  2185 E AppOps  : 	at com.android.server.ExplicitHealthCheckController.prepareServiceLocked(ExplicitHealthCheckController.java:450)
+11-01 13:41:47.890   521  2185 E AppOps  : 	at com.android.server.ExplicitHealthCheckController.getRequestedPackages(ExplicitHealthCheckController.java:268)
+11-01 13:41:47.890   521  2185 E AppOps  : 	at com.android.server.ExplicitHealthCheckController.lambda$syncRequests$3(ExplicitHealthCheckController.java:153)
+11-01 13:41:47.890   521  2185 E AppOps  : 	at com.android.server.ExplicitHealthCheckController.$r8$lambda$e0trryK6lMIa0Oyq_R_L8I9fbPU(ExplicitHealthCheckController.java:0)
+11-01 13:41:47.890   521  2185 E AppOps  : 	at com.android.server.ExplicitHealthCheckController$$ExternalSyntheticLambda0.accept(R8$$SyntheticClass:0)
+11-01 13:41:47.890   521  2185 E AppOps  : 	at com.android.server.ExplicitHealthCheckController.lambda$getSupportedPackages$4(ExplicitHealthCheckController.java:251)
+11-01 13:41:47.890   521  2185 E AppOps  : 	at com.android.server.ExplicitHealthCheckController.$r8$lambda$SRa9fw8RTJfzefVJ1-zsa9_9yG0(ExplicitHealthCheckController.java:0)
+11-01 13:41:47.890   521  2185 E AppOps  : 	at com.android.server.ExplicitHealthCheckController$$ExternalSyntheticLambda1.onResult(R8$$SyntheticClass:0)
+11-01 13:41:47.890   521  2185 E AppOps  : 	at android.os.RemoteCallback.sendResult(RemoteCallback.java:75)
+11-01 13:41:47.890   521  2185 E AppOps  : 	at android.os.RemoteCallback$1.sendResult(RemoteCallback.java:52)
+11-01 13:41:47.890   521  2185 E AppOps  : 	at android.os.IRemoteCallback$Stub.onTransact(IRemoteCallback.java:87)
+11-01 13:41:47.890   521  2185 E AppOps  : 	at android.os.Binder.execTransactInternal(Binder.java:1344)
+11-01 13:41:47.890   521  2185 E AppOps  : 	at android.os.Binder.execTransact(Binder.java:1275)
+11-01 13:41:47.891   521  2693 I ExplicitHealthCheckController: Explicit health check requested packages []
+11-01 13:41:47.936   521  2185 I ExplicitHealthCheckController: Explicit health check service is bound
+11-01 13:41:47.936   521  2693 I ExplicitHealthCheckController: No more health check requests, unbinding...
+11-01 13:41:47.936   521  2693 I ExplicitHealthCheckController: Explicit health check service is unbound
+11-01 13:41:48.009   521   521 I ExplicitHealthCheckController: Explicit health check service is connected ComponentInfo{com.google.android.ext.services/android.ext.services.watchdog.ExplicitHealthCheckServiceImpl}
+11-01 13:41:48.009   521   521 I ExplicitHealthCheckController: Service initialized, syncing requests
+11-01 13:41:48.020   521   521 I PackageWatchdog: Syncing health check requests for packages: {}
+11-01 13:41:48.020   521   521 D ExplicitHealthCheckController: Getting health check supported packages
+11-01 13:41:48.022  1917  5090 D DownloadManager: [12] Finished with status SUCCESS
+11-01 13:41:48.025   521   535 I ExplicitHealthCheckController: Explicit health check supported packages [PackageConfig{com.google.android.networkstack, 86400000}]
+11-01 13:41:48.026   521   535 D PackageWatchdog: Received supported packages [PackageConfig{com.google.android.networkstack, 86400000}]
+11-01 13:41:48.027   521   535 D ExplicitHealthCheckController: Getting health check requested packages
+11-01 13:41:48.031   521  1871 I ExplicitHealthCheckController: Explicit health check requested packages []
+11-01 13:41:48.032   521  1871 I ExplicitHealthCheckController: No more health check requests, unbinding...
+11-01 13:41:48.044   521  1871 I ExplicitHealthCheckController: Explicit health check service is unbound
+11-01 13:41:48.072  1400  2044 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.icing.proxy.IcingInternalCorporaUpdateService started execution. cause:5 exec_start_elapsed_seconds: 98 [CONTEXT service_id=218 ]
+11-01 13:41:48.080   333  5100 I resolv  : GetAddrInfoHandler::run: {101 786533 101 983141 10131 0}
+11-01 13:41:48.081  2805  2925 D TrafficStats: tagSocket(116) with statsTag=0x1809, statsUid=-1
+11-01 13:41:48.084  2805  2925 D TrafficStats: tagSocket(116) with statsTag=0x1809, statsUid=-1
+11-01 13:41:48.088  1917  5099 D DownloadManager: [13] Starting
+11-01 13:41:48.093  2805  2925 D TrafficStats: tagSocket(116) with statsTag=0x1809, statsUid=-1
+11-01 13:41:48.119  1917  5099 D TrafficStats: tagSocket(78) with statsTag=0xffffff01, statsUid=10130
+11-01 13:41:48.122  5097  5097 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+11-01 13:41:48.123  5097  5097 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-01 13:41:48.124  4855  4873 D EGL_emulation: app_time_stats: avg=50.72ms min=9.57ms max=96.20ms count=20
+11-01 13:41:48.134   399  1102 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=5097
+11-01 13:41:48.138   399  1102 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (3810 us)
+11-01 13:41:48.153   134   134 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-01 13:41:48.347     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+11-01 13:41:48.163  5097  5102 I Gralloc4: mapper 4.x is not supported
+11-01 13:41:48.171  1400  1471 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.icing.proxy.IcingInternalCorporaUpdateService finished executing. cause:5 result: 1 elapsed_millis: 125 uptime_millis: 125 exec_star
+11-01 13:41:48.260  1672  1672 V ClearcutMetricXmitter: Transmission is done.
+11-01 13:41:48.280   521   549 W system_server: Long monitor contention with owner binder:521_2 (535) at void com.android.server.am.ActivityManagerService.finishReceiver(android.os.IBinder, int, java.lang.String, android.os.Bundle, boolean,
+11-01 13:41:48.282  1400  4968 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-01 13:41:48.282  1400  4968 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-01 13:41:48.283  1400  4968 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:41:48.284  1400  4968 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-01 13:41:48.285  1400  4968 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-01 13:41:48.292  1400  4968 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-01 13:41:48.292  1400  4968 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:41:48.293  1400  4968 I NamespaceManager: Package 1 name not found! Using module version.
+11-01 13:41:48.298   521   548 W system_server: Long monitor contention with owner binder:521_2 (535) at void com.android.server.am.ActivityManagerService.finishReceiver(android.os.IBinder, int, java.lang.String, android.os.Bundle, boolean,
+11-01 13:41:48.360   833   833 D StatusBarIconController: ignoring old pipeline callbacks, because the new mobile icons are enabled
+11-01 13:41:48.383  1451  4993 W Icing   : No valid account for uploading user actions
+11-01 13:41:48.501  1400  4968 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-01 13:41:48.501  1400  4968 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-01 13:41:48.502  1400  4968 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:41:48.502  1400  4968 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-01 13:41:48.502  1400  4968 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-01 13:41:48.503  1400  4968 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-01 13:41:48.504  1400  4968 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:41:48.504  1400  4968 I NamespaceManager: Package 1 name not found! Using module version.
+11-01 13:41:48.510  1917  5103 D DownloadManager: [14] Starting
+11-01 13:41:48.538   333  5104 I resolv  : GetAddrInfoHandler::run: {101 983141 101 983141 10086 0}
+11-01 13:41:48.538   333  5105 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+11-01 13:41:48.538   333  5105 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x79be8a838110
+11-01 13:41:48.538   333  5105 I resolv  : doQuery: rcode=0, ancount=1, return value=61
+11-01 13:41:48.750     0     0 I init    : processing action (persist.device_config.lmkd_native.thrashing_limit_critical=*) from (/system/etc/init/lmkd.rc:44)
+11-01 13:41:48.560   333  5106 I resolv  : res_nmkquery: (QUERY, IN, A)
+11-01 13:41:48.561   333  5106 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x79be8a836e50
+11-01 13:41:48.561   333  5106 I resolv  : doQuery: rcode=0, ancount=1, return value=49
+11-01 13:41:48.562  1917  5103 D TrafficStats: tagSocket(84) with statsTag=0xffffff01, statsUid=10130
+11-01 13:41:48.766     0     0 I init    : processing action (lmkd.reinit=1) from (/system/etc/init/lmkd.rc:10)
+11-01 13:41:48.780     0     0 I init    : starting service 'exec 23 (/system/bin/lmkd --reinit)'...
+11-01 13:41:48.596  1400  4968 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-01 13:41:48.596  1400  4968 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-01 13:41:48.600  1400  4968 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:41:48.601  1400  4968 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-01 13:41:48.806     0     0 I init    : ... started service 'exec 23 (/system/bin/lmkd --reinit)' has pid 5108
+11-01 13:41:48.617   132   132 I lowmemorykiller: lmkd data connection established
+11-01 13:41:48.619  1400  4968 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-01 13:41:48.620  1400  4968 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-01 13:41:48.620  1400  4968 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:41:48.620  1400  4968 I NamespaceManager: Package 1 name not found! Using module version.
+11-01 13:41:48.626   521   616 I RescueParty: Starting to observe: [android, com.android.systemui], updated namespace: window_manager
+11-01 13:41:48.627   521   548 I PackageWatchdog: Syncing state, reason: observing new packages
+11-01 13:41:48.627   521   548 D PackageWatchdog: rescue-party-observer added the following packages to monitor [android, com.android.systemui]
+11-01 13:41:48.627   521   548 I PackageWatchdog: Syncing state, reason: updated observers
+11-01 13:41:48.627   521   548 I PackageWatchdog: Not pruning observers, elapsed time: 0ms
+11-01 13:41:48.627   521   548 I PackageWatchdog: Saving observer state to file
+11-01 13:41:48.648   521   521 I PackageWatchdog: Syncing health check requests for packages: {}
+11-01 13:41:48.648   521   521 I ExplicitHealthCheckController: Service not ready to get health check supported packages. Binding...
+11-01 13:41:48.650   132   132 I lowmemorykiller: Using psi monitors for memory pressure detection
+11-01 13:41:48.650   132   132 I lowmemorykiller: Properties reinitilized
+11-01 13:41:48.650  5108  5108 I lowmemorykiller: lmkd updated properties successfully
+11-01 13:41:48.650   132   132 I lowmemorykiller: lmkd data connection dropped
+11-01 13:41:48.650   132   132 I lowmemorykiller: closing lmkd data connection
+11-01 13:41:48.851     0     0 I init    : Service 'exec 23 (/system/bin/lmkd --reinit)' (pid 5108) exited with status 0 oneshot service took 0.060000 seconds in background
+11-01 13:41:48.858     0     0 I init    : Sending signal 9 to service 'exec 23 (/system/bin/lmkd --reinit)' (pid 5108) process group...
+11-01 13:41:48.869     0     0 I libprocessgroup: Successfully killed process cgroup uid 0 pid 5108 in 0ms
+11-01 13:41:48.677   521   521 I ExplicitHealthCheckController: Explicit health check service is bound
+11-01 13:41:48.687   521   521 I ExplicitHealthCheckController: Explicit health check service is connected ComponentInfo{com.google.android.ext.services/android.ext.services.watchdog.ExplicitHealthCheckServiceImpl}
+11-01 13:41:48.689   521   521 I ExplicitHealthCheckController: Service initialized, syncing requests
+11-01 13:41:48.689   521   521 I PackageWatchdog: Syncing health check requests for packages: {}
+11-01 13:41:48.689   521   521 D ExplicitHealthCheckController: Getting health check supported packages
+11-01 13:41:48.697   521  2838 I ExplicitHealthCheckController: Explicit health check supported packages [PackageConfig{com.google.android.networkstack, 86400000}]
+11-01 13:41:48.697   521  2838 D PackageWatchdog: Received supported packages [PackageConfig{com.google.android.networkstack, 86400000}]
+11-01 13:41:48.697   521  2838 D ExplicitHealthCheckController: Getting health check requested packages
+11-01 13:41:48.702   521  2693 I ExplicitHealthCheckController: Explicit health check requested packages []
+11-01 13:41:48.702   521  2693 I ExplicitHealthCheckController: No more health check requests, unbinding...
+11-01 13:41:48.704   521  2693 I ExplicitHealthCheckController: Explicit health check service is unbound
+11-01 13:41:48.715   521  2693 W JobScheduler: Job didn't exist in JobStore: 8ecdf04 #u0a154/7 com.google.android.contacts/com.google.android.apps.contacts.shortcut.ShortcutJobService
+11-01 13:41:48.750  1451  4993 I Icing   : Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0
+11-01 13:41:48.776  3597  4588 I ConfigUpdater: Update downloaded, starting installation
+11-01 13:41:48.787  2805  2925 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+11-01 13:41:48.787  2805  2925 W libc    : Access denied finding property "service.adb.tls.port"
+11-01 13:41:48.813  1451  4993 W Icing   : No valid account for uploading user actions
+11-01 13:41:48.785  2805  2805 W binder:2805_3: type=1400 audit(0.0:42): avc:  denied  { read } for  name="u:object_r:system_adbd_prop:s0" dev="tmpfs" ino=292 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:system_adbd_prop:s0 tcl
+11-01 13:41:48.839  1400  4968 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-01 13:41:48.840  1400  4968 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-01 13:41:48.842  1400  4968 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:41:48.842  1400  4968 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-01 13:41:48.842  1400  4968 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-01 13:41:48.843  1400  4968 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-01 13:41:48.846  1400  4968 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:41:48.847  1400  4968 I NamespaceManager: Package 1 name not found! Using module version.
+11-01 13:41:48.785  2805  2805 W binder:2805_3: type=1400 audit(0.0:43): avc:  denied  { read } for  name="u:object_r:adbd_prop:s0" dev="tmpfs" ino=60 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:adbd_prop:s0 tclass=file permis
+11-01 13:41:48.897  1451  4993 I Icing   : Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0
+11-01 13:41:48.924  1451  4993 I Icing   : Indexing com.google.android.gms-apps from com.google.android.gms
+11-01 13:41:48.943  1451  4993 I Icing   : Indexing done com.google.android.gms-apps
+11-01 13:41:48.965  1400  4968 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-01 13:41:48.965  1400  4968 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-01 13:41:48.965  1400  4968 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:41:48.966  1400  4968 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-01 13:41:48.966  1400  4968 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-01 13:41:48.967  1400  4968 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-01 13:41:48.989  1400  4968 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:41:48.989  1400  4968 I NamespaceManager: Package 1 name not found! Using module version.

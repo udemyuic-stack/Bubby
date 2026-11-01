@@ -1,0 +1,150 @@
+11-01 13:44:20.859  4755  4890 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService started execution. cause:9 exec_start_elapsed_seconds: 90 [CONTEXT service_id=218 ]
+11-01 13:44:20.862  5525  5525 I AccessibilityNodeInfoDumper: Skipping invisible child: android.view.accessibility.AccessibilityNodeInfo@14a3a; boundsInParent: Rect(0, 0 - 274, 102); boundsInScreen: Rect(23, 708 - 297, 640); boundsInWindow:
+11-01 13:44:20.863  5525  5525 I AccessibilityNodeInfoDumper: Skipping invisible child: android.view.accessibility.AccessibilityNodeInfo@1557d; boundsInParent: Rect(0, 0 - 274, 102); boundsInScreen: Rect(23, 818 - 297, 640); boundsInWindow:
+11-01 13:44:20.863  5525  5525 I AccessibilityNodeInfoDumper: Skipping invisible child: android.view.accessibility.AccessibilityNodeInfo@160c0; boundsInParent: Rect(0, 0 - 274, 102); boundsInScreen: Rect(23, 928 - 297, 640); boundsInWindow:
+11-01 13:44:20.864  5525  5525 I AccessibilityNodeInfoDumper: Skipping invisible child: android.view.accessibility.AccessibilityNodeInfo@16c03; boundsInParent: Rect(0, 0 - 274, 102); boundsInScreen: Rect(23, 1038 - 297, 640); boundsInWindow
+11-01 13:44:20.865  5525  5525 I AccessibilityNodeInfoDumper: Skipping invisible child: android.view.accessibility.AccessibilityNodeInfo@17746; boundsInParent: Rect(0, 0 - 274, 102); boundsInScreen: Rect(23, 1148 - 297, 640); boundsInWindow
+11-01 13:44:20.866  5525  5525 I AccessibilityNodeInfoDumper: Skipping invisible child: android.view.accessibility.AccessibilityNodeInfo@18289; boundsInParent: Rect(0, 0 - 274, 102); boundsInScreen: Rect(23, 1258 - 297, 640); boundsInWindow
+11-01 13:44:20.866  5525  5525 I AccessibilityNodeInfoDumper: Skipping invisible child: android.view.accessibility.AccessibilityNodeInfo@18a0b; boundsInParent: Rect(0, 0 - 296, 39); boundsInScreen: Rect(12, 1379 - 308, 640); boundsInWindow:
+11-01 13:44:20.866  5525  5525 I AccessibilityNodeInfoDumper: Skipping invisible child: android.view.accessibility.AccessibilityNodeInfo@1918d; boundsInParent: Rect(0, 0 - 296, 456); boundsInScreen: Rect(12, 1418 - 308, 640); boundsInWindow
+11-01 13:44:20.866  5525  5525 I AccessibilityNodeInfoDumper: Skipping invisible child: android.view.accessibility.AccessibilityNodeInfo@2497e; boundsInParent: Rect(0, 0 - 296, 39); boundsInScreen: Rect(12, 1874 - 308, 640); boundsInWindow:
+11-01 13:44:20.866  5525  5525 I AccessibilityNodeInfoDumper: Skipping invisible child: android.view.accessibility.AccessibilityNodeInfo@25100; boundsInParent: Rect(0, 0 - 296, 350); boundsInScreen: Rect(12, 1913 - 308, 640); boundsInWindow
+11-01 13:44:20.866  5525  5525 I AccessibilityNodeInfoDumper: Skipping invisible child: android.view.accessibility.AccessibilityNodeInfo@2dbe5; boundsInParent: Rect(0, 0 - 296, 39); boundsInScreen: Rect(12, 2263 - 308, 640); boundsInWindow:
+11-01 13:44:20.866  5525  5525 I AccessibilityNodeInfoDumper: Skipping invisible child: android.view.accessibility.AccessibilityNodeInfo@2e367; boundsInParent: Rect(0, 0 - 296, 80); boundsInScreen: Rect(12, 2302 - 308, 640); boundsInWindow:
+11-01 13:44:20.866  5525  5525 I AccessibilityNodeInfoDumper: Skipping invisible child: android.view.accessibility.AccessibilityNodeInfo@30530; boundsInParent: Rect(0, 0 - 296, 39); boundsInScreen: Rect(12, 2382 - 308, 640); boundsInWindow:
+11-01 13:44:20.866  5525  5525 I AccessibilityNodeInfoDumper: Skipping invisible child: android.view.accessibility.AccessibilityNodeInfo@30cb2; boundsInParent: Rect(0, 0 - 296, 309); boundsInScreen: Rect(12, 2421 - 308, 640); boundsInWindow
+11-01 13:44:20.866  5525  5525 I AccessibilityNodeInfoDumper: Skipping invisible child: android.view.accessibility.AccessibilityNodeInfo@36e4c; boundsInParent: Rect(0, 0 - 296, 39); boundsInScreen: Rect(12, 2730 - 308, 640); boundsInWindow:
+11-01 13:44:20.866  5525  5525 I AccessibilityNodeInfoDumper: Skipping invisible child: android.view.accessibility.AccessibilityNodeInfo@375ce; boundsInParent: Rect(0, 0 - 296, 124); boundsInScreen: Rect(12, 2769 - 308, 640); boundsInWindow
+11-01 13:44:20.866  5525  5525 I AccessibilityNodeInfoDumper: Skipping invisible child: android.view.accessibility.AccessibilityNodeInfo@39f19; boundsInParent: Rect(0, 0 - 296, 39); boundsInScreen: Rect(12, 2893 - 308, 640); boundsInWindow:
+11-01 13:44:20.866  5525  5525 I AccessibilityNodeInfoDumper: Skipping invisible child: android.view.accessibility.AccessibilityNodeInfo@3a69b; boundsInParent: Rect(0, 0 - 296, 146); boundsInScreen: Rect(12, 2932 - 308, 640); boundsInWindow
+11-01 13:44:20.867  5525  5525 I AccessibilityNodeInfoDumper: Skipping invisible child: android.view.accessibility.AccessibilityNodeInfo@3e66c; boundsInParent: Rect(0, 0 - 296, 39); boundsInScreen: Rect(12, 3078 - 308, 640); boundsInWindow:
+11-01 13:44:20.867  5525  5525 I AccessibilityNodeInfoDumper: Skipping invisible child: android.view.accessibility.AccessibilityNodeInfo@3edee; boundsInParent: Rect(0, 0 - 296, 127); boundsInScreen: Rect(12, 3117 - 308, 640); boundsInWindow
+11-01 13:44:20.868  4755  4832 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService finished executing. cause:9 result: 1 elapsed_millis: 11 uptime_millis: 11 exec_start_elapsed_seconds: 90
+11-01 13:44:20.873  5525  5525 W AccessibilityNodeInfoDumper: Fetch time: 37ms
+11-01 13:44:20.875   521   897 W WindowMagnificationMgr: requestConnection duplicated request: connect=false, mConnectionState=DISCONNECTED
+11-01 13:44:20.875  1612  1682 I AiAiEcho: Settings changed for uri: content://settings/secure/accessibility_enabled
+11-01 13:44:20.875   521   897 D AccessibilityManagerService: restoreCurrentUserForTestAutomationIfNeededLocked(): ignoring because device doesn't support visible background users
+11-01 13:44:20.876  1612  1894 I AiAiEcho: Predicting[0]: 
+11-01 13:44:20.876  1612  1894 I AiAiEcho: EchoTargets: 
+11-01 13:44:20.876  1612  1894 I AiAiEcho: Filtered by AiAi flag check: 
+11-01 13:44:20.876  1612  1894 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+11-01 13:44:20.876  5525  5525 D AndroidRuntime: Shutting down VM
+11-01 13:44:20.878  1612  1894 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0 (types=[])
+11-01 13:44:20.878  1612  1894 I AiAiEcho: Predicting[0]: 
+11-01 13:44:20.878  1612  1894 I AiAiEcho: EchoTargets: 
+11-01 13:44:20.878  1612  1894 I AiAiEcho: Filtered by AiAi flag check: 
+11-01 13:44:20.878  1612  1894 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+11-01 13:44:20.878  1612  1894 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0 (types=[])
+11-01 13:44:20.880   837   837 W PageIndicator: Total number of pages invalid: 0. Assuming 1 page.
+11-01 13:44:20.881  5525  5541 W app_process: Thread attaching while runtime is shutting down: binder:5525_3
+11-01 13:44:20.881  1775  2182 I A       : NGA enabled in interactor.
+11-01 13:44:20.881  5525  5541 I AndroidRuntime: NOTE: attach of thread 'binder:5525_3' failed
+11-01 13:44:20.881  1775  2182 I A       : Nga state changed to NgaStateDetails{state=ENABLED, isSpecialExperience=false}
+11-01 13:44:20.883  1638  1734 I A       : Initializing all components
+11-01 13:44:20.883  1638  2349 I A       : onIsEnabledChanged, isEnabled: false
+11-01 13:44:20.885  1638  2349 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:20.885  1638  2349 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:20.885  1638  2349 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:20.885  1638  2349 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:20.885  1638  2349 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:20.885  1638  2349 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:20.887  1638  2349 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:20.887  1638  2349 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:20.887  1638  2349 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:20.887  1638  2349 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:20.887  1638  2349 I A       : onOpaVisibilityChanged: false
+11-01 13:44:20.887  1638  2349 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:20.887  1638  2349 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:20.887  1638  2349 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:20.887  1638  2349 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:20.887  1638  2349 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:20.887  1638  2349 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:20.887  1638  1734 I A       : APA or Classic session decision: SessionDecision(sessionVariance=CLASSIC, platformVariance=CLASSIC, justification=CURRENT_PLATFORM_VARIANCE).
+11-01 13:44:20.887  1638  1734 I A       : [Memory] eligibility: StashEligibility{6}
+11-01 13:44:20.889  1638  2349 I A       : Setting session to type: NO_SESSION
+11-01 13:44:20.889  1638  2349 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:20.889  1638  2349 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:20.889  1638  2349 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:20.889  1638  2349 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:20.889  1638  2349 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:20.889  1638  2349 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:20.889  1638  2349 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:20.889  1638  2349 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:20.889  1638  2349 I A       : setNavBarVisible: GestureNavBarVisible{navbarVisible=true}
+11-01 13:44:20.889  1638  2349 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:20.889  1638  2349 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:20.889  1638  2349 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:20.889  1638  2349 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:20.889  1638  2349 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:20.889  1638  2349 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:44:20.890  1638  2349 I A       : onDisabled. Registered: false
+11-01 13:44:20.891  1638  2349 I A       : on opa visibility changed false
+11-01 13:44:20.891  1638  2349 I A       : on opa visibility changed false
+11-01 13:44:20.896  1638  2349 I A       : State changed: IDLE => IDLE by NGA_STATE_CHANGED and N/A with Optional.empty
+11-01 13:44:20.896  1638  2349 I A       : Recognizer choice: (recognizer_type: 1, recognizer_mode: 1, choice_reason: 4)
+11-01 13:44:20.899  1638  2339 I A       : Initialize
+11-01 13:44:20.899  1638  2339 I NgaEntryPointEventSendr: setupConnection
+11-01 13:44:20.900  1638  2349 I A       : onActiveStateChangeEvent: IDLE => IDLE
+11-01 13:44:20.901   521   521 D BatterySaverPolicy: accessibility changed to false, updating policy.
+11-01 13:44:20.903  1775  1775 I A       : Creating pss binder().
+11-01 13:44:20.903  1638  2339 I NgaEntryPointEventSendr: State changed: Disconnected => Connecting
+11-01 13:44:20.904  1638  2339 I A       : stopListening(NGA_PAUSED_UNKNOWN_REASON, NGA_CREATE), idleOverride=NOT_LISTENING
+11-01 13:44:20.907  1638  2339 I NgaEntryPointEventSendr: onServiceConnected
+11-01 13:44:20.908  1775  2723 I A       : Calling beginBinderSession().
+11-01 13:44:20.909  1638  2349 W A       : Missing generator mapping for generator GENERATOR_CONTEXTUAL_SUGGESTIONS
+11-01 13:44:20.909  1638  2349 W A       : Missing generator mapping for generator GENERATOR_FRE_SUGGESTIONS_ON_TIMEOUT
+11-01 13:44:20.909  1638  2349 W A       : Missing generator mapping for generator GENERATOR_FRE_SUGGESTIONS_ON_INVOCATION
+11-01 13:44:20.913  1638  2349 I A       : #onActiveStateChangeEvent, newState: IDLE, previousState: IDLE.
+11-01 13:44:20.916  1638  2349 W A       : Routing took 1 ms
+11-01 13:44:20.922  1638  2349 I A       : Successfully initialized all components
+11-01 13:44:20.924  1775  2723 I A       : beginBinderSession(): calling binder
+11-01 13:44:20.927  1638  2339 I NgaEntryPointEventSendr: State changed: Connecting => Ready
+11-01 13:44:20.930   521   535 W ActivityManager: Unable to start service Intent { cmp=com.google.android.apps.tachyon/.clientapi.ClientApiService } U=0: not found
+11-01 13:44:20.937  1775  2685 W A       : UiCallbackStub-onGenericEvent[ServiceEvent = 241] task was not run. Callback from Service received after client was disposed.
+11-01 13:44:20.938  1775  2685 W A       : UiCallbackStub-onGenericEvent[ServiceEvent = 241] task was not run. Callback from Service received after client was disposed.
+11-01 13:44:20.939  1775  2685 W A       : UiCallbackStub-onGenericEvent[ServiceEvent = 60] task was not run. Callback from Service received after client was disposed.
+11-01 13:44:20.940  1775  2709 I PBSessionCacheImpl: Deleted sessionId[7808326097812567] from persistence.
+11-01 13:44:20.943  1775  2685 W SearchServiceCore: Abort, client detached.
+11-01 13:44:20.951  1638  2339 I NgaEntryPointEventSendr: State changed: Ready => Disconnected (onOpaDisconnected)
+11-01 13:44:21.302   521   535 W ProcessStats: Tracking association SourceState{5628b5d android.process.acore/10085 BFgs #8985} whose proc state 4 is better than process ProcessState{62f6e25 com.google.android.contacts/10154 pkg=com.google.
+11-01 13:44:21.315  1048  1048 D CarrierSvcBindHelper: onPackageModified: com.google.android.contacts
+11-01 13:44:21.315   521   625 I InputReader: Reconfiguring input devices, changes=KEYBOARD_LAYOUTS
+11-01 13:44:21.317  1024  1024 V MediaPlayerList: mPackageChangedBroadcastReceiver: action: android.intent.action.PACKAGE_CHANGED
+11-01 13:44:21.317  1024  1024 V MediaPlayerList: mPackageChangedBroadcastReceiver: action: android.intent.action.PACKAGE_CHANGED
+11-01 13:44:21.319  1048  1048 D CarrierSvcBindHelper: No carrier app for: 0
+11-01 13:44:21.321   839  4480 I PermissionControllerServiceImpl: Updating user sensitive for uid 10154
+11-01 13:44:21.322   837   837 D ControlsListingControllerImpl: ServiceConfig reloaded, count: 0
+11-01 13:44:21.327  1048  1314 D ImsResolver: maybeAddedImsService, packageName: com.google.android.contacts
+11-01 13:44:21.330   837   908 D StylusManager: Stylus InputDevice changed: 13 virtio_input_multi_touch_10
+11-01 13:44:21.333   837   908 D StylusManager: Stylus InputDevice changed: 12 virtio_input_multi_touch_9
+11-01 13:44:21.334   837   908 D StylusManager: Stylus InputDevice changed: 6 virtio_input_multi_touch_3
+11-01 13:44:21.334   837   908 D StylusManager: Stylus InputDevice changed: 9 virtio_input_multi_touch_6
+11-01 13:44:21.334   837   908 D StylusManager: Stylus InputDevice changed: 8 virtio_input_multi_touch_5
+11-01 13:44:21.335   837   908 D StylusManager: Stylus InputDevice changed: 7 virtio_input_multi_touch_4
+11-01 13:44:21.335   837   908 D StylusManager: Stylus InputDevice changed: 10 virtio_input_multi_touch_7
+11-01 13:44:21.336   521   549 E system_server: No package ID 7f found for resource ID 0x7f080107.
+11-01 13:44:21.336   521   549 E system_server: No package ID 7f found for resource ID 0x7f150560.
+11-01 13:44:21.337   837   908 D StylusManager: Stylus InputDevice changed: 14 virtio_input_multi_touch_11
+11-01 13:44:21.337   837   908 D StylusManager: Stylus InputDevice changed: 5 virtio_input_multi_touch_2
+11-01 13:44:21.338   837   908 D StylusManager: Stylus InputDevice changed: 11 virtio_input_multi_touch_8
+11-01 13:44:21.338   837   908 D StylusManager: Stylus InputDevice changed: 4 virtio_input_multi_touch_1
+11-01 13:44:21.340  1612  1612 I AiAiEcho: AppFetcherImpl onPackageChanged com.google.android.contacts.
+11-01 13:44:21.340  1612  3913 I AiAiEcho: AppIndexer Package:[com.google.android.contacts] UserProfile:[0] Enabled:[true].
+11-01 13:44:21.340  1612  3913 I AiAiEcho: AppFetcherImplV2 updateApps package:[com.google.android.contacts], userId:[0], reason:[package is updated.].
+11-01 13:44:21.789  5420  5448 D EGL_emulation: app_time_stats: avg=33.94ms min=29.68ms max=44.73ms count=30
+11-01 13:44:21.803  5548  5548 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+11-01 13:44:21.804  5548  5548 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-01 13:44:21.805   400   814 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=5548
+11-01 13:44:21.805   400   814 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (185 us)
+11-01 13:44:21.809  4133  4245 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of bdxy@646be73
+11-01 13:44:21.814  4755  4956 I Fitness : OnPackageChangedOperation got intent: Intent { act=android.intent.action.PACKAGE_CHANGED dat=package: flg=0x45000010 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.PersistentIntentO
+11-01 13:44:21.830   136   136 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-01 13:44:21.830  5548  5549 I Gralloc4: mapper 4.x is not supported
+11-01 13:44:22.083     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+11-01 13:44:21.839  4755  5552 I Fitness : FitCleanupIntentOperation received Intent android.intent.action.PACKAGE_CHANGED [CONTEXT service_id=17 ]
+11-01 13:44:21.840  4755  4807 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-01 13:44:21.842  4755  4807 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-01 13:44:21.888  4745  4835 I Icing   : Indexing com.google.android.gms-apps from com.google.android.gms
+11-01 13:44:21.903  4745  4835 I Icing   : Indexing done com.google.android.gms-apps
+11-01 13:44:21.907  4745  4835 I Icing   : Indexing com.google.android.gms-internal.3p:MobileApplication from com.google.android.gms
+11-01 13:44:21.910  4745  4835 I Icing   : Indexing done com.google.android.gms-internal.3p:MobileApplication

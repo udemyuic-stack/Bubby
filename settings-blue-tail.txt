@@ -1,0 +1,150 @@
+11-01 13:41:44.599  1677  2074 I A       : Successfully initialized all components
+11-01 13:41:44.609  1440  4988 W Icing   : No valid account for uploading user actions
+11-01 13:41:44.624  2941  2941 I PhenotypeBackgroundRecv: Skipping com.google.android.gms.icing.mdd#com.google.android.tts which doesn't use ProcessStable flags.
+11-01 13:41:44.628  2941  3216 I PhenotypeBackgroundRecv: Successfully updated snapshot for com.google.android.libraries.consentverifier#com.google.android.tts
+11-01 13:41:44.633  2941  3098 I PhenotypeBackgroundRecv: Successfully updated snapshot for com.google.android.libraries.performance.primes#com.google.android.tts
+11-01 13:41:44.636  2941  2941 I PhenotypeBackgroundRecv: Skipping com.google.android.gms.icing.mdd#com.google.android.tts which doesn't use ProcessStable flags.
+11-01 13:41:44.680   336   373 I netd    : tetherGetStats() -> {[]} <0.37ms>
+11-01 13:41:44.694   336   373 I netd    : bandwidthSetGlobalAlert(2097152) <0.10ms>
+11-01 13:41:44.697   336   373 I netd    : bandwidthRemoveInterfaceQuota(eth0) <0.78ms>
+11-01 13:41:44.698   336   373 I netd    : bandwidthSetInterfaceQuota(eth0, 9223372036854775807) <0.50ms>
+11-01 13:41:44.714  1440  4988 I Icing   : Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0
+11-01 13:41:44.742  4124  4218 I PhenotypeBackgroundRecv: Successfully updated snapshot for com.google.android.libraries.consentverifier#com.google.android.apps.messaging
+11-01 13:41:44.747  4124  4211 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of com.google.android.apps.messaging.shared.experiments.receiver.BuglePhenotypeBroadcastReceiver@9fba8d0
+11-01 13:41:44.749  4124  4124 I PhenotypeBackgroundRecv: Skipping com.google.android.apps.messaging.auto#com.google.android.apps.messaging which doesn't use ProcessStable flags.
+11-01 13:41:44.763  1440  4988 W Icing   : No valid account for uploading user actions
+11-01 13:41:44.794  1385  3351 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService started execution. cause:5 exec_start_elapsed_seconds: 99 [CONTEXT service_id=218 ]
+11-01 13:41:44.809  4803  4820 D EGL_emulation: app_time_stats: avg=47.95ms min=30.01ms max=71.29ms count=21
+11-01 13:41:44.813  1440  4988 I Icing   : Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0
+11-01 13:41:44.828  1385  1983 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService finished executing. cause:5 result: 1 elapsed_millis: 135 uptime_millis: 135 exec_start_elapsed_seconds: 
+11-01 13:41:44.916  1677  1677 V ClearcutMetricXmitter: Transmission is done.
+11-01 13:41:45.041  1837  2656 I BgTaskExecutorImpl: Starting EXCLUSIVE background task FETCH_CONFIGS_FROM_PHENOTYPE.
+11-01 13:41:45.043  1837  2468 W SearchServiceCore: Abort, client detached.
+11-01 13:41:45.054  1385  1391 I .gms.persistent: Background concurrent copying GC freed 563680(20MB) AllocSpace objects, 6(272KB) LOS objects, 49% free, 16MB/33MB, paused 54us,21us total 740.371ms
+11-01 13:41:45.100  2755  2978 I PhenotypeBackgroundRecv: Successfully updated snapshot for com.google.android.libraries.notifications.platform#com.google.android.dialer
+11-01 13:41:45.141  1385  4436 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-01 13:41:45.143  1385  4436 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-01 13:41:45.144  1385  4436 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:41:45.144  1385  4436 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-01 13:41:45.146  1385  4436 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-01 13:41:45.146  1385  4436 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-01 13:41:45.147  1385  4436 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:41:45.148  1385  4436 I NamespaceManager: Package 1 name not found! Using module version.
+11-01 13:41:45.200  5038  5038 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+11-01 13:41:45.201  5038  5038 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-01 13:41:45.205   400  1080 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=5038
+11-01 13:41:45.205   400  1080 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (221 us)
+11-01 13:41:45.217  1677  1987 W TimedProcessReaper: Scheduling killing of process to refresh configuration
+11-01 13:41:45.217  1677  1987 W TimedProcessReaper: Scheduling killing of process to refresh configuration
+11-01 13:41:45.418     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+11-01 13:41:45.223   135   135 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-01 13:41:45.223  5038  5041 I Gralloc4: mapper 4.x is not supported
+11-01 13:41:45.265  1677  1982 W TimedProcessReaper: Scheduling killing of process to refresh configuration
+11-01 13:41:45.283  1837  2604 W TimedProcessReaper: Scheduling killing of process to refresh configuration
+11-01 13:41:45.285  1677  1982 W TimedProcessReaper: Scheduling killing of process to refresh configuration
+11-01 13:41:45.304  1385  3275 W BpBinder: Large outgoing transaction of 329592 bytes, interface descriptor , code 4
+11-01 13:41:45.319  4124  4494 W TimedProcessReaper: Scheduling killing of process to refresh configuration
+11-01 13:41:45.320   520   617 I RescueParty: Starting to observe: [android], updated namespace: alarm_manager
+11-01 13:41:45.320   520   546 I PackageWatchdog: Syncing state, reason: observing new packages
+11-01 13:41:45.322   520   546 D PackageWatchdog: rescue-party-observer added the following packages to monitor [android]
+11-01 13:41:45.322   520   546 I PackageWatchdog: Syncing state, reason: updated observers
+11-01 13:41:45.322   520   546 I PackageWatchdog: Not pruning observers, elapsed time: 0ms
+11-01 13:41:45.322   520   546 I PackageWatchdog: Saving observer state to file
+11-01 13:41:45.382  1385  4436 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-01 13:41:45.383  1385  4436 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-01 13:41:45.383  1385  4436 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:41:45.388  1385  4436 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-01 13:41:45.389  1385  4436 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-01 13:41:45.392  1385  4436 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-01 13:41:45.392  1385  4436 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:41:45.392  1385  4436 I NamespaceManager: Package 1 name not found! Using module version.
+11-01 13:41:45.398  1837  2297 W A       : Can't format flag AndroidGsaVelourJars__velour_birthdaydoodle_jar__name to integer.
+11-01 13:41:45.399  1535  1879 I SP      : <==== Finishing job {m:b:u:l, fg}, 6746 ms. elapsed since start
+11-01 13:41:45.400  1535  1879 I SuperpacksForegroundTaskService: SuperpacksForegroundTaskService.finishJob():54 SuperpacksForegroundTaskService.finishJob()
+11-01 13:41:45.405   520   604 W system_server: Long monitor contention with owner binder:520_C (1735) at int com.android.server.job.JobSchedulerService.getUidProcState(int)(JobSchedulerService.java:2305) waiters=0 in void com.android.serve
+11-01 13:41:45.407  2755  3071 W TimedProcessReaper: Scheduling killing of process to refresh configuration
+11-01 13:41:45.415  1837  2297 W A       : Can't format flag AndroidGsaVelourJars__velour_call_jar__name to integer.
+11-01 13:41:45.415  1837  2297 W A       : Can't format flag AndroidGsaVelourJars__velour_canvas_jar__name to integer.
+11-01 13:41:45.415  1837  2297 W A       : Can't format flag AndroidGsaVelourJars__velour_chkpkg_jar__name to integer.
+11-01 13:41:45.415  1837  2297 W A       : Can't format flag AndroidGsaVelourJars__velour_crashtest_jar__name to integer.
+11-01 13:41:45.416  1837  2297 W A       : Can't format flag AndroidGsaVelourJars__velour_dining_jar__name to integer.
+11-01 13:41:45.416  1837  2297 W A       : Can't format flag AndroidGsaVelourJars__velour_doodle_notifications_jar__name to integer.
+11-01 13:41:45.416  1837  2297 W A       : Can't format flag AndroidGsaVelourJars__velour_imageviewer_jar__name to integer.
+11-01 13:41:45.416  1837  2297 W A       : Can't format flag AndroidGsaVelourJars__velour_ipa_jar__name to integer.
+11-01 13:41:45.416  1837  2297 W A       : Can't format flag AndroidGsaVelourJars__velour_jslocation_jar__name to integer.
+11-01 13:41:45.416  1837  2297 W A       : Can't format flag AndroidGsaVelourJars__velour_localintent_jar__name to integer.
+11-01 13:41:45.416  1837  2297 W A       : Can't format flag AndroidGsaVelourJars__velour_messaging_jar__name to integer.
+11-01 13:41:45.416  1837  2297 W A       : Can't format flag AndroidGsaVelourJars__velour_nativesrp_activity_jar__name to integer.
+11-01 13:41:45.416  1837  2297 W A       : Can't format flag AndroidGsaVelourJars__velour_nativesrp_presenter_jar__name to integer.
+11-01 13:41:45.416  1837  2297 W A       : Can't format flag AndroidGsaVelourJars__velour_nowcontent_jar__name to integer.
+11-01 13:41:45.416  1837  2297 W A       : Can't format flag AndroidGsaVelourJars__velour_recents_activity_jar__name to integer.
+11-01 13:41:45.416  1837  2297 W A       : Can't format flag AndroidGsaVelourJars__velour_save_jar__name to integer.
+11-01 13:41:45.416  1837  2297 W A       : Can't format flag AndroidGsaVelourJars__velour_searchresults_activity_jar__name to integer.
+11-01 13:41:45.416  1837  2297 W A       : Can't format flag AndroidGsaVelourJars__velour_test_jar__name to integer.
+11-01 13:41:45.416   520   520 I PackageWatchdog: Syncing health check requests for packages: {}
+11-01 13:41:45.416  1837  2297 W A       : Can't format flag AndroidGsaVelourJars__velour_weather_jar__name to integer.
+11-01 13:41:45.416   520   520 I ExplicitHealthCheckController: Service not ready to get health check supported packages. Binding...
+11-01 13:41:45.416  1837  2297 W A       : Can't format flag bindle_flags__bloblobber_blob to integer.
+11-01 13:41:45.416  1837  2297 W A       : Can't format flag bindle_flags__velour_jar to integer.
+11-01 13:41:45.439  1837  2270 I A       : Refusing EXCLUSIVE task 24, it is already pending. Try again in 312 seconds.
+11-01 13:41:45.443  1837  2278 I FedAssExpListener: Fed-ass not supported for signed out users.
+11-01 13:41:45.443  1837  2278 I FedAssExpListener: Successfully processed experiments changed.
+11-01 13:41:45.444  1837  2278 I A       : NGA enabled in interactor.
+11-01 13:41:45.445  1837  2270 I OpaEligibilityChecker: send OpaEligibilityChange broadcast to CommonBroadcastReceiver
+11-01 13:41:45.451  2755  2964 I PhenotypeBackgroundRecv: Successfully updated snapshot for com.google.android.libraries.consentverifier#com.google.android.dialer
+11-01 13:41:45.471   520  1735 W JobScheduler: Job didn't exist in JobStore: 546417 #u0a132/-43 com.google.android.googlequicksearchbox/com.google.android.apps.gsa.tasks.BackgroundTasksJobService
+11-01 13:41:45.472  4124  4211 I BuglePhenotype: onReceive for bugle package [CONTEXT package_name="com.google.android.apps.messaging#com.google.android.apps.messaging" ]
+11-01 13:41:45.483   520   520 I ExplicitHealthCheckController: Explicit health check service is bound
+11-01 13:41:45.485  4124  4211 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of com.google.android.apps.messaging.shared.experiments.receiver.BuglePhenotypeBroadcastReceiver@ec5085
+11-01 13:41:45.487  1019  1287 D BtGatt.ScanManager: uid 10131 isForeground true scanMode -1
+11-01 13:41:45.487  1019  1287 D BtGatt.ScanManager: uid 10131 isForeground true scanMode -1
+11-01 13:41:45.488  1535  1879 I SP      : Download stopped: delight:main_en_840_2022102600_1, succeeded foreground, size: 20290852
+11-01 13:41:45.490   520   520 I ExplicitHealthCheckController: Explicit health check service is connected ComponentInfo{com.google.android.ext.services/android.ext.services.watchdog.ExplicitHealthCheckServiceImpl}
+11-01 13:41:45.490   520   520 I ExplicitHealthCheckController: Service initialized, syncing requests
+11-01 13:41:45.490   520   520 I PackageWatchdog: Syncing health check requests for packages: {}
+11-01 13:41:45.490   520   520 D ExplicitHealthCheckController: Getting health check supported packages
+11-01 13:41:45.502   520  1658 W JobScheduler: Job didn't exist in JobStore: e503355 #u0a132/-43 com.google.android.googlequicksearchbox/com.google.android.apps.gsa.tasks.BackgroundTasksJobService
+11-01 13:41:45.520   520  2380 I ExplicitHealthCheckController: Explicit health check supported packages [PackageConfig{com.google.android.networkstack, 86400000}]
+11-01 13:41:45.520   520  2380 D PackageWatchdog: Received supported packages [PackageConfig{com.google.android.networkstack, 86400000}]
+11-01 13:41:45.533  1837  2270 W CorpusConfigHelper: Invalid input from icing corpus JSON flag.
+11-01 13:41:45.533  1837  2270 W CorpusConfigHelper: android.util.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 123 column 2
+11-01 13:41:45.533  1837  2270 W CorpusConfigHelper: 	at android.util.JsonReader.syntaxError(JsonReader.java:1162)
+11-01 13:41:45.533  1837  2270 W CorpusConfigHelper: 	at android.util.JsonReader.checkLenient(JsonReader.java:840)
+11-01 13:41:45.533  1837  2270 W CorpusConfigHelper: 	at android.util.JsonReader.nextInArray(JsonReader.java:615)
+11-01 13:41:45.533  1837  2270 W CorpusConfigHelper: 	at android.util.JsonReader.peek(JsonReader.java:345)
+11-01 13:41:45.533  1837  2270 W CorpusConfigHelper: 	at android.util.JsonReader.hasNext(JsonReader.java:321)
+11-01 13:41:45.533  1837  2270 W CorpusConfigHelper: 	at com.google.android.apps.gsa.searchbox.c.b.b.k.c(PG:7)
+11-01 13:41:45.533  1837  2270 W CorpusConfigHelper: 	at com.google.android.apps.gsa.searchbox.c.b.b.j.a(Unknown Source:2)
+11-01 13:41:45.533  1837  2270 W CorpusConfigHelper: 	at com.google.android.apps.gsa.search.core.i.r.run(PG:5)
+11-01 13:41:45.533  1837  2270 W CorpusConfigHelper: 	at com.google.android.libraries.gsa.k.a.h.run(PG:2)
+11-01 13:41:45.533  1837  2270 W CorpusConfigHelper: 	at com.google.android.apps.gsa.shared.util.c.a.cf.b(PG:1)
+11-01 13:41:45.533  1837  2270 W CorpusConfigHelper: 	at com.google.android.apps.gsa.shared.util.c.a.ci.run(PG:1)
+11-01 13:41:45.533  1837  2270 W CorpusConfigHelper: 	at com.google.android.libraries.i.ae.run(PG:1)
+11-01 13:41:45.533  1837  2270 W CorpusConfigHelper: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-01 13:41:45.533  1837  2270 W CorpusConfigHelper: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-01 13:41:45.533  1837  2270 W CorpusConfigHelper: 	at com.google.android.libraries.i.k.run(PG:2)
+11-01 13:41:45.533  1837  2270 W CorpusConfigHelper: 	at com.google.android.libraries.i.p.run(PG:4)
+11-01 13:41:45.533  1837  2270 W CorpusConfigHelper: 	at java.lang.Thread.run(Thread.java:1012)
+11-01 13:41:45.536  1385  3275 W BpBinder: Large outgoing transaction of 388348 bytes, interface descriptor , code 4
+11-01 13:41:45.543   520  2380 D ExplicitHealthCheckController: Getting health check requested packages
+11-01 13:41:45.544   520  1735 I ExplicitHealthCheckController: Explicit health check requested packages []
+11-01 13:41:45.545   520  1735 I ExplicitHealthCheckController: No more health check requests, unbinding...
+11-01 13:41:45.546  1837  2577 W TimedProcessReaper: Scheduling killing of process to refresh configuration
+11-01 13:41:45.548  4124  4124 I PhenotypeBackgroundRecv: Skipping com.google.android.apps.messaging#com.google.android.apps.messaging which doesn't use ProcessStable flags.
+11-01 13:41:45.549  1535  1879 I SP      : Scheduling job with delay of 0s for {m:b:u:l, bg}, 1 candidates
+11-01 13:41:45.556  2755  2755 I PhenotypeBackgroundRecv: Skipping com.google.android.dialer which doesn't use ProcessStable flags.
+11-01 13:41:45.581  1385  4436 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-01 13:41:45.581  1385  4436 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-01 13:41:45.582  1385  4436 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:41:45.582  1385  4436 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-01 13:41:45.582  1385  4436 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-01 13:41:45.583  1385  4436 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-01 13:41:45.583  1385  4436 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:41:45.583  1385  4436 I NamespaceManager: Package 1 name not found! Using module version.
+11-01 13:41:45.586   520  1735 I ExplicitHealthCheckController: Explicit health check service is unbound
+11-01 13:41:45.589  1440  3653 I Icing   : IndexChimeraService.getServiceInterface callingPackage=com.google.android.googlequicksearchbox componentName=agsa_icing_connection serviceId=33
+11-01 13:41:45.591  1440  3642 I Icing   : IndexChimeraService.getServiceInterface callingPackage=com.google.android.googlequicksearchbox componentName=agsa_icing_connection serviceId=32
+11-01 13:41:45.602  1385  4436 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-01 13:41:45.611  1385  4436 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-01 13:41:45.621  1385  4436 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:41:45.625  1837  2468 W SearchServiceCore: Abort, client detached.

@@ -1,0 +1,150 @@
+11-01 13:47:21.057  1023  4883 I bt_stack: [INFO:le_scanning_manager.cc(162)] Unregister in shim layer, scanner_id:3
+11-01 13:47:21.058  5174  5256 I Nearby  : [MBleClient] M hardware scan: 1 clients, scanMode= OPPORTUNISTIC, filters size = 5 [CONTEXT service_id=49 ]
+11-01 13:47:21.058  5174  5256 D BluetoothAdapter: isLeEnabled(): ON
+11-01 13:47:21.060  1023  4883 D BtGatt.GattService: registerScanner() - UUID=43834e7a-c318-4b94-a036-b309b3522240
+11-01 13:47:21.060  1023  4883 I bt_stack: [INFO:le_scanning_manager.cc(155)] RegisterScanner in shim layer
+11-01 13:47:21.061  1023  1277 D BtGatt.GattService: onScannerRegistered() - UUID=43834e7a-c318-4b94-a036-b309b3522240, scannerId=3, status=0
+11-01 13:47:21.061  5174  5497 D BluetoothLeScanner: onScannerRegistered() - status=0 scannerId=3 mScannerId=0
+11-01 13:47:21.061  1023  4883 D BtGatt.GattService: start scan with filters
+11-01 13:47:21.079  1051  1051 D CarrierSvcBindHelper: onPackageModified: com.google.android.contacts
+11-01 13:47:21.080  1051  1051 D CarrierSvcBindHelper: No carrier app for: 0
+11-01 13:47:21.081  1023  1341 I bt_stack: [INFO:le_scanning_manager.cc(168)] Scan in shim layer stopped
+11-01 13:47:21.081  1023  1200 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_address_manager.cc:193 unregister_client: Client unregistered
+11-01 13:47:21.081  1023  1200 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_address_manager.cc:197 unregister_client: Cancelled address rotation alarm
+11-01 13:47:21.081  1023  1341 D BtGatt.ScanManager: Start gattClientScanNative with old scanMode 2 new scanMode 1 ( in MS: 730 / 183, in scan unit: 1168 / 292 ) [ScanClient scanModeApp 1 scanModeUsed 1 [appScanStats com.google.uid.shared:1
+11-01 13:47:21.081  1023  1341 I bt_stack: [INFO:le_scanning_manager.cc(346)] SetScanParameters in shim layer
+11-01 13:47:21.081  1023  1341 I bt_stack: [INFO:le_scanning_manager.cc(168)] Scan in shim layer started
+11-01 13:47:21.083  1023  4883 D BtGatt.GattService: enforcePrivilegedPermissionIfNeeded([BluetoothLeScanFilter [mDeviceName=null, mDeviceAddress=null, mUuid=null, mUuidMask=null, mServiceSolicitationUuid=null, mServiceSolicitationUuidMask=
+11-01 13:47:21.084  1023  1200 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_scanning_manager.cc:588 stop_scan: Scanning already stopped, return!
+11-01 13:47:21.084  1023  1200 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_address_manager.cc:175 register_client: Scheduled address rotation for first client registered
+11-01 13:47:21.084  1023  1200 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_address_manager.cc:178 register_client: Client registered
+11-01 13:47:21.086  1023  1277 D BtGatt.GattService: onScanParamSetupCompleted : 0
+11-01 13:47:21.086  1023  4883 D BtGatt.ScanManager: startScan()  [ScanClient scanModeApp -1 scanModeUsed -1 [appScanStats com.google.uid.shared:10132]]
+11-01 13:47:21.087  1023  4883 D ActivityAttributionService: notifyActivityAttributionInfo UID=1002 packageName=com.google.android.bluetooth deviceAddress=no_active_device_address
+11-01 13:47:21.088  1023  4883 I bt_btif : packages/modules/Bluetooth/system/btif/src/bluetooth.cc:829 get_profile_interface: get_profile_interface: id = activity_attribution
+11-01 13:47:21.089  1023  1341 D BtGatt.ScanManager: handling starting scan
+11-01 13:47:21.089  1023  1023 V MediaPlayerList: mPackageChangedBroadcastReceiver: action: android.intent.action.PACKAGE_CHANGED
+11-01 13:47:21.089  1023  1023 V MediaPlayerList: mPackageChangedBroadcastReceiver: action: android.intent.action.PACKAGE_CHANGED
+11-01 13:47:21.092  1051  1353 D ImsResolver: maybeAddedImsService, packageName: com.google.android.contacts
+11-01 13:47:21.094   850  4431 I PermissionControllerServiceImpl: Updating user sensitive for uid 10154
+11-01 13:47:21.097   523   607 D ActivityManager: sync unfroze 1739 com.google.android.apps.youtube.music for 6
+11-01 13:47:21.113   523   625 I InputReader: Reconfiguring input devices, changes=KEYBOARD_LAYOUTS
+11-01 13:47:21.118   838   838 D ControlsListingControllerImpl: ServiceConfig reloaded, count: 0
+11-01 13:47:21.131   838   884 D StylusManager: Stylus InputDevice changed: 14 virtio_input_multi_touch_11
+11-01 13:47:21.136   838   884 D StylusManager: Stylus InputDevice changed: 12 virtio_input_multi_touch_9
+11-01 13:47:21.137   523  2739 D ConnectivityService: requestNetwork for uid/pid:10156/1739 activeRequest: null callbackRequest: 143 [NetworkRequest [ REQUEST id=144, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 1015
+11-01 13:47:21.139   523   766 D ConnectivityService: NetReassign [144 : null → 101] [c 0] [a 0] [i 1]
+11-01 13:47:21.140   523   759 D WifiNetworkFactory: got request NetworkRequest [ REQUEST id=144, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10156 RequestorUid: 10156 RequestorPkg: com.google.android.apps.youtube.m
+11-01 13:47:21.141   523   759 D UntrustedWifiNetworkFactory: got request NetworkRequest [ REQUEST id=144, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10156 RequestorUid: 10156 RequestorPkg: com.google.android.apps.
+11-01 13:47:21.141   523   759 D OemPaidWifiNetworkFactory: got request NetworkRequest [ REQUEST id=144, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10156 RequestorUid: 10156 RequestorPkg: com.google.android.apps.yo
+11-01 13:47:21.141   523   759 D MultiInternetWifiNetworkFactory: got request NetworkRequest [ REQUEST id=144, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10156 RequestorUid: 10156 RequestorPkg: com.google.android.a
+11-01 13:47:21.144   838   884 D StylusManager: Stylus InputDevice changed: 11 virtio_input_multi_touch_8
+11-01 13:47:21.145   523   551 E system_server: No package ID 7f found for resource ID 0x7f080107.
+11-01 13:47:21.145   523   551 E system_server: No package ID 7f found for resource ID 0x7f150560.
+11-01 13:47:21.152   838   884 D StylusManager: Stylus InputDevice changed: 4 virtio_input_multi_touch_1
+11-01 13:47:21.153   838   884 D StylusManager: Stylus InputDevice changed: 7 virtio_input_multi_touch_4
+11-01 13:47:21.155   838   884 D StylusManager: Stylus InputDevice changed: 6 virtio_input_multi_touch_3
+11-01 13:47:21.156   838   884 D StylusManager: Stylus InputDevice changed: 13 virtio_input_multi_touch_10
+11-01 13:47:21.156   838   884 D StylusManager: Stylus InputDevice changed: 9 virtio_input_multi_touch_6
+11-01 13:47:21.156   838   884 D StylusManager: Stylus InputDevice changed: 8 virtio_input_multi_touch_5
+11-01 13:47:21.160   838   884 D StylusManager: Stylus InputDevice changed: 5 virtio_input_multi_touch_2
+11-01 13:47:21.160   838   884 D StylusManager: Stylus InputDevice changed: 10 virtio_input_multi_touch_7
+11-01 13:47:21.171  1715  1715 I AiAiEcho: AppFetcherImpl onPackageChanged com.google.android.contacts.
+11-01 13:47:21.173  1715  2825 I AiAiEcho: AppIndexer Package:[com.google.android.contacts] UserProfile:[0] Enabled:[true].
+11-01 13:47:21.173  1715  2825 I AiAiEcho: AppFetcherImplV2 updateApps package:[com.google.android.contacts], userId:[0], reason:[package is updated.].
+11-01 13:47:21.272  1739  2526 W YouTubeMusic: Invalid playback type; streaming data is not playable
+11-01 13:47:21.277  1739  1739 E Widget.RecentlyPlayed: Filling bundle but recently played items are EMPTY.
+11-01 13:47:21.312  5094  5094 I com.example.buddy: Perf: native scene 25 fps
+11-01 13:47:21.550  5293  5435 I Icing   : Storage manager: low false usage 1.58MB avail 4.87GB capacity 5.80GB
+11-01 13:47:21.570  5094  5110 D EGL_emulation: app_time_stats: avg=16.72ms min=2.60ms max=37.62ms count=52
+11-01 13:47:21.574  5293  5347 I Icing   : IndexChimeraService.getServiceInterface callingPackage=com.google.android.gms componentName=ContactsIndexer serviceId=33
+11-01 13:47:21.578  4203  4342 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of bdxy@f75473d
+11-01 13:47:21.606  5174  5286 I Fitness : FitCleanupIntentOperation received Intent android.intent.action.PACKAGE_CHANGED [CONTEXT service_id=17 ]
+11-01 13:47:21.610  5293  5368 I Icing   : Using regular flags by method 2
+11-01 13:47:21.615  5293  5417 I Icing   : IndexChimeraService.getServiceInterface callingPackage=com.google.android.gms componentName=AppsCorpus serviceId=36
+11-01 13:47:21.620  5293  5435 I native  : I0000 00:00:1793540841.620372    5435 permission-checker.cc:82] Creating PermissionChecker based on ACL with config_version 1 having 10 permissions defined.
+11-01 13:47:21.620  5174  5510 I Fitness : OnPackageChangedOperation got intent: Intent { act=android.intent.action.PACKAGE_CHANGED dat=package: flg=0x45000010 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.PersistentIntentO
+11-01 13:47:21.640  5293  5369 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-01 13:47:21.641  5293  5369 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-01 13:47:21.642  5293  5369 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:47:21.643  5293  5369 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-01 13:47:21.644  5293  5369 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-01 13:47:21.645  5293  5369 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-01 13:47:21.646  5293  5369 I NamespaceManager: Package 1 name not found! Using module version.
+11-01 13:47:21.646  5293  5369 I NamespaceManager: Package rkpd name not found! Using module version.
+11-01 13:47:21.649  5293  5369 I NamespaceManager: Package android.companion name not found! Using module version.
+11-01 13:47:21.649  5293  5369 I NamespaceManager: Package com.google.android.aicore name not found! Using module version.
+11-01 13:47:21.650  5293  5369 I NamespaceManager: Package com.google.android.audioproxy name not found! Using module version.
+11-01 13:47:21.650  5293  5369 I NamespaceManager: Package com.google.android.apps.pixel.psi name not found! Using module version.
+11-01 13:47:21.651  5293  5369 I NamespaceManager: Package com.google.android.apps.safetycore name not found! Using module version.
+11-01 13:47:21.651  5293  5369 I NamespaceManager: Package com.google.android.crashrecovery name not found! Using module version.
+11-01 13:47:21.651  5293  5369 I NamespaceManager: Package com.google.android.profiling name not found! Using module version.
+11-01 13:47:21.652  5293  5369 I NamespaceManager: Package com.google.android.bt name not found! Using module version.
+11-01 13:47:21.652  5293  5369 I NamespaceManager: Package com.google.android.nfcservices name not found! Using module version.
+11-01 13:47:21.653  5293  5369 I NamespaceManager: Package com.google.android.webapp name not found! Using module version.
+11-01 13:47:21.656  5293  5369 I NamespaceManager: Package com.google.android.telephonycore name not found! Using module version.
+11-01 13:47:21.657  5293  5369 I NamespaceManager: Package com.google.android.uprobestats name not found! Using module version.
+11-01 13:47:21.661  5293  5435 W native  : W0000 00:00:1793540841.661919    5435 words-map.cc:36] INVALID_ARGUMENT: Empty URI
+11-01 13:47:21.664  5293  5435 W native  : W0000 00:00:1793540841.664887    5435 words-map.cc:40] WordsMap was not properly initialized
+11-01 13:47:21.673  5293  5399 I GmscoreIpa: Using regular flags by method 2 [CONTEXT service_id=255 ]
+11-01 13:47:21.704  5174  5288 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-01 13:47:21.715  5174  5288 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-01 13:47:21.765  5293  5337 I Icing   : IndexChimeraService.getServiceInterface callingPackage=com.google.android.gms componentName=AppsCorpus serviceId=32
+11-01 13:47:21.784  5293  5300 I gle.android.gms: Background concurrent copying GC freed 708630(29MB) AllocSpace objects, 275(10MB) LOS objects, 49% free, 8979KB/17MB, paused 24us,16us total 183.220ms
+11-01 13:47:21.785  5174  5174 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.icing.LIGHTWEIGHT_INDEX_SERVICE dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+11-01 13:47:21.786  5174  5174 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.icing.LIGHTWEIGHT_INDEX_SERVICE dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+11-01 13:47:21.803  5293  5293 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.feedback.internal.IFeedbackService dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsBoundBrokerService }
+11-01 13:47:21.803  5293  5293 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.feedback.internal.IFeedbackService dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsBoundBrokerService }
+11-01 13:47:21.829  5293  5435 W Icing   : Package com.google.android.googlequicksearchbox targets Android P and isn't allowed to use AppDataSearch indexing API
+11-01 13:47:21.837  5293  5435 W Icing   : Package com.google.android.gm targets Android P and isn't allowed to use AppDataSearch indexing API
+11-01 13:47:21.843  5293  5435 I Icing   : updateResources: need to parse arkh{com.google.android.gms}
+11-01 13:47:21.967  5293  5435 I Icing   : Internal init done: storage state 0
+11-01 13:47:21.995  5293  5417 I Icing   : IndexChimeraService.getServiceInterface callingPackage=com.google.android.gms componentName=null serviceId=30
+11-01 13:47:21.996  5293  5435 I Icing   : Post-init done
+11-01 13:47:21.999  5293  5435 I Icing   : Indexing com.google.android.gms-internal.3p:MobileApplication from com.google.android.gms
+11-01 13:47:22.032  5293  5417 I Icing   : Query from package: com.google.android.gms, component: AppsCorpus, restrict package: com.google.android.gms, start: 0, num: 100
+11-01 13:47:22.036  5293  5337 I Icing   : IndexChimeraService.getServiceInterface callingPackage=com.google.android.gms componentName=null serviceId=36
+11-01 13:47:22.060  5293  5435 I Icing   : Indexing done com.google.android.gms-internal.3p:MobileApplication
+11-01 13:47:22.067  5293  5374 W gle.android.gms: Long monitor contention with owner [com.google.android.gms.chimera.container.intentoperation.GmsIntentOperationChimeraService-Executor] processing com.google.android.gms.icing.proxy.UpdateIc
+11-01 13:47:22.089  5293  5435 I Icing   : Usage reports ok 1, Failed Usage reports 0, indexed 0, rejected 0
+11-01 13:47:22.107  5293  5435 I Icing   : Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0
+11-01 13:47:22.110  5293  5435 I Icing   : Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0
+11-01 13:47:22.115  5293  5435 I Icing   : Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0
+11-01 13:47:22.159  5293  5435 I Icing   : Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0
+11-01 13:47:22.163  5293  5435 I Icing   : Indexing com.google.android.gms-internal.3p:MobileApplication from com.google.android.gms
+11-01 13:47:22.166  5293  5435 I Icing   : Indexing done com.google.android.gms-internal.3p:MobileApplication
+11-01 13:47:22.175  5293  5435 I Icing   : Indexing com.google.android.gms-apps from com.google.android.gms
+11-01 13:47:22.203  5293  5435 I Icing   : Indexing done com.google.android.gms-apps
+11-01 13:47:22.205  5293  5435 I Icing   : Indexing com.google.android.gms-apps from com.google.android.gms
+11-01 13:47:22.206  5293  5435 I Icing   : Indexing done com.google.android.gms-apps
+11-01 13:47:22.358   337   367 I netd    : setProcSysNet(4, 2, wlan0, retrans_time_ms, 750) <0.12ms>
+11-01 13:47:22.358   337   367 I netd    : setProcSysNet(4, 2, wlan0, ucast_solicit, 10) <0.03ms>
+11-01 13:47:22.358   337   367 I netd    : setProcSysNet(6, 2, wlan0, retrans_time_ms, 750) <0.04ms>
+11-01 13:47:22.358   337   367 I netd    : setProcSysNet(6, 2, wlan0, ucast_solicit, 10) <0.01ms>
+11-01 13:47:22.532   523   614 D ActivityManager: freezing 2743 com.android.chrome
+11-01 13:47:22.588  5094  5110 D EGL_emulation: app_time_stats: avg=15.65ms min=2.85ms max=37.82ms count=56
+11-01 13:47:23.589  5094  5110 D EGL_emulation: app_time_stats: avg=17.06ms min=3.11ms max=38.35ms count=54
+11-01 13:47:24.612  5094  5110 D EGL_emulation: app_time_stats: avg=15.04ms min=2.72ms max=32.77ms count=58
+11-01 13:47:24.612  2450  3803 I DialerOmtpVvmCarrierConfigHelper: com.android.voicemail.impl.OmtpVvmCarrierConfigHelper.handleEvent:527 OmtpEvent:CONFIG_STATUS_SMS_TIME_OUT PhoneAccountHandle: [ComponentName: com.android.phone/com.android.
+11-01 13:47:24.616  2450  2450 I DialerRetryPolicy: com.android.voicemail.impl.scheduling.RetryPolicy.onCompleted:118 discarding deferred status [CONTEXT enable_persistent_logger=true ]
+11-01 13:47:24.617  2450  2450 I DialerTaskExecutor: com.android.voicemail.impl.scheduling.TaskExecutor.prepareStop:371 no more tasks, stopping service if no task are added in 5000 millis [CONTEXT enable_persistent_logger=true ]
+11-01 13:47:24.617  2450  2450 I DialerLogcatLoggingBindings: com.android.dialer.logging.logcat.LogcatLoggingBindings.logImpression:41 Impression: VVM_AUTO_RETRY_ACTIVATION
+11-01 13:47:24.618  2450  2450 I DialerTaskReceiver: com.android.voicemail.impl.scheduling.TaskReceiver.onReceive:68 task received [CONTEXT enable_persistent_logger=true ]
+11-01 13:47:24.618  2450  2450 I DialerTaskReceiver: com.android.voicemail.impl.scheduling.TaskReceiver.onReceive:73 TaskExecutor already running [CONTEXT enable_persistent_logger=true ]
+11-01 13:47:24.618  2450  2450 I DialerTasks: com.android.voicemail.impl.scheduling.Tasks.createTask:59 Task.createTask create task:com.android.voicemail.impl.ActivationTask [CONTEXT enable_persistent_logger=true ]
+11-01 13:47:24.618  2450  2450 I DialerRetryPolicy: com.android.voicemail.impl.scheduling.RetryPolicy.onCreate:81 retry #1 for com.android.voicemail.impl.ActivationTask@66b0083 queued, executing in 5000 [CONTEXT enable_persistent_logger=tru
+11-01 13:47:24.620  2450  2450 I DialerTaskExecutor: com.android.voicemail.impl.scheduling.TaskExecutor.addTask:299 com.android.voicemail.impl.ActivationTask@66b0083 added [CONTEXT enable_persistent_logger=true ]
+11-01 13:47:24.621  2450  2450 I DialerTaskExecutor: com.android.voicemail.impl.scheduling.TaskExecutor.runNextTask:345 minimal wait time:4998 [CONTEXT enable_persistent_logger=true ]
+11-01 13:47:24.621  2450  2450 I DialerTaskExecutor: com.android.voicemail.impl.scheduling.TaskExecutor.sleep:355 sleep for 4998 millis [CONTEXT enable_persistent_logger=true ]
+11-01 13:47:24.753  1679  1679 V ClearcutMetricXmitter: Transmission is done.
+11-01 13:47:24.908  5174  5249 I HeterodyneSyncer: Removed 0 invalid users [CONTEXT service_id=51 ]
+11-01 13:47:24.957   523   544 D ActivityManager: sync unfroze 1572 com.google.android.ext.services for 6
+11-01 13:47:25.345  5094  5094 I com.example.buddy: Perf: native scene 28 fps
+11-01 13:47:25.446   523  1421 D OomAdjuster: Not killing cached processes
+11-01 13:47:25.468  5524  5524 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+11-01 13:47:25.468  5524  5524 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-01 13:47:25.473   138   138 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-01 13:47:25.473  5524  5525 I Gralloc4: mapper 4.x is not supported
+11-01 13:47:25.642     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+11-01 13:47:25.623  5094  5110 D EGL_emulation: app_time_stats: avg=16.01ms min=2.95ms max=41.33ms count=54
+11-01 13:47:25.752   523   614 D ActivityManager: freezing 3692 com.google.android.rkpdapp

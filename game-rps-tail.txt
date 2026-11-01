@@ -1,0 +1,150 @@
+11-01 13:44:23.752  4174  4326 I RcsClientLib: Disconnecting RcsEngineLifecycleService
+11-01 13:44:23.752  4644  4705 I BugleRcsEngine: [73] brqh.handleMessage: RcsEngineImpl[DUAL_REG]:[153be724-e005]>Handler: handleMessage processing message:[STOP_RCS_STACK] with [non-null]:RcsEngineImpl reference
+11-01 13:44:23.752  4644  4705 I BugleRcsEngine: [73] brqh.handleMessage: RcsEngineImpl[DUAL_REG]:[153be724-e005]>Handler: RCS engine STOP RCS stack
+11-01 13:44:23.752  4644  4705 W BugleRcsEngine: [73] RcsEngineImpl.e: RcsEngineImpl[DUAL_REG]:[153be724-e005]: imsModule is null, shutdown not required
+11-01 13:44:23.752  4644  4705 I BugleRcsEngine: [73] RcsEngineImpl.stopRcsStackInternal: RcsEngineImpl[DUAL_REG]:[153be724-e005]: skipping imsModule.stop
+11-01 13:44:23.752  4644  4705 I BugleRcsEngine: [73] brqh.handleMessage: RcsEngineImpl[DUAL_REG]:[153be724-e005]>Handler: handleMessage processing message:[NOTIFY_UPTIME_IGNORE_STATE_CHANGED] with [non-null]:RcsEngineImpl reference
+11-01 13:44:23.753  4644  4705 I BugleRcsEngine: [73] brnl.h: RCS Configuration storage in Bugle is disabled by p/h flag, using ProvisioningEngineStateCacheUtil.getProvisioningConfigurationForGivenSimIfExist()
+11-01 13:44:23.767  1406  2909 I Fitness : FitCleanupIntentOperation received Intent android.intent.action.PACKAGE_CHANGED [CONTEXT service_id=17 ]
+11-01 13:44:23.779  4174  4275 I BuglePhenotype: Notify about updates in current package [CONTEXT current_package_name="com.google.android.ims.library" ]
+11-01 13:44:23.779  4174  4275 I Bugle   : RcsAvailabilityUtilForProvisioningEngineV2: onCsLibPhenotypeUpdated
+11-01 13:44:23.790  4174  4275 I BugleRcsProvisioning: RcsProvisioningTrigger: onCsLibPhenotypeUpdated, enableProvisioningTaskInBugle = true
+11-01 13:44:23.790  4174  4275 I BugleRcsProvisioning: RcsProvisioningTrigger: updateRcsAvailability : hint = CSLIB_PHENOTYPE_UPDATE
+11-01 13:44:23.791  4174  4275 I Bugle   : RcsAvailabilityUtilForProvisioningEngineV2: updateAvailabilityAsync, hint: CSLIB_PHENOTYPE_UPDATE
+11-01 13:44:23.791  4174  4275 I Bugle   : RcsAvailabilityUtilForProvisioningEngineV2: swapAvailabilityUpdater, provisioningTaskInBugle: true, activeRcsAvailabilityUpdater: awuh
+11-01 13:44:23.791  4174  4275 I BugleRcsProvisioning: RcsAvailabilityUpdaterLocal: updateAvailabilityAsync: scheduling updateRcsAvailability call, hint: CSLIB_PHENOTYPE_UPDATE, enableWelcomePopupWithoutGoogleTos: false, reshowSuccessPopup:
+11-01 13:44:23.791  4174  4275 I BugleRcsProvisioning: scheduleProvisioning using legacy code path
+11-01 13:44:23.791  4174  4275 W BugleRcsEngine: [42] brcu.d: [SR]: Single Registration is disabled. Skipping Single Registration capability check for subId: 1, OS.isAtLeastS:[true], enableSingleRegistrationProvisioning:[false]
+11-01 13:44:23.791  4174  4275 I BugleRcsProvisioning: RcsProvisioningTrigger: DR is active, initializing DR provisioning. DUAL_REG
+11-01 13:44:23.793  4174  4313 W BugleRcsEngine: [56] brcu.d: [SR]: Single Registration is disabled. Skipping Single Registration capability check for subId: 1, OS.isAtLeastS:[true], enableSingleRegistrationProvisioning:[false]
+11-01 13:44:23.795  4174  4313 I BugleRcsEngine: [56] brnl.e: No RCS Configuration was found in Bugle for simID: redacted-pii:sim_id[chars:20,last3:897]
+11-01 13:44:23.795  4174  4313 I BugleRcsEngine: [56] zzm.run: Skipping provisioning scheduling since RCS is disabled
+11-01 13:44:23.796  4174  4285 W BugleRcsEngine: [51] brcu.d: [SR]: Single Registration is disabled. Skipping Single Registration capability check for subId: 1, OS.isAtLeastS:[true], enableSingleRegistrationProvisioning:[false]
+11-01 13:44:23.796  4174  4285 I BugleRcsEngine: [51] brnl.e: No RCS Configuration was found in Bugle for simID: redacted-pii:sim_id[chars:20,last3:897]
+11-01 13:44:23.796  4174  4285 I BugleRcsProvisioning: RcsAvailabilityUpdaterLocal: RcsAvailability configuration availability and enabled status: simId: redacted-pii:sim_id[chars:20,last3:897], SipConnectionType: DUAL_REG, isConfigurationA
+11-01 13:44:23.796  4174  4285 I BugleRcsEngine: [51] brox.b: Using config server URL from bqas
+11-01 13:44:23.797  4084  4132 I PhenotypeBackgroundRecv: Successfully updated snapshot for com.google.android.libraries.notifications.platform#com.google.android.googlequicksearchbox
+11-01 13:44:23.798  1775  4630 I Icing   : Indexing done com.google.android.gms-apps
+11-01 13:44:23.798  4174  4285 I BugleRcsProvisioning: RcsAvailabilityUpdaterLocal: RcsAvailability subscription{id:1}, simId: redacted-pii:sim_id[chars:20,last3:897], sipConnectionType: DUAL_REG, isRcsAvailable: false
+11-01 13:44:23.798  4174  4285 I BugleRcsProvisioning: RcsAvailabilityUpdaterLocal: updateRcsAvailability, currentAvailability: 2, newAvailability: 10, hint: CSLIB_PHENOTYPE_UPDATE
+11-01 13:44:23.800  1775  4630 I Icing   : Indexing com.google.android.gms-internal.3p:MobileApplication from com.google.android.gms
+11-01 13:44:23.801  4174  4313 W BugleRcsEngine: [56] bpxc.w: Unable to send diagnostic log
+11-01 13:44:23.805  4174  4726 I BugleRcsProvisioning: RcsProvisioningTrigger: onRcsAvailabilityUpdate : availability is updated to Carrier RCS is not set up, lastAvailability is RCS is disabled for this carrier by Google, simId hash = -813
+11-01 13:44:23.805  4174  4726 I BugleRcsEngine: [104] brle.i: RcsProvisioningManager: Receive onRcsAvailabilityUpdate, SIM = redacted-pii:sim_id[chars:20,last3:897], availability = RcsAvailability{mAvailability=CARRIER_SETUP_PENDING (Carri
+11-01 13:44:23.806  4174  4726 I BugleRcsEngine: [104] brnl.e: No RCS Configuration was found in Bugle for simID: redacted-pii:sim_id[chars:20,last3:897]
+11-01 13:44:23.806  4174  4726 I BugleRcsProvisioning: RcsProvisioningTrigger: onRcsAvailabilityUpdate : isPreviousDisabled = true, isCurrentDisabled = false, config[simId:redacted-pii:sim_id[chars:20,last3:897]] = [Type: 0, Version: 0, Val
+11-01 13:44:23.806  4174  4726 I BugleRcsProvisioning: RcsProvisioningTrigger: Schedule KEEP provision when trigger configuration not valid
+11-01 13:44:23.806  4174  4726 I BugleRcsProvisioning: scheduleProvisioning using legacy code path
+11-01 13:44:23.806  4174  4726 W BugleRcsEngine: [104] brcu.d: [SR]: Single Registration is disabled. Skipping Single Registration capability check for subId: 1, OS.isAtLeastS:[true], enableSingleRegistrationProvisioning:[false]
+11-01 13:44:23.806  4174  4726 I BugleRcsProvisioning: RcsProvisioningTrigger: DR is active, initializing DR provisioning. DUAL_REG
+11-01 13:44:23.821  4174  4321 W BugleRcsEngine: [60] brcu.d: [SR]: Single Registration is disabled. Skipping Single Registration capability check for subId: 1, OS.isAtLeastS:[true], enableSingleRegistrationProvisioning:[false]
+11-01 13:44:23.823  4174  4320 I BugleTransport: onRcsAvailabilityUpdate: kicking off updateActiveTransport for simId:redacted-pii:sim_id[chars:20,last3:897]
+11-01 13:44:23.823  4174  4320 I BugleRcsEngine: [59] brku.a: RcsProvisioningManager: AvailabilityObserver.onUpdate : Notify RcsAvailabilityListener bbob@3fd80d4 onRcsAvailabilityUpdate, SIM = redacted-pii:sim_id[chars:20,last3:897], availa
+11-01 13:44:23.828  4174  4275 I BugleRcsEngine: [42] bptz.run: SystemBindingManager: SystemBinding enabled: true
+11-01 13:44:23.828  4174  4275 I BugleRcsEngine: [42] bpua.b: System Binding updated
+11-01 13:44:23.830  4174  4288 W BugleRcsEngine: [54] bpxc.w: Unable to send diagnostic log
+11-01 13:44:23.831  4174  4313 W BugleAction: Null config in BugleSharedPrefs
+11-01 13:44:23.831  4174  4313 W BugleAction: Failed to get msisdn from Bugle
+11-01 13:44:23.831  4174  4313 W BugleAction: Failed to get msisdn from RcsProfileService
+11-01 13:44:23.831  4174  4313 W BugleAction: cksi: Jibe SDK Service not available. Is the Jibe SDK service running? Did you call connect() and wait for the notification before calling an API function?
+11-01 13:44:23.831  4174  4313 W BugleAction: 	at cksa.b(PG:2)
+11-01 13:44:23.831  4174  4313 W BugleAction: 	at com.google.android.rcs.client.profile.RcsProfileService.g(PG:1)
+11-01 13:44:23.831  4174  4313 W BugleAction: 	at com.google.android.rcs.client.profile.RcsProfileService.getMsisdn(PG:3)
+11-01 13:44:23.831  4174  4313 W BugleAction: 	at awsw.aj(PG:17)
+11-01 13:44:23.831  4174  4313 W BugleAction: 	at awsw.z(PG:2)
+11-01 13:44:23.831  4174  4313 W BugleAction: 	at aule.k(PG:1)
+11-01 13:44:23.831  4174  4313 W BugleAction: 	at aulc.call(Unknown Source:2)
+11-01 13:44:23.831  4174  4313 W BugleAction: 	at cnsg.a(PG:1)
+11-01 13:44:23.831  4174  4313 W BugleAction: 	at cnpm.a(PG:3)
+11-01 13:44:23.831  4174  4313 W BugleAction: 	at ctfv.a(PG:1)
+11-01 13:44:23.831  4174  4313 W BugleAction: 	at ctet.run(PG:4)
+11-01 13:44:23.831  4174  4313 W BugleAction: 	at ctfx.run(PG:1)
+11-01 13:44:23.831  4174  4313 W BugleAction: 	at bxfd.run(PG:1)
+11-01 13:44:23.831  4174  4313 W BugleAction: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-01 13:44:23.831  4174  4313 W BugleAction: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-01 13:44:23.831  4174  4313 W BugleAction: 	at bxef.run(PG:2)
+11-01 13:44:23.831  4174  4313 W BugleAction: 	at java.lang.Thread.run(Thread.java:1012)
+11-01 13:44:23.831  4174  4313 W BugleAction: 	at bxfj.run(PG:5)
+11-01 13:44:23.832  4174  4313 W SubscriptionMetadataUti: Bugle: SubscriptionMetadataUtils get: unexpected subId = -2, replacing with -1
+11-01 13:44:23.832  4174  4313 W SubscriptionMetadataUti: cpwb: FULL
+11-01 13:44:23.832  4174  4313 W SubscriptionMetadataUti: 	at bdsy.h(PG:6)
+11-01 13:44:23.832  4174  4313 W SubscriptionMetadataUti: 	at bdvp.a(PG:1)
+11-01 13:44:23.832  4174  4313 W SubscriptionMetadataUti: 	at bgit.<init>(PG:1)
+11-01 13:44:23.832  4174  4313 W SubscriptionMetadataUti: 	at bgiu.a(PG:1)
+11-01 13:44:23.832  4174  4313 W SubscriptionMetadataUti: 	at awsw.ai(PG:3)
+11-01 13:44:23.832  4174  4313 W SubscriptionMetadataUti: 	at awsw.aj(PG:25)
+11-01 13:44:23.832  4174  4313 W SubscriptionMetadataUti: 	at awsw.z(PG:2)
+11-01 13:44:23.832  4174  4313 W SubscriptionMetadataUti: 	at aule.k(PG:1)
+11-01 13:44:23.832  4174  4313 W SubscriptionMetadataUti: 	at aulc.call(Unknown Source:2)
+11-01 13:44:23.832  4174  4313 W SubscriptionMetadataUti: 	at cnsg.a(PG:1)
+11-01 13:44:23.832  4174  4313 W SubscriptionMetadataUti: 	at cnpm.a(PG:3)
+11-01 13:44:23.832  4174  4313 W SubscriptionMetadataUti: 	at ctfv.a(PG:1)
+11-01 13:44:23.832  4174  4313 W SubscriptionMetadataUti: 	at ctet.run(PG:4)
+11-01 13:44:23.832  4174  4313 W SubscriptionMetadataUti: 	at ctfx.run(PG:1)
+11-01 13:44:23.832  4174  4313 W SubscriptionMetadataUti: 	at bxfd.run(PG:1)
+11-01 13:44:23.832  4174  4313 W SubscriptionMetadataUti: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-01 13:44:23.832  4174  4313 W SubscriptionMetadataUti: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-01 13:44:23.832  4174  4313 W SubscriptionMetadataUti: 	at bxef.run(PG:2)
+11-01 13:44:23.832  4174  4313 W SubscriptionMetadataUti: 	at java.lang.Thread.run(Thread.java:1012)
+11-01 13:44:23.832  4174  4313 W SubscriptionMetadataUti: 	at bxfj.run(PG:5)
+11-01 13:44:23.832  4174  4313 W SubscriptionMetadataUti: Bugle: SubscriptionMetadataUtils get: unexpected subId = -2, replacing with -1
+11-01 13:44:23.832  4174  4313 W SubscriptionMetadataUti: cpwb: FULL
+11-01 13:44:23.832  4174  4313 W SubscriptionMetadataUti: 	at bdsy.h(PG:6)
+11-01 13:44:23.832  4174  4313 W SubscriptionMetadataUti: 	at bgit.<init>(PG:2)
+11-01 13:44:23.832  4174  4313 W SubscriptionMetadataUti: 	at bgiu.a(PG:1)
+11-01 13:44:23.832  4174  4313 W SubscriptionMetadataUti: 	at awsw.ai(PG:3)
+11-01 13:44:23.832  4174  4313 W SubscriptionMetadataUti: 	at awsw.aj(PG:25)
+11-01 13:44:23.832  4174  4313 W SubscriptionMetadataUti: 	at awsw.z(PG:2)
+11-01 13:44:23.832  4174  4313 W SubscriptionMetadataUti: 	at aule.k(PG:1)
+11-01 13:44:23.832  4174  4313 W SubscriptionMetadataUti: 	at aulc.call(Unknown Source:2)
+11-01 13:44:23.832  4174  4313 W SubscriptionMetadataUti: 	at cnsg.a(PG:1)
+11-01 13:44:23.832  4174  4313 W SubscriptionMetadataUti: 	at cnpm.a(PG:3)
+11-01 13:44:23.832  4174  4313 W SubscriptionMetadataUti: 	at ctfv.a(PG:1)
+11-01 13:44:23.832  4174  4313 W SubscriptionMetadataUti: 	at ctet.run(PG:4)
+11-01 13:44:23.832  4174  4313 W SubscriptionMetadataUti: 	at ctfx.run(PG:1)
+11-01 13:44:23.832  4174  4313 W SubscriptionMetadataUti: 	at bxfd.run(PG:1)
+11-01 13:44:23.832  4174  4313 W SubscriptionMetadataUti: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-01 13:44:23.832  4174  4313 W SubscriptionMetadataUti: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-01 13:44:23.832  4174  4313 W SubscriptionMetadataUti: 	at bxef.run(PG:2)
+11-01 13:44:23.832  4174  4313 W SubscriptionMetadataUti: 	at java.lang.Thread.run(Thread.java:1012)
+11-01 13:44:23.832  4174  4313 W SubscriptionMetadataUti: 	at bxfj.run(PG:5)
+11-01 13:44:23.833  4174  4313 W SubscriptionMetadataUti: Bugle: SubscriptionMetadataUtils get: unexpected subId = -2, replacing with -1
+11-01 13:44:23.833  4174  4313 W SubscriptionMetadataUti: cpwb: FULL
+11-01 13:44:23.833  4174  4313 W SubscriptionMetadataUti: 	at bdsy.h(PG:6)
+11-01 13:44:23.833  4174  4313 W SubscriptionMetadataUti: 	at awsw.ai(PG:18)
+11-01 13:44:23.833  4174  4313 W SubscriptionMetadataUti: 	at awsw.aj(PG:25)
+11-01 13:44:23.833  4174  4313 W SubscriptionMetadataUti: 	at awsw.z(PG:2)
+11-01 13:44:23.833  4174  4313 W SubscriptionMetadataUti: 	at aule.k(PG:1)
+11-01 13:44:23.833  4174  4313 W SubscriptionMetadataUti: 	at aulc.call(Unknown Source:2)
+11-01 13:44:23.833  4174  4313 W SubscriptionMetadataUti: 	at cnsg.a(PG:1)
+11-01 13:44:23.833  4174  4313 W SubscriptionMetadataUti: 	at cnpm.a(PG:3)
+11-01 13:44:23.833  4174  4313 W SubscriptionMetadataUti: 	at ctfv.a(PG:1)
+11-01 13:44:23.833  4174  4313 W SubscriptionMetadataUti: 	at ctet.run(PG:4)
+11-01 13:44:23.833  4174  4313 W SubscriptionMetadataUti: 	at ctfx.run(PG:1)
+11-01 13:44:23.833  4174  4313 W SubscriptionMetadataUti: 	at bxfd.run(PG:1)
+11-01 13:44:23.833  4174  4313 W SubscriptionMetadataUti: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-01 13:44:23.833  4174  4313 W SubscriptionMetadataUti: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-01 13:44:23.833  4174  4313 W SubscriptionMetadataUti: 	at bxef.run(PG:2)
+11-01 13:44:23.833  4174  4313 W SubscriptionMetadataUti: 	at java.lang.Thread.run(Thread.java:1012)
+11-01 13:44:23.833  4174  4313 W SubscriptionMetadataUti: 	at bxfj.run(PG:5)
+11-01 13:44:23.833  4174  4313 I Bugle   : SubscriptionUtilsAsOfLMR1: getActiveSubscriptionInfo(): empty sub info for subscription{id:-1}
+11-01 13:44:23.833  4174  4313 I Bugle   : SubscriptionUtilsAsOfLMR1: getActiveSubscriptionInfo(): empty sub info for subscription{id:-1}
+11-01 13:44:23.833  4174  4313 W Bugle   : SubscriptionUtilsAsOfLMR1: getSelfRawNumber: subInfo is null for subscription{id:-1}
+11-01 13:44:23.836  4174  4321 I BugleRcsEngine: [60] brnl.e: No RCS Configuration was found in Bugle for simID: redacted-pii:sim_id[chars:20,last3:897]
+11-01 13:44:23.838  4174  4320 I BugleTransport: isChatAvailable: RcsAvailability is CARRIER_SETUP_PENDING (Carrier RCS is not set up)
+11-01 13:44:23.838  4174  4321 I BugleRcsEngine: [60] zzo.l: Scheduled provisioning task with 0 seconds delay, KEEP policy, trigger is CSLIB_PHENOTYPE_UPDATE, workerId is 889848ff-0026-41f0-8da2-9980a2dd9f9b
+11-01 13:44:23.840  4174  4313 W BugleAction: No default number, returning empty msisdn
+11-01 13:44:23.842  4174  4321 I BugleTransport: updateActiveTransport: refreshing chat transport
+11-01 13:44:23.843  4174  4321 I BugleTransport: refreshChatTransport: isChatAvailable: false, enabledTransport: 1, configuration: <empty>
+11-01 13:44:23.860  3131  3131 I PhenotypeBackgroundRecv: Skipping com.google.android.dialer.directboot#com.google.android.dialer which doesn't use ProcessStable flags.
+11-01 13:44:23.861  1466  1466 I PhenotypeModule: PhenotypeModule.receiveBroadcast():373 onReceive() urgent = false
+11-01 13:44:23.861  1466  1466 I PhenotypeModule: PhenotypeModule.maybeFetchAndUpdate():166 maybeFetchAndUpdate: start new task to fetch
+11-01 13:44:23.863  1466  1466 I PhenotypeBackgroundRecv: Skipping com.google.android.inputmethod.latin#com.google.android.inputmethod.latin which doesn't use ProcessStable flags.
+11-01 13:44:23.870  4174  4321 I RcsClientLib: Connecting RcsEngineLifecycleService
+11-01 13:44:23.873  4174  4321 W RcsClientLib: No CS.apk RCS service found. Is RCS running in Bugle?
+11-01 13:44:23.876  4174  4321 I RcsClientLib: shouldUseCarrierServicesJibeService: false, CarrierServices rcs service found: false
+11-01 13:44:23.888   524   538 D CompatibilityChangeReporter: Compat change id reported: 271850009; UID 10130; state: ENABLED
+11-01 13:44:23.889   524   538 D CompatibilityChangeReporter: Compat change id reported: 253665015; UID 10130; state: ENABLED
+11-01 13:44:23.889   524   538 D CompatibilityChangeReporter: Compat change id reported: 194532703; UID 10130; state: ENABLED
+11-01 13:44:23.904  4174  4313 D MddListenableWorkerFactory: createWorker for class: com.google.android.apps.messaging.rcsprovisioning.RcsProvisioningListenableWorker
+11-01 13:44:23.907  4174  4321 I RcsClientLib: com.google.android.rcs.client.lifecycle.RcsEngineLifecycleService connected

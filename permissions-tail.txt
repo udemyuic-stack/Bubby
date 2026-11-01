@@ -1,0 +1,150 @@
+11-01 13:41:37.628  1564  1638 I AiAiEcho: Predicting[0]: 
+11-01 13:41:37.628  1564  1638 I AiAiEcho: EchoTargets: 
+11-01 13:41:37.628  1564  1638 I AiAiEcho: Filtered by AiAi flag check: 
+11-01 13:41:37.628  1564  1638 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+11-01 13:41:37.629  1564  1638 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0 (types=[])
+11-01 13:41:37.629  1564  1638 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0 (types=[])
+11-01 13:41:37.629   827   827 W PageIndicator: Total number of pages invalid: 0. Assuming 1 page.
+11-01 13:41:37.630   523  3325 D SafetySourceDataValidator: No cert check requested for package com.google.android.permissioncontroller
+11-01 13:41:37.949  5108  5108 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.constellation.service.START pkg=com.google.android.gms }
+11-01 13:41:38.134   160   955 I keystore2: system/security/keystore2/src/watchdog.rs:319 - Watchdog thread idle -> terminating. Have a great day.
+11-01 13:41:38.410  5550  5567 D EGL_emulation: app_time_stats: avg=33.13ms min=25.94ms max=41.75ms count=31
+11-01 13:41:38.418   523  2354 D OomAdjuster: Not killing cached processes
+11-01 13:41:38.418  5024  5024 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.auth.account.workaccount.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+11-01 13:41:38.625  1581  2385 D CompatibilityChangeReporter: Compat change id reported: 183155436; UID 10176; state: ENABLED
+11-01 13:41:38.626   523  2354 D CompatibilityChangeReporter: Compat change id reported: 149924527; UID 2000; state: ENABLED
+11-01 13:41:38.626   523  2354 D CompatibilityChangeReporter: Compat change id reported: 132649864; UID 2000; state: DISABLED
+11-01 13:41:38.628  1581  2385 W MediaProvider: isAppCloneUserPair for user 0: false
+11-01 13:41:38.645  5024  5150 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService started execution. cause:9 exec_start_elapsed_seconds: 82 [CONTEXT service_id=218 ]
+11-01 13:41:38.648  5024  5078 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService finished executing. cause:9 result: 1 elapsed_millis: 8 uptime_millis: 8 exec_start_elapsed_seconds: 82 [
+11-01 13:41:38.657  5654  5654 I AccessibilityNodeInfoDumper: Skipping invisible child: android.view.accessibility.AccessibilityNodeInfo@27a4b; boundsInParent: Rect(0, 0 - 296, 55); boundsInScreen: Rect(12, 653 - 308, 640); boundsInWindow: 
+11-01 13:41:38.657  5654  5654 I AccessibilityNodeInfoDumper: Skipping invisible child: android.view.accessibility.AccessibilityNodeInfo@29c14; boundsInParent: Rect(0, 0 - 296, 55); boundsInScreen: Rect(12, 714 - 308, 640); boundsInWindow: 
+11-01 13:41:38.657  5654  5654 I AccessibilityNodeInfoDumper: Skipping invisible child: android.view.accessibility.AccessibilityNodeInfo@2bddd; boundsInParent: Rect(0, 0 - 296, 55); boundsInScreen: Rect(12, 775 - 308, 640); boundsInWindow: 
+11-01 13:41:38.657  5654  5654 I AccessibilityNodeInfoDumper: Skipping invisible child: android.view.accessibility.AccessibilityNodeInfo@2dfa6; boundsInParent: Rect(0, 0 - 296, 55); boundsInScreen: Rect(12, 836 - 308, 640); boundsInWindow: 
+11-01 13:41:38.657  5654  5654 I AccessibilityNodeInfoDumper: Skipping invisible child: android.view.accessibility.AccessibilityNodeInfo@3016f; boundsInParent: Rect(0, 0 - 296, 54); boundsInScreen: Rect(12, 902 - 308, 640); boundsInWindow: 
+11-01 13:41:38.657  5654  5654 I AccessibilityNodeInfoDumper: Skipping invisible child: android.view.accessibility.AccessibilityNodeInfo@31073; boundsInParent: Rect(0, 0 - 296, 37); boundsInScreen: Rect(12, 961 - 308, 640); boundsInWindow: 
+11-01 13:41:38.659  5654  5654 W AccessibilityNodeInfoDumper: Fetch time: 35ms
+11-01 13:41:38.660   523  2337 W WindowMagnificationMgr: requestConnection duplicated request: connect=false, mConnectionState=DISCONNECTED
+11-01 13:41:38.660  1564  1993 I AiAiEcho: Settings changed for uri: content://settings/secure/accessibility_enabled
+11-01 13:41:38.661   523  2337 D AccessibilityManagerService: restoreCurrentUserForTestAutomationIfNeededLocked(): ignoring because device doesn't support visible background users
+11-01 13:41:38.661  1564  1638 I AiAiEcho: Predicting[0]: 
+11-01 13:41:38.661  1564  1638 I AiAiEcho: EchoTargets: 
+11-01 13:41:38.661  1564  1638 I AiAiEcho: Filtered by AiAi flag check: 
+11-01 13:41:38.661  1564  1638 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+11-01 13:41:38.661  1564  1638 I AiAiEcho: Predicting[0]: 
+11-01 13:41:38.661  1564  1638 I AiAiEcho: EchoTargets: 
+11-01 13:41:38.661  1564  1638 I AiAiEcho: Filtered by AiAi flag check: 
+11-01 13:41:38.661  1564  1638 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+11-01 13:41:38.661  1564  1638 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0 (types=[])
+11-01 13:41:38.661  1564  1638 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0 (types=[])
+11-01 13:41:38.661   827   827 W PageIndicator: Total number of pages invalid: 0. Assuming 1 page.
+11-01 13:41:38.662  5654  5654 D AndroidRuntime: Shutting down VM
+11-01 13:41:38.663  1787  2265 I A       : NGA enabled in interactor.
+11-01 13:41:38.663  1787  2265 I A       : Nga state changed to NgaStateDetails{state=ENABLED, isSpecialExperience=false}
+11-01 13:41:38.664  1626  1687 I A       : Initializing all components
+11-01 13:41:38.665  1626  1687 I A       : APA or Classic session decision: SessionDecision(sessionVariance=CLASSIC, platformVariance=CLASSIC, justification=CURRENT_PLATFORM_VARIANCE).
+11-01 13:41:38.665  1626  1687 I A       : [Memory] eligibility: StashEligibility{6}
+11-01 13:41:38.665  1626  2256 I A       : onIsEnabledChanged, isEnabled: false
+11-01 13:41:38.665  1626  2256 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:41:38.665  1626  2256 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:41:38.665  1626  2256 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:41:38.665  1626  2256 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:41:38.665  1626  2256 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:41:38.665  1626  2256 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:41:38.665  1626  2256 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:41:38.665  1626  2256 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:41:38.665  1626  2256 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:41:38.665  1626  2256 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:41:38.665  1626  2256 I A       : onOpaVisibilityChanged: false
+11-01 13:41:38.665  1626  2256 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:41:38.665  1626  2256 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:41:38.665  1626  2256 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:41:38.665  1626  2256 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:41:38.665  1626  2256 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:41:38.665  1626  2256 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:41:38.665  1626  2256 I A       : Setting session to type: NO_SESSION
+11-01 13:41:38.665  1626  2256 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:41:38.665  1626  2256 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:41:38.665  1626  2256 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:41:38.666  1626  2256 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:41:38.666  1626  2256 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:41:38.666  1626  2256 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:41:38.666  1626  2256 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:41:38.666  1626  2256 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:41:38.666  1626  2256 I A       : setNavBarVisible: GestureNavBarVisible{navbarVisible=true}
+11-01 13:41:38.666  1626  2256 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:41:38.666  1626  2256 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:41:38.666  1626  2256 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:41:38.666  1626  2256 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:41:38.666  1626  2256 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:41:38.666  1626  2256 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-01 13:41:38.666  1626  2256 I A       : onDisabled. Registered: false
+11-01 13:41:38.666   523   523 D BatterySaverPolicy: accessibility changed to false, updating policy.
+11-01 13:41:38.670  1626  2298 I A       : Initialize
+11-01 13:41:38.671  1626  2256 I A       : on opa visibility changed false
+11-01 13:41:38.671  1626  2256 I A       : stopListening(NGA_PAUSED_UNKNOWN_REASON, NGA_CREATE), idleOverride=NOT_LISTENING
+11-01 13:41:38.671  1626  2256 I A       : on opa visibility changed false
+11-01 13:41:38.677  1626  2256 I A       : State changed: IDLE => IDLE by NGA_STATE_CHANGED and N/A with Optional.empty
+11-01 13:41:38.677  1626  2256 I A       : Recognizer choice: (recognizer_type: 1, recognizer_mode: 1, choice_reason: 4)
+11-01 13:41:38.678  1626  2256 I A       : onActiveStateChangeEvent: IDLE => IDLE
+11-01 13:41:38.680  1626  2256 W A       : Missing generator mapping for generator GENERATOR_CONTEXTUAL_SUGGESTIONS
+11-01 13:41:38.681  1626  2298 I NgaEntryPointEventSendr: setupConnection
+11-01 13:41:38.682  1626  2256 W A       : Missing generator mapping for generator GENERATOR_FRE_SUGGESTIONS_ON_TIMEOUT
+11-01 13:41:38.682  1626  2256 W A       : Missing generator mapping for generator GENERATOR_FRE_SUGGESTIONS_ON_INVOCATION
+11-01 13:41:38.685  1626  2298 I NgaEntryPointEventSendr: State changed: Disconnected => Connecting
+11-01 13:41:38.685  1626  2256 I A       : #onActiveStateChangeEvent, newState: IDLE, previousState: IDLE.
+11-01 13:41:38.686  1787  1787 I A       : Creating pss binder().
+11-01 13:41:38.687   523  2337 D CompatibilityChangeReporter: Compat change id reported: 197654537; UID 10192; state: ENABLED
+11-01 13:41:38.688  1626  2298 I NgaEntryPointEventSendr: onServiceConnected
+11-01 13:41:38.689  1787  2482 I A       : Calling beginBinderSession().
+11-01 13:41:38.691  1787  2482 I A       : beginBinderSession(): calling binder
+11-01 13:41:38.691  1626  2298 I NgaEntryPointEventSendr: State changed: Connecting => Ready
+11-01 13:41:38.691  1626  2298 W A       : Routing took 3 ms
+11-01 13:41:38.694   523  2337 W ActivityManager: Unable to start service Intent { cmp=com.google.android.apps.tachyon/.clientapi.ClientApiService } U=0: not found
+11-01 13:41:38.699  1787  2477 I PBSessionCacheImpl: Deleted sessionId[7861102655786469] from persistence.
+11-01 13:41:38.699  1787  2477 W A       : UiCallbackStub-onGenericEvent[ServiceEvent = 60] task was not run. Callback from Service received after client was disposed.
+11-01 13:41:38.701  1787  2477 W SearchServiceCore: Abort, client detached.
+11-01 13:41:38.702  1626  2298 I NgaEntryPointEventSendr: State changed: Ready => Disconnected (onOpaDisconnected)
+11-01 13:41:38.703  1626  2298 I A       : Successfully initialized all components
+11-01 13:41:38.710  1626  1626 V ClearcutMetricXmitter: Transmission is done.
+11-01 13:41:39.092  1762  2694 W YouTubeMusic: Could not register for notifications with InnerTube: 
+11-01 13:41:39.092  1762  2694 W YouTubeMusic: abqx: zvm: Precondition check failed.
+11-01 13:41:39.092  1762  2694 W YouTubeMusic: 	at abqn.apply(Unknown Source:4)
+11-01 13:41:39.092  1762  2694 W YouTubeMusic: 	at yyi.r(PG:5)
+11-01 13:41:39.092  1762  2694 W YouTubeMusic: 	at yyi.b(PG:2)
+11-01 13:41:39.092  1762  2694 W YouTubeMusic: 	at abqp.d(PG:4)
+11-01 13:41:39.092  1762  2694 W YouTubeMusic: 	at agsb.c(PG:63)
+11-01 13:41:39.092  1762  2694 W YouTubeMusic: 	at agsb.j(PG:38)
+11-01 13:41:39.092  1762  2694 W YouTubeMusic: 	at agsb.d(PG:3)
+11-01 13:41:39.092  1762  2694 W YouTubeMusic: 	at agrz.run(Unknown Source:2)
+11-01 13:41:39.092  1762  2694 W YouTubeMusic: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:487)
+11-01 13:41:39.092  1762  2694 W YouTubeMusic: 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+11-01 13:41:39.092  1762  2694 W YouTubeMusic: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-01 13:41:39.092  1762  2694 W YouTubeMusic: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-01 13:41:39.092  1762  2694 W YouTubeMusic: 	at smg.run(PG:2)
+11-01 13:41:39.092  1762  2694 W YouTubeMusic: 	at java.lang.Thread.run(Thread.java:1012)
+11-01 13:41:39.092  1762  2694 W YouTubeMusic: 	at snu.run(PG:5)
+11-01 13:41:39.092  1762  2694 W YouTubeMusic: Caused by: zvm: Precondition check failed.
+11-01 13:41:39.092  1762  2694 W YouTubeMusic: 	at abpb.e(PG:5)
+11-01 13:41:39.092  1762  2694 W YouTubeMusic: 	at zhp.f(PG:1)
+11-01 13:41:39.092  1762  2694 W YouTubeMusic: 	at zhp.e(PG:1)
+11-01 13:41:39.092  1762  2694 W YouTubeMusic: 	at zgl.run(PG:19)
+11-01 13:41:39.092  1762  2694 W YouTubeMusic: 	at aosb.run(PG:3)
+11-01 13:41:39.092  1762  2694 W YouTubeMusic: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-01 13:41:39.092  1762  2694 W YouTubeMusic: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-01 13:41:39.092  1762  2694 W YouTubeMusic: 	at yxr.run(PG:11)
+11-01 13:41:39.092  1762  2694 W YouTubeMusic: 	at java.lang.Thread.run(Thread.java:1012)
+11-01 13:41:39.092  1762  2694 W YouTubeMusic: Caused by: efc
+11-01 13:41:39.092  1762  2694 W YouTubeMusic: 	at zgl.run(PG:13)
+11-01 13:41:39.092  1762  2694 W YouTubeMusic: 	... 5 more
+11-01 13:41:39.410  5550  5567 D EGL_emulation: app_time_stats: avg=33.33ms min=24.97ms max=41.84ms count=30
+11-01 13:41:39.508  5024  5024 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.presencemanager.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+11-01 13:41:39.509  5024  5024 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.presencemanager.service.INTERNAL_IDENTITY dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+11-01 13:41:39.550  5679  5679 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+11-01 13:41:39.551  5679  5679 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-01 13:41:39.552   403  1081 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=5679
+11-01 13:41:39.552   403  1081 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (229 us)
+11-01 13:41:39.563   137   137 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-01 13:41:39.563  5679  5680 I Gralloc4: mapper 4.x is not supported
+11-01 13:41:39.745     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+11-01 13:41:39.627   523   610 D ActivityManager: freezing 2974 com.google.android.gms.unstable

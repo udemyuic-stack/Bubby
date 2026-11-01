@@ -1,0 +1,150 @@
+11-01 13:41:49.261  4462  5215 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793540499378
+11-01 13:41:49.261  4462  4573 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793540499379
+11-01 13:41:49.262  4462  4572 D cevx    : Starting download: https://c.tenor.com/Vx1WrBwJsB0AAAAk/tenor.gif
+11-01 13:41:49.262  4462  4572 V cevx    : Is http uri, downloading (uri: https://c.tenor.com/Vx1WrBwJsB0AAAAk/tenor.gif)
+11-01 13:41:49.270  4462  5215 D cevx    : Starting download: https://c.tenor.com/Joc0S0uRIrUAAAAk/tenor.gif
+11-01 13:41:49.270  4462  5215 V cevx    : Is http uri, downloading (uri: https://c.tenor.com/Joc0S0uRIrUAAAAk/tenor.gif)
+11-01 13:41:49.276  4462  4572 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793540499380
+11-01 13:41:49.281  4462  5215 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793540499381
+11-01 13:41:49.287   522   939 I RemoteProvisionSysSvc: getRegistration(android.hardware.security.keymint.IRemotelyProvisionedComponent/default)
+11-01 13:41:49.290   522   522 I RegistrationProxy: onServiceConnected: com.android.rkpdapp.service.RemoteProvisioningService
+11-01 13:41:49.293   522   939 I RegistrationProxy: IGetRegistrationCallback.onSuccess
+11-01 13:41:49.493     0     0 I servicemanager: Found android.hardware.security.keymint.IRemotelyProvisionedComponent/default in device VINTF manifest.
+11-01 13:41:49.306  4462  4573 D cevx    : Starting download: https://c.tenor.com/ZtRi_xa1AP8AAAAk/tenor.gif
+11-01 13:41:49.306  4462  4573 V cevx    : Is http uri, downloading (uri: https://c.tenor.com/ZtRi_xa1AP8AAAAk/tenor.gif)
+11-01 13:41:49.308  4462  4572 D cevx    : Starting download: https://c.tenor.com/b6PLDyupHEUAAAAk/tenor.gif
+11-01 13:41:49.308  4462  4572 V cevx    : Is http uri, downloading (uri: https://c.tenor.com/b6PLDyupHEUAAAAk/tenor.gif)
+11-01 13:41:49.313   522  1769 I RemoteProvisionSysSvc: Fetching key 10131 for client 167768442
+11-01 13:41:49.314   522  1769 I RegistrationProxy: getKeyAsync operation started with callback 199830827
+11-01 13:41:49.314  3659  3745 I RkpdRegistrationBinder: Key requested for : android.hardware.security.keymint.IRemotelyProvisionedComponent/default, clientUid: 1017, keyId: 10131, callback: 183903497
+11-01 13:41:49.316  3659  3745 I RkpdRegistrationBinder: Key successfully assigned to client
+11-01 13:41:49.316  4462  4572 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793540499383
+11-01 13:41:49.320  4462  4573 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793540499382
+11-01 13:41:49.321   522   522 I RemoteProvisionSysSvc: Successfully fetched key for client 167768442
+11-01 13:41:49.335  4462  5215 D cevx    : Starting download: https://c.tenor.com/3uBh90FqG7oAAAAk/tenor.gif
+11-01 13:41:49.335  4462  5215 V cevx    : Is http uri, downloading (uri: https://c.tenor.com/3uBh90FqG7oAAAAk/tenor.gif)
+11-01 13:41:49.336  4462  4572 D cevx    : Starting download: https://c.tenor.com/We73MM_m-VwAAAAk/tenor.gif
+11-01 13:41:49.336  4462  4572 V cevx    : Is http uri, downloading (uri: https://c.tenor.com/We73MM_m-VwAAAAk/tenor.gif)
+11-01 13:41:49.340  5169  5186 D EGL_emulation: app_time_stats: avg=33.11ms min=23.67ms max=42.29ms count=31
+11-01 13:41:49.349  4462  5215 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793540499384
+11-01 13:41:49.350  4462  4572 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793540499385
+11-01 13:41:49.353  4462  4573 D cevx    : Starting download: https://c.tenor.com/3t2SPYOflNkAAAAk/tenor.gif
+11-01 13:41:49.353  4462  4573 V cevx    : Is http uri, downloading (uri: https://c.tenor.com/3t2SPYOflNkAAAAk/tenor.gif)
+11-01 13:41:49.370  4462  4573 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793540499386
+11-01 13:41:49.372  4462  4572 D cevx    : Starting download: https://c.tenor.com/m_-VJ2iNpsEAAAAk/tenor.gif
+11-01 13:41:49.372  4462  4572 V cevx    : Is http uri, downloading (uri: https://c.tenor.com/m_-VJ2iNpsEAAAAk/tenor.gif)
+11-01 13:41:49.383  4462  4572 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793540499387
+11-01 13:41:49.393  4462  5215 D cevx    : Starting download: https://c.tenor.com/NoiUGjNEHpkAAAAk/tenor.gif
+11-01 13:41:49.394  5169  5169 I com.example.buddy: Perf: native scene 29 fps
+11-01 13:41:49.400  4462  5215 V cevx    : Is http uri, downloading (uri: https://c.tenor.com/NoiUGjNEHpkAAAAk/tenor.gif)
+11-01 13:41:49.408  4885  5377 W gle.android.gms: Accessing hidden method Landroid/net/ConnectivityManager;->isNetworkTypeMobile(I)Z (max-target-p, reflection, denied)
+11-01 13:41:49.408  4885  5377 W gle.android.gms: Accessing hidden method Landroid/os/PowerManager;->isLightDeviceIdleMode()Z (max-target-s, reflection, denied)
+11-01 13:41:49.412  4462  4573 D cevx    : Starting download: https://c.tenor.com/u98K_QYTASYAAAAk/tenor.gif
+11-01 13:41:49.412  4462  4573 V cevx    : Is http uri, downloading (uri: https://c.tenor.com/u98K_QYTASYAAAAk/tenor.gif)
+11-01 13:41:49.434  4462  5215 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793540499388
+11-01 13:41:49.434  4462  4573 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793540499389
+11-01 13:41:49.443  4462  4572 D cevx    : Starting download: https://c.tenor.com/7pnKXGSif10AAAAk/tenor.gif
+11-01 13:41:49.443  4462  4572 V cevx    : Is http uri, downloading (uri: https://c.tenor.com/7pnKXGSif10AAAAk/tenor.gif)
+11-01 13:41:49.445  4868  5023 I AlarmManager: setExactAndAllowWhileIdle [name: GCM_CONN_ALARM type: 2 triggerAtMillis: 111489]
+11-01 13:41:49.449  4462  4573 D cevx    : Starting download: https://c.tenor.com/fG_pEVJsTBwAAAAk/tenor.gif
+11-01 13:41:49.449  4462  4573 V cevx    : Is http uri, downloading (uri: https://c.tenor.com/fG_pEVJsTBwAAAAk/tenor.gif)
+11-01 13:41:49.457  4462  4572 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793540499390
+11-01 13:41:49.460  4462  4573 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793540499391
+11-01 13:41:49.474  4462  5215 D cevx    : Starting download: https://c.tenor.com/ON2O4bCmmw0AAAAk/tenor.gif
+11-01 13:41:49.474  4462  5215 V cevx    : Is http uri, downloading (uri: https://c.tenor.com/ON2O4bCmmw0AAAAk/tenor.gif)
+11-01 13:41:49.481  5439  5439 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+11-01 13:41:49.482  5439  5439 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-01 13:41:49.482  4462  4572 D cevx    : Starting download: https://c.tenor.com/KwS2Nqujq24AAAAk/tenor.gif
+11-01 13:41:49.482  4462  4572 V cevx    : Is http uri, downloading (uri: https://c.tenor.com/KwS2Nqujq24AAAAk/tenor.gif)
+11-01 13:41:49.485   399   413 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=5439
+11-01 13:41:49.486   399   413 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (387 us)
+11-01 13:41:49.501  4462  5215 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793540499392
+11-01 13:41:49.501  4462  4572 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793540499393
+11-01 13:41:49.708     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+11-01 13:41:49.510   134   134 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-01 13:41:49.511  5439  5443 I Gralloc4: mapper 4.x is not supported
+11-01 13:41:49.515  4885  5377 W ChimeraUtils: Module com.google.android.gms.growth missing resource growth_module_display_name(0)
+11-01 13:41:49.522  4462  4573 D cevx    : Starting download: https://c.tenor.com/otARhx4xzYUAAAAk/tenor.gif
+11-01 13:41:49.522  4462  4573 V cevx    : Is http uri, downloading (uri: https://c.tenor.com/otARhx4xzYUAAAAk/tenor.gif)
+11-01 13:41:49.523  4885  5377 W ChimeraUtils: Module com.google.android.gms.growth missing resource growth_module_display_name(0)
+11-01 13:41:49.526  4462  4572 D cevx    : Starting download: https://c.tenor.com/a9U6guWv_FgAAAAk/tenor.gif
+11-01 13:41:49.526  4462  4572 V cevx    : Is http uri, downloading (uri: https://c.tenor.com/a9U6guWv_FgAAAAk/tenor.gif)
+11-01 13:41:49.535  4462  4573 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793540499394
+11-01 13:41:49.554  4462  4572 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793540499395
+11-01 13:41:49.557  4462  5215 D cevx    : Starting download: https://c.tenor.com/GJAajofK7K8AAAAk/tenor.gif
+11-01 13:41:49.557  4462  5215 V cevx    : Is http uri, downloading (uri: https://c.tenor.com/GJAajofK7K8AAAAk/tenor.gif)
+11-01 13:41:49.571  3000  3516 W SystemServiceRegistry: No service published for: persistent_data_block
+11-01 13:41:49.574  4462  4573 D cevx    : Starting download: https://c.tenor.com/KUESPZXuhioAAAAk/tenor.gif
+11-01 13:41:49.574  4462  4573 V cevx    : Is http uri, downloading (uri: https://c.tenor.com/KUESPZXuhioAAAAk/tenor.gif)
+11-01 13:41:49.588  4462  4573 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793540499397
+11-01 13:41:49.590  4462  5215 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793540499396
+11-01 13:41:49.611  4885  4999 I MobileDataHub: Scheduling periodic tasks
+11-01 13:41:49.633  4868  5098 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.checkin.CheckinService started execution. cause:5 exec_start_elapsed_seconds: 101 [CONTEXT service_id=218 ]
+11-01 13:41:49.633  4462  4572 D cevx    : Starting download: https://c.tenor.com/q867zrAboHgAAAAk/tenor.gif
+11-01 13:41:49.633  4462  4572 V cevx    : Is http uri, downloading (uri: https://c.tenor.com/q867zrAboHgAAAAk/tenor.gif)
+11-01 13:41:49.633  4868  5098 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.checkin.CheckinService finished executing. cause:5 result: 3 elapsed_millis: 98 uptime_millis: 98 exec_start_elapsed_seconds: 101 [C
+11-01 13:41:49.636  4462  4573 D cevx    : Starting download: https://c.tenor.com/n5nh76V0D1YAAAAk/tenor.gif
+11-01 13:41:49.636  4462  4573 V cevx    : Is http uri, downloading (uri: https://c.tenor.com/n5nh76V0D1YAAAAk/tenor.gif)
+11-01 13:41:49.648  4462  4573 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793540499399
+11-01 13:41:49.648  4462  4572 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793540499398
+11-01 13:41:49.653  4462  5215 D cevx    : Starting download: https://c.tenor.com/UHf1-MPWv2MAAAAk/tenor.gif
+11-01 13:41:49.653  4462  5215 V cevx    : Is http uri, downloading (uri: https://c.tenor.com/UHf1-MPWv2MAAAAk/tenor.gif)
+11-01 13:41:49.658  4868  4876 I .gms.persistent: Background young concurrent copying GC freed 256585(12MB) AllocSpace objects, 13(772KB) LOS objects, 21% free, 29MB/37MB, paused 112us,34us total 271.934ms
+11-01 13:41:49.667  4462  4572 D cevx    : Starting download: https://c.tenor.com/5UTlNjb9_vcAAAAk/tenor.gif
+11-01 13:41:49.667  4462  4572 V cevx    : Is http uri, downloading (uri: https://c.tenor.com/5UTlNjb9_vcAAAAk/tenor.gif)
+11-01 13:41:49.674  4462  5215 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793540499400
+11-01 13:41:49.675  4462  4572 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793540499401
+11-01 13:41:49.679  4885  4999 W MobileDataHub: [Service] appsupload-periodic periodic task disabled
+11-01 13:41:49.686  4462  4573 D cevx    : Starting download: https://c.tenor.com/Q_Tl-Y-k7wUAAAAk/tenor.gif
+11-01 13:41:49.686  4462  4573 V cevx    : Is http uri, downloading (uri: https://c.tenor.com/Q_Tl-Y-k7wUAAAAk/tenor.gif)
+11-01 13:41:49.689  4462  5215 D cevx    : Starting download: https://c.tenor.com/2g0-cIvsBdkAAAAk/tenor.gif
+11-01 13:41:49.689  4462  5215 V cevx    : Is http uri, downloading (uri: https://c.tenor.com/2g0-cIvsBdkAAAAk/tenor.gif)
+11-01 13:41:49.694  4462  4573 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793540499402
+11-01 13:41:49.698  4462  5215 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793540499403
+11-01 13:41:49.703  4462  4572 D cevx    : Starting download: https://c.tenor.com/_aEbLQKkOBAAAAAk/tenor.gif
+11-01 13:41:49.703  4462  4572 V cevx    : Is http uri, downloading (uri: https://c.tenor.com/_aEbLQKkOBAAAAAk/tenor.gif)
+11-01 13:41:49.706  4462  4573 D cevx    : Starting download: https://c.tenor.com/XHKGeWBi80YAAAAk/tenor.gif
+11-01 13:41:49.706  4462  4573 V cevx    : Is http uri, downloading (uri: https://c.tenor.com/XHKGeWBi80YAAAAk/tenor.gif)
+11-01 13:41:49.717  4462  4573 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793540499405
+11-01 13:41:49.718  4462  4572 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793540499404
+11-01 13:41:49.721  4462  5215 D cevx    : Starting download: https://c.tenor.com/RPSyKMrbgvYAAAAk/tenor.gif
+11-01 13:41:49.721  4462  5215 V cevx    : Is http uri, downloading (uri: https://c.tenor.com/RPSyKMrbgvYAAAAk/tenor.gif)
+11-01 13:41:49.725  4462  4573 D cevx    : Starting download: https://c.tenor.com/duCga6DBjOIAAAAk/tenor.gif
+11-01 13:41:49.725  4462  4573 V cevx    : Is http uri, downloading (uri: https://c.tenor.com/duCga6DBjOIAAAAk/tenor.gif)
+11-01 13:41:49.733  4462  5215 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793540499406
+11-01 13:41:49.734  4462  4573 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793540499407
+11-01 13:41:49.750  4462  4572 D cevx    : Starting download: https://c.tenor.com/L8eHp5RTWfwAAAAk/tenor.gif
+11-01 13:41:49.750  4462  4572 V cevx    : Is http uri, downloading (uri: https://c.tenor.com/L8eHp5RTWfwAAAAk/tenor.gif)
+11-01 13:41:49.753  4462  5215 D cevx    : Starting download: https://c.tenor.com/zf4ZNomT0mkAAAAk/tenor.gif
+11-01 13:41:49.753  4462  5215 V cevx    : Is http uri, downloading (uri: https://c.tenor.com/zf4ZNomT0mkAAAAk/tenor.gif)
+11-01 13:41:49.761  4462  4572 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793540499408
+11-01 13:41:49.761  4462  5215 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793540499409
+11-01 13:41:49.774  4462  4573 D cevx    : Starting download: https://c.tenor.com/95im6cX0PSgAAAAk/tenor.gif
+11-01 13:41:49.774  4462  4573 V cevx    : Is http uri, downloading (uri: https://c.tenor.com/95im6cX0PSgAAAAk/tenor.gif)
+11-01 13:41:49.780  4462  5215 D cevx    : Starting download: https://c.tenor.com/VjE3bo1ITUMAAAAk/tenor.gif
+11-01 13:41:49.780  4462  5215 V cevx    : Is http uri, downloading (uri: https://c.tenor.com/VjE3bo1ITUMAAAAk/tenor.gif)
+11-01 13:41:49.786  4462  4573 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793540499410
+11-01 13:41:49.787  4462  5215 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793540499411
+11-01 13:41:49.788  4462  4572 D cevx    : Starting download: https://c.tenor.com/V_JeKKWgs3MAAAAk/tenor.gif
+11-01 13:41:49.788  4462  4572 V cevx    : Is http uri, downloading (uri: https://c.tenor.com/V_JeKKWgs3MAAAAk/tenor.gif)
+11-01 13:41:49.791  4462  5215 D cevx    : Starting download: https://c.tenor.com/P6kgHGiskUsAAAAk/tenor.gif
+11-01 13:41:49.791  4462  5215 V cevx    : Is http uri, downloading (uri: https://c.tenor.com/P6kgHGiskUsAAAAk/tenor.gif)
+11-01 13:41:49.798  4462  4572 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793540499412
+11-01 13:41:49.805  4462  5215 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793540499413
+11-01 13:41:49.810  4462  4573 D cevx    : Starting download: https://c.tenor.com/jiQfWgZB0pcAAAAk/tenor.gif
+11-01 13:41:49.810  4462  4573 V cevx    : Is http uri, downloading (uri: https://c.tenor.com/jiQfWgZB0pcAAAAk/tenor.gif)
+11-01 13:41:49.813  4462  4572 D cevx    : Starting download: https://c.tenor.com/0Cz0CGB40TkAAAAk/tenor.gif
+11-01 13:41:49.813  4462  4572 V cevx    : Is http uri, downloading (uri: https://c.tenor.com/0Cz0CGB40TkAAAAk/tenor.gif)
+11-01 13:41:49.822  4462  4573 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793540499414
+11-01 13:41:49.829  4462  4572 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793540499415
+11-01 13:41:49.833  4462  5215 D cevx    : Starting download: https://c.tenor.com/MoAa3UtDdLUAAAAk/tenor.gif
+11-01 13:41:49.833  4462  5215 V cevx    : Is http uri, downloading (uri: https://c.tenor.com/MoAa3UtDdLUAAAAk/tenor.gif)
+11-01 13:41:49.844  4462  4573 D cevx    : Starting download: https://c.tenor.com/o3L7L8w_NXAAAAAk/tenor.gif
+11-01 13:41:49.844  4462  4573 V cevx    : Is http uri, downloading (uri: https://c.tenor.com/o3L7L8w_NXAAAAAk/tenor.gif)
+11-01 13:41:49.848  4462  5215 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793540499416
+11-01 13:41:49.851  4462  4572 D cevx    : Starting download: https://c.tenor.com/KZeqHbPPStQAAAAk/tenor.gif
+11-01 13:41:49.851  4462  4572 V cevx    : Is http uri, downloading (uri: https://c.tenor.com/KZeqHbPPStQAAAAk/tenor.gif)
+11-01 13:41:49.856  4462  4573 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793540499417
+11-01 13:41:49.859  4462  4572 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1793540499418
+11-01 13:41:49.884  4462  5215 D cevx    : Starting download: https://c.tenor.com/wWtvUtYhKtQAAAAk/tenor.gif
+11-01 13:41:49.884  4462  5215 V cevx    : Is http uri, downloading (uri: https://c.tenor.com/wWtvUtYhKtQAAAAk/tenor.gif)

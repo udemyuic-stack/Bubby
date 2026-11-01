@@ -37,6 +37,8 @@ class MoreScreen(act: UiActivity) : Screen(act) {
             if (paired) add(agents)
             add(Item(R.drawable.ic_music, t("Музыка", "Music", "Musiqa"),
                 t("Музыка по настроению и выбор приложения", "Music for your mood and app choice", "Kayfiyatga mos musiqa va ilova tanlash"), 0, "music", 0, Theme.tile(2, 0xFF6FA0EE.toInt(), 0xFF4A74C4.toInt())))
+            add(Item(R.drawable.ic_edit, t("Мои слова", "My words", "Mening so'zlarim"),
+                t("Сохраняйте слова и запоминайте их надолго", "Save words and make them stick", "So'zlarni saqlang va uzoq eslab qoling"), 0, "vocab", 0, Theme.tile(1, 0xFF58C4A0.toInt(), 0xFF2F9478.toInt())))
             add(Item(R.drawable.ic_face, t("Наряды", "Outfits", "Kiyimlar"),
                 t("Шляпы, очки и шарфы для Bubby", "Hats, glasses and scarves for Bubby", "Bubby uchun shlyapa, ko'zoynak va sharflar"), 0, "outfits", 0, Theme.tile(3, 0xFFE48AA8.toInt(), 0xFFBD5F80.toInt())))
             add(Item(R.drawable.ic_play, t("Игры и стикеры", "Games and stickers", "O'yinlar va stikerlar"),
@@ -45,13 +47,11 @@ class MoreScreen(act: UiActivity) : Screen(act) {
         for (i in items) c.add(menuCard(i), MATCH, WRAP, bottom = 10)
 
         val ignoring = Backend.batteryIgnored(ctx)
-        c.add(ctx.row {
-            setPadding(ctx.dp(8), ctx.dp(12), ctx.dp(4), ctx.dp(10))
+        c.add(ctx.card(pad = 14) { press { if (!ignoring) sleepZ(); Backend.openSettings(act, "battery") }; add(ctx.row {
             add(View(ctx).apply { background = ctx.rounded(if (ignoring) Glass.OK else P.warning, 3f) }, ctx.dp(10), ctx.dp(24), end = 12)
             add(ctx.text(if (ignoring) t("Не засыпать: включено", "Stay awake: on", "Uxlamaslik: yoqilgan")
             else t("Не засыпать: выключено — нажмите, чтобы исправить", "Stay awake: off — tap to fix", "Uxlamaslik: o'chiq — tuzatish uchun bosing"), T.Body), 0, WRAP, 1f)
-            press { if (!ignoring) sleepZ(); Backend.openSettings(act, "battery") }
-        }, MATCH, WRAP)
+        }) }, MATCH, WRAP)
 
         c.add(ctx.linkRow(t("Что сделал Bubby", "What Bubby did", "Bubby nima qildi"), t("Шаги последних задач на телефоне", "Steps of the latest tasks on the phone", "Telefondagi so'nggi vazifalar qadamlari"), R.drawable.ic_schedule, P.primary) { act.open("runs") }, MATCH, WRAP, top = 4)
         if (!paired) c.add(ctx.linkRow(t("Для разработчиков: агенты (Claude Code)", "For developers: agents (Claude Code)", "Dasturchilar uchun: agentlar (Claude Code)"), null, R.drawable.ic_bolt, P.violet) { act.open("agents") }, MATCH, WRAP, top = 4)

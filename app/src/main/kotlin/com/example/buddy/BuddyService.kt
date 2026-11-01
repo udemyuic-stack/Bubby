@@ -153,7 +153,7 @@ class BuddyService : Service() {
     private val screenRx = object : BroadcastReceiver() {
         override fun onReceive(c: Context?, i: Intent?) {
             when (i?.action) {
-                Intent.ACTION_SCREEN_OFF -> { screenOn = false; buddy.setActive(false); hotStop(); tiltStop(); fsPollRestart() }
+                Intent.ACTION_SCREEN_OFF -> { if (choiceActive) collapse(); screenOn = false; buddy.setActive(false); hotStop(); tiltStop(); fsPollRestart() }
                 Intent.ACTION_SCREEN_ON -> {
                     screenOn = true; applyPalette(); buddy.calm = calm()   // the minute clock skips the visuals while the screen is off
                     buddy.setActive(true); hotKick(); tiltStart(); fsPollRestart()
@@ -179,7 +179,9 @@ class BuddyService : Service() {
         }
         override fun onSessions(list: List<AgentSession>) { agentSessions = list; AgentStats.refreshWidgets(this@BuddyService); agentChanged?.invoke() }
         override fun onProjects(list: List<String>, current: String) { agentProjects = list to current; agentChanged?.invoke() }
-        override fun onRun(id: String, state: String, text: String) { agentRun = Triple(id, state, text); agentChanged?.invoke() }
+        override fun onDesktopSessions(list: List<DesktopSession>) { agentDesktopSessions = list; agentChanged?.invoke() }
+        override fun onRuns(list: List<RunEntry>) { agentRuns = list; agentChanged?.invoke() }
+        override fun onRun(id: String, state: String, text: String, sessionId: String) { agentRun = Triple(id, state, text); if (sessionId.isNotEmpty() || state == "running") agentRunSession = sessionId; agentChanged?.invoke() }
         override fun onUsage(u: Usage) { agentUsage = u; AgentStats.save(this@BuddyService, u); AgentStats.refreshWidgets(this@BuddyService); agentChanged?.invoke() }
         override fun onApproval(a: Approval) {
             if (approvals.none { it.fingerprint == a.fingerprint }) approvals.add(a)
@@ -210,6 +212,7 @@ class BuddyService : Service() {
             "outfit" -> h.post { buddy.outfit = Outfits.parse(prefs.getString("outfit", "").orEmpty()) }
             "species" -> h.post { buddy.species = prefs.getString("species", "glass").orEmpty() }
             "theme" -> h.post { com.example.buddy.ui.Theme.apply(this); buddy.invalidate() }
+            "size" -> h.post { if (kotlin.math.abs(sizePref() - liveSize) > 0.001f) applySize() }
             "dock" -> { }   // the place is fixed (next to the clock); nothing moves the mascot any more
             "game_chips" -> h.post { refreshChips() }
             "hotword" -> h.post { hotStop(); hotPausedUntil = 0L; hotKick() }
@@ -222,6 +225,7 @@ class BuddyService : Service() {
     }
 
     companion object {
+        private const val CHOICE_TIMEOUT_MS = 60_000L
         /** Where the mascot lives: in the status-bar row, just right of the clock. */
         const val FIXED_DOCK = "status_left"
         @Volatile var running = false
@@ -237,8 +241,11 @@ class BuddyService : Service() {
         @Volatile var agentQuestions: List<AgentQuestion> = emptyList()
         /** The task started from the phone: (id, state, text) or null. */
         @Volatile var agentRun: Triple<String, String, String>? = null
+        @Volatile var agentRuns: List<RunEntry> = emptyList()
+        @Volatile var agentRunSession: String = ""
         /** Folders of the computer a task can run in, and the default one. */
         @Volatile var agentProjects: Pair<List<String>, String> = emptyList<String>() to ""
+        @Volatile var agentDesktopSessions: List<DesktopSession> = emptyList()
         /** What the connected bridge offered (`details`, `answers`, `diffs`); empty for an older bridge or offline. */
         @Volatile var agentCaps: Set<String> = emptySet()
         /** Called on the main thread whenever anything about the computer's agents changed; the open Agents page redraws at once. */
@@ -356,7 +363,7 @@ class BuddyService : Service() {
             ACTION_AGENT_RELOAD -> startAgentLink()
             ACTION_AGENT_RUN -> {
                 val id = i.getStringExtra("id").orEmpty(); val text = i.getStringExtra("prompt").orEmpty()
-                if (agentLink?.runTask(id, text, i.getStringExtra("project").orEmpty()) == true) agentRun = Triple(id, "running", "") else agentRun = Triple(id, "error", t("Не отправилось: компьютер не принимает задачи (запустите мост с --allow-run)", "Not sent: the computer does not take tasks (start the bridge with --allow-run)", "Yuborilmadi: kompyuter vazifa qabul qilmayapti (bridge'ni --allow-run bilan ishga tushiring)"))
+                if (agentLink?.runTask(id, text, i.getStringExtra("project").orEmpty(), i.getStringExtra("session").orEmpty()) == true) agentRun = Triple(id, "running", "") else agentRun = Triple(id, "error", t("Не отправилось: компьютер не принимает задачи (запустите мост с --allow-run)", "Not sent: the computer does not take tasks (start the bridge with --allow-run)", "Yuborilmadi: kompyuter vazifa qabul qilmayapti (bridge'ni --allow-run bilan ishga tushiring)"))
             }
             ACTION_AGENT_RUN_STOP -> agentLink?.stopTask(i.getStringExtra("id").orEmpty())
             ACTION_AGENT_DECIDE -> i.getStringExtra("fp")?.let { fp -> agentLink?.decide(fp, i.getBooleanExtra("allow", false), i.getBooleanExtra("always", false)); resolveLocal(fp) }
@@ -828,9 +835,9 @@ class BuddyService : Service() {
                 if (p != null && !expanded) buddy.touchAt(x - p.left - buddy.left, y - p.top - buddy.top)
             }
             onTouchEnd = { buddy.touchEnd() }
-            // Bubby sits at the top next to the clock and stays there: no dragging, no pinch resize
-            onPinch = {}
-            onPinchEnd = {}
+            // Bubby sits at the top next to the clock and stays there: no dragging; pinch resizes
+            onPinch = { f -> applySize((liveSize * f).coerceIn(0.15f, 6f)) }
+            onPinchEnd = { prefs.edit().putFloat("size", liveSize).apply() }
             onDragStart = { cancelTap() }
             onDrag = { _, _ -> }
             onDragEnd = {}
@@ -1024,11 +1031,9 @@ class BuddyService : Service() {
         if (isStatus) {
             val sbh = topH(); val bh = buddy.height
             val target = (sbh * 1.1f).toInt()
-            if (bh > 0 && bh > target) {
+            if (bh > 0 && bh > target && !prefs.contains("size")) {
                 val ns = (liveSize * target / bh).coerceIn(0.15f, 6f)
                 if (ns < liveSize - 0.01f) {
-                    if (!prefs.contains("size_before_status")) prefs.edit().putFloat("size_before_status", liveSize).apply()
-                    prefs.edit().putFloat("size", ns).apply()
                     applySize(ns)
                     pendingDock = null
                     h.postDelayed({ if (!expanded) dockTo(where) else pendingDock = where }, 180)
@@ -1274,7 +1279,7 @@ class BuddyService : Service() {
     private fun startAgentLink() {
         agentLink?.stop(); agentLink = null
         approvals.clear(); questions.clear(); publishApprovals(); showApproval(announce = false)
-        agentConnected = false; agentDesktop = null; agentSessions = emptyList(); agentCaps = emptySet(); AgentStats.refreshWidgets(this)
+        agentConnected = false; agentDesktop = null; agentSessions = emptyList(); agentDesktopSessions = emptyList(); agentCaps = emptySet(); AgentStats.refreshWidgets(this)
         if (PairingStore(this).load() == null) return
         agentLink = AgentLink(this, agentListener).also { it.start() }
     }
@@ -1916,6 +1921,7 @@ class BuddyService : Service() {
 
     private fun onCallAnswered() {
         if (!calling) return
+        if (!callTalk && CallWatcher.pendingSay != null) { callHandled = true; callTalk = true }
         if (!callTalk) { onCallEnded(); return }
         callTalkStart()
     }
@@ -1942,11 +1948,13 @@ class BuddyService : Service() {
             "ru" -> "Здравствуйте, я Bubby, помощник владельца телефона. Сейчас он не может ответить. Что передать?"
             else -> "Hello, this is Bubby, the phone owner's assistant. They can't pick up right now. Can I take a message?"
         }
-        callLog.add("assistant" to greet)
-        setAnswer(greet, false); show(answer)
+        val opening = CallWatcher.pendingSay?.also { CallWatcher.pendingSay = null }
+        val line = opening ?: greet
+        callLog.add("assistant" to line)
+        setAnswer(line, false); show(answer)
         h.removeCallbacks(callTalkLimit); h.postDelayed(callTalkLimit, 180_000)
         // a moment for the line and the speaker to settle
-        h.postDelayed({ if (callTalk) say(greet, l) { callTalkListen() } }, 600)
+        h.postDelayed({ if (callTalk) say(line, l) { callTalkListen() } }, 600)
     }
 
     private fun callTalkListen() {
@@ -2016,7 +2024,7 @@ class BuddyService : Service() {
     private fun onCallEnded() {
         if (callTalk) callTalkEnd(false)
         if (!calling) return
-        calling = false; callName = null; callHandled = false
+        calling = false; CallWatcher.pendingSay = null; callName = null; callHandled = false
         chipsRow.removeAllViews(); hide(chipsScroll)
         releaseCallFocus()
         voice.stopListening(); voice.stopSpeaking()
@@ -2098,7 +2106,10 @@ class BuddyService : Service() {
         h.postDelayed(closeTask, 1500)
     }
 
+    private val choiceTimeout = Runnable { if (choiceActive) collapse() }
+
     private fun clearChoices() {
+        h.removeCallbacks(choiceTimeout)
         if (!choiceActive) return
         choiceActive = false; choiceOpts = emptyList()
         chipsRow.removeAllViews(); hide(chipsScroll)
@@ -2109,6 +2120,8 @@ class BuddyService : Service() {
         h.removeCallbacks(closeTask)
         voice.stopListening()
         choicePrompt = prompt; choiceOpts = options; choiceActive = true
+        h.removeCallbacks(choiceTimeout)
+        h.postDelayed(choiceTimeout, CHOICE_TIMEOUT_MS)
         flashBadge("approval", 15_000L)
         errorPinned = false
         style(true)
@@ -2137,6 +2150,7 @@ class BuddyService : Service() {
 
     private fun pickChoice(opt: JSONObject) {
         if (!choiceActive) return
+        h.removeCallbacks(choiceTimeout)
         voice.stopSpeaking()
         h.removeCallbacks(closeTask)
         choiceActive = false; choiceOpts = emptyList()

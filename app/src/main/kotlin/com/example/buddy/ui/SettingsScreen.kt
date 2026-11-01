@@ -170,10 +170,16 @@ class SettingsScreen(act: UiActivity) : Screen(act) {
                 Triple("forest", t("Дождливый лес", "Rainy forest", "Yomg'irli o'rmon"), t("Облако", "Cloud", "Bulut")),
                 Triple("ocean", t("Океан", "Ocean", "Okean"), t("Медуза", "Jellyfish", "Meduza")),
                 Triple("newyear", t("Новый год", "New Year", "Yangi yil"), t("Снеговик", "Snowman", "Qorbobo")),
-                Triple("ice", t("Ледник", "Glacier", "Muzlik"), t("Мочи", "Mochi", "Mochi"))
+                Triple("ice", t("Ледник", "Glacier", "Muzlik"), t("Мочи", "Mochi", "Mochi")),
+                Triple("aurora", t("Аврора", "Aurora", "Aurora"), t("Шар света", "Light orb", "Nur shari")),
+                Triple("candy", t("Конфетти", "Candy", "Konfet"), t("Мишка", "Gummy bear", "Ayiqcha")),
+                Triple("desert", t("Пустыня", "Desert", "Cho'l"), t("Кактус", "Cactus", "Kaktus"))
             )
-            add(sw(t("Живой фон", "Animated background", "Jonli fon"), "scene_anim", true,
-                t("Движущийся фон за страницами. Выключите, чтобы экономить батарею", "A moving background behind the pages. Turn off to save battery", "Sahifalar orqasida harakatlanuvchi fon. Batareyani tejash uchun o'chiring")).apply { }, MATCH, WRAP, bottom = 10)
+            val autoOff = Backend.bool(ctx, "scene_anim_auto_off", false) && !Backend.bool(ctx, "scene_anim", true)
+            val animSub = t("Движущийся фон за страницами. Выключите, чтобы экономить батарею", "A moving background behind the pages. Turn off to save battery", "Sahifalar orqasida harakatlanuvchi fon. Batareyani tejash uchun o'chiring")
+            add(ctx.switchRow(t("Живой фон", "Animated background", "Jonli fon"),
+                if (autoOff) animSub + "\n" + t("Выключено автоматически: телефон работал слишком медленно", "Turned off automatically: the phone was too slow", "Avtomatik o'chirildi: telefon juda sekin ishladi") else animSub,
+                Backend.bool(ctx, "scene_anim", true)) { Backend.setBool(ctx, "scene_anim", it); Backend.setBool(ctx, "scene_anim_auto_off", false) }, MATCH, WRAP, bottom = 10)
             for (pair in styles.chunked(2)) {
                 add(ctx.row {
                     for ((i, st) in pair.withIndex()) {
@@ -317,6 +323,23 @@ class SettingsScreen(act: UiActivity) : Screen(act) {
                 refresh()
             }, LinearLayout.LayoutParams(WRAP, WRAP).apply { setMargins(0, 0, ctx.dp(8), ctx.dp(8)) })
             add(flow, MATCH, WRAP, top = 12)
+        }
+
+        group(c, t("Распознавание узбекского", "Uzbek speech recognition", "O'zbekcha ovoz tanish"), R.drawable.ic_face) {
+            fun saved(key: String, hint: String): android.widget.EditText {
+                val f = ctx.field(hint, Backend.str(ctx, key))
+                f.addTextChangedListener(object : android.text.TextWatcher {
+                    override fun afterTextChanged(s: android.text.Editable?) { Backend.setStr(ctx, key, s?.toString()?.trim().orEmpty()) }
+                    override fun beforeTextChanged(s: CharSequence?, a: Int, b: Int, c2: Int) {}
+                    override fun onTextChanged(s: CharSequence?, a: Int, b: Int, c2: Int) {}
+                })
+                return f
+            }
+            add(saved(com.example.buddy.SttClient.KEY_URL, t("Адрес сервера", "Server address", "Server manzili")), MATCH, WRAP)
+            add(saved(com.example.buddy.SttClient.KEY_TOKEN, t("Ключ сервера", "Server key", "Server kaliti")), MATCH, WRAP, top = 8)
+            add(ctx.text(t("Звук отправляется на этот ваш сервер только в узбекском режиме. Без сервера работает обычное распознавание.",
+                "Audio goes to this server of yours only in Uzbek mode. Without a server the normal recognizer is used.",
+                "Ovoz faqat o'zbek rejimida shu serveringizga yuboriladi. Server bo'lmasa oddiy tanib oluvchi ishlaydi."), T.Small, Glass.TEXT_LABEL), MATCH, WRAP, top = 8)
         }
     }
 }

@@ -88,7 +88,7 @@ fun View.pressLong(onLong: (() -> Unit)?, onClick: () -> Unit) {
         when (e.actionMasked) {
             MotionEvent.ACTION_DOWN -> {
                 longFired = false
-                v.animate().cancel(); v.animate().scaleX(0.94f).scaleY(0.94f).setDuration(90).start()
+                v.animate().cancel(); v.animate().scaleX(Motion.PRESS_SCALE).scaleY(Motion.PRESS_SCALE).setDuration(with(Motion) { v.ms(INSTANT) }).start()
                 if (onLong != null) v.postDelayed(long, 550)
             }
             MotionEvent.ACTION_MOVE -> {
@@ -96,10 +96,10 @@ fun View.pressLong(onLong: (() -> Unit)?, onClick: () -> Unit) {
             }
             MotionEvent.ACTION_UP -> {
                 v.removeCallbacks(long)
-                v.animate().scaleX(1f).scaleY(1f).setDuration(280).setInterpolator(android.view.animation.OvershootInterpolator(3f)).start()
+                v.animate().scaleX(1f).scaleY(1f).setDuration(with(Motion) { v.ms(QUICK) }).setInterpolator(Motion.standard).start()
                 if (!longFired && e.x in 0f..v.width.toFloat() && e.y in 0f..v.height.toFloat()) { v.performClick(); onClick() }
             }
-            MotionEvent.ACTION_CANCEL -> { v.removeCallbacks(long); v.animate().scaleX(1f).scaleY(1f).setDuration(120).start() }
+            MotionEvent.ACTION_CANCEL -> { v.removeCallbacks(long); v.animate().scaleX(1f).scaleY(1f).setDuration(with(Motion) { v.ms(QUICK) }).setInterpolator(Motion.standard).start() }
         }
         true
     }
@@ -145,6 +145,7 @@ fun Context.section(title: String, iconRes: Int = 0): View = row {
 }.also { it.setPadding(dp(4), dp(22), 0, dp(10)) }
 
 fun Context.chip(label: String, selected: Boolean, onClick: () -> Unit): View = row(Gravity.CENTER) {
+    minimumHeight = dp(48)
     setPadding(dp(14), dp(8), dp(14), dp(8))
     background = glass(if (selected) GlassKind.Active else GlassKind.Dim, 20f)
     add(text(label, T.Label, if (selected) Glass.ON_ACTIVE else Glass.TEXT_LABEL), WRAP, WRAP)
@@ -152,6 +153,7 @@ fun Context.chip(label: String, selected: Boolean, onClick: () -> Unit): View = 
 }
 
 fun Context.switchRow(title: String, subtitle: String?, checked: Boolean, onChange: (Boolean) -> Unit): View = row {
+    minimumHeight = dp(48)
     setPadding(0, dp(8), 0, dp(8))
     val texts = col {
         add(text(title, T.Body), MATCH, WRAP)
@@ -202,7 +204,34 @@ fun Context.field(hint: String, value: String = "", multiline: Boolean = false, 
             else -> InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_CAP_SENTENCES
         }
         if (multiline) { minLines = 3; gravity = Gravity.TOP }
+        keepVisible()
     }
+
+fun EditText.keepVisible() {
+    setOnFocusChangeListener { v, focused ->
+        if (focused) v.postDelayed({
+            if (v.isAttachedToWindow) v.requestRectangleOnScreen(android.graphics.Rect(0, 0, v.width, v.height + v.context.dp(24)))
+        }, 350)
+    }
+}
+
+fun Context.isOnline(): Boolean {
+    val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as? android.net.ConnectivityManager ?: return true
+    val caps = cm.getNetworkCapabilities(cm.activeNetwork ?: return false) ?: return false
+    return caps.hasCapability(android.net.NetworkCapabilities.NET_CAPABILITY_INTERNET)
+}
+
+fun android.app.Activity.runIfAlive(block: () -> Unit) {
+    runOnUiThread { if (!isFinishing && !isDestroyed) block() }
+}
+
+fun Context.offlineCard(message: String, retry: () -> Unit): View = card(pad = 12, fill = P.errorContainer, stroke = 0) {
+    add(row(Gravity.CENTER_VERTICAL) {
+        add(icon(R.drawable.ic_wifi, P.onErrorContainer, 22), WRAP, WRAP, end = 8)
+        add(text(message, T.Body, P.onErrorContainer), 0, WRAP, 1f)
+        add(button(com.example.buddy.Tr.t(this@offlineCard, "Повторить", "Retry", "Qayta urinish"), BtnStyle.Text) { retry() }, WRAP, WRAP)
+    })
+}
 
 fun Context.toast(s: String) = Toast.makeText(this, s, Toast.LENGTH_SHORT).show()
 
@@ -221,6 +250,8 @@ fun Context.confirm(title: String, message: String, ok: String, cancel: String, 
 fun Context.scroll(content: View): ScrollView = ScrollView(this).apply {
     isFillViewport = true
     overScrollMode = View.OVER_SCROLL_NEVER
+    isVerticalFadingEdgeEnabled = true
+    setFadingEdgeLength(dp(18))
     addView(content, FrameLayout.LayoutParams(MATCH, WRAP))
 }
 
@@ -228,6 +259,7 @@ fun Context.space(hDp: Int): View = View(this).apply { layoutParams = LinearLayo
 
 /** A glass capsule with a glowing status dot: "AI", "Microphone". */
 fun Context.pill(label: String, color: Int, dot: Boolean = true, onClick: (() -> Unit)? = null): View = row(Gravity.CENTER) {
+    if (onClick != null) minimumHeight = dp(48)
     setPadding(dp(13), dp(8), dp(13), dp(8))
     background = glass(GlassKind.Base, 30f)
     if (dot) add(DotView(this@pill, color), dp(9), dp(9), end = 7)
@@ -258,7 +290,7 @@ class GlassToggle(c: Context) : View(c) {
     fun toggle() {
         isChecked = !isChecked
         onChange?.invoke(isChecked)
-        if (isChecked) android.animation.ValueAnimator.ofFloat(0f, 1f).apply { duration = 600; addUpdateListener { ring = it.animatedValue as Float; invalidate() }; start() }
+        if (isChecked && Motion.enabled(context)) android.animation.ValueAnimator.ofFloat(0f, 1f).apply { duration = Motion.EMPHASIS; addUpdateListener { ring = it.animatedValue as Float; invalidate() }; start() }
     }
     override fun onDraw(cv: android.graphics.Canvas) {
         val d = if (isChecked) on else off
@@ -300,10 +332,16 @@ fun Context.emptyState(title: String, message: String, bubble: String? = null, s
         add(m, dp(170), dp(136), Gravity.CENTER)
         post {
             try {
-                android.animation.ObjectAnimator.ofFloat(m, View.TRANSLATION_Y, 0f, -dp(6).toFloat()).apply {
+                val bob = android.animation.ObjectAnimator.ofFloat(m, View.TRANSLATION_Y, 0f, -dp(6).toFloat()).apply {
                     duration = if (sleepy) 2600 else 1700; repeatMode = android.animation.ValueAnimator.REVERSE
                     repeatCount = android.animation.ValueAnimator.INFINITE; interpolator = android.view.animation.AccelerateDecelerateInterpolator()
-                    if ((context as? UiActivity)?.intent?.getBooleanExtra("static", false) != true) start()
+                }
+                if ((context as? UiActivity)?.intent?.getBooleanExtra("static", false) != true && Theme.sceneOn(context)) {
+                    bob.start()
+                    m.addOnAttachStateChangeListener(object : View.OnAttachStateChangeListener {
+                        override fun onViewAttachedToWindow(v: View) { if (!bob.isStarted) bob.start() }
+                        override fun onViewDetachedFromWindow(v: View) { bob.cancel() }
+                    })
                 }
             } catch (_: Exception) {}
         }

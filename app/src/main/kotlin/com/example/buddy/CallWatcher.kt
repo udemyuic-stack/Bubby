@@ -115,6 +115,7 @@ class CallWatcher(
         @Volatile var lastNumber: String? = null
         @Volatile var lastName: String? = null
         @Volatile var lastRingMs: Long = 0L
+        @Volatile var pendingSay: String? = null
 
         private val textStems = listOf("напиши", "написать", "напишите", "смс", "sms", "сообщен", "скажи", "yoz", "xabar", "deb ayt", "message", "text ", "tell him", "tell her", "tell them", "busy", "занят", "band", "за рул", "rulda", "driving")
 

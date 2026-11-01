@@ -138,6 +138,7 @@ class AgentLoop(
     private val emotionRe = Regex("\"emotion\"\\s*:\\s*\"([A-Za-z_]+)\"")
     private val langRe = Regex("\"lang\"\\s*:\\s*\"([A-Za-z]{2,3})\"")
     private val tagRe = Regex("^\\s*\\[(\\w+)\\]\\s*")
+    private val innerTagRe = Regex("\\s*\\[(\\w+)]")
 
     /** A legacy JSON reply. */
     class Legacy(val emotion: String, val lang: String?, val say: String, val actions: JSONArray, val more: Boolean)
@@ -191,7 +192,8 @@ class AgentLoop(
         val m = tagRe.find(raw)
         val tag = m?.groupValues?.get(1)?.lowercase() ?: "happy"
         val text = if (m != null) raw.substring(m.range.last + 1) else raw
-        return (if (tag in emotions) tag else "happy") to text.trim()
+        val spoken = innerTagRe.replace(text) { if (it.groupValues[1].lowercase() in emotions) "" else it.value }
+        return (if (tag in emotions) tag else "happy") to spoken.trim()
     }
 
     private val enReplyWords = Regex("\\b(the|is|are|you|your|to|and|of|for|with|this|that|it|i|will|can|here|let|sure|okay|ok|hello|hi)\\b")

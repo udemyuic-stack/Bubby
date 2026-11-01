@@ -320,7 +320,7 @@ class NewYearScene : ThemeScene() {
         bmBack?.let { bmpPaint.alpha = nyA(A0); cv.drawBitmap(it, null, dBack, bmpPaint) }
 
         // eagle: 16 s round, linear between the key points
-        run {
+        if (!com.example.buddy.ui.home.NewYearEagle.away) run {
             val p = nyCyc(td, 0f, 16f) * 4f
             val k = min(3, p.toInt()); val f = p - k
             val ex = egX[k] + (egX[k + 1] - egX[k]) * f

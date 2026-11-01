@@ -73,6 +73,19 @@ class MusicScreen(act: UiActivity) : Screen(act) {
             })
         }, MATCH, WRAP)
 
+        c.add(ctx.card(pad = 14, onClick = { act.push(BeatScreen(act)) }) {
+            add(ctx.row {
+                add(ctx.row(Gravity.CENTER) {
+                    background = ctx.gradient(Theme.tile(3, 0xFFB79BFF.toInt(), 0xFF6B3FD0.toInt()), 16f)
+                    add(ctx.icon(R.drawable.ic_music, 0xFFFFFFFF.toInt(), 26), WRAP, WRAP)
+                }, ctx.dp(52), ctx.dp(52), end = 14)
+                add(ctx.col {
+                    add(ctx.text("Bubby Beat", T.Title), MATCH, WRAP)
+                    add(ctx.text(t("Ритм-игра: 6 рангов", "Rhythm game: 6 ranks", "Ritm o'yini: 6 rank"), T.Small), MATCH, WRAP, top = 2)
+                }, 0, WRAP, 1f)
+            })
+        }, MATCH, WRAP, top = 10, bottom = 4)
+
         c.add(ctx.section(t("Выберите настроение", "Pick a mood", "Kayfiyatni tanlang"), R.drawable.ic_face))
         for (pair in moods.chunked(2)) {
             val row = ctx.row(Gravity.TOP) {}
@@ -94,7 +107,7 @@ class MusicScreen(act: UiActivity) : Screen(act) {
                 Backend.bool(ctx, "music_mood", true)) { Backend.setBool(ctx, "music_mood", it) })
         }, MATCH, WRAP, top = 6)
 
-        c.add(ctx.section(t("Какие приложения можно использовать", "Which apps can be used", "Qaysi ilovalardan foydalanish mumkin"), R.drawable.ic_apps))
+        c.add(ctx.card(pad = 12) { add(ctx.text(t("Какие приложения можно использовать", "Which apps can be used", "Qaysi ilovalardan foydalanish mumkin"), T.Title).apply { textSize = 15f }, MATCH, WRAP) }, MATCH, WRAP, top = 14, bottom = 8)
         val selected = Backend.str(ctx, "music_app")
         fun pick(id: String) { Backend.setStr(ctx, "music_app", id); refresh() }
         c.add(appCard(t("Автоматически", "Automatic", "Avtomatik"), selected.isEmpty(),

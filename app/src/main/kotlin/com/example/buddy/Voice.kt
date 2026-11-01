@@ -15,6 +15,7 @@ import java.util.Locale
 class Voice(private val ctx: Context, private val h: Handler) {
     private var sr: SpeechRecognizer? = null
     private var hot: SpeechRecognizer? = null
+    private val stt = SttClient(ctx, h)
     private var tts: TextToSpeech? = null
     private var ttsReady = false
     private var queued: (() -> Unit)? = null
@@ -37,7 +38,7 @@ class Voice(private val ctx: Context, private val h: Handler) {
     @Volatile var lastAlternatives: List<String> = emptyList()
     /** True from the moment a speak() is requested until it finished or was stopped. */
     val talking get() = curId.isNotEmpty() || speaking
-    val listening get() = sr != null || pendingListen
+    val listening get() = sr != null || pendingListen || stt.active
     private var pendingListen = false
     val hotRunning get() = hot != null
 
@@ -72,6 +73,14 @@ class Voice(private val ctx: Context, private val h: Handler) {
         stopHot()
         stopListening()
         stopSpeaking()
+        if (langTag?.startsWith("uz") == true && stt.configured) {
+            stt.listen(done) { listenSystem(langTag, hadHot, partial, done) }
+            return
+        }
+        listenSystem(langTag, hadHot, partial, done)
+    }
+
+    private fun listenSystem(langTag: String?, hadHot: Boolean, partial: (String) -> Unit, done: (String?, String?) -> Unit) {
         if (!SpeechRecognizer.isRecognitionAvailable(ctx)) { done(null, "нет распознавания речи"); return }
         val i = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
             .putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
@@ -193,6 +202,7 @@ class Voice(private val ctx: Context, private val h: Handler) {
 
     fun stopListening() {
         listenToken++; pendingListen = false
+        stt.cancel()
         val r = sr ?: return
         sr = null
         try { r.cancel(); r.destroy() } catch (_: Exception) {}

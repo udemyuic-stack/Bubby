@@ -22,7 +22,7 @@ object Perf {
         if (fps >= SLOW_FPS) { slow = 0; return }
         if (++slow < 2) return
         done = true
-        act.getSharedPreferences("buddy", Context.MODE_PRIVATE).edit().putBoolean("scene_anim", false).apply()
+        act.getSharedPreferences("buddy", Context.MODE_PRIVATE).edit().putBoolean("scene_anim", false).putBoolean("scene_anim_auto_off", true).apply()
         Handler(Looper.getMainLooper()).post {
             act.toast(com.example.buddy.Tr.t(act, "Фон не тянет этот телефон — анимация выключена (Настройки → Стиль)", "The phone is too slow for the animated background, so it is off now (Settings → Style)", "Telefon animatsiyali fonni tortmayapti, o'chirildi (Sozlamalar → Uslub)"))
             act.restart()

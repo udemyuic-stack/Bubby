@@ -39,6 +39,9 @@ object ThemeScenes {
         "ocean" -> OceanScene()
         "newyear" -> NewYearScene()
         "ice" -> IceScene()
+        "aurora" -> AuroraScene()
+        "candy" -> CandyScene()
+        "desert" -> DesertScene()
         else -> null
     }
 
@@ -91,6 +94,14 @@ class SceneCanvasView(c: Context) : View(c), SceneHost {
     override fun onAppResume() { active = true; last = 0L; invalidate() }
     override fun onAppPause() { active = false }
     override fun release() { scene = null }
+
+    private val origin = IntArray(2)
+
+    override fun onLayout(changed: Boolean, l: Int, t: Int, r: Int, b: Int) {
+        super.onLayout(changed, l, t, r, b)
+        getLocationInWindow(origin)
+        com.example.buddy.ui.home.SceneOrigin.setScene(origin[0], origin[1])
+    }
 
     override fun onSizeChanged(w: Int, h: Int, ow: Int, oh: Int) { scene?.onSize(w.toFloat(), h.toFloat(), resources.displayMetrics.density) }
 

@@ -20,7 +20,10 @@ class UiActivity : Activity() {
     companion object {
         /** True while the app's own screen is in front: the floating island then stays closed unless an agent needs an answer. */
         @Volatile @JvmStatic var appInFront = false
+        private const val EXIT_WINDOW_MS = 2000L
     }
+
+    private var lastRootBack = 0L
 
     private lateinit var host: FrameLayout
     private lateinit var shell: LinearLayout
@@ -194,12 +197,12 @@ class UiActivity : Activity() {
 
     /** A ring spreading from where the finger touched, and the new page opening as a circle from the same spot (like the designs). */
     private fun revealFromTouch() {
-        if (touchX < 0f || intent?.getBooleanExtra("static", false) == true || Build.VERSION.SDK_INT < 21) return
+        if (touchX < 0f || !Motion.enabled(this) || intent?.getBooleanExtra("static", false) == true || Build.VERSION.SDK_INT < 21) return
         try {
             val loc = IntArray(2); body.getLocationOnScreen(loc)
             val cx = (touchX - loc[0]).toInt().coerceIn(0, maxOf(1, body.width)); val cy = (touchY - loc[1]).toInt().coerceIn(0, maxOf(1, body.height))
             val r = Math.hypot(maxOf(cx, body.width - cx).toDouble(), maxOf(cy, body.height - cy).toDouble()).toFloat()
-            body.post { try { android.view.ViewAnimationUtils.createCircularReveal(body, cx, cy, 0f, r).apply { duration = 650; interpolator = android.view.animation.DecelerateInterpolator(1.4f) }.start() } catch (_: Exception) { } }
+            body.post { try { android.view.ViewAnimationUtils.createCircularReveal(body, cx, cy, 0f, r).apply { duration = 650; interpolator = Motion.settle }.start() } catch (_: Exception) { } }
             val ring = View(this).apply {
                 background = android.graphics.drawable.GradientDrawable().apply { shape = android.graphics.drawable.GradientDrawable.OVAL; setColor(Color.TRANSPARENT); setStroke(dp(2), Glass.white(.85f)) }
                 isClickable = false
@@ -252,7 +255,7 @@ class UiActivity : Activity() {
         stack += s to page
         page.alpha = 0f
         page.translationX = dp(40).toFloat()
-        page.animate().alpha(1f).translationX(0f).setDuration(220).start()
+        page.animate().alpha(1f).translationX(0f).setDuration(Motion.run { page.ms(STANDARD) }).setInterpolator(Motion.standard).start()
         s.onShow()
         updateChrome()
     }
@@ -260,7 +263,7 @@ class UiActivity : Activity() {
     fun pop() {
         if (stack.isEmpty()) return
         val (_, page) = stack.removeAt(stack.size - 1)
-        page.animate().alpha(0f).translationX(dp(40).toFloat()).setDuration(160).withEndAction { host.removeView(page) }.start()
+        page.animate().alpha(0f).translationX(dp(40).toFloat()).setDuration(Motion.run { page.ms(QUICK) }).setInterpolator(Motion.exit).withEndAction { host.removeView(page) }.start()
         stack.lastOrNull()?.second?.visibility = View.VISIBLE
         (stack.lastOrNull()?.first ?: tabs[tab]).onShow()
         updateChrome()
@@ -268,7 +271,11 @@ class UiActivity : Activity() {
 
     @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
-        if (stack.isNotEmpty()) pop() else super.onBackPressed()
+        if (stack.isNotEmpty()) { pop(); return }
+        val now = android.os.SystemClock.elapsedRealtime()
+        if (now - lastRootBack < EXIT_WINDOW_MS) { super.onBackPressed(); return }
+        lastRootBack = now
+        toast(Tr.t(this, "Нажмите ещё раз, чтобы выйти", "Press back again to exit", "Chiqish uchun yana bir marta bosing"))
     }
 
     override fun onPause() { super.onPause(); appInFront = false; scene?.onAppPause(); (tabs[0] as HomeScreen).restWeb() }

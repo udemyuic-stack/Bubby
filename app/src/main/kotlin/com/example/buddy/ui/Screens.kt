@@ -17,6 +17,7 @@ object Screens {
         "game-room-shop" -> RoomShopScreen(act)
         "agents" -> AgentsScreen(act)
         "runs" -> RunsScreen(act)
+        "vocab" -> com.example.buddy.ui.vocab.VocabScreen(act)
         else -> null
     }
 }

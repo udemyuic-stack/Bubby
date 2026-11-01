@@ -96,7 +96,7 @@ class HomeScreen(act: UiActivity) : Screen(act) {
     private var splashCover: List<View> = emptyList()
     private var pendingSetup = false   // first launch without a key or permissions: the setup opens after the splash, not under it
     private fun endSplash() {
-        splashCover.forEach { v -> v.visibility = View.VISIBLE; v.alpha = 0f; v.animate().alpha(1f).setDuration(400).start() }
+        splashCover.forEach { v -> v.visibility = View.VISIBLE; v.alpha = 0f; v.animate().alpha(1f).setDuration(Motion.run { v.ms(EMPHASIS) }).start() }
         splashCover = emptyList()
         if (pendingSetup) { pendingSetup = false; content.postDelayed({ act.open("setup") }, 700) }
     }
@@ -119,7 +119,7 @@ class HomeScreen(act: UiActivity) : Screen(act) {
             "halloween" -> t("бу! счастливого Хэллоуина 🎃", "boo! happy Halloween 🎃", "bu! Halloween muborak 🎃")
             "forest" -> t("даже в дождь — рядом ☔", "near you, even in the rain ☔", "yomg'irda ham yoningda ☔")
             "ocean" -> t("медуза Bubby рядом 🌊", "your jellyfish Bubby is near 🌊", "meduza Bubby yoningda 🌊")
-            "ice", "green", "blue" -> t("твой живой помощник", "your living assistant", "jonli yordamching")
+            "ice", "green", "blue", "aurora", "candy", "desert" -> t("твой живой помощник", "your living assistant", "jonli yordamching")
             else -> t("С Новым годом! 🎄", "Happy New Year! 🎄", "Yangi yil muborak! 🎄")
         })
         w.run("bubbyHome(" + o + ")")
@@ -130,6 +130,41 @@ class HomeScreen(act: UiActivity) : Screen(act) {
         content.removeAllViews()
         render(content)
         pushState()
+    }
+
+    private var nativeHome: com.example.buddy.ui.home.HomeScene? = null
+    private var nativeLook = ""
+
+    private val homeHost = object : com.example.buddy.ui.home.HomeScene.Host {
+        override fun nav(name: String) { act.showTab(when (name) { "tasks" -> 1; "calendar" -> 2; "settings" -> 3; else -> 4 }) }
+        override fun ask(text: String) { send(t("Привет!", "Hello!", "Salom!")) }
+        override fun toggle() { this@HomeScreen.toggle() }
+    }
+
+    private fun nativeHome(running: Boolean): com.example.buddy.ui.home.HomeScene? {
+        val id = Theme.cur.id
+        val home = nativeHome?.takeIf { nativeLook == id } ?: when (id) {
+            "halloween" -> com.example.buddy.ui.home.HalloweenHome(ctx, homeHost)
+            "ocean" -> com.example.buddy.ui.home.OceanHome(ctx, homeHost)
+            "newyear" -> com.example.buddy.ui.home.NewYearHome(ctx, homeHost)
+            "forest" -> com.example.buddy.ui.home.ForestHome(ctx, homeHost)
+            "space" -> com.example.buddy.ui.home.SpaceHome(ctx, homeHost)
+            "ice" -> com.example.buddy.ui.home.IceHome(ctx, homeHost)
+            "aurora" -> com.example.buddy.ui.home.AuroraHome(ctx, homeHost)
+            "candy" -> com.example.buddy.ui.home.CandyHome(ctx, homeHost)
+            "desert" -> com.example.buddy.ui.home.DesertHome(ctx, homeHost)
+            "blue" -> com.example.buddy.ui.home.BlueHome(ctx, homeHost)
+            "green" -> com.example.buddy.ui.home.GreenHome(ctx, homeHost)
+            else -> null
+        }?.also { nativeHome = it; nativeLook = id } ?: return null
+        (home.parent as? android.view.ViewGroup)?.removeView(home)
+        home.setLabels(listOf(
+            t("Проверить:\nпривет", "Test:\nhello", "Tekshirish:\nsalom"),
+            if (running) t("Остановить", "Stop", "To'xtatish") else t("Запустить", "Start", "Ishga tushirish"),
+            t("Задачи", "Tasks", "Vazifalar"), t("Ещё", "More", "Yana"), t("Календарь", "Calendar", "Kalendar"), t("Настройки", "Settings", "Sozlamalar")
+        ))
+        home.setStatus(running, if (running) t("Помощник работает", "Assistant is on", "Yordamchi ishlayapti") else t("Помощник выключен", "Assistant is off", "Yordamchi o'chiq"))
+        return home
     }
 
     private fun toggle() {
@@ -179,18 +214,23 @@ class HomeScreen(act: UiActivity) : Screen(act) {
                 .apply { setTextSize(android.util.TypedValue.COMPLEX_UNIT_PX, 12f * sc) }, WRAP, WRAP)
         }
         val statusBox = FrameLayout(ctx).apply { addView(statusV, FrameLayout.LayoutParams(WRAP, WRAP, Gravity.CENTER_HORIZONTAL)) }
+        val home = nativeHome(running)
         val island = Island(ctx, sc, still, { txt -> send(txt) }) { open ->
+            home?.setIslandOpen(open)
             // with the island open the mascot steps back: smaller and lower (scale .68, top 134)
             val k = if (open) .68f else 1f
             mascot.pivotX = mascot.width / 2f; mascot.pivotY = 0f
-            mascot.animate().scaleX(k).scaleY(k).translationY(if (open) 68f * sc else 0f).setDuration(220).start()
-            nameV.animate().translationY(if (open) 24f * sc else 0f).setDuration(220).start()
-            statusBox.animate().translationY(if (open) 24f * sc else 0f).setDuration(220).start()
+            mascot.animate().scaleX(k).scaleY(k).translationY(if (open) 68f * sc else 0f).setDuration(Motion.run { mascot.ms(STANDARD) }).setInterpolator(Motion.standard).start()
+            nameV.animate().translationY(if (open) 24f * sc else 0f).setDuration(Motion.run { nameV.ms(STANDARD) }).setInterpolator(Motion.standard).start()
+            statusBox.animate().translationY(if (open) 24f * sc else 0f).setDuration(Motion.run { nameV.ms(STANDARD) }).setInterpolator(Motion.standard).start()
         }
+        if (home != null) scene.put(home, 0f, 0f, 390f, 668f)
         scene.put(island, 0f, 0f, 390f, 134f)
+        if (home == null) {
         scene.put(mascot, 110f, 66f, 170f, 136f)
         scene.put(nameV, 0f, 204f, 390f, 40f)
         scene.put(statusBox, 0f, 250f, 390f, 32f)
+        }
         // one tap: Bubby stops speaking (messages, replies, notifications) and only shows text
         val muteV = ctx.text("", T.Small, 0xFFF1ECEA.toInt()).apply {
             setTextSize(android.util.TypedValue.COMPLEX_UNIT_PX, 12f * sc); gravity = Gravity.CENTER
@@ -204,6 +244,7 @@ class HomeScreen(act: UiActivity) : Screen(act) {
         paintMute()
         muteV.press { Backend.setBool(ctx, "silent", !Backend.bool(ctx, "silent", false)); paintMute() }
         scene.put(muteV, 296f, 250f, 78f, 32f)
+        if (home == null) {
         scene.put(CollarView(ctx, sc), 0f, 380f, 390f, 140f)
         fun petal(kind: GlassKind, icon: Int, label: String, l: Float, tp: Float, w: Float, h: Float, ang: Float, tc: Int, size: Int = 12, bold: Boolean = false, go: () -> Unit) {
             scene.put(PetalView(ctx, kind, icon, label, ang, tc, size, bold, sc).apply { press(go) }, l, tp, w, h)
@@ -216,6 +257,7 @@ class HomeScreen(act: UiActivity) : Screen(act) {
         scene.put(CoreView(ctx, sc), 171f, 448f, 44f, 44f)
         petal(GlassKind.Active, if (running) R.drawable.tg_stop else R.drawable.tg_play, if (running) t("Остановить", "Stop", "To'xtatish") else t("Запустить", "Start", "Ishga tushirish"),
             264f, 379f, 116f, 106f, 12f, Glass.ON_ACTIVE, 13, true) { toggle() }
+        }
         scene.alpha = if (busy) 0.7f else 1f
         c.add(scene)
         }
@@ -344,14 +386,14 @@ class CollarView(c: android.content.Context, private val sc: Float) : View(c) {
         style = android.graphics.Paint.Style.STROKE; color = android.graphics.Color.argb(89, 120, 140, 170); strokeWidth = 6f * sc
         strokeCap = android.graphics.Paint.Cap.ROUND; maskFilter = android.graphics.BlurMaskFilter(3f * sc, android.graphics.BlurMaskFilter.Blur.NORMAL)
     }
+    private val linePath = android.graphics.Path().apply { moveTo(60f, 70f); cubicTo(100f, 120f, 160f, 112f, 193f, 90f); cubicTo(230f, 105f, 290f, 100f, 330f, 60f) }
+    private val shadePath = android.graphics.Path().apply { moveTo(60f, 70f); cubicTo(100f, 125f, 160f, 118f, 193f, 96f) }
     init { setLayerType(LAYER_TYPE_SOFTWARE, null) }
     override fun onDraw(cv: android.graphics.Canvas) {
         cv.scale(sc, sc)
-        val p = android.graphics.Path().apply { moveTo(60f, 70f); cubicTo(100f, 120f, 160f, 112f, 193f, 90f); cubicTo(230f, 105f, 290f, 100f, 330f, 60f) }
-        val q = android.graphics.Path().apply { moveTo(60f, 70f); cubicTo(100f, 125f, 160f, 118f, 193f, 96f) }
         shade.strokeWidth = 6f; line.strokeWidth = 1.5f
-        cv.drawPath(q, shade)
-        cv.drawPath(p, line)
+        cv.drawPath(shadePath, shade)
+        cv.drawPath(linePath, line)
     }
 }
 

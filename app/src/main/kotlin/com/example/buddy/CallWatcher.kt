@@ -81,7 +81,7 @@ class CallWatcher(
         onRinging(name)
     }
 
-    private fun nameFor(number: String): String? {
+    fun nameFor(number: String): String? {
         if (ctx.checkSelfPermission(Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) return null
         return try {
             val uri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI, Uri.encode(number))

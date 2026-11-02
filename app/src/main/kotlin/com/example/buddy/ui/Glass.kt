@@ -606,7 +606,7 @@ class MochiView(c: Context, withHalo: Boolean = true) : View(c) {
             }
         }
         critter.awake = wake
-        if (critter.animated) { if (getLocalVisibleRect(visRect)) postInvalidateDelayed(30L) else postInvalidateDelayed(200L) }
+        if (critter.animated) { if (isShown && getLocalVisibleRect(visRect)) postInvalidateDelayed(30L) else postInvalidateDelayed(200L) }
         cv.save()
         cv.scale(k, k)
         cv.scale(sx, sy, 85f, 118f)

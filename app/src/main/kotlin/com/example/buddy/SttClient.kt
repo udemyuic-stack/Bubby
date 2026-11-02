@@ -120,6 +120,33 @@ class SttClient(private val ctx: Context, private val main: Handler) {
         return sqrt(sum / n)
     }
 
+    fun check(done: (Int) -> Unit) {
+        Thread {
+            val result = try {
+                val c = URL(url() + "/transcribe").openConnection() as HttpURLConnection
+                try {
+                    val audio = wav(ByteArray(RATE / 10 * 2))
+                    c.requestMethod = "POST"
+                    c.connectTimeout = CONNECT_MS
+                    c.readTimeout = READ_MS
+                    c.doOutput = true
+                    c.setRequestProperty("Authorization", "Bearer " + token())
+                    c.setRequestProperty("Content-Type", "audio/wav")
+                    c.setFixedLengthStreamingMode(audio.size)
+                    c.outputStream.use { it.write(audio) }
+                    when (c.responseCode) {
+                        200 -> CHECK_OK
+                        401, 403 -> CHECK_BAD_KEY
+                        else -> CHECK_UNREACHABLE
+                    }
+                } finally {
+                    c.disconnect()
+                }
+            } catch (_: Exception) { CHECK_UNREACHABLE }
+            main.post { done(result) }
+        }.start()
+    }
+
     private fun wav(pcm: ByteArray): ByteArray {
         val head = ByteBuffer.allocate(WAV_HEADER).order(ByteOrder.LITTLE_ENDIAN)
         head.put("RIFF".toByteArray()).putInt(36 + pcm.size).put("WAVEfmt ".toByteArray())
@@ -151,6 +178,9 @@ class SttClient(private val ctx: Context, private val main: Handler) {
     companion object {
         const val KEY_URL = "stt_url"
         const val KEY_TOKEN = "stt_token"
+        const val CHECK_OK = 0
+        const val CHECK_BAD_KEY = 1
+        const val CHECK_UNREACHABLE = 2
         private const val RATE = 16000
         private const val CHUNK_SAMPLES = 1600
         private const val SPEECH_RMS_MAX = 900.0

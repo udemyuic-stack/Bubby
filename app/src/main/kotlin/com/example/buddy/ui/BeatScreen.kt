@@ -9,6 +9,7 @@ import android.widget.SeekBar
 import android.widget.TextView
 
 class BeatScreen(act: UiActivity) : Screen(act) {
+    override val coversScene = true
     override fun title() = t("Bubby Beat", "Bubby Beat", "Bubby Beat")
     override val padH = 12
 

@@ -229,6 +229,13 @@ class BuddyService : Service() {
         /** Where the mascot lives: in the status-bar row, just right of the clock. */
         const val FIXED_DOCK = "status_left"
         @Volatile var running = false
+        @Volatile var gameFront = false
+        @Volatile var onGameFront: (() -> Unit)? = null
+        fun markGameFront(v: Boolean) {
+            if (gameFront == v) return
+            gameFront = v
+            onGameFront?.invoke()
+        }
         @Volatile private var crashHookInstalled = false
         @Volatile var agentConnected = false
         @Volatile var agentViaRelay = false
@@ -406,6 +413,7 @@ class BuddyService : Service() {
     override fun onCreate() {
         super.onCreate()
         running = true
+        onGameFront = { h.post { applyHidden() } }
         prefs.edit().putBoolean("was_running", true).apply()
         u = resources.displayMetrics.density
         val nm = getSystemService(NotificationManager::class.java)
@@ -461,6 +469,22 @@ class BuddyService : Service() {
         startAgentLink()
         callWatcher = CallWatcher(this, { name -> onRinging(name) }, { onCallEnded() }, { onCallAnswered() })
         try { callWatcher.start() } catch (_: Exception) {}
+        AutoAnswer.serviceAnswer = { talk ->
+            when {
+                !calling -> AutoAnswer.ServiceResult.UNAVAILABLE
+                callHandled -> AutoAnswer.ServiceResult.HANDLED
+                callDo(if (talk) "talk" else "answer", auto = true) -> AutoAnswer.ServiceResult.ANSWERED
+                else -> AutoAnswer.ServiceResult.UNAVAILABLE
+            }
+        }
+        AutoAnswer.serviceReject = {
+            when {
+                !calling -> AutoAnswer.ServiceResult.UNAVAILABLE
+                callHandled -> AutoAnswer.ServiceResult.HANDLED
+                callDo("reject_prompt", auto = true) -> AutoAnswer.ServiceResult.ANSWERED
+                else -> AutoAnswer.ServiceResult.UNAVAILABLE
+            }
+        }
         h.postDelayed({ hotKick() }, 1500)
         if (!prefs.getBoolean("coach_done", false)) h.postDelayed({ showCoach() }, 1500)
     }
@@ -1856,7 +1880,6 @@ class BuddyService : Service() {
         focusable(false)
         showCallChips()
         say(text, l) { listenForCall(0) }
-        if (prefs.getBoolean("call_auto", false)) h.postDelayed({ if (calling && !callHandled) callDo(if (prefs.getBoolean("call_talk", false)) "talk" else "answer") }, 7000)
     }
 
     private var callHandled = false
@@ -1874,8 +1897,9 @@ class BuddyService : Service() {
         chipsScroll.alpha = 1f; chipsScroll.translationY = 0f; chipsScroll.visibility = View.VISIBLE
     }
 
-    private fun callDo(kind: String) {
-        if (!calling || callHandled) return
+    private fun callDo(kind: String, auto: Boolean = false): Boolean {
+        if (!calling || callHandled) return false
+        if (!auto) AutoAnswer.cancel()
         callHandled = true
         releaseCallFocus()
         voice.stopListening(); voice.stopSpeaking()
@@ -1883,15 +1907,59 @@ class BuddyService : Service() {
         val err = when (kind) {
             "answer", "talk" -> actions.run(JSONObject().put("do", "answer_call"))
             "reject_text" -> actions.run(JSONObject().put("do", "reject_call").put("text", AutoReply.defaultText(this, "busy")))
+            "reject_prompt" -> {
+                val number = CallWatcher.lastNumber
+                val who = callName
+                actions.run(JSONObject().put("do", "end_call")).also { if (it == null) sendCallReply(number, who) }
+            }
             else -> actions.run(JSONObject().put("do", "end_call"))
         }
         chipsRow.removeAllViews(); hide(chipsScroll)
         status.text = err ?: when (kind) {
             "answer", "talk" -> t("Отвечаю", "Answering", "Javob beryapman")
-            "reject_text" -> t("Сбросил, пишу", "Declined, texting", "Rad etdim, xabar yuboryapman")
+            "reject_text", "reject_prompt" -> t("Сбросил, пишу", "Declined, texting", "Rad etdim, xabar yuboryapman")
             else -> t("Сбросил", "Declined", "Rad etdim")
         }
         if (err != null) { callHandled = false; callTalk = false }
+        return err == null
+    }
+
+    private fun rejectedCallNumber(): String? {
+        repeat(6) {
+            try {
+                contentResolver.query(android.provider.CallLog.Calls.CONTENT_URI, arrayOf(android.provider.CallLog.Calls.NUMBER, android.provider.CallLog.Calls.DATE),
+                    null, null, android.provider.CallLog.Calls.DATE + " DESC")?.use { c ->
+                    if (c.moveToFirst() && System.currentTimeMillis() - c.getLong(1) < 60_000L) return c.getString(0)
+                }
+            } catch (e: Exception) { android.util.Log.w("Buddy", "call log", e); return null }
+            Thread.sleep(1000)
+        }
+        return null
+    }
+
+    private fun sendCallReply(number: String?, name: String?) {
+        Thread {
+            val to = number?.takeIf { it.isNotEmpty() } ?: rejectedCallNumber()
+            val key = "call_sms_last_" + to.orEmpty().filter { it.isDigit() }
+            val previous = prefs.getLong(key, 0L)
+            if (to == null || !AutoAnswerRules.smsAllowed(to, previous, System.currentTimeMillis())) {
+                android.util.Log.i("Buddy", "declined call, no SMS: known=${to != null} digits=${to.orEmpty().count { it.isDigit() }} lastSent=$previous")
+                return@Thread
+            }
+            prefs.edit().putLong(key, System.currentTimeMillis()).apply()
+            val who = name ?: callWatcher.nameFor(to)
+            val owner = try {
+                val list = CallProfiles.load(prefs.getString(CallProfiles.KEY_LIST, null))
+                CallProfiles.usablePrompt(CallProfiles.pick(list, prefs.getString(CallProfiles.KEY_DEFAULT, null), prefs.getString(CallProfiles.KEY_CONTACTS, null),
+                    prefs.getString(CallProfiles.KEY_UNKNOWN, null), who != null))
+            } catch (e: Exception) { android.util.Log.w("Buddy", "call profile", e); null }
+            val written = if (owner == null) "" else try {
+                CallPrompt.cleanSms(brain.chatOnce(CallPrompt.buildSms(owner, who, who != null), listOf("user" to "Write the SMS now.")))
+            } catch (e: Exception) { android.util.Log.w("Buddy", "call sms text", e); "" }
+            val text = written.ifEmpty { AutoReply.defaultText(this, "busy") }
+            android.util.Log.i("Buddy", "declined call, SMS: owner=${owner != null} written=${written.isNotEmpty()} length=${text.length}")
+            if (!actions.sendCallSms(to, text)) prefs.edit().putLong(key, previous).apply()
+        }.start()
     }
 
     private fun listenForCall(attempt: Int) {
@@ -1926,16 +1994,24 @@ class BuddyService : Service() {
         callTalkStart()
     }
 
-    private fun callSystem(): String = "You are Bubby, the phone assistant of the owner of this phone. The owner cannot pick up right now, so you answered. " +
-        "You are on a live call with ${callTalkWho ?: "an unknown caller"}. You are an AI assistant: say so honestly if asked, and never pretend to be the owner. " +
-        "Find out who is calling and what they need, take a message, and say the owner will get back to them. " +
-        "Do not give out personal information, passwords, codes or the owner's whereabouts, and do not agree to payments or promises. " +
-        "Speak the caller's language (Uzbek, Russian or English). Reply with at most two short spoken sentences, no lists, no emojis. " +
-        "Start every reply with a language tag: [uz], [ru] or [en]. When the conversation is finished, say goodbye and add [END] at the very end."
+    private var callPrompt: String? = null
+
+    private fun callSystem(): String = CallPrompt.build(callPrompt, callTalkWho, callTalkWho != null)
+
+    private fun loadCallProfile() {
+        val list = CallProfiles.load(prefs.getString(CallProfiles.KEY_LIST, null))
+        val p = CallProfiles.pick(list, prefs.getString(CallProfiles.KEY_DEFAULT, null), prefs.getString(CallProfiles.KEY_CONTACTS, null),
+            prefs.getString(CallProfiles.KEY_UNKNOWN, null), callTalkWho != null)
+        callPrompt = CallProfiles.usablePrompt(p)
+        val voices = HashMap<String, String>()
+        for (l in listOf("uz", "ru", "en")) prefs.getString("call_voice_$l", null)?.takeIf { it.isNotEmpty() }?.let { voices[l] = it }
+        voice.callStyle = Voice.CallStyle(voices, prefs.getFloat("call_voice_rate", 1f).coerceIn(0.7f, 1.4f), prefs.getFloat("call_voice_pitch", 1f).coerceIn(0.8f, 1.2f))
+    }
 
     private fun callTalkStart() {
         callTalkWho = callName
         callLog.clear(); callSilence = 0
+        try { loadCallProfile() } catch (e: Exception) { callPrompt = null; voice.callStyle = null; android.util.Log.w("Buddy", "call profile", e) }
         try {
             val am = getSystemService(Context.AUDIO_SERVICE) as AudioManager
             @Suppress("DEPRECATION") am.isSpeakerphoneOn = true
@@ -1943,13 +2019,8 @@ class BuddyService : Service() {
         voice.callAudio = true
         status.text = t("Разговор", "On the call", "Suhbatda"); setMode("listen")
         val l = uiLang()
-        val greet = when (l) {
-            "uz" -> "Assalomu alaykum, men Bubby, telefon egasining yordamchisiman. Hozir u javob bera olmaydi. Xabaringizni ayta olasizmi?"
-            "ru" -> "Здравствуйте, я Bubby, помощник владельца телефона. Сейчас он не может ответить. Что передать?"
-            else -> "Hello, this is Bubby, the phone owner's assistant. They can't pick up right now. Can I take a message?"
-        }
         val opening = CallWatcher.pendingSay?.also { CallWatcher.pendingSay = null }
-        val line = opening ?: greet
+        val line = if (opening != null) CallPrompt.disclosure(l) + " " + opening else CallPrompt.greeting(l)
         callLog.add("assistant" to line)
         setAnswer(line, false); show(answer)
         h.removeCallbacks(callTalkLimit); h.postDelayed(callTalkLimit, 180_000)
@@ -1996,6 +2067,7 @@ class BuddyService : Service() {
         h.removeCallbacks(callTalkLimit)
         voice.stopListening(); voice.stopSpeaking()
         voice.callAudio = false
+        voice.callStyle = null
         if (hangUp) try { actions.run(JSONObject().put("do", "end_call")) } catch (_: Exception) {}
         try {
             val am = getSystemService(Context.AUDIO_SERVICE) as AudioManager
@@ -2302,7 +2374,7 @@ class BuddyService : Service() {
     private fun applyHidden() {
         if (!::win.isInitialized || !::lp.isInitialized) return
         val quiet = prefs.getBoolean("quiet", false)
-        val vis = mustShow() || (!quiet && (!autoHidden || expanded || prog > 0.02f))
+        val vis = mustShow() || (!quiet && (!(autoHidden || gameFront) || expanded || prog > 0.02f))
         if (vis == winShown) return
         winShown = vis
         win.alpha = if (vis) 1f else 0f
@@ -2407,7 +2479,10 @@ class BuddyService : Service() {
     }
 
     override fun onDestroy() {
+        AutoAnswer.serviceAnswer = null
+        AutoAnswer.serviceReject = null
         tiltStop()
+        onGameFront = null
         running = false
         BuddyAccess.asker = null
         ClockActions.report = null

@@ -30,6 +30,8 @@ abstract class Screen(val act: UiActivity) {
     /** Horizontal padding of the page in dp (0 for screens that draw edge to edge). */
     protected open val padH: Int = 16
 
+    open val coversScene: Boolean = false
+
     /** Set by the activity for the five tab pages, which sit above the floating glass navigation. */
     var inTab = false
     private var fabButton: View? = null

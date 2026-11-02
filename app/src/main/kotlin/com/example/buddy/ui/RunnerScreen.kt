@@ -6,6 +6,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 
 class RunnerScreen(act: UiActivity) : Screen(act) {
+    override val coversScene = true
     override fun title() = t("Космо-раннер", "Space runner", "Kosmo-yuguruvchi")
     override val padH = 12
 

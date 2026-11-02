@@ -9,6 +9,7 @@ import android.widget.TextView
  * sparkle, an L or T a splash. Reach the level's goals before the moves run out; stars are kept per level.
  */
 class RoomScreen(act: UiActivity, private val startAt: Int = -1) : Screen(act) {
+    override val coversScene = true
     override fun title() = t("Комната Bubby", "Bubby's room", "Bubby xonasi")
 
     private val prefs get() = ctx.getSharedPreferences("buddy", android.content.Context.MODE_PRIVATE)

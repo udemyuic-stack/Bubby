@@ -32,6 +32,11 @@ class Voice(private val ctx: Context, private val h: Handler) {
     var callAudio = false
     private var callAttrs = false
 
+    class CallStyle(val voices: Map<String, String>, val rate: Float, val pitch: Float)
+
+    var callStyle: CallStyle? = null
+    private var styled = false
+
     val speaking get() = tts?.isSpeaking == true
 
     /** Other hypotheses of the last recognised utterance (best first, without the winner). */
@@ -226,6 +231,7 @@ class Voice(private val ctx: Context, private val h: Handler) {
             if (t == null) { curId = ""; setSpeaking(false); releaseFocus(); done() }
             else {
                 setLanguage(t, lang)
+                applyStyle(t, lang)
                 val id = "buddy${++seq}"
                 curId = id
                 onSpoken = done
@@ -288,6 +294,30 @@ class Voice(private val ctx: Context, private val h: Handler) {
             if (t.isLanguageAvailable(l) >= TextToSpeech.LANG_AVAILABLE) { t.language = l; return }
         }
     }
+
+    private fun applyStyle(t: TextToSpeech, lang: String?) {
+        val st = callStyle
+        if (!callAudio || st == null) {
+            if (styled) {
+                styled = false
+                try { t.setSpeechRate(1f); t.setPitch(1f) } catch (_: Exception) {}
+            }
+            return
+        }
+        styled = true
+        try {
+            val name = st.voices[lang ?: ""]
+            val v = if (name.isNullOrEmpty()) null else t.voices?.firstOrNull { it.name == name }
+            if (v != null && (!v.isNetworkConnectionRequired || online())) t.voice = v
+            t.setSpeechRate(st.rate)
+            t.setPitch(st.pitch)
+        } catch (_: Exception) {}
+    }
+
+    private fun online(): Boolean = try {
+        val cm = ctx.getSystemService(Context.CONNECTIVITY_SERVICE) as android.net.ConnectivityManager
+        cm.getNetworkCapabilities(cm.activeNetwork)?.hasCapability(android.net.NetworkCapabilities.NET_CAPABILITY_VALIDATED) == true
+    } catch (_: Exception) { false }
 
     fun shutdown() {
         onSpeaking = {}

@@ -274,7 +274,7 @@ class AuraView(c: Context, private val kind: String) : View(c) {
         }
         cv.restore()
         // scrolled out of the page's view: a few cheap frames a second instead of 60 until it comes back
-        if (getLocalVisibleRect(vis)) postInvalidateOnAnimation() else postInvalidateDelayed(150)
+        if (isShown && getLocalVisibleRect(vis)) postInvalidateOnAnimation() else postInvalidateDelayed(150)
     }
 
     private fun heart(cv: Canvas, x: Float, y: Float, s: Float) {
@@ -368,7 +368,7 @@ class Tilt3D(c: Context, private val still: Boolean = false) : FrameLayout(c) {
     fun swing() { kickStart = SystemClock.uptimeMillis(); kick = 1f }
 
     private fun frame() {
-        if (!getLocalVisibleRect(vis)) return   // scrolled away: nothing to move or redraw
+        if (!isShown || !getLocalVisibleRect(vis)) return   // scrolled away: nothing to move or redraw
         val now = SystemClock.uptimeMillis()
         val t = loop.animatedFraction * 2f * PI.toFloat()
         // idle sway and glow breathing

@@ -504,6 +504,15 @@ class Actions(private val ctx: Context) {
         return null
     }
 
+    fun sendCallSms(number: String, text: String): Boolean {
+        if (!granted(Manifest.permission.SEND_SMS)) {
+            asyncError(tr("Нет разрешения отправлять SMS", "No permission to send SMS", "SMS yuborishga ruxsat yo'q"))
+            return false
+        }
+        main.post { sendNow("sms", Contacts.normalizeNumber(number), text) }
+        return true
+    }
+
     /** Opens a ready email draft in the mail app; the user reads it and taps Send (Android cannot send email silently). */
     private fun email(a: JSONObject): String? {
         val to = s(a, "to")

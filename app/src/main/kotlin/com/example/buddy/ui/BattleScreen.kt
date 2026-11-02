@@ -7,6 +7,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 
 class BattleScreen(act: UiActivity) : Screen(act) {
+    override val coversScene = true
     override fun title() = t("Битва с Bubby", "Bubby Battle", "Bubby jangi")
     override val padH = 12
 

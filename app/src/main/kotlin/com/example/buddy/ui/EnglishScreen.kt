@@ -66,7 +66,7 @@ class EnglishScreen(act: UiActivity) : Screen(act) {
     private fun box(i: Int) = Backend.int(ctx, "en_box_$i", 1)
 
     private fun startCards() {
-        val idx = words.indices.sortedWith(compareBy({ box(it) }, { Math.random() })).take(10)
+        val idx = words.indices.shuffled().sortedBy { box(it) }.take(10)
         var pos = 0
         var known = 0
         fun show() {

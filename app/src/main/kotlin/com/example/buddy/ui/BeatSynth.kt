@@ -20,7 +20,11 @@ class BeatSynth {
     private var frames = 0
 
     fun prepare(chart: BeatChart): Boolean {
-        val pcm = render(chart)
+        val pcm = try { render(chart) } catch (e: Throwable) {
+            android.util.Log.w("Buddy", "beat render failed", e)
+            return false
+        }
+        var made: AudioTrack? = null
         return try {
             val t = AudioTrack.Builder()
                 .setAudioAttributes(AudioAttributes.Builder().setUsage(AudioAttributes.USAGE_GAME).setContentType(AudioAttributes.CONTENT_TYPE_MUSIC).build())
@@ -28,14 +32,30 @@ class BeatSynth {
                 .setTransferMode(AudioTrack.MODE_STATIC)
                 .setBufferSizeInBytes(pcm.size * 2)
                 .build()
-            if (t.state != AudioTrack.STATE_INITIALIZED) { t.release(); return false }
-            t.write(pcm, 0, pcm.size)
+            made = t
+            if (t.state == AudioTrack.STATE_UNINITIALIZED) {
+                android.util.Log.w("Buddy", "beat track uninitialized frames=${pcm.size}")
+                t.release()
+                return false
+            }
+            val wrote = t.write(pcm, 0, pcm.size)
+            if (wrote != pcm.size || t.state != AudioTrack.STATE_INITIALIZED) {
+                android.util.Log.w("Buddy", "beat write=$wrote of ${pcm.size} state=${t.state}")
+                t.release()
+                return false
+            }
             frames = pcm.size
-            if (released) { t.release(); return false }
+            if (released) {
+                android.util.Log.w("Buddy", "beat released during prepare")
+                t.release()
+                return false
+            }
             track = t
             lastHead = 0
             true
         } catch (e: Exception) {
+            android.util.Log.w("Buddy", "beat track failed", e)
+            made?.release()
             false
         }
     }

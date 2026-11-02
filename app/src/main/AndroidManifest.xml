@@ -169,6 +169,9 @@
         </activity>
 
         <receiver android:name=".ReminderReceiver" android:exported="false"/>
+        <receiver android:name=".CallStateReceiver" android:exported="true">
+            <intent-filter><action android:name="android.intent.action.PHONE_STATE"/></intent-filter>
+        </receiver>
         <receiver android:name=".BootReceiver" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>

@@ -21,6 +21,7 @@ class UiActivity : Activity() {
         /** True while the app's own screen is in front: the floating island then stays closed unless an agent needs an answer. */
         @Volatile @JvmStatic var appInFront = false
         private const val EXIT_WINDOW_MS = 2000L
+        private const val PAGE_SLIDE_DP = 24
         private const val RESTART_REVEAL_MS = 1500L
         private const val RESTART_REVEAL_DURATION = 700L
         private var pendingReveal: FloatArray? = null
@@ -38,6 +39,7 @@ class UiActivity : Activity() {
     private val tabs = ArrayList<Screen>()
     private var tab = 0
     private var tabShown = false
+    private var navTab = -1
     private var touchX = -1f
     private var touchY = -1f
     private var touchAt = 0L
@@ -127,7 +129,8 @@ class UiActivity : Activity() {
         while (stack.isNotEmpty()) { val (_, v) = stack.removeAt(stack.size - 1); host.removeView(v) }
         val i = TAB_NAMES.indexOf(name)
         if (i >= 0) { showTab(i); return }
-        Screens.create(name, this)?.let { push(it) }
+        val screen = Screens.create(name, this)
+        if (screen != null) push(screen) else updateChrome()
     }
 
     @Suppress("DEPRECATION")
@@ -188,16 +191,26 @@ class UiActivity : Activity() {
 
     /** The floating glass navigation: the selected tab is a bright petal. */
     private fun buildNav(): View {
+        val from = navTab
+        navTab = tab
+        val step = (navFrame.width - navFrame.paddingLeft - navFrame.paddingRight - dp(12)) / tabs.size.toFloat()
         val bar = row(Gravity.CENTER_VERTICAL) {
+            clipChildren = false
             background = glass(GlassKind.Nav, 34f)
             setPadding(dp(6), 0, dp(6), 0)
         }
         for ((i, it) in tabLabels().withIndex()) {
             val selected = i == tab
             val item = FrameLayout(this).apply {
+                clipChildren = false
                 if (selected) {
-                    addView(View(this@UiActivity).apply { background = petalShape(GlassKind.Active, PETAL_RADII_NAV) },
-                        FrameLayout.LayoutParams(dp(68), dp(54), Gravity.CENTER))
+                    translationZ = 1f
+                    val petal = View(this@UiActivity).apply { background = petalShape(GlassKind.Active, PETAL_RADII_NAV) }
+                    addView(petal, FrameLayout.LayoutParams(dp(68), dp(54), Gravity.CENTER))
+                    if (from > 0 && from != i && step > 0f && Motion.enabled(this@UiActivity)) {
+                        petal.translationX = (from - i) * step
+                        petal.animate().translationX(0f).setDuration(Motion.STANDARD).setInterpolator(Motion.spring).start()
+                    }
                 }
                 val inner = col {
                     gravity = Gravity.CENTER_HORIZONTAL
@@ -244,7 +257,7 @@ class UiActivity : Activity() {
         (tabs[0] as HomeScreen).let { if (i == 0) it.wakeWeb() else it.restWeb() }
         bgSub.visibility = if (i == 0) View.GONE else View.VISIBLE
         navFrame.removeAllViews()
-        if (i != 0) navFrame.addView(buildNav(), FrameLayout.LayoutParams(MATCH, dp(68)))
+        if (i != 0) navFrame.addView(buildNav(), FrameLayout.LayoutParams(MATCH, dp(68))) else navTab = -1
         tabs[i].onShow()
         updateChrome()
         if (changed) revealFromTouch()
@@ -255,11 +268,16 @@ class UiActivity : Activity() {
      * With a themed look the animated scene is behind every page, also the pushed ones (they are see-through then): it slides a little
      * from page to page like in the design; the themed home page carries its own scene.
      */
+    private fun syncGameFront() {
+        com.example.buddy.BuddyService.markGameFront(appInFront && stack.lastOrNull()?.first?.coversScene == true)
+    }
+
     private fun updateChrome() {
+        syncGameFront()
         applyInsets()
         val sc = scene ?: return
         val pushed = stack.isNotEmpty()
-        sc.setScene(if (tab == 0 && !pushed && (tabs[0] as HomeScreen).themed) null else Theme.cur.scene)
+        sc.setScene(if ((tab == 0 && !pushed && (tabs[0] as HomeScreen).themed) || stack.lastOrNull()?.first?.coversScene == true) null else Theme.cur.scene)
         sc.slideTo(if (pushed) 5 else tab)
         shell.visibility = if (pushed) View.INVISIBLE else View.VISIBLE
         navFrame.visibility = if (pushed) View.INVISIBLE else View.VISIBLE
@@ -276,7 +294,7 @@ class UiActivity : Activity() {
         host.addView(page, FrameLayout.LayoutParams(MATCH, MATCH))
         stack += s to page
         page.alpha = 0f
-        page.translationX = dp(40).toFloat()
+        page.translationX = dp(PAGE_SLIDE_DP).toFloat()
         page.animate().alpha(1f).translationX(0f).setDuration(Motion.run { page.ms(STANDARD) }).setInterpolator(Motion.standard).start()
         s.onShow()
         updateChrome()
@@ -285,7 +303,7 @@ class UiActivity : Activity() {
     fun pop() {
         if (stack.isEmpty()) return
         val (_, page) = stack.removeAt(stack.size - 1)
-        page.animate().alpha(0f).translationX(dp(40).toFloat()).setDuration(Motion.run { page.ms(QUICK) }).setInterpolator(Motion.exit).withEndAction { host.removeView(page) }.start()
+        page.animate().alpha(0f).translationX(dp(PAGE_SLIDE_DP).toFloat()).setDuration(Motion.run { page.ms(QUICK) }).setInterpolator(Motion.exit).withEndAction { host.removeView(page) }.start()
         stack.lastOrNull()?.second?.visibility = View.VISIBLE
         (stack.lastOrNull()?.first ?: tabs[tab]).onShow()
         updateChrome()
@@ -300,13 +318,14 @@ class UiActivity : Activity() {
         toast(Tr.t(this, "Нажмите ещё раз, чтобы выйти", "Press back again to exit", "Chiqish uchun yana bir marta bosing"))
     }
 
-    override fun onPause() { super.onPause(); appInFront = false; scene?.onAppPause(); (tabs[0] as HomeScreen).restWeb() }
+    override fun onPause() { super.onPause(); appInFront = false; syncGameFront(); scene?.onAppPause(); (tabs[0] as HomeScreen).restWeb() }
 
     override fun onDestroy() { try { scene?.release() } catch (_: Throwable) { }; try { (tabs[0] as HomeScreen).destroyWeb() } catch (_: Throwable) { }; super.onDestroy() }
 
     override fun onResume() {
         super.onResume()
         appInFront = true
+        syncGameFront()
         scene?.onAppResume()
         if (tab == 0) (tabs[0] as HomeScreen).wakeWeb()
         // the language the user speaks changed (auto mode): draw everything in it

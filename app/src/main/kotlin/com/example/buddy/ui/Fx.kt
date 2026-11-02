@@ -101,12 +101,97 @@ private class ConfettiView(c: Context) : View(c) {
 
 /** Confetti over the whole screen for about two seconds, with a short buzz. */
 fun Activity.confetti() {
+    if (!Motion.enabled(this)) return
     val decor = window.decorView as? ViewGroup ?: return
     val v = ConfettiView(this)
     decor.addView(v, ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT))
     v.isClickable = false
     v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY)
     v.postDelayed({ decor.removeView(v) }, 2500)
+}
+
+private class StarFlightView(c: Context, private val n: Int, private val sx: Float, private val sy: Float, private val tx: Float, private val ty: Float) : View(c) {
+    private val seed = FloatArray(n * 3) { Math.random().toFloat() }
+    private val p = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = P.warning }
+    private val glow = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = P.orange }
+    private val star = Path()
+    private val start = SystemClock.uptimeMillis()
+    private val dens = c.resources.displayMetrics.density
+    private val outI = DecelerateInterpolator(1.8f)
+    private val inI = android.view.animation.AccelerateInterpolator(1.4f)
+
+    init {
+        for (i in 0 until 10) {
+            val r = if (i % 2 == 0) 1f else 0.45f
+            val a = (i * 36.0 - 90.0) * PI / 180.0
+            val x = (cos(a) * r).toFloat(); val y = (sin(a) * r).toFloat()
+            if (i == 0) star.moveTo(x, y) else star.lineTo(x, y)
+        }
+        star.close()
+    }
+
+    override fun onDraw(cv: Canvas) {
+        val now = SystemClock.uptimeMillis() - start
+        var alive = false
+        for (i in 0 until n) {
+            val a = seed[i * 3]; val b = seed[i * 3 + 1]; val r = seed[i * 3 + 2]
+            val t = (now - i * STAGGER_MS) / FLIGHT_MS.toFloat()
+            if (t < 0f) { alive = true; continue }
+            if (t >= 1f) continue
+            alive = true
+            val ang = a * 2f * PI.toFloat()
+            val spread = (40f + b * 50f) * dens
+            val bx = sx + cos(ang) * spread; val by = sy + sin(ang) * spread - 20f * dens
+            val x: Float; val y: Float; val size: Float
+            if (t < BURST_PART) {
+                val k = outI.getInterpolation(t / BURST_PART)
+                x = sx + (bx - sx) * k; y = sy + (by - sy) * k
+                size = (6f + 6f * k) * dens
+            } else {
+                val k = inI.getInterpolation((t - BURST_PART) / (1f - BURST_PART))
+                val mx = (bx + tx) / 2f + (r - 0.5f) * 120f * dens; val my = minOf(by, ty) - (60f + r * 60f) * dens
+                val u = 1f - k
+                x = u * u * bx + 2f * u * k * mx + k * k * tx
+                y = u * u * by + 2f * u * k * my + k * k * ty
+                size = (12f - 6f * k) * dens
+            }
+            cv.save(); cv.translate(x, y); cv.rotate(t * 360f * (r - 0.5f) * 2f)
+            glow.alpha = 70
+            cv.scale(size * 1.6f, size * 1.6f); cv.drawPath(star, glow)
+            cv.scale(1f / 1.6f, 1f / 1.6f); cv.drawPath(star, p)
+            cv.restore()
+        }
+        if (alive) postInvalidateOnAnimation()
+    }
+
+    companion object {
+        const val FLIGHT_MS = 950L
+        const val STAGGER_MS = 28L
+        const val BURST_PART = 0.32f
+    }
+}
+
+fun Activity.flyStars(from: View, to: View?, n: Int = 12, onArrive: () -> Unit = {}) {
+    val decor = window.decorView as? ViewGroup
+    if (!Motion.enabled(this) || decor == null || !from.isAttachedToWindow) { onArrive(); return }
+    val dloc = IntArray(2); decor.getLocationOnScreen(dloc)
+    val fl = IntArray(2); from.getLocationOnScreen(fl)
+    val sx = fl[0] - dloc[0] + from.width / 2f; val sy = fl[1] - dloc[1] + from.height / 2f
+    var tx = sx; var ty = sy - dpf(160f)
+    if (to != null && to.isAttachedToWindow) {
+        val tl = IntArray(2); to.getLocationOnScreen(tl)
+        tx = tl[0] - dloc[0] + to.width / 2f; ty = tl[1] - dloc[1] + to.height / 2f
+    }
+    val v = StarFlightView(this, n, sx, sy, tx, ty)
+    v.isClickable = false
+    decor.addView(v, ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT))
+    val total = StarFlightView.FLIGHT_MS + StarFlightView.STAGGER_MS * n
+    v.postDelayed({
+        if (to != null && to.isAttachedToWindow) to.pop()
+        v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY)
+        onArrive()
+    }, total - StarFlightView.STAGGER_MS * n / 2)
+    v.postDelayed({ decor.removeView(v) }, total + 100)
 }
 
 // ---- aura previews ---------------------------------------------------------------------------------------------------
@@ -370,6 +455,17 @@ fun View.jump() {
     animate().cancel()
     animate().translationY(-context.dpf(14f)).rotation(-7f).scaleX(1.1f).scaleY(1.1f).setDuration(220).setInterpolator(DecelerateInterpolator())
         .withEndAction { animate().translationY(0f).rotation(0f).scaleX(1f).scaleY(1f).setDuration(480).setInterpolator(OvershootInterpolator(3f)).start() }.start()
+}
+
+fun View.cheer() {
+    if (!Motion.enabled(context)) return
+    animate().cancel()
+    animate().translationY(-context.dpf(34f)).rotation(360f).scaleX(1.35f).scaleY(1.35f).setDuration(Motion.EMPHASIS).setInterpolator(DecelerateInterpolator(1.4f))
+        .withEndAction {
+            rotation = 0f
+            animate().translationY(0f).scaleX(1f).scaleY(1f).setDuration(520).setInterpolator(OvershootInterpolator(3.4f)).start()
+            burst(P.warning)
+        }.start()
 }
 
 /** A sticker or a tile pops: bigger, a turn, back. */

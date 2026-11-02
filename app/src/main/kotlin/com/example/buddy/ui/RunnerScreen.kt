@@ -182,9 +182,11 @@ class RunnerScreen(act: UiActivity) : Screen(act) {
         panel.visibility = android.view.View.VISIBLE
         panel.add(ctx.text(t("Игра окончена", "Game over", "O'yin tugadi"), T.Title).apply { textSize = 20f; gravity = Gravity.CENTER }, MATCH, WRAP)
         panel.add(ctx.text("⭐ ${game.score} · " + rankName(game.score) + " · " + t("Сектор", "Sector", "Sektor") + " ${game.sector + 1}", T.Body).apply { gravity = Gravity.CENTER }, MATCH, WRAP, top = 6)
-        panel.add(ctx.text(
+        val bestLine = ctx.text(
             if (newBest) t("Новый рекорд!", "New best!", "Yangi rekord!") else t("Рекорд", "Best", "Rekord") + ": ${best()}",
-            T.Small, if (newBest) P.orange else 0).apply { gravity = Gravity.CENTER }, MATCH, WRAP, top = 2)
+            T.Small, if (newBest) P.orange else 0).apply { gravity = Gravity.CENTER }
+        panel.add(bestLine, MATCH, WRAP, top = 2)
+        if (newBest) bestLine.post { if (bestLine.isAttachedToWindow) { act.confetti(); bestLine.cheer() } }
         if (game.missed.isNotEmpty()) {
             panel.add(ctx.text(t("Повтори", "Review", "Takrorlang"), T.Label).apply { gravity = Gravity.CENTER }, MATCH, WRAP, top = 10)
             for (p in game.missed.values.take(5)) {

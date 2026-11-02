@@ -75,13 +75,17 @@ class FunScreen(act: UiActivity) : Screen(act) {
                 add(chest, ctx.dp(130), ctx.dp(110), end = 12)
                 add(ctx.col {
                     add(ctx.text("🔥 " + t("Серия: $streak", "Streak: $streak", "Seriya: $streak"), T.Title).apply { textSize = 20f }, MATCH, WRAP)
-                    add(ctx.text(
+                    val today = ctx.text(
                         if (can) t("Сегодня: +${DailyStreak.ladder[done]} ⭐", "Today: +${DailyStreak.ladder[done]} ⭐", "Bugun: +${DailyStreak.ladder[done]} ⭐")
                         else t("Приходи завтра за новой наградой", "Come back tomorrow for the next reward", "Keyingi sovg'a uchun ertaga keling"),
-                        T.Small), MATCH, WRAP, top = 2, bottom = 8)
+                        T.Small)
+                    add(today, MATCH, WRAP, top = 2, bottom = 8)
                     if (can) add(ctx.button(t("Забрать", "Claim", "Olish")) {
                         val r = DailyStreak.claim(ctx)
+                        if (r == 0) return@button
                         chest.openUp()
+                        act.confetti()
+                        act.flyStars(chest, today, 12)
                         ctx.toast("+$r ⭐")
                         chest.postDelayed({ refresh() }, 1400)
                     }, WRAP, WRAP)

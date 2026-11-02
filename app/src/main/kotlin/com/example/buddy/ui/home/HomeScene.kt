@@ -36,11 +36,20 @@ abstract class HomeScene(ctx: Context, protected val host: Host) : View(ctx), Se
     private var rawY = 0f
     private var tiltOn = false
 
+    private var lastSlot = -1L
+
     private val clock = ValueAnimator.ofFloat(0f, 1f).apply {
         duration = CLOCK_PERIOD_MS
         repeatCount = ValueAnimator.INFINITE
         interpolator = LinearInterpolator()
-        addUpdateListener { seconds = (System.nanoTime() / 1_000_000L) / 1000f; invalidate() }
+        addUpdateListener {
+            val slot = com.example.buddy.ui.FrameGate.slot(android.view.animation.AnimationUtils.currentAnimationTimeMillis() * 1_000_000L)
+            if (slot != lastSlot) {
+                lastSlot = slot
+                seconds = (System.nanoTime() / 1_000_000L) / 1000f
+                invalidate()
+            }
+        }
     }
 
     abstract fun setLabels(labels: List<String>)

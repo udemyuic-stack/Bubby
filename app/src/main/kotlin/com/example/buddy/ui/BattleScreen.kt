@@ -229,17 +229,27 @@ class BattleScreen(act: UiActivity) : Screen(act) {
         if (st > prev) Backend.setInt(ctx, "bb_stars_$i", st)
         val earned = (st - prev).coerceAtLeast(0) * (i + 1) + if (prev == 0 && st >= 1) 2 else 0
         DailyStreak.addStars(ctx, earned)
+        var title: TextView? = null
+        var gain: TextView? = null
         showPanel {
-            add(heading(if (g.won) t("Победа!", "Victory!", "G'alaba!") else t("Поражение", "Defeat", "Mag'lubiyat")), MATCH, WRAP)
+            title = heading(if (g.won) t("Победа!", "Victory!", "G'alaba!") else t("Поражение", "Defeat", "Mag'lubiyat"))
+            add(title!!, MATCH, WRAP)
             add(ctx.text(starsText(st), T.Headline, P.orange).apply { gravity = Gravity.CENTER }, MATCH, WRAP, top = 4)
             add(ctx.text("❤ ${g.playerHp} · ${g.round} " + t("раундов", "rounds", "raund"), T.Body).apply { gravity = Gravity.CENTER }, MATCH, WRAP, top = 4)
-            if (earned > 0) add(ctx.text("+$earned ⭐", T.Title, P.orange).apply { gravity = Gravity.CENTER; textSize = 18f }, MATCH, WRAP, top = 6)
+            if (earned > 0) { gain = ctx.text("+$earned ⭐", T.Title, P.orange).apply { gravity = Gravity.CENTER; textSize = 18f }; add(gain!!, MATCH, WRAP, top = 6) }
             if (g.missed.isNotEmpty()) {
                 add(ctx.text(t("Повтори", "Review", "Takrorlang"), T.Label).apply { gravity = Gravity.CENTER }, MATCH, WRAP, top = 8)
                 for (p in g.missed.values.take(4)) add(ctx.text("${p.filled()} — " + t(p.ru, p.ru, p.uz), T.Small).apply { gravity = Gravity.CENTER }, MATCH, WRAP, top = 2)
             }
             add(ctx.button(t("Ещё раз", "Again", "Qayta")) { refresh() }, MATCH, WRAP, top = 10)
             add(ctx.button(t("К соперникам", "Back to rivals", "Raqiblarga"), BtnStyle.Outline) { leave() }, MATCH, WRAP, top = 8)
+        }
+        val head = title ?: return
+        if (g.won) head.post {
+            if (!head.isAttachedToWindow) return@post
+            act.confetti()
+            head.cheer()
+            gain?.let { act.flyStars(head, it, 10) }
         }
     }
 }

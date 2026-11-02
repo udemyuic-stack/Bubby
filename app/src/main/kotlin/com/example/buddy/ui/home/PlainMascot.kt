@@ -48,6 +48,7 @@ class PlainMascot(private val theme: ThemeDef) {
         color = PILL_RIM_COLOR
     }
     private val dot = Paint(Paint.ANTI_ALIAS_FLAG)
+    private val flies = theme.mascot == "butterfly"
 
     fun bounce(nowMs: Long) { bounceStartMs = nowMs; if (tapMs > 0L) tapState.tap(nowMs) }
 
@@ -73,12 +74,24 @@ class PlainMascot(private val theme: ThemeDef) {
         c.scale(shrink, shrink, pivotX, 0f)
         c.translate(0f, -BOUNCE_LIFT * bounce)
         c.rotate(BOUNCE_TILT * bounce, pivotX, pivotY)
+        val flight = if (flies && android.animation.ValueAnimator.areAnimatorsEnabled()) 1f - island else 0f
+        if (flight > 0f) {
+            val dx = flightX(seconds) * flight
+            val dy = flightY(seconds) * flight
+            val tilt = (flightX(seconds + HEADING_DT) - flightX(seconds)) / HEADING_DT * HEADING_TILT * flight
+            c.translate(dx, dy)
+            c.rotate(tilt.coerceIn(-MAX_TILT, MAX_TILT), pivotX, pivotY)
+        }
         c.scale(grow, grow, pivotX, pivotY)
         c.save()
         c.translate(GLOW_X, GLOW_Y)
         c.scale(GLOW_RX, GLOW_RY)
         c.drawCircle(0f, 0f, 1f, glowPaint)
         c.restore()
+        if (flight > 0f) {
+            val beat = 0.5f + 0.5f * sin(seconds * FLAP_SPEED)
+            c.scale(1f - (1f - FLAP_MIN) * beat * flight, 1f, pivotX, pivotY)
+        }
         c.scale(HalloweenLayout.MASCOT_WIDTH / HalloweenLayout.ART_WIDTH, HalloweenLayout.MASCOT_WIDTH / HalloweenLayout.ART_WIDTH)
         drawing.draw(c, seconds)
         c.restore()
@@ -109,6 +122,23 @@ class PlainMascot(private val theme: ThemeDef) {
         c.drawCircle(dotX, dotY, DOT_SIZE / 2f * grow, dot)
         statusPaint.getFontMetrics(metrics)
         c.drawText(statusText, dotX + DOT_SIZE / 2f + DOT_GAP, dotY - (metrics.ascent + metrics.descent) / 2f, statusPaint)
+    }
+
+    private fun loopLevel(seconds: Float): Float {
+        val u = (seconds % LOOP_PERIOD) / LOOP_LENGTH
+        return if (u >= 1f) 0f else sin(PI.toFloat() * u)
+    }
+
+    private fun flightX(seconds: Float): Float {
+        val hover = sin(seconds * 0.55f) * HOVER_X + sin(seconds * 1.37f) * HOVER_X * 0.3f
+        val loop = loopLevel(seconds)
+        return hover * (1f - loop) + sin(seconds * 1.8f) * LOOP_X * loop
+    }
+
+    private fun flightY(seconds: Float): Float {
+        val hover = sin(seconds * 0.83f + 1.1f) * HOVER_Y + sin(seconds * 2.1f) * HOVER_Y * 0.25f
+        val loop = loopLevel(seconds)
+        return hover * (1f - loop) + sin(seconds * 3.6f) * LOOP_Y * loop
     }
 
     private fun bounceLevel(nowMs: Long): Float {
@@ -151,5 +181,16 @@ class PlainMascot(private val theme: ThemeDef) {
         const val GLOW_RX = 75.5f
         const val GLOW_RY = 59.8f
         const val MAX_ALPHA = 255
+        const val FLAP_SPEED = 8.8f
+        const val FLAP_MIN = 0.72f
+        const val HOVER_X = 26f
+        const val HOVER_Y = 12f
+        const val LOOP_X = 80f
+        const val LOOP_Y = 22f
+        const val LOOP_PERIOD = 14f
+        const val LOOP_LENGTH = 3.5f
+        const val HEADING_DT = 0.1f
+        const val HEADING_TILT = 0.35f
+        const val MAX_TILT = 18f
     }
 }

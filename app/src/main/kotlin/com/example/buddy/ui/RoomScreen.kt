@@ -135,6 +135,7 @@ class RoomScreen(act: UiActivity, private val startAt: Int = -1) : Screen(act) {
         if (index + 2 > unlocked()) prefs.edit().putInt("bm_level", minOf(levels.size, index + 2)).apply()
         react("🥳", "⭐".repeat(stars) + "  " + t("Комната стала уютнее!", "The room got cosier!", "Xona yanada shinam bo'ldi!"))
         act.confetti()
+        face.cheer()
         actionRows(win = true); pickerRows()
     }
 

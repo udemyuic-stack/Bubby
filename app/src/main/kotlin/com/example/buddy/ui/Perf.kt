@@ -11,6 +11,7 @@ import android.os.Looper
  */
 object Perf {
     private const val SLOW_FPS = 22
+    private const val LITE_SLOW_FPS = 14
     private var slow = 0
     private var done = false
 
@@ -19,14 +20,33 @@ object Perf {
         android.util.Log.i("com.example.buddy", "Perf: $who $fps fps")
         val act = ctx as? UiActivity ?: return
         if (done || fps <= 0 || act.intent.getBooleanExtra("nosetup", false) || act.intent.getBooleanExtra("static", false)) return
-        if (fps >= SLOW_FPS) { slow = 0; return }
-        if (++slow < 2) return
+        val prefs = act.getSharedPreferences("buddy", Context.MODE_PRIVATE)
+        val lite = prefs.getBoolean("scene_lite", false)
+        if (fps >= (if (lite) LITE_SLOW_FPS else SLOW_FPS)) { slow = 0; return }
+        if (++slow < 3) return
+        slow = 0
+        if (!lite) {
+            prefs.edit().putBoolean("scene_lite", true).apply()
+            Handler(Looper.getMainLooper()).post { act.restart() }
+            return
+        }
         done = true
-        act.getSharedPreferences("buddy", Context.MODE_PRIVATE).edit().putBoolean("scene_anim", false).putBoolean("scene_anim_auto_off", true).apply()
+        prefs.edit().putBoolean("scene_anim", false).putBoolean("scene_anim_auto_off", true).apply()
         Handler(Looper.getMainLooper()).post {
             act.toast(com.example.buddy.Tr.t(act, "Фон не тянет этот телефон — анимация выключена (Настройки → Стиль)", "The phone is too slow for the animated background, so it is off now (Settings → Style)", "Telefon animatsiyali fonni tortmayapti, o'chirildi (Sozlamalar → Uslub)"))
             act.restart()
         }
+    }
+
+    fun lite(ctx: Context): Boolean = ctx.getSharedPreferences("buddy", Context.MODE_PRIVATE).getBoolean("scene_lite", false)
+
+    fun resetAfterUpdate(ctx: Context) {
+        val prefs = ctx.getSharedPreferences("buddy", Context.MODE_PRIVATE)
+        val ver = try { ctx.packageManager.getPackageInfo(ctx.packageName, 0).lastUpdateTime } catch (_: Exception) { return }
+        if (prefs.getLong("scene_checked_ver", -1L) == ver) return
+        val e = prefs.edit().putLong("scene_checked_ver", ver).putBoolean("scene_lite", false)
+        if (prefs.getBoolean("scene_anim_auto_off", false)) e.putBoolean("scene_anim", true).putBoolean("scene_anim_auto_off", false)
+        e.apply()
     }
 
     /** JavaScript that measures the page's frame rate for four seconds, starting three seconds after it runs, and calls [bridge].fps(n). */

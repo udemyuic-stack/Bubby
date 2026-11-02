@@ -21,6 +21,9 @@ class UiActivity : Activity() {
         /** True while the app's own screen is in front: the floating island then stays closed unless an agent needs an answer. */
         @Volatile @JvmStatic var appInFront = false
         private const val EXIT_WINDOW_MS = 2000L
+        private const val RESTART_REVEAL_MS = 1500L
+        private const val RESTART_REVEAL_DURATION = 700L
+        private var pendingReveal: FloatArray? = null
     }
 
     private var lastRootBack = 0L
@@ -37,6 +40,7 @@ class UiActivity : Activity() {
     private var tabShown = false
     private var touchX = -1f
     private var touchY = -1f
+    private var touchAt = 0L
     private val stack = ArrayList<Pair<Screen, View>>()
     private var shownLang = ""
     private var insetTop = 0
@@ -46,6 +50,7 @@ class UiActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         intent?.getStringExtra("theme")?.let { Backend.setStr(this, "theme", it) }   // CI screenshots: `--es theme green`
+        Perf.resetAfterUpdate(this)
         P.init(this)
         shownLang = Tr.lang(this)
         cleanOldModel()
@@ -82,6 +87,23 @@ class UiActivity : Activity() {
         val first = TAB_NAMES.indexOf(open)
         showTab(if (first >= 0) first else if (open != null) 1 else 0)
         if (open != null && first < 0) openByName(open)
+        pendingReveal?.let { p -> pendingReveal = null; revealHost(p[0], p[1]) }
+    }
+
+    private fun revealHost(x: Float, y: Float) {
+        if (!Motion.enabled(this) || Build.VERSION.SDK_INT < 21) return
+        host.viewTreeObserver.addOnPreDrawListener(object : android.view.ViewTreeObserver.OnPreDrawListener {
+            override fun onPreDraw(): Boolean {
+                host.viewTreeObserver.removeOnPreDrawListener(this)
+                try {
+                    val loc = IntArray(2); host.getLocationOnScreen(loc)
+                    val cx = (x - loc[0]).toInt().coerceIn(0, maxOf(1, host.width)); val cy = (y - loc[1]).toInt().coerceIn(0, maxOf(1, host.height))
+                    val r = Math.hypot(maxOf(cx, host.width - cx).toDouble(), maxOf(cy, host.height - cy).toDouble()).toFloat()
+                    android.view.ViewAnimationUtils.createCircularReveal(host, cx, cy, dpf(24f), r).apply { duration = RESTART_REVEAL_DURATION; interpolator = Motion.settle }.start()
+                } catch (_: Exception) { }
+                return true
+            }
+        })
     }
 
     /** Older versions could download a 2.6-3.7 GB on-device model; it is gone now, so free that space once. */
@@ -191,7 +213,7 @@ class UiActivity : Activity() {
     }
 
     override fun dispatchTouchEvent(ev: android.view.MotionEvent): Boolean {
-        if (ev.actionMasked == android.view.MotionEvent.ACTION_DOWN) { touchX = ev.rawX; touchY = ev.rawY }
+        if (ev.actionMasked == android.view.MotionEvent.ACTION_DOWN) { touchX = ev.rawX; touchY = ev.rawY; touchAt = android.os.SystemClock.uptimeMillis() }
         return super.dispatchTouchEvent(ev)
     }
 
@@ -304,5 +326,8 @@ class UiActivity : Activity() {
     }
 
     /** The language changed: draw everything again. */
-    fun restart() = recreate()
+    fun restart() {
+        if (touchX >= 0f && android.os.SystemClock.uptimeMillis() - touchAt < RESTART_REVEAL_MS) pendingReveal = floatArrayOf(touchX, touchY)
+        recreate()
+    }
 }

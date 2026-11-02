@@ -150,6 +150,7 @@ class GameScreen(act: UiActivity, private val kind: String) : Screen(act) {
                     input.isEnabled = false
                     finish(GameStages.guessStars(st, tries), outcome)
                     act.confetti()
+                    face.cheer()
                 }
                 tries >= st.tries -> {
                     over = true
@@ -200,6 +201,7 @@ class GameScreen(act: UiActivity, private val kind: String) : Screen(act) {
                 react("🎉", t("Ты выиграл серию $you:$me!", "You won the series $you:$me!", "Seriyani $you:$me hisobida yutding!"))
                 finish(GameStages.rpsStars(you - me), outcome)
                 act.confetti()
+                face.cheer()
             } else if (me >= st.target) {
                 over = true
                 react("😎", t("Серия за мной $me:$you!", "I won the series $me:$you!", "Seriya menda $me:$you!"))
@@ -293,7 +295,7 @@ class GameScreen(act: UiActivity, private val kind: String) : Screen(act) {
                             "retry" -> ask(lastSent)
                             "win" -> {
                                 react("🥳", t("Ура, я угадал за $asked вопросов!", "Yes! I got it in $asked questions!", "Ura, $asked savolda topdim!"))
-                                showButtons(listOf(t("Сыграть ещё", "Play again", "Yana o'ynash") to "again")); act.confetti()
+                                showButtons(listOf(t("Сыграть ещё", "Play again", "Yana o'ynash") to "again")); act.confetti(); face.cheer()
                             }
                             "wrong" -> {
                                 lastSent = if (asked >= 20) "No, that is not it. I win - you have used all 20 questions." else "No, that is not it. Keep asking."
@@ -374,7 +376,7 @@ class GameScreen(act: UiActivity, private val kind: String) : Screen(act) {
                         if (best == 0 || moves < best) prefs.edit().putInt("best_memory_$stage", moves).apply()
                         react("🎉", t("Все пары за $moves ходов!", "All pairs in $moves moves!", "Hamma juft $moves yurishda!"))
                         finish(GameStages.memoryStars(st, moves), outcome)
-                        status(); act.confetti()
+                        status(); act.confetti(); face.cheer()
                     } else if (moves >= st.moves) {
                         over = true
                         react("😢", t("Ходы закончились. Попробуй ещё!", "Out of moves. Try again!", "Yurishlar tugadi. Yana urinib ko'r!"))

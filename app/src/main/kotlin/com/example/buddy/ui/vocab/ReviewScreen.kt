@@ -27,6 +27,7 @@ class ReviewScreen(act: UiActivity) : Screen(act) {
     private var reflection = ""
     private var asked = 0
     private var correct = 0
+    private var cheered = false
     private var started = false
     private var aiOn = false
     private var canSkip = false
@@ -162,7 +163,12 @@ class ReviewScreen(act: UiActivity) : Screen(act) {
         val pct = if (asked == 0) 0 else correct * 100 / asked
         c.add(ctx.card(18) {
             add(ctx.text(t("Готово: $correct из $asked", "Done: $correct of $asked", "Tugadi: $asked tadan $correct"), T.Title), MATCH, WRAP)
-            add(ctx.text("$pct%", T.Title).apply { textSize = 32f }, MATCH, WRAP, top = 6)
+            val score = ctx.text("$pct%", T.Title).apply { textSize = 32f }
+            add(score, MATCH, WRAP, top = 6)
+            if (pct >= CHEER_PCT && !cheered) {
+                cheered = true
+                score.post { if (score.isAttachedToWindow) { act.confetti(); score.pop(); score.burst(P.success) } }
+            }
             add(ctx.text(t("Ошибки вернутся в ближайшие дни: так слова запоминаются крепче.", "Misses come back in the next days: that is what makes words stick.", "Xatolar yaqin kunlarda qaytadi: so'zlar shunday mustahkam yodda qoladi."), T.Small), MATCH, WRAP, top = 8)
             add(ctx.button(t("Готово", "Done", "Tayyor")) { act.pop() }, MATCH, WRAP, top = 12)
         }, MATCH, WRAP, top = 8)
@@ -251,4 +257,6 @@ class ReviewScreen(act: UiActivity) : Screen(act) {
             next(idx + 1)
         }, MATCH, WRAP)
     }
+
+    private companion object { const val CHEER_PCT = 80 }
 }

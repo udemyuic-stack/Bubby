@@ -287,10 +287,24 @@ class GlassToggle(c: Context) : View(c) {
     private val on = GlassDrawable(GlassKind.Navy, 15f, null, false, c.resources.displayMetrics.density)
     private val off = GlassDrawable(GlassKind.Dim, 15f, null, false, c.resources.displayMetrics.density)
     private var ring = 0f   // 0..1: the glow that spreads from the track when the switch turns on
+    private var slide: android.animation.ValueAnimator? = null
     fun toggle() {
+        val from = pos
         isChecked = !isChecked
         onChange?.invoke(isChecked)
-        if (isChecked && Motion.enabled(context)) android.animation.ValueAnimator.ofFloat(0f, 1f).apply { duration = Motion.EMPHASIS; addUpdateListener { ring = it.animatedValue as Float; invalidate() }; start() }
+        if (!Motion.enabled(context)) return
+        slide?.cancel()
+        slide = android.animation.ValueAnimator.ofFloat(from, pos).apply {
+            duration = Motion.STANDARD; interpolator = android.view.animation.OvershootInterpolator(2.2f)
+            addUpdateListener { pos = it.animatedValue as Float; invalidate() }
+            start()
+        }
+        if (isChecked) android.animation.ValueAnimator.ofFloat(0f, 1f).apply { duration = Motion.EMPHASIS; addUpdateListener { ring = it.animatedValue as Float; invalidate() }; start() }
+    }
+    override fun onDetachedFromWindow() {
+        super.onDetachedFromWindow()
+        slide?.cancel(); slide = null
+        pos = if (isChecked) 1f else 0f
     }
     override fun onDraw(cv: android.graphics.Canvas) {
         val d = if (isChecked) on else off
@@ -336,11 +350,21 @@ fun Context.emptyState(title: String, message: String, bubble: String? = null, s
                     duration = if (sleepy) 2600 else 1700; repeatMode = android.animation.ValueAnimator.REVERSE
                     repeatCount = android.animation.ValueAnimator.INFINITE; interpolator = android.view.animation.AccelerateDecelerateInterpolator()
                 }
-                if ((context as? UiActivity)?.intent?.getBooleanExtra("static", false) != true && Theme.sceneOn(context)) {
-                    bob.start()
+                if ((context as? UiActivity)?.intent?.getBooleanExtra("static", false) != true && Theme.sceneOn(context) && Motion.enabled(context)) {
+                    val rest = m.squash
+                    val blink = android.animation.ValueAnimator.ofFloat(0f, 1f).apply {
+                        duration = if (sleepy) 5200 else 3600; repeatCount = android.animation.ValueAnimator.INFINITE
+                        addUpdateListener {
+                            val f = it.animatedValue as Float
+                            val k = if (f > 0.93f) kotlin.math.sin((f - 0.93f) / 0.07f * Math.PI).toFloat() else 0f
+                            val next = rest + (1f - rest) * k
+                            if (next != m.squash) m.squash = next
+                        }
+                    }
+                    bob.start(); blink.start()
                     m.addOnAttachStateChangeListener(object : View.OnAttachStateChangeListener {
-                        override fun onViewAttachedToWindow(v: View) { if (!bob.isStarted) bob.start() }
-                        override fun onViewDetachedFromWindow(v: View) { bob.cancel() }
+                        override fun onViewAttachedToWindow(v: View) { if (!bob.isStarted) bob.start(); if (!blink.isStarted) blink.start() }
+                        override fun onViewDetachedFromWindow(v: View) { bob.cancel(); blink.cancel(); m.squash = rest }
                     })
                 }
             } catch (_: Exception) {}

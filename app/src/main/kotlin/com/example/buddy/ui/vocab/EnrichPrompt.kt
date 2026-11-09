@@ -1,7 +1,7 @@
 package com.example.buddy.ui.vocab
 
 object EnrichPrompt {
-    fun system(original: String, source: String?, target: String): String {
+    fun system(original: String, source: String?, target: String, context: String? = null): String {
         val tgt = Languages.byCode(target)?.en ?: target
         val langRule = if (source != null) {
             "The word is in ${Languages.byCode(source)?.en ?: source} (code $source). Use that as \"language\" with confidence 1."
@@ -9,9 +9,12 @@ object EnrichPrompt {
             "Detect the language of the word. It must be one of: " + Languages.ALL.joinToString(", ") { it.code + " (" + it.en + ")" } +
                 ". If it is none of them or you are not sure, still answer, but put a confidence below 0.7. Uzbek in Cyrillic is uz."
         }
+        val sentence = context?.trim()?.take(MAX_CONTEXT)?.replace("\"", "'")?.takeIf { it.isNotEmpty() }
+        val contextRule = if (sentence == null) "" else
+            "The learner met it in this sentence: \"$sentence\". Also return \"context\": {\"translation\": the sentence translated into $tgt, \"sense\": one sense object (same shape as in senses) for the meaning in THIS sentence, with the sentence itself as its first example}.\n"
         val metaRules = MetaSchema.KEYS.entries.joinToString("\n") { "- ${it.key}: " + it.value.joinToString(", ") }
         return "You are a careful lexicographer for a language-learning app. Reply with ONE JSON object and nothing else: no markdown, no comments.\n" +
-            "Word or phrase to study: \"" + original.replace("\"", "'") + "\"\n" + langRule + "\n" +
+            "Word or phrase to study: \"" + original.replace("\"", "'") + "\"\n" + langRule + "\n" + contextRule +
             "The learner reads $tgt (code $target). Write translations, definitions, usage notes and example translations in $tgt" +
             (if (target == "uz") " (Latin script)" else "") + ". Write example sentences in the language of the word.\n" +
             "Rules:\n" +
@@ -26,4 +29,6 @@ object EnrichPrompt {
     }
 
     fun user(original: String) = original
+
+    const val MAX_CONTEXT = 300
 }

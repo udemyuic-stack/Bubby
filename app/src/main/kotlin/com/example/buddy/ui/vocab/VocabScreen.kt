@@ -1,6 +1,7 @@
 package com.example.buddy.ui.vocab
 
 import android.text.Editable
+import android.text.InputFilter
 import android.text.TextWatcher
 import android.view.Gravity
 import android.view.inputmethod.EditorInfo
@@ -22,8 +23,12 @@ class VocabScreen(act: UiActivity) : Screen(act) {
     private var resumed = false
     private val open = HashSet<Long>()
     private var activePair = 0L
+    private var filterSource: Long? = null
+    private var filterTopic: Long? = null
 
     private fun ui() = Tr.lang(ctx)
+
+    override fun onShow() { reshow() }
 
     override fun render(c: LinearLayout) {
         val pairs = VocabDb.pairs(ctx)
@@ -50,6 +55,7 @@ class VocabScreen(act: UiActivity) : Screen(act) {
             })
         }
         c.add(search, MATCH, WRAP, bottom = 8)
+        filterRow(c)
         listBox = ctx.col {}
         c.add(listBox!!, MATCH, WRAP)
         fillList(active)
@@ -66,7 +72,7 @@ class VocabScreen(act: UiActivity) : Screen(act) {
                         t("Будет удалено слов: $n", "Words that will be deleted: $n", "O'chiriladigan so'zlar: $n"),
                         t("Удалить", "Delete", "O'chirish"), t("Отмена", "Cancel", "Bekor qilish")
                     ) { VocabDb.deletePair(ctx, p.id); building = false; refresh() }
-                }) { VocabDb.setActive(ctx, p.id); building = false; query = ""; refresh() }
+                }) { VocabDb.setActive(ctx, p.id); building = false; query = ""; filterSource = null; filterTopic = null; refresh() }
             })
         }
         flow.addView(ctx.chip("+", building) { building = true; refresh() })
@@ -123,6 +129,9 @@ class VocabScreen(act: UiActivity) : Screen(act) {
                 setSingleLine(true)
             }
             input = field
+            val sentence = ctx.field(t("Предложение, где вы встретили слово (необязательно)", "Sentence where you met it (optional)", "So'zni uchratgan gapingiz (ixtiyoriy)"), multiline = true).apply {
+                filters = arrayOf(InputFilter.LengthFilter(300))
+            }
             fun save(force: Boolean) {
                 val text = field.text.toString()
                 if (!force && text.isNotBlank() && pair != null && !Scripts.fits(text, pair.source)) {
@@ -134,14 +143,27 @@ class VocabScreen(act: UiActivity) : Screen(act) {
                     ) { save(true) }
                     return
                 }
-                when (val it = VocabDb.addEntry(ctx, pairId, text)) {
+                val said = sentence.text.toString().trim().ifBlank { null }
+                val src = currentSource()
+                when (val it = VocabDb.addEntry(ctx, pairId, text, said, src)) {
                     is AddResult.Added -> {
                         field.setText("")
+                        sentence.setText("")
                         ctx.toast(t("Сохранено", "Saved", "Saqlandi"))
                         fillList(pairId)
                         enrich(it.id)
                     }
-                    is AddResult.Duplicate -> ctx.toast(t("Это слово уже есть", "Already saved", "Bu so'z allaqachon bor"))
+                    is AddResult.Duplicate -> if (src != null) {
+                        ctx.confirm(
+                            t("Уже сохранено", "Already saved", "Allaqachon saqlangan"),
+                            t("Добавить этот источник к сохранённому слову?", "Add this source to the existing word?", "Bu manba saqlangan so'zga qo'shilsinmi?"),
+                            t("Добавить", "Add", "Qo'shish"), t("Отмена", "Cancel", "Bekor qilish")
+                        ) {
+                            VocabDb.linkSource(ctx, it.id, src)
+                            ctx.toast(t("Источник добавлен", "Source added", "Manba qo'shildi"))
+                            fillList(pairId)
+                        }
+                    } else ctx.toast(t("Это слово уже есть", "Already saved", "Bu so'z allaqachon bor"))
                     is AddResult.TooLong -> ctx.toast(t("Слишком длинно: до 8 слов", "Too long: up to 8 words", "Juda uzun: 8 so'zgacha"))
                     is AddResult.Empty -> ctx.toast(t("Введите слово", "Type a word", "So'z kiriting"))
                     is AddResult.NoPair -> { building = true; refresh() }
@@ -149,15 +171,68 @@ class VocabScreen(act: UiActivity) : Screen(act) {
             }
             field.setOnEditorActionListener { _, id, _ -> if (id == EditorInfo.IME_ACTION_DONE) { save(false); true } else false }
             add(field, MATCH, WRAP, bottom = 10)
+            add(sentence, MATCH, WRAP, bottom = 10)
+            val srcBox = ctx.col {}
+            fun showSource() {
+                srcBox.removeAllViews()
+                val cur = currentSource()
+                val label = if (cur == null) t("Без источника", "No source", "Manbasiz")
+                else SourceTree.path(VocabDb.sources(ctx), cur).let { p -> t("Источник: $p", "Source: $p", "Manba: $p") }
+                srcBox.add(ctx.row {
+                    add(ctx.pill(label, P.violet) { pickSource(true) { id -> VocabDb.setLastSource(ctx, id); showSource() } }, WRAP, WRAP)
+                }, MATCH, WRAP)
+            }
+            showSource()
+            add(srcBox, MATCH, WRAP, bottom = 10)
             add(ctx.button(t("Сохранить", "Save", "Saqlash")) { save(false) }, MATCH, WRAP)
         }, MATCH, WRAP, bottom = 12)
+    }
+
+    private fun currentSource(): Long? {
+        val id = VocabDb.lastSource(ctx) ?: return null
+        return id.takeIf { s -> VocabDb.sources(ctx).any { it.id == s } }
+    }
+
+    private fun pickSource(withNone: Boolean, onPick: (Long?) -> Unit) {
+        val labels = ArrayList<String>()
+        val ids = ArrayList<Long?>()
+        if (withNone) { labels.add(t("Без источника", "No source", "Manbasiz")); ids.add(null) }
+        fun walk(list: List<SourceBranch>, depth: Int) {
+            for (b in list) {
+                labels.add(" ".repeat(depth) + b.node.title)
+                ids.add(b.node.id)
+                walk(b.children, depth + 1)
+            }
+        }
+        walk(SourceTree.build(VocabDb.sources(ctx)), 0)
+        val manage = labels.size
+        labels.add(t("Управлять источниками", "Manage sources", "Manbalarni boshqarish"))
+        ctx.dialogBuilder().setTitle(t("Источник", "Source", "Manba"))
+            .setItems(labels.toTypedArray()) { _, i -> if (i == manage) act.push(SourcesScreen(act)) else onPick(ids[i]) }
+            .setNegativeButton(t("Отмена", "Cancel", "Bekor qilish"), null)
+            .show()
+    }
+
+    private fun filterRow(c: LinearLayout) {
+        val rows = VocabDb.sources(ctx)
+        if (filterSource != null && rows.none { it.id == filterSource }) filterSource = null
+        val topic = filterTopic?.let { id -> VocabDb.topics(ctx).firstOrNull { it.id == id } }
+        if (topic == null) filterTopic = null
+        val flow = FlowLayout(ctx)
+        flow.addView(ctx.chip(t("Все", "All", "Hammasi"), filterSource == null && filterTopic == null) { filterSource = null; filterTopic = null; refresh() })
+        filterSource?.let { s -> flow.addView(ctx.chip(SourceTree.path(rows, s) + "  ×", true) { filterSource = null; refresh() }) }
+        if (topic != null) flow.addView(ctx.chip(Topics.display(topic, ui()) + "  ×", true) { filterTopic = null; refresh() })
+        flow.addView(ctx.chip(t("Фильтр", "Filter", "Filtr"), false) {
+            act.push(SourcesScreen(act) { s, tp -> filterSource = s ?: filterSource; filterTopic = tp ?: filterTopic })
+        })
+        c.add(flow, MATCH, WRAP, bottom = 8)
     }
 
     private fun fillList(pairId: Long) {
         val box = listBox ?: return
         box.removeAllViews()
         val total = VocabDb.count(ctx, pairId)
-        val rows = VocabDb.entries(ctx, pairId, query)
+        val rows = VocabDb.entries(ctx, pairId, query, source = filterSource, topic = filterTopic)
         countText?.text = t("Всего: $total", "Total: $total", "Jami: $total")
         if (total == 0) {
             box.add(ctx.emptyState(t("Пока пусто", "Nothing here yet", "Hozircha bo'sh"), t("Введите слово выше: остальное появится позже.", "Type a word above: the rest comes later.", "Yuqoriga so'z kiriting: qolganini keyinroq qo'shamiz.")), MATCH, WRAP)
@@ -188,6 +263,19 @@ class VocabScreen(act: UiActivity) : Screen(act) {
         EntryStatus.SAVED -> ctx.pill(t("Сохранено", "Saved", "Saqlangan"), P.teal)
     }
 
+    private fun retryLine(card: LinearLayout, e: Entry): Boolean {
+        val text = when {
+            RetryPolicy.gaveUp(e.status, e.tries) -> t("Больше не пробую сам. Нажмите «Повторить».", "Stopped trying automatically. Tap Retry.", "Endi o'zim urinmayman. «Qayta urinish»ni bosing.")
+            e.nextTry > System.currentTimeMillis() -> {
+                val at = android.text.format.DateFormat.getTimeFormat(ctx).format(java.util.Date(e.nextTry))
+                t("Попробую снова в $at", "Will try again at $at", "$at da yana urinib ko'raman")
+            }
+            else -> return false
+        }
+        card.add(ctx.text(text, T.Small), MATCH, WRAP, top = 4)
+        return true
+    }
+
     private fun entryCard(e: Entry, pairId: Long): LinearLayout = ctx.card(14) {
         minimumHeight = ctx.dp(48)
         add(ctx.row {
@@ -197,6 +285,7 @@ class VocabScreen(act: UiActivity) : Screen(act) {
         when (e.status) {
             EntryStatus.FAILED -> {
                 add(ctx.text(t("Не получилось дополнить слово. Само слово сохранено.", "Could not fill in this word. The word itself is saved.", "So'zni to'ldirib bo'lmadi. So'zning o'zi saqlangan."), T.Small), MATCH, WRAP, top = 4)
+                retryLine(this, e)
                 add(ctx.button(t("Повторить", "Retry", "Qayta urinish"), BtnStyle.Text) { enrich(e.id, true) }, WRAP, WRAP, top = 4)
             }
             EntryStatus.NEEDS_LANGUAGE -> {
@@ -209,29 +298,43 @@ class VocabScreen(act: UiActivity) : Screen(act) {
                 }
                 add(flow, MATCH, WRAP, top = 4)
             }
-            EntryStatus.SAVED -> if (e.error != null) add(ctx.text(t("Дополню, когда появится связь", "Will be filled in when online", "Aloqa paydo bo'lganda to'ldiriladi"), T.Small), MATCH, WRAP, top = 4)
-            EntryStatus.READY -> {
-                val d = VocabDb.detail(ctx, e.id)
-                if (d != null) {
-                    val line = d.senses.flatMap { it.data.translations.take(1) }.take(3).joinToString(" · ")
-                    if (line.isNotEmpty()) add(ctx.text(line, T.Small), MATCH, WRAP, top = 2)
-                    if (e.id in open) detailBlock(this, d)
-                }
+            EntryStatus.SAVED -> if (e.error != null) {
+                if (!retryLine(this, e)) add(ctx.text(t("Дополню, когда появится связь", "Will be filled in when online", "Aloqa paydo bo'lganda to'ldiriladi"), T.Small), MATCH, WRAP, top = 4)
+                if (RetryPolicy.gaveUp(e.status, e.tries)) add(ctx.button(t("Повторить", "Retry", "Qayta urinish"), BtnStyle.Text) { enrich(e.id, true) }, WRAP, WRAP, top = 4)
             }
             else -> {}
         }
-        if (e.status == EntryStatus.READY) press { if (!open.add(e.id)) open.remove(e.id); fillList(pairId) }
+        val d = VocabDb.detail(ctx, e.id)
+        val hasSenses = d != null && d.senses.isNotEmpty()
+        if (d != null && hasSenses) {
+            val line = d.senses.flatMap { it.data.translations.take(1) }.take(3).joinToString(" · ")
+            if (line.isNotEmpty()) add(ctx.text(line, T.Small), MATCH, WRAP, top = 2)
+            if (e.id in open) detailBlock(this, d)
+        } else if (e.status != EntryStatus.ENRICHING) {
+            add(ctx.button(t("Добавить значение самому", "Add a meaning yourself", "Ma'noni o'zingiz qo'shing"), BtnStyle.Text, com.example.buddy.R.drawable.ic_add) { act.push(WordEditScreen(act, e.id, null)) }, WRAP, WRAP, top = 4)
+        }
+        if (hasSenses) press { if (!open.add(e.id)) open.remove(e.id); fillList(pairId) }
         pressLong({
             ctx.confirm(
                 t("Удалить слово?", "Delete this word?", "So'z o'chirilsinmi?"), e.original,
                 t("Удалить", "Delete", "O'chirish"), t("Отмена", "Cancel", "Bekor qilish")
             ) { VocabDb.deleteEntry(ctx, e.id); open.remove(e.id); fillList(pairId) }
-        }) { if (e.status == EntryStatus.READY) { if (!open.add(e.id)) open.remove(e.id); fillList(pairId) } }
+        }) { if (hasSenses) { if (!open.add(e.id)) open.remove(e.id); fillList(pairId) } }
     }
 
     private fun detailBlock(box: LinearLayout, d: EntryDetail) {
         val head = listOf(d.lemma.takeIf { it.isNotBlank() && VocabText.normalize(it) != VocabText.normalize(d.entry.original) }, d.ipa.takeIf { it.isNotBlank() }?.let { "/$it/" }, d.reading.takeIf { it.isNotBlank() }).filterNotNull().joinToString("  ")
         if (head.isNotEmpty()) box.add(ctx.text(head, T.Label), MATCH, WRAP, top = 8)
+        val said = d.context?.takeIf { it.isNotBlank() }
+        if (said != null) {
+            box.add(ctx.text("“$said”", T.Small), MATCH, WRAP, top = 6)
+            d.contextTr?.takeIf { it.isNotBlank() }?.let { box.add(ctx.text("   $it", T.Small), MATCH, WRAP) }
+            box.add(ctx.button(t("Изменить предложение", "Change sentence", "Gapni o'zgartirish"), BtnStyle.Text) { sentenceDialog(d.entry.id, said) }, WRAP, WRAP, top = 4)
+        } else {
+            box.add(ctx.button(t("Добавить предложение", "Add a sentence", "Gap qo'shish"), BtnStyle.Text, com.example.buddy.R.drawable.ic_add) { sentenceDialog(d.entry.id, "") }, WRAP, WRAP, top = 4)
+        }
+        sourcesBlock(box, d.entry.id)
+        topicsBlock(box, d.entry.id)
         for (s in d.senses) {
             val picked = s.picked
             box.add(ctx.col {
@@ -239,7 +342,18 @@ class VocabScreen(act: UiActivity) : Screen(act) {
                 background = ctx.rounded(P.alpha(P.sky, if (picked) 90 else 36), 14f)
                 minimumHeight = ctx.dp(48)
                 val tag = listOf(s.data.pos, s.data.level, s.data.formality).filter { it.isNotBlank() }.joinToString(" · ")
-                if (tag.isNotEmpty()) add(ctx.text(tag, T.Small), MATCH, WRAP)
+                val mark = when {
+                    s.verified -> ctx.pill(t("Проверено", "Verified", "Tasdiqlangan"), P.success)
+                    s.origin == "edited" -> ctx.pill(t("Изменено", "Edited", "Tahrirlangan"), P.teal)
+                    s.origin == "user" -> ctx.pill(t("Ваше", "Yours", "Sizniki"), P.teal)
+                    else -> null
+                }
+                add(ctx.row {
+                    add(ctx.text(tag, T.Small), 0, WRAP, 1f)
+                    if (s.kind == "context") add(ctx.pill(t("В вашем предложении", "In your sentence", "Gapingizda"), P.violet), WRAP, WRAP, end = 4)
+                    if (mark != null) add(mark, WRAP, WRAP, end = 4)
+                    add(ctx.button(t("Изменить", "Edit", "Tahrirlash"), BtnStyle.Text, com.example.buddy.R.drawable.ic_edit) { act.push(WordEditScreen(act, d.entry.id, s.id)) }, WRAP, WRAP)
+                }, MATCH, WRAP)
                 add(ctx.text(s.data.translations.joinToString(", "), T.Label), MATCH, WRAP, top = 2)
                 add(ctx.text(s.data.definition, T.Small), MATCH, WRAP, top = 2)
                 if (s.data.usage.isNotBlank()) add(ctx.text(s.data.usage, T.Small), MATCH, WRAP, top = 2)
@@ -253,15 +367,91 @@ class VocabScreen(act: UiActivity) : Screen(act) {
                 }
             }, MATCH, WRAP, top = 6)
         }
+        box.add(ctx.button(t("Добавить значение", "Add meaning", "Ma'no qo'shish"), BtnStyle.Text, com.example.buddy.R.drawable.ic_add) { act.push(WordEditScreen(act, d.entry.id, null)) }, WRAP, WRAP, top = 4)
         if (d.senses.size > 1) box.add(ctx.text(t("Нажмите на значение, чтобы учить только его", "Tap a meaning to study only that one", "Faqat shuni o'rganish uchun ma'noni bosing"), T.Small), MATCH, WRAP, top = 4)
         if (d.meta.isNotEmpty()) box.add(ctx.text(d.meta.entries.joinToString("\n") { it.key.replace('_', ' ') + ": " + it.value }, T.Small), MATCH, WRAP, top = 8)
         val rel = d.relations.entries.joinToString("\n") { it.key + ": " + it.value.joinToString(", ") }
         if (rel.isNotEmpty()) box.add(ctx.text(rel, T.Small), MATCH, WRAP, top = 6)
         box.add(ctx.button(t("Обновить через ИИ", "Regenerate with AI", "AI bilan yangilash"), BtnStyle.Text) {
             ctx.confirm(
-                t("Обновить карточку?", "Regenerate this card?", "Kartochka yangilansinmi?"), t("Текущие значения будут заменены.", "The current meanings will be replaced.", "Hozirgi ma'nolar almashtiriladi."),
+                t("Обновить карточку?", "Regenerate this card?", "Kartochka yangilansinmi?"), t("Ваши правки и проверенные значения сохранятся. Значения, которые вы уже повторяли, сохранят историю.", "Your edits and verified meanings are kept. Meanings you have practised keep their history.", "Tuzatishlaringiz va tasdiqlangan ma'nolar saqlanadi. Mashq qilgan ma'nolaringiz tarixi saqlanadi."),
                 t("Обновить", "Regenerate", "Yangilash"), t("Отмена", "Cancel", "Bekor qilish")
             ) { enrich(d.entry.id, true) }
         }, WRAP, WRAP, top = 6)
+    }
+
+    private fun sourcesBlock(box: LinearLayout, id: Long) {
+        val rows = VocabDb.sources(ctx)
+        for (sid in VocabDb.entrySources(ctx, id)) {
+            box.add(ctx.row {
+                add(ctx.text(SourceTree.path(rows, sid), T.Small), 0, WRAP, 1f)
+                add(ctx.button(t("Убрать", "Remove", "Olib tashlash"), BtnStyle.Text) { VocabDb.unlinkSource(ctx, id, sid); fillList(activePair) }, WRAP, WRAP)
+            }, MATCH, WRAP, top = 4)
+        }
+        box.add(ctx.button(t("Добавить источник", "Add source", "Manba qo'shish"), BtnStyle.Text, com.example.buddy.R.drawable.ic_add) {
+            pickSource(false) { sid -> if (sid != null) { VocabDb.linkSource(ctx, id, sid); fillList(activePair) } }
+        }, WRAP, WRAP, top = 4)
+    }
+
+    private fun topicsBlock(box: LinearLayout, id: Long) {
+        val mine = VocabDb.entryTopics(ctx, id).toHashSet()
+        val tagged = VocabDb.topics(ctx).filter { it.id in mine }
+        if (tagged.isNotEmpty()) {
+            val flow = FlowLayout(ctx)
+            for (tp in tagged) flow.addView(ctx.chip(Topics.display(tp, ui()), true) {})
+            box.add(flow, MATCH, WRAP, top = 4)
+        }
+        box.add(ctx.button(t("Темы", "Topics", "Mavzular"), BtnStyle.Text, com.example.buddy.R.drawable.ic_edit) { topicsDialog(id, HashSet(mine)) }, WRAP, WRAP, top = 4)
+    }
+
+    private fun topicsDialog(id: Long, chosen: MutableSet<Long>) {
+        val rows = VocabDb.topics(ctx)
+        val labels = rows.map { Topics.display(it, ui()) }.toTypedArray()
+        val checked = BooleanArray(rows.size) { rows[it].id in chosen }
+        ctx.dialogBuilder().setTitle(t("Темы", "Topics", "Mavzular"))
+            .setMultiChoiceItems(labels, checked) { _, i, on -> if (on) chosen.add(rows[i].id) else chosen.remove(rows[i].id) }
+            .setPositiveButton(t("Сохранить", "Save", "Saqlash")) { _, _ ->
+                VocabDb.setTopics(ctx, id, chosen)
+                fillList(activePair)
+            }
+            .setNeutralButton(t("Новая тема", "New topic", "Yangi mavzu")) { _, _ -> newTopicDialog(id, chosen) }
+            .setNegativeButton(t("Отмена", "Cancel", "Bekor qilish"), null)
+            .show()
+    }
+
+    private fun newTopicDialog(id: Long, chosen: MutableSet<Long>) {
+        val field = ctx.field(t("Название темы", "Topic name", "Mavzu nomi")).apply {
+            setSingleLine(true)
+            filters = arrayOf(InputFilter.LengthFilter(60))
+        }
+        val form = ctx.col(20) { add(field, MATCH, WRAP) }
+        ctx.dialogBuilder().setTitle(t("Новая тема", "New topic", "Yangi mavzu")).setView(form)
+            .setPositiveButton(t("Добавить", "Add", "Qo'shish")) { _, _ ->
+                val name = field.text.toString().trim()
+                if (name.isEmpty()) return@setPositiveButton
+                val tid = VocabDb.addTopic(ctx, name)
+                if (tid <= 0L) { ctx.toast(t("Не получилось добавить тему", "Could not add the topic", "Mavzuni qo'shib bo'lmadi")); return@setPositiveButton }
+                chosen.add(tid)
+                VocabDb.setTopics(ctx, id, chosen)
+                fillList(activePair)
+            }
+            .setNegativeButton(t("Отмена", "Cancel", "Bekor qilish"), null)
+            .show()
+    }
+
+    private fun sentenceDialog(id: Long, current: String) {
+        val field = ctx.field(t("Предложение, где вы встретили слово", "Sentence where you met it", "So'zni uchratgan gapingiz"), value = current, multiline = true).apply {
+            filters = arrayOf(InputFilter.LengthFilter(300))
+        }
+        val form = ctx.col(20) { add(field, MATCH, WRAP) }
+        ctx.dialogBuilder().setTitle(t("Предложение", "Sentence", "Gap")).setView(form)
+            .setPositiveButton(t("Сохранить", "Save", "Saqlash")) { _, _ ->
+                if (field.text.toString().trim() == current.trim()) return@setPositiveButton
+                VocabDb.setContext(ctx, id, field.text.toString())
+                enrich(id, true)
+                fillList(activePair)
+            }
+            .setNegativeButton(t("Отмена", "Cancel", "Bekor qilish"), null)
+            .show()
     }
 }

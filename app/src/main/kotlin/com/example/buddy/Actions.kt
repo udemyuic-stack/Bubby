@@ -822,7 +822,7 @@ class Actions(private val ctx: Context) {
         if (word.isEmpty()) return tr("Пустое слово", "Empty word", "So'z bo'sh")
         val pair = com.example.buddy.ui.vocab.VocabDb.ensurePair(ctx)
         return when (com.example.buddy.ui.vocab.VocabDb.addEntry(ctx, pair, word)) {
-            is com.example.buddy.ui.vocab.AddResult.Added -> null
+            is com.example.buddy.ui.vocab.AddResult.Added -> { com.example.buddy.ui.vocab.EnrichJob.schedule(ctx); null }
             is com.example.buddy.ui.vocab.AddResult.Duplicate -> tr("Это слово уже в списке", "That word is already in your list", "Bu so'z ro'yxatda bor")
             is com.example.buddy.ui.vocab.AddResult.TooLong -> tr("Слишком длинное слово", "That is too long", "Juda uzun")
             else -> tr("Не получилось сохранить слово", "Could not save the word", "So'zni saqlab bo'lmadi")

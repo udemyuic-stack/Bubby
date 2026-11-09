@@ -96,6 +96,8 @@
             <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
                 android:value="overlay_mascot"/>
         </service>
+        <service android:name=".ui.vocab.EnrichJob" android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE"/>
 
         <service
             android:name=".BuddyAccess"

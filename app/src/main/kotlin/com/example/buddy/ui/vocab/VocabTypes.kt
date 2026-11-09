@@ -14,6 +14,8 @@ class SenseData(
     val examples: List<ExampleData>
 )
 
+class ContextData(val translation: String, val sense: SenseData)
+
 class Enriched(
     val language: String,
     val confidence: Double,
@@ -22,7 +24,8 @@ class Enriched(
     val ipa: String,
     val reading: String,
     val relations: Map<String, List<String>>,
-    val meta: Map<String, String>
+    val meta: Map<String, String>,
+    val context: ContextData? = null
 )
 
 object MetaSchema {

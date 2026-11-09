@@ -209,6 +209,62 @@ class Brain(private val ctx: Context) {
         return out.text.replace(Regex("(?is)<think>.*?</think>"), "").trim()
     }
 
+    fun canSeeImages(): Boolean = keyList().any { imageCapable(it) }
+
+    fun imageModelName(): String? = try { order().firstOrNull()?.let { modelName(it) } } catch (_: Exception) { null }
+
+    fun chatOnceWithImage(system: String, text: String, jpeg: ByteArray): String {
+        val capable = order().filter { imageCapable(it) }
+        if (capable.isEmpty()) throw ImageUnsupported(imageModelName(), "no image model")
+        val b64 = java.util.Base64.getEncoder().encodeToString(jpeg)
+        var first: Exception? = null
+        var rejected = 0
+        var lastModel: String? = null
+        for (spec in capable) {
+            try {
+                return callImage(spec, system, text, b64).replace(Regex("(?is)<think>.*?</think>"), "").trim()
+            } catch (e: Exception) {
+                if (spec.startsWith("http") && isImageRejection(e)) {
+                    noVisionKeys.add(specKey(spec))
+                    rejected++
+                    lastModel = modelName(spec)
+                    continue
+                }
+                if (!movesOn(e)) throw e
+                if (first == null) first = e
+                blockedUntil[spec] = System.currentTimeMillis() + if ((e.message ?: "").contains("429") || (e.message ?: "").contains("лимит")) 60_000L else 20_000L
+            }
+        }
+        if (rejected == capable.size) throw ImageUnsupported(lastModel, "model rejected the image")
+        throw first ?: Exception("нет доступного подключения")
+    }
+
+    private fun imageCapable(spec: String): Boolean = vision(spec)
+
+    private fun isImageRejection(e: Exception): Boolean {
+        val m = e.message ?: ""
+        return m.startsWith("HTTP 400") || m.startsWith("HTTP 422")
+    }
+
+    private fun modelName(spec: String): String = when {
+        spec.startsWith("http") -> localParts(spec).second
+        spec.startsWith("sk-ant") -> CLAUDE_MODEL
+        else -> prefs.getString("model", null) ?: "gemini"
+    }
+
+    private fun callImage(spec: String, system: String, text: String, b64: String): String = when {
+        spec.startsWith("http") -> {
+            val (base, model, token) = localParts(spec)
+            ProviderFormat.parseOpenAi(postLocal(base, model, token, ProviderFormat.openAiImageBody(model, system, text, b64))).text
+        }
+        spec.startsWith("sk-ant") -> ProviderFormat.parseAnthropic(post("https://api.anthropic.com/v1/messages",
+            ProviderFormat.anthropicImageBody(CLAUDE_MODEL, system, text, b64), mapOf("x-api-key" to spec, "anthropic-version" to "2023-06-01"))).text
+        else -> {
+            val body = ProviderFormat.geminiImageBody(system, text, b64)
+            ProviderFormat.parseGemini(geminiModels(spec) { m -> post("https://generativelanguage.googleapis.com/v1beta/models/$m:generateContent", body, mapOf("x-goog-api-key" to spec)) }).text
+        }
+    }
+
     /** The "(did: ...)" note is only for the model's own memory; it must never be shown or spoken. */
     private fun stripNotes(s: String) = s.replace(Regex("\\s*\\((did|done|actions)\\s*:[^)]*\\)", RegexOption.IGNORE_CASE), "").trim()
 

@@ -20,7 +20,14 @@ class UiActivity : Activity() {
     companion object {
         /** True while the app's own screen is in front: the floating island then stays closed unless an agent needs an answer. */
         @Volatile @JvmStatic var appInFront = false
+        private const val EXIT_WINDOW_MS = 2000L
+        private const val PAGE_SLIDE_DP = 24
+        private const val RESTART_REVEAL_MS = 1500L
+        private const val RESTART_REVEAL_DURATION = 700L
+        private var pendingReveal: FloatArray? = null
     }
+
+    private var lastRootBack = 0L
 
     private lateinit var host: FrameLayout
     private lateinit var shell: LinearLayout
@@ -32,8 +39,10 @@ class UiActivity : Activity() {
     private val tabs = ArrayList<Screen>()
     private var tab = 0
     private var tabShown = false
+    private var navTab = -1
     private var touchX = -1f
     private var touchY = -1f
+    private var touchAt = 0L
     private val stack = ArrayList<Pair<Screen, View>>()
     private var shownLang = ""
     private var insetTop = 0
@@ -43,6 +52,7 @@ class UiActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         intent?.getStringExtra("theme")?.let { Backend.setStr(this, "theme", it) }   // CI screenshots: `--es theme green`
+        Perf.resetAfterUpdate(this)
         P.init(this)
         shownLang = Tr.lang(this)
         cleanOldModel()
@@ -79,6 +89,23 @@ class UiActivity : Activity() {
         val first = TAB_NAMES.indexOf(open)
         showTab(if (first >= 0) first else if (open != null) 1 else 0)
         if (open != null && first < 0) openByName(open)
+        pendingReveal?.let { p -> pendingReveal = null; revealHost(p[0], p[1]) }
+    }
+
+    private fun revealHost(x: Float, y: Float) {
+        if (!Motion.enabled(this) || Build.VERSION.SDK_INT < 21) return
+        host.viewTreeObserver.addOnPreDrawListener(object : android.view.ViewTreeObserver.OnPreDrawListener {
+            override fun onPreDraw(): Boolean {
+                host.viewTreeObserver.removeOnPreDrawListener(this)
+                try {
+                    val loc = IntArray(2); host.getLocationOnScreen(loc)
+                    val cx = (x - loc[0]).toInt().coerceIn(0, maxOf(1, host.width)); val cy = (y - loc[1]).toInt().coerceIn(0, maxOf(1, host.height))
+                    val r = Math.hypot(maxOf(cx, host.width - cx).toDouble(), maxOf(cy, host.height - cy).toDouble()).toFloat()
+                    android.view.ViewAnimationUtils.createCircularReveal(host, cx, cy, dpf(24f), r).apply { duration = RESTART_REVEAL_DURATION; interpolator = Motion.settle }.start()
+                } catch (_: Exception) { }
+                return true
+            }
+        })
     }
 
     /** Older versions could download a 2.6-3.7 GB on-device model; it is gone now, so free that space once. */
@@ -102,7 +129,8 @@ class UiActivity : Activity() {
         while (stack.isNotEmpty()) { val (_, v) = stack.removeAt(stack.size - 1); host.removeView(v) }
         val i = TAB_NAMES.indexOf(name)
         if (i >= 0) { showTab(i); return }
-        Screens.create(name, this)?.let { push(it) }
+        val screen = Screens.create(name, this)
+        if (screen != null) push(screen) else updateChrome()
     }
 
     @Suppress("DEPRECATION")
@@ -163,16 +191,26 @@ class UiActivity : Activity() {
 
     /** The floating glass navigation: the selected tab is a bright petal. */
     private fun buildNav(): View {
+        val from = navTab
+        navTab = tab
+        val step = (navFrame.width - navFrame.paddingLeft - navFrame.paddingRight - dp(12)) / tabs.size.toFloat()
         val bar = row(Gravity.CENTER_VERTICAL) {
+            clipChildren = false
             background = glass(GlassKind.Nav, 34f)
             setPadding(dp(6), 0, dp(6), 0)
         }
         for ((i, it) in tabLabels().withIndex()) {
             val selected = i == tab
             val item = FrameLayout(this).apply {
+                clipChildren = false
                 if (selected) {
-                    addView(View(this@UiActivity).apply { background = petalShape(GlassKind.Active, PETAL_RADII_NAV) },
-                        FrameLayout.LayoutParams(dp(68), dp(54), Gravity.CENTER))
+                    translationZ = 1f
+                    val petal = View(this@UiActivity).apply { background = petalShape(GlassKind.Active, PETAL_RADII_NAV) }
+                    addView(petal, FrameLayout.LayoutParams(dp(68), dp(54), Gravity.CENTER))
+                    if (from > 0 && from != i && step > 0f && Motion.enabled(this@UiActivity)) {
+                        petal.translationX = (from - i) * step
+                        petal.animate().translationX(0f).setDuration(Motion.STANDARD).setInterpolator(Motion.spring).start()
+                    }
                 }
                 val inner = col {
                     gravity = Gravity.CENTER_HORIZONTAL
@@ -188,18 +226,18 @@ class UiActivity : Activity() {
     }
 
     override fun dispatchTouchEvent(ev: android.view.MotionEvent): Boolean {
-        if (ev.actionMasked == android.view.MotionEvent.ACTION_DOWN) { touchX = ev.rawX; touchY = ev.rawY }
+        if (ev.actionMasked == android.view.MotionEvent.ACTION_DOWN) { touchX = ev.rawX; touchY = ev.rawY; touchAt = android.os.SystemClock.uptimeMillis() }
         return super.dispatchTouchEvent(ev)
     }
 
     /** A ring spreading from where the finger touched, and the new page opening as a circle from the same spot (like the designs). */
     private fun revealFromTouch() {
-        if (touchX < 0f || intent?.getBooleanExtra("static", false) == true || Build.VERSION.SDK_INT < 21) return
+        if (touchX < 0f || !Motion.enabled(this) || intent?.getBooleanExtra("static", false) == true || Build.VERSION.SDK_INT < 21) return
         try {
             val loc = IntArray(2); body.getLocationOnScreen(loc)
             val cx = (touchX - loc[0]).toInt().coerceIn(0, maxOf(1, body.width)); val cy = (touchY - loc[1]).toInt().coerceIn(0, maxOf(1, body.height))
             val r = Math.hypot(maxOf(cx, body.width - cx).toDouble(), maxOf(cy, body.height - cy).toDouble()).toFloat()
-            body.post { try { android.view.ViewAnimationUtils.createCircularReveal(body, cx, cy, 0f, r).apply { duration = 650; interpolator = android.view.animation.DecelerateInterpolator(1.4f) }.start() } catch (_: Exception) { } }
+            body.post { try { android.view.ViewAnimationUtils.createCircularReveal(body, cx, cy, 0f, r).apply { duration = 650; interpolator = Motion.settle }.start() } catch (_: Exception) { } }
             val ring = View(this).apply {
                 background = android.graphics.drawable.GradientDrawable().apply { shape = android.graphics.drawable.GradientDrawable.OVAL; setColor(Color.TRANSPARENT); setStroke(dp(2), Glass.white(.85f)) }
                 isClickable = false
@@ -219,7 +257,7 @@ class UiActivity : Activity() {
         (tabs[0] as HomeScreen).let { if (i == 0) it.wakeWeb() else it.restWeb() }
         bgSub.visibility = if (i == 0) View.GONE else View.VISIBLE
         navFrame.removeAllViews()
-        if (i != 0) navFrame.addView(buildNav(), FrameLayout.LayoutParams(MATCH, dp(68)))
+        if (i != 0) navFrame.addView(buildNav(), FrameLayout.LayoutParams(MATCH, dp(68))) else navTab = -1
         tabs[i].onShow()
         updateChrome()
         if (changed) revealFromTouch()
@@ -230,11 +268,16 @@ class UiActivity : Activity() {
      * With a themed look the animated scene is behind every page, also the pushed ones (they are see-through then): it slides a little
      * from page to page like in the design; the themed home page carries its own scene.
      */
+    private fun syncGameFront() {
+        com.example.buddy.BuddyService.markGameFront(appInFront && stack.lastOrNull()?.first?.coversScene == true)
+    }
+
     private fun updateChrome() {
+        syncGameFront()
         applyInsets()
         val sc = scene ?: return
         val pushed = stack.isNotEmpty()
-        sc.setScene(if (tab == 0 && !pushed && (tabs[0] as HomeScreen).themed) null else Theme.cur.scene)
+        sc.setScene(if ((tab == 0 && !pushed && (tabs[0] as HomeScreen).themed) || stack.lastOrNull()?.first?.coversScene == true) null else Theme.cur.scene)
         sc.slideTo(if (pushed) 5 else tab)
         shell.visibility = if (pushed) View.INVISIBLE else View.VISIBLE
         navFrame.visibility = if (pushed) View.INVISIBLE else View.VISIBLE
@@ -251,8 +294,8 @@ class UiActivity : Activity() {
         host.addView(page, FrameLayout.LayoutParams(MATCH, MATCH))
         stack += s to page
         page.alpha = 0f
-        page.translationX = dp(40).toFloat()
-        page.animate().alpha(1f).translationX(0f).setDuration(220).start()
+        page.translationX = dp(PAGE_SLIDE_DP).toFloat()
+        page.animate().alpha(1f).translationX(0f).setDuration(Motion.run { page.ms(STANDARD) }).setInterpolator(Motion.standard).start()
         s.onShow()
         updateChrome()
     }
@@ -260,7 +303,7 @@ class UiActivity : Activity() {
     fun pop() {
         if (stack.isEmpty()) return
         val (_, page) = stack.removeAt(stack.size - 1)
-        page.animate().alpha(0f).translationX(dp(40).toFloat()).setDuration(160).withEndAction { host.removeView(page) }.start()
+        page.animate().alpha(0f).translationX(dp(PAGE_SLIDE_DP).toFloat()).setDuration(Motion.run { page.ms(QUICK) }).setInterpolator(Motion.exit).withEndAction { host.removeView(page) }.start()
         stack.lastOrNull()?.second?.visibility = View.VISIBLE
         (stack.lastOrNull()?.first ?: tabs[tab]).onShow()
         updateChrome()
@@ -268,16 +311,21 @@ class UiActivity : Activity() {
 
     @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
-        if (stack.isNotEmpty()) pop() else super.onBackPressed()
+        if (stack.isNotEmpty()) { pop(); return }
+        val now = android.os.SystemClock.elapsedRealtime()
+        if (now - lastRootBack < EXIT_WINDOW_MS) { super.onBackPressed(); return }
+        lastRootBack = now
+        toast(Tr.t(this, "Нажмите ещё раз, чтобы выйти", "Press back again to exit", "Chiqish uchun yana bir marta bosing"))
     }
 
-    override fun onPause() { super.onPause(); appInFront = false; scene?.onAppPause(); (tabs[0] as HomeScreen).restWeb() }
+    override fun onPause() { super.onPause(); appInFront = false; syncGameFront(); scene?.onAppPause(); (tabs[0] as HomeScreen).restWeb() }
 
     override fun onDestroy() { try { scene?.release() } catch (_: Throwable) { }; try { (tabs[0] as HomeScreen).destroyWeb() } catch (_: Throwable) { }; super.onDestroy() }
 
     override fun onResume() {
         super.onResume()
         appInFront = true
+        syncGameFront()
         scene?.onAppResume()
         if (tab == 0) (tabs[0] as HomeScreen).wakeWeb()
         // the language the user speaks changed (auto mode): draw everything in it
@@ -290,6 +338,11 @@ class UiActivity : Activity() {
         (stack.lastOrNull()?.first ?: tabs[tab]).onPermissionResult()
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: android.content.Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        (stack.lastOrNull()?.first ?: tabs[tab]).onActivityResult(requestCode, resultCode, data)
+    }
+
     /** Pushes the named screen, or says it is not there yet. */
     fun open(name: String) {
         val s = Screens.create(name, this)
@@ -297,5 +350,8 @@ class UiActivity : Activity() {
     }
 
     /** The language changed: draw everything again. */
-    fun restart() = recreate()
+    fun restart() {
+        if (touchX >= 0f && android.os.SystemClock.uptimeMillis() - touchAt < RESTART_REVEAL_MS) pendingReveal = floatArrayOf(touchX, touchY)
+        recreate()
+    }
 }

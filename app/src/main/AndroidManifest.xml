@@ -37,6 +37,7 @@
         <intent><action android:name="android.intent.action.VIEW"/><data android:scheme="geo"/></intent>
         <intent><action android:name="android.intent.action.VIEW"/><data android:scheme="tel"/></intent>
         <intent><action android:name="android.intent.action.DIAL"/></intent>
+        <intent><action android:name="android.intent.action.TTS_SERVICE"/></intent>
         <intent><action android:name="android.intent.action.SENDTO"/><data android:scheme="smsto"/></intent>
         <intent><action android:name="android.intent.action.SENDTO"/><data android:scheme="mailto"/></intent>
         <intent><action android:name="android.intent.action.SEND"/><data android:mimeType="text/plain"/></intent>
@@ -95,6 +96,8 @@
             <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
                 android:value="overlay_mascot"/>
         </service>
+        <service android:name=".ui.vocab.EnrichJob" android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE"/>
 
         <service
             android:name=".BuddyAccess"
@@ -112,6 +115,12 @@
         <provider
             android:name=".StickerProvider"
             android:authorities="com.example.buddy.stickers"
+            android:exported="false"
+            android:grantUriPermissions="true"/>
+
+        <provider
+            android:name=".PhotoProvider"
+            android:authorities="com.example.buddy.photo"
             android:exported="false"
             android:grantUriPermissions="true"/>
 
@@ -168,6 +177,9 @@
         </activity>
 
         <receiver android:name=".ReminderReceiver" android:exported="false"/>
+        <receiver android:name=".CallStateReceiver" android:exported="true">
+            <intent-filter><action android:name="android.intent.action.PHONE_STATE"/></intent-filter>
+        </receiver>
         <receiver android:name=".BootReceiver" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>

@@ -14,6 +14,88 @@ import kotlin.math.roundToInt
 class SettingsScreen(act: UiActivity) : Screen(act) {
     override fun title() = t("Настройки", "Settings", "Sozlamalar")
     override fun onShow() { reshow() }
+    override fun onPermissionResult() { refresh() }
+
+    private fun callStatus(label: String, ok: Boolean, fix: () -> Unit): View = ctx.row {
+        minimumHeight = ctx.dp(48)
+        add(ctx.text(label, T.Body), 0, WRAP, 1f)
+        add(ctx.pill(if (ok) t("Готово", "Ready", "Tayyor") else t("Включить", "Turn on", "Yoqish"),
+            if (ok) P.success else P.warning, onClick = if (ok) null else fix), WRAP, WRAP)
+    }
+
+    private fun callsGroup(c: LinearLayout) {
+        val on = Backend.bool(ctx, "call_auto", false)
+        val missing = com.example.buddy.AutoAnswer.missingPermissions(ctx)
+        val delay = com.example.buddy.AutoAnswer.delaySec(ctx)
+        val rejectSms = com.example.buddy.AutoAnswer.rejectSms(ctx)
+        val sub = when {
+            !on -> t("Выключено", "Off", "O'chiq")
+            missing.isNotEmpty() -> t("Не работает: нужно разрешение", "Not working: permission needed", "Ishlamayapti: ruxsat kerak")
+            rejectSms -> t("Сбрасывает через $delay с и отправляет SMS, если вы ничего не сделали", "Declines after $delay s and sends an SMS if you do nothing", "Hech narsa qilmasangiz, $delay soniyadan keyin rad etib SMS yuboradi")
+            else -> t("Берёт трубку через $delay с, если вы ничего не сделали", "Picks up after $delay s if you do nothing", "Hech narsa qilmasangiz, $delay soniyadan keyin ko'taradi")
+        }
+        group(c, t("Звонки", "Calls", "Qo'ng'iroqlar"), R.drawable.ic_bell) {
+            add(ctx.switchRow(t("Отвечать на звонки сам", "Pick up calls by itself", "Qo'ng'iroqqa o'zi javob berish"), sub, on) { v ->
+                Backend.setBool(ctx, "call_auto", v)
+                if (v && com.example.buddy.AutoAnswer.missingPermissions(ctx).isNotEmpty()) Backend.requestPermissions(act, "calls")
+                refresh()
+            })
+            if (!on) return@group
+            val perms = Backend.permissions(act)
+            fun granted(p: String) = p !in missing
+            add(callStatus(t("Состояние звонка", "Call state", "Qo'ng'iroq holati"), granted(android.Manifest.permission.READ_PHONE_STATE)) { Backend.requestPermissions(act, "calls") }, MATCH, WRAP, top = 6)
+            add(callStatus(t("Ответ на звонок", "Answering calls", "Qo'ng'iroqqa javob"), granted(android.Manifest.permission.ANSWER_PHONE_CALLS)) { Backend.requestPermissions(act, "calls") }, MATCH, WRAP)
+            if (rejectSms) add(callStatus(t("Отправка SMS", "Sending SMS", "SMS yuborish"), granted(android.Manifest.permission.SEND_SMS)) { Backend.requestPermissions(act, "calls") }, MATCH, WRAP)
+            if (com.example.buddy.AutoAnswer.onlyContacts(ctx) || rejectSms) add(callStatus(t("Контакты и номер", "Contacts and number", "Kontaktlar va raqam"),
+                granted(android.Manifest.permission.READ_CONTACTS) && granted(android.Manifest.permission.READ_CALL_LOG)) { Backend.requestPermissions(act, "calls") }, MATCH, WRAP)
+            add(callStatus(t("Доступ к уведомлениям (запасной способ)", "Notification access (backup way)", "Bildirishnomalarga ruxsat (zaxira yo'l)"),
+                perms["notifListener"] == true) { Backend.openSettings(act, "notifListener") }, MATCH, WRAP)
+            add(callStatus(t("Без ограничения батареи", "No battery limit", "Batareya cheklovisiz"), Backend.batteryIgnored(ctx)) { Backend.openSettings(act, "battery") }, MATCH, WRAP)
+            if (missing.isNotEmpty()) {
+                add(ctx.text(t("Если окно разрешения не появляется, откройте настройки приложения → Разрешения → Телефон.",
+                    "If no permission window appears, open the app settings, then Permissions, then Phone.",
+                    "Ruxsat oynasi chiqmasa, ilova sozlamalari → Ruxsatlar → Telefon bo'limini oching."), T.Small), MATCH, WRAP, top = 4)
+                add(ctx.button(t("Настройки приложения", "App settings", "Ilova sozlamalari"), BtnStyle.Tonal, R.drawable.ic_settings) { Backend.openSettings(act, "app") }, WRAP, WRAP, top = 8)
+            }
+            add(ctx.text(t("Через сколько секунд", "After how many seconds", "Necha soniyadan keyin"), T.Title), MATCH, WRAP, top = 14, bottom = 8)
+            add(chips(com.example.buddy.AutoAnswerRules.DELAYS.map { it.toString() to t("$it с", "$it s", "$it s") }, delay.toString()) {
+                Backend.prefs(ctx).edit().putInt("call_auto_delay", it.toInt()).apply()
+            })
+            add(ctx.switchRow(t("Только контакты", "Only contacts", "Faqat kontaktlar"),
+                t("Незнакомые номера не берёт", "Unknown numbers are not picked up", "Notanish raqamlarga javob bermaydi"),
+                com.example.buddy.AutoAnswer.onlyContacts(ctx)) { v ->
+                Backend.setBool(ctx, "call_auto_contacts", v)
+                if (v && com.example.buddy.AutoAnswer.missingPermissions(ctx).isNotEmpty()) Backend.requestPermissions(act, "calls")
+                refresh()
+            })
+            add(sw(t("Только с наушниками", "Only with headphones", "Faqat quloqchin bilan"), "call_auto_headset", false,
+                t("Проводные или Bluetooth", "Wired or Bluetooth", "Simli yoki Bluetooth")))
+            add(ctx.switchRow(t("Сбрасывать и отправлять SMS", "Decline and send an SMS", "Rad etib SMS yuborish"),
+                t("Вместо ответа: ИИ пишет SMS по вашей инструкции. SMS уходит без подтверждения и оплачивается оператором",
+                    "Instead of answering: the AI writes an SMS from your instructions. It is sent without asking, and your operator charges for it",
+                    "Javob o'rniga: AI ko'rsatmangiz bo'yicha SMS yozadi. SMS so'ramasdan ketadi, operator haq oladi"),
+                rejectSms) { v ->
+                Backend.setBool(ctx, "call_reject_sms", v)
+                if (v) {
+                    Backend.setBool(ctx, "call_talk", false)
+                    Backend.prefs(ctx).edit().putInt("call_auto_delay", 10).apply()
+                }
+                if (v && com.example.buddy.AutoAnswer.missingPermissions(ctx).isNotEmpty()) Backend.requestPermissions(act, "calls")
+                refresh()
+            })
+            add(ctx.switchRow(t("ИИ говорит по телефону", "AI talks on the call", "AI qo'ng'iroqda gaplashadi"),
+                t("Если Bubby берёт трубку сам: включает громкую связь и говорит с абонентом, потом присылает итог. Экспериментально",
+                    "When Bubby picks up by itself: turns on the speaker, talks to the caller, then tells you what it was about. Experimental",
+                    "Bubby o'zi ko'targanda: karnayni yoqib, qo'ng'iroq qiluvchi bilan gaplashadi, keyin nima haqida ekanini aytadi. Tajribaviy"),
+                Backend.bool(ctx, "call_talk", false)) { v ->
+                Backend.setBool(ctx, "call_talk", v)
+                if (v) Backend.setBool(ctx, "call_reject_sms", false)
+                refresh()
+            })
+            add(ctx.linkRow(t("ИИ на звонках", "AI on calls", "Qo'ng'iroqlarda AI"),
+                t("Инструкции, профили и голос", "Instructions, profiles and voice", "Ko'rsatmalar, profillar va ovoz"), R.drawable.ic_sparkle) { act.open("call-assistant") }, MATCH, WRAP, top = 4)
+        }
+    }
 
     private val moods = listOf("funny and cheerful", "serious and precise", "warm and affectionate", "sarcastic", "sleepy", "energetic", "")
     private val legacy = mapOf(
@@ -170,10 +252,16 @@ class SettingsScreen(act: UiActivity) : Screen(act) {
                 Triple("forest", t("Дождливый лес", "Rainy forest", "Yomg'irli o'rmon"), t("Облако", "Cloud", "Bulut")),
                 Triple("ocean", t("Океан", "Ocean", "Okean"), t("Медуза", "Jellyfish", "Meduza")),
                 Triple("newyear", t("Новый год", "New Year", "Yangi yil"), t("Снеговик", "Snowman", "Qorbobo")),
-                Triple("ice", t("Ледник", "Glacier", "Muzlik"), t("Мочи", "Mochi", "Mochi"))
+                Triple("ice", t("Ледник", "Glacier", "Muzlik"), t("Мочи", "Mochi", "Mochi")),
+                Triple("aurora", t("Аврора", "Aurora", "Aurora"), t("Шар света", "Light orb", "Nur shari")),
+                Triple("candy", t("Конфетти", "Candy", "Konfet"), t("Мишка", "Gummy bear", "Ayiqcha")),
+                Triple("desert", t("Пустыня", "Desert", "Cho'l"), t("Кактус", "Cactus", "Kaktus"))
             )
-            add(sw(t("Живой фон", "Animated background", "Jonli fon"), "scene_anim", true,
-                t("Движущийся фон за страницами. Выключите, чтобы экономить батарею", "A moving background behind the pages. Turn off to save battery", "Sahifalar orqasida harakatlanuvchi fon. Batareyani tejash uchun o'chiring")).apply { }, MATCH, WRAP, bottom = 10)
+            val autoOff = Backend.bool(ctx, "scene_anim_auto_off", false) && !Backend.bool(ctx, "scene_anim", true)
+            val animSub = t("Движущийся фон за страницами. Выключите, чтобы экономить батарею", "A moving background behind the pages. Turn off to save battery", "Sahifalar orqasida harakatlanuvchi fon. Batareyani tejash uchun o'chiring")
+            add(ctx.switchRow(t("Живой фон", "Animated background", "Jonli fon"),
+                if (autoOff) animSub + "\n" + t("Выключено автоматически: телефон работал слишком медленно", "Turned off automatically: the phone was too slow", "Avtomatik o'chirildi: telefon juda sekin ishladi") else animSub,
+                Backend.bool(ctx, "scene_anim", true)) { Backend.setBool(ctx, "scene_anim", it); Backend.setBool(ctx, "scene_anim_auto_off", false) }, MATCH, WRAP, bottom = 10)
             for (pair in styles.chunked(2)) {
                 add(ctx.row {
                     for ((i, st) in pair.withIndex()) {
@@ -200,12 +288,6 @@ class SettingsScreen(act: UiActivity) : Screen(act) {
                 t("Микрофон всегда включён, батарея садится быстрее",
                     "The microphone stays on and the battery drains faster",
                     "Mikrofon doim yoniq, batareya tezroq sarflanadi")))
-            add(sw(t("Отвечать на звонки сам", "Pick up calls by itself", "Qo'ng'iroqqa o'zi javob berish"), "call_auto", false,
-                t("Если вы молчите, через 7 секунд берёт трубку", "If you say nothing, answers after 7 seconds", "Jim tursangiz, 7 soniyadan keyin o'zi ko'taradi")))
-            add(sw(t("ИИ говорит по телефону", "AI talks on the call", "AI qo'ng'iroqda gaplashadi"), "call_talk", false,
-                t("Если Bubby берёт трубку сам: включает громкую связь и говорит с абонентом, потом присылает итог. Экспериментально",
-                    "When Bubby picks up by itself: turns on the speaker, talks to the caller, then tells you what it was about. Experimental",
-                    "Bubby o'zi ko'targanda: karnayni yoqib, qo'ng'iroq qiluvchi bilan gaplashadi, keyin nima haqida ekanini aytadi. Tajribaviy")))
             add(sw(t("Зачитывать уведомления", "Read notifications aloud", "Bildirishnomalarni ovoz chiqarib o'qish"), "read_notifs", false,
                 t("Нужен доступ к уведомлениям; читает вслух только при включённом экране",
                     "Needs notification access; reads aloud only while the screen is on",
@@ -218,6 +300,8 @@ class SettingsScreen(act: UiActivity) : Screen(act) {
                 t("Bubby объясняет шаг за шагом и проверяет вас вопросами", "Bubby explains step by step and quizzes you",
                     "Bubby bosqichma-bosqich tushuntiradi va savollar bilan tekshiradi")))
         }
+
+        callsGroup(c)
 
         group(c, t("Поведение Bubby", "Bubby's behaviour", "Bubby xulq-atvori"), R.drawable.ic_bolt) {
             add(sw(t("Разрешить Bubby читать экран", "Let Bubby read the screen", "Bubby ekranni o'qishiga ruxsat"), "screen_agent", true,
@@ -317,6 +401,39 @@ class SettingsScreen(act: UiActivity) : Screen(act) {
                 refresh()
             }, LinearLayout.LayoutParams(WRAP, WRAP).apply { setMargins(0, 0, ctx.dp(8), ctx.dp(8)) })
             add(flow, MATCH, WRAP, top = 12)
+        }
+
+        group(c, t("Распознавание узбекского", "Uzbek speech recognition", "O'zbekcha ovoz tanish"), R.drawable.ic_face) {
+            fun saved(key: String, hint: String): android.widget.EditText {
+                val f = ctx.field(hint, Backend.str(ctx, key))
+                f.addTextChangedListener(object : android.text.TextWatcher {
+                    override fun afterTextChanged(s: android.text.Editable?) { Backend.setStr(ctx, key, s?.toString()?.trim().orEmpty()) }
+                    override fun beforeTextChanged(s: CharSequence?, a: Int, b: Int, c2: Int) {}
+                    override fun onTextChanged(s: CharSequence?, a: Int, b: Int, c2: Int) {}
+                })
+                return f
+            }
+            add(saved(com.example.buddy.SttClient.KEY_URL, t("Адрес сервера", "Server address", "Server manzili")), MATCH, WRAP)
+            add(saved(com.example.buddy.SttClient.KEY_TOKEN, t("Ключ сервера", "Server key", "Server kaliti")), MATCH, WRAP, top = 8)
+            var checking = false
+            val connect = ctx.button(t("Подключить", "Connect", "Ulash"), BtnStyle.Tonal, R.drawable.ic_wifi) {
+                if (!checking) {
+                    checking = true
+                    ctx.toast(t("Проверяю…", "Checking…", "Tekshirilmoqda…"))
+                    com.example.buddy.SttClient(ctx, android.os.Handler(android.os.Looper.getMainLooper())).check { r ->
+                        checking = false
+                        ctx.toast(when (r) {
+                            com.example.buddy.SttClient.CHECK_OK -> t("Подключено", "Connected", "Ulandi")
+                            com.example.buddy.SttClient.CHECK_BAD_KEY -> t("Неверный ключ", "Wrong key", "Kalit noto'g'ri")
+                            else -> t("Сервер недоступен", "Server unreachable", "Server javob bermayapti")
+                        })
+                    }
+                }
+            }
+            add(connect, WRAP, WRAP, top = 8)
+            add(ctx.text(t("Звук отправляется на этот ваш сервер только в узбекском режиме. Без сервера работает обычное распознавание.",
+                "Audio goes to this server of yours only in Uzbek mode. Without a server the normal recognizer is used.",
+                "Ovoz faqat o'zbek rejimida shu serveringizga yuboriladi. Server bo'lmasa oddiy tanib oluvchi ishlaydi."), T.Small, Glass.TEXT_LABEL), MATCH, WRAP, top = 8)
         }
     }
 }

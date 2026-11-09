@@ -39,6 +39,9 @@ object ThemeScenes {
         "ocean" -> OceanScene()
         "newyear" -> NewYearScene()
         "ice" -> IceScene()
+        "aurora" -> AuroraScene()
+        "candy" -> CandyScene()
+        "desert" -> DesertScene()
         else -> null
     }
 
@@ -62,6 +65,33 @@ class SceneCanvasView(c: Context) : View(c), SceneHost {
     private var scene: ThemeScene? = null
     private var name: String? = null
     private var active = true
+    private var lastSlot = -1L
+    private val frameNanos = if (Perf.lite(c)) FrameGate.LITE_FRAME_NANOS else FrameGate.FRAME_NANOS
+    private var ticking = false
+    private val tick = object : android.view.Choreographer.FrameCallback {
+        override fun doFrame(frameTimeNanos: Long) {
+            if (!active || visibility != VISIBLE || !isAttachedToWindow || scene == null) { ticking = false; return }
+            val slot = frameTimeNanos / frameNanos
+            if (slot != lastSlot) { lastSlot = slot; invalidate() }
+            android.view.Choreographer.getInstance().postFrameCallback(this)
+        }
+    }
+
+    private fun startTick() {
+        if (ticking) return
+        ticking = true
+        android.view.Choreographer.getInstance().postFrameCallback(tick)
+    }
+
+    override fun onAttachedToWindow() { super.onAttachedToWindow(); startTick() }
+
+    override fun onVisibilityChanged(changedView: View, vis: Int) { super.onVisibilityChanged(changedView, vis); if (vis == VISIBLE) startTick() }
+
+    override fun onDetachedFromWindow() {
+        android.view.Choreographer.getInstance().removeFrameCallback(tick)
+        ticking = false
+        super.onDetachedFromWindow()
+    }
     private var t = 0f
     private var last = 0L
     private var page = 0f
@@ -85,12 +115,21 @@ class SceneCanvasView(c: Context) : View(c), SceneHost {
         }
         visibility = VISIBLE
         invalidate()
+        startTick()
     }
 
     override fun slideTo(page: Int) { targetPage = page.toFloat(); invalidate() }
-    override fun onAppResume() { active = true; last = 0L; invalidate() }
+    override fun onAppResume() { active = true; last = 0L; invalidate(); startTick() }
     override fun onAppPause() { active = false }
     override fun release() { scene = null }
+
+    private val origin = IntArray(2)
+
+    override fun onLayout(changed: Boolean, l: Int, t: Int, r: Int, b: Int) {
+        super.onLayout(changed, l, t, r, b)
+        getLocationInWindow(origin)
+        com.example.buddy.ui.home.SceneOrigin.setScene(origin[0], origin[1])
+    }
 
     override fun onSizeChanged(w: Int, h: Int, ow: Int, oh: Int) { scene?.onSize(w.toFloat(), h.toFloat(), resources.displayMetrics.density) }
 
@@ -105,12 +144,7 @@ class SceneCanvasView(c: Context) : View(c), SceneHost {
         // a phone too slow for this: the guard (Perf) switches the animated background off
         if (measureStart == 0L) { measureStart = now; frames = 0 } else frames++
         if (now - measureStart > 4000 && active) { Perf.report(context, (frames * 1000L / (now - measureStart)).toInt(), "native scene"); measureStart = now; frames = 0 }
-        // 30 frames a second are plenty for these slow drifts and half the work of 60: the next frame waits out the rest of its slot
-        if (active && visibility == VISIBLE) postInvalidateDelayed((FRAME_MS - (SystemClock.uptimeMillis() - now)).coerceAtLeast(0L))
     }
 
-    private companion object {
-        /** Not 33: asking a little early lands on the second vsync (33 ms) instead of slipping to the third (50 ms). */
-        const val FRAME_MS = 26L
-    }
+
 }

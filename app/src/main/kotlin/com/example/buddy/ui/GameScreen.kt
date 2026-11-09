@@ -32,7 +32,69 @@ class GameScreen(act: UiActivity, private val kind: String) : Screen(act) {
         face.jump()
     }
 
+    private var stage = -1
+
+    private fun outcomeText() = ctx.text("", T.Title, P.orange).apply { gravity = Gravity.CENTER; textSize = 18f }
+
+    private fun finish(st: Int, outcome: TextView) {
+        val earned = GameStages.pay(ctx, kind, stage, st)
+        outcome.text = GameStages.starsText(st) + if (earned > 0) "  +$earned ⭐" else ""
+    }
+
+    private fun stagesButton(c: LinearLayout) {
+        c.add(ctx.button(t("Выбор уровня", "Stages", "Bosqichlar"), BtnStyle.Outline) { stage = -1; refresh() }, MATCH, WRAP, top = 8)
+    }
+
+    private fun goal(i: Int): String = when (kind) {
+        "guess" -> {
+            val g = GameStages.guess[i]
+            t("от 1 до ${g.max} · ${g.tries} попыток", "1 to ${g.max} · ${g.tries} tries", "1 dan ${g.max} gacha · ${g.tries} urinish")
+        }
+        "rps" -> {
+            val r = GameStages.rps[i]
+            val how = when (r.mode) {
+                0 -> t("Bubby играет случайно", "Bubby plays at random", "Bubby tasodifiy o'ynaydi")
+                1 -> t("Bubby бьёт твой прошлый ход", "Bubby counters your last move", "Bubby oldingi yuringni uradi")
+                2 -> t("Bubby бьёт твой частый ход", "Bubby counters your favourite", "Bubby sevimli yuringni uradi")
+                else -> t("Bubby читает твои ходы", "Bubby reads your moves", "Bubby yuringni o'qiydi")
+            }
+            t("до ${r.target} побед · $how", "first to ${r.target} · $how", "${r.target} g'alabagacha · $how")
+        }
+        else -> {
+            val m = GameStages.memory[i]
+            t("${m.cards} карт · ${m.moves} ходов", "${m.cards} cards · ${m.moves} moves", "${m.cards} karta · ${m.moves} yurish")
+        }
+    }
+
+    private fun renderPicker(c: LinearLayout) {
+        val accents = intArrayOf(P.orange, P.violet, P.teal, P.rose, P.sky)
+        c.add(ctx.card(pad = 16) {
+            add(ctx.text(title(), T.Title), MATCH, WRAP)
+            add(ctx.text(t("Каждый уровень сложнее. Звезда на уровне открывает следующий.",
+                "Every stage is harder. A star on a stage unlocks the next one.",
+                "Har bosqich qiyinroq. Bosqichdagi yulduz keyingisini ochadi."), T.Body), MATCH, WRAP, top = 4)
+        }, MATCH, WRAP, bottom = 10)
+        for (i in 0 until GameStages.COUNT) {
+            val open = GameStages.unlocked(ctx, kind, i)
+            c.add(ctx.card(pad = 14, onClick = if (open) ({ stage = i; refresh() }) else null) {
+                alpha = if (open) 1f else 0.5f
+                add(ctx.row {
+                    add(ctx.row(Gravity.CENTER) {
+                        background = ctx.rounded(accents[i] and 0xFFFFFF or 0x55000000, 14f)
+                        add(ctx.text(if (open) "${i + 1}" else "🔒", T.Title), WRAP, WRAP)
+                    }, ctx.dp(48), ctx.dp(48), end = 12)
+                    add(ctx.col {
+                        add(ctx.text(t("Уровень ${i + 1}", "Stage ${i + 1}", "${i + 1}-bosqich"), T.Label), MATCH, WRAP)
+                        add(ctx.text(goal(i), T.Small), MATCH, WRAP, top = 2)
+                    }, 0, WRAP, 1f)
+                    add(ctx.text(GameStages.starsText(GameStages.stars(ctx, kind, i)), T.Title, P.orange), WRAP, WRAP)
+                })
+            }, MATCH, WRAP, bottom = 8)
+        }
+    }
+
     override fun render(c: LinearLayout) {
+        if (kind != "twenty" && stage < 0) { renderPicker(c); return }
         val top = ctx.col {
             gravity = Gravity.CENTER_HORIZONTAL
             face = ctx.text("🙂", T.Headline).apply { textSize = 56f; gravity = Gravity.CENTER }
@@ -52,33 +114,48 @@ class GameScreen(act: UiActivity, private val kind: String) : Screen(act) {
     // ---- guess the number -----------------------------------------------------------------------------------------
 
     private fun guess(c: LinearLayout) {
-        var secret = Random.nextInt(1, 101)
+        val st = GameStages.guess[stage]
+        val max = st.max
+        var secret = Random.nextInt(1, max + 1)
         var tries = 0
-        var lo = 1; var hi = 100
+        var over = false
+        var lo = 1; var hi = max
         val range = ctx.text("", T.Small).apply { gravity = Gravity.CENTER }
-        val input: EditText = ctx.field(t("Число от 1 до 100", "A number from 1 to 100", "1 dan 100 gacha son"), number = true).apply {
+        val outcome = outcomeText()
+        val input: EditText = ctx.field(t("Число от 1 до $max", "A number from 1 to $max", "1 dan $max gacha son"), number = true).apply {
             gravity = Gravity.CENTER; textSize = 22f
             imeOptions = EditorInfo.IME_ACTION_DONE
         }
-        fun status() { range.text = t("Между $lo и $hi · попыток: $tries", "Between $lo and $hi · tries: $tries", "$lo va $hi orasida · urinishlar: $tries") }
+        fun status() { range.text = t("Между $lo и $hi · попыток: $tries из ${st.tries}", "Between $lo and $hi · tries: $tries of ${st.tries}", "$lo va $hi orasida · urinishlar: $tries/${st.tries}") }
         fun reset() {
-            secret = Random.nextInt(1, 101); tries = 0; lo = 1; hi = 100
+            secret = Random.nextInt(1, max + 1); tries = 0; lo = 1; hi = max; over = false
             input.setText(""); input.isEnabled = true
-            react("🤔", t("Я загадал число от 1 до 100. Угадаешь?", "I thought of a number from 1 to 100. Can you guess it?", "1 dan 100 gacha son o'yladim. Topa olasanmi?"))
+            outcome.text = ""
+            react("🤔", t("Я загадал число от 1 до $max. Угадаешь за ${st.tries}?", "I thought of a number from 1 to $max. Can you guess it in ${st.tries}?", "1 dan $max gacha son o'yladim. ${st.tries} urinishda topa olasanmi?"))
             status()
         }
         fun check() {
+            if (over) return
             val v = input.text.toString().trim().toIntOrNull()
-            if (v == null || v !in 1..100) { input.shake(); react("🙄", t("Нужно число от 1 до 100", "I need a number from 1 to 100", "1 dan 100 gacha son kerak")); return }
+            if (v == null || v !in 1..max) { input.shake(); react("🙄", t("Нужно число от 1 до $max", "I need a number from 1 to $max", "1 dan $max gacha son kerak")); return }
             tries++
             input.setText("")
             when {
                 v == secret -> {
-                    val best = prefs.getInt("best_guess", 0)
-                    if (best == 0 || tries < best) prefs.edit().putInt("best_guess", tries).apply()
+                    over = true
+                    val key = "best_guess_$stage"
+                    val best = prefs.getInt(key, 0)
+                    if (best == 0 || tries < best) prefs.edit().putInt(key, tries).apply()
                     react("🎉", t("Угадал за $tries! Рекорд: ${minOf(tries, if (best == 0) tries else best)}", "You got it in $tries! Best: ${minOf(tries, if (best == 0) tries else best)}", "$tries urinishda topding! Rekord: ${minOf(tries, if (best == 0) tries else best)}"))
                     input.isEnabled = false
+                    finish(GameStages.guessStars(st, tries), outcome)
                     act.confetti()
+                    face.cheer()
+                }
+                tries >= st.tries -> {
+                    over = true
+                    input.isEnabled = false
+                    react("😢", t("Попытки кончились. Я загадал $secret.", "Out of tries. The number was $secret.", "Urinishlar tugadi. Men $secret ni o'ylagan edim."))
                 }
                 v < secret -> { lo = maxOf(lo, v + 1); react("😏", t("Больше ▲", "Higher ▲", "Kattaroq ▲")) }
                 else -> { hi = minOf(hi, v - 1); react("😏", t("Меньше ▼", "Lower ▼", "Kichikroq ▼")) }
@@ -86,23 +163,31 @@ class GameScreen(act: UiActivity, private val kind: String) : Screen(act) {
             status()
         }
         input.setOnEditorActionListener { _, id, _ -> if (id == EditorInfo.IME_ACTION_DONE) { check(); true } else false }
-        c.add(range, MATCH, WRAP, bottom = 10)
+        c.add(range, MATCH, WRAP, bottom = 6)
+        c.add(outcome, MATCH, WRAP, bottom = 6)
         c.add(input, MATCH, WRAP)
         c.add(ctx.button(t("Проверить", "Check", "Tekshirish")) { check() }, MATCH, WRAP, top = 10)
         c.add(ctx.button(t("Новая игра", "New game", "Yangi o'yin"), BtnStyle.Tonal) { reset() }, MATCH, WRAP, top = 8)
+        stagesButton(c)
         reset()
     }
 
     // ---- rock, paper, scissors ------------------------------------------------------------------------------------
 
     private fun rps(c: LinearLayout) {
+        val st = GameStages.rps[stage]
         val picks = listOf("✊", "✋", "✌️")
+        var bot = GameStages.RpsBot(st)
         var you = 0; var me = 0; var tie = 0
+        var over = false
         val score = ctx.text("", T.Title).apply { gravity = Gravity.CENTER; textSize = 17f }
         val result = ctx.text("", T.Body).apply { gravity = Gravity.CENTER; textSize = 40f }
-        fun showScore() { score.text = t("Ты $you · Bubby $me · ничьи $tie", "You $you · Bubby $me · draws $tie", "Sen $you · Bubby $me · durang $tie") }
+        val outcome = outcomeText()
+        fun showScore() { score.text = t("Ты $you · Bubby $me · ничьи $tie · до ${st.target}", "You $you · Bubby $me · draws $tie · first to ${st.target}", "Sen $you · Bubby $me · durang $tie · ${st.target} gacha") }
         fun play(i: Int) {
-            val b = Random.nextInt(3)
+            if (over) return
+            val b = bot.next()
+            bot.record(i)
             result.text = picks[i] + "  vs  " + picks[b]
             result.pop()
             when ((i - b + 3) % 3) {
@@ -111,9 +196,20 @@ class GameScreen(act: UiActivity, private val kind: String) : Screen(act) {
                 else -> { me++; react("😎", t("Этот раунд мой!", "This round is mine!", "Bu raund meniki!")) }
             }
             showScore()
+            if (you >= st.target) {
+                over = true
+                react("🎉", t("Ты выиграл серию $you:$me!", "You won the series $you:$me!", "Seriyani $you:$me hisobida yutding!"))
+                finish(GameStages.rpsStars(you - me), outcome)
+                act.confetti()
+                face.cheer()
+            } else if (me >= st.target) {
+                over = true
+                react("😎", t("Серия за мной $me:$you!", "I won the series $me:$you!", "Seriya menda $me:$you!"))
+            }
         }
         c.add(result, MATCH, WRAP, bottom = 6)
-        c.add(score, MATCH, WRAP, bottom = 14)
+        c.add(score, MATCH, WRAP, bottom = 6)
+        c.add(outcome, MATCH, WRAP, bottom = 8)
         val row = ctx.row(Gravity.CENTER)
         picks.forEachIndexed { i, p ->
             val b = ctx.text(p, T.Headline).apply {
@@ -124,7 +220,12 @@ class GameScreen(act: UiActivity, private val kind: String) : Screen(act) {
             row.addView(b, LinearLayout.LayoutParams(0, ctx.dp(96), 1f).apply { setMargins(ctx.dp(5), 0, ctx.dp(5), 0) })
         }
         c.add(row, MATCH, WRAP)
-        c.add(ctx.button(t("Сбросить счёт", "Reset the score", "Hisobni nolga tushirish"), BtnStyle.Tonal) { you = 0; me = 0; tie = 0; showScore(); result.text = ""; react("🙂", t("Давай сначала!", "Let's start again!", "Qaytadan boshlaymiz!")) }, MATCH, WRAP, top = 16)
+        c.add(ctx.button(t("Новая серия", "New series", "Yangi seriya"), BtnStyle.Tonal) {
+            you = 0; me = 0; tie = 0; over = false; bot = GameStages.RpsBot(st)
+            showScore(); result.text = ""; outcome.text = ""
+            react("🙂", t("Давай сначала!", "Let's start again!", "Qaytadan boshlaymiz!"))
+        }, MATCH, WRAP, top = 16)
+        stagesButton(c)
         showScore()
         react("😎", t("Выбирай — я уже выбрал!", "Pick one, I have already picked!", "Tanla, men tanlab bo'ldim!"))
     }
@@ -194,7 +295,7 @@ class GameScreen(act: UiActivity, private val kind: String) : Screen(act) {
                             "retry" -> ask(lastSent)
                             "win" -> {
                                 react("🥳", t("Ура, я угадал за $asked вопросов!", "Yes! I got it in $asked questions!", "Ura, $asked savolda topdim!"))
-                                showButtons(listOf(t("Сыграть ещё", "Play again", "Yana o'ynash") to "again")); act.confetti()
+                                showButtons(listOf(t("Сыграть ещё", "Play again", "Yana o'ynash") to "again")); act.confetti(); face.cheer()
                             }
                             "wrong" -> {
                                 lastSent = if (asked >= 20) "No, that is not it. I win - you have used all 20 questions." else "No, that is not it. Keep asking."
@@ -221,18 +322,21 @@ class GameScreen(act: UiActivity, private val kind: String) : Screen(act) {
     // ---- memory match ---------------------------------------------------------------------------------------------
 
     private fun memory(c: LinearLayout) {
-        val faces = listOf("🐶", "🐱", "🦊", "🐼", "🐸", "🐵", "🦄", "🐙")
+        val st = GameStages.memory[stage]
+        val faces = listOf("🐶", "🐱", "🦊", "🐼", "🐸", "🐵", "🦄", "🐙", "🐯", "🐧")
         val cards = ArrayList<TextView>()
         var values = emptyList<String>()
-        val matched = BooleanArray(16)
+        val matched = BooleanArray(st.cards)
         var first = -1
         var busy = false
+        var over = false
         var moves = 0
         var pairs = 0
         val info = ctx.text("", T.Small).apply { gravity = Gravity.CENTER }
+        val outcome = outcomeText()
         fun status() {
-            val best = prefs.getInt("best_memory", 0)
-            info.text = t("Ходов: $moves" + (if (best > 0) " · рекорд: $best" else ""), "Moves: $moves" + (if (best > 0) " · best: $best" else ""), "Yurishlar: $moves" + (if (best > 0) " · rekord: $best" else ""))
+            val best = prefs.getInt("best_memory_$stage", 0)
+            info.text = t("Ходов: $moves из ${st.moves}" + (if (best > 0) " · рекорд: $best" else ""), "Moves: $moves of ${st.moves}" + (if (best > 0) " · best: $best" else ""), "Yurishlar: $moves/${st.moves}" + (if (best > 0) " · rekord: $best" else ""))
         }
         var gen = 0   // a new deal makes every pending flip and unflip of the old one do nothing
         fun flip(i: Int, up: Boolean, then: () -> Unit = {}) {
@@ -248,14 +352,15 @@ class GameScreen(act: UiActivity, private val kind: String) : Screen(act) {
         }
         fun deal() {
             gen++
-            values = (faces + faces).shuffled()
-            for (i in 0 until 16) { cards[i].animate().cancel(); matched[i] = false; cards[i].text = "?"; cards[i].rotationY = 0f; cards[i].alpha = 1f; cards[i].scaleX = 1f; cards[i].scaleY = 1f }
-            first = -1; busy = false; moves = 0; pairs = 0
+            values = (faces.take(st.pairs) + faces.take(st.pairs)).shuffled()
+            for (i in 0 until st.cards) { cards[i].animate().cancel(); matched[i] = false; cards[i].text = "?"; cards[i].rotationY = 0f; cards[i].alpha = 1f; cards[i].scaleX = 1f; cards[i].scaleY = 1f }
+            first = -1; busy = false; over = false; moves = 0; pairs = 0
+            outcome.text = ""
             status()
-            react("🧐", t("Найди все пары!", "Find all the pairs!", "Hamma juftlarni top!"))
+            react("🧐", t("Найди все пары за ${st.moves} ходов!", "Find all the pairs in ${st.moves} moves!", "Hamma juftni ${st.moves} yurishda top!"))
         }
         fun tap(i: Int) {
-            if (busy || matched[i] || i == first) return
+            if (busy || over || matched[i] || i == first) return
             if (first < 0) { first = i; flip(i, true); return }
             val a = first; first = -1
             moves++; busy = true
@@ -265,24 +370,37 @@ class GameScreen(act: UiActivity, private val kind: String) : Screen(act) {
                     matched[a] = true; matched[i] = true; pairs++; busy = false
                     cards[a].alpha = .45f; cards[i].alpha = .45f
                     cards[i].burst()
-                    if (pairs == 8) {
-                        val best = prefs.getInt("best_memory", 0)
-                        if (best == 0 || moves < best) prefs.edit().putInt("best_memory", moves).apply()
+                    if (pairs == st.pairs) {
+                        over = true
+                        val best = prefs.getInt("best_memory_$stage", 0)
+                        if (best == 0 || moves < best) prefs.edit().putInt("best_memory_$stage", moves).apply()
                         react("🎉", t("Все пары за $moves ходов!", "All pairs in $moves moves!", "Hamma juft $moves yurishda!"))
-                        status(); act.confetti()
+                        finish(GameStages.memoryStars(st, moves), outcome)
+                        status(); act.confetti(); face.cheer()
+                    } else if (moves >= st.moves) {
+                        over = true
+                        react("😢", t("Ходы закончились. Попробуй ещё!", "Out of moves. Try again!", "Yurishlar tugadi. Yana urinib ko'r!"))
                     } else react("😄", t("Пара!", "A pair!", "Juft!"))
                 } else {
-                    react("😬", t("Не то…", "Not those…", "Bular emas…"))
                     val g = gen
-                    cards[i].postDelayed({ if (g == gen) { flip(a, false); flip(i, false) { busy = false } } }, 650)
+                    if (moves >= st.moves) {
+                        over = true
+                        react("😢", t("Ходы закончились. Попробуй ещё!", "Out of moves. Try again!", "Yurishlar tugadi. Yana urinib ko'r!"))
+                        cards[i].postDelayed({ if (g == gen) { flip(a, false); flip(i, false) } }, 650)
+                    } else {
+                        react("😬", t("Не то…", "Not those…", "Bular emas…"))
+                        cards[i].postDelayed({ if (g == gen) { flip(a, false); flip(i, false) { busy = false } } }, 650)
+                    }
                 }
             }
         }
-        c.add(info, MATCH, WRAP, bottom = 10)
-        for (r in 0 until 4) {
+        c.add(info, MATCH, WRAP, bottom = 4)
+        c.add(outcome, MATCH, WRAP, bottom = 6)
+        val rows = (st.cards + st.cols - 1) / st.cols
+        for (r in 0 until rows) {
             val row = ctx.row(Gravity.CENTER)
-            for (k in 0 until 4) {
-                val idx = r * 4 + k
+            for (k in 0 until st.cols) {
+                val idx = r * st.cols + k
                 val cell = ctx.text("?", T.Headline).apply {
                     textSize = 30f; gravity = Gravity.CENTER
                     background = ctx.rounded(P.container, 20f, P.outlineVariant)
@@ -295,6 +413,7 @@ class GameScreen(act: UiActivity, private val kind: String) : Screen(act) {
             c.add(row, MATCH, WRAP)
         }
         c.add(ctx.button(t("Новая игра", "New game", "Yangi o'yin"), BtnStyle.Tonal) { deal() }, MATCH, WRAP, top = 12)
+        stagesButton(c)
         deal()
     }
 }

@@ -15,6 +15,7 @@ import java.util.Locale
 class Voice(private val ctx: Context, private val h: Handler) {
     private var sr: SpeechRecognizer? = null
     private var hot: SpeechRecognizer? = null
+    private val stt = SttClient(ctx, h)
     private var tts: TextToSpeech? = null
     private var ttsReady = false
     private var queued: (() -> Unit)? = null
@@ -31,13 +32,18 @@ class Voice(private val ctx: Context, private val h: Handler) {
     var callAudio = false
     private var callAttrs = false
 
+    class CallStyle(val voices: Map<String, String>, val rate: Float, val pitch: Float)
+
+    var callStyle: CallStyle? = null
+    private var styled = false
+
     val speaking get() = tts?.isSpeaking == true
 
     /** Other hypotheses of the last recognised utterance (best first, without the winner). */
     @Volatile var lastAlternatives: List<String> = emptyList()
     /** True from the moment a speak() is requested until it finished or was stopped. */
     val talking get() = curId.isNotEmpty() || speaking
-    val listening get() = sr != null || pendingListen
+    val listening get() = sr != null || pendingListen || stt.active
     private var pendingListen = false
     val hotRunning get() = hot != null
 
@@ -72,6 +78,14 @@ class Voice(private val ctx: Context, private val h: Handler) {
         stopHot()
         stopListening()
         stopSpeaking()
+        if (langTag?.startsWith("uz") == true && stt.configured) {
+            stt.listen(done) { listenSystem(langTag, hadHot, partial, done) }
+            return
+        }
+        listenSystem(langTag, hadHot, partial, done)
+    }
+
+    private fun listenSystem(langTag: String?, hadHot: Boolean, partial: (String) -> Unit, done: (String?, String?) -> Unit) {
         if (!SpeechRecognizer.isRecognitionAvailable(ctx)) { done(null, "нет распознавания речи"); return }
         val i = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
             .putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
@@ -193,6 +207,7 @@ class Voice(private val ctx: Context, private val h: Handler) {
 
     fun stopListening() {
         listenToken++; pendingListen = false
+        stt.cancel()
         val r = sr ?: return
         sr = null
         try { r.cancel(); r.destroy() } catch (_: Exception) {}
@@ -216,6 +231,7 @@ class Voice(private val ctx: Context, private val h: Handler) {
             if (t == null) { curId = ""; setSpeaking(false); releaseFocus(); done() }
             else {
                 setLanguage(t, lang)
+                applyStyle(t, lang)
                 val id = "buddy${++seq}"
                 curId = id
                 onSpoken = done
@@ -278,6 +294,30 @@ class Voice(private val ctx: Context, private val h: Handler) {
             if (t.isLanguageAvailable(l) >= TextToSpeech.LANG_AVAILABLE) { t.language = l; return }
         }
     }
+
+    private fun applyStyle(t: TextToSpeech, lang: String?) {
+        val st = callStyle
+        if (!callAudio || st == null) {
+            if (styled) {
+                styled = false
+                try { t.setSpeechRate(1f); t.setPitch(1f) } catch (_: Exception) {}
+            }
+            return
+        }
+        styled = true
+        try {
+            val name = st.voices[lang ?: ""]
+            val v = if (name.isNullOrEmpty()) null else t.voices?.firstOrNull { it.name == name }
+            if (v != null && (!v.isNetworkConnectionRequired || online())) t.voice = v
+            t.setSpeechRate(st.rate)
+            t.setPitch(st.pitch)
+        } catch (_: Exception) {}
+    }
+
+    private fun online(): Boolean = try {
+        val cm = ctx.getSystemService(Context.CONNECTIVITY_SERVICE) as android.net.ConnectivityManager
+        cm.getNetworkCapabilities(cm.activeNetwork)?.hasCapability(android.net.NetworkCapabilities.NET_CAPABILITY_VALIDATED) == true
+    } catch (_: Exception) { false }
 
     fun shutdown() {
         onSpeaking = {}

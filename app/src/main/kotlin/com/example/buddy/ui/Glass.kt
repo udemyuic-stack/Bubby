@@ -110,7 +110,22 @@ object Theme {
         0xFFFFFFFF.toInt(), 0xFFD6E6FF.toInt(),
         listOf(intArrayOf(0xFF8FB0DE.toInt(), 0xFF4F78B8.toInt()), intArrayOf(0xFF9FD8E6.toInt(), 0xFF4C9AB8.toInt()), intArrayOf(0xFFB9C4F0.toInt(), 0xFF6B78C8.toInt()), intArrayOf(0xFFA8E6D8.toInt(), 0xFF4AA894.toInt())),
         0xFF4A5C7D.toInt(), 0xFF1C2B45.toInt(), 0x404F78B8.toInt(), 0x304F78B8.toInt(), "mochi", 0xFF2F9D73.toInt(), title = "Glacier", scene = "ice", homePage = true)
-    val ALL = listOf(GLASS, GREEN, BLUE, NIGHT, SPACE, HALLOWEEN, FOREST, OCEAN, NEWYEAR, ICE)
+    val AURORA = ThemeDef("aurora", 0xFFDCF3E3.toInt(), 0xFFB9E6CC.toInt(), 0xFF86CFAE.toInt(), 0xFF1EA97B.toInt(), 0xFFF2FBF5.toInt(),
+        0xFF053438.toInt(), 0xFF044B39.toInt(), 0xFF1EA97B.toInt(), 0xFF2180E6.toInt(), 0xFF044B39.toInt(), 0xFF03271F.toInt(), 0xFF72C613.toInt(), 0xFFCBF39D.toInt(), 0xFF2D6B58.toInt(),
+        0xFFFFFFFF.toInt(), 0xFFE6FFF0.toInt(),
+        listOf(intArrayOf(0xFF4CCB9C.toInt(), 0xFF1EA97B.toInt()), intArrayOf(0xFF8FD83A.toInt(), 0xFF5AA20E.toInt()), intArrayOf(0xFF5AA6F0.toInt(), 0xFF2180E6.toInt()), intArrayOf(0xFF7FDCCB.toInt(), 0xFF2A9D8F.toInt())),
+        0xFF044B39.toInt(), 0xFF053438.toInt(), 0x401EA97B.toInt(), 0x301EA97B.toInt(), "mochi", 0xFF1EA97B.toInt(), title = "Aurora", scene = "aurora", homePage = true)
+    val CANDY = ThemeDef("candy", 0xFFFFE3EE.toInt(), 0xFFFFC7DD.toInt(), 0xFFF9A3C4.toInt(), 0xFFFF7FB0.toInt(), 0xFFFFF4F8.toInt(),
+        0xFF4A1633.toInt(), 0xFF7A2A55.toInt(), 0xFFFF5C9A.toInt(), 0xFF5CD6B5.toInt(), 0xFF7A2A55.toInt(), 0xFF2E0C20.toInt(), 0xFFFFB3D1.toInt(), 0xFFFFF2A8.toInt(), 0xFFB04A80.toInt(),
+        0xFFFFFFFF.toInt(), 0xFFFFE3EE.toInt(),
+        listOf(intArrayOf(0xFFFF8FBB.toInt(), 0xFFFF5C9A.toInt()), intArrayOf(0xFF7FE6C8.toInt(), 0xFF3FB896.toInt()), intArrayOf(0xFFFFE17A.toInt(), 0xFFF0B800.toInt()), intArrayOf(0xFFB895FF.toInt(), 0xFF8A5CF0.toInt())),
+        0xFF7A2A55.toInt(), 0xFF4A1633.toInt(), 0x40FF5C9A.toInt(), 0x30FF5C9A.toInt(), "mochi", 0xFF3FB896.toInt(), title = "Candy", scene = "candy", homePage = true)
+    val DESERT = ThemeDef("desert", 0xFFFFEBCF.toInt(), 0xFFFFD2A1.toInt(), 0xFFF2A66A.toInt(), 0xFFE8743B.toInt(), 0xFFFFF7EC.toInt(),
+        0xFF3D1F0F.toInt(), 0xFF6B3A1C.toInt(), 0xFFE8743B.toInt(), 0xFF2A9D8F.toInt(), 0xFF6B3A1C.toInt(), 0xFF2B1408.toInt(), 0xFFFFB86B.toInt(), 0xFFFFE08A.toInt(), 0xFFA85A2A.toInt(),
+        0xFFFFFFFF.toInt(), 0xFFFFEBCF.toInt(),
+        listOf(intArrayOf(0xFFFFA866.toInt(), 0xFFE8743B.toInt()), intArrayOf(0xFF5CC7B8.toInt(), 0xFF2A9D8F.toInt()), intArrayOf(0xFFFFD27A.toInt(), 0xFFE0A030.toInt()), intArrayOf(0xFFD98A6A.toInt(), 0xFFA85A2A.toInt())),
+        0xFF6B3A1C.toInt(), 0xFF3D1F0F.toInt(), 0x40E8743B.toInt(), 0x30E8743B.toInt(), "mochi", 0xFF2A9D8F.toInt(), title = "Desert", scene = "desert", homePage = true)
+    val ALL = listOf(GLASS, GREEN, BLUE, NIGHT, SPACE, HALLOWEEN, FOREST, OCEAN, NEWYEAR, ICE, AURORA, CANDY, DESERT)
 
     var cur: ThemeDef = GLASS
         private set
@@ -494,7 +509,7 @@ class GlassCritter(val kind: String = Theme.cur.mascot, private val def: ThemeDe
     val animated get() = kind in ART
 
     fun draw(cv: Canvas) {
-        if (kind in ART) { val a = SvgArt.get(kind); if (a != null) { a.draw(cv, android.os.SystemClock.uptimeMillis() / 1000f, squash); return } }
+        if (kind in ART) { val a = SvgArt.get(kind); if (a != null) { a.tapP = -1f; a.draw(cv, android.os.SystemClock.uptimeMillis() / 1000f, squash); return } }
         if (kind == "cube") { drawCube(cv); return }
         if (kind != "mochi") { drawCritter(cv); return }
         if (withHalo) {
@@ -514,7 +529,7 @@ class GlassCritter(val kind: String = Theme.cur.mascot, private val def: ThemeDe
         cv.drawPath(shape, rim)
         // eyes: a blink squashes the arcs flat
         cv.save()
-        if (squash > 0f) cv.scale(1f, 1f - .75f * squash, 85f, 80f)
+        if (squash != 0f) cv.scale(1f, 1f - .75f * squash, 85f, 80f)
         val sw = if (mini) 3.4f else 4.6f
         eyeGlow.strokeWidth = sw + 3f
         eye.strokeWidth = sw
@@ -538,6 +553,7 @@ class MochiView(c: Context, withHalo: Boolean = true) : View(c) {
         set(v) { field = v; invalidate() }
     var mini = false
     /** Tap reaction (like pressing the little round-screen pet): flatten under the finger, spring back with sparks, eyes pop open. */
+    var onPoke: ((Float, Float) -> Unit)? = null
     var pokeable = false
         set(v) { field = v; if (v) isClickable = true }
     private var press = 0f            // 0..1 how flat it is under the finger
@@ -558,7 +574,7 @@ class MochiView(c: Context, withHalo: Boolean = true) : View(c) {
             android.view.MotionEvent.ACTION_DOWN -> { popAt = 0L; pressTo(1f, 90); return true }
             android.view.MotionEvent.ACTION_UP, android.view.MotionEvent.ACTION_CANCEL -> {
                 pressTo(0f, 0); popAt = android.os.SystemClock.uptimeMillis(); invalidate()
-                if (e.actionMasked == android.view.MotionEvent.ACTION_UP) { performClick(); jump(); burst(Glass.ACCENT) }
+                if (e.actionMasked == android.view.MotionEvent.ACTION_UP) { performClick(); jump(); burst(Glass.ACCENT); onPoke?.invoke(e.x, e.y) }
                 return true
             }
         }
@@ -567,10 +583,11 @@ class MochiView(c: Context, withHalo: Boolean = true) : View(c) {
 
     private fun pressTo(to: Float, ms: Long) {
         pressAnim?.cancel()
-        if (ms == 0L) { press = to; invalidate(); return }
+        if (ms == 0L || !Motion.enabled(context)) { press = to; invalidate(); return }
         pressAnim = android.animation.ValueAnimator.ofFloat(press, to).apply { duration = ms; addUpdateListener { press = it.animatedValue as Float; invalidate() }; start() }
     }
 
+    private val visRect = android.graphics.Rect()
     override fun onDraw(cv: Canvas) {
         val k = width / 170f
         critter.squash = squash; critter.mini = mini
@@ -589,7 +606,7 @@ class MochiView(c: Context, withHalo: Boolean = true) : View(c) {
             }
         }
         critter.awake = wake
-        if (critter.animated) postInvalidateOnAnimation()
+        if (critter.animated) { if (isShown && getLocalVisibleRect(visRect)) postInvalidateDelayed(30L) else postInvalidateDelayed(200L) }
         cv.save()
         cv.scale(k, k)
         cv.scale(sx, sy, 85f, 118f)

@@ -530,7 +530,10 @@ class OceanScene : ThemeScene() {
         }
         cv.restore()
 
+        val homeCast = com.example.buddy.ui.home.OceanCast.drawnByHome && page < 0.5f
+
         // ---- turtle (mid) ----
+        if (!homeCast) {
         cv.save()
         cv.translate(mid, 0f)
         run {
@@ -544,6 +547,7 @@ class OceanScene : ThemeScene() {
             turtle?.let { spr(cv, it, pSp) }
         }
         cv.restore()
+        }
 
         // ---- fish (mid) ----
         cv.save()
@@ -585,7 +589,7 @@ class OceanScene : ThemeScene() {
             spr(cv, it, pSp)
             cv.restore()
         }
-        crab?.let {
+        crab?.takeIf { !homeCast }?.let {
             val u = ease(alt(t, 9f, 0f))
             cv.save()
             cv.translate(170f + 80f * u, 808f - 4f * u)
@@ -626,5 +630,60 @@ class OceanScene : ThemeScene() {
         cv.restore()
 
         cv.restore()
+        extras(cv, w, h, t, page)
+    }
+
+    private val xr = kotlin.random.Random(55)
+    private val NPL = 30
+    private val plX = FloatArray(NPL) { xr.nextFloat() }
+    private val plDur = FloatArray(NPL) { 14f + xr.nextFloat() * 14f }
+    private val plOff = FloatArray(NPL) { xr.nextFloat() * 28f }
+    private val plR = FloatArray(NPL) { 0.8f + xr.nextFloat() * 1.8f }
+    private val xFill = Paint(Paint.ANTI_ALIAS_FLAG).apply { style = Paint.Style.FILL }
+    private val xLine = Paint(Paint.ANTI_ALIAS_FLAG).apply { style = Paint.Style.STROKE; strokeCap = Paint.Cap.ROUND }
+    private val xPath = android.graphics.Path()
+
+    private fun extras(cv: Canvas, w: Float, h: Float, t: Float, page: Float) {
+        val dn = dens
+        val px = page * 12f * dn
+        for (i in 0 until NPL) {
+            val u = ((t + plOff[i]) / plDur[i]) % 1f
+            val x = plX[i] * w + kotlin.math.sin(u * 12.566f + i) * 18f * dn - px
+            val y = h * (1f - u)
+            val fade = if (u < 0.1f) u / 0.1f else if (u > 0.9f) (1f - u) / 0.1f else 1f
+            xFill.color = 0xFFCFF6FF.toInt(); xFill.alpha = (150f * fade).toInt()
+            cv.drawCircle(x, y, plR[i] * dn, xFill)
+        }
+        val gu = (t % 24f) / 4f
+        if (gu < 1f) {
+            val e = kotlin.math.sin(gu * 3.1416f)
+            xFill.color = 0xFFFFFFFF.toInt(); xFill.alpha = (e * 38f).toInt()
+            val bx = w * (0.15f + 0.5f * gu) - px
+            cv.save(); cv.translate(bx, 0f); cv.rotate(8f)
+            cv.drawRect(-0.07f * w, -0.1f * h, 0.07f * w, 1.1f * h, xFill)
+            cv.restore()
+        }
+        val wu = (t % 29f) / 14f
+        if (wu < 1f) {
+            val ww = 150f * dn
+            val x = w + ww - (w + 2f * ww) * wu - px * 0.5f
+            val y = h * 0.42f + kotlin.math.sin(wu * 6.2832f) * 14f * dn
+            val fade = kotlin.math.sin(wu * 3.1416f)
+            cv.save(); cv.translate(x, y); cv.scale(dn, dn)
+            xFill.color = 0xFF0B3A57.toInt(); xFill.alpha = (fade * 120f).toInt()
+            xPath.reset()
+            xPath.moveTo(-150f, 0f)
+            xPath.quadTo(-100f, -34f, -20f, -22f)
+            xPath.quadTo(50f, -18f, 120f, -2f)
+            xPath.lineTo(150f, -22f)
+            xPath.lineTo(146f, 8f)
+            xPath.lineTo(150f, 30f)
+            xPath.lineTo(118f, 8f)
+            xPath.quadTo(40f, 26f, -50f, 24f)
+            xPath.quadTo(-120f, 22f, -150f, 0f)
+            xPath.close()
+            cv.drawPath(xPath, xFill)
+            cv.restore()
+        }
     }
 }

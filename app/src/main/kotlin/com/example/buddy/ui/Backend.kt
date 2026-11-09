@@ -82,6 +82,7 @@ object Backend {
             "phone" -> listOf(Manifest.permission.CALL_PHONE, Manifest.permission.ANSWER_PHONE_CALLS,
                 Manifest.permission.READ_PHONE_STATE, Manifest.permission.READ_CALL_LOG)
             "contacts" -> listOf(Manifest.permission.READ_CONTACTS)
+            "calls" -> com.example.buddy.AutoAnswer.requiredPermissions(act)
             "location" -> listOf(Manifest.permission.ACCESS_COARSE_LOCATION)
             "sms" -> listOf(Manifest.permission.SEND_SMS)
             "smsRead" -> listOf(Manifest.permission.READ_SMS)

@@ -34,16 +34,18 @@ fun Context.rounded(fill: Int, radiusDp: Float, stroke: Int = 0, strokeDp: Float
         if (stroke != 0) setStroke(maxOf(1, (strokeDp * resources.displayMetrics.density).toInt()), stroke)
     }
 
-enum class T { Headline, Title, Body, Small, Label }
+enum class T { Headline, Title, Body, Small, Label, Display, Heading }
 
 fun Context.text(s: CharSequence, style: T = T.Body, color: Int = 0): TextView = TextView(this).apply {
     this.text = s
     when (style) {
         T.Headline -> { setTextSize(TypedValue.COMPLEX_UNIT_SP, 36f); typeface = glassFont(thin = true); letterSpacing = 0.015f; setTextColor(Glass.TEXT) }
-        T.Title -> { setTextSize(TypedValue.COMPLEX_UNIT_SP, 16f); typeface = glassFont(bold = true); setTextColor(Glass.TEXT) }
+        T.Title -> { setTextSize(TypedValue.COMPLEX_UNIT_SP, 17f); typeface = glassFont(bold = true); setTextColor(Glass.TEXT) }
         T.Body -> { setTextSize(TypedValue.COMPLEX_UNIT_SP, 15f); typeface = glassFont(); setTextColor(Glass.TEXT); setLineSpacing(0f, 1.12f) }
-        T.Small -> { setTextSize(TypedValue.COMPLEX_UNIT_SP, 12.5f); typeface = glassFont(); setTextColor(Glass.TEXT2); setLineSpacing(0f, 1.1f) }
-        T.Label -> { setTextSize(TypedValue.COMPLEX_UNIT_SP, 13.5f); typeface = glassFont(bold = true); setTextColor(Glass.TEXT) }
+        T.Small -> { setTextSize(TypedValue.COMPLEX_UNIT_SP, 13f); typeface = glassFont(); setTextColor(Glass.TEXT2); setLineSpacing(0f, 1.1f) }
+        T.Label -> { setTextSize(TypedValue.COMPLEX_UNIT_SP, 14f); typeface = glassFont(bold = true); setTextColor(Glass.TEXT) }
+        T.Display -> { setTextSize(TypedValue.COMPLEX_UNIT_SP, 28f); typeface = glassFont(bold = true); setTextColor(Glass.TEXT) }
+        T.Heading -> { setTextSize(TypedValue.COMPLEX_UNIT_SP, 20f); typeface = glassFont(bold = true); setTextColor(Glass.TEXT) }
     }
     if (color != 0) setTextColor(color)
     includeFontPadding = false
@@ -88,7 +90,7 @@ fun View.pressLong(onLong: (() -> Unit)?, onClick: () -> Unit) {
         when (e.actionMasked) {
             MotionEvent.ACTION_DOWN -> {
                 longFired = false
-                v.animate().cancel(); v.animate().scaleX(0.94f).scaleY(0.94f).setDuration(90).start()
+                v.animate().cancel(); v.animate().scaleX(Motion.PRESS_SCALE).scaleY(Motion.PRESS_SCALE).setDuration(with(Motion) { v.ms(INSTANT) }).start()
                 if (onLong != null) v.postDelayed(long, 550)
             }
             MotionEvent.ACTION_MOVE -> {
@@ -96,25 +98,34 @@ fun View.pressLong(onLong: (() -> Unit)?, onClick: () -> Unit) {
             }
             MotionEvent.ACTION_UP -> {
                 v.removeCallbacks(long)
-                v.animate().scaleX(1f).scaleY(1f).setDuration(280).setInterpolator(android.view.animation.OvershootInterpolator(3f)).start()
+                v.animate().scaleX(1f).scaleY(1f).setDuration(with(Motion) { v.ms(STANDARD) }).setInterpolator(Motion.spring).start()
                 if (!longFired && e.x in 0f..v.width.toFloat() && e.y in 0f..v.height.toFloat()) { v.performClick(); onClick() }
             }
-            MotionEvent.ACTION_CANCEL -> { v.removeCallbacks(long); v.animate().scaleX(1f).scaleY(1f).setDuration(120).start() }
+            MotionEvent.ACTION_CANCEL -> { v.removeCallbacks(long); v.animate().scaleX(1f).scaleY(1f).setDuration(with(Motion) { v.ms(STANDARD) }).setInterpolator(Motion.spring).start() }
         }
         true
     }
 }
 
+enum class CardKind { Flat, Raised, Tint, Hero }
+
 fun Context.card(
-    pad: Int = 16, fill: Int = P.low, stroke: Int = P.outlineVariant, radius: Float = 26f,
-    onClick: (() -> Unit)? = null, onLong: (() -> Unit)? = null, block: LinearLayout.() -> Unit = {}
-): LinearLayout = col(pad) {
-    val base = glass(GlassKind.Base, radius)
-    background = if (fill == P.low) base
-    else android.graphics.drawable.LayerDrawable(arrayOf(base, rounded(fill, radius))).also { it.setLayerInset(1, 1, 1, 1, 1) }
+    pad: Int = Sp.L, fill: Int = P.low, stroke: Int = P.outlineVariant, radius: Float = Rad.LG,
+    onClick: (() -> Unit)? = null, onLong: (() -> Unit)? = null, kind: CardKind = CardKind.Raised,
+    block: LinearLayout.() -> Unit = {}
+): LinearLayout = col(if (kind == CardKind.Hero) maxOf(pad, Sp.XL) else pad) {
+    background = when (kind) {
+        CardKind.Flat -> glass(GlassKind.Base, radius, shadow = false)
+        CardKind.Hero -> glass(GlassKind.Amber, radius)
+        CardKind.Tint -> tinted(radius, if (fill == P.low) P.primaryContainer else fill)
+        CardKind.Raised -> if (fill == P.low) glass(GlassKind.Base, radius) else tinted(radius, fill)
+    }
     if (onClick != null) pressLong(onLong, onClick)
     block()
 }
+
+private fun Context.tinted(radius: Float, fill: Int) =
+    android.graphics.drawable.LayerDrawable(arrayOf(glass(GlassKind.Base, radius), rounded(fill, radius))).also { it.setLayerInset(1, 1, 1, 1, 1) }
 
 enum class BtnStyle { Filled, Tonal, Outline, Text }
 
@@ -126,12 +137,12 @@ fun Context.button(label: String, style: BtnStyle = BtnStyle.Filled, iconRes: In
         BtnStyle.Text -> P.primary
     }
     return row(Gravity.CENTER) {
-        minimumHeight = dp(48)
+        minimumHeight = dp(if (style == BtnStyle.Filled) 52 else 48)
         setPadding(dp(20), dp(10), dp(20), dp(10))
         background = when (style) {
-            BtnStyle.Filled -> glass(GlassKind.Navy, 24f)
-            BtnStyle.Tonal -> glass(GlassKind.Base, 24f)
-            BtnStyle.Outline -> rounded(0, 24f, P.outline)
+            BtnStyle.Filled -> glass(GlassKind.Navy, Rad.FULL)
+            BtnStyle.Tonal -> glass(GlassKind.Base, Rad.FULL)
+            BtnStyle.Outline -> rounded(0, Rad.FULL, P.outline)
             BtnStyle.Text -> null
         }
         if (iconRes != 0) add(icon(iconRes, fg, 20), WRAP, WRAP, end = 8)
@@ -141,17 +152,19 @@ fun Context.button(label: String, style: BtnStyle = BtnStyle.Filled, iconRes: In
 }
 
 fun Context.section(title: String, iconRes: Int = 0): View = row {
-    add(text(title, T.Title, Glass.TEXT).apply { textSize = 15f; letterSpacing = 0.01f }, WRAP, WRAP)
-}.also { it.setPadding(dp(4), dp(22), 0, dp(10)) }
+    add(text(title, T.Title, Glass.TEXT).apply { letterSpacing = 0.01f }, WRAP, WRAP)
+}.also { it.setPadding(dp(Sp.XS), dp(Sp.XL), 0, dp(Sp.S)) }
 
 fun Context.chip(label: String, selected: Boolean, onClick: () -> Unit): View = row(Gravity.CENTER) {
+    minimumHeight = dp(48)
     setPadding(dp(14), dp(8), dp(14), dp(8))
-    background = glass(if (selected) GlassKind.Active else GlassKind.Dim, 20f)
+    background = glass(if (selected) GlassKind.Active else GlassKind.Dim, Rad.FULL)
     add(text(label, T.Label, if (selected) Glass.ON_ACTIVE else Glass.TEXT_LABEL), WRAP, WRAP)
     press(onClick)
 }
 
 fun Context.switchRow(title: String, subtitle: String?, checked: Boolean, onChange: (Boolean) -> Unit): View = row {
+    minimumHeight = dp(48)
     setPadding(0, dp(8), 0, dp(8))
     val texts = col {
         add(text(title, T.Body), MATCH, WRAP)
@@ -169,10 +182,11 @@ fun Context.switchRow(title: String, subtitle: String?, checked: Boolean, onChan
 
 /** A tappable row: title, optional subtitle, chevron. */
 fun Context.linkRow(title: String, subtitle: String?, iconRes: Int = 0, tint: Int = P.primary, onClick: () -> Unit): View = row {
-    setPadding(dp(4), dp(10), dp(4), dp(10))
+    minimumHeight = dp(56)
+    setPadding(dp(Sp.XS), dp(10), dp(Sp.XS), dp(10))
     if (iconRes != 0) {
         add(row(Gravity.CENTER) {
-            background = gradient(intArrayOf(P.mix(tint, 0xFFFFFFFF.toInt(), 0.28f), P.mix(tint, 0xFF1C2B45.toInt(), 0.12f)), 16f)
+            background = gradient(intArrayOf(P.mix(tint, 0xFFFFFFFF.toInt(), 0.28f), P.mix(tint, 0xFF1C2B45.toInt(), 0.12f)), Rad.MD)
             add(icon(iconRes, 0xFFFFFFFF.toInt(), 22), WRAP, WRAP)
         }, dp(46), dp(46), end = 12)
     }
@@ -202,7 +216,34 @@ fun Context.field(hint: String, value: String = "", multiline: Boolean = false, 
             else -> InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_CAP_SENTENCES
         }
         if (multiline) { minLines = 3; gravity = Gravity.TOP }
+        keepVisible()
     }
+
+fun EditText.keepVisible() {
+    setOnFocusChangeListener { v, focused ->
+        if (focused) v.postDelayed({
+            if (v.isAttachedToWindow) v.requestRectangleOnScreen(android.graphics.Rect(0, 0, v.width, v.height + v.context.dp(24)))
+        }, 350)
+    }
+}
+
+fun Context.isOnline(): Boolean {
+    val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as? android.net.ConnectivityManager ?: return true
+    val caps = cm.getNetworkCapabilities(cm.activeNetwork ?: return false) ?: return false
+    return caps.hasCapability(android.net.NetworkCapabilities.NET_CAPABILITY_INTERNET)
+}
+
+fun android.app.Activity.runIfAlive(block: () -> Unit) {
+    runOnUiThread { if (!isFinishing && !isDestroyed) block() }
+}
+
+fun Context.offlineCard(message: String, retry: () -> Unit): View = card(pad = Sp.M, fill = P.errorContainer, stroke = 0, kind = CardKind.Tint) {
+    add(row(Gravity.CENTER_VERTICAL) {
+        add(icon(R.drawable.ic_wifi, P.onErrorContainer, 22), WRAP, WRAP, end = 8)
+        add(text(message, T.Body, P.onErrorContainer), 0, WRAP, 1f)
+        add(button(com.example.buddy.Tr.t(this@offlineCard, "Повторить", "Retry", "Qayta urinish"), BtnStyle.Text) { retry() }, WRAP, WRAP)
+    })
+}
 
 fun Context.toast(s: String) = Toast.makeText(this, s, Toast.LENGTH_SHORT).show()
 
@@ -221,6 +262,8 @@ fun Context.confirm(title: String, message: String, ok: String, cancel: String, 
 fun Context.scroll(content: View): ScrollView = ScrollView(this).apply {
     isFillViewport = true
     overScrollMode = View.OVER_SCROLL_NEVER
+    isVerticalFadingEdgeEnabled = true
+    setFadingEdgeLength(dp(18))
     addView(content, FrameLayout.LayoutParams(MATCH, WRAP))
 }
 
@@ -228,10 +271,11 @@ fun Context.space(hDp: Int): View = View(this).apply { layoutParams = LinearLayo
 
 /** A glass capsule with a glowing status dot: "AI", "Microphone". */
 fun Context.pill(label: String, color: Int, dot: Boolean = true, onClick: (() -> Unit)? = null): View = row(Gravity.CENTER) {
+    if (onClick != null) minimumHeight = dp(48)
     setPadding(dp(13), dp(8), dp(13), dp(8))
-    background = glass(GlassKind.Base, 30f)
+    background = glass(GlassKind.Base, Rad.FULL)
     if (dot) add(DotView(this@pill, color), dp(9), dp(9), end = 7)
-    add(text(label, T.Small, Glass.TEXT).apply { textSize = 12f; typeface = glassFont(bold = false) }, WRAP, WRAP)
+    add(text(label, T.Small, Glass.TEXT), WRAP, WRAP)
     if (onClick != null) press(onClick)
 }
 
@@ -255,10 +299,24 @@ class GlassToggle(c: Context) : View(c) {
     private val on = GlassDrawable(GlassKind.Navy, 15f, null, false, c.resources.displayMetrics.density)
     private val off = GlassDrawable(GlassKind.Dim, 15f, null, false, c.resources.displayMetrics.density)
     private var ring = 0f   // 0..1: the glow that spreads from the track when the switch turns on
+    private var slide: android.animation.ValueAnimator? = null
     fun toggle() {
+        val from = pos
         isChecked = !isChecked
         onChange?.invoke(isChecked)
-        if (isChecked) android.animation.ValueAnimator.ofFloat(0f, 1f).apply { duration = 600; addUpdateListener { ring = it.animatedValue as Float; invalidate() }; start() }
+        if (!Motion.enabled(context)) return
+        slide?.cancel()
+        slide = android.animation.ValueAnimator.ofFloat(from, pos).apply {
+            duration = Motion.STANDARD; interpolator = android.view.animation.OvershootInterpolator(2.2f)
+            addUpdateListener { pos = it.animatedValue as Float; invalidate() }
+            start()
+        }
+        if (isChecked) android.animation.ValueAnimator.ofFloat(0f, 1f).apply { duration = Motion.EMPHASIS; addUpdateListener { ring = it.animatedValue as Float; invalidate() }; start() }
+    }
+    override fun onDetachedFromWindow() {
+        super.onDetachedFromWindow()
+        slide?.cancel(); slide = null
+        pos = if (isChecked) 1f else 0f
     }
     override fun onDraw(cv: android.graphics.Canvas) {
         val d = if (isChecked) on else off
@@ -300,16 +358,32 @@ fun Context.emptyState(title: String, message: String, bubble: String? = null, s
         add(m, dp(170), dp(136), Gravity.CENTER)
         post {
             try {
-                android.animation.ObjectAnimator.ofFloat(m, View.TRANSLATION_Y, 0f, -dp(6).toFloat()).apply {
+                val bob = android.animation.ObjectAnimator.ofFloat(m, View.TRANSLATION_Y, 0f, -dp(6).toFloat()).apply {
                     duration = if (sleepy) 2600 else 1700; repeatMode = android.animation.ValueAnimator.REVERSE
                     repeatCount = android.animation.ValueAnimator.INFINITE; interpolator = android.view.animation.AccelerateDecelerateInterpolator()
-                    if ((context as? UiActivity)?.intent?.getBooleanExtra("static", false) != true) start()
+                }
+                if ((context as? UiActivity)?.intent?.getBooleanExtra("static", false) != true && Theme.sceneOn(context) && Motion.enabled(context)) {
+                    val rest = m.squash
+                    val blink = android.animation.ValueAnimator.ofFloat(0f, 1f).apply {
+                        duration = if (sleepy) 5200 else 3600; repeatCount = android.animation.ValueAnimator.INFINITE
+                        addUpdateListener {
+                            val f = it.animatedValue as Float
+                            val k = if (f > 0.93f) kotlin.math.sin((f - 0.93f) / 0.07f * Math.PI).toFloat() else 0f
+                            val next = rest + (1f - rest) * k
+                            if (next != m.squash) m.squash = next
+                        }
+                    }
+                    bob.start(); blink.start()
+                    m.addOnAttachStateChangeListener(object : View.OnAttachStateChangeListener {
+                        override fun onViewAttachedToWindow(v: View) { if (!bob.isStarted) bob.start(); if (!blink.isStarted) blink.start() }
+                        override fun onViewDetachedFromWindow(v: View) { bob.cancel(); blink.cancel(); m.squash = rest }
+                    })
                 }
             } catch (_: Exception) {}
         }
     }
     add(stage, dp(240), dp(220))
-    add(text(title, T.Title).apply { gravity = Gravity.CENTER; textSize = 22f; typeface = glassFont() }, MATCH, WRAP, top = 8)
+    add(text(title, T.Heading).apply { gravity = Gravity.CENTER }, MATCH, WRAP, top = Sp.S)
     add(text(message, T.Small).apply { gravity = Gravity.CENTER; textSize = 15f }, MATCH, WRAP, top = 6)
 }
 

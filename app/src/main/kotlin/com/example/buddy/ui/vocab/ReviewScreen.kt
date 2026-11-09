@@ -1,5 +1,6 @@
 package com.example.buddy.ui.vocab
 
+import android.view.View
 import android.widget.EditText
 import android.widget.LinearLayout
 import com.example.buddy.Brain
@@ -34,8 +35,31 @@ class ReviewScreen(act: UiActivity) : Screen(act) {
     private var day = 0L
     private var input: EditText? = null
     private var missedSure = false
+    private var watching = false
 
     private fun lang() = Tr.lang(ctx)
+
+    override fun view(): View {
+        val root = super.view()
+        if (!watching) {
+            watching = true
+            content.addOnAttachStateChangeListener(object : View.OnAttachStateChangeListener {
+                override fun onViewAttachedToWindow(v: View) {}
+                override fun onViewDetachedFromWindow(v: View) { Pronounce.stop() }
+            })
+        }
+        return root
+    }
+
+    private fun can(d: ReviewData): (Item, String) -> Boolean = { item, type ->
+        val card = d.cards[item.sense]
+        card != null && (type != "dictation" || d.tts) && Exercises.supports(type, card, d.words[item.pair] ?: emptyList(), d.meanings[item.pair] ?: emptyList(), d.frames[item.pair] ?: emptyList(), d.synonyms[item.pair] ?: emptyList())
+    }
+
+    private fun retryFor(q: Drill): Drill? {
+        val d = data ?: return null
+        return Planner.retry(q, aiOn, can = can(d))
+    }
 
     override fun onShow() {
         if (started) return
@@ -49,7 +73,7 @@ class ReviewScreen(act: UiActivity) : Screen(act) {
                 aiOn = on
                 data = d
                 if (d != null) {
-                    queue.addAll(Planner.plan(d.items, day, Analytics.options(rows, day, on, VocabDb.activePair(ctx))))
+                    queue.addAll(Planner.plan(d.items, day, Analytics.options(rows, day, on, VocabDb.activePair(ctx)), can = can(d)))
                 }
                 next(0)
             }
@@ -60,12 +84,17 @@ class ReviewScreen(act: UiActivity) : Screen(act) {
         val d = data ?: return null
         val card = d.cards[q.item.sense] ?: return null
         val seed = day * 31 + q.item.sense * 7 + n
-        Exercises.build(q.type, card, d.words[q.item.pair] ?: emptyList(), d.meanings[q.item.pair] ?: emptyList(), seed)?.let { return it }
-        val alt = Planner.retry(q, aiOn) ?: return null
-        return Exercises.build(alt.type, card, d.words[q.item.pair] ?: emptyList(), d.meanings[q.item.pair] ?: emptyList(), seed)
+        val wordPool = d.words[q.item.pair] ?: emptyList()
+        val meaningPool = d.meanings[q.item.pair] ?: emptyList()
+        val frames = d.frames[q.item.pair] ?: emptyList()
+        val synonyms = d.synonyms[q.item.pair] ?: emptyList()
+        Exercises.build(q.type, card, wordPool, meaningPool, seed, frames, synonyms)?.let { return it }
+        val alt = retryFor(q) ?: return null
+        return Exercises.build(alt.type, card, wordPool, meaningPool, seed, frames, synonyms)
     }
 
     private fun next(from: Int) {
+        Pronounce.stop()
         var i = from
         while (i < queue.size) {
             val e = build(queue[i], i)
@@ -77,6 +106,7 @@ class ReviewScreen(act: UiActivity) : Screen(act) {
                 canSkip = false
                 phase = Phase.ASKING
                 refresh()
+                if (e.speak.isNotBlank()) Pronounce.speak(ctx, e.speak)
                 content.postDelayed({ if (phase == Phase.ASKING && ex === e) { canSkip = true; refresh() } }, 3000)
                 return
             }
@@ -96,7 +126,7 @@ class ReviewScreen(act: UiActivity) : Screen(act) {
         if (ok) correct++
         missedSure = Exercises.isHighConfidenceMiss(ok, c)
         if (!ok && !q.retry) {
-            val r = Planner.retry(q, aiOn)
+            val r = retryFor(q)
             if (r != null) Planner.reinsert(queue, idx, r)
         }
     }
@@ -109,7 +139,7 @@ class ReviewScreen(act: UiActivity) : Screen(act) {
         if (e.ask == Ask.SENTENCE) { judge(answer, c); return }
         val g = if (dontKnow) Grade.WRONG else Exercises.grade(e, answer)
         grade = g
-        record(g != Grade.WRONG, c, answer)
+        record(Exercises.passes(e, g), c, answer)
         phase = Phase.GRADED
         refresh()
     }
@@ -160,6 +190,7 @@ class ReviewScreen(act: UiActivity) : Screen(act) {
     }
 
     private fun done(c: LinearLayout) {
+        Pronounce.stop()
         val pct = if (asked == 0) 0 else correct * 100 / asked
         c.add(ctx.card(18) {
             add(ctx.text(t("Готово: $correct из $asked", "Done: $correct of $asked", "Tugadi: $asked tadan $correct"), T.Title), MATCH, WRAP)
@@ -181,8 +212,9 @@ class ReviewScreen(act: UiActivity) : Screen(act) {
         val graded = phase == Phase.GRADED
         c.add(ctx.card(18) {
             add(ctx.text(instruction(e), T.Small), MATCH, WRAP, bottom = 8)
-            add(ctx.text(e.question, T.Title).apply { textSize = 24f }, MATCH, WRAP)
+            if (e.question.isNotBlank()) add(ctx.text(e.question, T.Title).apply { textSize = 24f }, MATCH, WRAP)
             if (e.prompt.isNotBlank()) add(ctx.text(e.prompt, T.Small), MATCH, WRAP, top = 4)
+            if (e.speak.isNotBlank()) add(ctx.button(t("Ещё раз", "Play again", "Yana eshitish"), BtnStyle.Tonal, R.drawable.ic_play) { Pronounce.speak(ctx, e.speak) }, MATCH, WRAP, top = 8)
         }, MATCH, WRAP, bottom = 10)
         if (!graded) {
             if (phase == Phase.JUDGING) { c.add(ctx.text(t("Проверяю предложение…", "Checking your sentence…", "Gapingiz tekshirilmoqda…"), T.Small), MATCH, WRAP, top = 8); return }
@@ -201,6 +233,7 @@ class ReviewScreen(act: UiActivity) : Screen(act) {
             chips.addView(ctx.chip(t("Почти уверен", "Somewhat sure", "Deyarli aniq"), conf == Confidence.SOME) { conf = Confidence.SOME; refreshKeep() })
             chips.addView(ctx.chip(t("Уверен", "Very sure", "Aniq"), conf == Confidence.SURE) { conf = Confidence.SURE; refreshKeep() })
             c.add(chips, MATCH, WRAP)
+            if (e.speak.isNotBlank()) c.add(ctx.button(t("Не могу слушать сейчас", "Can't listen now", "Hozir tinglay olmayman"), BtnStyle.Text) { if (phase == Phase.ASKING && ex === e) next(idx + 1) }, WRAP, WRAP, top = 8)
             if (canSkip) c.add(ctx.button(t("Не знаю", "I don't know", "Bilmayman"), BtnStyle.Text) { submit("", true) }, WRAP, WRAP, top = 8)
             return
         }
@@ -221,6 +254,9 @@ class ReviewScreen(act: UiActivity) : Screen(act) {
         "cloze" -> t("Вставьте пропущенное слово", "Fill in the missing word", "Tushib qolgan so'zni yozing")
         "own_sentence" -> t("Составьте предложение с этим словом", "Write a sentence with this word", "Shu so'z bilan gap tuzing")
         "lang_drill" -> t("Особенность языка", "Language detail", "Til xususiyati")
+        "dictation" -> t("Напишите услышанное слово", "Type the word you hear", "Eshitgan so'zingizni yozing")
+        "collocation" -> t("Выберите естественное сочетание", "Choose the natural phrase", "Tabiiy birikmani tanlang")
+        "synonym_context" -> t("Чем можно заменить выделенное слово?", "Which word can replace the marked word?", "Belgilangan so'z o'rniga qaysi so'z mos keladi?")
         else -> ""
     }
 
@@ -237,6 +273,7 @@ class ReviewScreen(act: UiActivity) : Screen(act) {
             add(ctx.pill(head, if (g == Grade.CORRECT) P.success else if (g == Grade.CLOSE) P.orange else if (skippedScore) P.sky else P.rose), WRAP, WRAP)
             if (typed.isNotBlank() && g != Grade.CORRECT) add(ctx.text(t("Ваш ответ: ", "Your answer: ", "Sizning javobingiz: ") + typed, T.Small), MATCH, WRAP, top = 8)
             if (e.ask != Ask.SENTENCE || g != Grade.CORRECT) add(ctx.text(t("Правильно: ", "Correct: ", "To'g'ri javob: ") + e.shown, T.Label), MATCH, WRAP, top = 6)
+            Exercises.alsoCorrect(e).takeIf { it.isNotEmpty() }?.let { add(ctx.text(t("Тоже верно: ", "Also correct: ", "Bular ham to'g'ri: ") + it.joinToString(", "), T.Small), MATCH, WRAP, top = 4) }
             if (aiNote.isNotBlank()) add(ctx.text(aiNote, T.Small), MATCH, WRAP, top = 6)
             if (card != null) {
                 if (card.definition.isNotBlank()) add(ctx.text(card.original + ": " + card.definition, T.Small), MATCH, WRAP, top = 8)

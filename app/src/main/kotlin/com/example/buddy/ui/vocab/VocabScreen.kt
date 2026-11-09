@@ -109,6 +109,7 @@ class VocabScreen(act: UiActivity) : Screen(act) {
         val holder = ctx.col {}
         c.add(holder, MATCH, WRAP, bottom = 12)
         c.add(ctx.button(t("Мой прогресс", "My progress", "Mening natijam"), BtnStyle.Outline) { act.push(ProgressScreen(act)) }, MATCH, WRAP, bottom = 8)
+        c.add(ctx.button(t("Репетитор", "Tutor", "Repetitor"), BtnStyle.Outline) { act.push(TutorScreen(act)) }, MATCH, WRAP, bottom = 8)
         Thread {
             val n = try { ReviewLoader.dueCount(ctx, VocabDb.today()) } catch (_: Exception) { 0 }
             act.runOnUiThread {
@@ -185,6 +186,7 @@ class VocabScreen(act: UiActivity) : Screen(act) {
             showSource()
             add(srcBox, MATCH, WRAP, bottom = 10)
             add(ctx.button(t("Сохранить", "Save", "Saqlash")) { save(false) }, MATCH, WRAP)
+            add(ctx.button(t("Слова с фото", "Words from a photo", "Rasmdan so'zlar"), BtnStyle.Outline) { act.push(PhotoScreen(act, pairId)) }, MATCH, WRAP, top = 8)
         }, MATCH, WRAP, bottom = 12)
     }
 
@@ -322,9 +324,113 @@ class VocabScreen(act: UiActivity) : Screen(act) {
         }) { if (hasSenses) { if (!open.add(e.id)) open.remove(e.id); fillList(pairId) } }
     }
 
+    private var sayVoice: com.example.buddy.Voice? = null
+    private var sayWaiting: Long? = null
+    private var sayArmed: Long? = null
+    private var sayActive = false
+
+    override fun onPermissionResult() {
+        val id = sayWaiting ?: return
+        sayWaiting = null
+        if (ctx.checkSelfPermission(android.Manifest.permission.RECORD_AUDIO) != android.content.pm.PackageManager.PERMISSION_GRANTED) {
+            ctx.toast(t("Без микрофона не получится проверить произношение", "Microphone access is needed to check how you say it", "Talaffuzni tekshirish uchun mikrofonga ruxsat kerak"))
+            return
+        }
+        sayArmed = id
+        android.os.Handler(android.os.Looper.getMainLooper()).post { if (sayArmed != null && activePair != 0L) fillList(activePair) }
+    }
+
+    private fun stopPron() {
+        Pronounce.stop()
+        if (sayActive) {
+            sayActive = false
+            sayVoice?.stopListening()
+        }
+    }
+
+    private fun pronBlock(box: LinearLayout, d: EntryDetail) {
+        val word = d.lemma.ifBlank { d.entry.original }
+        val p = d.pron
+        box.add(ctx.section(t("Произношение", "Pronunciation", "Talaffuz")), MATCH, WRAP)
+        val tts = Pronounce.available(ctx)
+        for ((accent, ipa) in listOf(Accent.UK to (p?.uk ?: d.ipa), Accent.US to (p?.us ?: ""))) {
+            box.add(ctx.row {
+                add(ctx.text(accent.name + (if (ipa.isBlank()) "" else "  /$ipa/"), T.Label), 0, WRAP, 1f)
+                if (tts) add(ctx.button(t("Слушать", "Play", "Tinglash"), BtnStyle.Tonal, com.example.buddy.R.drawable.ic_play) { Pronounce.speak(ctx, word, accent) }, WRAP, WRAP)
+            }, MATCH, WRAP, top = 4)
+        }
+        if (!tts) box.add(ctx.text(t("На этом телефоне нет движка синтеза речи", "No speech engine on this phone", "Bu telefonda nutq sintezi dasturi yo'q"), T.Small), MATCH, WRAP, top = 4)
+        if (p != null && p.syllables.isNotEmpty()) {
+            val sb = android.text.SpannableStringBuilder()
+            p.syllables.forEachIndexed { i, s ->
+                if (i > 0) sb.append("·")
+                if (i == p.stress) {
+                    val at = sb.length
+                    sb.append(s.uppercase())
+                    sb.setSpan(android.text.style.ForegroundColorSpan(P.primary), at, sb.length, android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+                    sb.setSpan(android.text.style.StyleSpan(android.graphics.Typeface.BOLD), at, sb.length, android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+                } else sb.append(s)
+            }
+            box.add(ctx.text(sb, T.Body), MATCH, WRAP, top = 6)
+        }
+        if (p != null && p.mistakes.isNotEmpty()) {
+            box.add(ctx.text(t("Частые ошибки", "Common mistakes", "Ko'p uchraydigan xatolar"), T.Label), MATCH, WRAP, top = 8)
+            for (m in p.mistakes) box.add(ctx.text("• $m", T.Small), MATCH, WRAP, top = 2)
+        }
+        val say = ctx.col {}
+        box.add(say, MATCH, WRAP, top = 6)
+        sayRow(say, word, d.entry.id, false, null, 0)
+        if (sayArmed == d.entry.id) {
+            sayArmed = null
+            say.post { if (say.isAttachedToWindow) startSay(say, word, d.entry.id) }
+        }
+    }
+
+    private fun sayRow(box: LinearLayout, word: String, id: Long, listening: Boolean, result: String?, color: Int) {
+        box.removeAllViews()
+        val label = if (listening) t("Слушаю…", "Listening...", "Tinglayapman…") else t("Скажите сами", "Say it", "O'zingiz ayting")
+        box.add(ctx.button(label, BtnStyle.Tonal, com.example.buddy.R.drawable.ic_mic) {
+            if (listening) {
+                sayActive = false
+                sayVoice?.stopListening()
+                sayRow(box, word, id, false, null, 0)
+            } else startSay(box, word, id)
+        }, WRAP, WRAP)
+        if (result != null) box.add(ctx.text(result, T.Small, color), MATCH, WRAP, top = 4)
+    }
+
+    private fun startSay(box: LinearLayout, word: String, id: Long) {
+        if (ctx.checkSelfPermission(android.Manifest.permission.RECORD_AUDIO) != android.content.pm.PackageManager.PERMISSION_GRANTED) {
+            sayWaiting = id
+            Backend.requestPermissions(act, "mic")
+            return
+        }
+        Pronounce.stop()
+        val v = sayVoice ?: com.example.buddy.Voice(ctx, android.os.Handler(android.os.Looper.getMainLooper())).also { sayVoice = it }
+        sayActive = true
+        sayRow(box, word, id, true, null, 0)
+        v.listen("en-GB", {}) { text, err ->
+            if (!sayActive || !box.isAttachedToWindow) return@listen
+            sayActive = false
+            val heard = text?.trim().orEmpty()
+            when {
+                heard.isNotEmpty() -> {
+                    val ok = PronMatch.matches(word, (listOf(heard) + v.lastAlternatives).joinToString("|"))
+                    if (ok) sayRow(box, word, id, false, t("Распознано: $heard", "Recognised: $heard", "Tanildi: $heard"), P.success)
+                    else sayRow(box, word, id, false, t("Не распознано. Услышано: $heard", "Not recognised. Heard: $heard", "Tanilmadi. Eshitildi: $heard"), P.error)
+                }
+                err == null -> sayRow(box, word, id, false, t("Ничего не услышал. Попробуйте ещё раз", "Didn't catch anything. Try again", "Hech narsa eshitilmadi. Yana urinib ko'ring"), 0)
+                else -> sayRow(box, word, id, false, t("Распознавание речи недоступно", "Speech recognition is unavailable", "Nutqni tanish mavjud emas"), P.error)
+            }
+        }
+    }
+
     private fun detailBlock(box: LinearLayout, d: EntryDetail) {
-        val head = listOf(d.lemma.takeIf { it.isNotBlank() && VocabText.normalize(it) != VocabText.normalize(d.entry.original) }, d.ipa.takeIf { it.isNotBlank() }?.let { "/$it/" }, d.reading.takeIf { it.isNotBlank() }).filterNotNull().joinToString("  ")
+        stopPron()
+        val en = (d.entry.detected ?: VocabDb.pair(ctx, d.entry.pair)?.source) == "en"
+        val head = listOf(d.lemma.takeIf { it.isNotBlank() && VocabText.normalize(it) != VocabText.normalize(d.entry.original) }, d.ipa.takeIf { it.isNotBlank() && !en }?.let { "/$it/" }, d.reading.takeIf { it.isNotBlank() }).filterNotNull().joinToString("  ")
         if (head.isNotEmpty()) box.add(ctx.text(head, T.Label), MATCH, WRAP, top = 8)
+        if (en) pronBlock(box, d)
         val said = d.context?.takeIf { it.isNotBlank() }
         if (said != null) {
             box.add(ctx.text("“$said”", T.Small), MATCH, WRAP, top = 6)

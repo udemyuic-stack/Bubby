@@ -25,8 +25,13 @@ class Enriched(
     val reading: String,
     val relations: Map<String, List<String>>,
     val meta: Map<String, String>,
-    val context: ContextData? = null
+    val context: ContextData? = null,
+    val pron: PronDetail? = null
 )
+
+class PronDetail(val uk: String, val us: String, val syllables: List<String>, val stress: Int, val mistakes: List<String>) {
+    val empty: Boolean get() = uk.isBlank() && us.isBlank() && syllables.all { it.isBlank() } && mistakes.all { it.isBlank() }
+}
 
 object MetaSchema {
     val KEYS: Map<String, List<String>> = mapOf(

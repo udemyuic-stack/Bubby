@@ -47,9 +47,9 @@ object ExerciseTypes {
         Dimension.RECOGNITION to listOf("choice_meaning", "choice_word"),
         Dimension.MEANING_RECALL to listOf("recall_meaning", "recall_definition"),
         Dimension.PRODUCTION to listOf("type_word"),
-        Dimension.CONTEXT to listOf("cloze"),
+        Dimension.CONTEXT to listOf("cloze", "collocation", "synonym_context"),
         Dimension.SENTENCE to listOf("own_sentence"),
-        Dimension.LISTENING to listOf("listen"),
+        Dimension.LISTENING to listOf("dictation"),
         Dimension.LANGUAGE to listOf("lang_drill")
     )
     val NEEDS_AI = setOf("own_sentence")

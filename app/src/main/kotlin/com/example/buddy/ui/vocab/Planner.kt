@@ -38,11 +38,23 @@ object Planner {
 
     fun flagged(item: Item) = item.progress.values.any { it.illusion }
 
-    private fun weakest(item: Item, dims: List<Dimension>): Dimension? =
-        dims.minWithOrNull(compareBy<Dimension> { item.progress[it]?.step ?: -1 }.thenBy { it.ordinal })
+    fun weak(p: Progress?): Boolean = p != null && p.attempts > 0 && (p.illusion || p.lapses >= 2 || Mastery.strength(p) < 40)
 
-    private fun pickType(dim: Dimension, prev: String?, aiOn: Boolean, rnd: Random, history: List<String>): String? {
-        val all = typesFor(dim, aiOn)
+    private fun ordered(item: Item, dims: List<Dimension>): List<Dimension> =
+        dims.sortedWith(compareBy<Dimension> { d ->
+            val p = item.progress[d]
+            if (weak(p)) 0 else if (p == null || p.attempts == 0) 1 else 2
+        }.thenBy { d -> item.progress[d]?.let { Mastery.strength(it) } ?: 0 }
+            .thenByDescending { d -> item.progress[d]?.takeIf { weak(it) }?.lapses ?: 0 }
+            .thenBy { it.ordinal })
+
+    private fun weakest(item: Item, dims: List<Dimension>): Dimension? = ordered(item, dims).firstOrNull()
+
+    private fun allowed(item: Item, dim: Dimension, aiOn: Boolean, can: (Item, String) -> Boolean): List<String> =
+        typesFor(dim, aiOn).filter { can(item, it) }
+
+    private fun pickType(item: Item, dim: Dimension, prev: String?, aiOn: Boolean, rnd: Random, history: List<String>, can: (Item, String) -> Boolean): String? {
+        val all = allowed(item, dim, aiOn, can)
         if (all.isEmpty()) return null
         val fresh = all.filter { it != prev }
         val pool = if (fresh.isEmpty()) all else fresh
@@ -51,7 +63,7 @@ object Planner {
         return cands[rnd.nextInt(cands.size)]
     }
 
-    fun plan(items: List<Item>, day: Long, opt: PlanOptions = PlanOptions(), seed: Long = day): List<Drill> {
+    fun plan(items: List<Item>, day: Long, opt: PlanOptions = PlanOptions(), seed: Long = day, can: (Item, String) -> Boolean = { _, _ -> true }): List<Drill> {
         val rnd = Random(seed)
         val usable = items.filter { unlocked(it).isNotEmpty() }
         val due = usable.filter { dueDims(it, day).isNotEmpty() }
@@ -80,10 +92,10 @@ object Planner {
             if (out.size >= opt.cap) break
             val prev = out.lastOrNull()?.type
             var d = dim
-            var type = pickType(d, prev, opt.aiOn, rnd, history)
+            var type = pickType(item, d, prev, opt.aiOn, rnd, history, can)
             if (type == null || type == prev) {
-                val alt = unlocked(item).filter { it != d && typesFor(it, opt.aiOn).isNotEmpty() }
-                val other = alt.firstNotNullOfOrNull { a -> pickType(a, prev, opt.aiOn, rnd, history)?.takeIf { it != prev }?.let { a to it } }
+                val alt = ordered(item, unlocked(item)).filter { it != d && allowed(item, it, opt.aiOn, can).isNotEmpty() }
+                val other = alt.firstNotNullOfOrNull { a -> pickType(item, a, prev, opt.aiOn, rnd, history, can)?.takeIf { it != prev }?.let { a to it } }
                 if (other != null && (type == null || item.progress[other.first]?.let { it.attempts > 0 } == true || item.progress.values.none { it.attempts > 0 })) { d = other.first; type = other.second }
             }
             if (type == null) continue
@@ -108,10 +120,10 @@ object Planner {
         return out
     }
 
-    fun retry(q: Drill, aiOn: Boolean, rnd: Random = Random(q.item.sense)): Drill? {
-        val dims = unlocked(q.item).filter { it != q.dim }
+    fun retry(q: Drill, aiOn: Boolean, rnd: Random = Random(q.item.sense), can: (Item, String) -> Boolean = { _, _ -> true }): Drill? {
+        val dims = ordered(q.item, unlocked(q.item).filter { it != q.dim })
         for (d in listOf(q.dim) + dims) {
-            val types = typesFor(d, aiOn).filter { it != q.type }
+            val types = allowed(q.item, d, aiOn, can).filter { it != q.type }
             if (types.isNotEmpty()) return Drill(q.item, d, types[rnd.nextInt(types.size)], true)
         }
         return null

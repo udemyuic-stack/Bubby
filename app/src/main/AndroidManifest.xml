@@ -118,6 +118,12 @@
             android:exported="false"
             android:grantUriPermissions="true"/>
 
+        <provider
+            android:name=".PhotoProvider"
+            android:authorities="com.example.buddy.photo"
+            android:exported="false"
+            android:grantUriPermissions="true"/>
+
         <uses-native-library android:name="libOpenCL.so" android:required="false"/>
         <uses-native-library android:name="libOpenCL-pixel.so" android:required="false"/>
         <uses-native-library android:name="libvndksupport.so" android:required="false"/>

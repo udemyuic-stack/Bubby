@@ -50,6 +50,7 @@ abstract class Screen(val act: UiActivity) {
     /** Called every time the screen becomes visible again (return from settings, permission dialog...). */
     open fun onShow() {}
     open fun onPermissionResult() {}
+    open fun onActivityResult(requestCode: Int, resultCode: Int, data: android.content.Intent?) {}
 
     protected fun t(ru: String, en: String, uz: String): String = Tr.t(ctx, ru, en, uz)
 

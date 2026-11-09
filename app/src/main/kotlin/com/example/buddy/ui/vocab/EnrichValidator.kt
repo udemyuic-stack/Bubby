@@ -100,6 +100,74 @@ object EnrichValidator {
                 meta[k] = v.take(400)
             }
         }
-        return Parsed.Ok(Enriched(lang, conf, lemma, senses, p?.optString("ipa", "")?.trim()?.take(60) ?: "", p?.optString("reading", "")?.trim()?.take(80) ?: "", rel, meta, context))
+        return Parsed.Ok(Enriched(lang, conf, lemma, senses, p?.optString("ipa", "")?.trim()?.take(60) ?: "", p?.optString("reading", "")?.trim()?.take(80) ?: "", rel, meta, context, PronParse.parse(o.optJSONObject("pron_en"), lang, lemma)))
+    }
+}
+
+object PronParse {
+    private const val MAX_IPA = 60
+    private const val MAX_SYLLABLES = 12
+    private const val MAX_SYLLABLE_LEN = 12
+    private const val MAX_MISTAKES = 3
+    private const val MAX_MISTAKE_LEN = 140
+    private val BAD_IPA = Regex("[0-9<>{}]")
+    private val ASCII_LETTERS = Regex("[A-Za-z]+")
+    private val SYLLABLE_MARKS = Regex("[-·.]")
+    private val LEMMA_MARKS = Regex("[\\s'-]")
+
+    fun parse(o: JSONObject?, lang: String, lemma: String): PronDetail? {
+        if (lang != "en" || o == null) return null
+        val uk = ipa(o.optString("uk", ""), lemma)
+        val us = ipa(o.optString("us", ""), lemma)
+        val syllables = syllables(o.optJSONArray("syllables"), lemma)
+        val stress = if (syllables.isEmpty()) -1 else stress(o.opt("stress"), syllables.size)
+        val mistakes = mistakes(o.optJSONArray("mistakes"))
+        val d = PronDetail(uk, us, syllables, stress, mistakes)
+        return if (d.empty) null else d
+    }
+
+    private fun ipa(raw: String, lemma: String): String {
+        var s = raw.trim()
+        if (s.length >= 2 && ((s.first() == '/' && s.last() == '/') || (s.first() == '[' && s.last() == ']'))) s = s.substring(1, s.length - 1).trim()
+        if (s.isEmpty() || s.length > MAX_IPA) return ""
+        if (BAD_IPA.containsMatchIn(s)) return ""
+        if (ASCII_LETTERS.matches(s) && s.equals(lemma.trim(), ignoreCase = true)) return ""
+        return s
+    }
+
+    private fun syllables(a: JSONArray?, lemma: String): List<String> {
+        if (a == null || a.length() < 1 || a.length() > MAX_SYLLABLES) return emptyList()
+        val out = ArrayList<String>()
+        for (i in 0 until a.length()) {
+            val s = a.opt(i) as? String ?: return emptyList()
+            val t = s.trim()
+            if (t.isEmpty() || t.length > MAX_SYLLABLE_LEN) return emptyList()
+            out.add(t)
+        }
+        val spelled = VocabText.fold(out.joinToString("").replace(SYLLABLE_MARKS, "")).replace(LEMMA_MARKS, "")
+        val target = VocabText.fold(lemma).replace(LEMMA_MARKS, "")
+        return if (spelled == target && target.isNotEmpty()) out else emptyList()
+    }
+
+    private fun stress(v: Any?, size: Int): Int {
+        val n = when (v) {
+            is Int -> v
+            is Long -> if (v in 0L..Int.MAX_VALUE.toLong()) v.toInt() else -1
+            is Number -> v.toDouble().let { if (it == Math.floor(it) && it >= 0 && it < size) it.toInt() else -1 }
+            else -> -1
+        }
+        return if (n in 0 until size) n else -1
+    }
+
+    private fun mistakes(a: JSONArray?): List<String> {
+        if (a == null) return emptyList()
+        val out = ArrayList<String>()
+        for (i in 0 until a.length()) {
+            val s = (a.opt(i) as? String)?.trim() ?: continue
+            if (s.isEmpty() || s.length > MAX_MISTAKE_LEN || s in out) continue
+            out.add(s)
+            if (out.size >= MAX_MISTAKES) break
+        }
+        return out
     }
 }

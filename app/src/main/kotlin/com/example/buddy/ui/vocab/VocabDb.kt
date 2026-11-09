@@ -15,7 +15,7 @@ class Entry(val id: Long, val pair: Long, val original: String, val status: Entr
 
 class SenseRow(val id: Long, val data: SenseData, val picked: Boolean, val origin: String = "ai", val verified: Boolean = false, val canRestore: Boolean = false, val hasHistory: Boolean = false, val kind: String = "general")
 
-class EntryDetail(val entry: Entry, val lemma: String, val ipa: String, val reading: String, val senses: List<SenseRow>, val relations: Map<String, List<String>>, val meta: Map<String, String>, val context: String? = null, val contextTr: String? = null)
+class EntryDetail(val entry: Entry, val lemma: String, val ipa: String, val reading: String, val senses: List<SenseRow>, val relations: Map<String, List<String>>, val meta: Map<String, String>, val context: String? = null, val contextTr: String? = null, val pron: PronDetail? = null)
 
 sealed class AddResult {
     class Added(val id: Long, val pair: Long) : AddResult()
@@ -25,7 +25,7 @@ sealed class AddResult {
     object NoPair : AddResult()
 }
 
-class VocabDb private constructor(ctx: Context) : SQLiteOpenHelper(ctx.applicationContext, "vocab.db", null, 7) {
+class VocabDb private constructor(ctx: Context) : SQLiteOpenHelper(ctx.applicationContext, "vocab.db", null, 8) {
     override fun onConfigure(db: SQLiteDatabase) {
         db.setForeignKeyConstraintsEnabled(true)
     }
@@ -44,6 +44,15 @@ class VocabDb private constructor(ctx: Context) : SQLiteOpenHelper(ctx.applicati
         addRetryMeta(db)
         addContextMeta(db)
         addSources(db)
+        addPronDetail(db)
+    }
+
+    private fun addPronDetail(db: SQLiteDatabase) {
+        db.execSQL("ALTER TABLE pron ADD COLUMN ipa_uk TEXT")
+        db.execSQL("ALTER TABLE pron ADD COLUMN ipa_us TEXT")
+        db.execSQL("ALTER TABLE pron ADD COLUMN syllables TEXT")
+        db.execSQL("ALTER TABLE pron ADD COLUMN stress INTEGER NOT NULL DEFAULT -1")
+        db.execSQL("ALTER TABLE pron ADD COLUMN mistakes TEXT")
     }
 
     private fun addSources(db: SQLiteDatabase) {
@@ -104,6 +113,7 @@ class VocabDb private constructor(ctx: Context) : SQLiteOpenHelper(ctx.applicati
         if (oldVersion < 5) addRetryMeta(db)
         if (oldVersion < 6) addContextMeta(db)
         if (oldVersion < 7) addSources(db)
+        if (oldVersion < 8) addPronDetail(db)
     }
 
     companion object {
@@ -374,7 +384,15 @@ class VocabDb private constructor(ctx: Context) : SQLiteOpenHelper(ctx.applicati
                 val pronOrigin = db.rawQuery("SELECT origin FROM pron WHERE entry = ?", arg).use { if (it.moveToFirst()) it.getString(0) else null }
                 if (pronOrigin == null || pronOrigin == "ai") {
                     db.delete("pron", "entry = ?", arg)
-                    db.insert("pron", null, ContentValues().apply { put("entry", id); put("ipa", d.ipa); put("reading", d.reading); put("origin", "ai") })
+                    db.insert("pron", null, ContentValues().apply { put("entry", id); put("ipa", d.ipa); put("reading", d.reading); put("origin", "ai"); putPron(this, d.pron) })
+                } else d.pron?.let { p ->
+                    val syl = p.syllables.takeIf { it.isNotEmpty() }?.joinToString(SYL_SEP)
+                    db.execSQL(
+                        "UPDATE pron SET ipa_uk = COALESCE(NULLIF(ipa_uk, ''), ?), ipa_us = COALESCE(NULLIF(ipa_us, ''), ?), " +
+                            "stress = CASE WHEN NULLIF(syllables, '') IS NULL AND ? IS NOT NULL THEN ? ELSE stress END, " +
+                            "syllables = COALESCE(NULLIF(syllables, ''), ?), mistakes = COALESCE(NULLIF(mistakes, ''), ?) WHERE entry = ?",
+                        arrayOf<Any?>(p.uk.ifEmpty { null }, p.us.ifEmpty { null }, syl, p.stress, syl, mistakesJson(p.mistakes), id)
+                    )
                 }
                 db.delete("meta", "entry = ?", arg)
                 for ((k, v) in d.meta) db.insert("meta", null, ContentValues().apply { put("entry", id); put("key", k); put("json", v) })
@@ -517,11 +535,10 @@ class VocabDb private constructor(ctx: Context) : SQLiteOpenHelper(ctx.applicati
         fun setPron(ctx: Context, entryId: Long, ipa: String) {
             val db = get(ctx).writableDatabase
             val arg = arrayOf(entryId.toString())
-            val reading = db.rawQuery("SELECT reading FROM pron WHERE entry = ?", arg).use { if (it.moveToFirst()) it.getString(0) else null }
             db.beginTransaction()
             try {
-                db.delete("pron", "entry = ?", arg)
-                db.insert("pron", null, ContentValues().apply { put("entry", entryId); put("ipa", ipa); put("reading", reading); put("origin", "user") })
+                val n = db.update("pron", ContentValues().apply { put("ipa", ipa); put("origin", "user") }, "entry = ?", arg)
+                if (n == 0) db.insert("pron", null, ContentValues().apply { put("entry", entryId); put("ipa", ipa); put("origin", "user") })
                 db.setTransactionSuccessful()
             } finally {
                 db.endTransaction()
@@ -551,7 +568,15 @@ class VocabDb private constructor(ctx: Context) : SQLiteOpenHelper(ctx.applicati
             val e = entry(ctx, id) ?: return null
             val db = get(ctx).readableDatabase
             val lemma = db.rawQuery("SELECT lemma FROM entry WHERE id = ?", arrayOf(id.toString())).use { if (it.moveToFirst()) it.getString(0) else null } ?: e.original
-            val (ipa, reading) = db.rawQuery("SELECT ipa, reading FROM pron WHERE entry = ?", arrayOf(id.toString())).use { if (it.moveToFirst()) (it.getString(0) ?: "") to (it.getString(1) ?: "") else "" to "" }
+            var pron: PronDetail? = null
+            val (ipa, reading) = db.rawQuery("SELECT ipa, reading, ipa_uk, ipa_us, syllables, stress, mistakes FROM pron WHERE entry = ?", arrayOf(id.toString())).use {
+                if (!it.moveToFirst()) return@use "" to ""
+                val generic = it.getString(0) ?: ""
+                val syl = it.getString(4)?.split(SYL_SEP)?.filter { s -> s.isNotEmpty() } ?: emptyList()
+                val p = PronDetail((it.getString(2) ?: "").ifEmpty { generic }, it.getString(3) ?: "", syl, if (syl.isEmpty()) -1 else it.getInt(5).takeIf { s -> s in syl.indices } ?: -1, mistakesList(it.getString(6)))
+                if (!p.empty) pron = p
+                generic to (it.getString(1) ?: "")
+            }
             val senses = ArrayList<SenseRow>()
             db.rawQuery("SELECT s.id, s.pos, s.definition, s.level, s.usage, s.formality, s.picked, s.origin, s.verified, s.ai_json IS NOT NULL, EXISTS(SELECT 1 FROM progress p WHERE p.sense = s.id), s.kind FROM sense s WHERE s.entry = ? ORDER BY s.kind = 'context' DESC, s.id", arrayOf(id.toString())).use { c ->
                 while (c.moveToNext()) {
@@ -566,7 +591,30 @@ class VocabDb private constructor(ctx: Context) : SQLiteOpenHelper(ctx.applicati
             val meta = LinkedHashMap<String, String>()
             db.rawQuery("SELECT key, json FROM meta WHERE entry = ? ORDER BY rowid", arrayOf(id.toString())).use { while (it.moveToNext()) meta[it.getString(0)] = it.getString(1) }
             val (context, contextTr) = db.rawQuery("SELECT context, context_tr FROM entry WHERE id = ?", arrayOf(id.toString())).use { if (it.moveToFirst()) it.getString(0) to it.getString(1) else null to null }
-            return EntryDetail(e, lemma, ipa, reading, senses, rel, meta, context, contextTr)
+            return EntryDetail(e, lemma, ipa, reading, senses, rel, meta, context, contextTr, pron)
+        }
+
+        private const val SYL_SEP = "·"
+
+        private fun putPron(cv: ContentValues, p: PronDetail?) {
+            cv.put("ipa_uk", p?.uk?.ifEmpty { null })
+            cv.put("ipa_us", p?.us?.ifEmpty { null })
+            val syl = p?.syllables?.takeIf { it.isNotEmpty() }
+            cv.put("syllables", syl?.joinToString(SYL_SEP))
+            cv.put("stress", if (p != null && syl != null) p.stress else -1)
+            cv.put("mistakes", p?.let { mistakesJson(it.mistakes) })
+        }
+
+        private fun mistakesJson(l: List<String>): String? = if (l.isEmpty()) null else org.json.JSONArray(l).toString()
+
+        private fun mistakesList(raw: String?): List<String> {
+            if (raw.isNullOrEmpty()) return emptyList()
+            return try {
+                val a = org.json.JSONArray(raw)
+                (0 until a.length()).mapNotNull { a.optString(it, "").trim().takeIf { s -> s.isNotEmpty() } }
+            } catch (_: Exception) {
+                emptyList()
+            }
         }
 
         private const val SEP = "\u001f"
@@ -634,6 +682,7 @@ class VocabDb private constructor(ctx: Context) : SQLiteOpenHelper(ctx.applicati
                 val dims = LinkedHashSet<Dimension>()
                 dims.add(Dimension.RECOGNITION); dims.add(Dimension.MEANING_RECALL); dims.add(Dimension.PRODUCTION)
                 if (r.examples > 0) dims.add(Dimension.CONTEXT)
+                dims.add(Dimension.SENTENCE)
                 if (hasTts) dims.add(Dimension.LISTENING)
                 if (r.lang in setOf("zh", "ja", "de", "ru", "ko")) dims.add(Dimension.LANGUAGE)
                 Item(r.sense, r.entry, r.pair, (names[r.entry] ?: emptySet<String>()) + setOfNotNull(own[r.entry]), readProgress(db, r.sense), dims)

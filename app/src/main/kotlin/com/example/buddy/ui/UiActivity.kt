@@ -338,6 +338,11 @@ class UiActivity : Activity() {
         (stack.lastOrNull()?.first ?: tabs[tab]).onPermissionResult()
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: android.content.Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        (stack.lastOrNull()?.first ?: tabs[tab]).onActivityResult(requestCode, resultCode, data)
+    }
+
     /** Pushes the named screen, or says it is not there yet. */
     fun open(name: String) {
         val s = Screens.create(name, this)

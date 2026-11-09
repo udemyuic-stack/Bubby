@@ -115,6 +115,8 @@ class ProgressScreen(act: UiActivity) : Screen(act) {
         "cloze" -> t("Пропущенное слово", "Fill the gap", "Bo'sh joyni to'ldirish")
         "own_sentence" -> t("Своё предложение", "Own sentence", "O'z gapi")
         "lang_drill" -> t("Особенности языка", "Language detail", "Til xususiyati")
+        "tutor_gap" -> t("Репетитор: пропуск", "Tutor: fill the gap", "Repetitor: bo'sh joy")
+        "tutor_read" -> t("Репетитор: текст", "Tutor: reading", "Repetitor: matn")
         else -> ty
     }
 }

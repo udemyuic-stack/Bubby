@@ -1,0 +1,150 @@
+11-09 12:43:17.249   522  1737 I RemoteProvisionSysSvc: Fetching key 10131 for client 54706293
+11-09 12:43:17.249   522  1737 I RegistrationProxy: getKeyAsync operation started with callback 101542011
+11-09 12:43:17.251  3723  3799 I RkpdRegistrationBinder: Key requested for : android.hardware.security.keymint.IRemotelyProvisionedComponent/default, clientUid: 1017, keyId: 10131, callback: 27353606
+11-09 12:43:17.254  3723  3799 I RkpdRegistrationBinder: Key successfully assigned to client
+11-09 12:43:17.258   522   522 I RemoteProvisionSysSvc: Successfully fetched key for client 54706293
+11-09 12:43:17.261  2686  2686 I PhenotypeBackgroundRecv: Skipping com.google.android.dialer.directboot#com.google.android.dialer which doesn't use ProcessStable flags.
+11-09 12:43:17.267  4788  4806 D EGL_emulation: app_time_stats: avg=21.48ms min=8.13ms max=217.90ms count=56
+11-09 12:43:17.307  1026  1026 V MediaPlayerList: mPackageChangedBroadcastReceiver: action: android.intent.action.PACKAGE_CHANGED
+11-09 12:43:17.308  1026  1026 V MediaPlayerList: mPackageChangedBroadcastReceiver: action: android.intent.action.PACKAGE_CHANGED
+11-09 12:43:17.309  1026  1026 V MediaPlayerList: mPackageChangedBroadcastReceiver: action: android.intent.action.PACKAGE_CHANGED
+11-09 12:43:17.309  1026  1026 V MediaPlayerList: mPackageChangedBroadcastReceiver: action: android.intent.action.PACKAGE_CHANGED
+11-09 12:43:17.310  1026  1026 V MediaPlayerList: mPackageChangedBroadcastReceiver: action: android.intent.action.PACKAGE_CHANGED
+11-09 12:43:17.310  1026  1026 V MediaPlayerList: mPackageChangedBroadcastReceiver: action: android.intent.action.PACKAGE_CHANGED
+11-09 12:43:17.311  1026  1026 V MediaPlayerList: mPackageChangedBroadcastReceiver: action: android.intent.action.PACKAGE_CHANGED
+11-09 12:43:17.318  4565  4590 I PhenotypeBackgroundRecv: Successfully updated snapshot for com.google.android.libraries.notifications.platform#com.google.android.googlequicksearchbox
+11-09 12:43:17.319  1026  1026 V MediaPlayerList: mPackageChangedBroadcastReceiver: action: android.intent.action.PACKAGE_CHANGED
+11-09 12:43:17.321  1026  1026 V MediaPlayerList: mPackageChangedBroadcastReceiver: action: android.intent.action.PACKAGE_ADDED
+11-09 12:43:17.322   522   620 I RescueParty: Starting to observe: [android], updated namespace: media
+11-09 12:43:17.323   522   552 I PackageWatchdog: Syncing state, reason: observing new packages
+11-09 12:43:17.323   522   552 D PackageWatchdog: rescue-party-observer added the following packages to monitor [android]
+11-09 12:43:17.323   522   552 I PackageWatchdog: Syncing state, reason: updated observers
+11-09 12:43:17.323   522   552 I PackageWatchdog: Not pruning observers, elapsed time: 0ms
+11-09 12:43:17.323   522   552 I PackageWatchdog: Saving observer state to file
+11-09 12:43:17.327  1026  1026 V MediaPlayerList: mPackageChangedBroadcastReceiver: action: android.intent.action.PACKAGE_ADDED
+11-09 12:43:17.327  1026  1026 V MediaPlayerList: mPackageChangedBroadcastReceiver: action: android.intent.action.PACKAGE_CHANGED
+11-09 12:43:17.328  1026  1026 V MediaPlayerList: mPackageChangedBroadcastReceiver: action: android.intent.action.PACKAGE_CHANGED
+11-09 12:43:17.336  1026  1026 V MediaPlayerList: mPackageChangedBroadcastReceiver: action: android.intent.action.PACKAGE_CHANGED
+11-09 12:43:17.338  1026  1026 V MediaPlayerList: mPackageChangedBroadcastReceiver: action: android.intent.action.PACKAGE_CHANGED
+11-09 12:43:17.338  1026  1026 V MediaPlayerList: mPackageChangedBroadcastReceiver: action: android.intent.action.PACKAGE_CHANGED
+11-09 12:43:17.339  1026  1026 V MediaPlayerList: mPackageChangedBroadcastReceiver: action: android.intent.action.PACKAGE_CHANGED
+11-09 12:43:17.341   840   840 D ControlsListingControllerImpl: ServiceConfig reloaded, count: 0
+11-09 12:43:17.344   840   840 D ControlsListingControllerImpl: ServiceConfig reloaded, count: 0
+11-09 12:43:17.345   840   840 D ControlsListingControllerImpl: ServiceConfig reloaded, count: 0
+11-09 12:43:17.350   840   840 D ControlsListingControllerImpl: ServiceConfig reloaded, count: 0
+11-09 12:43:17.369  4990  4990 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+11-09 12:43:17.369  4990  4990 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-09 12:43:17.373  4565  4565 I PhenotypeBackgroundRecv: Skipping com.google.android.apps.search.assistant.mobile.device#com.google.android.googlequicksearchbox which doesn't use ProcessStable flags.
+11-09 12:43:17.374   400   411 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=4990
+11-09 12:43:17.374   400   411 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (612 us)
+11-09 12:43:17.410  4090  4244 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of bdxy@70e24c
+11-09 12:43:17.411  4090  4244 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of bdxy@70e24c
+11-09 12:43:17.412  4090  4501 I BugleRcsProvisioning: RcsProvisioningTrigger: Schedule provisioning on system binding.
+11-09 12:43:17.415  4090  4501 I BugleRcsProvisioning: scheduleProvisioning using legacy code path
+11-09 12:43:17.418  4090  4501 W BugleRcsEngine: [80] brcu.d: [SR]: Single Registration is disabled. Skipping Single Registration capability check for subId: 1, OS.isAtLeastS:[true], enableSingleRegistrationProvisioning:[false]
+11-09 12:43:17.419  4090  4501 I BugleRcsProvisioning: RcsProvisioningTrigger: DR is active, initializing DR provisioning. DUAL_REG
+11-09 12:43:17.420   522   522 I PackageWatchdog: Syncing health check requests for packages: {}
+11-09 12:43:17.420   522   522 I ExplicitHealthCheckController: Service not ready to get health check supported packages. Binding...
+11-09 12:43:17.421  4090  4244 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of com.google.android.apps.messaging.rcsprovisioning.RcsProvisioningBroadcastReceiver@c44cb00
+11-09 12:43:17.421  4090  4513 W BugleRcsEngine: [91] brcu.d: [SR]: Single Registration is disabled. Skipping Single Registration capability check for subId: 1, OS.isAtLeastS:[true], enableSingleRegistrationProvisioning:[false]
+11-09 12:43:17.426  4090  4513 I BugleRcsEngine: [91] brnl.e: No RCS Configuration was found in Bugle for simID: redacted-pii:sim_id[chars:20,last3:897]
+11-09 12:43:17.427  4090  4513 I BugleRcsEngine: [91] zzo.l: Scheduled provisioning task with 0 seconds delay, KEEP policy, trigger is RCS_SYSTEM_BINDING, workerId is a5570154-8724-4b0a-8f14-efb85dcae206
+11-09 12:43:17.627     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+11-09 12:43:17.438   136   136 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-09 12:43:17.438  4990  4994 I Gralloc4: mapper 4.x is not supported
+11-09 12:43:17.442   522   522 I ExplicitHealthCheckController: Explicit health check service is bound
+11-09 12:43:17.442   522   522 W Looper  : Slow dispatch took 115ms main h=android.os.Handler c=com.android.server.PackageWatchdog$$ExternalSyntheticLambda2@dabb9cc m=0
+11-09 12:43:17.444   522   522 I ExplicitHealthCheckController: Explicit health check service is connected ComponentInfo{com.google.android.ext.services/android.ext.services.watchdog.ExplicitHealthCheckServiceImpl}
+11-09 12:43:17.444   522   522 I ExplicitHealthCheckController: Service initialized, syncing requests
+11-09 12:43:17.444   522   522 I PackageWatchdog: Syncing health check requests for packages: {}
+11-09 12:43:17.444   522   522 D ExplicitHealthCheckController: Getting health check supported packages
+11-09 12:43:17.448   522  1855 I ExplicitHealthCheckController: Explicit health check supported packages [PackageConfig{com.google.android.networkstack, 86400000}]
+11-09 12:43:17.449   522  1855 D PackageWatchdog: Received supported packages [PackageConfig{com.google.android.networkstack, 86400000}]
+11-09 12:43:17.450   522  1855 D ExplicitHealthCheckController: Getting health check requested packages
+11-09 12:43:17.450  4090  4223 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of bdxy@70e24c
+11-09 12:43:17.450   522  2008 I ExplicitHealthCheckController: Explicit health check requested packages []
+11-09 12:43:17.453   522  2008 I ExplicitHealthCheckController: No more health check requests, unbinding...
+11-09 12:43:17.454  4090  4223 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of bdxy@70e24c
+11-09 12:43:17.457   522  2008 I ExplicitHealthCheckController: Explicit health check service is unbound
+11-09 12:43:17.468  4090  4223 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of com.google.android.apps.messaging.shared.experiments.receiver.BuglePhenotypeBroadcastReceiver@fe4eead
+11-09 12:43:17.485  1399  2874 W BpBinder: Large outgoing transaction of 324044 bytes, interface descriptor , code 4
+11-09 12:43:17.492  1793  2474 W A       : Can't format flag AndroidGsaVelourJars__velour_birthdaydoodle_jar__name to integer.
+11-09 12:43:17.492  1793  2474 W A       : Can't format flag AndroidGsaVelourJars__velour_call_jar__name to integer.
+11-09 12:43:17.492  1793  2474 W A       : Can't format flag AndroidGsaVelourJars__velour_canvas_jar__name to integer.
+11-09 12:43:17.492  1793  2474 W A       : Can't format flag AndroidGsaVelourJars__velour_chkpkg_jar__name to integer.
+11-09 12:43:17.492  1793  2474 W A       : Can't format flag AndroidGsaVelourJars__velour_crashtest_jar__name to integer.
+11-09 12:43:17.492  1793  2474 W A       : Can't format flag AndroidGsaVelourJars__velour_dining_jar__name to integer.
+11-09 12:43:17.492  1793  2474 W A       : Can't format flag AndroidGsaVelourJars__velour_doodle_notifications_jar__name to integer.
+11-09 12:43:17.492  1793  2474 W A       : Can't format flag AndroidGsaVelourJars__velour_imageviewer_jar__name to integer.
+11-09 12:43:17.492  1793  2474 W A       : Can't format flag AndroidGsaVelourJars__velour_ipa_jar__name to integer.
+11-09 12:43:17.492  1793  2474 W A       : Can't format flag AndroidGsaVelourJars__velour_jslocation_jar__name to integer.
+11-09 12:43:17.492  1793  2474 W A       : Can't format flag AndroidGsaVelourJars__velour_localintent_jar__name to integer.
+11-09 12:43:17.492  1793  2474 W A       : Can't format flag AndroidGsaVelourJars__velour_messaging_jar__name to integer.
+11-09 12:43:17.492  1793  2474 W A       : Can't format flag AndroidGsaVelourJars__velour_nativesrp_activity_jar__name to integer.
+11-09 12:43:17.492  1793  2474 W A       : Can't format flag AndroidGsaVelourJars__velour_nativesrp_presenter_jar__name to integer.
+11-09 12:43:17.492  1793  2474 W A       : Can't format flag AndroidGsaVelourJars__velour_nowcontent_jar__name to integer.
+11-09 12:43:17.499  4090  4501 I PhenotypeBackgroundRecv: Successfully updated snapshot for com.google.android.libraries.internal.growth.growthkit#com.google.android.apps.messaging
+11-09 12:43:17.515  1793  2474 W A       : Can't format flag AndroidGsaVelourJars__velour_recents_activity_jar__name to integer.
+11-09 12:43:17.515  1793  2474 W A       : Can't format flag AndroidGsaVelourJars__velour_save_jar__name to integer.
+11-09 12:43:17.515  1793  2474 W A       : Can't format flag AndroidGsaVelourJars__velour_searchresults_activity_jar__name to integer.
+11-09 12:43:17.515  1793  2474 W A       : Can't format flag AndroidGsaVelourJars__velour_test_jar__name to integer.
+11-09 12:43:17.515  1793  2474 W A       : Can't format flag AndroidGsaVelourJars__velour_weather_jar__name to integer.
+11-09 12:43:17.515  1793  2474 W A       : Can't format flag bindle_flags__bloblobber_blob to integer.
+11-09 12:43:17.515  1793  2474 W A       : Can't format flag bindle_flags__velour_jar to integer.
+11-09 12:43:17.524  1793  2473 I A       : Refusing EXCLUSIVE task 24, it is already pending. Try again in 314 seconds.
+11-09 12:43:17.559  4090  4513 W TimedProcessReaper: Scheduling killing of process to refresh configuration
+11-09 12:43:17.577  1793  2472 I FedAssExpListener: Fed-ass not supported for signed out users.
+11-09 12:43:17.577  1793  2472 I FedAssExpListener: Successfully processed experiments changed.
+11-09 12:43:17.578  1793  2472 I A       : NGA enabled in interactor.
+11-09 12:43:17.583  4482  4528 W BugleRcsEngine: [49] bpxc.w: Unable to send diagnostic log
+11-09 12:43:17.591  1793  2473 I OpaEligibilityChecker: send OpaEligibilityChange broadcast to CommonBroadcastReceiver
+11-09 12:43:17.603  4482  4528 I BugleRcsEngine: [49] brga.s: ProvisioningEngineManager: onCsLibPhenotypeUpdated, provisioningTaskInBugleEnabled = true, currentProvisioningStrategy = brka
+11-09 12:43:17.610  4482  4528 I BugleRcsEngine: [49] brga.s: ProvisioningEngineManager: onCsLibPhenotypeUpdated, provisioningTaskInBugleEnabled = true, currentProvisioningStrategy = brka
+11-09 12:43:17.614  4482  4528 I BugleRcsEngine: [49] brga.s: ProvisioningEngineManager: onCsLibPhenotypeUpdated, provisioningTaskInBugleEnabled = true, currentProvisioningStrategy = brka
+11-09 12:43:17.624   847   847 I SafetyLabelChangedBroadcastReceiver: received broadcast packageName: com.example.buddy, current user: UserHandle{0}, packageChangeEvent: NEW_INSTALL, intent user: UserHandle{0}
+11-09 12:43:17.626  1793  2473 W CorpusConfigHelper: Invalid input from icing corpus JSON flag.
+11-09 12:43:17.626  1793  2473 W CorpusConfigHelper: android.util.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 123 column 2
+11-09 12:43:17.626  1793  2473 W CorpusConfigHelper: 	at android.util.JsonReader.syntaxError(JsonReader.java:1162)
+11-09 12:43:17.626  1793  2473 W CorpusConfigHelper: 	at android.util.JsonReader.checkLenient(JsonReader.java:840)
+11-09 12:43:17.626  1793  2473 W CorpusConfigHelper: 	at android.util.JsonReader.nextInArray(JsonReader.java:615)
+11-09 12:43:17.626  1793  2473 W CorpusConfigHelper: 	at android.util.JsonReader.peek(JsonReader.java:345)
+11-09 12:43:17.626  1793  2473 W CorpusConfigHelper: 	at android.util.JsonReader.hasNext(JsonReader.java:321)
+11-09 12:43:17.626  1793  2473 W CorpusConfigHelper: 	at com.google.android.apps.gsa.searchbox.c.b.b.k.c(PG:7)
+11-09 12:43:17.626  1793  2473 W CorpusConfigHelper: 	at com.google.android.apps.gsa.searchbox.c.b.b.j.a(Unknown Source:2)
+11-09 12:43:17.626  1793  2473 W CorpusConfigHelper: 	at com.google.android.apps.gsa.search.core.i.r.run(PG:5)
+11-09 12:43:17.626  1793  2473 W CorpusConfigHelper: 	at com.google.android.libraries.gsa.k.a.h.run(PG:2)
+11-09 12:43:17.626  1793  2473 W CorpusConfigHelper: 	at com.google.android.apps.gsa.shared.logger.f.a.a.l.p(PG:2)
+11-09 12:43:17.626  1793  2473 W CorpusConfigHelper: 	at com.google.android.apps.gsa.shared.logger.f.a.a.g.run(Unknown Source:4)
+11-09 12:43:17.626  1793  2473 W CorpusConfigHelper: 	at com.google.android.apps.gsa.shared.util.c.a.cf.b(PG:1)
+11-09 12:43:17.626  1793  2473 W CorpusConfigHelper: 	at com.google.android.apps.gsa.shared.util.c.a.ci.run(PG:1)
+11-09 12:43:17.626  1793  2473 W CorpusConfigHelper: 	at com.google.android.libraries.i.ae.run(PG:1)
+11-09 12:43:17.626  1793  2473 W CorpusConfigHelper: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-09 12:43:17.626  1793  2473 W CorpusConfigHelper: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-09 12:43:17.626  1793  2473 W CorpusConfigHelper: 	at com.google.android.libraries.i.k.run(PG:2)
+11-09 12:43:17.626  1793  2473 W CorpusConfigHelper: 	at com.google.android.libraries.i.p.run(PG:4)
+11-09 12:43:17.626  1793  2473 W CorpusConfigHelper: 	at java.lang.Thread.run(Thread.java:1012)
+11-09 12:43:17.666  1442  1567 I Icing   : IndexChimeraService.getServiceInterface callingPackage=com.google.android.googlequicksearchbox componentName=agsa_icing_connection serviceId=33
+11-09 12:43:17.675  1442  3023 I Icing   : IndexChimeraService.getServiceInterface callingPackage=com.google.android.googlequicksearchbox componentName=agsa_icing_connection serviceId=32
+11-09 12:43:17.684   522   607 D CompatibilityChangeReporter: Compat change id reported: 265195908; UID 10094; state: ENABLED
+11-09 12:43:17.685  1442  3453 W Icing   : No valid account for uploading user actions
+11-09 12:43:17.694   840   840 D ControlsListingControllerImpl: ServiceConfig reloaded, count: 0
+11-09 12:43:17.695   840   840 D ControlsListingControllerImpl: ServiceConfig reloaded, count: 0
+11-09 12:43:17.696   840   840 D ControlsListingControllerImpl: ServiceConfig reloaded, count: 0
+11-09 12:43:17.697   840   840 D ControlsListingControllerImpl: ServiceConfig reloaded, count: 0
+11-09 12:43:17.707  1793  2888 W SearchServiceCore: Abort, client detached.
+11-09 12:43:17.707  1793  2888 W SearchServiceCore: Abort, client detached.
+11-09 12:43:17.714  1793  2888 W SearchServiceCore: Abort, client detached.
+11-09 12:43:17.714  1793  2888 W SearchServiceCore: Abort, client detached.
+11-09 12:43:17.724  1793  2888 W SearchServiceCore: Abort, client detached.
+11-09 12:43:17.724  1793  2888 W SearchServiceCore: Abort, client detached.
+11-09 12:43:17.726  1442  3453 I Icing   : Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0
+11-09 12:43:17.729  1793  2888 W SearchServiceCore: Abort, client detached.
+11-09 12:43:17.729  1793  2888 W SearchServiceCore: Abort, client detached.
+11-09 12:43:17.731  1793  2888 W SearchServiceCore: Abort, client detached.
+11-09 12:43:17.731  1793  2888 W SearchServiceCore: Abort, client detached.
+11-09 12:43:17.738   522  2008 W PermissionManagerService: Datasource AttributionSource { uid = 10143, packageName = com.google.android.gm, attributionTag = null, token = android.os.BinderProxy@898ddd2, next = android.content.AttributionSou
+11-09 12:43:17.740  1793  2888 W SearchServiceCore: Abort, client detached.
+11-09 12:43:17.740  1793  2888 W SearchServiceCore: Abort, client detached.
+11-09 12:43:17.744  1793  2888 W SearchServiceCore: Abort, client detached.
+11-09 12:43:17.744  1793  2888 W SearchServiceCore: Abort, client detached.
+11-09 12:43:17.751  1442  3453 W Icing   : No valid account for uploading user actions

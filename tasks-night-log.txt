@@ -1,0 +1,28 @@
+11-09 12:45:34.979   522   798 I SdkSandboxManager: No SDKs used. Skipping SDK data reconcilation for CallingInfo{mUid=10192, mPackageName='com.example.buddy, mAppProcessToken='null'}
+11-09 12:45:35.115   522  2000 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=com.example.buddy/.ui.UiActivity (has extras)} with LAUNCH_SINGLE_TOP from uid 2000 (BAL_ALLOW_PERMISSION) result code=0
+11-09 12:45:35.126   522   594 D CoreBackPreview: Window{1471a82 u0 Splash Screen com.example.buddy}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@50b75e7, mPriority=0, mIsAnimationCallback=false}
+11-09 12:45:35.222   522   553 I ActivityManager: Start proc 5358:com.example.buddy/u0a192 for next-top-activity {com.example.buddy/com.example.buddy.ui.UiActivity}
+11-09 12:45:35.239   828   828 I SafetyLabelChangedBroadcastReceiver: received broadcast packageName: com.example.buddy, current user: UserHandle{0}, packageChangeEvent: NEW_INSTALL, intent user: UserHandle{0}
+11-09 12:45:35.357  5358  5358 V GraphicsEnvironment: ANGLE GameManagerService for com.example.buddy: false
+11-09 12:45:35.357  5358  5358 V GraphicsEnvironment: com.example.buddy is not listed in per-application setting
+11-09 12:45:35.433   522   541 V WindowManager:     info={id=6 t=CHANGE f=0x0 trk=0 r=[0@Point(0, 0)] c=[{WCT{RemoteToken{a0fde2d Task{27f169c #8 type=standard I=com.example.buddy/.ui.UiActivity}}} m=OPEN f=MOVE_TO_TOP leash=Surface(name=Task=8)/@0x6f11e57 sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0},{WCT{RemoteToken{2417f62 Task{28eea42 #1 type=home}}} m=TO_BACK f=SHOW_WALLPAPER leash=Surface(name=Task=1)/@0x546caf7 sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0},{WCT{RemoteToken{27f48f3 Display{#0 state=ON size=320x640 ROTATION_0}}} m=CHANGE f=SHOW_WALLPAPER|IS_DISPLAY leash=Surface(name=WindowedMagnification:0:31)/@0xe73b67e sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0}]}
+11-09 12:45:35.576   522  2240 D CoreBackPreview: Window{6b82128 u0 com.example.buddy/com.example.buddy.ui.UiActivity}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@80227d4, mPriority=0, mIsAnimationCallback=false}
+11-09 12:45:35.820  1091  1145 I Launcher.IconCache: Database bulk icon loading failed, using fallback bulk icon loading for: ComponentInfo{com.example.buddy/com.example.buddy.ui.UiActivity}
+11-09 12:45:36.605  1602  1602 I AiAiEcho: AppFetcherImplV2 updateApps package:[com.example.buddy], userId:[0], reason:[package is added.].
+11-09 12:45:36.805   522   541 I ActivityTaskManager: Displayed com.example.buddy/.ui.UiActivity for user 0: +1s743ms
+11-09 12:45:36.861   522  1202 W InputManager-JNI: Input channel object '1471a82 Splash Screen com.example.buddy (client)' was disposed without first being removed with the input manager!
+11-09 12:45:37.479  1602  1602 I AiAiEcho: AppFetcherImpl onPackageChanged com.example.buddy.
+11-09 12:45:37.480  1602  3873 I AiAiEcho: AppIndexer Package:[com.example.buddy] UserProfile:[0] Enabled:[true].
+11-09 12:45:37.480  1602  3873 I AiAiEcho: AppFetcherImplV2 updateApps package:[com.example.buddy], userId:[0], reason:[package is updated.].
+11-09 12:45:37.921  5103  5308 I BlockstoreStorage: Clearing Blockstore Data for package com.example.buddy [CONTEXT service_id=258 ]
+11-09 12:45:37.989  5038  5196 I FontLog : Package com.example.buddy has no metadata [CONTEXT service_id=132 ]
+11-09 12:45:37.999  5038  5197 I ProximityAuth: [RecentAppsMediator] Package added: (user=UserHandle{0}) com.example.buddy
+11-09 12:45:38.651   522  2011 I ImeTracker: com.example.buddy:e4e17327: onRequestHide at ORIGIN_SERVER_HIDE_INPUT reason HIDE_UNSPECIFIED_WINDOW
+11-09 12:45:38.652   522  2011 I ImeTracker: com.example.buddy:e4e17327: onCancelled at PHASE_SERVER_SHOULD_HIDE
+11-09 12:45:39.895  5358  5358 I com.example.buddy: Perf: native scene 9 fps
+11-09 12:45:43.928  5358  5358 I com.example.buddy: Perf: native scene 29 fps
+11-09 12:45:45.328  5499  5499 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-09 12:45:45.336  5499  5499 I AndroidRuntime: Using default boot image
+11-09 12:45:45.336  5499  5499 I AndroidRuntime: Leaving lock profiling enabled
+11-09 12:45:45.508  5499  5499 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-09 12:45:46.577  5499  5499 D AndroidRuntime: Shutting down VM

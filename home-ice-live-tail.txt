@@ -1,0 +1,150 @@
+11-09 12:43:36.923  1021  1659 D BtGatt.GattService: start scan with filters
+11-09 12:43:36.924  4939  5243 I Nearby  : is blocked device type false, isAuto=false, isIot=false, isLatchsky=false, isChinaWearable=false, isTv=false, isWearable=false (supportWearOs=false), isChromeOsDevice=false (supportChromeOs=false) 
+11-09 12:43:36.935  1021  1659 D BtGatt.GattService: enforcePrivilegedPermissionIfNeeded([BluetoothLeScanFilter [mDeviceName=null, mDeviceAddress=null, mUuid=null, mUuidMask=null, mServiceSolicitationUuid=null, mServiceSolicitationUuidMask=
+11-09 12:43:36.937  1941  5289 D DownloadManager: [9] Finished with status SUCCESS
+11-09 12:43:36.937  5024  5185 I LocationHistory: [IntentOperation] Handling action android.location.PROVIDERS_CHANGED [CONTEXT service_id=314 ]
+11-09 12:43:36.937  5024  5185 I LocationHistory: [IntentOperation] Device settings changed to ENABLED. Scheduling periodic tasks. [CONTEXT service_id=314 ]
+11-09 12:43:36.938  5024  5185 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.deidentifieddata.storevisits.StoreVisitsProcessingService.StoreVisitsProcessing is scheduled to run EVERY_6_HOURS [C
+11-09 12:43:36.938  5024  5185 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.deidentifieddata.wifi.WifiPlaceVisitProcessingService.WifiPlaceVisit is scheduled to run EVERY_DAY [CONTEXT service_
+11-09 12:43:36.939  5024  5185 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.deidentifieddata.uploads.BatchDeidentifiedDataUploadService.BatchDeidentifiedDataUpload is scheduled to run EVERY_6_
+11-09 12:43:36.939  5024  5185 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.geller.GellerCleanupService.GellerCleanup is scheduled to run EVERY_DAY [CONTEXT service_id=173 ]
+11-09 12:43:36.940  5024  5185 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.settings.LocationHistoryActiveProcessingService.LocationHistoryActiveProcessing is scheduled to run EVERY_DAY [CONTE
+11-09 12:43:36.940  5024  5185 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.pulp.PulpInferenceService.PulpInference is scheduled to run EVERY_7_DAYS [CONTEXT service_id=173 ]
+11-09 12:43:36.940  5024  5185 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.pulp.PulpMddDownloadScheduleService.PulpMddRefreshDownloadTask is scheduled to run EVERY_DAY [CONTEXT service_id=173
+11-09 12:43:36.940  5024  5185 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.pulp.PulpMddMaintenanceService.PulpMddMaintenanceTask is scheduled to run EVERY_DAY [CONTEXT service_id=173 ]
+11-09 12:43:36.940  5024  5185 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.federated.FederatedScheduleService.FederatedLocation is scheduled to run EVERY_DAY [CONTEXT service_id=173 ]
+11-09 12:43:36.940  5024  5185 W GmsTaskScheduler: com.google.android.gms.semanticlocationhistory.federated.FederatedTaskIdentityDataService is not available. This may cause the task to be lost.
+11-09 12:43:36.940  5024  5185 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.federated.FederatedTaskIdentityDataService.FederatedLocation is scheduled to run EVERY_DAY [CONTEXT service_id=173 ]
+11-09 12:43:36.940  5024  5185 W GmsTaskScheduler: com.google.android.gms.semanticlocationhistory.federated.FederatedJobHistoryService is not available. This may cause the task to be lost.
+11-09 12:43:36.940  5024  5185 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.federated.FederatedJobHistoryService.FederatedLocation is scheduled to run EVERY_DAY [CONTEXT service_id=173 ]
+11-09 12:43:36.941  5024  5185 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.db.OdlhDatabaseCleanupJob.OdlhDatabaseCleanup is scheduled to run EVERY_DAY [CONTEXT service_id=173 ]
+11-09 12:43:36.941  5024  5185 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.edit.EditMergeJob.EditMergeJob is scheduled to run EVERY_DAY [CONTEXT service_id=173 ]
+11-09 12:43:36.941  5024  5185 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.edit.EditUploadJob.EditUploadJob is scheduled to run EVERY_DAY [CONTEXT service_id=173 ]
+11-09 12:43:36.941  5024  5185 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.deidentifieddata.historicalbusyness.HistoricalBusynessProcessingService.HistoricalBusyness is scheduled to run EVERY
+11-09 12:43:36.941  5024  5185 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.db.OdlhRemovedAccountsCleanupJob.OdlhRemovedAccountsCleanup is scheduled to run EVERY_DAY [CONTEXT service_id=173 ]
+11-09 12:43:36.941  5024  5185 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.db.OdlhUserEditSyncJob.OdlhUserEditSync is scheduled to run EVERY_DAY [CONTEXT service_id=173 ]
+11-09 12:43:36.941  5024  5185 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.federated.regionfetcher.RegionMddMaintenanceService.RegionMddMaintenanceTask is scheduled to run EVERY_DAY [CONTEXT 
+11-09 12:43:36.942  5024  5185 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.federated.regionfetcher.RegionMddDownloadScheduleService.RegionMddRefreshDownloadTask is scheduled to run EVERY_6_HO
+11-09 12:43:36.942  1021  1659 D BtGatt.ScanManager: startScan()  [ScanClient scanModeApp 2 scanModeUsed 2 [appScanStats com.google.uid.shared:10131]]
+11-09 12:43:36.943  3633  4558 I ConfigUpdater: doneInstall
+11-09 12:43:36.946  1021  1659 D ActivityAttributionService: notifyActivityAttributionInfo UID=1002 packageName=com.google.android.bluetooth deviceAddress=no_active_device_address
+11-09 12:43:36.946  1021  1659 I bt_btif : packages/modules/Bluetooth/system/btif/src/bluetooth.cc:829 get_profile_interface: get_profile_interface: id = activity_attribution
+11-09 12:43:36.946  1021  1266 D BtGatt.ScanManager: handling starting scan
+11-09 12:43:36.946  1021  1266 I bt_stack: [INFO:le_scanning_manager.cc(268)] ScanFilterEnable in shim layer
+11-09 12:43:36.946  1021  1201 D BtGatt.GattService: onScanFilterEnableDisabled() - clientIf=2, status=0, action=1
+11-09 12:43:36.946  1021  1201 D BtGatt.ScanManager: callback done for scannerId - 2 status - 0
+11-09 12:43:36.947  1021  1266 I bt_stack: [INFO:le_scanning_manager.cc(243)] ScanFilterAdd in shim layer
+11-09 12:43:36.947  1021  1201 D BtGatt.GattService: onScanFilterConfig() - clientIf=2, action = 0 status = 0, filterType=0, availableSpace=0
+11-09 12:43:36.948  1021  1201 D BtGatt.ScanManager: callback done for scannerId - 2 status - 0
+11-09 12:43:36.949  1021  1266 D BtGatt.ScanManager: configureFilterParamter 500 10000 1 0
+11-09 12:43:36.949  1021  1266 I bt_stack: [INFO:le_scanning_manager.cc(204)] ScanFilterParamSetup in shim layer
+11-09 12:43:36.949  1021  1177 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_scanning_manager.cc:1369 on_advertising_filter_complete: Got a Command complete LE_ADV_FILTER, status UNKNOWN_CONNECTION
+11-09 12:43:36.950  1021  1201 D BtGatt.GattService: onScanFilterParamsConfigured() - clientIf=2, status=0, action=0, availableSpace=0
+11-09 12:43:36.950  1021  1201 D BtGatt.ScanManager: callback done for scannerId - 2 status - 0
+11-09 12:43:36.950  1021  1266 I bt_stack: [INFO:le_scanning_manager.cc(243)] ScanFilterAdd in shim layer
+11-09 12:43:36.950  1021  1201 D BtGatt.GattService: onScanFilterConfig() - clientIf=2, action = 0 status = 0, filterType=0, availableSpace=0
+11-09 12:43:36.950  1021  1201 D BtGatt.ScanManager: callback done for scannerId - 2 status - 0
+11-09 12:43:36.950  1021  1266 D BtGatt.ScanManager: configureFilterParamter 500 10000 1 0
+11-09 12:43:36.951  1021  1266 I bt_stack: [INFO:le_scanning_manager.cc(204)] ScanFilterParamSetup in shim layer
+11-09 12:43:36.951  1021  1201 D BtGatt.GattService: onScanFilterParamsConfigured() - clientIf=2, status=0, action=0, availableSpace=0
+11-09 12:43:36.951  1021  1201 D BtGatt.ScanManager: callback done for scannerId - 2 status - 0
+11-09 12:43:36.952  1021  1177 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_scanning_manager.cc:1369 on_advertising_filter_complete: Got a Command complete LE_ADV_FILTER, status UNKNOWN_CONNECTION
+11-09 12:43:36.952  1021  1266 I bt_stack: [INFO:le_scanning_manager.cc(243)] ScanFilterAdd in shim layer
+11-09 12:43:36.953  1021  1201 D BtGatt.GattService: onScanFilterConfig() - clientIf=2, action = 0 status = 0, filterType=0, availableSpace=0
+11-09 12:43:36.953  1021  1201 D BtGatt.ScanManager: callback done for scannerId - 2 status - 0
+11-09 12:43:36.953  1021  1266 D BtGatt.ScanManager: configureFilterParamter 500 10000 1 0
+11-09 12:43:36.953  1021  1266 I bt_stack: [INFO:le_scanning_manager.cc(204)] ScanFilterParamSetup in shim layer
+11-09 12:43:36.953  1021  1201 D BtGatt.GattService: onScanFilterParamsConfigured() - clientIf=2, status=0, action=0, availableSpace=0
+11-09 12:43:36.953  1021  1201 D BtGatt.ScanManager: callback done for scannerId - 2 status - 0
+11-09 12:43:36.953  1021  1266 I bt_stack: [INFO:le_scanning_manager.cc(243)] ScanFilterAdd in shim layer
+11-09 12:43:36.953  1021  1201 D BtGatt.GattService: onScanFilterConfig() - clientIf=2, action = 0 status = 0, filterType=0, availableSpace=0
+11-09 12:43:36.953  1021  1201 D BtGatt.ScanManager: callback done for scannerId - 2 status - 0
+11-09 12:43:36.953  1021  1266 D BtGatt.ScanManager: configureFilterParamter 500 10000 1 0
+11-09 12:43:36.953  1021  1266 I bt_stack: [INFO:le_scanning_manager.cc(204)] ScanFilterParamSetup in shim layer
+11-09 12:43:36.954  1021  1201 D BtGatt.GattService: onScanFilterParamsConfigured() - clientIf=2, status=0, action=0, availableSpace=0
+11-09 12:43:36.954  1021  1201 D BtGatt.ScanManager: callback done for scannerId - 2 status - 0
+11-09 12:43:36.954  1021  1177 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_scanning_manager.cc:1369 on_advertising_filter_complete: Got a Command complete LE_ADV_FILTER, status UNKNOWN_CONNECTION
+11-09 12:43:36.954  1021  1266 I bt_stack: [INFO:le_scanning_manager.cc(243)] ScanFilterAdd in shim layer
+11-09 12:43:36.955  1021  1201 D BtGatt.GattService: onScanFilterConfig() - clientIf=2, action = 0 status = 0, filterType=0, availableSpace=0
+11-09 12:43:36.955  1021  1201 D BtGatt.ScanManager: callback done for scannerId - 2 status - 0
+11-09 12:43:36.956  1021  1177 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_scanning_manager.cc:1369 on_advertising_filter_complete: Got a Command complete LE_ADV_FILTER, status UNKNOWN_CONNECTION
+11-09 12:43:36.956  1021  1266 D BtGatt.ScanManager: configureFilterParamter 500 10000 1 0
+11-09 12:43:36.956  1021  1266 I bt_stack: [INFO:le_scanning_manager.cc(204)] ScanFilterParamSetup in shim layer
+11-09 12:43:36.957  1021  1177 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_scanning_manager.cc:1369 on_advertising_filter_complete: Got a Command complete LE_ADV_FILTER, status UNKNOWN_CONNECTION
+11-09 12:43:36.957  1021  1201 D BtGatt.GattService: onScanFilterParamsConfigured() - clientIf=2, status=0, action=0, availableSpace=0
+11-09 12:43:36.957  1021  1201 D BtGatt.ScanManager: callback done for scannerId - 2 status - 0
+11-09 12:43:36.957  1021  1266 D BtGatt.ScanManager: start gattClientScanNative from startRegularScan()
+11-09 12:43:36.958  1021  1266 I bt_stack: [INFO:le_scanning_manager.cc(168)] Scan in shim layer started
+11-09 12:43:36.958  1021  1177 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_scanning_manager.cc:588 stop_scan: Scanning already stopped, return!
+11-09 12:43:36.958  1021  1177 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_address_manager.cc:175 register_client: Scheduled address rotation for first client registered
+11-09 12:43:36.958  1021  1177 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_address_manager.cc:178 register_client: Client registered
+11-09 12:43:36.958  1021  1266 D BtGatt.ScanManager: configureRegularScanParams() - queue=2
+11-09 12:43:36.958  1021  1266 I bt_stack: [INFO:le_scanning_manager.cc(168)] Scan in shim layer stopped
+11-09 12:43:36.958  1941  4806 V DownloadManager: Deleting /data/data/com.android.providers.downloads/cache/08202014-metadata.txt via provider delete
+11-09 12:43:36.970  1021  1177 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_address_manager.cc:193 unregister_client: Client unregistered
+11-09 12:43:36.970  1021  1177 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_address_manager.cc:197 unregister_client: Cancelled address rotation alarm
+11-09 12:43:36.970  1021  1266 D BtGatt.ScanManager: Start gattClientScanNative with old scanMode -1 new scanMode 2 ( in MS: 100 / 100, in scan unit: 160 / 160 ) [ScanClient scanModeApp 2 scanModeUsed 2 [appScanStats com.google.uid.shared:1
+11-09 12:43:36.970  1021  1266 I bt_stack: [INFO:le_scanning_manager.cc(346)] SetScanParameters in shim layer
+11-09 12:43:36.970  1021  1201 D BtGatt.GattService: onScanParamSetupCompleted : 0
+11-09 12:43:36.971  1021  1266 I bt_stack: [INFO:le_scanning_manager.cc(168)] Scan in shim layer started
+11-09 12:43:36.971  1580  4639 W ModernMediaScanner: Failed to visit /data/data/com.android.providers.downloads/cache/08202014-metadata.txt: java.nio.file.NoSuchFileException: /data/data/com.android.providers.downloads/cache/08202014-metada
+11-09 12:43:36.972  1021  1177 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_scanning_manager.cc:588 stop_scan: Scanning already stopped, return!
+11-09 12:43:36.972  1021  1177 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_address_manager.cc:175 register_client: Scheduled address rotation for first client registered
+11-09 12:43:36.972  1021  1177 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_address_manager.cc:178 register_client: Client registered
+11-09 12:43:36.974  1021  1266 D BtGatt.ScanManager: apply scan timeout (600000)to scannerId 2
+11-09 12:43:36.977  1580  4639 I MediaProvider: Scanned internal due to REASON_DEMAND, found 0 items in 6ms, 0 inserts 0 updates 0 deletes
+11-09 12:43:36.991  5024  5159 W Icing   : No valid account for uploading user actions
+11-09 12:43:37.000  5024  5024 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.findmydevice.spot.service.management.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsApiService }
+11-09 12:43:37.004   520  4012 W ActivityManager: Unable to start service Intent { act=com.google.android.gms.home.service.START pkg=com.google.android.gms } U=0: not found
+11-09 12:43:37.004   520  4012 W ActivityManager: Unbind failed: could not find connection for android.os.BinderProxy@2ad0159
+11-09 12:43:37.004  4939  5004 W GmsClient: unable to connect to service: com.google.android.gms.home.service.START on com.google.android.gms
+11-09 12:43:37.004  1683  2470 W YouTubeMusic: Could not register for notifications with InnerTube: 
+11-09 12:43:37.004  1683  2470 W YouTubeMusic: abqx: zvm: Precondition check failed.
+11-09 12:43:37.004  1683  2470 W YouTubeMusic: 	at abqn.apply(Unknown Source:4)
+11-09 12:43:37.004  1683  2470 W YouTubeMusic: 	at yyi.r(PG:5)
+11-09 12:43:37.004  1683  2470 W YouTubeMusic: 	at yyi.b(PG:2)
+11-09 12:43:37.004  1683  2470 W YouTubeMusic: 	at abqp.d(PG:4)
+11-09 12:43:37.004  1683  2470 W YouTubeMusic: 	at agsb.c(PG:63)
+11-09 12:43:37.004  1683  2470 W YouTubeMusic: 	at agsb.j(PG:38)
+11-09 12:43:37.004  1683  2470 W YouTubeMusic: 	at agsb.d(PG:3)
+11-09 12:43:37.004  1683  2470 W YouTubeMusic: 	at agrz.run(Unknown Source:2)
+11-09 12:43:37.004  1683  2470 W YouTubeMusic: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:487)
+11-09 12:43:37.004  1683  2470 W YouTubeMusic: 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+11-09 12:43:37.004  1683  2470 W YouTubeMusic: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-09 12:43:37.004  1683  2470 W YouTubeMusic: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-09 12:43:37.004  1683  2470 W YouTubeMusic: 	at smg.run(PG:2)
+11-09 12:43:37.004  1683  2470 W YouTubeMusic: 	at java.lang.Thread.run(Thread.java:1012)
+11-09 12:43:37.004  1683  2470 W YouTubeMusic: 	at snu.run(PG:5)
+11-09 12:43:37.004  1683  2470 W YouTubeMusic: Caused by: zvm: Precondition check failed.
+11-09 12:43:37.004  1683  2470 W YouTubeMusic: 	at abpb.e(PG:5)
+11-09 12:43:37.004  1683  2470 W YouTubeMusic: 	at zhp.f(PG:1)
+11-09 12:43:37.004  1683  2470 W YouTubeMusic: 	at zhp.e(PG:1)
+11-09 12:43:37.004  1683  2470 W YouTubeMusic: 	at zgl.run(PG:19)
+11-09 12:43:37.004  1683  2470 W YouTubeMusic: 	at aosb.run(PG:3)
+11-09 12:43:37.004  1683  2470 W YouTubeMusic: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-09 12:43:37.004  1683  2470 W YouTubeMusic: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-09 12:43:37.004  1683  2470 W YouTubeMusic: 	at yxr.run(PG:11)
+11-09 12:43:37.004  1683  2470 W YouTubeMusic: 	at java.lang.Thread.run(Thread.java:1012)
+11-09 12:43:37.004  1683  2470 W YouTubeMusic: Caused by: efc
+11-09 12:43:37.004  1683  2470 W YouTubeMusic: 	at zgl.run(PG:13)
+11-09 12:43:37.004  1683  2470 W YouTubeMusic: 	... 5 more
+11-09 12:43:37.009  5024  5024 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.findmydevice.spot.service.management.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsApiService }
+11-09 12:43:37.016  1941  4806 V DownloadManager: Deleting /data/data/com.android.providers.downloads/cache/08202014-pins.txt via provider delete
+11-09 12:43:37.017  5024  5024 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.findmydevice.spot.service.locationreport.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsApiService }
+11-09 12:43:37.017  5024  5024 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.findmydevice.spot.service.locationreport.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsApiService 
+11-09 12:43:37.018  1580  4639 W ModernMediaScanner: Failed to visit /data/data/com.android.providers.downloads/cache/08202014-pins.txt: java.nio.file.NoSuchFileException: /data/data/com.android.providers.downloads/cache/08202014-pins.txt
+11-09 12:43:37.019  1580  4639 I MediaProvider: Scanned internal due to REASON_DEMAND, found 0 items in 1ms, 0 inserts 0 updates 0 deletes
+11-09 12:43:37.020  4116  4609 D cevx    : Starting download: https://media.tenor.com/HALGiFUMzT8AAAAk/dinner-is-served-om-nom.gif
+11-09 12:43:37.020  4116  4609 V cevx    : Is http uri, downloading (uri: https://media.tenor.com/HALGiFUMzT8AAAAk/dinner-is-served-om-nom.gif)
+11-09 12:43:37.033  1709  1800 W earchbox:search: Cleared Reference was only reachable from finalizer (only reported once)
+11-09 12:43:37.037   520   907 D WifiNl80211Manager: Scan result ready event
+11-09 12:43:37.037   520   907 D WifiNative: Scan result ready event
+11-09 12:43:37.039  1709  1800 I earchbox:search: Background concurrent copying GC freed 321167(12MB) AllocSpace objects, 22(1592KB) LOS objects, 49% free, 17MB/35MB, paused 31us,21us total 449.876ms
+11-09 12:43:37.041  5024  5024 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.chimera.container.moduleinstall.ModuleInstallService.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsApiService }
+11-09 12:43:37.043  5024  5024 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.chimera.container.moduleinstall.ModuleInstallService.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.Gm
+11-09 12:43:37.050  4116  4246 D cevx    : Starting download: https://media.tenor.com/sqBO7Yvu4SkAAAAk/siamese-cat.gif
+11-09 12:43:37.050  4116  4246 V cevx    : Is http uri, downloading (uri: https://media.tenor.com/sqBO7Yvu4SkAAAAk/siamese-cat.gif)
+11-09 12:43:37.056  4939  5063 I GmsCoreVoilaTileGrpc: grpc compression enabled: gzip
+11-09 12:43:37.065   520   907 D CompatibilityChangeReporter: Compat change id reported: 161252188; UID 10192; state: DISABLED
+11-09 12:43:37.072  4116  4609 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1794228201699
+11-09 12:43:37.074  4939  5242 I Nearby  : is blocked device type false, isAuto=false, isIot=false, isLatchsky=false, isChinaWearable=false, isTv=false, isWearable=false (supportWearOs=false), isChromeOsDevice=false (supportChromeOs=false) 

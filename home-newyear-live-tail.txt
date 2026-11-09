@@ -1,0 +1,150 @@
+11-09 12:46:03.119  1426  1433 I .gms.persistent: Background concurrent copying GC freed 603367(23MB) AllocSpace objects, 8(316KB) LOS objects, 49% free, 20MB/40MB, paused 3.961ms,34us total 720.108ms
+11-09 12:46:03.137   336  5179 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+11-09 12:46:03.137   336  5179 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x794cbcf0f4d0
+11-09 12:46:03.137   336  5179 I resolv  : doQuery: rcode=0, ancount=8, return value=257
+11-09 12:46:03.144   336  5180 I resolv  : res_nmkquery: (QUERY, IN, A)
+11-09 12:46:03.144   336  5180 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x794d0cf167f0
+11-09 12:46:03.144   336  5180 I resolv  : doQuery: rcode=0, ancount=8, return value=161
+11-09 12:46:03.145  2092  5176 D TrafficStats: tagSocket(74) with statsTag=0xffffff01, statsUid=10129
+11-09 12:46:03.146  1471  5145 I PeopleGalProvider: Gal directories started.
+11-09 12:46:03.146  1471  5145 I PeopleGalProvider: Method 1 completed.
+11-09 12:46:03.146  1471  5145 I PeopleGalProvider: Method 1 finished successfully.
+11-09 12:46:03.151  1030  1030 D BluetoothPbapService:  onChange on contact uri 
+11-09 12:46:03.162  1471  5145 I GalProviderController: setting component enabled=1 for com.google.android.gms.people.service.galprovider.PeopleGalProvider
+11-09 12:46:03.164  1471  5145 I GalProviderController: Setting component enabled succeeds.
+11-09 12:46:03.188  2734  4786 W SystemServiceRegistry: No service published for: persistent_data_block
+11-09 12:46:03.197  1471  5145 I PeopleGalProvider: Gal directories started.
+11-09 12:46:03.198  1471  5145 I PeopleGalProvider: Method 1 completed.
+11-09 12:46:03.198  1471  5145 I PeopleGalProvider: Method 1 finished successfully.
+11-09 12:46:03.211  1471  5145 W ChimeraUtils: Module com.google.android.gms.people missing resource null(0)
+11-09 12:46:03.264  1030  5182 D BluetoothPbapUtils: primaryVersionCounter = 0, secondaryVersionCounter=0
+11-09 12:46:03.273  1426  1567 W .gms.persistent: Long monitor contention with owner [com.google.android.gms.chimera.container.intentoperation.PersistentIntentOperationChimeraService-Executor] processing com.google.android.gms.platformconfi
+11-09 12:46:03.284   837   837 D StatusBarIconController: ignoring old pipeline callbacks, because the new mobile icons are enabled
+11-09 12:46:03.294  1426  1567 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-09 12:46:03.296  1426  1567 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-09 12:46:03.297  2092  5183 D DownloadManager: [10] Starting
+11-09 12:46:03.299  1426  1567 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-09 12:46:03.325  1837  2276 I A       : Refusing EXCLUSIVE task 24, it is already pending. Try again in 307 seconds.
+11-09 12:46:03.340  1837  2274 I FedAssExpListener: Fed-ass not supported for signed out users.
+11-09 12:46:03.341  1837  2274 I FedAssExpListener: Successfully processed experiments changed.
+11-09 12:46:03.341  2092  5183 D TrafficStats: tagSocket(81) with statsTag=0xffffff01, statsUid=10129
+11-09 12:46:03.345  1837  2276 I OpaEligibilityChecker: send OpaEligibilityChange broadcast to CommonBroadcastReceiver
+11-09 12:46:03.350  1837  2275 I A       : NGA enabled in interactor.
+11-09 12:46:03.362  1426  1567 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-09 12:46:03.362  1426  1567 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-09 12:46:03.363  1426  1567 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-09 12:46:03.363  1426  1567 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-09 12:46:03.374  1426  1567 I NamespaceManager: Package 1 name not found! Using module version.
+11-09 12:46:03.375  1426  5157 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-09 12:46:03.383  1837  2276 W CorpusConfigHelper: Invalid input from icing corpus JSON flag.
+11-09 12:46:03.383  1837  2276 W CorpusConfigHelper: android.util.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 123 column 2
+11-09 12:46:03.383  1837  2276 W CorpusConfigHelper: 	at android.util.JsonReader.syntaxError(JsonReader.java:1162)
+11-09 12:46:03.383  1837  2276 W CorpusConfigHelper: 	at android.util.JsonReader.checkLenient(JsonReader.java:840)
+11-09 12:46:03.383  1837  2276 W CorpusConfigHelper: 	at android.util.JsonReader.nextInArray(JsonReader.java:615)
+11-09 12:46:03.383  1837  2276 W CorpusConfigHelper: 	at android.util.JsonReader.peek(JsonReader.java:345)
+11-09 12:46:03.383  1837  2276 W CorpusConfigHelper: 	at android.util.JsonReader.hasNext(JsonReader.java:321)
+11-09 12:46:03.383  1837  2276 W CorpusConfigHelper: 	at com.google.android.apps.gsa.searchbox.c.b.b.k.c(PG:7)
+11-09 12:46:03.383  1837  2276 W CorpusConfigHelper: 	at com.google.android.apps.gsa.searchbox.c.b.b.j.a(Unknown Source:2)
+11-09 12:46:03.383  1837  2276 W CorpusConfigHelper: 	at com.google.android.apps.gsa.search.core.i.r.run(PG:5)
+11-09 12:46:03.383  1837  2276 W CorpusConfigHelper: 	at com.google.android.libraries.gsa.k.a.h.run(PG:2)
+11-09 12:46:03.383  1837  2276 W CorpusConfigHelper: 	at com.google.android.apps.gsa.shared.util.c.a.cf.b(PG:1)
+11-09 12:46:03.383  1837  2276 W CorpusConfigHelper: 	at com.google.android.apps.gsa.shared.util.c.a.ci.run(PG:1)
+11-09 12:46:03.383  1837  2276 W CorpusConfigHelper: 	at com.google.android.libraries.i.ae.run(PG:1)
+11-09 12:46:03.383  1837  2276 W CorpusConfigHelper: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-09 12:46:03.383  1837  2276 W CorpusConfigHelper: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-09 12:46:03.383  1837  2276 W CorpusConfigHelper: 	at com.google.android.libraries.i.k.run(PG:2)
+11-09 12:46:03.383  1837  2276 W CorpusConfigHelper: 	at com.google.android.libraries.i.p.run(PG:4)
+11-09 12:46:03.383  1837  2276 W CorpusConfigHelper: 	at java.lang.Thread.run(Thread.java:1012)
+11-09 12:46:03.392   521  2559 D OomAdjuster: Not killing cached processes
+11-09 12:46:03.406  2092  5176 D DownloadManager: [9] Finished with status SUCCESS
+11-09 12:46:03.409  2734  4786 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+11-09 12:46:03.410  2734  4786 W libc    : Access denied finding property "service.adb.tls.port"
+11-09 12:46:03.408  2734  2734 W binder:2734_8: type=1400 audit(0.0:40): avc:  denied  { read } for  name="u:object_r:system_adbd_prop:s0" dev="tmpfs" ino=292 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:system_adbd_prop:s0 tcl
+11-09 12:46:03.437  1471  3766 I Icing   : IndexChimeraService.getServiceInterface callingPackage=com.google.android.googlequicksearchbox componentName=agsa_icing_connection serviceId=32
+11-09 12:46:03.438  1471  5156 I Icing   : IndexChimeraService.getServiceInterface callingPackage=com.google.android.googlequicksearchbox componentName=agsa_icing_connection serviceId=33
+11-09 12:46:03.408  2734  2734 W binder:2734_8: type=1400 audit(0.0:41): avc:  denied  { read } for  name="u:object_r:adbd_prop:s0" dev="tmpfs" ino=60 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:adbd_prop:s0 tclass=file permis
+11-09 12:46:03.445  1471  5152 W Icing   : No valid account for uploading user actions
+11-09 12:46:03.465  2092  5186 D DownloadManager: [11] Starting
+11-09 12:46:03.468  1471  5152 I Icing   : Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0
+11-09 12:46:03.469  1426  5157 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-09 12:46:03.474  2092  5186 D TrafficStats: tagSocket(74) with statsTag=0xffffff01, statsUid=10129
+11-09 12:46:03.500  1426  5157 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-09 12:46:03.502  1471  5152 W Icing   : No valid account for uploading user actions
+11-09 12:46:03.503  1426  3363 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.icing.proxy.IcingInternalCorporaUpdateService started execution. cause:9 exec_start_elapsed_seconds: 108 [CONTEXT service_id=218 ]
+11-09 12:46:03.520  1471  5152 I Icing   : Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0
+11-09 12:46:03.524  1426  3363 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.icing.proxy.IcingInternalCorporaUpdateService finished executing. cause:9 result: 1 elapsed_millis: 136 uptime_millis: 136 exec_star
+11-09 12:46:03.652  3642  4730 I ConfigUpdater: Update downloaded, starting installation
+11-09 12:46:03.678  1426  4806 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-09 12:46:03.704  2092  5183 D DownloadManager: [10] Finished with status SUCCESS
+11-09 12:46:03.780  4874  4874 I com.example.buddy: Perf: native scene 25 fps
+11-09 12:46:03.892  1426  4806 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-09 12:46:03.968  1426  4806 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-09 12:46:04.019  3642  4730 I ConfigUpdater: doneInstall
+11-09 12:46:04.056  2092  4731 V DownloadManager: Deleting /data/data/com.android.providers.downloads/cache/08202014-metadata.txt via provider delete
+11-09 12:46:04.083  1737  1756 W ModernMediaScanner: Failed to visit /data/data/com.android.providers.downloads/cache/08202014-metadata.txt: java.nio.file.NoSuchFileException: /data/data/com.android.providers.downloads/cache/08202014-metada
+11-09 12:46:04.087  1737  1756 I MediaProvider: Scanned internal due to REASON_DEMAND, found 0 items in 5ms, 0 inserts 0 updates 0 deletes
+11-09 12:46:04.098  5190  5190 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+11-09 12:46:04.099  5190  5190 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-09 12:46:04.112  4874  4890 D EGL_emulation: app_time_stats: avg=49.36ms min=29.31ms max=82.91ms count=21
+11-09 12:46:04.114  2092  4731 V DownloadManager: Deleting /data/data/com.android.providers.downloads/cache/08202014-pins.txt via provider delete
+11-09 12:46:04.123  1737  1756 W ModernMediaScanner: Failed to visit /data/data/com.android.providers.downloads/cache/08202014-pins.txt: java.nio.file.NoSuchFileException: /data/data/com.android.providers.downloads/cache/08202014-pins.txt
+11-09 12:46:04.123  1737  1756 I MediaProvider: Scanned internal due to REASON_DEMAND, found 0 items in 1ms, 0 inserts 0 updates 0 deletes
+11-09 12:46:04.317     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+11-09 12:46:04.127   134   134 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-09 12:46:04.130  5190  5191 I Gralloc4: mapper 4.x is not supported
+11-09 12:46:04.227  2092  5186 D DownloadManager: [11] Finished with status SUCCESS
+11-09 12:46:04.275  4133  5171 E BugleRcsEngine: [110] brfg.a: DroidGuardLogger: Could not create DroidGuard token creation event
+11-09 12:46:04.279  4133  5171 I BugleRcsEngine: [110] brfq.d: (PEv2-SM-Bugle-72559920): RequestWithImsiState: event Send config request [8de13e63-552e-4004-ba2a-1634dc3bd79c]
+11-09 12:46:04.280  4133  5171 I BugleRcsEngine: [110] brfq.d: (PEv2-SM-Bugle-72559920): InProgressState: event Send config request [8de13e63-552e-4004-ba2a-1634dc3bd79c]
+11-09 12:46:04.323  1055  1055 D CarrierSvcBindHelper: onPackageModified: com.google.android.gms
+11-09 12:46:04.324  4133  5171 W BugleRcsEngine: [110] bpxc.w: Unable to send diagnostic log
+11-09 12:46:04.325  1055  1055 D CarrierSvcBindHelper: No carrier app for: 0
+11-09 12:46:04.326   521  2615 W JobScheduler: Job didn't exist in JobStore: 143b445 #u0a155/7 com.google.android.contacts/com.google.android.apps.contacts.shortcut.ShortcutJobService
+11-09 12:46:04.327   521   614 I RoleService: Granting default roles...
+11-09 12:46:04.342   521   625 I InputReader: Reconfiguring input devices, changes=KEYBOARD_LAYOUTS
+11-09 12:46:04.412   837   897 D StylusManager: Stylus InputDevice changed: 14 virtio_input_multi_touch_11
+11-09 12:46:04.423   837   897 D StylusManager: Stylus InputDevice changed: 13 virtio_input_multi_touch_10
+11-09 12:46:04.423   837   897 D StylusManager: Stylus InputDevice changed: 12 virtio_input_multi_touch_9
+11-09 12:46:04.430   837   897 D StylusManager: Stylus InputDevice changed: 11 virtio_input_multi_touch_8
+11-09 12:46:04.430   837   897 D StylusManager: Stylus InputDevice changed: 9 virtio_input_multi_touch_6
+11-09 12:46:04.431   837   897 D StylusManager: Stylus InputDevice changed: 4 virtio_input_multi_touch_1
+11-09 12:46:04.431   837   897 D StylusManager: Stylus InputDevice changed: 10 virtio_input_multi_touch_7
+11-09 12:46:04.431   837   897 D StylusManager: Stylus InputDevice changed: 8 virtio_input_multi_touch_5
+11-09 12:46:04.431   837   897 D StylusManager: Stylus InputDevice changed: 5 virtio_input_multi_touch_2
+11-09 12:46:04.431   837   897 D StylusManager: Stylus InputDevice changed: 7 virtio_input_multi_touch_4
+11-09 12:46:04.432   837   897 D StylusManager: Stylus InputDevice changed: 6 virtio_input_multi_touch_3
+11-09 12:46:04.466  1426  1486 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-09 12:46:04.492   839  4987 I PermissionControllerServiceImpl: Updating user sensitive for uid 10131
+11-09 12:46:04.505   521   767 D ConnectivityService: reportNetworkConnectivity(100, false) by 10132
+11-09 12:46:04.506  1007  2690 D NetworkMonitor/100: Forcing reevaluation for UID 10132. Dns signal count: 0
+11-09 12:46:04.509  4133  5192 W BugleRcsEngine: [113] bpxc.w: Unable to send diagnostic log
+11-09 12:46:04.521  1426  1486 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-09 12:46:04.567  1426  1486 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-09 12:46:04.570   336  5198 I resolv  : GetAddrInfoHandler::run: {100 786532 100 983140 10130 0}
+11-09 12:46:04.571   336  5200 I resolv  : res_nmkquery: (QUERY, IN, A)
+11-09 12:46:04.571   336  5199 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+11-09 12:46:04.572  1007  5196 D TrafficStats: tagSocket(107) with statsTag=0xffffff81, statsUid=-1
+11-09 12:46:04.574  1007  5196 D TrafficStats: tagSocket(107) with statsTag=0xffffff81, statsUid=-1
+11-09 12:46:04.575   336  5201 I resolv  : ResNSendHandler::run: 0 / {100 983140 100 983140 1073 1}
+11-09 12:46:04.575   336  5201 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x794cbcf11990
+11-09 12:46:04.578   521  5194 I ConfigUpdateInstallReceiver: Couldn't find current metadata, assuming first update
+11-09 12:46:04.578   521  5194 I ConfigUpdateInstallReceiver: Failed to read current content, assuming first update!
+11-09 12:46:04.578   521  5194 I ConfigUpdateInstallReceiver: Found new update, installing...
+11-09 12:46:04.590   336  5199 I resolv  : res_nsend: used send_dg 76 terrno: 0
+11-09 12:46:04.590   336  5199 I resolv  : doQuery: rcode=0, ancount=1, return value=76
+11-09 12:46:04.597   336  5200 I resolv  : res_nsend: used send_dg 64 terrno: 0
+11-09 12:46:04.597   336  5200 I resolv  : doQuery: rcode=0, ancount=1, return value=64
+11-09 12:46:04.599  4133  5192 D TrafficStats: tagSocket(116) with statsTag=0x1025, statsUid=-1
+11-09 12:46:04.618   336  5204 I resolv  : ResNSendHandler::run: 0 / {100 983140 100 983140 1073 1}
+11-09 12:46:04.619   336  5204 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x794d4cf13190
+11-09 12:46:04.619  1007  1007 D TrafficStats: tagSocket(107) with statsTag=0xffffffff, statsUid=-1
+11-09 12:46:04.623  1007  1007 D TrafficStats: tagSocket(107) with statsTag=0xffffffff, statsUid=-1
+11-09 12:46:04.623  1007  1007 D TrafficStats: tagSocket(107) with statsTag=0xffffffff, statsUid=-1
+11-09 12:46:04.624  1007  1007 D TrafficStats: tagSocket(107) with statsTag=0xffffffff, statsUid=-1
+11-09 12:46:04.625  1007  1007 D TrafficStats: tagSocket(107) with statsTag=0xffffffff, statsUid=-1
+11-09 12:46:04.627  1055  1360 D ImsResolver: maybeAddedImsService, packageName: com.google.android.gms
+11-09 12:46:04.642  1007  1007 D TrafficStats: tagSocket(107) with statsTag=0xffffffff, statsUid=-1
+11-09 12:46:04.643  1007  1007 D TrafficStats: tagSocket(107) with statsTag=0xffffffff, statsUid=-1
+11-09 12:46:04.644   521   550 I CredManSysServiceImpl: CredentialManagerServiceImpl constructed for: com.google.android.gms/.auth.api.credentials.credman.service.PasswordAndPasskeyService
+11-09 12:46:04.644   521   550 I CredManSysServiceImpl: newServiceInfoLocked, mInfo null, com.google.android.gms/com.google.android.gms.auth.api.credentials.credman.service.PasswordAndPasskeyService
+11-09 12:46:04.646  1007  1007 D TrafficStats: tagSocket(107) with statsTag=0xffffffff, statsUid=-1

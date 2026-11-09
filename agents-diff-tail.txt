@@ -1,0 +1,150 @@
+11-09 12:42:58.192   402  1104 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=5155
+11-09 12:42:58.192   402  1104 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (825 us)
+11-09 12:42:58.194  4681  4973 I BugleRcsEngine: [81] brnl.h: No RCS Configuration was found in Bugle for simID: redacted-pii:sim_id[chars:20,last3:897]
+11-09 12:42:58.196   524  1632 D CompatibilityChangeReporter: Compat change id reported: 132649864; UID 10131; state: DISABLED
+11-09 12:42:58.196  4681  5156 W s.messaging:rcs: Long monitor contention with owner binder:4681_5 (5064) at java.lang.Object cgyo.a(java.lang.String)(PG:7) waiters=1 in java.lang.Object cgyo.a(java.lang.String) for 263ms
+11-09 12:42:58.203  1679  2523 W SearchServiceCore: Abort, client detached.
+11-09 12:42:58.212  1679  2523 W SearchServiceCore: Abort, client detached.
+11-09 12:42:58.213  1497  5076 I GalProviderController: setting component enabled=1 for com.google.android.gms.people.service.galprovider.PeopleGalProvider
+11-09 12:42:58.213  1497  5076 I GalProviderController: Setting component enabled succeeds.
+11-09 12:42:58.218  1497  5076 I PeopleGalProvider: Gal directories started.
+11-09 12:42:58.221  1497  5076 I PeopleGalProvider: Method 1 completed.
+11-09 12:42:58.221  1497  5076 I PeopleGalProvider: Method 1 finished successfully.
+11-09 12:42:58.418     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+11-09 12:42:58.225   134   134 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-09 12:42:58.225  5155  5158 I Gralloc4: mapper 4.x is not supported
+11-09 12:42:58.237  4681  4712 W BugleRcsEngine: [53] bpxc.w: Unable to send diagnostic log
+11-09 12:42:58.237  4681  4712 I BugleRcsEngine: [53] brga.s: ProvisioningEngineManager: onCsLibPhenotypeUpdated, provisioningTaskInBugleEnabled = true, currentProvisioningStrategy = brka
+11-09 12:42:58.237  4681  4712 I BugleRcsEngine: [53] brga.s: ProvisioningEngineManager: onCsLibPhenotypeUpdated, provisioningTaskInBugleEnabled = true, currentProvisioningStrategy = brka
+11-09 12:42:58.237  4681  4712 I BugleRcsEngine: [53] brga.s: ProvisioningEngineManager: onCsLibPhenotypeUpdated, provisioningTaskInBugleEnabled = true, currentProvisioningStrategy = brka
+11-09 12:42:58.251  4681  5156 W BugleRcsEngine: [83] bpxc.w: Unable to send diagnostic log
+11-09 12:42:58.252  4681  5156 I BugleRcsEngine: [83] brga.s: ProvisioningEngineManager: onCsLibPhenotypeUpdated, provisioningTaskInBugleEnabled = true, currentProvisioningStrategy = brka
+11-09 12:42:58.252  4681  5156 I BugleRcsEngine: [83] brga.s: ProvisioningEngineManager: onCsLibPhenotypeUpdated, provisioningTaskInBugleEnabled = true, currentProvisioningStrategy = brka
+11-09 12:42:58.252  4681  5156 I BugleRcsEngine: [83] brga.s: ProvisioningEngineManager: onCsLibPhenotypeUpdated, provisioningTaskInBugleEnabled = true, currentProvisioningStrategy = brka
+11-09 12:42:58.259  1497  3479 W Icing   : No valid account for uploading user actions
+11-09 12:42:58.268  1025  5157 D BluetoothPbapUtils: primaryVersionCounter = 0, secondaryVersionCounter=0
+11-09 12:42:58.278  4897  4919 D EGL_emulation: app_time_stats: avg=30.16ms min=19.38ms max=46.95ms count=33
+11-09 12:42:58.284  4681  5156 W BugleRcsEngine: [83] bpxc.w: Unable to send diagnostic log
+11-09 12:42:58.284  4681  5156 I BugleRcsEngine: [83] brga.s: ProvisioningEngineManager: onCsLibPhenotypeUpdated, provisioningTaskInBugleEnabled = true, currentProvisioningStrategy = brka
+11-09 12:42:58.284  4681  5156 I BugleRcsEngine: [83] brga.s: ProvisioningEngineManager: onCsLibPhenotypeUpdated, provisioningTaskInBugleEnabled = true, currentProvisioningStrategy = brka
+11-09 12:42:58.284  4681  5156 I BugleRcsEngine: [83] brga.s: ProvisioningEngineManager: onCsLibPhenotypeUpdated, provisioningTaskInBugleEnabled = true, currentProvisioningStrategy = brka
+11-09 12:42:58.320  1497  5076 W ChimeraUtils: Module com.google.android.gms.people missing resource null(0)
+11-09 12:42:58.325  1497  4991 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-09 12:42:58.326  1497  4991 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-09 12:42:58.326  1497  5077 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-09 12:42:58.326  1497  5077 I SyncIntentOperation: Handling the intent: Intent { act=com.google.android.gms.phenotype.COMMITTED flg=0x10 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras
+11-09 12:42:58.330  1497  5125 V Backup  : [PhenotypeConfigIO] Phenotype broadcast received for different package
+11-09 12:42:58.343  1679  2523 W SearchServiceCore: Abort, client detached.
+11-09 12:42:58.354  2177  5159 D DownloadManager: [9] Starting
+11-09 12:42:58.357  1679  2647 I BgTaskExecutorImpl: Starting EXCLUSIVE background task FETCH_CONFIGS_FROM_PHENOTYPE.
+11-09 12:42:58.365  1679  2647 W TimedProcessReaper: Scheduling killing of process to refresh configuration
+11-09 12:42:58.400  1497  5079 I MdiSyncModule: flag handling is skipping irrelevant intent.
+11-09 12:42:58.400  1497  5079 I MlBenchmarkInstaller: Intent: com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=340 ]
+11-09 12:42:58.400  1497  5079 I MlBenchmarkInstaller: COMMITTED Extra package name: com.google.android.gms.people [CONTEXT service_id=340 ]
+11-09 12:42:58.411  3680  3700 D CompatibilityChangeReporter: Compat change id reported: 150939131; UID 10130; state: ENABLED
+11-09 12:42:58.414  1497  5125 W PeoplePU: getComponentEnabledSetting failed.
+11-09 12:42:58.414  1497  5125 W PeoplePU: java.lang.IllegalArgumentException: Unknown component: ComponentInfo{com.google.android.syncadapters.contacts/com.google.android.syncadapters.contacts.ContactsSyncAdapterService}
+11-09 12:42:58.414  1497  5125 W PeoplePU: 	at android.os.Parcel.createExceptionOrNull(Parcel.java:3061)
+11-09 12:42:58.414  1497  5125 W PeoplePU: 	at android.os.Parcel.createException(Parcel.java:3041)
+11-09 12:42:58.414  1497  5125 W PeoplePU: 	at android.os.Parcel.readException(Parcel.java:3024)
+11-09 12:42:58.414  1497  5125 W PeoplePU: 	at android.os.Parcel.readException(Parcel.java:2966)
+11-09 12:42:58.414  1497  5125 W PeoplePU: 	at android.content.pm.IPackageManager$Stub$Proxy.getComponentEnabledSetting(IPackageManager.java:6034)
+11-09 12:42:58.414  1497  5125 W PeoplePU: 	at android.app.ApplicationPackageManager.getComponentEnabledSetting(ApplicationPackageManager.java:3097)
+11-09 12:42:58.414  1497  5125 W PeoplePU: 	at bvox.b(:com.google.android.gms@231818047@23.18.18 (190800-535401451):1)
+11-09 12:42:58.414  1497  5125 W PeoplePU: 	at bvgq.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):5)
+11-09 12:42:58.414  1497  5125 W PeoplePU: 	at com.google.android.gms.people.service.SettingsChangedBroadcastIntentOperation.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):11)
+11-09 12:42:58.414  1497  5125 W PeoplePU: 	at com.google.android.chimera.IntentOperation.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-09 12:42:58.414  1497  5125 W PeoplePU: 	at zhv.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+11-09 12:42:58.414  1497  5125 W PeoplePU: 	at hjm.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3)
+11-09 12:42:58.414  1497  5125 W PeoplePU: 	at hjl.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):11)
+11-09 12:42:58.414  1497  5125 W PeoplePU: 	at dfhf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-09 12:42:58.414  1497  5125 W PeoplePU: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-09 12:42:58.414  1497  5125 W PeoplePU: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-09 12:42:58.414  1497  5125 W PeoplePU: 	at java.lang.Thread.run(Thread.java:1012)
+11-09 12:42:58.414  1497  5125 W PeoplePU: Caused by: android.os.RemoteException: Remote stack trace:
+11-09 12:42:58.414  1497  5125 W PeoplePU: 	at com.android.server.pm.ComputerEngine.getComponentEnabledSettingInternal(ComputerEngine.java:5159)
+11-09 12:42:58.414  1497  5125 W PeoplePU: 	at com.android.server.pm.ComputerEngine.getComponentEnabledSetting(ComputerEngine.java:5141)
+11-09 12:42:58.414  1497  5125 W PeoplePU: 	at com.android.server.pm.IPackageManagerBase.getComponentEnabledSetting(IPackageManagerBase.java:388)
+11-09 12:42:58.414  1497  5125 W PeoplePU: 	at android.content.pm.IPackageManager$Stub.onTransact(IPackageManager.java:3012)
+11-09 12:42:58.414  1497  5125 W PeoplePU: 	at com.android.server.pm.PackageManagerService$IPackageManagerImpl.onTransact(PackageManagerService.java:6334)
+11-09 12:42:58.414  1497  5125 W PeoplePU: 
+11-09 12:42:58.419  1497  5125 I FsaEntryPointSwitcher: setting component enabled=1 for com.google.android.gms.people.sync.focus.ContactsSyncAdapterService
+11-09 12:42:58.424  1497  5125 I FsaEntryPointSwitcher: Setting component enabled succeeds.
+11-09 12:42:58.424  1497  3479 I Icing   : Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0
+11-09 12:42:58.424  1497  4990 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-09 12:42:58.428  1497  5125 W PeoplePU: getComponentEnabledSetting failed.
+11-09 12:42:58.428  1497  5125 W PeoplePU: java.lang.IllegalArgumentException: Unknown component: ComponentInfo{com.google.android.syncadapters.contacts/com.google.android.syncadapters.contacts.ContactsSyncAdapterService}
+11-09 12:42:58.428  1497  5125 W PeoplePU: 	at android.os.Parcel.createExceptionOrNull(Parcel.java:3061)
+11-09 12:42:58.428  1497  5125 W PeoplePU: 	at android.os.Parcel.createException(Parcel.java:3041)
+11-09 12:42:58.428  1497  5125 W PeoplePU: 	at android.os.Parcel.readException(Parcel.java:3024)
+11-09 12:42:58.428  1497  5125 W PeoplePU: 	at android.os.Parcel.readException(Parcel.java:2966)
+11-09 12:42:58.428  1497  5125 W PeoplePU: 	at android.content.pm.IPackageManager$Stub$Proxy.getComponentEnabledSetting(IPackageManager.java:6034)
+11-09 12:42:58.428  1497  5125 W PeoplePU: 	at android.app.ApplicationPackageManager.getComponentEnabledSetting(ApplicationPackageManager.java:3097)
+11-09 12:42:58.428  1497  5125 W PeoplePU: 	at bvox.b(:com.google.android.gms@231818047@23.18.18 (190800-535401451):1)
+11-09 12:42:58.428  1497  5125 W PeoplePU: 	at bvgq.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):29)
+11-09 12:42:58.428  1497  5125 W PeoplePU: 	at com.google.android.gms.people.service.SettingsChangedBroadcastIntentOperation.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):11)
+11-09 12:42:58.428  1497  5125 W PeoplePU: 	at com.google.android.chimera.IntentOperation.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-09 12:42:58.428  1497  5125 W PeoplePU: 	at zhv.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+11-09 12:42:58.428  1497  5125 W PeoplePU: 	at hjm.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3)
+11-09 12:42:58.428  1497  5125 W PeoplePU: 	at hjl.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):11)
+11-09 12:42:58.428  1497  5125 W PeoplePU: 	at dfhf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-09 12:42:58.428  1497  5125 W PeoplePU: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-09 12:42:58.428  1497  5125 W PeoplePU: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-09 12:42:58.428  1497  5125 W PeoplePU: 	at java.lang.Thread.run(Thread.java:1012)
+11-09 12:42:58.429   524   614 I RoleService: Granting default roles...
+11-09 12:42:58.429  1497  5079 I LocationHistory: [IntentOperation] Module is disabled [CONTEXT service_id=314 ]
+11-09 12:42:58.434  1497  5125 W PeoplePU: getComponentEnabledSetting failed.
+11-09 12:42:58.434  1497  5125 W PeoplePU: java.lang.IllegalArgumentException: Unknown component: ComponentInfo{com.google.android.syncadapters.contacts/com.google.android.syncadapters.contacts.ProxyGalProvider}
+11-09 12:42:58.434  1497  5125 W PeoplePU: 	at android.os.Parcel.createExceptionOrNull(Parcel.java:3061)
+11-09 12:42:58.434  1497  5125 W PeoplePU: 	at android.os.Parcel.createException(Parcel.java:3041)
+11-09 12:42:58.434  1497  5125 W PeoplePU: 	at android.os.Parcel.readException(Parcel.java:3024)
+11-09 12:42:58.434  1497  5125 W PeoplePU: 	at android.os.Parcel.readException(Parcel.java:2966)
+11-09 12:42:58.434  1497  5125 W PeoplePU: 	at android.content.pm.IPackageManager$Stub$Proxy.getComponentEnabledSetting(IPackageManager.java:6034)
+11-09 12:42:58.434  1497  5125 W PeoplePU: 	at android.app.ApplicationPackageManager.getComponentEnabledSetting(ApplicationPackageManager.java:3097)
+11-09 12:42:58.434  1497  5125 W PeoplePU: 	at bvox.b(:com.google.android.gms@231818047@23.18.18 (190800-535401451):1)
+11-09 12:42:58.434  1497  5125 W PeoplePU: 	at buru.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-09 12:42:58.434  1497  5125 W PeoplePU: 	at com.google.android.gms.people.service.SettingsChangedBroadcastIntentOperation.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):14)
+11-09 12:42:58.434  1497  5125 W PeoplePU: 	at com.google.android.chimera.IntentOperation.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-09 12:42:58.434  1497  5125 W PeoplePU: 	at zhv.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+11-09 12:42:58.434  1497  5125 W PeoplePU: 	at hjm.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3)
+11-09 12:42:58.434  1497  5125 W PeoplePU: 	at hjl.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):11)
+11-09 12:42:58.434  1497  5125 W PeoplePU: 	at dfhf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-09 12:42:58.434  1497  5125 W PeoplePU: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-09 12:42:58.434  1497  5125 W PeoplePU: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-09 12:42:58.434  1497  5125 W PeoplePU: 	at java.lang.Thread.run(Thread.java:1012)
+11-09 12:42:58.443   838  1018 E RoleControllerServiceImpl: Default/fallback role holder package doesn't qualify for the role, package: com.google.android.gms.supervision, role: android.app.role.SYSTEM_SUPERVISION
+11-09 12:42:58.445  1497  5125 I PeopleGalProvider: Gal directories started.
+11-09 12:42:58.445  1497  5125 I PeopleGalProvider: Method 1 completed.
+11-09 12:42:58.445  1497  5125 I PeopleGalProvider: Method 1 finished successfully.
+11-09 12:42:58.448  1497  5125 I GalProviderController: setting component enabled=1 for com.google.android.gms.people.service.galprovider.PeopleGalProvider
+11-09 12:42:58.449  1497  5125 I GalProviderController: Setting component enabled succeeds.
+11-09 12:42:58.449   838  1018 I Role    : com.google.android.gms not qualified for android.app.role.SYSTEM_CALL_STREAMING due to missing RequiredComponent{mIntentFilterData=IntentFilterData{mAction='android.telecom.CallStreamingService', m
+11-09 12:42:58.449   838  1018 E RoleControllerServiceImpl: Default/fallback role holder package doesn't qualify for the role, package: com.google.android.gms, role: android.app.role.SYSTEM_CALL_STREAMING
+11-09 12:42:58.456  1415  5105 W .gms.persistent: Long monitor contention with owner [com.google.android.gms.chimera.container.intentoperation.PersistentIntentOperationChimeraService-Executor] processing com.google.android.gms.platformconfi
+11-09 12:42:58.470  1025  1025 V MediaPlayerList: mPackageChangedBroadcastReceiver: action: android.intent.action.PACKAGE_CHANGED
+11-09 12:42:58.470  1025  1025 V MediaPlayerList: mPackageChangedBroadcastReceiver: action: android.intent.action.PACKAGE_CHANGED
+11-09 12:42:58.472  1049  1049 D CarrierSvcBindHelper: onPackageModified: com.google.android.gms
+11-09 12:42:58.472  1049  1049 D CarrierSvcBindHelper: No carrier app for: 0
+11-09 12:42:58.480   838  1018 W Role    : Default holder doesn't have required signing certificate: com.google.android.apps.work.clouddpc:23962F4B43B9857638EA66F4D419518EAE282491ACDA4B94707BD59003C45E58
+11-09 12:42:58.482  1415  5105 I PTCommittedOperation: Receive new configuration for com.google.android.gms.people
+11-09 12:42:58.497  1415  2626 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-09 12:42:58.498  1415  2626 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-09 12:42:58.503  1415  2626 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-09 12:42:58.504  1415  2626 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-09 12:42:58.504  1415  2626 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-09 12:42:58.507  1415  2626 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-09 12:42:58.515  1415  2626 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-09 12:42:58.516  1415  2626 I NamespaceManager: Package 1 name not found! Using module version.
+11-09 12:42:58.517   836   836 D ControlsListingControllerImpl: ServiceConfig reloaded, count: 0
+11-09 12:42:58.518  1415  4933 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.icing.proxy.IcingInternalCorporaUpdateService started execution. cause:9 exec_start_elapsed_seconds: 100 [CONTEXT service_id=218 ]
+11-09 12:42:58.519  1497  5125 I PeopleGalProvider: Gal directories started.
+11-09 12:42:58.519  1497  5125 I PeopleGalProvider: Method 1 completed.
+11-09 12:42:58.519  1497  5125 I PeopleGalProvider: Method 1 finished successfully.
+11-09 12:42:58.522  1497  5125 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-09 12:42:58.522  1497  5125 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-09 12:42:58.523  1497  5076 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-09 12:42:58.524  1497  5076 V Backup  : [PhenotypeConfigIO] Phenotype broadcast received for different package
+11-09 12:42:58.525  1497  5076 I SyncIntentOperation: Handling the intent: Intent { act=com.google.android.gms.phenotype.COMMITTED flg=0x10 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras
+11-09 12:42:58.526  1497  5160 I MdiSyncModule: flag handling is skipping irrelevant intent.
+11-09 12:42:58.527  1497  5160 I MlBenchmarkInstaller: Intent: com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=340 ]
+11-09 12:42:58.533  1497  5160 I MlBenchmarkInstaller: COMMITTED Extra package name: com.google.android.gms.people [CONTEXT service_id=340 ]

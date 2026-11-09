@@ -1,0 +1,150 @@
+11-09 12:43:12.618  1423  3372 I NamespaceManager: Package com.google.android.telephonycore name not found! Using module version.
+11-09 12:43:12.620  1455  5138 I GmsSyncPolicyEngine: Periodic sync 1 disabled by policy, cancelled.
+11-09 12:43:12.621  1423  3372 I NamespaceManager: Package com.google.android.uprobestats name not found! Using module version.
+11-09 12:43:12.623  4859  4879 D EGL_emulation: app_time_stats: avg=44.70ms min=35.03ms max=59.74ms count=22
+11-09 12:43:12.626  1455  5138 I GmsSyncPolicyEngine: Periodic sync 2 disabled by policy, cancelled.
+11-09 12:43:12.627  1455  5138 I GmsSyncPolicyEngine: Periodic sync 3 disabled by policy, cancelled.
+11-09 12:43:12.629  1423  3372 W PhenotypeConfigurationU: Update for unknown DeviceConfig package com.google.android.gms.platformconfigurator [CONTEXT service_id=204 ]
+11-09 12:43:12.629  1423  3372 W PhenotypeConfigurationU: bwix: No package exists for config package: com.google.android.gms.platformconfigurator
+11-09 12:43:12.629  1423  3372 W PhenotypeConfigurationU: 	at com.google.android.gms.platformconfigurator.PhenotypeConfigurationUpdateListener.b(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+11-09 12:43:12.629  1423  3372 W PhenotypeConfigurationU: 	at com.google.android.gms.platformconfigurator.PhenotypeConfigurationUpdateListener.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+11-09 12:43:12.629  1423  3372 W PhenotypeConfigurationU: 	at com.google.android.gms.platformconfigurator.PhenotypeConfigurationUpdateListener.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):21)
+11-09 12:43:12.629  1423  3372 W PhenotypeConfigurationU: 	at com.google.android.chimera.IntentOperation.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-09 12:43:12.629  1423  3372 W PhenotypeConfigurationU: 	at zhv.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+11-09 12:43:12.629  1423  3372 W PhenotypeConfigurationU: 	at hjm.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3)
+11-09 12:43:12.629  1423  3372 W PhenotypeConfigurationU: 	at hjl.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):11)
+11-09 12:43:12.629  1423  3372 W PhenotypeConfigurationU: 	at dfhf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-09 12:43:12.629  1423  3372 W PhenotypeConfigurationU: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-09 12:43:12.629  1423  3372 W PhenotypeConfigurationU: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-09 12:43:12.629  1423  3372 W PhenotypeConfigurationU: 	at java.lang.Thread.run(Thread.java:1012)
+11-09 12:43:12.630  1423  4754 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-09 12:43:12.631  1423  4754 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-09 12:43:12.632  1423  4754 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-09 12:43:12.632  1423  4754 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-09 12:43:12.633  1423  4754 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-09 12:43:12.634  1423  4754 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-09 12:43:12.635  1423  4754 I NamespaceManager: Package 1 name not found! Using module version.
+11-09 12:43:12.635  1423  4754 I NamespaceManager: Package rkpd name not found! Using module version.
+11-09 12:43:12.636  1423  4754 I NamespaceManager: Package android.companion name not found! Using module version.
+11-09 12:43:12.637  1423  4754 I NamespaceManager: Package com.google.android.aicore name not found! Using module version.
+11-09 12:43:12.661  1423  4754 I NamespaceManager: Package com.google.android.audioproxy name not found! Using module version.
+11-09 12:43:12.662  1423  4754 I NamespaceManager: Package com.google.android.apps.pixel.psi name not found! Using module version.
+11-09 12:43:12.663  1423  4754 I NamespaceManager: Package com.google.android.apps.safetycore name not found! Using module version.
+11-09 12:43:12.664  1423  4754 I NamespaceManager: Package com.google.android.crashrecovery name not found! Using module version.
+11-09 12:43:12.664  1423  4754 I NamespaceManager: Package com.google.android.profiling name not found! Using module version.
+11-09 12:43:12.664  1423  4754 I NamespaceManager: Package com.google.android.bt name not found! Using module version.
+11-09 12:43:12.664  1423  4754 I NamespaceManager: Package com.google.android.nfcservices name not found! Using module version.
+11-09 12:43:12.664  1423  4754 I NamespaceManager: Package com.google.android.webapp name not found! Using module version.
+11-09 12:43:12.665  1423  4754 I NamespaceManager: Package com.google.android.telephonycore name not found! Using module version.
+11-09 12:43:12.665  1423  4754 I NamespaceManager: Package com.google.android.uprobestats name not found! Using module version.
+11-09 12:43:12.668   520   529 I system_server: Background concurrent copying GC freed 564085(23MB) AllocSpace objects, 16(296KB) LOS objects, 44% free, 29MB/53MB, paused 39us,56us total 1.055s
+11-09 12:43:12.668   520   530 W JavaBinder: BinderProxy is being destroyed but the application did not call unlinkToDeath to unlink all of its death recipients beforehand.  Releasing leaked death recipient: com.android.server.am.ActivityMa
+11-09 12:43:12.668   520   530 I BpBinder: onLastStrongRef automatically unlinking death recipients: 
+11-09 12:43:12.672   520  3309 D CompatibilityChangeReporter: Compat change id reported: 266524688; UID 10132; state: DISABLED
+11-09 12:43:12.672   520  3309 D ConnectivityService: requestNetwork for uid/pid:10132/1730 activeRequest: null callbackRequest: 134 [NetworkRequest [ REQUEST id=134, [ Transports: CELLULAR Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_
+11-09 12:43:12.675   520   530 W JavaBinder: BinderProxy is being destroyed but the application did not call unlinkToDeath to unlink all of its death recipients beforehand.  Releasing leaked death recipient: com.android.server.wm.ActivityRe
+11-09 12:43:12.675   520   530 I BpBinder: onLastStrongRef automatically unlinking death recipients: 
+11-09 12:43:12.677   335   368 I netd    : networkSetPermissionForNetwork(100, 0) <1.81ms>
+11-09 12:43:12.710   520   769 D ConnectivityService: NetReassign [134 : null → 100] [c 1] [a 24] [i 11]
+11-09 12:43:12.713   520   769 D ConnectivityService: reportNetworkConnectivity(101, false) by 10132
+11-09 12:43:12.714  1006  2585 D NetworkMonitor/101: Forcing reevaluation for UID 10132. Dns signal count: 0
+11-09 12:43:12.733  1006  5157 D TrafficStats: tagSocket(68) with statsTag=0xffffff81, statsUid=-1
+11-09 12:43:12.735  1006  5157 D TrafficStats: tagSocket(68) with statsTag=0xffffff81, statsUid=-1
+11-09 12:43:12.743  1006  5156 D TrafficStats: tagSocket(75) with statsTag=0xffffff81, statsUid=-1
+11-09 12:43:12.747  1006  5156 D TrafficStats: tagSocket(107) with statsTag=0xffffff81, statsUid=-1
+11-09 12:43:12.749   335  5158 I resolv  : ResNSendHandler::run: 0 / {101 983141 101 983141 1073 1}
+11-09 12:43:12.750   335  5158 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7465f2026310
+11-09 12:43:12.751   335  5159 I resolv  : ResNSendHandler::run: 0 / {101 983141 101 983141 1073 1}
+11-09 12:43:12.752   335  5159 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7465f2025dd0
+11-09 12:43:12.752  1006  1006 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-09 12:43:12.754  1006  1006 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-09 12:43:12.755  1006  5157 D NetworkMonitor/101: PROBE_DNS connectivitycheck.gstatic.com 22ms OK 142.251.150.120,2001:4860:4826:7800::
+11-09 12:43:12.762   335  5160 I resolv  : GetAddrInfoHandler::run: {101 983141 101 983141 1073 1}
+11-09 12:43:12.764   335  5161 I resolv  : ResNSendHandler::run: 0 / {101 983141 101 983141 1073 1}
+11-09 12:43:12.764   335  5161 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x74664201d790
+11-09 12:43:12.764   335  5164 I resolv  : ResNSendHandler::run: 0 / {101 983141 101 983141 1073 1}
+11-09 12:43:12.766   335  5164 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7465a2022a30
+11-09 12:43:12.766   335  5163 I resolv  : res_nmkquery: (QUERY, IN, A)
+11-09 12:43:12.767   335  5163 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7465f2025dd0
+11-09 12:43:12.767   335  5163 I resolv  : doQuery: rcode=0, ancount=1, return value=63
+11-09 12:43:12.767   335  5162 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+11-09 12:43:12.767   335  5162 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7465f2026310
+11-09 12:43:12.767   335  5162 I resolv  : doQuery: rcode=0, ancount=1, return value=75
+11-09 12:43:12.768  1006  1006 D TrafficStats: tagSocket(75) with statsTag=0xffffffff, statsUid=-1
+11-09 12:43:12.769  1006  1006 D TrafficStats: tagSocket(75) with statsTag=0xffffffff, statsUid=-1
+11-09 12:43:12.769  1006  1006 D TrafficStats: tagSocket(75) with statsTag=0xffffffff, statsUid=-1
+11-09 12:43:12.770  1006  1006 D TrafficStats: tagSocket(75) with statsTag=0xffffffff, statsUid=-1
+11-09 12:43:12.770  1006  1006 D TrafficStats: tagSocket(75) with statsTag=0xffffffff, statsUid=-1
+11-09 12:43:12.771  1006  1006 D TrafficStats: tagSocket(75) with statsTag=0xffffffff, statsUid=-1
+11-09 12:43:12.771  1006  1006 D TrafficStats: tagSocket(75) with statsTag=0xffffffff, statsUid=-1
+11-09 12:43:12.773  1006  1006 D TrafficStats: tagSocket(75) with statsTag=0xffffffff, statsUid=-1
+11-09 12:43:12.782  1006  1006 D TrafficStats: tagSocket(75) with statsTag=0xffffffff, statsUid=-1
+11-09 12:43:12.783  1006  1006 D TrafficStats: tagSocket(75) with statsTag=0xffffffff, statsUid=-1
+11-09 12:43:12.784  1006  1006 D TrafficStats: tagSocket(75) with statsTag=0xffffffff, statsUid=-1
+11-09 12:43:12.784  1006  1006 D TrafficStats: tagSocket(75) with statsTag=0xffffffff, statsUid=-1
+11-09 12:43:12.792  1006  5157 D TrafficStats: tagSocket(68) with statsTag=0xffffff81, statsUid=-1
+11-09 12:43:12.795  1006  1006 D TrafficStats: tagSocket(75) with statsTag=0xffffffff, statsUid=-1
+11-09 12:43:12.795  1006  1006 D TrafficStats: tagSocket(75) with statsTag=0xffffffff, statsUid=-1
+11-09 12:43:12.796  1006  1006 D TrafficStats: tagSocket(75) with statsTag=0xffffffff, statsUid=-1
+11-09 12:43:12.797  1006  1006 D TrafficStats: tagSocket(75) with statsTag=0xffffffff, statsUid=-1
+11-09 12:43:12.799  4023  4171 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of bdxy@595a4ce
+11-09 12:43:12.804  1006  5156 D NetworkMonitor/101: PROBE_DNS www.google.com 61ms OK 142.251.154.119,142.251.155.119,142.251.151.119,142.251.156.119,142.251.150.119,142.251.157.119,142.251.153.119,142.251.152.119,2001:4860:4829:7700::,2001
+11-09 12:43:12.805  1455  3195 I PeopleGalProvider: Gal directories started.
+11-09 12:43:12.806  1455  3195 I PeopleGalProvider: Method 1 completed.
+11-09 12:43:12.806  1455  3195 I PeopleGalProvider: Method 1 finished successfully.
+11-09 12:43:12.822   335  5165 I resolv  : GetAddrInfoHandler::run: {101 983141 101 983141 1073 1}
+11-09 12:43:12.825   335  5167 I resolv  : res_nmkquery: (QUERY, IN, A)
+11-09 12:43:12.825   335  5167 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7465a2022a30
+11-09 12:43:12.825   335  5167 I resolv  : doQuery: rcode=0, ancount=8, return value=160
+11-09 12:43:12.826   335  5166 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+11-09 12:43:12.826   335  5166 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x74664201d790
+11-09 12:43:12.826   335  5166 I resolv  : doQuery: rcode=0, ancount=8, return value=256
+11-09 12:43:12.828  1006  5156 D TrafficStats: tagSocket(75) with statsTag=0xffffff81, statsUid=-1
+11-09 12:43:12.830  1006  5157 D NetworkMonitor/101: PROBE_HTTP http://connectivitycheck.gstatic.com/generate_204 time=75ms ret=204 request={Connection=[close], User-Agent=[Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gec
+11-09 12:43:13.004  1006  5156 D NetworkMonitor/101: PROBE_HTTPS https://www.google.com/generate_204 time=187ms ret=204 request={Connection=[close], User-Agent=[Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/6
+11-09 12:43:13.007  1006  5155 D NetworkMonitor/101: isCaptivePortal: isSuccessful()=true isPortal()=false RedirectUrl=null isPartialConnectivity()=false Time=280ms
+11-09 12:43:13.013   520   769 D ConnectivityService: [101 WIFI] validation passed
+11-09 12:43:13.656  4859  4879 D EGL_emulation: app_time_stats: avg=38.99ms min=32.58ms max=47.10ms count=26
+11-09 12:43:13.795  1455  1508 I Icing   : Indexing com.google.android.gms-apps from com.google.android.gms
+11-09 12:43:13.798  1455  1508 I Icing   : Indexing done com.google.android.gms-apps
+11-09 12:43:14.229  1730  3930 W A       : [Download] response code: 400
+11-09 12:43:14.597   520   614 D ActivityManager: freezing 2915 com.google.android.tts
+11-09 12:43:14.692  4859  4879 D EGL_emulation: app_time_stats: avg=40.62ms min=34.28ms max=48.56ms count=25
+11-09 12:43:14.840   520   614 D ActivityManager: freezing 3625 com.google.android.rkpdapp
+11-09 12:43:15.237   520  3309 D OomAdjuster: Not killing cached processes
+11-09 12:43:15.249  1423  4645 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-09 12:43:15.251  1423  4645 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-09 12:43:15.295   157  4899 I keystore2: system/security/keystore2/src/watchdog.rs:319 - Watchdog thread idle -> terminating. Have a great day.
+11-09 12:43:15.306  1423  1498 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-09 12:43:15.319  1423  1498 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-09 12:43:15.321  1423  1498 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-09 12:43:15.343  1423  5065 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-09 12:43:15.349  1423  5065 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-09 12:43:15.350  1423  5065 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-09 12:43:15.364   520   614 D ActivityManager: freezing 4448 com.google.android.googlequicksearchbox
+11-09 12:43:15.409  1423  4645 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-09 12:43:15.423  1423  4645 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-09 12:43:15.431  1423  4645 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-09 12:43:15.487  1423  5065 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-09 12:43:15.493  1423  5065 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-09 12:43:15.494  1423  5065 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-09 12:43:15.599  1423  4645 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-09 12:43:15.601  1423  4645 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-09 12:43:15.602  1423  4645 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-09 12:43:15.626  1423  5065 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-09 12:43:15.694  4859  4879 D EGL_emulation: app_time_stats: avg=43.17ms min=35.45ms max=50.48ms count=23
+11-09 12:43:16.519  4859  4859 I com.example.buddy: Perf: native scene 23 fps
+11-09 12:43:16.728  4859  4879 D EGL_emulation: app_time_stats: avg=42.53ms min=36.35ms max=54.43ms count=24
+11-09 12:43:16.897   520   614 D ActivityManager: freezing 4029 com.google.android.marvin.talkback
+11-09 12:43:17.486   520   614 D ActivityManager: freezing 3658 com.google.android.projection.gearhead:shared
+11-09 12:43:17.525  1801  1801 V ContactsProvider: Scheduled notifyChange started.
+11-09 12:43:17.527  1028  1028 D BluetoothPbapService:  onChange on contact uri 
+11-09 12:43:17.573  1028  5168 D BluetoothPbapUtils: primaryVersionCounter = 0, secondaryVersionCounter=0
+11-09 12:43:17.599  1423  3404 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.icing.proxy.IcingInternalCorporaUpdateService started execution. cause:9 exec_start_elapsed_seconds: 104 [CONTEXT service_id=218 ]
+11-09 12:43:17.606  1423  3404 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.icing.proxy.IcingInternalCorporaUpdateService finished executing. cause:9 result: 1 elapsed_millis: 38 uptime_millis: 38 exec_start_
+11-09 12:43:17.733  4859  4879 D EGL_emulation: app_time_stats: avg=41.25ms min=36.84ms max=47.83ms count=24
+11-09 12:43:17.814  5171  5171 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+11-09 12:43:17.814  5171  5171 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-09 12:43:17.836   135   135 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-09 12:43:17.836  5171  5172 I Gralloc4: mapper 4.x is not supported
+11-09 12:43:18.000     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.

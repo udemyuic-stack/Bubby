@@ -1,0 +1,150 @@
+11-09 12:43:31.373  5151  5293 I SemanticLocation: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:274)
+11-09 12:43:31.373  5151  5293 I SemanticLocation: 	at libcore.io.ForwardingOs.open(ForwardingOs.java:563)
+11-09 12:43:31.373  5151  5293 I SemanticLocation: 	at android.app.ActivityThread$AndroidOs.open(ActivityThread.java:8063)
+11-09 12:43:31.373  5151  5293 I SemanticLocation: 	at libcore.io.IoBridge.open(IoBridge.java:560)
+11-09 12:43:31.373  5151  5293 I SemanticLocation: 	... 22 more
+11-09 12:43:31.378  2851  4363 W SystemServiceRegistry: No service published for: persistent_data_block
+11-09 12:43:31.380  5280  5388 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.db.OdlhUserEditSyncJob.OdlhUserEditSync is scheduled to run EVERY_DAY [CONTEXT service_id=173 ]
+11-09 12:43:31.381  5280  5388 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.federated.regionfetcher.RegionMddMaintenanceService.RegionMddMaintenanceTask is scheduled to run EVERY_DAY [CONTEXT 
+11-09 12:43:31.385   521   549 I CredManSysServiceImpl: CredentialManagerServiceImpl constructed for: com.google.android.gms/.auth.api.credentials.credman.service.PasswordAndPasskeyService
+11-09 12:43:31.385   521   549 I CredManSysServiceImpl: newServiceInfoLocked, mInfo null, com.google.android.gms/com.google.android.gms.auth.api.credentials.credman.service.PasswordAndPasskeyService
+11-09 12:43:31.387   841   886 D StylusManager: Stylus InputDevice changed: 10 virtio_input_multi_touch_7
+11-09 12:43:31.399  5280  5388 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.federated.regionfetcher.RegionMddDownloadScheduleService.RegionMddRefreshDownloadTask is scheduled to run EVERY_6_HO
+11-09 12:43:31.409   521   957 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+11-09 12:43:31.410   521   957 D PackageManager: Clear ephemeral installer activity
+11-09 12:43:31.410   841   886 D StylusManager: Stylus InputDevice changed: 8 virtio_input_multi_touch_5
+11-09 12:43:31.411   841   886 D StylusManager: Stylus InputDevice changed: 6 virtio_input_multi_touch_3
+11-09 12:43:31.415   841   886 D StylusManager: Stylus InputDevice changed: 7 virtio_input_multi_touch_4
+11-09 12:43:31.416   841   886 D StylusManager: Stylus InputDevice changed: 5 virtio_input_multi_touch_2
+11-09 12:43:31.417   841   886 D StylusManager: Stylus InputDevice changed: 9 virtio_input_multi_touch_6
+11-09 12:43:31.419   841   886 D StylusManager: Stylus InputDevice changed: 4 virtio_input_multi_touch_1
+11-09 12:43:31.438   521   957 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+11-09 12:43:31.438   521   957 D PackageManager: Clear ephemeral installer activity
+11-09 12:43:31.440  5280  5388 V SmartDevice: [ModuleInitializer] ModuleInitializer got intent Intent { act=android.intent.action.BOOT_COMPLETED flg=0x89000010 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperatio
+11-09 12:43:31.442  5280  5388 W ChimeraUtils: Module com.google.android.gms.smartdevice missing resource null(0)
+11-09 12:43:31.443  1627  1627 I AiAiEcho: AppFetcherImpl onPackageChanged com.google.android.gms.
+11-09 12:43:31.443  1627  2403 I AiAiEcho: AppIndexer Package:[com.google.android.gms] UserProfile:[0] Enabled:[true].
+11-09 12:43:31.444  1627  2403 I AiAiEcho: AppFetcherImplV2 updateApps package:[com.google.android.gms], userId:[0], reason:[package is updated.].
+11-09 12:43:31.469  5280  5388 D SmartDevice: [ModuleInitializer] Module init - scheduling buffered logs cleanup task
+11-09 12:43:31.470  5280  5388 I SmartDevice: [CleanBufferedLogsService] Periodic task upload_buffered_logs_periodic scheduled!
+11-09 12:43:31.482  5280  5286 I gle.android.gms: Background concurrent copying GC freed 202951(8532KB) AllocSpace objects, 80(2608KB) LOS objects, 49% free, 11MB/22MB, paused 1.837ms,13us total 488.117ms
+11-09 12:43:31.495  5280  5388 I TelephonySpamInit: On boot completed TelephonySpam module initialized [CONTEXT service_id=150 ]
+11-09 12:43:31.496  5280  5388 I TelephonySpamInit: onModuleUpdated TelephonySpam module initialized [CONTEXT service_id=150 ]
+11-09 12:43:31.498  5280  5388 I SpamListSync: scheduleSyncTasks [CONTEXT service_id=150 ]
+11-09 12:43:31.499  5280  5388 I SpamListSync: schedulePeriodicTask [CONTEXT service_id=150 ]
+11-09 12:43:31.500  5280  5381 I ChimeraConfigurator: Starting update, reason: 4 urgentFeatures: tflite_dynamite:-1
+11-09 12:43:31.517  5280  5381 I ChimeraConfigurator: Detected pending changes for urgent request: [tflite_dynamite]. Pending module sets: container:2318189190800,tflite_dynamite:2640104055100800+tflite_dynamite
+11-09 12:43:31.528  5151  5514 I TapAndPay: Disabling TapAndPay HCE service [CONTEXT service_id=79 ]
+11-09 12:43:31.531  5280  5388 I SpamListSync: scheduleOneTimeTask [CONTEXT service_id=150 ]
+11-09 12:43:31.532  5280  5388 I ThreadNetworkModuleInit: Initializing runtime states: 2 [CONTEXT service_id=305 ]
+11-09 12:43:31.534  5151  5293 I SemanticLocation: [MDD] ModelBundleMetadata: File not found [CONTEXT service_id=173 ]
+11-09 12:43:31.534  5151  5293 I SemanticLocation: java.io.FileNotFoundException: /data/user/0/com.google.android.gms/files/model_bundle_metadata.pb: open failed: ENOENT (No such file or directory)
+11-09 12:43:31.534  5151  5293 I SemanticLocation: 	at libcore.io.IoBridge.open(IoBridge.java:574)
+11-09 12:43:31.534  5151  5293 I SemanticLocation: 	at java.io.FileInputStream.<init>(FileInputStream.java:160)
+11-09 12:43:31.534  5151  5293 I SemanticLocation: 	at android.app.ContextImpl.openFileInput(ContextImpl.java:745)
+11-09 12:43:31.534  5151  5293 I SemanticLocation: 	at android.content.ContextWrapper.openFileInput(ContextWrapper.java:249)
+11-09 12:43:31.534  5151  5293 I SemanticLocation: 	at android.content.ContextWrapper.openFileInput(ContextWrapper.java:249)
+11-09 12:43:31.534  5151  5293 I SemanticLocation: 	at android.content.ContextWrapper.openFileInput(ContextWrapper.java:249)
+11-09 12:43:31.534  5151  5293 I SemanticLocation: 	at bzxt.h(:com.google.android.gms@231818047@23.18.18 (190800-535401451):1)
+11-09 12:43:31.534  5151  5293 I SemanticLocation: 	at bzxd.c(:com.google.android.gms@231818047@23.18.18 (190800-535401451):9)
+11-09 12:43:31.534  5151  5293 I SemanticLocation: 	at cadb.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-09 12:43:31.534  5151  5293 I SemanticLocation: 	at aced.c(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+11-09 12:43:31.534  5151  5293 I SemanticLocation: 	at aced.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):8)
+11-09 12:43:31.534  5151  5293 I SemanticLocation: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-09 12:43:31.534  5151  5293 I SemanticLocation: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-09 12:43:31.534  5151  5293 I SemanticLocation: 	at acjn.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-09 12:43:31.534  5151  5293 I SemanticLocation: 	at java.lang.Thread.run(Thread.java:1012)
+11-09 12:43:31.534  5151  5293 I SemanticLocation: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+11-09 12:43:31.534  5151  5293 I SemanticLocation: 	at libcore.io.Linux.open(Native Method)
+11-09 12:43:31.534  5151  5293 I SemanticLocation: 	at libcore.io.ForwardingOs.open(ForwardingOs.java:563)
+11-09 12:43:31.534  5151  5293 I SemanticLocation: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:274)
+11-09 12:43:31.534  5151  5293 I SemanticLocation: 	at libcore.io.ForwardingOs.open(ForwardingOs.java:563)
+11-09 12:43:31.534  5151  5293 I SemanticLocation: 	at android.app.ActivityThread$AndroidOs.open(ActivityThread.java:8063)
+11-09 12:43:31.534  5151  5293 I SemanticLocation: 	at libcore.io.IoBridge.open(IoBridge.java:560)
+11-09 12:43:31.534  5151  5293 I SemanticLocation: 	... 14 more
+11-09 12:43:31.544  5280  5388 I ThreadNetworkModuleInit: Enabled component com.google.android.gms.threadnetwork.ui.ShareCredentialsActivity [CONTEXT service_id=305 ]
+11-09 12:43:31.545  5280  5388 I ThreadBrSynchronizer: Scheduled periodic Border Router sync task: PeriodicBrSync [CONTEXT service_id=305 ]
+11-09 12:43:31.549  5280  5715 I TrustedTime: Skip initializing when trusted time feature disabled. [CONTEXT service_id=326 ]
+11-09 12:43:31.554  5187  5187 I com.example.buddy: Perf: native scene 29 fps
+11-09 12:43:31.567  5280  5715 W ActiveUnlock: Tried to set empty triggers [CONTEXT service_id=327 ]
+11-09 12:43:31.567  5280  5715 W ChimeraUtils: Module com.google.android.gms.activeunlock_primary missing resource null(0)
+11-09 12:43:31.581  5280  5715 I SystemUpdate: [Control,UpdateReminderDialogControl] Received action: android.intent.action.BOOT_COMPLETED
+11-09 12:43:31.586  5280  5381 I GmsDebugLogger: [73] 1801
+11-09 12:43:31.597  5735  5735 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+11-09 12:43:31.598  5735  5735 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-09 12:43:31.601  5280  5377 E PhenotypeFlagCommitter: Retrieving snapshot for com.google.android.gms.playlog.uploader failed
+11-09 12:43:31.601  5280  5377 E PhenotypeFlagCommitter: java.util.concurrent.TimeoutException: Timed out waiting for Task
+11-09 12:43:31.601  5280  5377 E PhenotypeFlagCommitter: 	at cfsz.o(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+11-09 12:43:31.601  5280  5377 E PhenotypeFlagCommitter: 	at bwch.e(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-09 12:43:31.601  5280  5377 E PhenotypeFlagCommitter: 	at bwch.j(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-09 12:43:31.601  5280  5377 E PhenotypeFlagCommitter: 	at bwch.h(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-09 12:43:31.601  5280  5377 E PhenotypeFlagCommitter: 	at com.google.android.gms.clearcut.init.ClearcutInitChimeraIntentService.b(:com.google.android.gms@231818047@23.18.18 (190800-535401451):5)
+11-09 12:43:31.601  5280  5377 E PhenotypeFlagCommitter: 	at zdm.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-09 12:43:31.601  5280  5377 E PhenotypeFlagCommitter: 	at com.google.android.gms.clearcut.init.DefaultPriorityClearcutInitChimeraIntentService.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-09 12:43:31.601  5280  5377 E PhenotypeFlagCommitter: 	at com.google.android.chimera.IntentOperation.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-09 12:43:31.601  5280  5377 E PhenotypeFlagCommitter: 	at zhv.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+11-09 12:43:31.601  5280  5377 E PhenotypeFlagCommitter: 	at hjm.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3)
+11-09 12:43:31.601  5280  5377 E PhenotypeFlagCommitter: 	at hjl.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):11)
+11-09 12:43:31.601  5280  5377 E PhenotypeFlagCommitter: 	at dfhf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-09 12:43:31.601  5280  5377 E PhenotypeFlagCommitter: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-09 12:43:31.601  5280  5377 E PhenotypeFlagCommitter: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-09 12:43:31.601  5280  5377 E PhenotypeFlagCommitter: 	at java.lang.Thread.run(Thread.java:1012)
+11-09 12:43:31.605   399   570 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=5735
+11-09 12:43:31.606   399   570 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (637 us)
+11-09 12:43:31.607  5280  5381 W ZappDownloader: No successful module downloads for requested features [tflite_dynamite].
+11-09 12:43:31.617   135   135 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-09 12:43:31.618  5735  5736 I Gralloc4: mapper 4.x is not supported
+11-09 12:43:31.819     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+11-09 12:43:31.627  5280  5381 I GmsDebugLogger: [30] [TfliteDynamiteDynamite.integ:264010405100800]
+11-09 12:43:31.639  5280  5381 W ChimeraConfigService: Retry attempt was throttled. [CONTEXT service_id=264 ]
+11-09 12:43:31.639  5280  5381 I GmsDebugLogger: [83] 1 [tflite_dynamite]
+11-09 12:43:31.671  5187  5218 D EGL_emulation: app_time_stats: avg=34.90ms min=11.80ms max=177.37ms count=29
+11-09 12:43:31.706  5280  5381 I ChimeraConfigurator: Starting update, reason: 4 urgentFeatures: vision.ocr:-1
+11-09 12:43:31.710  5280  5737 I PeopleGalProvider: Gal directories started.
+11-09 12:43:31.711  5280  5737 I PeopleGalProvider: Method 1 completed.
+11-09 12:43:31.712  5280  5737 I PeopleGalProvider: Method 1 finished successfully.
+11-09 12:43:31.713  4160  4249 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of bdxy@9cafe86
+11-09 12:43:31.735  5280  5377 I Wear_Controller: Wearable module requires a companion app to be installed.
+11-09 12:43:31.739  5280  5377 I Wear_Controller: onStartup - Wear is not available on this device.
+11-09 12:43:31.742   335  5745 I resolv  : GetAddrInfoHandler::run: {101 786533 101 983141 10132 0}
+11-09 12:43:31.745   335  5747 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+11-09 12:43:31.745   335  5747 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x761cbc89d0a0
+11-09 12:43:31.746   335  5747 I resolv  : doQuery: rcode=0, ancount=8, return value=404
+11-09 12:43:31.749   335  5748 I resolv  : res_nmkquery: (QUERY, IN, A)
+11-09 12:43:31.749   335  5748 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x761cac899890
+11-09 12:43:31.749   335  5748 I resolv  : doQuery: rcode=0, ancount=8, return value=308
+11-09 12:43:31.773  5280  5342 I Icing   : updateResources: need to parse arkh{com.google.android.gms}
+11-09 12:43:31.779  5280  5381 I ChimeraConfigurator: Detected pending changes for urgent request: [vision.ocr]. Pending module sets: container:2318189190800+mlkit.ocr.common,tflite_dynamite:2640104055100800+tflite_dynamite,vision_ocr:23160
+11-09 12:43:31.780  5280  5354 D TrafficStats: tagSocket(132) with statsTag=0x30003000, statsUid=-1
+11-09 12:43:31.784   335  5757 I resolv  : GetAddrInfoHandler::run: {101 786533 101 983141 10132 0}
+11-09 12:43:31.786   335  5758 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+11-09 12:43:31.786   335  5758 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x761cbc8a0cc0
+11-09 12:43:31.786   335  5758 I resolv  : doQuery: rcode=0, ancount=8, return value=440
+11-09 12:43:31.789   335  5759 I resolv  : res_nmkquery: (QUERY, IN, A)
+11-09 12:43:31.790   335  5759 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x761cbc89b730
+11-09 12:43:31.790   335  5759 I resolv  : doQuery: rcode=0, ancount=8, return value=344
+11-09 12:43:31.791  5280  5395 D TrafficStats: tagSocket(128) with statsTag=0x30000408, statsUid=-1
+11-09 12:43:31.794  5280  5381 I GmsDebugLogger: [73] 1801
+11-09 12:43:31.796  5280  5381 W ZappDownloader: No successful module downloads for requested features [vision.ocr].
+11-09 12:43:31.797  5280  5381 I GmsDebugLogger: [30] [VisionOcrDynamite.integ:231602402100000],[TfliteDynamiteDynamite.integ:264010405100800],[MlkitOcrCommon.optional:231818100800]
+11-09 12:43:31.812  5280  5381 W ChimeraConfigService: Retry attempt was throttled. [CONTEXT service_id=264 ]
+11-09 12:43:31.813  5280  5381 I GmsDebugLogger: [83] 1 [vision.ocr]
+11-09 12:43:31.818  5280  5354 W ProviderHelper: Unknown dynamite feature providerinstaller.dynamite
+11-09 12:43:31.820  5151  5514 I Fitness : OnPackageChangedOperation got intent: Intent { act=android.intent.action.PACKAGE_CHANGED dat=package: flg=0x45000010 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.PersistentIntentO
+11-09 12:43:31.824  5280  5716 W Vision  : Request for optional module download of ocr failed. Request again.
+11-09 12:43:31.824  5280  5716 W Vision  : Would have logged:
+11-09 12:43:31.824  5280  5716 W Vision  : # dsae@44f943d5
+11-09 12:43:31.824  5280  5716 I Vision  : Schedule retrying download ocr at 101013 with backoff 10 seconds
+11-09 12:43:31.829  5280  5354 I DynamiteModule: Considering local module com.google.android.gms.providerinstaller.dynamite:1 and remote module com.google.android.gms.providerinstaller.dynamite:0
+11-09 12:43:31.829  5280  5354 I DynamiteModule: Selected local version of com.google.android.gms.providerinstaller.dynamite
+11-09 12:43:31.831  5280  5354 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+11-09 12:43:31.841   521   957 W JobScheduler: Job didn't exist in JobStore: da6eb5a #u0a153/7 com.google.android.contacts/com.google.android.apps.contacts.shortcut.ShortcutJobService
+11-09 12:43:31.842  5280  5354 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-09 12:43:31.842  5280  5354 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-09 12:43:31.843  5280  5395 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+11-09 12:43:31.844  5280  5395 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-09 12:43:31.844  5280  5395 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-09 12:43:31.851  5151  5514 W SystemServiceRegistry: No service published for: contexthub
+11-09 12:43:31.852  5280  5342 I Icing   : Indexing com.google.android.gms-apps from com.google.android.gms
+11-09 12:43:31.855  5280  5342 I Icing   : Indexing done com.google.android.gms-apps
+11-09 12:43:31.866  5151  5518 I Fitness : FitCleanupIntentOperation received Intent android.intent.action.PACKAGE_CHANGED [CONTEXT service_id=17 ]

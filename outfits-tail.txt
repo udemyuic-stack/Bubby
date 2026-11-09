@@ -1,0 +1,150 @@
+11-09 12:43:17.417   519   565 W BrightnessThrottler: DeviceConfig ThermalBrightnessThrottlingData is null
+11-09 12:43:17.445   519  2890 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+11-09 12:43:17.446   519  2890 D PackageManager: Clear ephemeral installer activity
+11-09 12:43:17.458   519  2535 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+11-09 12:43:17.459   519  2535 D PackageManager: Clear ephemeral installer activity
+11-09 12:43:17.476   334   364 I netd    : tetherGetStats() -> {[]} <0.85ms>
+11-09 12:43:17.515   334   364 I netd    : bandwidthSetGlobalAlert(2097152) <0.11ms>
+11-09 12:43:17.519   334   364 I netd    : bandwidthRemoveInterfaceQuota(eth0) <0.38ms>
+11-09 12:43:17.520   334   364 I netd    : bandwidthSetInterfaceQuota(eth0, 9223372036854775807) <0.27ms>
+11-09 12:43:17.537  1423  3156 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-09 12:43:17.539  1423  3156 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-09 12:43:17.543  1423  3156 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-09 12:43:17.546  1423  3156 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-09 12:43:17.547  1423  3156 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-09 12:43:17.550  1423  3156 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-09 12:43:17.551  1423  3156 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-09 12:43:17.559  1423  3156 I NamespaceManager: Package 1 name not found! Using module version.
+11-09 12:43:17.561  1471  1478 W gle.android.gms: Cleared Reference was only reachable from finalizer (only reported once)
+11-09 12:43:17.564  1471  1478 I gle.android.gms: Background concurrent copying GC freed 208798(10221KB) AllocSpace objects, 25(2396KB) LOS objects, 49% free, 12MB/25MB, paused 59us,20us total 831.347ms
+11-09 12:43:17.565   519  5148 I ConfigUpdateInstallReceiver: Couldn't find current metadata, assuming first update
+11-09 12:43:17.565   519  5148 I ConfigUpdateInstallReceiver: Failed to read current content, assuming first update!
+11-09 12:43:17.565   519  5148 I ConfigUpdateInstallReceiver: Found new update, installing...
+11-09 12:43:17.567  4969  4993 D EGL_emulation: app_time_stats: avg=64.03ms min=38.29ms max=145.21ms count=16
+11-09 12:43:17.585   519   541 W ActivityTaskManager: Launch timeout has expired, giving up wake lock!
+11-09 12:43:17.589   519  5148 I ConfigUpdateInstallReceiver: Installation successful
+11-09 12:43:17.589  2055  2118 V DownloadManager: Deleting /data/data/com.android.providers.downloads/cache/model.smfb.metadata via provider delete
+11-09 12:43:17.593  1643  1659 W ModernMediaScanner: Failed to visit /data/data/com.android.providers.downloads/cache/model.smfb.metadata: java.nio.file.NoSuchFileException: /data/data/com.android.providers.downloads/cache/model.smfb.metada
+11-09 12:43:17.594  1643  1659 I MediaProvider: Scanned internal due to REASON_DEMAND, found 0 items in 2ms, 0 inserts 0 updates 0 deletes
+11-09 12:43:17.601  2055  2118 V DownloadManager: Deleting /data/data/com.android.providers.downloads/cache/model.smfb via provider delete
+11-09 12:43:17.612  1643  1659 W ModernMediaScanner: Failed to visit /data/data/com.android.providers.downloads/cache/model.smfb: java.nio.file.NoSuchFileException: /data/data/com.android.providers.downloads/cache/model.smfb
+11-09 12:43:17.627  1423  1500 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-09 12:43:17.665   334   364 I netd    : bandwidthRemoveInterfaceQuota(eth0) <0.56ms>
+11-09 12:43:17.669   334   364 I netd    : bandwidthSetInterfaceQuota(eth0, 9223372036854775807) <0.41ms>
+11-09 12:43:17.687   519   547 I PackageWatchdog: Saving observer state to file
+11-09 12:43:17.690  1643  1659 I MediaProvider: Scanned internal due to REASON_DEMAND, found 0 items in 79ms, 0 inserts 0 updates 0 deletes
+11-09 12:43:17.707   519   547 I PackageWatchdog: Syncing state, reason: observing new packages
+11-09 12:43:17.731  1423  3159 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-09 12:43:17.732  1423  3159 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-09 12:43:17.739  1423  3159 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-09 12:43:17.743  1423  3159 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-09 12:43:17.744  1423  3159 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-09 12:43:17.746  1423  3159 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-09 12:43:17.747  1423  3159 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-09 12:43:17.749  1423  3159 I NamespaceManager: Package 1 name not found! Using module version.
+11-09 12:43:17.765  1423  1500 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-09 12:43:17.801   519   519 I PackageWatchdog: Syncing health check requests for packages: {}
+11-09 12:43:17.801   519   519 I ExplicitHealthCheckController: Service not ready to get health check supported packages. Binding...
+11-09 12:43:17.803   519   547 D PackageWatchdog: rescue-party-observer added the following packages to monitor [android]
+11-09 12:43:17.820   519   547 I PackageWatchdog: Syncing state, reason: updated observers
+11-09 12:43:17.830  5145  5145 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-09 12:43:17.837  5145  5145 I AndroidRuntime: Using default boot image
+11-09 12:43:17.844  5145  5145 I AndroidRuntime: Leaving lock profiling enabled
+11-09 12:43:17.848   519   519 I ExplicitHealthCheckController: Explicit health check service is bound
+11-09 12:43:17.848   519   519 I ExplicitHealthCheckController: Explicit health check service is connected ComponentInfo{com.google.android.ext.services/android.ext.services.watchdog.ExplicitHealthCheckServiceImpl}
+11-09 12:43:17.855   519   519 I ExplicitHealthCheckController: Service initialized, syncing requests
+11-09 12:43:17.857  5145  5145 I app_process: Core platform API reporting enabled, enforcing=false
+11-09 12:43:17.859  5145  5145 I app_process: Using CollectorTypeCC GC.
+11-09 12:43:17.870  1423  1500 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-09 12:43:17.872   519   832 D NetworkStatsObservers: Unregistering RequestInfo from pid/uid:519/1000(android) for DataUsageRequest [ requestId=10, networkTemplate=NetworkTemplate: matchRule=MOBILE, matchSubscriberIds=[310260...], matchWi
+11-09 12:43:17.872  2907  3508 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+11-09 12:43:17.872  2907  3508 W libc    : Access denied finding property "service.adb.tls.port"
+11-09 12:43:17.871  2907  2907 W binder:2907_4: type=1400 audit(0.0:35): avc:  denied  { read } for  name="u:object_r:system_adbd_prop:s0" dev="tmpfs" ino=292 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:system_adbd_prop:s0 tcl
+11-09 12:43:17.886   519   519 I PackageWatchdog: Syncing health check requests for packages: {}
+11-09 12:43:17.886   519   519 D ExplicitHealthCheckController: Getting health check supported packages
+11-09 12:43:17.895   519   547 I PackageWatchdog: Saving observer state to file
+11-09 12:43:17.871  2907  2907 W binder:2907_4: type=1400 audit(0.0:36): avc:  denied  { read } for  name="u:object_r:adbd_prop:s0" dev="tmpfs" ino=60 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:adbd_prop:s0 tclass=file permis
+11-09 12:43:17.924   519   913 D CompatibilityChangeReporter: Compat change id reported: 197654537; UID 10192; state: ENABLED
+11-09 12:43:17.928  1423  3159 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-09 12:43:17.926   519   913 I ExplicitHealthCheckController: Explicit health check supported packages [PackageConfig{com.google.android.networkstack, 86400000}]
+11-09 12:43:17.934   519   753 D NetworkStatsObservers: Registering observer for RequestInfo from pid/uid:519/1000(android) for DataUsageRequest [ requestId=11, networkTemplate=NetworkTemplate: matchRule=MOBILE, matchSubscriberIds=[310260..
+11-09 12:43:17.954  1423  3159 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-09 12:43:17.976  1423  3159 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-09 12:43:17.981  1423  3159 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-09 12:43:17.983  1423  3159 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-09 12:43:17.984   519   529 I system_server: Background concurrent copying GC freed 719669(27MB) AllocSpace objects, 17(400KB) LOS objects, 47% free, 26MB/50MB, paused 1.789ms,64us total 1.269s
+11-09 12:43:17.990   519   530 W JavaBinder: BinderProxy is being destroyed but the application did not call unlinkToDeath to unlink all of its death recipients beforehand.  Releasing leaked death recipient: com.android.server.wm.ActivityRe
+11-09 12:43:17.992   519   530 I BpBinder: onLastStrongRef automatically unlinking death recipients: 
+11-09 12:43:18.012   334   364 I netd    : tetherGetStats() -> {[]} <0.48ms>
+11-09 12:43:18.025  1423  3159 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-09 12:43:18.035  1423  3159 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-09 12:43:18.055  1423  3159 I NamespaceManager: Package 1 name not found! Using module version.
+11-09 12:43:18.057   519   913 D PackageWatchdog: Received supported packages [PackageConfig{com.google.android.networkstack, 86400000}]
+11-09 12:43:18.059   519   913 D ExplicitHealthCheckController: Getting health check requested packages
+11-09 12:43:18.060   519   913 I ExplicitHealthCheckController: Explicit health check requested packages []
+11-09 12:43:18.060   519   913 I ExplicitHealthCheckController: No more health check requests, unbinding...
+11-09 12:43:18.063   519   913 I ExplicitHealthCheckController: Explicit health check service is unbound
+11-09 12:43:18.086   519   530 W JavaBinder: BinderProxy is being destroyed but the application did not call unlinkToDeath to unlink all of its death recipients beforehand.  Releasing leaked death recipient: com.android.server.am.ActivityMa
+11-09 12:43:18.086   519   530 I BpBinder: onLastStrongRef automatically unlinking death recipients: 
+11-09 12:43:18.100   519   519 D BluetoothDeviceConfigChangeTracker: shouldRestartWhenPropertiesUpdated: INIT_gd_hal_snoop_logger_filtering='true',scan_timeout_millis='300000',location_denylist_name='',audio_policy_hf_enabled='true',INIT_gd
+11-09 12:43:18.100   519   519 D BluetoothDeviceConfigChangeTracker: Property INIT_gd_hal_snoop_logger_filtering changed from null -> true
+11-09 12:43:18.100   519   519 D BluetoothDeviceConfigChangeTracker: Property INIT_gd_hal_snoop_logger_socket changed from null -> true
+11-09 12:43:18.100   519   519 D BluetoothDeviceConfigListener: Properties changed, enqueuing restart
+11-09 12:43:18.101   519   613 I RescueParty: Starting to observe: [android, com.google.android.bluetooth], updated namespace: bluetooth
+11-09 12:43:18.101   519   547 I PackageWatchdog: Syncing state, reason: observing new packages
+11-09 12:43:18.101   519   519 I PackageWatchdog: Syncing health check requests for packages: {}
+11-09 12:43:18.101   519   519 I ExplicitHealthCheckController: Service not ready to get health check supported packages. Binding...
+11-09 12:43:18.102   519   547 D PackageWatchdog: rescue-party-observer added the following packages to monitor [android, com.google.android.bluetooth]
+11-09 12:43:18.102   519   547 I PackageWatchdog: Syncing state, reason: updated observers
+11-09 12:43:18.102   519   547 I PackageWatchdog: Saving observer state to file
+11-09 12:43:18.103   519   519 I ExplicitHealthCheckController: Explicit health check service is bound
+11-09 12:43:18.118  5145  5145 D nativeloader: InitDefaultPublicLibraries for_preload=1: libandroid.so:libaaudio.so:libamidi.so:libbinder_ndk.so:libc.so:libcamera2ndk.so:libdl.so:libEGL.so:libGLESv1_CM.so:libGLESv2.so:libGLESv3.so:libicu.so
+11-09 12:43:18.138  4187  5078 E BugleRcsEngine: [109] brfg.a: DroidGuardLogger: Could not create DroidGuard token creation event
+11-09 12:43:18.143  4187  5078 I BugleRcsEngine: [109] brfq.d: (PEv2-SM-Bugle-201673255): RequestWithImsiState: event Send config request [a27fc3a9-8fc2-4df8-af3b-4effcf34dccc]
+11-09 12:43:18.143  4187  5078 I BugleRcsEngine: [109] brfq.d: (PEv2-SM-Bugle-201673255): InProgressState: event Send config request [a27fc3a9-8fc2-4df8-af3b-4effcf34dccc]
+11-09 12:43:18.144  4187  5078 W BugleRcsEngine: [109] bpxc.w: Unable to send diagnostic log
+11-09 12:43:18.152  4187  5152 W BugleRcsEngine: [111] bpxc.w: Unable to send diagnostic log
+11-09 12:43:18.167   519   519 I PackageWatchdog: Syncing health check requests for packages: {com.google.android.bluetooth}
+11-09 12:43:18.168   519   519 I ExplicitHealthCheckController: Service not ready to get health check supported packages. Binding...
+11-09 12:43:18.168   519   519 I ExplicitHealthCheckController: Not binding to service, service already connecting
+11-09 12:43:18.168   519   519 I ExplicitHealthCheckController: Explicit health check service is connected ComponentInfo{com.google.android.ext.services/android.ext.services.watchdog.ExplicitHealthCheckServiceImpl}
+11-09 12:43:18.168   519   519 I ExplicitHealthCheckController: Service initialized, syncing requests
+11-09 12:43:18.170   519   519 I PackageWatchdog: Syncing health check requests for packages: {com.google.android.bluetooth}
+11-09 12:43:18.170   519   519 D ExplicitHealthCheckController: Getting health check supported packages
+11-09 12:43:18.179   334  5153 I resolv  : GetAddrInfoHandler::run: {100 786532 100 983140 10130 0}
+11-09 12:43:18.184  1423  1431 I .gms.persistent: Background young concurrent copying GC freed 313952(13MB) AllocSpace objects, 14(1416KB) LOS objects, 30% free, 29MB/42MB, paused 24us,21us total 234.630ms
+11-09 12:43:18.185   519  2865 I ExplicitHealthCheckController: Explicit health check supported packages [PackageConfig{com.google.android.networkstack, 86400000}]
+11-09 12:43:18.186  5145  5145 D app_process: Time zone APEX ICU file found: /apex/com.android.tzdata/etc/icu/icu_tzdata.dat
+11-09 12:43:18.186  5145  5145 D app_process: I18n APEX ICU file found: /apex/com.android.i18n/etc/icu/icudt72l.dat
+11-09 12:43:18.190   519  2865 D PackageWatchdog: Received supported packages [PackageConfig{com.google.android.networkstack, 86400000}]
+11-09 12:43:18.191   519  2865 I PackageWatchdog: Updated health check state for package com.google.android.bluetooth: INACTIVE -> PASSED
+11-09 12:43:18.192   519  2865 I PackageWatchdog: Syncing state, reason: updated health check supported packages [PackageConfig{com.google.android.networkstack, 86400000}]
+11-09 12:43:18.206   519  2865 D ExplicitHealthCheckController: Getting health check requested packages
+11-09 12:43:18.206   519   547 I PackageWatchdog: Saving observer state to file
+11-09 12:43:18.209   519   594 I ExplicitHealthCheckController: Explicit health check requested packages []
+11-09 12:43:18.209   519   519 I PackageWatchdog: Syncing health check requests for packages: {}
+11-09 12:43:18.214  5145  5145 W app_process: Unexpected CPU variant for x86: x86_64.
+11-09 12:43:18.214  5145  5145 W app_process: Known variants: atom, sandybridge, silvermont, goldmont, goldmont-plus, tremont, kabylake, default
+11-09 12:43:18.216   519   594 I ExplicitHealthCheckController: No more health check requests, unbinding...
+11-09 12:43:18.217   334  5155 I resolv  : res_nmkquery: (QUERY, IN, A)
+11-09 12:43:18.218   334  5154 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+11-09 12:43:18.219   519   594 I ExplicitHealthCheckController: Explicit health check service is unbound
+11-09 12:43:18.222   519   519 I ExplicitHealthCheckController: Service not ready to get health check supported packages. Binding...
+11-09 12:43:18.233   519   519 I ExplicitHealthCheckController: Explicit health check service is bound
+11-09 12:43:18.237  5145  5145 W app_process: ClassLoaderContext shared library size mismatch. Expected=2, found=0 (PCL[]{PCL[/system/framework/android.test.base.jar*836642756]#PCL[/system/framework/android.test.mock.jar*3186112116]} | PCL[
+11-09 12:43:18.249  5145  5145 W app_process: ClassLoaderContext classpath size mismatch. expected=0, found=1 (PCL[]{PCL[/system/framework/android.test.runner.jar*4168958247]{PCL[/system/framework/android.test.base.jar*836642756]#PCL[/syste
+11-09 12:43:18.255   519   519 I ExplicitHealthCheckController: Explicit health check service is connected ComponentInfo{com.google.android.ext.services/android.ext.services.watchdog.ExplicitHealthCheckServiceImpl}
+11-09 12:43:18.256   519   519 I ExplicitHealthCheckController: Service initialized, syncing requests
+11-09 12:43:18.256   519   519 I PackageWatchdog: Syncing health check requests for packages: {}
+11-09 12:43:18.256   519   519 D ExplicitHealthCheckController: Getting health check supported packages
+11-09 12:43:18.259   519  2811 I ExplicitHealthCheckController: Explicit health check supported packages [PackageConfig{com.google.android.networkstack, 86400000}]
+11-09 12:43:18.260   519  2811 D PackageWatchdog: Received supported packages [PackageConfig{com.google.android.networkstack, 86400000}]
+11-09 12:43:18.260   519  2811 D ExplicitHealthCheckController: Getting health check requested packages
+11-09 12:43:18.260   334  5155 I resolv  : res_nsend: used send_dg 64 terrno: 0
+11-09 12:43:18.261   334  5155 I resolv  : doQuery: rcode=0, ancount=1, return value=64
+11-09 12:43:18.262   334  5154 I resolv  : res_nsend: used send_dg 76 terrno: 0
+11-09 12:43:18.262   334  5154 I resolv  : doQuery: rcode=0, ancount=1, return value=76
+11-09 12:43:18.266  4187  5152 D TrafficStats: tagSocket(122) with statsTag=0x105b, statsUid=-1
+11-09 12:43:18.272   519  2811 I ExplicitHealthCheckController: Explicit health check requested packages []
+11-09 12:43:18.287   519  2811 I ExplicitHealthCheckController: No more health check requests, unbinding...
+11-09 12:43:18.293   519  2811 I ExplicitHealthCheckController: Explicit health check service is unbound

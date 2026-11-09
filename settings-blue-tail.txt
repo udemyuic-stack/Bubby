@@ -1,0 +1,150 @@
+11-09 12:45:48.306   522  1901 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.chimera.PersistentIntentOperationService in 30989ms for start-requested
+11-09 12:45:48.306   522  1901 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/com.google.android.location.reporting.service.ReportingAndroidService in 40989ms for connection
+11-09 12:45:48.307   522  1901 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.gcm.GcmService in 50989ms for start-requested
+11-09 12:45:48.307   522  1901 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.deviceconnection.service.DeviceConnectionWatcherService in 60989ms for start-requested
+11-09 12:45:48.307   522  1901 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/com.google.android.location.fused.FusedLocationService in 70989ms for connection
+11-09 12:45:48.307   522  1901 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.clearcut.debug.ClearcutDebugDumpService in 80989ms for start-requested
+11-09 12:45:48.307   522  1901 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/com.google.android.contextmanager.service.ContextManagerService in 90989ms for start-requested
+11-09 12:45:48.307   522  1901 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/com.google.android.location.network.NetworkLocationService in 100989ms for connection
+11-09 12:45:48.307   522  1901 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.gcm.nts.SchedulerService in 110989ms for start-requested
+11-09 12:45:48.307   522  1901 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.chimera.PersistentBoundBrokerService in 120989ms for connection
+11-09 12:45:48.307   522  1901 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.nearby.messages.service.NearbyMessagesService in 130989ms for start-requested
+11-09 12:45:48.307   522  1901 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/com.google.android.location.internal.server.GoogleLocationService in 140988ms for start-requested
+11-09 12:45:48.307   522  1901 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.lockbox.service.LockboxBrokerService in 150988ms for connection
+11-09 12:45:48.307   522  1901 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.auth.setup.devicesignals.LockScreenService in 160988ms for start-requested
+11-09 12:45:48.307   522  1901 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.nearby.exposurenotification.service.ExposureMatchingService in 170988ms for start-requested
+11-09 12:45:48.307   522  1901 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.chimera.PersistentApiService in 180988ms for connection
+11-09 12:45:48.307   522  1901 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.nearby.sharing.ReceiveSurfaceService in 190988ms for start-requested
+11-09 12:45:48.307   522  1901 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/com.google.android.location.internal.server.HardwareArProviderService in 200988ms for connection
+11-09 12:45:48.307   522  1901 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.location.geocode.GeocodeService in 210988ms for connection
+11-09 12:45:48.307   522  1901 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.nearby.exposurenotification.service.ExposureNotificationInternalService in 220988ms for start-requested
+11-09 12:45:48.307   522  1901 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.location.persistent.LocationPersistentService in 230988ms for start-requested
+11-09 12:45:48.308   522  1901 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.thunderbird.EmergencyPersistentService in 240988ms for start-requested
+11-09 12:45:48.308   522  1901 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.chimera.PersistentApiServiceNoInstantApps in 250988ms for connection
+11-09 12:45:48.308   522  1901 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.geotimezone.GeoTimeZoneService in 260988ms for connection
+11-09 12:45:48.309   522   550 D CompatibilityChangeReporter: Compat change id reported: 135634846; UID 10131; state: DISABLED
+11-09 12:45:48.316   522   552 D CompatibilityChangeReporter: Compat change id reported: 143937733; UID 10131; state: ENABLED
+11-09 12:45:48.522     0     0 I binder  : undelivered transaction 442386, process died.
+11-09 12:45:48.524     0     0 I binder  : undelivered transaction 442410, process died.
+11-09 12:45:48.526     0     0 I binder  : undelivered transaction 442429, process died.
+11-09 12:45:48.527     0     0 I binder  : undelivered transaction 442430, process died.
+11-09 12:45:48.324   522  1901 I ActivityManager: Process com.google.android.gms (pid 1479) has died: fg  BFGS
+11-09 12:45:48.326   522  1901 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.chimera.GmsApiService in 270970ms for connection
+11-09 12:45:48.327   522  1901 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.chimera.container.ExternalFileApkService in 280968ms for start-requested
+11-09 12:45:48.330   522  1901 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.chimera.GmsIntentOperationService in 290966ms for start-requested
+11-09 12:45:48.330   522  1901 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.icing.service.IndexService in 300965ms for connection
+11-09 12:45:48.330   522  1901 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.wallet.service.PaymentService in 310965ms for connection
+11-09 12:45:48.331   522  1901 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.chimera.GmsBoundBrokerService in 320965ms for connection
+11-09 12:45:48.331   522  1901 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.icing.service.IndexWorkerService in 330965ms for start-requested
+11-09 12:45:48.335   338   338 D Zygote  : Forked child process 5191
+11-09 12:45:48.335  1609  1609 I ActivityThread: Removing dead content provider:android.content.ContentProviderProxy@d2bbae8
+11-09 12:45:48.336  1028  1388 D ActivityAttributionService: notifyActivityAttributionInfo UID=1002 packageName=com.google.android.bluetooth deviceAddress=no_active_device_address
+11-09 12:45:48.337  1028  1388 I bt_btif : packages/modules/Bluetooth/system/btif/src/bluetooth.cc:829 get_profile_interface: get_profile_interface: id = activity_attribution
+11-09 12:45:48.337  1028  1322 D BtGatt.ScanManager: handling stopping scan  [ScanClient scanModeApp -1 scanModeUsed -1 [appScanStats com.google.uid.shared:10131]]
+11-09 12:45:48.337  1028  1322 D BtGatt.ScanManager: stop gattClientScanNative
+11-09 12:45:48.337  1028  1322 I bt_stack: [INFO:le_scanning_manager.cc(168)] Scan in shim layer stopped
+11-09 12:45:48.337  1028  1218 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_scanning_manager.cc:588 stop_scan: Scanning already stopped, return!
+11-09 12:45:48.337  1028  1322 W bt_shim_scanner: packages/modules/Bluetooth/system/main/shim/le_scanning_manager.cc:190 Scan: Invalid state: start:0, current scan state: 0
+11-09 12:45:48.337  1028  1322 W BtGatt.ScanManager: There is no scan radio to stop
+11-09 12:45:48.337  1028  1322 D BtGatt.ScanManager: app died, unregister scanner - 2
+11-09 12:45:48.339   338   338 I Zygote  : Process 1479 exited due to signal 9 (Killed)
+11-09 12:45:48.339  1028  1322 D BtGatt.GattService: unregisterScanner() - scannerId=2
+11-09 12:45:48.340  1028  1322 I bt_stack: [INFO:le_scanning_manager.cc(162)] Unregister in shim layer, scanner_id:2
+11-09 12:45:48.340   522   552 I ActivityManager: Start proc 5191:com.google.android.gms.persistent/u0a131 for service {com.google.android.gms/com.google.android.gms.chimera.PersistentBoundBrokerService}
+11-09 12:45:48.341   522   553 I libprocessgroup: Successfully killed process cgroup uid 10131 pid 1479 in 0ms
+11-09 12:45:48.352   522  2181 W JobScheduler: Job didn't exist in JobStore: 99abe92 #u0a154/7 com.google.android.contacts/com.google.android.apps.contacts.shortcut.ShortcutJobService
+11-09 12:45:48.356  5191  5191 I .gms.persistent: Using CollectorTypeCC GC.
+11-09 12:45:48.356  5191  5191 W .gms.persistent: Unexpected CPU variant for x86: x86_64.
+11-09 12:45:48.356  5191  5191 W .gms.persistent: Known variants: atom, sandybridge, silvermont, goldmont, goldmont-plus, tremont, kabylake, default
+11-09 12:45:48.358  5191  5191 E .gms.persistent: Not starting debugger since process cannot load the jdwp agent.
+11-09 12:45:48.366   522  2181 D CompatibilityChangeReporter: Compat change id reported: 168419799; UID 10131; state: DISABLED
+11-09 12:45:48.367   522  2181 D CompatibilityChangeReporter: Compat change id reported: 273564678; UID 10131; state: DISABLED
+11-09 12:45:48.393  5191  5191 D CompatibilityChangeReporter: Compat change id reported: 171979766; UID 10131; state: ENABLED
+11-09 12:45:48.394  5191  5191 D CompatibilityChangeReporter: Compat change id reported: 242716250; UID 10131; state: DISABLED
+11-09 12:45:48.395   522  2181 D CompatibilityChangeReporter: Compat change id reported: 170503758; UID 10131; state: ENABLED
+11-09 12:45:48.406  5191  5191 D nativeloader: Configuring clns-6 for other apk /system/framework/org.apache.http.legacy.jar. target_sdk_version=33, uses_libraries=ALL, library_path=/product/priv-app/PrebuiltGmsCore/lib/x86_64:/product/priv
+11-09 12:45:48.408  5191  5191 D nativeloader: Configuring clns-7 for other apk /system/framework/com.android.media.remotedisplay.jar. target_sdk_version=33, uses_libraries=ALL, library_path=/product/priv-app/PrebuiltGmsCore/lib/x86_64:/pro
+11-09 12:45:48.409  5191  5191 D nativeloader: Configuring clns-8 for other apk /system/framework/com.android.location.provider.jar. target_sdk_version=33, uses_libraries=ALL, library_path=/product/priv-app/PrebuiltGmsCore/lib/x86_64:/produ
+11-09 12:45:48.410  5191  5191 D ApplicationLoaders: Returning zygote-cached class loader: /system_ext/framework/androidx.window.extensions.jar
+11-09 12:45:48.410  5191  5191 D ApplicationLoaders: Returning zygote-cached class loader: /system_ext/framework/androidx.window.sidecar.jar
+11-09 12:45:48.432   522   551 W ActivityManager: Rescheduling restart of crashed service com.google.android.gms/.chimera.GmsApiService in 894ms for other
+11-09 12:45:48.434   522   551 W ActivityManager: Rescheduling restart of crashed service com.google.android.gms/.chimera.container.ExternalFileApkService in 10894ms for other
+11-09 12:45:48.434   522   551 W ActivityManager: Rescheduling restart of crashed service com.google.android.gms/.chimera.GmsIntentOperationService in 20894ms for other
+11-09 12:45:48.434   522   551 W ActivityManager: Rescheduling restart of crashed service com.google.android.gms/.icing.service.IndexService in 30894ms for other
+11-09 12:45:48.435   522   551 W ActivityManager: Rescheduling restart of crashed service com.google.android.gms/.wallet.service.PaymentService in 40894ms for other
+11-09 12:45:48.435   522   551 W ActivityManager: Rescheduling restart of crashed service com.google.android.gms/.chimera.GmsBoundBrokerService in 50894ms for other
+11-09 12:45:48.435   522   551 W ActivityManager: Rescheduling restart of crashed service com.google.android.gms/.icing.service.IndexWorkerService in 60894ms for other
+11-09 12:45:48.469   522   531 I system_server: Background young concurrent copying GC freed 670052(23MB) AllocSpace objects, 14(332KB) LOS objects, 46% free, 28MB/52MB, paused 56us,58us total 152.881ms
+11-09 12:45:48.474  5191  5191 D nativeloader: InitLlndkLibrariesProduct: libEGL.so:libGLESv1_CM.so:libGLESv2.so:libGLESv3.so:libRS.so:libandroid_net.so:libbinder_ndk.so:libc.so:libcgrouprc.so:libclang_rt.asan-x86_64-android.so:libcom.andro
+11-09 12:45:48.474  5191  5191 D nativeloader: Configuring product-clns-9 for unbundled product apk /product/priv-app/PrebuiltGmsCore/PrebuiltGmsCore.apk. target_sdk_version=33, uses_libraries=, library_path=/product/priv-app/PrebuiltGmsCor
+11-09 12:45:48.474  5191  5191 D nativeloader: InitVndkspLibrariesProduct: android.hardware.common-V2-ndk.so:android.hardware.common.fmq-V1-ndk.so:android.hardware.graphics.allocator-V2-ndk.so:android.hardware.graphics.common-V4-ndk.so:andr
+11-09 12:45:48.479  5191  5191 V GraphicsEnvironment: Currently set values for:
+11-09 12:45:48.479  5191  5191 V GraphicsEnvironment:   angle_gl_driver_selection_pkgs=[]
+11-09 12:45:48.479  5191  5191 V GraphicsEnvironment:   angle_gl_driver_selection_values=[]
+11-09 12:45:48.479  5191  5191 V GraphicsEnvironment: ANGLE GameManagerService for com.google.android.gms: false
+11-09 12:45:48.479  5191  5191 V GraphicsEnvironment: com.google.android.gms is not listed in per-application setting
+11-09 12:45:48.479  5191  5191 V GraphicsEnvironment: Neither updatable production driver nor prerelease driver is supported.
+11-09 12:45:48.518  5191  5191 I Safeboot: Checking safeboot...
+11-09 12:45:48.535  5191  5191 D CompatibilityChangeReporter: Compat change id reported: 160794467; UID 10131; state: ENABLED
+11-09 12:45:48.556  5191  5191 W ProviderHelper: Unknown dynamite feature providerinstaller.dynamite
+11-09 12:45:48.563  5191  5191 I DynamiteModule: Considering local module com.google.android.gms.providerinstaller.dynamite:1 and remote module com.google.android.gms.providerinstaller.dynamite:0
+11-09 12:45:48.563  5191  5191 I DynamiteModule: Selected local version of com.google.android.gms.providerinstaller.dynamite
+11-09 12:45:48.566  5191  5191 V NativeCrypto: Registering com/google/android/gms/org/conscrypt/NativeCrypto's 295 native methods...
+11-09 12:45:48.588  5191  5219 I DynamiteModule: Considering local module com.google.android.gms.googlecertificates:7 and remote module com.google.android.gms.googlecertificates:7
+11-09 12:45:48.589  5191  5219 I DynamiteModule: Selected local version of com.google.android.gms.googlecertificates
+11-09 12:45:48.602  5191  5191 I ProviderInstaller: Installed default security provider GmsCore_OpenSSL
+11-09 12:45:48.604  5210  5210 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+11-09 12:45:48.606  5210  5210 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-09 12:45:48.615   522   550 E PackageManager: Optimistic bind failed.
+11-09 12:45:48.615   522   550 E PackageManager: java.util.concurrent.TimeoutException: [Optimistic Bind] Didn't bind to resolver in time!
+11-09 12:45:48.615   522   550 E PackageManager: 	at com.android.server.pm.InstantAppResolverConnection.waitForBindLocked(InstantAppResolverConnection.java:160)
+11-09 12:45:48.615   522   550 E PackageManager: 	at com.android.server.pm.InstantAppResolverConnection.bind(InstantAppResolverConnection.java:225)
+11-09 12:45:48.615   522   550 E PackageManager: 	at com.android.server.pm.InstantAppResolverConnection.lambda$optimisticBind$0(InstantAppResolverConnection.java:255)
+11-09 12:45:48.615   522   550 E PackageManager: 	at com.android.server.pm.InstantAppResolverConnection.$r8$lambda$kGQeuNdbvFwGn-CghEuSr5znX00(InstantAppResolverConnection.java:0)
+11-09 12:45:48.615   522   550 E PackageManager: 	at com.android.server.pm.InstantAppResolverConnection$$ExternalSyntheticLambda0.run(R8$$SyntheticClass:0)
+11-09 12:45:48.615   522   550 E PackageManager: 	at android.os.Handler.handleCallback(Handler.java:958)
+11-09 12:45:48.615   522   550 E PackageManager: 	at android.os.Handler.dispatchMessage(Handler.java:99)
+11-09 12:45:48.615   522   550 E PackageManager: 	at android.os.Looper.loopOnce(Looper.java:205)
+11-09 12:45:48.615   522   550 E PackageManager: 	at android.os.Looper.loop(Looper.java:294)
+11-09 12:45:48.615   522   550 E PackageManager: 	at android.os.HandlerThread.run(HandlerThread.java:67)
+11-09 12:45:48.617   403   571 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=5210
+11-09 12:45:48.618   403   571 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (487 us)
+11-09 12:45:48.652  5191  5207 I SnapshotHandler: Unable to retrieve flag snapshot for com.google.android.gms.phenotype, using defaults.
+11-09 12:45:48.655  5191  5228 I GmsApplication: Registering the BackgroundBroadcastReceiverSupport receiver.
+11-09 12:45:48.681  5191  5228 I GmsReceiverSupport: Registered Receiver for 15+1 IntentFilters
+11-09 12:45:48.681  5191  5228 I Watchcat: Started
+11-09 12:45:48.683  5191  5228 I GMS_MM_Logger: Start time: 50248
+11-09 12:45:48.683  5191  5228 I GMS_MM_Logger: Started.
+11-09 12:45:48.688   135   135 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-09 12:45:48.688  5210  5221 I Gralloc4: mapper 4.x is not supported
+11-09 12:45:48.866     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+11-09 12:45:48.692  5191  5191 D CompatibilityChangeReporter: Compat change id reported: 183155436; UID 10131; state: ENABLED
+11-09 12:45:48.692  5191  5191 I GmsApplication: [gms_startup_benchmark] Static start time (ms): 103594, Startup latency (ms): 188, Is system user: true
+11-09 12:45:48.692  5191  5191 I cuir    : Primes not initialized, returning default (no-op) Primes instance which will ignore all calls. Please call Primes.initialize(...) before using any Primes API.
+11-09 12:45:48.693   522  2181 I ActivityManager: Flag disabled. Ignoring finishAttachApplication from uid: 10131. pid: 5191
+11-09 12:45:48.786  5191  5240 I ProcessStableCheckInFix: Running fixer!
+11-09 12:45:48.788  5191  5240 I SnapshotHandler: Unable to retrieve flag snapshot for com.google.android.gms.test_process_stable, using defaults.
+11-09 12:45:48.818  5191  5191 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.auth.account.data.service.START pkg=com.google.android.gms }
+11-09 12:45:48.818  5191  5191 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.auth.account.data.service.START pkg=com.google.android.gms }
+11-09 12:45:48.828  5191  5191 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.gmscompliance.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentBoundBrokerService }
+11-09 12:45:48.828  5191  5191 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.gmscompliance.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentBoundBrokerService }
+11-09 12:45:48.835  5191  5191 D BoundBrokerSvc: onBind: Intent { act=android.intent.action.RESOLVE_INSTANT_APP_PACKAGE cmp=com.google.android.gms/.chimera.PersistentBoundBrokerService }
+11-09 12:45:48.835  5191  5191 D BoundBrokerSvc: Loading bound service for intent: Intent { act=android.intent.action.RESOLVE_INSTANT_APP_PACKAGE cmp=com.google.android.gms/.chimera.PersistentBoundBrokerService }
+11-09 12:45:48.840  5191  5191 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.semanticlocation.service.START_ODLH pkg=com.google.android.gms }
+11-09 12:45:48.840  5191  5191 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.semanticlocation.service.START_ODLH pkg=com.google.android.gms }
+11-09 12:45:48.840   522   522 D PackageManager: Connected to instant app resolver
+11-09 12:45:48.848  5191  5191 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.clearcut.bootcount.service.START pkg=com.google.android.gms }
+11-09 12:45:48.848  5191  5191 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.clearcut.bootcount.service.START pkg=com.google.android.gms }
+11-09 12:45:48.856  5191  5191 D BoundBrokerSvc: onBind: Intent { act=android.net.action.RECOMMEND_NETWORKS cmp=com.google.android.gms/.chimera.PersistentBoundBrokerService }
+11-09 12:45:48.856  5191  5191 D BoundBrokerSvc: Loading bound service for intent: Intent { act=android.net.action.RECOMMEND_NETWORKS cmp=com.google.android.gms/.chimera.PersistentBoundBrokerService }
+11-09 12:45:48.857  5191  5191 I ChimeraSrvcProxy: com.google.android.gms.chimera.PersistentBoundBrokerService returning NullBinder for action android.net.action.RECOMMEND_NETWORKS
+11-09 12:45:48.866  5191  5191 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.usagereporting.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentDirectBootAwareApiService }
+11-09 12:45:48.866  5191  5191 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.usagereporting.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentDirectBootAwareApiServ
+11-09 12:45:48.896  5191  5191 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.usagereporting.service.START pkg=com.google.android.gms }
+11-09 12:45:48.896  5191  5191 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.usagereporting.service.START pkg=com.google.android.gms }
+11-09 12:45:48.906  5191  5191 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.clearcut.service.START pkg=com.google.android.gms }
+11-09 12:45:48.907  5191  5191 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.clearcut.service.START pkg=com.google.android.gms }
+11-09 12:45:48.952  4991  5015 D EGL_emulation: app_time_stats: avg=30.30ms min=23.57ms max=43.35ms count=32
+11-09 12:45:48.957  2873  3820 I GMS_MM_Logger: Memory Metric Logging not allowed. Stopping.
+11-09 12:45:48.988  5191  5191 W SystemServiceRegistry: No service published for: contexthub
+11-09 12:45:49.044  5191  5191 I AlarmManager: set [name: SystemMemoryCache type: 2 triggerAtMillis: 315360104136 windowMillis: -1 intervalMillis: 0]

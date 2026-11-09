@@ -1,0 +1,150 @@
+11-09 12:45:53.837  4818  5020 I PhenotypeBackgroundRecv: Successfully updated snapshot for com.google.android.libraries.consentverifier#com.google.android.googlequicksearchbox
+11-09 12:45:53.844  4818  4818 I PhenotypeBackgroundRecv: Skipping com.google.android.apps.search.assistant.device#com.google.android.googlequicksearchbox which doesn't use ProcessStable flags.
+11-09 12:45:53.846  1451  1451 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.asterism.service.START pkg=com.google.android.gms }
+11-09 12:45:53.847  4818  4818 I PhenotypeBackgroundRecv: Skipping com.google.android.libraries.search.googleapp.user#com.google.android.googlequicksearchbox which doesn't use ProcessStable flags.
+11-09 12:45:53.854  4818  4818 I PhenotypeBackgroundRecv: Skipping com.google.android.apps.search.assistant.mobile.user#com.google.android.googlequicksearchbox which doesn't use ProcessStable flags.
+11-09 12:45:53.859  4818  4875 I PhenotypeBackgroundRecv: Successfully updated snapshot for com.google.android.libraries.performance.primes#com.google.android.googlequicksearchbox
+11-09 12:45:53.861  1672  1672 I A       : Refusing EXCLUSIVE task 21, it is already pending. Try again in 359 seconds.
+11-09 12:45:53.861  4818  4818 I PhenotypeBackgroundRecv: Skipping com.google.android.apps.search.soundsearch.user#com.google.android.googlequicksearchbox which doesn't use ProcessStable flags.
+11-09 12:45:53.864  4931  4949 D EGL_emulation: app_time_stats: avg=33.40ms min=23.73ms max=43.81ms count=31
+11-09 12:45:53.865  1746  1835 I android.youtube: CollectorTransition concurrent copying GC freed 30896(1664KB) AllocSpace objects, 4(208KB) LOS objects, 49% free, 7249KB/14MB, paused 54us,19us total 119.175ms
+11-09 12:45:53.869  4128  4219 W Bugle   : TextClassifierLibManagerImpl: Reclaiming memory at level: 40
+11-09 12:45:53.871  4128  4236 I PhenotypeBackgroundRecv: Successfully updated snapshot for com.google.android.libraries.notifications.platform#com.google.android.apps.messaging
+11-09 12:45:53.876  4128  4219 W Bugle   : TextClassifierLibManagerImpl: Reclaiming memory at level: 40
+11-09 12:45:53.880  1672  2217 I A       : Refusing EXCLUSIVE task 24, it is already pending. Try again in 313 seconds.
+11-09 12:45:53.887  1672  2215 I FedAssExpListener: Fed-ass not supported for signed out users.
+11-09 12:45:53.889  1672  2216 I A       : NGA enabled in interactor.
+11-09 12:45:53.889  1672  2215 I FedAssExpListener: Successfully processed experiments changed.
+11-09 12:45:53.893  1672  2217 I OpaEligibilityChecker: send OpaEligibilityChange broadcast to CommonBroadcastReceiver
+11-09 12:45:53.909  1672  2217 W CorpusConfigHelper: Invalid input from icing corpus JSON flag.
+11-09 12:45:53.909  1672  2217 W CorpusConfigHelper: android.util.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 123 column 2
+11-09 12:45:53.909  1672  2217 W CorpusConfigHelper: 	at android.util.JsonReader.syntaxError(JsonReader.java:1162)
+11-09 12:45:53.909  1672  2217 W CorpusConfigHelper: 	at android.util.JsonReader.checkLenient(JsonReader.java:840)
+11-09 12:45:53.909  1672  2217 W CorpusConfigHelper: 	at android.util.JsonReader.nextInArray(JsonReader.java:615)
+11-09 12:45:53.909  1672  2217 W CorpusConfigHelper: 	at android.util.JsonReader.peek(JsonReader.java:345)
+11-09 12:45:53.909  1672  2217 W CorpusConfigHelper: 	at android.util.JsonReader.hasNext(JsonReader.java:321)
+11-09 12:45:53.909  1672  2217 W CorpusConfigHelper: 	at com.google.android.apps.gsa.searchbox.c.b.b.k.c(PG:7)
+11-09 12:45:53.909  1672  2217 W CorpusConfigHelper: 	at com.google.android.apps.gsa.searchbox.c.b.b.j.a(Unknown Source:2)
+11-09 12:45:53.909  1672  2217 W CorpusConfigHelper: 	at com.google.android.apps.gsa.search.core.i.r.run(PG:5)
+11-09 12:45:53.909  1672  2217 W CorpusConfigHelper: 	at com.google.android.libraries.gsa.k.a.h.run(PG:2)
+11-09 12:45:53.909  1672  2217 W CorpusConfigHelper: 	at com.google.android.apps.gsa.shared.util.c.a.cf.b(PG:1)
+11-09 12:45:53.909  1672  2217 W CorpusConfigHelper: 	at com.google.android.apps.gsa.shared.util.c.a.ci.run(PG:1)
+11-09 12:45:53.909  1672  2217 W CorpusConfigHelper: 	at com.google.android.libraries.i.ae.run(PG:1)
+11-09 12:45:53.909  1672  2217 W CorpusConfigHelper: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-09 12:45:53.909  1672  2217 W CorpusConfigHelper: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-09 12:45:53.909  1672  2217 W CorpusConfigHelper: 	at com.google.android.libraries.i.k.run(PG:2)
+11-09 12:45:53.909  1672  2217 W CorpusConfigHelper: 	at com.google.android.libraries.i.p.run(PG:4)
+11-09 12:45:53.909  1672  2217 W CorpusConfigHelper: 	at java.lang.Thread.run(Thread.java:1012)
+11-09 12:45:53.932  1672  1672 I A       : Refusing EXCLUSIVE task 21, it is already pending. Try again in 358 seconds.
+11-09 12:45:53.933   522   621 I RescueParty: Starting to observe: [android], updated namespace: app_standby
+11-09 12:45:53.934   522   552 I PackageWatchdog: Syncing state, reason: observing new packages
+11-09 12:45:53.934  4128  4245 I BuglePhenotype: onReceive for bugle package [CONTEXT package_name="com.google.android.apps.messaging#com.google.android.apps.messaging" ]
+11-09 12:45:53.934  4128  4279 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of com.google.android.apps.messaging.shared.experiments.receiver.BuglePhenotypeBroadcastReceiver@d1074c2
+11-09 12:45:53.951  4128  4128 I PhenotypeBackgroundRecv: Skipping com.google.android.apps.messaging#com.google.android.apps.messaging which doesn't use ProcessStable flags.
+11-09 12:45:53.954   522   608 D CompatibilityChangeReporter: Compat change id reported: 218533173; UID 10132; state: DISABLED
+11-09 12:45:53.956  1672  1672 I A       : Refusing EXCLUSIVE task 21, it is already pending. Try again in 358 seconds.
+11-09 12:45:53.957   522   522 I PackageWatchdog: Syncing health check requests for packages: {}
+11-09 12:45:53.957   522   522 I ExplicitHealthCheckController: Service not ready to get health check supported packages. Binding...
+11-09 12:45:53.958   522   522 I ExplicitHealthCheckController: Explicit health check service is bound
+11-09 12:45:53.960   522   608 D CompatibilityChangeReporter: Compat change id reported: 262645982; UID 10132; state: DISABLED
+11-09 12:45:53.964  1451  2671 I Icing   : IndexChimeraService.getServiceInterface callingPackage=com.google.android.googlequicksearchbox componentName=agsa_icing_connection serviceId=33
+11-09 12:45:53.964   522   522 I ExplicitHealthCheckController: Explicit health check service is connected ComponentInfo{com.google.android.ext.services/android.ext.services.watchdog.ExplicitHealthCheckServiceImpl}
+11-09 12:45:53.965   522   522 I ExplicitHealthCheckController: Service initialized, syncing requests
+11-09 12:45:53.965   522   608 D CompatibilityChangeReporter: Compat change id reported: 171306433; UID 10132; state: ENABLED
+11-09 12:45:53.966   522   608 D CompatibilityChangeReporter: Compat change id reported: 226439802; UID 10132; state: DISABLED
+11-09 12:45:53.967   522   608 D CompatibilityChangeReporter: Compat change id reported: 218533173; UID 10087; state: ENABLED
+11-09 12:45:53.971   522   552 D PackageWatchdog: rescue-party-observer added the following packages to monitor [android]
+11-09 12:45:53.972   522   522 I PackageWatchdog: Syncing health check requests for packages: {}
+11-09 12:45:53.972   522   522 D ExplicitHealthCheckController: Getting health check supported packages
+11-09 12:45:53.973   522   608 D CompatibilityChangeReporter: Compat change id reported: 262645982; UID 10087; state: ENABLED
+11-09 12:45:53.973   522   608 D CompatibilityChangeReporter: Compat change id reported: 218533173; UID 10126; state: ENABLED
+11-09 12:45:53.981  1451  3706 I Icing   : IndexChimeraService.getServiceInterface callingPackage=com.google.android.googlequicksearchbox componentName=agsa_icing_connection serviceId=32
+11-09 12:45:53.984   522   535 I ExplicitHealthCheckController: Explicit health check supported packages [PackageConfig{com.google.android.networkstack, 86400000}]
+11-09 12:45:53.984  4128  4245 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of com.google.android.apps.messaging.shared.experiments.receiver.BuglePhenotypeBroadcastReceiver@6f51b0e
+11-09 12:45:53.986  4128  4128 I PhenotypeBackgroundRecv: Skipping com.google.android.apps.messaging.auto#com.google.android.apps.messaging which doesn't use ProcessStable flags.
+11-09 12:45:53.991   522   608 D CompatibilityChangeReporter: Compat change id reported: 262645982; UID 10126; state: ENABLED
+11-09 12:45:53.996   522   608 D CompatibilityChangeReporter: Compat change id reported: 218533173; UID 10086; state: ENABLED
+11-09 12:45:54.002   522   608 D CompatibilityChangeReporter: Compat change id reported: 262645982; UID 10086; state: ENABLED
+11-09 12:45:54.008   522   552 I PackageWatchdog: Syncing state, reason: updated observers
+11-09 12:45:54.009   522   535 D PackageWatchdog: Received supported packages [PackageConfig{com.google.android.networkstack, 86400000}]
+11-09 12:45:54.010   522   522 I PackageWatchdog: Syncing health check requests for packages: {}
+11-09 12:45:54.010   522   522 D ExplicitHealthCheckController: Getting health check supported packages
+11-09 12:45:54.011   522   535 D ExplicitHealthCheckController: Getting health check requested packages
+11-09 12:45:54.011   522   535 I ExplicitHealthCheckController: Explicit health check supported packages [PackageConfig{com.google.android.networkstack, 86400000}]
+11-09 12:45:54.012   522   535 D PackageWatchdog: Received supported packages [PackageConfig{com.google.android.networkstack, 86400000}]
+11-09 12:45:54.012   522   535 D ExplicitHealthCheckController: Getting health check requested packages
+11-09 12:45:54.012   522  2429 I ExplicitHealthCheckController: Explicit health check requested packages []
+11-09 12:45:54.013   522  2429 I ExplicitHealthCheckController: No more health check requests, unbinding...
+11-09 12:45:54.013   522   757 I ExplicitHealthCheckController: Explicit health check requested packages []
+11-09 12:45:54.025   522  2429 I ExplicitHealthCheckController: Explicit health check service is unbound
+11-09 12:45:54.026  1672  1672 I A       : Refusing EXCLUSIVE task 21, it is already pending. Try again in 358 seconds.
+11-09 12:45:54.028   522   757 I ExplicitHealthCheckController: No more health check requests, unbinding...
+11-09 12:45:54.028   522   757 I ExplicitHealthCheckController: Explicit health check service is unbound
+11-09 12:45:54.037  1672  2553 W SearchServiceCore: Abort, client detached.
+11-09 12:45:54.046  1672  2553 W SearchServiceCore: Abort, client detached.
+11-09 12:45:54.049   522   552 I PackageWatchdog: Saving observer state to file
+11-09 12:45:54.063   522   608 D CompatibilityChangeReporter: Compat change id reported: 218533173; UID 10129; state: ENABLED
+11-09 12:45:54.065   522   608 D CompatibilityChangeReporter: Compat change id reported: 262645982; UID 10129; state: DISABLED
+11-09 12:45:54.071   522   608 D CompatibilityChangeReporter: Compat change id reported: 218533173; UID 10138; state: ENABLED
+11-09 12:45:54.077  5100  5100 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+11-09 12:45:54.078  5100  5100 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-09 12:45:54.088  1451  4790 W Icing   : No valid account for uploading user actions
+11-09 12:45:54.090  1672  2624 W TimedProcessReaper: Scheduling killing of process to refresh configuration
+11-09 12:45:54.092   402   626 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=5100
+11-09 12:45:54.092   402   626 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (4328 us)
+11-09 12:45:54.102   522   608 D CompatibilityChangeReporter: Compat change id reported: 262645982; UID 10138; state: ENABLED
+11-09 12:45:54.108   522   608 D CompatibilityChangeReporter: Compat change id reported: 218533173; UID 10103; state: ENABLED
+11-09 12:45:54.108   522   608 D CompatibilityChangeReporter: Compat change id reported: 262645982; UID 10103; state: ENABLED
+11-09 12:45:54.113   522   608 D CompatibilityChangeReporter: Compat change id reported: 218533173; UID 10122; state: ENABLED
+11-09 12:45:54.114   522   608 D CompatibilityChangeReporter: Compat change id reported: 262645982; UID 10122; state: ENABLED
+11-09 12:45:54.117   522   608 D CompatibilityChangeReporter: Compat change id reported: 218533173; UID 10134; state: ENABLED
+11-09 12:45:54.120   522   608 D CompatibilityChangeReporter: Compat change id reported: 262645982; UID 10134; state: ENABLED
+11-09 12:45:54.121   522   608 D CompatibilityChangeReporter: Compat change id reported: 218533173; UID 10149; state: ENABLED
+11-09 12:45:54.122   522   608 D CompatibilityChangeReporter: Compat change id reported: 262645982; UID 10149; state: ENABLED
+11-09 12:45:54.124   522   608 D CompatibilityChangeReporter: Compat change id reported: 218533173; UID 10094; state: ENABLED
+11-09 12:45:54.125   522   608 D CompatibilityChangeReporter: Compat change id reported: 262645982; UID 10094; state: ENABLED
+11-09 12:45:54.125   522   608 D CompatibilityChangeReporter: Compat change id reported: 262645982; UID 10131; state: ENABLED
+11-09 12:45:54.125   522   608 D CompatibilityChangeReporter: Compat change id reported: 218533173; UID 10085; state: ENABLED
+11-09 12:45:54.125   522   608 D CompatibilityChangeReporter: Compat change id reported: 262645982; UID 10085; state: ENABLED
+11-09 12:45:54.126   522   608 D CompatibilityChangeReporter: Compat change id reported: 218533173; UID 10099; state: ENABLED
+11-09 12:45:54.127   522   608 D CompatibilityChangeReporter: Compat change id reported: 262645982; UID 10099; state: ENABLED
+11-09 12:45:54.127   135   135 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-09 12:45:54.127  5100  5101 I Gralloc4: mapper 4.x is not supported
+11-09 12:45:54.127   522   608 D CompatibilityChangeReporter: Compat change id reported: 218533173; UID 10098; state: ENABLED
+11-09 12:45:54.128   522   608 D CompatibilityChangeReporter: Compat change id reported: 262645982; UID 10098; state: ENABLED
+11-09 12:45:54.588     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+11-09 12:45:54.129  1451  4790 I Icing   : Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0
+11-09 12:45:54.130   522   608 D CompatibilityChangeReporter: Compat change id reported: 218533173; UID 10186; state: ENABLED
+11-09 12:45:54.131   522   608 D CompatibilityChangeReporter: Compat change id reported: 262645982; UID 10186; state: ENABLED
+11-09 12:45:54.132   522   608 D CompatibilityChangeReporter: Compat change id reported: 218533173; UID 10160; state: ENABLED
+11-09 12:45:54.133   522   608 D CompatibilityChangeReporter: Compat change id reported: 262645982; UID 10160; state: ENABLED
+11-09 12:45:54.133  1672  2639 I BlobLobber: Handling download id 2 (blob odws2_en:us_2019-09-12_270573492_release_signed)
+11-09 12:45:54.134   522   608 D CompatibilityChangeReporter: Compat change id reported: 218533173; UID 10115; state: ENABLED
+11-09 12:45:54.134   522   608 D CompatibilityChangeReporter: Compat change id reported: 262645982; UID 10115; state: DISABLED
+11-09 12:45:54.214  1672  2553 W SearchServiceCore: Abort, client detached.
+11-09 12:45:54.215  1672  2610 I BgTaskExecutorImpl: Starting EXCLUSIVE background task FETCH_CONFIGS_FROM_PHENOTYPE.
+11-09 12:45:54.237  1451  4790 W Icing   : No valid account for uploading user actions
+11-09 12:45:54.263  2072  4727 V DownloadManager: Deleting /storage/emulated/0/Android/data/com.google.android.googlequicksearchbox/files/pending_blobs/odws2_en_us_2019-09-12_270573492_release_signed via provider delete
+11-09 12:45:54.269  1406  3084 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-09 12:45:54.271  1406  3084 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-09 12:45:54.286  1406  3084 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-09 12:45:54.287  1406  3084 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-09 12:45:54.289  1406  4773 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-09 12:45:54.290  1406  4773 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-09 12:45:54.291  1646  2042 I MediaProvider: Scanned external_primary due to REASON_DEMAND, found 0 items in 7ms, 0 inserts 0 updates 0 deletes
+11-09 12:45:54.292  1406  3084 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-09 12:45:54.294  1406  3084 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-09 12:45:54.294  1406  3084 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-09 12:45:54.294  1406  3084 I NamespaceManager: Package 1 name not found! Using module version.
+11-09 12:45:54.302  1451  4790 I Icing   : Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0
+11-09 12:45:54.326  1672  2639 W DynamiteModule: Local module descriptor class for com.google.android.gms.providerinstaller.dynamite not found.
+11-09 12:45:54.331  1406  2365 W ProviderHelper: Unknown dynamite feature providerinstaller.dynamite
+11-09 12:45:54.333  1672  2639 I DynamiteModule: Considering local module com.google.android.gms.providerinstaller.dynamite:0 and remote module com.google.android.gms.providerinstaller.dynamite:0
+11-09 12:45:54.334  1672  2639 W ProviderInstaller: Failed to load providerinstaller module: No acceptable module com.google.android.gms.providerinstaller.dynamite found. Local version is 0 and remote version is 0.
+11-09 12:45:54.387  1672  2639 D nativeloader: Configuring clns-11 for other apk /system/framework/com.android.media.remotedisplay.jar. target_sdk_version=33, uses_libraries=ALL, library_path=/product/priv-app/PrebuiltGmsCore/lib/x86_64:/pr
+11-09 12:45:54.400  1406  3188 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-09 12:45:54.401  1406  3188 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-09 12:45:54.401  1406  3188 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-09 12:45:54.426  1672  2639 D nativeloader: Configuring clns-12 for other apk /system/framework/com.android.location.provider.jar. target_sdk_version=33, uses_libraries=ALL, library_path=/product/priv-app/PrebuiltGmsCore/lib/x86_64:/prod
+11-09 12:45:54.427  1672  2639 D ApplicationLoaders: Returning zygote-cached class loader: /system_ext/framework/androidx.window.extensions.jar
+11-09 12:45:54.428  1672  2639 D ApplicationLoaders: Returning zygote-cached class loader: /system_ext/framework/androidx.window.sidecar.jar

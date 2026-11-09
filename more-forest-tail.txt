@@ -1,0 +1,150 @@
+11-09 12:46:10.785  4046  4912 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f987/lottie.json
+11-09 12:46:10.785  4046  4912 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f987/lottie.json)
+11-09 12:46:10.786   336  5478 I resolv  : res_nmkquery: (QUERY, IN, A)
+11-09 12:46:10.791   336  5477 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+11-09 12:46:10.797  5308  5394 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.db.OdlhRemovedAccountsCleanupJob.OdlhRemovedAccountsCleanup is scheduled to run EVERY_DAY [CONTEXT service_id=173 ]
+11-09 12:46:10.799  5308  5394 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.db.OdlhUserEditSyncJob.OdlhUserEditSync is scheduled to run EVERY_DAY [CONTEXT service_id=173 ]
+11-09 12:46:10.799  5308  5394 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.federated.regionfetcher.RegionMddMaintenanceService.RegionMddMaintenanceTask is scheduled to run EVERY_DAY [CONTEXT 
+11-09 12:46:10.799  5308  5394 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.federated.regionfetcher.RegionMddDownloadScheduleService.RegionMddRefreshDownloadTask is scheduled to run EVERY_6_HO
+11-09 12:46:10.800  5308  5390 I LocationHistory: [IntentOperation] Handling action com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=314 ]
+11-09 12:46:10.800  5308  5390 I LocationHistory: [IntentOperation] Handling action android.location.PROVIDERS_CHANGED [CONTEXT service_id=314 ]
+11-09 12:46:10.801  5308  5390 I LocationHistory: [IntentOperation] Device settings changed to ENABLED. Scheduling periodic tasks. [CONTEXT service_id=314 ]
+11-09 12:46:10.801  5308  5390 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.deidentifieddata.storevisits.StoreVisitsProcessingService.StoreVisitsProcessing is scheduled to run EVERY_6_HOURS [C
+11-09 12:46:10.801  5308  5390 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.deidentifieddata.wifi.WifiPlaceVisitProcessingService.WifiPlaceVisit is scheduled to run EVERY_DAY [CONTEXT service_
+11-09 12:46:10.801  5308  5390 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.deidentifieddata.uploads.BatchDeidentifiedDataUploadService.BatchDeidentifiedDataUpload is scheduled to run EVERY_6_
+11-09 12:46:10.801  5308  5390 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.geller.GellerCleanupService.GellerCleanup is scheduled to run EVERY_DAY [CONTEXT service_id=173 ]
+11-09 12:46:10.801  5308  5390 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.settings.LocationHistoryActiveProcessingService.LocationHistoryActiveProcessing is scheduled to run EVERY_DAY [CONTE
+11-09 12:46:10.801  5308  5390 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.pulp.PulpInferenceService.PulpInference is scheduled to run EVERY_7_DAYS [CONTEXT service_id=173 ]
+11-09 12:46:10.801  5308  5390 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.pulp.PulpMddDownloadScheduleService.PulpMddRefreshDownloadTask is scheduled to run EVERY_DAY [CONTEXT service_id=173
+11-09 12:46:10.802  5308  5390 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.pulp.PulpMddMaintenanceService.PulpMddMaintenanceTask is scheduled to run EVERY_DAY [CONTEXT service_id=173 ]
+11-09 12:46:10.802  5308  5390 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.federated.FederatedScheduleService.FederatedLocation is scheduled to run EVERY_DAY [CONTEXT service_id=173 ]
+11-09 12:46:10.802  5308  5390 W GmsTaskScheduler: com.google.android.gms.semanticlocationhistory.federated.FederatedTaskIdentityDataService is not available. This may cause the task to be lost.
+11-09 12:46:10.802  5308  5390 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.federated.FederatedTaskIdentityDataService.FederatedLocation is scheduled to run EVERY_DAY [CONTEXT service_id=173 ]
+11-09 12:46:10.802  5308  5390 W GmsTaskScheduler: com.google.android.gms.semanticlocationhistory.federated.FederatedJobHistoryService is not available. This may cause the task to be lost.
+11-09 12:46:10.802  5308  5390 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.federated.FederatedJobHistoryService.FederatedLocation is scheduled to run EVERY_DAY [CONTEXT service_id=173 ]
+11-09 12:46:10.802  5308  5390 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.db.OdlhDatabaseCleanupJob.OdlhDatabaseCleanup is scheduled to run EVERY_DAY [CONTEXT service_id=173 ]
+11-09 12:46:10.802  5308  5390 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.edit.EditMergeJob.EditMergeJob is scheduled to run EVERY_DAY [CONTEXT service_id=173 ]
+11-09 12:46:10.802  5308  5390 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.edit.EditUploadJob.EditUploadJob is scheduled to run EVERY_DAY [CONTEXT service_id=173 ]
+11-09 12:46:10.802  5308  5390 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.deidentifieddata.historicalbusyness.HistoricalBusynessProcessingService.HistoricalBusyness is scheduled to run EVERY
+11-09 12:46:10.802  5308  5390 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.db.OdlhRemovedAccountsCleanupJob.OdlhRemovedAccountsCleanup is scheduled to run EVERY_DAY [CONTEXT service_id=173 ]
+11-09 12:46:10.802  5308  5390 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.db.OdlhUserEditSyncJob.OdlhUserEditSync is scheduled to run EVERY_DAY [CONTEXT service_id=173 ]
+11-09 12:46:10.802  5308  5390 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.federated.regionfetcher.RegionMddMaintenanceService.RegionMddMaintenanceTask is scheduled to run EVERY_DAY [CONTEXT 
+11-09 12:46:10.803  5308  5390 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.federated.regionfetcher.RegionMddDownloadScheduleService.RegionMddRefreshDownloadTask is scheduled to run EVERY_6_HO
+11-09 12:46:10.807  4046  4706 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f426/lottie.json
+11-09 12:46:10.807  4046  4706 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f426/lottie.json)
+11-09 12:46:10.808  4046  4912 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1794228341478
+11-09 12:46:10.808   336  5478 I resolv  : res_nsend: used send_dg 63 terrno: 0
+11-09 12:46:10.808   336  5478 I resolv  : doQuery: rcode=0, ancount=1, return value=63
+11-09 12:46:10.817   336  5477 I resolv  : res_nsend: used send_dg 75 terrno: 0
+11-09 12:46:10.817   336  5477 I resolv  : doQuery: rcode=0, ancount=1, return value=75
+11-09 12:46:10.818  5308  5427 D TrafficStats: tagSocket(94) with statsTag=0x107, statsUid=-1
+11-09 12:46:10.829  4046  4706 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1794228341479
+11-09 12:46:10.833  5308  5308 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.common.BIND_SHARED_PREFS pkg=com.google.android.gms }
+11-09 12:46:10.836  5217  5275 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService finished executing. cause:9 result: 1 elapsed_millis: 623 uptime_millis: 623 exec_start_elapsed_seconds: 
+11-09 12:46:10.849  4046  4184 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f426_200d_2b1b/lottie.json
+11-09 12:46:10.851  4046  4184 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f426_200d_2b1b/lottie.json)
+11-09 12:46:10.854  5308  5308 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.common.BIND_SHARED_PREFS pkg=com.google.android.gms }
+11-09 12:46:10.870  1018  1364 D BtGatt.GattService: start scan with filters
+11-09 12:46:10.871  1018  1364 D BtGatt.GattService: enforcePrivilegedPermissionIfNeeded([BluetoothLeScanFilter [mDeviceName=null, mDeviceAddress=null, mUuid=null, mUuidMask=null, mServiceSolicitationUuid=null, mServiceSolicitationUuidMask=
+11-09 12:46:10.872  1018  1364 D BtGatt.ScanManager: startScan()  [ScanClient scanModeApp 2 scanModeUsed 2 [appScanStats com.google.uid.shared:10131]]
+11-09 12:46:10.872  1018  1364 D ActivityAttributionService: notifyActivityAttributionInfo UID=1002 packageName=com.google.android.bluetooth deviceAddress=no_active_device_address
+11-09 12:46:10.872  1018  1364 I bt_btif : packages/modules/Bluetooth/system/btif/src/bluetooth.cc:829 get_profile_interface: get_profile_interface: id = activity_attribution
+11-09 12:46:10.873  5308  5391 I ChimeraConfigurator: Detected pending changes for urgent request: [vision.ocr]. Pending module sets: container:2318189190800+mlkit.ocr.common,tflite_dynamite:2640104055100800+tflite_dynamite,vision_ocr:23160
+11-09 12:46:10.874  1018  1325 D BtGatt.ScanManager: handling starting scan
+11-09 12:46:10.875  1018  1325 I bt_stack: [INFO:le_scanning_manager.cc(268)] ScanFilterEnable in shim layer
+11-09 12:46:10.875  1018  1294 D BtGatt.GattService: onScanFilterEnableDisabled() - clientIf=3, status=0, action=1
+11-09 12:46:10.875  1018  1294 D BtGatt.ScanManager: callback done for scannerId - 3 status - 0
+11-09 12:46:10.875  1018  1325 I bt_stack: [INFO:le_scanning_manager.cc(243)] ScanFilterAdd in shim layer
+11-09 12:46:10.875  1018  1294 D BtGatt.GattService: onScanFilterConfig() - clientIf=3, action = 0 status = 0, filterType=0, availableSpace=0
+11-09 12:46:10.875  1018  1294 D BtGatt.ScanManager: callback done for scannerId - 3 status - 0
+11-09 12:46:10.875  1018  1325 D BtGatt.ScanManager: configureFilterParamter 500 10000 1 0
+11-09 12:46:10.875  1018  1325 I bt_stack: [INFO:le_scanning_manager.cc(204)] ScanFilterParamSetup in shim layer
+11-09 12:46:10.875  1018  1294 D BtGatt.GattService: onScanFilterParamsConfigured() - clientIf=3, status=0, action=0, availableSpace=0
+11-09 12:46:10.875  1018  1294 D BtGatt.ScanManager: callback done for scannerId - 3 status - 0
+11-09 12:46:10.876  1018  1325 I bt_stack: [INFO:le_scanning_manager.cc(243)] ScanFilterAdd in shim layer
+11-09 12:46:10.876  1018  1294 D BtGatt.GattService: onScanFilterConfig() - clientIf=3, action = 0 status = 0, filterType=0, availableSpace=0
+11-09 12:46:10.876  1018  1294 D BtGatt.ScanManager: callback done for scannerId - 3 status - 0
+11-09 12:46:10.876  1018  1325 D BtGatt.ScanManager: configureFilterParamter 500 10000 1 0
+11-09 12:46:10.876  1018  1325 I bt_stack: [INFO:le_scanning_manager.cc(204)] ScanFilterParamSetup in shim layer
+11-09 12:46:10.876  1018  1294 D BtGatt.GattService: onScanFilterParamsConfigured() - clientIf=3, status=0, action=0, availableSpace=0
+11-09 12:46:10.876  1018  1294 D BtGatt.ScanManager: callback done for scannerId - 3 status - 0
+11-09 12:46:10.877  5308  5391 I DynamiteModule: Considering local module com.google.android.gms.cronet_dynamite:0 and remote module com.google.android.gms.cronet_dynamite:2411
+11-09 12:46:10.877  5308  5391 I DynamiteModule: Selected remote version of com.google.android.gms.cronet_dynamite, version >= 2411
+11-09 12:46:10.878  5308  5391 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000001/CronetDynamite.dm': No such file or directory
+11-09 12:46:10.882  5449  5449 D CompatibilityChangeReporter: Compat change id reported: 160794467; UID 10131; state: ENABLED
+11-09 12:46:10.891  1018  1325 I bt_stack: [INFO:le_scanning_manager.cc(243)] ScanFilterAdd in shim layer
+11-09 12:46:10.892  1018  1294 D BtGatt.GattService: onScanFilterConfig() - clientIf=3, action = 0 status = 0, filterType=0, availableSpace=0
+11-09 12:46:10.892  1018  1294 D BtGatt.ScanManager: callback done for scannerId - 3 status - 0
+11-09 12:46:10.892  1018  1325 D BtGatt.ScanManager: configureFilterParamter 500 10000 1 0
+11-09 12:46:10.892  1018  1325 I bt_stack: [INFO:le_scanning_manager.cc(204)] ScanFilterParamSetup in shim layer
+11-09 12:46:10.892  1018  1294 D BtGatt.GattService: onScanFilterParamsConfigured() - clientIf=3, status=0, action=0, availableSpace=0
+11-09 12:46:10.892  1018  1294 D BtGatt.ScanManager: callback done for scannerId - 3 status - 0
+11-09 12:46:10.892  1018  1325 I bt_stack: [INFO:le_scanning_manager.cc(243)] ScanFilterAdd in shim layer
+11-09 12:46:10.892  1018  1294 D BtGatt.GattService: onScanFilterConfig() - clientIf=3, action = 0 status = 0, filterType=0, availableSpace=0
+11-09 12:46:10.892  1018  1294 D BtGatt.ScanManager: callback done for scannerId - 3 status - 0
+11-09 12:46:10.892  1018  1325 D BtGatt.ScanManager: configureFilterParamter 500 10000 1 0
+11-09 12:46:10.892  1018  1325 I bt_stack: [INFO:le_scanning_manager.cc(204)] ScanFilterParamSetup in shim layer
+11-09 12:46:10.892  1018  1294 D BtGatt.GattService: onScanFilterParamsConfigured() - clientIf=3, status=0, action=0, availableSpace=0
+11-09 12:46:10.892  1018  1294 D BtGatt.ScanManager: callback done for scannerId - 3 status - 0
+11-09 12:46:10.892  1018  1325 I bt_stack: [INFO:le_scanning_manager.cc(243)] ScanFilterAdd in shim layer
+11-09 12:46:10.892  1018  1294 D BtGatt.GattService: onScanFilterConfig() - clientIf=3, action = 0 status = 0, filterType=0, availableSpace=0
+11-09 12:46:10.892  1018  1294 D BtGatt.ScanManager: callback done for scannerId - 3 status - 0
+11-09 12:46:10.892  1018  1325 D BtGatt.ScanManager: configureFilterParamter 500 10000 1 0
+11-09 12:46:10.892  1018  1325 I bt_stack: [INFO:le_scanning_manager.cc(204)] ScanFilterParamSetup in shim layer
+11-09 12:46:10.892  1018  1294 D BtGatt.GattService: onScanFilterParamsConfigured() - clientIf=3, status=0, action=0, availableSpace=0
+11-09 12:46:10.892  1018  1294 D BtGatt.ScanManager: callback done for scannerId - 3 status - 0
+11-09 12:46:10.892  1018  1325 D BtGatt.ScanManager: configureRegularScanParams() - queue=3
+11-09 12:46:10.892  1018  1325 D BtGatt.ScanManager: apply scan timeout (300000)to scannerId 3
+11-09 12:46:10.894  4046  4184 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1794228341480
+11-09 12:46:10.909  1018  1237 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_scanning_manager.cc:1369 on_advertising_filter_complete: Got a Command complete LE_ADV_FILTER, status UNKNOWN_CONNECTION
+11-09 12:46:10.910  5308  5308 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.common.BIND_SHARED_PREFS pkg=com.google.android.gms }
+11-09 12:46:10.912  5217  5293 I SemanticLocation: [MDD] ModelBundleMetadata: File not found [CONTEXT service_id=173 ]
+11-09 12:46:10.912  5217  5293 I SemanticLocation: java.io.FileNotFoundException: /data/user/0/com.google.android.gms/files/model_bundle_metadata.pb: open failed: ENOENT (No such file or directory)
+11-09 12:46:10.912  5217  5293 I SemanticLocation: 	at libcore.io.IoBridge.open(IoBridge.java:574)
+11-09 12:46:10.912  5217  5293 I SemanticLocation: 	at java.io.FileInputStream.<init>(FileInputStream.java:160)
+11-09 12:46:10.912  5217  5293 I SemanticLocation: 	at android.app.ContextImpl.openFileInput(ContextImpl.java:745)
+11-09 12:46:10.912  5217  5293 I SemanticLocation: 	at android.content.ContextWrapper.openFileInput(ContextWrapper.java:249)
+11-09 12:46:10.912  5217  5293 I SemanticLocation: 	at android.content.ContextWrapper.openFileInput(ContextWrapper.java:249)
+11-09 12:46:10.912  5217  5293 I SemanticLocation: 	at android.content.ContextWrapper.openFileInput(ContextWrapper.java:249)
+11-09 12:46:10.912  5217  5293 I SemanticLocation: 	at bzxt.h(:com.google.android.gms@231818047@23.18.18 (190800-535401451):1)
+11-09 12:46:10.912  5217  5293 I SemanticLocation: 	at bzxd.c(:com.google.android.gms@231818047@23.18.18 (190800-535401451):9)
+11-09 12:46:10.912  5217  5293 I SemanticLocation: 	at cadb.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-09 12:46:10.912  5217  5293 I SemanticLocation: 	at aced.c(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+11-09 12:46:10.912  5217  5293 I SemanticLocation: 	at aced.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):8)
+11-09 12:46:10.912  5217  5293 I SemanticLocation: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-09 12:46:10.912  5217  5293 I SemanticLocation: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-09 12:46:10.912  5217  5293 I SemanticLocation: 	at acjn.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-09 12:46:10.912  5217  5293 I SemanticLocation: 	at java.lang.Thread.run(Thread.java:1012)
+11-09 12:46:10.912  5217  5293 I SemanticLocation: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+11-09 12:46:10.912  5217  5293 I SemanticLocation: 	at libcore.io.Linux.open(Native Method)
+11-09 12:46:10.912  5217  5293 I SemanticLocation: 	at libcore.io.ForwardingOs.open(ForwardingOs.java:563)
+11-09 12:46:10.912  5217  5293 I SemanticLocation: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:274)
+11-09 12:46:10.912  5217  5293 I SemanticLocation: 	at libcore.io.ForwardingOs.open(ForwardingOs.java:563)
+11-09 12:46:10.912  5217  5293 I SemanticLocation: 	at android.app.ActivityThread$AndroidOs.open(ActivityThread.java:8063)
+11-09 12:46:10.912  5217  5293 I SemanticLocation: 	at libcore.io.IoBridge.open(IoBridge.java:560)
+11-09 12:46:10.912  5217  5293 I SemanticLocation: 	... 14 more
+11-09 12:46:10.914  5449  5449 W ProviderHelper: Unknown dynamite feature providerinstaller.dynamite
+11-09 12:46:10.915  5449  5449 I DynamiteModule: Considering local module com.google.android.gms.providerinstaller.dynamite:1 and remote module com.google.android.gms.providerinstaller.dynamite:0
+11-09 12:46:10.915  5449  5449 I DynamiteModule: Selected local version of com.google.android.gms.providerinstaller.dynamite
+11-09 12:46:10.918  5449  5449 V NativeCrypto: Registering com/google/android/gms/org/conscrypt/NativeCrypto's 295 native methods...
+11-09 12:46:10.929  1018  1237 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_scanning_manager.cc:1369 on_advertising_filter_complete: Got a Command complete LE_ADV_FILTER, status UNKNOWN_CONNECTION
+11-09 12:46:10.943  1018  1237 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_scanning_manager.cc:1369 on_advertising_filter_complete: Got a Command complete LE_ADV_FILTER, status UNKNOWN_CONNECTION
+11-09 12:46:10.947  1018  1237 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_scanning_manager.cc:1369 on_advertising_filter_complete: Got a Command complete LE_ADV_FILTER, status UNKNOWN_CONNECTION
+11-09 12:46:10.962  5449  5449 I ProviderInstaller: Installed default security provider GmsCore_OpenSSL
+11-09 12:46:10.963  1018  1237 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_scanning_manager.cc:1369 on_advertising_filter_complete: Got a Command complete LE_ADV_FILTER, status UNKNOWN_CONNECTION
+11-09 12:46:10.998  4046  4912 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f413/lottie.json
+11-09 12:46:10.998  4046  4912 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f413/lottie.json)
+11-09 12:46:11.001  4046  4184 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f423/lottie.json
+11-09 12:46:11.001  4046  4184 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f423/lottie.json)
+11-09 12:46:11.006  5449  5449 D CompatibilityChangeReporter: Compat change id reported: 183155436; UID 10131; state: ENABLED
+11-09 12:46:11.006  5449  5449 I GmsApplication: [gms_startup_benchmark] Static start time (ms): 94252, Startup latency (ms): 240, Is system user: true
+11-09 12:46:11.008  5449  5449 I cuir    : Primes not initialized, returning default (no-op) Primes instance which will ignore all calls. Please call Primes.initialize(...) before using any Primes API.
+11-09 12:46:11.008   518  2001 I RemoteProvisionSysSvc: getRegistration(android.hardware.security.keymint.IRemotelyProvisionedComponent/default)
+11-09 12:46:11.012  5308  5391 I GmsDebugLogger: [73] 1801
+11-09 12:46:11.013  5449  5497 I GMS_MM_Logger: Start time: 89548
+11-09 12:46:11.013  5449  5497 I GMS_MM_Logger: Started.
+11-09 12:46:11.022  4046  4912 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1794228341481
+11-09 12:46:11.022  4046  4184 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1794228341482
+11-09 12:46:11.027   518  1881 I ActivityManager: Flag disabled. Ignoring finishAttachApplication from uid: 10131. pid: 5449
+11-09 12:46:11.036  4046  4706 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f424/lottie.json
+11-09 12:46:11.036  4046  4706 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f424/lottie.json)

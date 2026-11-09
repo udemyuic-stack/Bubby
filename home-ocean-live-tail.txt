@@ -1,0 +1,150 @@
+11-09 12:45:42.475  4170  4268 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f4a9/lottie.json
+11-09 12:45:42.475  4170  4268 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f4a9/lottie.json)
+11-09 12:45:42.484  1020  1308 D BtGatt.GattService: onScannerRegistered() - UUID=3cc20f87-91b9-4681-81b0-8c11ad7b7a58, scannerId=2, status=0
+11-09 12:45:42.488  5056  5456 D BluetoothLeScanner: onScannerRegistered() - status=0 scannerId=2 mScannerId=0
+11-09 12:45:42.489  1020  1405 D BtGatt.GattService: start scan with filters
+11-09 12:45:42.491  1020  1405 D BtGatt.GattService: enforcePrivilegedPermissionIfNeeded([BluetoothLeScanFilter [mDeviceName=null, mDeviceAddress=null, mUuid=null, mUuidMask=null, mServiceSolicitationUuid=null, mServiceSolicitationUuidMask=
+11-09 12:45:42.492  5169  5588 I ChimeraConfigurator: Starting update, reason: 4 urgentFeatures: mlkit.barcode.ui:0
+11-09 12:45:42.495  4170  4758 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f608/lottie.json
+11-09 12:45:42.495  4170  4758 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f608/lottie.json)
+11-09 12:45:42.505  4170  4268 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1794228308522
+11-09 12:45:42.508  1020  1405 D BtGatt.ScanManager: startScan()  [ScanClient scanModeApp 2 scanModeUsed 2 [appScanStats com.google.uid.shared:10131]]
+11-09 12:45:42.508  1020  1332 D BtGatt.ScanManager: handling starting scan
+11-09 12:45:42.508  1020  1332 I bt_stack: [INFO:le_scanning_manager.cc(268)] ScanFilterEnable in shim layer
+11-09 12:45:42.509  1020  1308 D BtGatt.GattService: onScanFilterEnableDisabled() - clientIf=2, status=0, action=1
+11-09 12:45:42.509  1020  1308 D BtGatt.ScanManager: callback done for scannerId - 2 status - 0
+11-09 12:45:42.509  1020  1405 D ActivityAttributionService: notifyActivityAttributionInfo UID=1002 packageName=com.google.android.bluetooth deviceAddress=no_active_device_address
+11-09 12:45:42.509  1020  1405 I bt_btif : packages/modules/Bluetooth/system/btif/src/bluetooth.cc:829 get_profile_interface: get_profile_interface: id = activity_attribution
+11-09 12:45:42.510  1020  1332 I bt_stack: [INFO:le_scanning_manager.cc(243)] ScanFilterAdd in shim layer
+11-09 12:45:42.510  1020  1308 D BtGatt.GattService: onScanFilterConfig() - clientIf=2, action = 0 status = 0, filterType=0, availableSpace=0
+11-09 12:45:42.510  1020  1308 D BtGatt.ScanManager: callback done for scannerId - 2 status - 0
+11-09 12:45:42.510  1020  1332 D BtGatt.ScanManager: configureFilterParamter 500 10000 1 0
+11-09 12:45:42.511  1020  1332 I bt_stack: [INFO:le_scanning_manager.cc(204)] ScanFilterParamSetup in shim layer
+11-09 12:45:42.511  1020  1308 D BtGatt.GattService: onScanFilterParamsConfigured() - clientIf=2, status=0, action=0, availableSpace=0
+11-09 12:45:42.511  1020  1308 D BtGatt.ScanManager: callback done for scannerId - 2 status - 0
+11-09 12:45:42.511  1020  1332 I bt_stack: [INFO:le_scanning_manager.cc(243)] ScanFilterAdd in shim layer
+11-09 12:45:42.511  1020  1308 D BtGatt.GattService: onScanFilterConfig() - clientIf=2, action = 0 status = 0, filterType=0, availableSpace=0
+11-09 12:45:42.511  1020  1308 D BtGatt.ScanManager: callback done for scannerId - 2 status - 0
+11-09 12:45:42.511  1020  1332 D BtGatt.ScanManager: configureFilterParamter 500 10000 1 0
+11-09 12:45:42.511  1020  1332 I bt_stack: [INFO:le_scanning_manager.cc(204)] ScanFilterParamSetup in shim layer
+11-09 12:45:42.511  1020  1308 D BtGatt.GattService: onScanFilterParamsConfigured() - clientIf=2, status=0, action=0, availableSpace=0
+11-09 12:45:42.511  1020  1308 D BtGatt.ScanManager: callback done for scannerId - 2 status - 0
+11-09 12:45:42.511  1020  1332 I bt_stack: [INFO:le_scanning_manager.cc(243)] ScanFilterAdd in shim layer
+11-09 12:45:42.512  1020  1308 D BtGatt.GattService: onScanFilterConfig() - clientIf=2, action = 0 status = 0, filterType=0, availableSpace=0
+11-09 12:45:42.512  1020  1308 D BtGatt.ScanManager: callback done for scannerId - 2 status - 0
+11-09 12:45:42.512  1020  1253 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_scanning_manager.cc:1369 on_advertising_filter_complete: Got a Command complete LE_ADV_FILTER, status UNKNOWN_CONNECTION
+11-09 12:45:42.512  1020  1332 D BtGatt.ScanManager: configureFilterParamter 500 10000 1 0
+11-09 12:45:42.512  1020  1332 I bt_stack: [INFO:le_scanning_manager.cc(204)] ScanFilterParamSetup in shim layer
+11-09 12:45:42.513  1020  1308 D BtGatt.GattService: onScanFilterParamsConfigured() - clientIf=2, status=0, action=0, availableSpace=0
+11-09 12:45:42.513  1020  1308 D BtGatt.ScanManager: callback done for scannerId - 2 status - 0
+11-09 12:45:42.513  1020  1332 I bt_stack: [INFO:le_scanning_manager.cc(243)] ScanFilterAdd in shim layer
+11-09 12:45:42.513  1020  1308 D BtGatt.GattService: onScanFilterConfig() - clientIf=2, action = 0 status = 0, filterType=0, availableSpace=0
+11-09 12:45:42.513  1020  1308 D BtGatt.ScanManager: callback done for scannerId - 2 status - 0
+11-09 12:45:42.513  1020  1332 D BtGatt.ScanManager: configureFilterParamter 500 10000 1 0
+11-09 12:45:42.514  1020  1332 I bt_stack: [INFO:le_scanning_manager.cc(204)] ScanFilterParamSetup in shim layer
+11-09 12:45:42.514  1020  1308 D BtGatt.GattService: onScanFilterParamsConfigured() - clientIf=2, status=0, action=0, availableSpace=0
+11-09 12:45:42.517  4170  4758 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1794228308523
+11-09 12:45:42.517  1020  1308 D BtGatt.ScanManager: callback done for scannerId - 2 status - 0
+11-09 12:45:42.518  1020  1332 I bt_stack: [INFO:le_scanning_manager.cc(243)] ScanFilterAdd in shim layer
+11-09 12:45:42.518  1020  1308 D BtGatt.GattService: onScanFilterConfig() - clientIf=2, action = 0 status = 0, filterType=0, availableSpace=0
+11-09 12:45:42.519  1020  1308 D BtGatt.ScanManager: callback done for scannerId - 2 status - 0
+11-09 12:45:42.519  1020  1332 D BtGatt.ScanManager: configureFilterParamter 500 10000 1 0
+11-09 12:45:42.519  1020  1332 I bt_stack: [INFO:le_scanning_manager.cc(204)] ScanFilterParamSetup in shim layer
+11-09 12:45:42.519  1020  1308 D BtGatt.GattService: onScanFilterParamsConfigured() - clientIf=2, status=0, action=0, availableSpace=0
+11-09 12:45:42.519  1020  1308 D BtGatt.ScanManager: callback done for scannerId - 2 status - 0
+11-09 12:45:42.519  1020  1332 D BtGatt.ScanManager: start gattClientScanNative from startRegularScan()
+11-09 12:45:42.519  1020  1332 I bt_stack: [INFO:le_scanning_manager.cc(168)] Scan in shim layer started
+11-09 12:45:42.519  1020  1253 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_scanning_manager.cc:588 stop_scan: Scanning already stopped, return!
+11-09 12:45:42.519  1020  1253 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_address_manager.cc:175 register_client: Scheduled address rotation for first client registered
+11-09 12:45:42.519  1020  1253 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_address_manager.cc:178 register_client: Client registered
+11-09 12:45:42.519  1020  1332 D BtGatt.ScanManager: configureRegularScanParams() - queue=2
+11-09 12:45:42.521  1020  1253 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_scanning_manager.cc:1369 on_advertising_filter_complete: Got a Command complete LE_ADV_FILTER, status UNKNOWN_CONNECTION
+11-09 12:45:42.522  1020  1332 I bt_stack: [INFO:le_scanning_manager.cc(168)] Scan in shim layer stopped
+11-09 12:45:42.523  1020  1253 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_address_manager.cc:193 unregister_client: Client unregistered
+11-09 12:45:42.523  1020  1253 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_address_manager.cc:197 unregister_client: Cancelled address rotation alarm
+11-09 12:45:42.523  1020  1332 D BtGatt.ScanManager: Start gattClientScanNative with old scanMode -1 new scanMode 2 ( in MS: 100 / 100, in scan unit: 160 / 160 ) [ScanClient scanModeApp 2 scanModeUsed 2 [appScanStats com.google.uid.shared:1
+11-09 12:45:42.523  1020  1253 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_scanning_manager.cc:1369 on_advertising_filter_complete: Got a Command complete LE_ADV_FILTER, status UNKNOWN_CONNECTION
+11-09 12:45:42.523  1020  1332 I bt_stack: [INFO:le_scanning_manager.cc(346)] SetScanParameters in shim layer
+11-09 12:45:42.523  1020  1308 D BtGatt.GattService: onScanParamSetupCompleted : 0
+11-09 12:45:42.523  1020  1332 I bt_stack: [INFO:le_scanning_manager.cc(168)] Scan in shim layer started
+11-09 12:45:42.524  1020  1253 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_scanning_manager.cc:588 stop_scan: Scanning already stopped, return!
+11-09 12:45:42.524  1020  1253 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_address_manager.cc:175 register_client: Scheduled address rotation for first client registered
+11-09 12:45:42.524  1020  1253 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_address_manager.cc:178 register_client: Client registered
+11-09 12:45:42.524  1020  1332 D BtGatt.ScanManager: apply scan timeout (600000)to scannerId 2
+11-09 12:45:42.525  1020  1253 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_scanning_manager.cc:1369 on_advertising_filter_complete: Got a Command complete LE_ADV_FILTER, status UNKNOWN_CONNECTION
+11-09 12:45:42.538  4170  4267 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f47f/lottie.json
+11-09 12:45:42.538  4170  4267 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f47f/lottie.json)
+11-09 12:45:42.540  4170  4758 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f47b/lottie.json
+11-09 12:45:42.540  4170  4758 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f47b/lottie.json)
+11-09 12:45:42.543  5169  5598 I Pay     : Requested check of feature migrations. [CONTEXT service_id=198 ]
+11-09 12:45:42.548  1020  1253 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_scanning_manager.cc:1369 on_advertising_filter_complete: Got a Command complete LE_ADV_FILTER, status UNKNOWN_CONNECTION
+11-09 12:45:42.562  4170  4267 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1794228308524
+11-09 12:45:42.569  4170  4758 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1794228308525
+11-09 12:45:42.588  5056  5154 I TapAndPay: Disabling TapAndPay HCE service [CONTEXT service_id=79 ]
+11-09 12:45:42.601  5169  5598 W Pay     : Active account was null, notification task will be cancelled. [CONTEXT service_id=198 ]
+11-09 12:45:42.601  5169  5598 W Pay     : [eMoney card recovery task] exiting without init: active tapandpay account not found! [CONTEXT service_id=198 ]
+11-09 12:45:42.605  5169  5598 W Pay     : Mdl not supported. Not triggering periodic MSO refresh task. [CONTEXT service_id=198 ]
+11-09 12:45:42.612  4170  4268 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f480/lottie.json
+11-09 12:45:42.612  4170  4268 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f480/lottie.json)
+11-09 12:45:42.637  4170  4268 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1794228308526
+11-09 12:45:42.662  5169  5317 I Icing   : Indexing com.google.android.gms-apps from com.google.android.gms
+11-09 12:45:42.663  4170  4267 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f383/lottie.json
+11-09 12:45:42.663  4170  4267 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f383/lottie.json)
+11-09 12:45:42.663  5056  5393 W .gms.persistent: Long monitor contention with owner lowpool[3] (5245) at void bytb.n(byps, byps, int)(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6) waiters=0 in int bytb.l(bysm, aphn) for 
+11-09 12:45:42.677  5704  5704 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+11-09 12:45:42.677  5704  5704 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-09 12:45:42.694  4170  4267 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1794228308527
+11-09 12:45:42.886     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+11-09 12:45:42.701   135   135 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-09 12:45:42.701  5704  5706 I Gralloc4: mapper 4.x is not supported
+11-09 12:45:42.708  5169  5588 I ChimeraConfigurator: Detected pending changes for urgent request: [mlkit.barcode.ui]. Pending module sets: container:2318189190800+mlkit.barcode.ui+vision.barcode,tflite_dynamite:2640104055100800+tflite_dyna
+11-09 12:45:42.718  5169  5596 I AlarmManager: setExactAndAllowWhileIdle [name: RemindersNSREFRESH_TIME_REMINDERS_ALARM type: 0 triggerAtMillis: 1794268800000]
+11-09 12:45:42.719  4170  4758 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f916/lottie.json
+11-09 12:45:42.719  4170  4758 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f916/lottie.json)
+11-09 12:45:42.720  5169  5594 I Checkin : [AndroidCheckinProtoModule] Checkin reason type: 1 attempt count: 1.
+11-09 12:45:42.748  4170  4758 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1794228308528
+11-09 12:45:42.781  4170  4267 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f47d/lottie.json
+11-09 12:45:42.781  4170  4267 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f47d/lottie.json)
+11-09 12:45:42.782  5169  5588 I GmsDebugLogger: [73] 1801
+11-09 12:45:42.794  5169  5169 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.mdh.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsBoundBrokerService }
+11-09 12:45:42.820  4170  4268 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f31e/lottie.json
+11-09 12:45:42.820  4170  4268 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f31e/lottie.json)
+11-09 12:45:42.835  4170  4267 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1794228308529
+11-09 12:45:42.852  1044  1044 D CarrierSvcBindHelper: onPackageModified: com.google.android.gms
+11-09 12:45:42.853  1044  1044 D CarrierSvcBindHelper: No carrier app for: 0
+11-09 12:45:42.856  1020  1020 V MediaPlayerList: mPackageChangedBroadcastReceiver: action: android.intent.action.PACKAGE_CHANGED
+11-09 12:45:42.857  1020  1020 V MediaPlayerList: mPackageChangedBroadcastReceiver: action: android.intent.action.PACKAGE_CHANGED
+11-09 12:45:42.864  4170  4268 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1794228308530
+11-09 12:45:42.868   517   622 I InputReader: Reconfiguring input devices, changes=KEYBOARD_LAYOUTS
+11-09 12:45:42.872   838  5006 I PermissionControllerServiceImpl: Updating user sensitive for uid 10131
+11-09 12:45:42.876   836   907 D StylusManager: Stylus InputDevice changed: 14 virtio_input_multi_touch_11
+11-09 12:45:42.880  4170  4758 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f31b/lottie.json
+11-09 12:45:42.880  4170  4758 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f31b/lottie.json)
+11-09 12:45:42.912   836   836 D ControlsListingControllerImpl: ServiceConfig reloaded, count: 0
+11-09 12:45:42.925  4170  4758 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1794228308531
+11-09 12:45:42.943  5169  5588 W ZappDownloader: No successful module downloads for requested features [mlkit.barcode.ui].
+11-09 12:45:42.957  5169  5588 I GmsDebugLogger: [30] [VisionBarcode.optional:231818100800],[TfliteDynamiteDynamite.integ:264010405100800],[MlkitBarcodeUi.optional:231818100000]
+11-09 12:45:42.969  5169  5317 I Icing   : Indexing done com.google.android.gms-apps
+11-09 12:45:42.976  4170  4268 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f31c/lottie.json
+11-09 12:45:42.976  4170  4268 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f31c/lottie.json)
+11-09 12:45:42.999  5169  5590 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.geller.GellerCleanupService.GellerCleanup is scheduled to run EVERY_DAY [CONTEXT service_id=173 ]
+11-09 12:45:43.002  1044  1307 D ImsResolver: maybeAddedImsService, packageName: com.google.android.gms
+11-09 12:45:43.005  4170  4268 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1794228308532
+11-09 12:45:43.035   836   907 D StylusManager: Stylus InputDevice changed: 11 virtio_input_multi_touch_8
+11-09 12:45:43.040   517   547 I CredManSysServiceImpl: CredentialManagerServiceImpl constructed for: com.google.android.gms/.auth.api.credentials.credman.service.PasswordAndPasskeyService
+11-09 12:45:43.041   517   547 I CredManSysServiceImpl: newServiceInfoLocked, mInfo null, com.google.android.gms/com.google.android.gms.auth.api.credentials.credman.service.PasswordAndPasskeyService
+11-09 12:45:43.045  4170  4758 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f63a/lottie.json
+11-09 12:45:43.045  4170  4758 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f63a/lottie.json)
+11-09 12:45:43.048  1586  1586 I AiAiEcho: AppFetcherImpl onPackageChanged com.google.android.gms.
+11-09 12:45:43.052  1586  3617 I AiAiEcho: AppIndexer Package:[com.google.android.gms] UserProfile:[0] Enabled:[true].
+11-09 12:45:43.053  1586  3617 I AiAiEcho: AppFetcherImplV2 updateApps package:[com.google.android.gms], userId:[0], reason:[package is updated.].
+11-09 12:45:43.064  4170  4268 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f638/lottie.json
+11-09 12:45:43.064  4170  4268 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f638/lottie.json)
+11-09 12:45:43.075  5169  5169 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.mdh.service.listener.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsBoundBrokerService }
+11-09 12:45:43.079  4170  4758 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1794228308533
+11-09 12:45:43.091  4170  4268 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1794228308534
+11-09 12:45:43.094  4170  4267 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f639/lottie.json
+11-09 12:45:43.094  4170  4267 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f639/lottie.json)
+11-09 12:45:43.097  5081  5115 D EGL_emulation: app_time_stats: avg=26.72ms min=2.36ms max=49.13ms count=36
+11-09 12:45:43.098  5169  5598 V SmartDevice: [ModuleInitializer] ModuleInitializer got intent Intent { act=android.intent.action.BOOT_COMPLETED flg=0x89000010 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperatio
+11-09 12:45:43.099  5169  5598 W ChimeraUtils: Module com.google.android.gms.smartdevice missing resource null(0)

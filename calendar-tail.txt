@@ -1,0 +1,150 @@
+11-09 12:40:32.468   522   597 D CompatibilityChangeReporter: Compat change id reported: 161252188; UID 10132; state: DISABLED
+11-09 12:40:32.469   522   597 D CompatibilityChangeReporter: Compat change id reported: 135634846; UID 10132; state: DISABLED
+11-09 12:40:32.472   522   551 D CompatibilityChangeReporter: Compat change id reported: 143937733; UID 10132; state: ENABLED
+11-09 12:40:32.472  5135  5135 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.clearcut.bootcount.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentBoundBrokerService }
+11-09 12:40:32.475  5135  5135 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.clearcut.bootcount.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentBoundBrokerService
+11-09 12:40:32.483  5135  5171 E bwfc    : Phenotype API error. Event # edax@e9d39d57, EventCode: 5 [CONTEXT service_id=51 ]
+11-09 12:40:32.483  5135  5171 E bwfc    : bwdx: 29501: Stale snapshot for com.google.android.libraries.consentverifier#com.google.android.gms(change count changed - expected 5  but was 1)
+11-09 12:40:32.483  5135  5171 E bwfc    : 	at bwfg.b(:com.google.android.gms@231818047@23.18.18 (190800-535401451):16)
+11-09 12:40:32.483  5135  5171 E bwfc    : 	at bwff.g(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-09 12:40:32.483  5135  5171 E bwfc    : 	at bwfc.e(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+11-09 12:40:32.483  5135  5171 E bwfc    : 	at bwfc.f(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-09 12:40:32.483  5135  5171 E bwfc    : 	at avsy.eo(:com.google.android.gms@231818047@23.18.18 (190800-535401451):1)
+11-09 12:40:32.483  5135  5171 E bwfc    : 	at avtf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):14)
+11-09 12:40:32.483  5135  5171 E bwfc    : 	at dfhf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-09 12:40:32.483  5135  5171 E bwfc    : 	at aced.c(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+11-09 12:40:32.483  5135  5171 E bwfc    : 	at aced.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):7)
+11-09 12:40:32.483  5135  5171 E bwfc    : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-09 12:40:32.483  5135  5171 E bwfc    : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-09 12:40:32.483  5135  5171 E bwfc    : 	at acjn.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-09 12:40:32.483  5135  5171 E bwfc    : 	at java.lang.Thread.run(Thread.java:1012)
+11-09 12:40:32.484   335   335 D Zygote  : Forked child process 5236
+11-09 12:40:32.486  5135  5171 W AsyncOperation: operation=CommitToConfigurationOperationCall, opStatusCode=29501 [CONTEXT service_id=51 ]
+11-09 12:40:32.486  5135  5171 W AsyncOperation: OperationException[Status{statusCode=Stale snapshot for com.google.android.libraries.consentverifier#com.google.android.gms(change count changed - expected 5  but was 1), resolution=null}]
+11-09 12:40:32.486  5135  5171 W AsyncOperation: 	at bwfc.e(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+11-09 12:40:32.486  5135  5171 W AsyncOperation: 	at bwfc.f(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-09 12:40:32.486  5135  5171 W AsyncOperation: 	at avsy.eo(:com.google.android.gms@231818047@23.18.18 (190800-535401451):1)
+11-09 12:40:32.486  5135  5171 W AsyncOperation: 	at avtf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):14)
+11-09 12:40:32.486  5135  5171 W AsyncOperation: 	at dfhf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-09 12:40:32.486  5135  5171 W AsyncOperation: 	at aced.c(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+11-09 12:40:32.486  5135  5171 W AsyncOperation: 	at aced.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):7)
+11-09 12:40:32.486  5135  5171 W AsyncOperation: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-09 12:40:32.486  5135  5171 W AsyncOperation: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-09 12:40:32.486  5135  5171 W AsyncOperation: 	at acjn.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-09 12:40:32.486  5135  5171 W AsyncOperation: 	at java.lang.Thread.run(Thread.java:1012)
+11-09 12:40:32.487  5135  5168 W MobStoreFlagStore: Failed to commit due to stale snapshot for com.google.android.libraries.consentverifier#com.google.android.gms, triggering flag update. Experiments may be delayed til next app start.
+11-09 12:40:32.488   522   551 I ActivityManager: Start proc 5236:com.google.android.gms/u0a132 for service {com.google.android.gms/com.google.android.gms.nearby.sharing.SharingTileService}
+11-09 12:40:32.492  5135  5171 I NearbySharing: Not allowed to auto turn on device settings. [CONTEXT service_id=194 ]
+11-09 12:40:32.493  5135  5171 I NearbySharing: A ReceiveSurface(BACKGROUND) has been registered [CONTEXT service_id=194 ]
+11-09 12:40:32.500  5135  5171 I NearbySharing: Stopping advertising because Nearby Sharing is disabled. [CONTEXT service_id=194 ]
+11-09 12:40:32.501  5135  5171 I NearbySharing: Failed to scan for fast initiation because we're already scanning with isHighPowerAllowed=false. [CONTEXT service_id=194 ]
+11-09 12:40:32.501  5135  5171 I NearbySharing: Dismissing HUN as there's no device nearby. [CONTEXT service_id=194 ]
+11-09 12:40:32.501  5135  5171 I NearbySharing: Cancelling in use notification [CONTEXT service_id=194 ]
+11-09 12:40:32.502  5135  5171 I NearbySharing: Broadcasting NearbySharing state change. [CONTEXT service_id=194 ]
+11-09 12:40:32.505  5135  5171 I NearbySharing: Not allowed to auto turn on device settings. [CONTEXT service_id=194 ]
+11-09 12:40:32.505  5135  5171 W NearbySharing: Cannot get discovered share targets on DisabledNearbySharingProvider. [CONTEXT service_id=194 ]
+11-09 12:40:32.505  5135  5171 I NearbySharing: A SendSurface(BACKGROUND) has been registered [CONTEXT service_id=194 ]
+11-09 12:40:32.506  5135  5171 I NearbySharing: Stopping scanning because Nearby Sharing is disabled. [CONTEXT service_id=194 ]
+11-09 12:40:32.506  5135  5171 I NearbySharing: Failed to stop scanning because we're not scanning. [CONTEXT service_id=194 ]
+11-09 12:40:32.506  5135  5171 I NearbySharing: Can't stop advertising FastInitiation. Not advertising. [CONTEXT service_id=194 ]
+11-09 12:40:32.507  5135  5171 I NearbySharing: Stopping Fast Init advertisement because we're not scanning in the foreground. [CONTEXT service_id=194 ]
+11-09 12:40:32.507  5135  5171 I NearbySharing: Stopping advertising because Nearby Sharing is disabled. [CONTEXT service_id=194 ]
+11-09 12:40:32.508  5135  5171 I NearbySharing: Failed to scan for fast initiation because we're already scanning with isHighPowerAllowed=false. [CONTEXT service_id=194 ]
+11-09 12:40:32.508  5135  5171 I NearbySharing: Dismissing HUN as there's no device nearby. [CONTEXT service_id=194 ]
+11-09 12:40:32.508  5135  5171 I NearbySharing: Cancelling in use notification [CONTEXT service_id=194 ]
+11-09 12:40:32.517  5135  5171 I NearbySharing: Broadcasting NearbySharing state change. [CONTEXT service_id=194 ]
+11-09 12:40:32.529  5236  5236 I gle.android.gms: Using CollectorTypeCC GC.
+11-09 12:40:32.529  5236  5236 W gle.android.gms: Unexpected CPU variant for x86: x86_64.
+11-09 12:40:32.529  5236  5236 W gle.android.gms: Known variants: atom, sandybridge, silvermont, goldmont, goldmont-plus, tremont, kabylake, default
+11-09 12:40:32.531  5135  5180 W NetworkScheduler.Filter: Ignored malformed rule: 
+11-09 12:40:32.532  5135  5225 I Nearby  : [MBleClient] Start ble scanning from NearbyDirect:BluetoothAdapterWrapper, context tag = nearby_messages [CONTEXT service_id=49 ]
+11-09 12:40:32.542  5135  5225 I Nearby  : [MBleClient] M hardware scan: 1 clients, scanMode= LOW_LATENCY, filters size = 5 [CONTEXT service_id=49 ]
+11-09 12:40:32.543  5135  5225 D BluetoothAdapter: isLeEnabled(): ON
+11-09 12:40:32.544  1026  3846 D BtGatt.GattService: registerScanner() - UUID=fe564bc1-ea9c-4264-b0bd-d6140f67ffca
+11-09 12:40:32.546  1026  3846 I bt_stack: [INFO:le_scanning_manager.cc(155)] RegisterScanner in shim layer
+11-09 12:40:32.547  1026  1226 D BtGatt.GattService: onScannerRegistered() - UUID=fe564bc1-ea9c-4264-b0bd-d6140f67ffca, scannerId=2, status=0
+11-09 12:40:32.547  5135  5210 D BluetoothLeScanner: onScannerRegistered() - status=0 scannerId=2 mScannerId=0
+11-09 12:40:32.554  1026  3846 D BtGatt.GattService: start scan with filters
+11-09 12:40:32.555  5236  5236 E gle.android.gms: Not starting debugger since process cannot load the jdwp agent.
+11-09 12:40:32.565  1026  3846 D BtGatt.GattService: enforcePrivilegedPermissionIfNeeded([BluetoothLeScanFilter [mDeviceName=null, mDeviceAddress=null, mUuid=null, mUuidMask=null, mServiceSolicitationUuid=null, mServiceSolicitationUuidMask=
+11-09 12:40:32.566  1026  3846 D BtGatt.ScanManager: startScan()  [ScanClient scanModeApp 2 scanModeUsed 2 [appScanStats com.google.uid.shared:10132]]
+11-09 12:40:32.567  1026  3846 D ActivityAttributionService: notifyActivityAttributionInfo UID=1002 packageName=com.google.android.bluetooth deviceAddress=no_active_device_address
+11-09 12:40:32.567  1026  3846 I bt_btif : packages/modules/Bluetooth/system/btif/src/bluetooth.cc:829 get_profile_interface: get_profile_interface: id = activity_attribution
+11-09 12:40:32.567  1026  1319 D BtGatt.ScanManager: handling starting scan
+11-09 12:40:32.567  1026  1319 I bt_stack: [INFO:le_scanning_manager.cc(268)] ScanFilterEnable in shim layer
+11-09 12:40:32.578  1026  1226 D BtGatt.GattService: onScanFilterEnableDisabled() - clientIf=2, status=0, action=1
+11-09 12:40:32.582  1026  1226 D BtGatt.ScanManager: callback done for scannerId - 2 status - 0
+11-09 12:40:32.583  1026  1319 I bt_stack: [INFO:le_scanning_manager.cc(243)] ScanFilterAdd in shim layer
+11-09 12:40:32.587  1026  1192 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_scanning_manager.cc:1369 on_advertising_filter_complete: Got a Command complete LE_ADV_FILTER, status UNKNOWN_CONNECTION
+11-09 12:40:32.588  1026  1226 D BtGatt.GattService: onScanFilterConfig() - clientIf=2, action = 0 status = 0, filterType=0, availableSpace=0
+11-09 12:40:32.599  1026  1226 D BtGatt.ScanManager: callback done for scannerId - 2 status - 0
+11-09 12:40:32.605  1026  1319 D BtGatt.ScanManager: configureFilterParamter 500 10000 1 0
+11-09 12:40:32.605  1026  1319 I bt_stack: [INFO:le_scanning_manager.cc(204)] ScanFilterParamSetup in shim layer
+11-09 12:40:32.610  1026  1226 D BtGatt.GattService: onScanFilterParamsConfigured() - clientIf=2, status=0, action=0, availableSpace=0
+11-09 12:40:32.610  1026  1226 D BtGatt.ScanManager: callback done for scannerId - 2 status - 0
+11-09 12:40:32.610  1026  1319 I bt_stack: [INFO:le_scanning_manager.cc(243)] ScanFilterAdd in shim layer
+11-09 12:40:32.612  1026  1192 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_scanning_manager.cc:1369 on_advertising_filter_complete: Got a Command complete LE_ADV_FILTER, status UNKNOWN_CONNECTION
+11-09 12:40:32.613  1026  1226 D BtGatt.GattService: onScanFilterConfig() - clientIf=2, action = 0 status = 0, filterType=0, availableSpace=0
+11-09 12:40:32.613  1026  1226 D BtGatt.ScanManager: callback done for scannerId - 2 status - 0
+11-09 12:40:32.615   522   550 W ActivityManager: Rescheduling restart of crashed service com.google.android.gms/.chimera.UiIntentOperationService in 395ms for other
+11-09 12:40:32.632  1026  1319 D BtGatt.ScanManager: configureFilterParamter 500 10000 1 0
+11-09 12:40:32.632  1026  1319 I bt_stack: [INFO:le_scanning_manager.cc(204)] ScanFilterParamSetup in shim layer
+11-09 12:40:32.633  5236  5236 D CompatibilityChangeReporter: Compat change id reported: 171979766; UID 10132; state: ENABLED
+11-09 12:40:32.633  5236  5236 D CompatibilityChangeReporter: Compat change id reported: 242716250; UID 10132; state: DISABLED
+11-09 12:40:32.637  1026  1226 D BtGatt.GattService: onScanFilterParamsConfigured() - clientIf=2, status=0, action=0, availableSpace=0
+11-09 12:40:32.639  5236  5236 D nativeloader: Configuring clns-6 for other apk /system/framework/org.apache.http.legacy.jar. target_sdk_version=33, uses_libraries=ALL, library_path=/product/priv-app/PrebuiltGmsCore/lib/x86_64:/product/priv
+11-09 12:40:32.640  1026  1226 D BtGatt.ScanManager: callback done for scannerId - 2 status - 0
+11-09 12:40:32.644  1026  1319 I bt_stack: [INFO:le_scanning_manager.cc(243)] ScanFilterAdd in shim layer
+11-09 12:40:32.644  5236  5236 D nativeloader: Configuring clns-7 for other apk /system/framework/com.android.media.remotedisplay.jar. target_sdk_version=33, uses_libraries=ALL, library_path=/product/priv-app/PrebuiltGmsCore/lib/x86_64:/pro
+11-09 12:40:32.645  5236  5236 D nativeloader: Configuring clns-8 for other apk /system/framework/com.android.location.provider.jar. target_sdk_version=33, uses_libraries=ALL, library_path=/product/priv-app/PrebuiltGmsCore/lib/x86_64:/produ
+11-09 12:40:32.645  5236  5236 D ApplicationLoaders: Returning zygote-cached class loader: /system_ext/framework/androidx.window.extensions.jar
+11-09 12:40:32.645  5236  5236 D ApplicationLoaders: Returning zygote-cached class loader: /system_ext/framework/androidx.window.sidecar.jar
+11-09 12:40:32.649  1026  1192 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_scanning_manager.cc:1369 on_advertising_filter_complete: Got a Command complete LE_ADV_FILTER, status UNKNOWN_CONNECTION
+11-09 12:40:32.650  5236  5236 D nativeloader: InitLlndkLibrariesProduct: libEGL.so:libGLESv1_CM.so:libGLESv2.so:libGLESv3.so:libRS.so:libandroid_net.so:libbinder_ndk.so:libc.so:libcgrouprc.so:libclang_rt.asan-x86_64-android.so:libcom.andro
+11-09 12:40:32.650  5236  5236 D nativeloader: Configuring product-clns-9 for unbundled product apk /product/priv-app/PrebuiltGmsCore/PrebuiltGmsCore.apk. target_sdk_version=33, uses_libraries=, library_path=/product/priv-app/PrebuiltGmsCor
+11-09 12:40:32.651  5236  5236 D nativeloader: InitVndkspLibrariesProduct: android.hardware.common-V2-ndk.so:android.hardware.common.fmq-V1-ndk.so:android.hardware.graphics.allocator-V2-ndk.so:android.hardware.graphics.common-V4-ndk.so:andr
+11-09 12:40:32.669  5236  5236 V GraphicsEnvironment: Currently set values for:
+11-09 12:40:32.669  5236  5236 V GraphicsEnvironment:   angle_gl_driver_selection_pkgs=[]
+11-09 12:40:32.670  5236  5236 V GraphicsEnvironment:   angle_gl_driver_selection_values=[]
+11-09 12:40:32.670  5236  5236 V GraphicsEnvironment: ANGLE GameManagerService for com.google.android.gms: false
+11-09 12:40:32.671  5236  5236 V GraphicsEnvironment: com.google.android.gms is not listed in per-application setting
+11-09 12:40:32.671  5236  5236 V GraphicsEnvironment: Neither updatable production driver nor prerelease driver is supported.
+11-09 12:40:32.679  4931  4948 D EGL_emulation: app_time_stats: avg=33.73ms min=27.83ms max=45.17ms count=30
+11-09 12:40:32.684  1026  1226 D BtGatt.GattService: onScanFilterConfig() - clientIf=2, action = 0 status = 0, filterType=0, availableSpace=0
+11-09 12:40:32.685  1026  1226 D BtGatt.ScanManager: callback done for scannerId - 2 status - 0
+11-09 12:40:32.685  1026  1319 D BtGatt.ScanManager: configureFilterParamter 500 10000 1 0
+11-09 12:40:32.686  1026  1319 I bt_stack: [INFO:le_scanning_manager.cc(204)] ScanFilterParamSetup in shim layer
+11-09 12:40:32.686  1026  1226 D BtGatt.GattService: onScanFilterParamsConfigured() - clientIf=2, status=0, action=0, availableSpace=0
+11-09 12:40:32.687  1026  1226 D BtGatt.ScanManager: callback done for scannerId - 2 status - 0
+11-09 12:40:32.687  1026  1319 I bt_stack: [INFO:le_scanning_manager.cc(243)] ScanFilterAdd in shim layer
+11-09 12:40:32.688  1026  1226 D BtGatt.GattService: onScanFilterConfig() - clientIf=2, action = 0 status = 0, filterType=0, availableSpace=0
+11-09 12:40:32.689  1026  1192 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_scanning_manager.cc:1369 on_advertising_filter_complete: Got a Command complete LE_ADV_FILTER, status UNKNOWN_CONNECTION
+11-09 12:40:32.700  1026  1226 D BtGatt.ScanManager: callback done for scannerId - 2 status - 0
+11-09 12:40:32.700  1026  1319 D BtGatt.ScanManager: configureFilterParamter 500 10000 1 0
+11-09 12:40:32.700  1026  1319 I bt_stack: [INFO:le_scanning_manager.cc(204)] ScanFilterParamSetup in shim layer
+11-09 12:40:32.702  1026  1226 D BtGatt.GattService: onScanFilterParamsConfigured() - clientIf=2, status=0, action=0, availableSpace=0
+11-09 12:40:32.702  1026  1226 D BtGatt.ScanManager: callback done for scannerId - 2 status - 0
+11-09 12:40:32.702  1026  1319 I bt_stack: [INFO:le_scanning_manager.cc(243)] ScanFilterAdd in shim layer
+11-09 12:40:32.702  1026  1226 D BtGatt.GattService: onScanFilterConfig() - clientIf=2, action = 0 status = 0, filterType=0, availableSpace=0
+11-09 12:40:32.702  1026  1226 D BtGatt.ScanManager: callback done for scannerId - 2 status - 0
+11-09 12:40:32.703  1026  1319 D BtGatt.ScanManager: configureFilterParamter 500 10000 1 0
+11-09 12:40:32.703  1026  1319 I bt_stack: [INFO:le_scanning_manager.cc(204)] ScanFilterParamSetup in shim layer
+11-09 12:40:32.703  1026  1226 D BtGatt.GattService: onScanFilterParamsConfigured() - clientIf=2, status=0, action=0, availableSpace=0
+11-09 12:40:32.703  1026  1226 D BtGatt.ScanManager: callback done for scannerId - 2 status - 0
+11-09 12:40:32.703  1026  1319 D BtGatt.ScanManager: start gattClientScanNative from startRegularScan()
+11-09 12:40:32.703  1026  1319 I bt_stack: [INFO:le_scanning_manager.cc(168)] Scan in shim layer started
+11-09 12:40:32.703  1026  1192 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_scanning_manager.cc:588 stop_scan: Scanning already stopped, return!
+11-09 12:40:32.703  1026  1192 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_address_manager.cc:175 register_client: Scheduled address rotation for first client registered
+11-09 12:40:32.703  1026  1192 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_address_manager.cc:178 register_client: Client registered
+11-09 12:40:32.703  1026  1319 D BtGatt.ScanManager: configureRegularScanParams() - queue=2
+11-09 12:40:32.704  1026  1319 I bt_stack: [INFO:le_scanning_manager.cc(168)] Scan in shim layer stopped
+11-09 12:40:32.704  1026  1192 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_address_manager.cc:193 unregister_client: Client unregistered
+11-09 12:40:32.704  1026  1192 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_address_manager.cc:197 unregister_client: Cancelled address rotation alarm
+11-09 12:40:32.704  1026  1319 D BtGatt.ScanManager: Start gattClientScanNative with old scanMode -1 new scanMode 2 ( in MS: 100 / 100, in scan unit: 160 / 160 ) [ScanClient scanModeApp 2 scanModeUsed 2 [appScanStats com.google.uid.shared:1
+11-09 12:40:32.704  1026  1319 I bt_stack: [INFO:le_scanning_manager.cc(346)] SetScanParameters in shim layer
+11-09 12:40:32.705  1026  1319 I bt_stack: [INFO:le_scanning_manager.cc(168)] Scan in shim layer started
+11-09 12:40:32.705  1026  1192 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_scanning_manager.cc:588 stop_scan: Scanning already stopped, return!
+11-09 12:40:32.705  1026  1192 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_address_manager.cc:175 register_client: Scheduled address rotation for first client registered
+11-09 12:40:32.705  1026  1192 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_address_manager.cc:178 register_client: Client registered
+11-09 12:40:32.705  1026  1319 D BtGatt.ScanManager: apply scan timeout (300000)to scannerId 2
+11-09 12:40:32.705  1026  1226 D BtGatt.GattService: onScanParamSetupCompleted : 0

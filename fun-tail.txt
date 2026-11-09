@@ -1,0 +1,150 @@
+11-09 12:45:54.604  5030  5514 I NamespaceManager: Package com.google.android.uprobestats name not found! Using module version.
+11-09 12:45:54.605  5030  5514 W PhenotypeConfigurationU: Update for unknown DeviceConfig package com.google.android.gms.platformconfigurator [CONTEXT service_id=204 ]
+11-09 12:45:54.605  5030  5514 W PhenotypeConfigurationU: bwix: No package exists for config package: com.google.android.gms.platformconfigurator
+11-09 12:45:54.605  5030  5514 W PhenotypeConfigurationU: 	at com.google.android.gms.platformconfigurator.PhenotypeConfigurationUpdateListener.b(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+11-09 12:45:54.605  5030  5514 W PhenotypeConfigurationU: 	at com.google.android.gms.platformconfigurator.PhenotypeConfigurationUpdateListener.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+11-09 12:45:54.605  5030  5514 W PhenotypeConfigurationU: 	at com.google.android.gms.platformconfigurator.PhenotypeConfigurationUpdateListener.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):21)
+11-09 12:45:54.605  5030  5514 W PhenotypeConfigurationU: 	at com.google.android.chimera.IntentOperation.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-09 12:45:54.605  5030  5514 W PhenotypeConfigurationU: 	at zhv.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+11-09 12:45:54.605  5030  5514 W PhenotypeConfigurationU: 	at hjm.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3)
+11-09 12:45:54.605  5030  5514 W PhenotypeConfigurationU: 	at hjl.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):11)
+11-09 12:45:54.605  5030  5514 W PhenotypeConfigurationU: 	at dfhf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-09 12:45:54.605  5030  5514 W PhenotypeConfigurationU: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-09 12:45:54.605  5030  5514 W PhenotypeConfigurationU: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-09 12:45:54.605  5030  5514 W PhenotypeConfigurationU: 	at java.lang.Thread.run(Thread.java:1012)
+11-09 12:45:54.605  1619  1643 I ogle.android.as: JIT allocated 56KB for compiled code of fjb fjd.d()
+11-09 12:45:54.605  1619  1643 I ogle.android.as: JIT allocated 52KB for stack maps of fjb fjd.d()
+11-09 12:45:54.605  5030  5512 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-09 12:45:54.606  1619  1643 I ogle.android.as: Compiler allocated 16MB to compile fjb fjd.d()
+11-09 12:45:54.607  5030  5512 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-09 12:45:54.608  5030  5512 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-09 12:45:54.608  5030  5512 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-09 12:45:54.608  5030  5512 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-09 12:45:54.608  5030  5512 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-09 12:45:54.609  5030  5512 I NamespaceManager: Package 1 name not found! Using module version.
+11-09 12:45:54.613  5030  5512 I NamespaceManager: Package rkpd name not found! Using module version.
+11-09 12:45:54.613  5030  5512 I NamespaceManager: Package android.companion name not found! Using module version.
+11-09 12:45:54.614  5030  5512 I NamespaceManager: Package com.google.android.aicore name not found! Using module version.
+11-09 12:45:54.614  5030  5512 I NamespaceManager: Package com.google.android.audioproxy name not found! Using module version.
+11-09 12:45:54.614  5030  5512 I NamespaceManager: Package com.google.android.apps.pixel.psi name not found! Using module version.
+11-09 12:45:54.614  5030  5512 I NamespaceManager: Package com.google.android.apps.safetycore name not found! Using module version.
+11-09 12:45:54.614  5030  5512 I NamespaceManager: Package com.google.android.crashrecovery name not found! Using module version.
+11-09 12:45:54.614  5030  5512 I NamespaceManager: Package com.google.android.profiling name not found! Using module version.
+11-09 12:45:54.614  5030  5512 I NamespaceManager: Package com.google.android.bt name not found! Using module version.
+11-09 12:45:54.614  5030  5512 I NamespaceManager: Package com.google.android.nfcservices name not found! Using module version.
+11-09 12:45:54.614  5030  5512 I NamespaceManager: Package com.google.android.webapp name not found! Using module version.
+11-09 12:45:54.614  5030  5512 I NamespaceManager: Package com.google.android.telephonycore name not found! Using module version.
+11-09 12:45:54.614  5030  5512 I NamespaceManager: Package com.google.android.uprobestats name not found! Using module version.
+11-09 12:45:54.628  5144  5635 V Backup  : [CustomDownloadSchedulingIO] Received Action: com.google.android.gms.phenotype.com.google.android.gms.backup.COMMITTED
+11-09 12:45:54.629  5144  5631 V Backup  : [G1ModuleInitIntentOperation] Flags updated
+11-09 12:45:54.629  5144  5631 V Backup  : [G1ModuleInitIntentOperation] Running restore operation is disabled by flag
+11-09 12:45:54.629  5144  5631 W ChimeraUtils: Module com.google.android.gms.backup_g1 missing resource null(0)
+11-09 12:45:54.629  5144  5748 V Backup  : [ShowPhotosNotifIO] Flag not enabled; returning.
+11-09 12:45:54.629  5144  5635 V Backup  : [CustomDownloadSchedulingIO] listenToSetupWizardFinishedBroadcast or customBackupDownloadEnableSuwTriggerWithGmsUpdateCheck flag on
+11-09 12:45:54.630  5144  5631 W ChimeraUtils: Module com.google.android.gms.backup_g1 missing resource null(0)
+11-09 12:45:54.630  5144  5631 W ChimeraUtils: Module com.google.android.gms.backup_g1 missing resource null(0)
+11-09 12:45:54.748  5580  5598 D EGL_emulation: app_time_stats: avg=33.15ms min=22.63ms max=41.25ms count=31
+11-09 12:45:54.752  5144  5144 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.auth.cryptauth.cryptauthservice.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsBoundBrokerService }
+11-09 12:45:54.840  1612  2267 D CompatibilityChangeReporter: Compat change id reported: 183155436; UID 10177; state: ENABLED
+11-09 12:45:54.841   518  2864 D CompatibilityChangeReporter: Compat change id reported: 149924527; UID 2000; state: ENABLED
+11-09 12:45:54.841   518  2864 D CompatibilityChangeReporter: Compat change id reported: 132649864; UID 2000; state: DISABLED
+11-09 12:45:54.842  1612  2267 W MediaProvider: isAppCloneUserPair for user 0: false
+11-09 12:45:54.862  5726  5726 I AccessibilityNodeInfoDumper: Skipping invisible child: android.view.accessibility.AccessibilityNodeInfo@26b4d; boundsInParent: Rect(0, 0 - 296, 66); boundsInScreen: Rect(12, 669 - 308, 640); boundsInWindow: 
+11-09 12:45:54.864  5726  5726 W AccessibilityNodeInfoDumper: Fetch time: 24ms
+11-09 12:45:54.866  1619  5014 I AiAiEcho: Settings changed for uri: content://settings/secure/accessibility_enabled
+11-09 12:45:54.866   518  1402 W WindowMagnificationMgr: requestConnection duplicated request: connect=false, mConnectionState=DISCONNECTED
+11-09 12:45:54.866   518  1402 D AccessibilityManagerService: restoreCurrentUserForTestAutomationIfNeededLocked(): ignoring because device doesn't support visible background users
+11-09 12:45:54.867  1619  2228 I AiAiEcho: Predicting[0]: 
+11-09 12:45:54.867  1619  2228 I AiAiEcho: EchoTargets: 
+11-09 12:45:54.867  1619  2228 I AiAiEcho: Filtered by AiAi flag check: 
+11-09 12:45:54.867  5726  5726 D AndroidRuntime: Shutting down VM
+11-09 12:45:54.868  1619  2228 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+11-09 12:45:54.868  1619  2228 I AiAiEcho: Predicting[0]: 
+11-09 12:45:54.868  1619  2228 I AiAiEcho: EchoTargets: 
+11-09 12:45:54.868  1619  2228 I AiAiEcho: Filtered by AiAi flag check: 
+11-09 12:45:54.869  1619  2228 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+11-09 12:45:54.869  1619  2228 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0 (types=[])
+11-09 12:45:54.870  1619  2228 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0 (types=[])
+11-09 12:45:54.871  1668  2207 I A       : NGA enabled in interactor.
+11-09 12:45:54.871  1668  2207 I A       : Nga state changed to NgaStateDetails{state=ENABLED, isSpecialExperience=false}
+11-09 12:45:54.880  1640  2263 I A       : Initializing all components
+11-09 12:45:54.880  1640  2263 I A       : APA or Classic session decision: SessionDecision(sessionVariance=CLASSIC, platformVariance=CLASSIC, justification=CURRENT_PLATFORM_VARIANCE).
+11-09 12:45:54.880  1640  2263 I A       : [Memory] eligibility: StashEligibility{6}
+11-09 12:45:54.882  1640  2186 I A       : onIsEnabledChanged, isEnabled: false
+11-09 12:45:54.882  1640  2186 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:45:54.882  1640  2186 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:45:54.882  1640  2186 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:45:54.882  1640  2186 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:45:54.883  1640  2186 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:45:54.883  1640  2186 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:45:54.883  1640  2186 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:45:54.883  1640  2186 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:45:54.883  1640  2186 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:45:54.883  1640  2186 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:45:54.883  1640  2186 I A       : onOpaVisibilityChanged: false
+11-09 12:45:54.883  1640  2186 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:45:54.883  1640  2186 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:45:54.883  1640  2186 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:45:54.883  1640  2186 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:45:54.883  1640  2186 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:45:54.883  1640  2186 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:45:54.883  1640  2186 I A       : Setting session to type: NO_SESSION
+11-09 12:45:54.883  1640  2186 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:45:54.883  1640  2186 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:45:54.883  1640  2186 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:45:54.883  1640  2186 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:45:54.883  1640  2186 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:45:54.883  1640  2186 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:45:54.883  1640  2186 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:45:54.883  1640  2186 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:45:54.883  1640  2186 I A       : setNavBarVisible: GestureNavBarVisible{navbarVisible=true}
+11-09 12:45:54.883  1640  2186 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:45:54.883  1640  2186 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:45:54.883  1640  2186 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:45:54.883  1640  2186 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:45:54.883  1640  2186 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:45:54.883  1640  2186 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:45:54.883  1640  2186 I A       : onDisabled. Registered: false
+11-09 12:45:54.884  1640  2186 I A       : on opa visibility changed false
+11-09 12:45:54.884  1640  2186 I A       : on opa visibility changed false
+11-09 12:45:54.886  1640  2172 I A       : State changed: IDLE => IDLE by NGA_STATE_CHANGED and N/A with Optional.empty
+11-09 12:45:54.887  1640  2172 I A       : Recognizer choice: (recognizer_type: 1, recognizer_mode: 1, choice_reason: 4)
+11-09 12:45:54.888  1640  2186 I NgaEntryPointEventSendr: setupConnection
+11-09 12:45:54.890  1668  1668 I A       : Creating pss binder().
+11-09 12:45:54.892   827   827 W PageIndicator: Total number of pages invalid: 0. Assuming 1 page.
+11-09 12:45:54.896   518   518 D BatterySaverPolicy: accessibility changed to false, updating policy.
+11-09 12:45:54.897  1640  2186 I NgaEntryPointEventSendr: State changed: Disconnected => Connecting
+11-09 12:45:54.897  1640  2186 I NgaEntryPointEventSendr: onServiceConnected
+11-09 12:45:54.897  1668  5015 I A       : Calling beginBinderSession().
+11-09 12:45:54.898  1640  2172 I A       : onActiveStateChangeEvent: IDLE => IDLE
+11-09 12:45:54.898  1668  5015 I A       : beginBinderSession(): calling binder
+11-09 12:45:54.899  1640  2186 I NgaEntryPointEventSendr: State changed: Connecting => Ready
+11-09 12:45:54.900   518  1999 W ActivityManager: Unable to start service Intent { cmp=com.google.android.apps.tachyon/.clientapi.ClientApiService } U=0: not found
+11-09 12:45:54.907  1668  2286 W A       : UiCallbackStub-onGenericEvent[ServiceEvent = 60] task was not run. Callback from Service received after client was disposed.
+11-09 12:45:54.908  1668  2286 W SearchServiceCore: Abort, client detached.
+11-09 12:45:54.911  1668  2437 I PBSessionCacheImpl: Deleted sessionId[7337735808817691] from persistence.
+11-09 12:45:54.916  1640  2186 I A       : Initialize
+11-09 12:45:54.918  5030  5298 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService started execution. cause:9 exec_start_elapsed_seconds: 86 [CONTEXT service_id=218 ]
+11-09 12:45:54.920  1640  2186 I A       : stopListening(NGA_PAUSED_UNKNOWN_REASON, NGA_CREATE), idleOverride=NOT_LISTENING
+11-09 12:45:54.923  1640  2172 W A       : Missing generator mapping for generator GENERATOR_CONTEXTUAL_SUGGESTIONS
+11-09 12:45:54.923  1640  2172 W A       : Missing generator mapping for generator GENERATOR_FRE_SUGGESTIONS_ON_TIMEOUT
+11-09 12:45:54.923  1640  2172 W A       : Missing generator mapping for generator GENERATOR_FRE_SUGGESTIONS_ON_INVOCATION
+11-09 12:45:54.924  5030  5098 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService finished executing. cause:9 result: 1 elapsed_millis: 59 uptime_millis: 59 exec_start_elapsed_seconds: 86
+11-09 12:45:54.925  1640  2186 I NgaEntryPointEventSendr: State changed: Ready => Disconnected (onOpaDisconnected)
+11-09 12:45:54.930  1640  2172 I A       : #onActiveStateChangeEvent, newState: IDLE, previousState: IDLE.
+11-09 12:45:54.932   518  1999 D CompatibilityChangeReporter: Compat change id reported: 197654537; UID 10192; state: ENABLED
+11-09 12:45:54.933  1640  2172 W A       : Routing took 2 ms
+11-09 12:45:54.938  1640  2172 I A       : Successfully initialized all components
+11-09 12:45:54.957  1640  1640 V ClearcutMetricXmitter: Transmission is done.
+11-09 12:45:54.958  5030  5030 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.auth.proximity.devicesyncservice.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentBoundBrokerService }
+11-09 12:45:55.154  5030  5030 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.presencemanager.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+11-09 12:45:55.155  5030  5030 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.presencemanager.service.INTERNAL_IDENTITY dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+11-09 12:45:55.498  5030  5030 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.pseudonymous.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+11-09 12:45:55.756  5580  5598 D EGL_emulation: app_time_stats: avg=33.57ms min=25.82ms max=41.11ms count=30
+11-09 12:45:55.797  5760  5760 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+11-09 12:45:55.797  5760  5760 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-09 12:45:55.798   400   411 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=5760
+11-09 12:45:55.798   400   411 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (150 us)
+11-09 12:45:55.810   135   135 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-09 12:45:55.810  5760  5761 I Gralloc4: mapper 4.x is not supported
+11-09 12:45:55.974     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.

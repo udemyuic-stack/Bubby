@@ -1,0 +1,150 @@
+11-09 12:40:39.874  1646  2084 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:40:39.874  1646  2084 I A       : Setting session to type: NO_SESSION
+11-09 12:40:39.875  1646  2084 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:40:39.875  1646  2084 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:40:39.876  1646  2084 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:40:39.876  1646  2084 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:40:39.876  1646  2084 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:40:39.891  1646  2084 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:40:39.891  1646  2084 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:40:39.893  1646  2084 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:40:39.894  1646  2084 I A       : setNavBarVisible: GestureNavBarVisible{navbarVisible=true}
+11-09 12:40:39.894  1646  2084 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:40:39.894  1646  2084 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:40:39.894  1646  2084 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:40:39.894  1646  2084 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:40:39.895  1646  2084 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:40:39.895  1646  2084 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:40:39.895  1646  2084 I A       : onDisabled. Registered: false
+11-09 12:40:39.896  1646  2070 I A       : State changed: IDLE => IDLE by NGA_STATE_CHANGED and N/A with Optional.empty
+11-09 12:40:39.897  1646  2070 I A       : Recognizer choice: (recognizer_type: 1, recognizer_mode: 1, choice_reason: 4)
+11-09 12:40:39.899  1646  2070 I A       : onActiveStateChangeEvent: IDLE => IDLE
+11-09 12:40:39.901  1646  2084 I A       : Initialize
+11-09 12:40:39.902  1646  2084 I A       : on opa visibility changed false
+11-09 12:40:39.902  1646  2084 I A       : on opa visibility changed false
+11-09 12:40:39.902  1646  2084 I A       : stopListening(NGA_PAUSED_UNKNOWN_REASON, NGA_CREATE), idleOverride=NOT_LISTENING
+11-09 12:40:39.903  1646  2070 W A       : Missing generator mapping for generator GENERATOR_CONTEXTUAL_SUGGESTIONS
+11-09 12:40:39.904  1646  2070 W A       : Missing generator mapping for generator GENERATOR_FRE_SUGGESTIONS_ON_TIMEOUT
+11-09 12:40:39.904  1646  2070 W A       : Missing generator mapping for generator GENERATOR_FRE_SUGGESTIONS_ON_INVOCATION
+11-09 12:40:39.905  1646  2084 I NgaEntryPointEventSendr: setupConnection
+11-09 12:40:39.907  1646  2070 I A       : #onActiveStateChangeEvent, newState: IDLE, previousState: IDLE.
+11-09 12:40:39.909  1717  1717 I A       : Creating pss binder().
+11-09 12:40:39.912  1646  2084 I NgaEntryPointEventSendr: State changed: Disconnected => Connecting
+11-09 12:40:39.913  1646  2084 I NgaEntryPointEventSendr: onServiceConnected
+11-09 12:40:39.913  1717  4270 I A       : Calling beginBinderSession().
+11-09 12:40:39.920  1717  4270 I A       : beginBinderSession(): calling binder
+11-09 12:40:39.920  1646  2084 I NgaEntryPointEventSendr: State changed: Connecting => Ready
+11-09 12:40:39.926   522   593 W ActivityManager: Unable to start service Intent { cmp=com.google.android.apps.tachyon/.clientapi.ClientApiService } U=0: not found
+11-09 12:40:39.930  1646  2084 W A       : Routing took 9 ms
+11-09 12:40:39.931  1646  2084 I A       : Successfully initialized all components
+11-09 12:40:39.934  5054  5582 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService started execution. cause:9 exec_start_elapsed_seconds: 93 [CONTEXT service_id=218 ]
+11-09 12:40:39.939  5054  5577 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService finished executing. cause:9 result: 1 elapsed_millis: 22 uptime_millis: 22 exec_start_elapsed_seconds: 93
+11-09 12:40:39.943  1646  2084 I NgaEntryPointEventSendr: State changed: Ready => Disconnected (onOpaDisconnected)
+11-09 12:40:39.945  1717  2499 I PBSessionCacheImpl: Deleted sessionId[7553240087545291] from persistence.
+11-09 12:40:39.945  1717  2461 W A       : UiCallbackStub-onGenericEvent[ServiceEvent = 60] task was not run. Callback from Service received after client was disposed.
+11-09 12:40:39.947  1717  2461 W SearchServiceCore: Abort, client detached.
+11-09 12:40:40.102   522   762 D ConnectivityService: reportNetworkConnectivity(100, false) by 10132
+11-09 12:40:40.103   997  2053 D NetworkMonitor/100: Forcing reevaluation for UID 10132. Dns signal count: 0
+11-09 12:40:40.104   997  5672 D TrafficStats: tagSocket(68) with statsTag=0xffffff81, statsUid=-1
+11-09 12:40:40.104   997  5673 D TrafficStats: tagSocket(107) with statsTag=0xffffff81, statsUid=-1
+11-09 12:40:40.105   997  5672 D TrafficStats: tagSocket(68) with statsTag=0xffffff81, statsUid=-1
+11-09 12:40:40.105   997  5673 D TrafficStats: tagSocket(75) with statsTag=0xffffff81, statsUid=-1
+11-09 12:40:40.106   336  5674 I resolv  : ResNSendHandler::run: 0 / {100 983140 100 983140 1073 1}
+11-09 12:40:40.106   336  5675 I resolv  : ResNSendHandler::run: 0 / {100 983140 100 983140 1073 1}
+11-09 12:40:40.107   336  5675 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x75b091a72af0
+11-09 12:40:40.108   336  5676 I resolv  : ResNSendHandler::run: 0 / {100 983140 100 983140 1073 1}
+11-09 12:40:40.108   336  5676 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x75b141a683d0
+11-09 12:40:40.108   336  5677 I resolv  : ResNSendHandler::run: 0 / {100 983140 100 983140 1073 1}
+11-09 12:40:40.109   336  5677 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x75b091a71350
+11-09 12:40:40.109   997   997 D TrafficStats: tagSocket(75) with statsTag=0xffffffff, statsUid=-1
+11-09 12:40:40.109   997   997 D TrafficStats: tagSocket(75) with statsTag=0xffffffff, statsUid=-1
+11-09 12:40:40.110   997  5673 D NetworkMonitor/100: PROBE_DNS connectivitycheck.gstatic.com 5ms OK 142.251.150.120,2001:4860:4826:7800::
+11-09 12:40:40.115   336  5674 I resolv  : res_nsend: used send_dg 256 terrno: 0
+11-09 12:40:40.115   997   997 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-09 12:40:40.116   997   997 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-09 12:40:40.116   997   997 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-09 12:40:40.116   997   997 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-09 12:40:40.116   997   997 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-09 12:40:40.116   336  5678 I resolv  : GetAddrInfoHandler::run: {100 983140 100 983140 1073 1}
+11-09 12:40:40.117   997   997 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-09 12:40:40.117   997   997 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-09 12:40:40.117   997   997 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-09 12:40:40.117   997   997 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-09 12:40:40.118   997   997 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-09 12:40:40.118   997   997 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-09 12:40:40.118   997   997 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-09 12:40:40.118   997   997 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-09 12:40:40.118   997   997 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-09 12:40:40.118   997   997 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-09 12:40:40.119   997   997 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-09 12:40:40.119   997  5672 D NetworkMonitor/100: PROBE_DNS www.google.com 15ms OK 142.251.154.119,142.251.155.119,142.251.153.119,142.251.152.119,142.251.151.119,142.251.157.119,142.251.150.119,142.251.156.119,2001:4860:4829:7700::,2001
+11-09 12:40:40.119   336  5679 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+11-09 12:40:40.119   336  5679 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x75b091a72af0
+11-09 12:40:40.119   336  5679 I resolv  : doQuery: rcode=0, ancount=1, return value=75
+11-09 12:40:40.121   336  5681 I resolv  : GetAddrInfoHandler::run: {100 983140 100 983140 1073 1}
+11-09 12:40:40.121   336  5683 I resolv  : res_nmkquery: (QUERY, IN, A)
+11-09 12:40:40.121   336  5683 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x75b141a683d0
+11-09 12:40:40.121   336  5683 I resolv  : doQuery: rcode=0, ancount=8, return value=160
+11-09 12:40:40.122   336  5682 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+11-09 12:40:40.122   336  5682 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x75b101a75850
+11-09 12:40:40.122   336  5682 I resolv  : doQuery: rcode=0, ancount=8, return value=256
+11-09 12:40:40.122   997  5672 D TrafficStats: tagSocket(68) with statsTag=0xffffff81, statsUid=-1
+11-09 12:40:40.124   336  5680 I resolv  : res_nmkquery: (QUERY, IN, A)
+11-09 12:40:40.125   336  5680 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x75b091a71350
+11-09 12:40:40.125   336  5680 I resolv  : doQuery: rcode=0, ancount=1, return value=63
+11-09 12:40:40.125   997  5673 D TrafficStats: tagSocket(75) with statsTag=0xffffff81, statsUid=-1
+11-09 12:40:40.143   997  5673 D NetworkMonitor/100: PROBE_HTTP http://connectivitycheck.gstatic.com/generate_204 time=32ms ret=204 request={Connection=[close], User-Agent=[Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gec
+11-09 12:40:40.157   997  5672 D NetworkMonitor/100: PROBE_HTTPS https://www.google.com/generate_204 time=38ms ret=204 request={Connection=[close], User-Agent=[Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60
+11-09 12:40:40.158   997  5671 D NetworkMonitor/100: isCaptivePortal: isSuccessful()=true isPortal()=false RedirectUrl=null isPartialConnectivity()=false Time=55ms
+11-09 12:40:40.159   522   762 D ConnectivityService: [100 WIFI] validation passed
+11-09 12:40:40.203   522   605 D ActivityManager: sync unfroze 1734 com.google.android.youtube for 6
+11-09 12:40:40.227   522   593 D ConnectivityService: requestNetwork for uid/pid:10139/1734 activeRequest: null callbackRequest: 152 [NetworkRequest [ REQUEST id=153, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 1013
+11-09 12:40:40.228   522   762 D ConnectivityService: NetReassign [153 : null → 100] [c 0] [a 0] [i 1]
+11-09 12:40:40.228   522   755 D WifiNetworkFactory: got request NetworkRequest [ REQUEST id=153, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10139 RequestorUid: 10139 RequestorPkg: com.google.android.youtube Underl
+11-09 12:40:40.228   522   755 D UntrustedWifiNetworkFactory: got request NetworkRequest [ REQUEST id=153, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10139 RequestorUid: 10139 RequestorPkg: com.google.android.youtu
+11-09 12:40:40.228   522   755 D OemPaidWifiNetworkFactory: got request NetworkRequest [ REQUEST id=153, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10139 RequestorUid: 10139 RequestorPkg: com.google.android.youtube
+11-09 12:40:40.228   522   755 D MultiInternetWifiNetworkFactory: got request NetworkRequest [ REQUEST id=153, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10139 RequestorUid: 10139 RequestorPkg: com.google.android.y
+11-09 12:40:40.235   831  5452 I PermissionControllerServiceImpl: Updating user sensitive for uid 10156
+11-09 12:40:40.238   522   625 I InputReader: Reconfiguring input devices, changes=KEYBOARD_LAYOUTS
+11-09 12:40:40.240  1043  1043 D CarrierSvcBindHelper: onPackageModified: com.google.android.contacts
+11-09 12:40:40.240  1019  1019 V MediaPlayerList: mPackageChangedBroadcastReceiver: action: android.intent.action.PACKAGE_CHANGED
+11-09 12:40:40.241  1043  1043 D CarrierSvcBindHelper: No carrier app for: 0
+11-09 12:40:40.241   830   902 D StylusManager: Stylus InputDevice changed: 14 virtio_input_multi_touch_11
+11-09 12:40:40.242  1019  1019 V MediaPlayerList: mPackageChangedBroadcastReceiver: action: android.intent.action.PACKAGE_CHANGED
+11-09 12:40:40.242   830   830 D ControlsListingControllerImpl: ServiceConfig reloaded, count: 0
+11-09 12:40:40.243   830   902 D StylusManager: Stylus InputDevice changed: 13 virtio_input_multi_touch_10
+11-09 12:40:40.245   830   902 D StylusManager: Stylus InputDevice changed: 10 virtio_input_multi_touch_7
+11-09 12:40:40.249   830   902 D StylusManager: Stylus InputDevice changed: 9 virtio_input_multi_touch_6
+11-09 12:40:40.249   830   902 D StylusManager: Stylus InputDevice changed: 8 virtio_input_multi_touch_5
+11-09 12:40:40.249   830   902 D StylusManager: Stylus InputDevice changed: 6 virtio_input_multi_touch_3
+11-09 12:40:40.249   830   902 D StylusManager: Stylus InputDevice changed: 12 virtio_input_multi_touch_9
+11-09 12:40:40.250   830   902 D StylusManager: Stylus InputDevice changed: 5 virtio_input_multi_touch_2
+11-09 12:40:40.250   830   902 D StylusManager: Stylus InputDevice changed: 7 virtio_input_multi_touch_4
+11-09 12:40:40.250   830   902 D StylusManager: Stylus InputDevice changed: 4 virtio_input_multi_touch_1
+11-09 12:40:40.250   830   902 D StylusManager: Stylus InputDevice changed: 11 virtio_input_multi_touch_8
+11-09 12:40:40.272  1043  1322 D ImsResolver: maybeAddedImsService, packageName: com.google.android.contacts
+11-09 12:40:40.277   522   550 E system_server: No package ID 7f found for resource ID 0x7f080107.
+11-09 12:40:40.277   522   550 E system_server: No package ID 7f found for resource ID 0x7f150560.
+11-09 12:40:40.287  1610  1610 I AiAiEcho: AppFetcherImpl onPackageChanged com.google.android.contacts.
+11-09 12:40:40.289  1610  2571 I AiAiEcho: AppIndexer Package:[com.google.android.contacts] UserProfile:[0] Enabled:[true].
+11-09 12:40:40.289  1610  2571 I AiAiEcho: AppFetcherImplV2 updateApps package:[com.google.android.contacts], userId:[0], reason:[package is updated.].
+11-09 12:40:40.291   522  1684 W JobScheduler: Job didn't exist in JobStore: 64d1dac #u0a139/2 com.google.android.youtube/androidx.work.impl.background.systemjob.SystemJobService
+11-09 12:40:40.297  5449  5469 D EGL_emulation: app_time_stats: avg=33.58ms min=27.24ms max=40.97ms count=30
+11-09 12:40:40.299   336  5685 I resolv  : GetAddrInfoHandler::run: {100 100 100 983140 10139 0}
+11-09 12:40:40.299   336  5686 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+11-09 12:40:40.299   336  5686 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x75b101a73c50
+11-09 12:40:40.299   336  5686 I resolv  : doQuery: rcode=0, ancount=8, return value=265
+11-09 12:40:40.299   336  5687 I resolv  : res_nmkquery: (QUERY, IN, A)
+11-09 12:40:40.299   336  5687 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x75b001a686f0
+11-09 12:40:40.299   336  5687 I resolv  : doQuery: rcode=0, ancount=8, return value=169
+11-09 12:40:40.689  5054  5085 I HeterodyneSyncScheduler: Scheduling Phenotype for a PhenotypeSyncImmediately(8, com.google.android.gms) one off with window [1, 2] in seconds [CONTEXT service_id=51 ]
+11-09 12:40:40.732  4048  4203 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of bdxy@9d4956d
+11-09 12:40:40.790  5054  5619 I Fitness : OnPackageChangedOperation got intent: Intent { act=android.intent.action.PACKAGE_CHANGED dat=package: flg=0x45000010 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.PersistentIntentO
+11-09 12:40:40.798  5054  5495 I Fitness : FitCleanupIntentOperation received Intent android.intent.action.PACKAGE_CHANGED [CONTEXT service_id=17 ]
+11-09 12:40:40.819  5693  5693 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+11-09 12:40:40.819  5693  5693 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-09 12:40:40.824   401   571 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=5693
+11-09 12:40:40.824   401   571 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (269 us)
+11-09 12:40:40.836   136   136 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-09 12:40:40.836  5693  5695 I Gralloc4: mapper 4.x is not supported
+11-09 12:40:41.014     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.

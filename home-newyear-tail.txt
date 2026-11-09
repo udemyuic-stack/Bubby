@@ -1,0 +1,150 @@
+11-09 12:40:52.402  4058  4151 I BugleRcsEngine: [59] brfq.d: (PEv2-SM-Bugle-45794904): start PEv2, trigger is CSLIB_PHENOTYPE_UPDATE, workerId is 1be51b11-bae3-4c21-b5df-ec9f4f8f5fe8 [null]
+11-09 12:40:52.403  4058  4151 I BugleRcsEngine: [59] broo.g: Created new RcsProvisioningProtoDataStorage for sim redacted-pii:sim_id[chars:20,last3:897]
+11-09 12:40:52.403  4058  4151 I BugleRcsEngine: [59] brnl.h: No RCS Configuration was found in Bugle for simID: redacted-pii:sim_id[chars:20,last3:897]
+11-09 12:40:52.403  4058  4151 I BugleRcsEngine: [59] brfq.d: (PEv2-SM-Bugle-45794904): start [null]
+11-09 12:40:52.404  4058  5097 I BugleRcsEngine: [115] brfq.d: (PEv2-SM-Bugle-45794904): Enter EnabledState [null]
+11-09 12:40:52.414  4058  5097 W BugleRcsEngine: [115] bpxc.w: Unable to send diagnostic log
+11-09 12:40:52.417  4058  5097 I BugleRcsEngine: [115] brds.c: Sending ProvisioningEvent to Bugle [Send Provisioning Session ID (18)], redacted-pii:[chars:97]
+11-09 12:40:52.417  4058  5097 I BugleRcsEngine: [115] bsgz.b: EngineBroadcaster: Broadcasting provisioning intent com.google.android.ims.provisioning.engine.provisioningEventAction to Bugle with extras redacted-pii:[chars:255] from source 
+11-09 12:40:52.420  4058  5097 I BugleRcsEngine: [115] brfq.d: (PEv2-SM-Bugle-45794904): Start a new provisioning session [0032b134-5077-4a2e-82e4-f380b3696fae]
+11-09 12:40:52.421  4058  5097 I BugleRcsEngine: [115] brnl.e: No RCS Configuration was found in Bugle for simID: redacted-pii:sim_id[chars:20,last3:897]
+11-09 12:40:52.421  4058  5097 I BugleRcsEngine: [115] brjv.b: RcsAvailabilityManager: Calculating Rcs Availability
+11-09 12:40:52.421  4058  5097 I BugleRcsEngine: [115] brnl.C: Bugle is default SMS app: true
+11-09 12:40:52.422  4058  5097 I BugleRcsEngine: [115] brjv.b: Bugle has minimum required RCS permissions: true
+11-09 12:40:52.422  4058  5097 I BugleRcsEngine: [115] brnl.B: Rcs is enabled from user settings: true
+11-09 12:40:52.422  4058  5097 I BugleRcsEngine: [115] brox.b: Using config server URL from bqas
+11-09 12:40:52.422  4058  5097 I BugleRcsEngine: [115] brnl.e: No RCS Configuration was found in Bugle for simID: redacted-pii:sim_id[chars:20,last3:897]
+11-09 12:40:52.422  4058  5097 I BugleRcsEngine: [115] brnl.e: No RCS Configuration was found in Bugle for simID: redacted-pii:sim_id[chars:20,last3:897]
+11-09 12:40:52.423  4058  5097 I BugleRcsEngine: [115] brjv.b: Config state is not ACCEPTED, provisioning still in progress
+11-09 12:40:52.423  4058  5097 I BugleRcsEngine: [115] brjv.b: RcsAvailabilityManager: Updating Rcs Availability to CARRIER_SETUP_PENDING (Carrier RCS is not set up), sim id changed: true
+11-09 12:40:52.423  4058  5097 I BugleRcsEngine: [115] brox.b: Using config server URL from bqas
+11-09 12:40:52.423  4058  5097 W BugleRcsEngine: [115] bpxc.w: Unable to send diagnostic log
+11-09 12:40:52.424  4058  5097 I BugleRcsEngine: [115] brds.c: Sending ProvisioningEvent to Bugle [Availability updated (12)], redacted-pii:[chars:145]
+11-09 12:40:52.424  4058  5097 I BugleRcsEngine: [115] bsgz.b: EngineBroadcaster: Broadcasting provisioning intent com.google.android.ims.provisioning.engine.provisioningEventAction to Bugle with extras redacted-pii:[chars:303] from source 
+11-09 12:40:52.424  1430  4783 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-09 12:40:52.424  4058  5097 I BugleRcsEngine: [115] brjv.b: Sending ProvisioningEvent Internal [Availability updated (12)], redacted-pii:[chars:145]
+11-09 12:40:52.429  4058  5097 I BugleRcsEngine: [115] brnl.e: No RCS Configuration was found in Bugle for simID: redacted-pii:sim_id[chars:20,last3:897]
+11-09 12:40:52.429  4058  5097 I BugleRcsEngine: [115] brfq.d: (PEv2-SM-Bugle-45794904): transitionViaMessage, srcState=EnabledState, destState = CheckPreconditionsState [0032b134-5077-4a2e-82e4-f380b3696fae]
+11-09 12:40:52.429  4058  5097 I BugleRcsEngine: [115] brds.c: Sending ProvisioningEvent to Bugle [Update provisioning status (11)], redacted-pii:[chars:85]
+11-09 12:40:52.429  4058  5097 I BugleRcsEngine: [115] bsgz.b: EngineBroadcaster: Broadcasting provisioning intent com.google.android.ims.provisioning.engine.provisioningEventAction to Bugle with extras redacted-pii:[chars:243] from source 
+11-09 12:40:52.430  4058  5097 I BugleRcsEngine: [115] brfq.d: (PEv2-SM-Bugle-45794904): EnabledState: Transition to check preconditions [0032b134-5077-4a2e-82e4-f380b3696fae]
+11-09 12:40:52.430  4058  5097 I BugleRcsEngine: [115] brfq.d: (PEv2-SM-Bugle-45794904): transitionTo: destState=CheckPreconditionsState [0032b134-5077-4a2e-82e4-f380b3696fae]
+11-09 12:40:52.430  4058  5097 I BugleRcsEngine: [115] brfq.d: (PEv2-SM-Bugle-45794904): onTransitionRequested EnabledState [0032b134-5077-4a2e-82e4-f380b3696fae]
+11-09 12:40:52.430  4058  5097 I BugleRcsEngine: [115] brfq.d: (PEv2-SM-Bugle-45794904): Enter CheckPreconditionsState [0032b134-5077-4a2e-82e4-f380b3696fae]
+11-09 12:40:52.431  1430  4783 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-09 12:40:52.431  1430  4783 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-09 12:40:52.431  1430  4783 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-09 12:40:52.431  1430  4783 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-09 12:40:52.431  1430  4783 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-09 12:40:52.431  1430  4783 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-09 12:40:52.431  1430  4783 I NamespaceManager: Package 1 name not found! Using module version.
+11-09 12:40:52.433  4058  5097 W BugleRcsEngine: [115] bpxc.w: Unable to send diagnostic log
+11-09 12:40:52.433  4058  5097 I BugleRcsEngine: [115] brfq.d: (PEv2-SM-Bugle-45794904): Battery optimization is not required. [0032b134-5077-4a2e-82e4-f380b3696fae]
+11-09 12:40:52.433  4058  5097 I BugleRcsEngine: [115] brnl.e: No RCS Configuration was found in Bugle for simID: redacted-pii:sim_id[chars:20,last3:897]
+11-09 12:40:52.433  4058  5097 I BugleRcsEngine: [115] brfq.d: (PEv2-SM-Bugle-45794904): transitionViaMessage, srcState=CheckPreconditionsState, destState = ReadyState [0032b134-5077-4a2e-82e4-f380b3696fae]
+11-09 12:40:52.434  4058  5097 I BugleRcsEngine: [115] brfq.d: (PEv2-SM-Bugle-45794904): CheckPreconditionsState: Transition to ready [0032b134-5077-4a2e-82e4-f380b3696fae]
+11-09 12:40:52.434  4058  5097 I BugleRcsEngine: [115] brfq.d: (PEv2-SM-Bugle-45794904): transitionTo: destState=ReadyState [0032b134-5077-4a2e-82e4-f380b3696fae]
+11-09 12:40:52.434  4058  5097 I BugleRcsEngine: [115] brfq.d: (PEv2-SM-Bugle-45794904): onTransitionRequested CheckPreconditionsState [0032b134-5077-4a2e-82e4-f380b3696fae]
+11-09 12:40:52.434  4058  5097 I BugleRcsEngine: [115] brfq.d: (PEv2-SM-Bugle-45794904): Exit CheckPreconditionsState [0032b134-5077-4a2e-82e4-f380b3696fae]
+11-09 12:40:52.434  4058  5097 I BugleRcsEngine: [115] brfq.d: (PEv2-SM-Bugle-45794904): Exit EnabledState [0032b134-5077-4a2e-82e4-f380b3696fae]
+11-09 12:40:52.434  4058  5097 W BugleRcsEngine: [115] bpxc.w: Unable to send diagnostic log
+11-09 12:40:52.434  4058  5097 I BugleRcsEngine: [115] brfq.d: (PEv2-SM-Bugle-45794904): Enter InProgressState [0032b134-5077-4a2e-82e4-f380b3696fae]
+11-09 12:40:52.440  4058  5097 W BugleRcsEngine: [115] bpxc.w: Unable to send diagnostic log
+11-09 12:40:52.440  4058  5097 I BugleRcsEngine: [115] brfq.d: (PEv2-SM-Bugle-45794904): Enter ReadyState [0032b134-5077-4a2e-82e4-f380b3696fae]
+11-09 12:40:52.442  4058  5097 W BugleRcsEngine: [115] bpxc.w: Unable to send diagnostic log
+11-09 12:40:52.443  3530  4654 I ConfigUpdater: Update downloaded, starting installation
+11-09 12:40:52.443  4058  5097 I BugleRcsEngine: [115] brnl.e: No RCS Configuration was found in Bugle for simID: redacted-pii:sim_id[chars:20,last3:897]
+11-09 12:40:52.450  4058  5097 I BugleRcsEngine: [115] brfq.d: (PEv2-SM-Bugle-45794904): transitionViaMessage, srcState=ReadyState, destState = RequestWithImsiState [0032b134-5077-4a2e-82e4-f380b3696fae]
+11-09 12:40:52.450  4058  5097 I BugleRcsEngine: [115] brfq.d: (PEv2-SM-Bugle-45794904): ReadyState: Transition to request with imsi [0032b134-5077-4a2e-82e4-f380b3696fae]
+11-09 12:40:52.450  4058  5097 I BugleRcsEngine: [115] brfq.d: (PEv2-SM-Bugle-45794904): transitionTo: destState=RequestWithImsiState [0032b134-5077-4a2e-82e4-f380b3696fae]
+11-09 12:40:52.450  4058  5097 I BugleRcsEngine: [115] brfq.d: (PEv2-SM-Bugle-45794904): onTransitionRequested ReadyState [0032b134-5077-4a2e-82e4-f380b3696fae]
+11-09 12:40:52.451  4058  5097 I BugleRcsEngine: [115] brfq.d: (PEv2-SM-Bugle-45794904): Exit ReadyState [0032b134-5077-4a2e-82e4-f380b3696fae]
+11-09 12:40:52.451  4058  5097 W BugleRcsEngine: [115] bpxc.w: Unable to send diagnostic log
+11-09 12:40:52.451  4058  5097 I BugleRcsEngine: [115] brfq.d: (PEv2-SM-Bugle-45794904): Enter RequestWithImsiState [0032b134-5077-4a2e-82e4-f380b3696fae]
+11-09 12:40:52.460  4058  5097 W BugleRcsEngine: [115] bpxc.w: Unable to send diagnostic log
+11-09 12:40:52.461  4058  5097 I BugleRcsEngine: [115] brnl.A: ProvisioningConsent from user settings: false
+11-09 12:40:52.461  4058  5097 W BugleConnectivity: getNetworkState: NetworkStateMonitor not found for subId 1.
+11-09 12:40:52.462   521   548 D ActivityManager: sync unfroze 3729 com.google.android.projection.gearhead:shared for 3
+11-09 12:40:52.469  1663  1663 I A       : Refusing EXCLUSIVE task 21, it is already pending. Try again in 359 seconds.
+11-09 12:40:52.472  4058  5097 I BugleConnectivity: HasReadPrivilegedPhoneState: true
+11-09 12:40:52.486   521  1636 W JobScheduler: Job didn't exist in JobStore: a312c22 #u0a132/-43 com.google.android.googlequicksearchbox/com.google.android.apps.gsa.tasks.BackgroundTasksJobService
+11-09 12:40:52.490  1663  1663 I A       : Refusing EXCLUSIVE task 21, it is already pending. Try again in 359 seconds.
+11-09 12:40:52.493  1663  2460 W SearchServiceCore: Abort, client detached.
+11-09 12:40:52.493  1663  2460 W SearchServiceCore: Abort, client detached.
+11-09 12:40:52.500  4058  5097 I BugleRcsEngine: [115] brox.b: Using config server URL from bqas
+11-09 12:40:52.500   521   616 I RescueParty: Starting to observe: [android, com.google.android.permissioncontroller, com.android.settings, com.android.systemui], updated namespace: privacy
+11-09 12:40:52.501  4058  5097 I BugleRcsEngine: [115] brnl.e: No RCS Configuration was found in Bugle for simID: redacted-pii:sim_id[chars:20,last3:897]
+11-09 12:40:52.501  4058  5097 I BugleRcsEngine: [115] brnl.A: ProvisioningConsent from user settings: false
+11-09 12:40:52.505  1663  2460 W SearchServiceCore: Abort, client detached.
+11-09 12:40:52.505  1663  2460 W SearchServiceCore: Abort, client detached.
+11-09 12:40:52.505  4058  5097 I BugleRcsEngine: [115] brnl.A: ProvisioningConsent from user settings: false
+11-09 12:40:52.506   521   547 I PackageWatchdog: Syncing state, reason: observing new packages
+11-09 12:40:52.507   521   547 D PackageWatchdog: rescue-party-observer added the following packages to monitor [android, com.google.android.permissioncontroller, com.android.settings, com.android.systemui]
+11-09 12:40:52.507   521   547 I PackageWatchdog: Syncing state, reason: updated observers
+11-09 12:40:52.507   521   547 I PackageWatchdog: Not pruning observers, elapsed time: 0ms
+11-09 12:40:52.507   521   547 I PackageWatchdog: Saving observer state to file
+11-09 12:40:52.507  1663  2460 W SearchServiceCore: Abort, client detached.
+11-09 12:40:52.507  1663  2460 W SearchServiceCore: Abort, client detached.
+11-09 12:40:52.534   521   521 I PackageWatchdog: Syncing health check requests for packages: {}
+11-09 12:40:52.534   521   521 I ExplicitHealthCheckController: Service not ready to get health check supported packages. Binding...
+11-09 12:40:52.537  1430  4578 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.auth.account.be.legacy.AuthCronService finished executing. cause:5 result: 3 elapsed_millis: 385 uptime_millis: 385 exec_start_elaps
+11-09 12:40:52.542  1663  2550 W TimedProcessReaper: Scheduling killing of process to refresh configuration
+11-09 12:40:52.551   521   521 I ExplicitHealthCheckController: Explicit health check service is bound
+11-09 12:40:52.555  1663  2460 W SearchServiceCore: Abort, client detached.
+11-09 12:40:52.555  1663  2460 W SearchServiceCore: Abort, client detached.
+11-09 12:40:52.561   521   521 I ExplicitHealthCheckController: Explicit health check service is connected ComponentInfo{com.google.android.ext.services/android.ext.services.watchdog.ExplicitHealthCheckServiceImpl}
+11-09 12:40:52.561   521   521 I ExplicitHealthCheckController: Service initialized, syncing requests
+11-09 12:40:52.561   521   521 I PackageWatchdog: Syncing health check requests for packages: {}
+11-09 12:40:52.561   521   521 D ExplicitHealthCheckController: Getting health check supported packages
+11-09 12:40:52.563  4058  5097 I BugleRcsEngine: [115] brnl.e: No RCS Configuration was found in Bugle for simID: redacted-pii:sim_id[chars:20,last3:897]
+11-09 12:40:52.563  4058  5097 W BugleRcsEngine: [115] brfq.e: (PEv2-SM-Bugle-45794904): Could not retrieve MSISDN from configuration. Configuration is empty. [0032b134-5077-4a2e-82e4-f380b3696fae]
+11-09 12:40:52.563  4058  5097 W BugleRcsEngine: [115] brfq.e: (PEv2-SM-Bugle-45794904): Skipping adding Tachyon identity key to request. Null/empty RCS msisdn from configuration for sim ID: 89860318640220133897. [0032b134-5077-4a2e-82e4-f3
+11-09 12:40:52.563  4058  5097 I BugleRcsEngine: [115] brnl.A: ProvisioningConsent from user settings: false
+11-09 12:40:52.565   521  2148 I ExplicitHealthCheckController: Explicit health check supported packages [PackageConfig{com.google.android.networkstack, 86400000}]
+11-09 12:40:52.565   521  2148 D PackageWatchdog: Received supported packages [PackageConfig{com.google.android.networkstack, 86400000}]
+11-09 12:40:52.565   521  2148 D ExplicitHealthCheckController: Getting health check requested packages
+11-09 12:40:52.566  1482  1482 I PhenotypeModule: PhenotypeModule.receiveBroadcast():373 onReceive() urgent = false
+11-09 12:40:52.566  1482  1482 I PhenotypeModule: PhenotypeModule.maybeFetchAndUpdate():166 maybeFetchAndUpdate: start new task to fetch
+11-09 12:40:52.569  1482  2801 I PhenotypeBackgroundRecv: Successfully updated snapshot for com.google.android.libraries.consentverifier#com.google.android.inputmethod.latin
+11-09 12:40:52.570   521  1636 I ExplicitHealthCheckController: Explicit health check requested packages []
+11-09 12:40:52.570   521  1636 I ExplicitHealthCheckController: No more health check requests, unbinding...
+11-09 12:40:52.572   521   969 D ActivityManager: sync unfroze 3106 com.google.android.gms.unstable for 6
+11-09 12:40:52.576   521  1636 I ExplicitHealthCheckController: Explicit health check service is unbound
+11-09 12:40:52.577  1482  1482 I PhenotypeModule: PhenotypeModule.receiveBroadcast():373 onReceive() urgent = false
+11-09 12:40:52.578  1482  1482 I PhenotypeBackgroundRecv: Skipping com.google.android.inputmethod.latin#com.google.android.inputmethod.latin which doesn't use ProcessStable flags.
+11-09 12:40:52.581   521  5100 I ConfigUpdateInstallReceiver: Couldn't find current metadata, assuming first update
+11-09 12:40:52.581   521  5100 I ConfigUpdateInstallReceiver: Failed to read current content, assuming first update!
+11-09 12:40:52.581   521  5100 I ConfigUpdateInstallReceiver: Found new update, installing...
+11-09 12:40:52.585  1430  4783 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-09 12:40:52.585  1430  4783 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-09 12:40:52.585  1430  4783 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-09 12:40:52.585  1430  4783 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-09 12:40:52.585  1430  4783 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-09 12:40:52.585  1430  4783 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-09 12:40:52.585  1430  4783 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-09 12:40:52.585  1430  4783 I NamespaceManager: Package 1 name not found! Using module version.
+11-09 12:40:52.595  4706  4767 I BugleRcsEngine: [72] brqh.handleMessage: RcsEngineImpl[DUAL_REG]:[87564205-22fe]>Handler: handleMessage processing message:[STOP_RCS_STACK] with [non-null]:RcsEngineImpl reference
+11-09 12:40:52.595  4706  4767 I BugleRcsEngine: [72] brqh.handleMessage: RcsEngineImpl[DUAL_REG]:[87564205-22fe]>Handler: RCS engine STOP RCS stack
+11-09 12:40:52.596  4706  4767 W BugleRcsEngine: [72] RcsEngineImpl.e: RcsEngineImpl[DUAL_REG]:[87564205-22fe]: imsModule is null, shutdown not required
+11-09 12:40:52.596  4706  4767 I BugleRcsEngine: [72] RcsEngineImpl.stopRcsStackInternal: RcsEngineImpl[DUAL_REG]:[87564205-22fe]: skipping imsModule.stop
+11-09 12:40:52.596  4706  4767 I BugleRcsEngine: [72] brqh.handleMessage: RcsEngineImpl[DUAL_REG]:[87564205-22fe]>Handler: handleMessage processing message:[NOTIFY_UPTIME_IGNORE_STATE_CHANGED] with [non-null]:RcsEngineImpl reference
+11-09 12:40:52.596  4706  4766 W s.messaging:rcs: Long monitor contention with owner binder:4706_5 (4739) at java.lang.Object cgyo.a(java.lang.String)(PG:7) waiters=0 in java.lang.Object cgyo.a(java.lang.String) for 239ms
+11-09 12:40:52.597  4706  4766 W BugleRcsEngine: [71] bpxc.w: Unable to send diagnostic log
+11-09 12:40:52.597  4706  4766 I BugleRcsEngine: [71] brga.s: ProvisioningEngineManager: onCsLibPhenotypeUpdated, provisioningTaskInBugleEnabled = true, currentProvisioningStrategy = brka
+11-09 12:40:52.599  4058  4142 I RcsClientLib: Disconnecting RcsEngineLifecycleService
+11-09 12:40:52.615  4706  4767 I BugleRcsEngine: [72] brnl.h: No RCS Configuration was found in Bugle for simID: redacted-pii:sim_id[chars:20,last3:897]
+11-09 12:40:52.616  4706  4767 I BugleRcsEngine: [72] brqh.handleMessage: RcsEngineImpl[DUAL_REG]:[87564205-22fe]>Handler: handleMessage processing message:[STOP_RCS_STACK] with [non-null]:RcsEngineImpl reference
+11-09 12:40:52.616  4706  4767 I BugleRcsEngine: [72] brqh.handleMessage: RcsEngineImpl[DUAL_REG]:[87564205-22fe]>Handler: RCS engine STOP RCS stack
+11-09 12:40:52.616  4706  4767 W BugleRcsEngine: [72] RcsEngineImpl.e: RcsEngineImpl[DUAL_REG]:[87564205-22fe]: imsModule is null, shutdown not required
+11-09 12:40:52.616  4706  4767 I BugleRcsEngine: [72] RcsEngineImpl.stopRcsStackInternal: RcsEngineImpl[DUAL_REG]:[87564205-22fe]: skipping imsModule.stop
+11-09 12:40:52.616  4706  4767 I BugleRcsEngine: [72] brqh.handleMessage: RcsEngineImpl[DUAL_REG]:[87564205-22fe]>Handler: handleMessage processing message:[NOTIFY_UPTIME_IGNORE_STATE_CHANGED] with [non-null]:RcsEngineImpl reference
+11-09 12:40:52.618  4706  4767 I BugleRcsEngine: [72] brnl.h: No RCS Configuration was found in Bugle for simID: redacted-pii:sim_id[chars:20,last3:897]
+11-09 12:40:52.619  3530  4654 I ConfigUpdater: doneInstall
+11-09 12:40:52.638  2008  5053 V DownloadManager: Deleting /data/data/com.android.providers.downloads/cache/model.smfb.metadata via provider delete
+11-09 12:40:52.642  4058  4142 I RcsClientLib: Disconnecting RcsEngineLifecycleService
+11-09 12:40:52.653   521   548 D ActivityManager: sync unfroze 2740 com.android.chrome for 3
+11-09 12:40:52.656   521  5100 I ConfigUpdateInstallReceiver: Installation successful
+11-09 12:40:52.689  3106  4627 W DG      : [flow rcs_provisioning] DroidGuardRunner.newVmProcessForFastSignalCollection(): Fast program not found [CONTEXT service_id=25 ]
+11-09 12:40:52.693  1430  4783 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-09 12:40:52.693  1430  4783 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-09 12:40:52.693  1430  4783 I NamespaceManager: Package com.android.media name not found! Using module version.

@@ -1,0 +1,150 @@
+11-09 12:43:21.216  1704  2710 W SearchServiceCore: Abort, client detached.
+11-09 12:43:21.233  2816  4401 W SystemServiceRegistry: No service published for: persistent_data_block
+11-09 12:43:21.235  1659  2367 W A       : Missing generator mapping for generator GENERATOR_CONTEXTUAL_SUGGESTIONS
+11-09 12:43:21.235  1659  2367 W A       : Missing generator mapping for generator GENERATOR_FRE_SUGGESTIONS_ON_TIMEOUT
+11-09 12:43:21.235  1659  2367 W A       : Missing generator mapping for generator GENERATOR_FRE_SUGGESTIONS_ON_INVOCATION
+11-09 12:43:21.236  1659  2367 I A       : #onActiveStateChangeEvent, newState: IDLE, previousState: IDLE.
+11-09 12:43:21.249   519  3802 D CompatibilityChangeReporter: Compat change id reported: 197654537; UID 10192; state: ENABLED
+11-09 12:43:21.257   519   610 I RoleService: Granting default roles...
+11-09 12:43:21.258  1659  2389 W A       : Routing took 7 ms
+11-09 12:43:21.260  1659  2389 I A       : Successfully initialized all components
+11-09 12:43:21.284   832  4278 I PermissionControllerServiceImpl: Updating user sensitive for uid 10131
+11-09 12:43:21.301   519   621 I InputReader: Reconfiguring input devices, changes=KEYBOARD_LAYOUTS
+11-09 12:43:21.317   831   876 D StylusManager: Stylus InputDevice changed: 13 virtio_input_multi_touch_10
+11-09 12:43:21.318   831   876 D StylusManager: Stylus InputDevice changed: 12 virtio_input_multi_touch_9
+11-09 12:43:21.318   831   876 D StylusManager: Stylus InputDevice changed: 10 virtio_input_multi_touch_7
+11-09 12:43:21.319   831   876 D StylusManager: Stylus InputDevice changed: 9 virtio_input_multi_touch_6
+11-09 12:43:21.319   831   876 D StylusManager: Stylus InputDevice changed: 8 virtio_input_multi_touch_5
+11-09 12:43:21.320   831   876 D StylusManager: Stylus InputDevice changed: 7 virtio_input_multi_touch_4
+11-09 12:43:21.320  1041  1041 D CarrierSvcBindHelper: onPackageModified: com.google.android.gms
+11-09 12:43:21.321  1041  1041 D CarrierSvcBindHelper: No carrier app for: 0
+11-09 12:43:21.334  4999  5005 I .gms.persistent: Background young concurrent copying GC freed 264741(14MB) AllocSpace objects, 10(392KB) LOS objects, 46% free, 17MB/32MB, paused 2.151ms,67us total 103.689ms
+11-09 12:43:21.343   831   876 D StylusManager: Stylus InputDevice changed: 6 virtio_input_multi_touch_3
+11-09 12:43:21.344   831   876 D StylusManager: Stylus InputDevice changed: 11 virtio_input_multi_touch_8
+11-09 12:43:21.344   831   876 D StylusManager: Stylus InputDevice changed: 14 virtio_input_multi_touch_11
+11-09 12:43:21.344   831   876 D StylusManager: Stylus InputDevice changed: 5 virtio_input_multi_touch_2
+11-09 12:43:21.344   831   876 D StylusManager: Stylus InputDevice changed: 4 virtio_input_multi_touch_1
+11-09 12:43:21.346   832   989 E RoleControllerServiceImpl: Default/fallback role holder package doesn't qualify for the role, package: com.google.android.gms.supervision, role: android.app.role.SYSTEM_SUPERVISION
+11-09 12:43:21.348   832   989 I Role    : com.google.android.gms not qualified for android.app.role.SYSTEM_CALL_STREAMING due to missing RequiredComponent{mIntentFilterData=IntentFilterData{mAction='android.telecom.CallStreamingService', m
+11-09 12:43:21.348   832   989 E RoleControllerServiceImpl: Default/fallback role holder package doesn't qualify for the role, package: com.google.android.gms, role: android.app.role.SYSTEM_CALL_STREAMING
+11-09 12:43:21.349   832   989 W Role    : Default holder doesn't have required signing certificate: com.google.android.apps.work.clouddpc:23962F4B43B9857638EA66F4D419518EAE282491ACDA4B94707BD59003C45E58
+11-09 12:43:21.354  1016  1016 V MediaPlayerList: mPackageChangedBroadcastReceiver: action: android.intent.action.PACKAGE_CHANGED
+11-09 12:43:21.356  1016  1016 V MediaPlayerList: mPackageChangedBroadcastReceiver: action: android.intent.action.PACKAGE_CHANGED
+11-09 12:43:21.375  1041  1352 D ImsResolver: maybeAddedImsService, packageName: com.google.android.gms
+11-09 12:43:21.379   831   831 D ControlsListingControllerImpl: ServiceConfig reloaded, count: 0
+11-09 12:43:21.383   519  2662 W system_server: Long monitor contention with owner ActivityManager (548) at void com.android.server.am.BroadcastQueueModernImpl.checkPendingColdStartValidity()(BroadcastQueueModernImpl.java:551) waiters=1 in 
+11-09 12:43:21.412  1659  2367 I NgaEntryPointEventSendr: State changed: Ready => Disconnected (onOpaDisconnected)
+11-09 12:43:21.413   519   547 I CredManSysServiceImpl: CredentialManagerServiceImpl constructed for: com.google.android.gms/.auth.api.credentials.credman.service.PasswordAndPasskeyService
+11-09 12:43:21.413   519   547 I CredManSysServiceImpl: newServiceInfoLocked, mInfo null, com.google.android.gms/com.google.android.gms.auth.api.credentials.credman.service.PasswordAndPasskeyService
+11-09 12:43:21.416  1605  1605 I AiAiEcho: AppFetcherImpl onPackageChanged com.google.android.gms.
+11-09 12:43:21.419  1605  2528 I AiAiEcho: AppIndexer Package:[com.google.android.gms] UserProfile:[0] Enabled:[true].
+11-09 12:43:21.420  1605  2528 I AiAiEcho: AppFetcherImplV2 updateApps package:[com.google.android.gms], userId:[0], reason:[package is updated.].
+11-09 12:43:21.479   519  3340 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+11-09 12:43:21.479   519  3340 D PackageManager: Clear ephemeral installer activity
+11-09 12:43:21.488   519  2293 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+11-09 12:43:21.488   519  2293 D PackageManager: Clear ephemeral installer activity
+11-09 12:43:21.556  2816  2816 W binder:2816_6: type=1400 audit(0.0:44): avc:  denied  { read } for  name="u:object_r:system_adbd_prop:s0" dev="tmpfs" ino=292 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:system_adbd_prop:s0 tcl
+11-09 12:43:21.562  2816  4401 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+11-09 12:43:21.567  2816  4401 W libc    : Access denied finding property "service.adb.tls.port"
+11-09 12:43:21.560  2816  2816 W binder:2816_6: type=1400 audit(0.0:45): avc:  denied  { read } for  name="u:object_r:adbd_prop:s0" dev="tmpfs" ino=60 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:adbd_prop:s0 tclass=file permis
+11-09 12:43:21.572   335  5658 I resolv  : GetAddrInfoHandler::run: {100 786532 100 983140 10131 0}
+11-09 12:43:21.572  2816  4401 D TrafficStats: tagSocket(113) with statsTag=0x1809, statsUid=-1
+11-09 12:43:21.573  2816  4401 D TrafficStats: tagSocket(113) with statsTag=0x1809, statsUid=-1
+11-09 12:43:21.574  2816  4401 D TrafficStats: tagSocket(113) with statsTag=0x1809, statsUid=-1
+11-09 12:43:21.609  5088  5202 I Icing   : Indexing com.google.android.gms-apps from com.google.android.gms
+11-09 12:43:21.612  5088  5202 I Icing   : Indexing done com.google.android.gms-apps
+11-09 12:43:21.637  5438  5438 I com.example.buddy: Perf: native scene 27 fps
+11-09 12:43:21.719  4999  5048 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.icing.proxy.IcingInternalCorporaUpdateService started execution. cause:7 exec_start_elapsed_seconds: 93 [CONTEXT service_id=218 ]
+11-09 12:43:21.721  4999  5048 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.icing.proxy.IcingInternalCorporaUpdateService finished executing. cause:7 result: 1 elapsed_millis: 315 uptime_millis: 315 exec_star
+11-09 12:43:21.746  4102  4220 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of bdxy@22dee69
+11-09 12:43:21.751  5088  5270 I PeopleGalProvider: Gal directories started.
+11-09 12:43:21.752  5088  5270 I PeopleGalProvider: Method 1 completed.
+11-09 12:43:21.762  5088  5270 I PeopleGalProvider: Method 1 finished successfully.
+11-09 12:43:21.776   335  5659 I resolv  : GetAddrInfoHandler::run: {100 786532 100 983140 10131 0}
+11-09 12:43:21.776   335  5660 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+11-09 12:43:21.776   335  5660 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7e912f07c110
+11-09 12:43:21.776   335  5660 I resolv  : doQuery: rcode=0, ancount=8, return value=260
+11-09 12:43:21.779   335  5661 I resolv  : res_nmkquery: (QUERY, IN, A)
+11-09 12:43:21.779   335  5661 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7e922f07a2d0
+11-09 12:43:21.779   335  5661 I resolv  : doQuery: rcode=0, ancount=8, return value=164
+11-09 12:43:21.781  5088  5202 D TrafficStats: tagSocket(150) with statsTag=0x30003000, statsUid=-1
+11-09 12:43:21.783  5088  5164 I Icing   : updateResources: need to parse arkh{com.google.android.gms}
+11-09 12:43:21.804  5088  5202 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+11-09 12:43:21.811  4999  5213 I Fitness : OnPackageChangedOperation got intent: Intent { act=android.intent.action.PACKAGE_CHANGED dat=package: flg=0x45000010 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.PersistentIntentO
+11-09 12:43:21.811  5088  5202 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-09 12:43:21.811  5088  5202 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-09 12:43:21.849  4999  5213 I Fitness : FitCleanupIntentOperation received Intent android.intent.action.PACKAGE_CHANGED [CONTEXT service_id=17 ]
+11-09 12:43:21.924  4999  5555 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.gass.chimera.SchedulePeriodicTasksService started execution. cause:5 exec_start_elapsed_seconds: 94 [CONTEXT service_id=218 ]
+11-09 12:43:21.950  4999  5048 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.gass.chimera.SchedulePeriodicTasksService finished executing. cause:5 result: 1 elapsed_millis: 45 uptime_millis: 45 exec_start_elap
+11-09 12:43:21.987  5088  5202 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+11-09 12:43:21.988  5088  5202 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-09 12:43:21.988  5088  5202 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-09 12:43:22.012  5438  5458 D EGL_emulation: app_time_stats: avg=34.02ms min=24.29ms max=85.35ms count=29
+11-09 12:43:22.019   519   759 D ConnectivityService: reportNetworkConnectivity(100, false) by 10132
+11-09 12:43:22.020   974  1917 D NetworkMonitor/100: Forcing reevaluation for UID 10132. Dns signal count: 0
+11-09 12:43:22.050   974  5673 D TrafficStats: tagSocket(68) with statsTag=0xffffff81, statsUid=-1
+11-09 12:43:22.056   974  5672 D TrafficStats: tagSocket(107) with statsTag=0xffffff81, statsUid=-1
+11-09 12:43:22.057   974  5673 D TrafficStats: tagSocket(68) with statsTag=0xffffff81, statsUid=-1
+11-09 12:43:22.064   974  5672 D TrafficStats: tagSocket(75) with statsTag=0xffffff81, statsUid=-1
+11-09 12:43:22.068   335  5675 I resolv  : ResNSendHandler::run: 0 / {100 983140 100 983140 1073 1}
+11-09 12:43:22.068   335  5675 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7e912f07db50
+11-09 12:43:22.069   335  5674 I resolv  : ResNSendHandler::run: 0 / {100 983140 100 983140 1073 1}
+11-09 12:43:22.069   335  5674 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7e92ef07e070
+11-09 12:43:22.080   335  5676 I resolv  : ResNSendHandler::run: 0 / {100 983140 100 983140 1073 1}
+11-09 12:43:22.080   335  5676 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7e92ef07c8d0
+11-09 12:43:22.082  5670  5670 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+11-09 12:43:22.082  5670  5670 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-09 12:43:22.101   974   974 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-09 12:43:22.103   400  1066 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=5670
+11-09 12:43:22.103   400  1066 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (1318 us)
+11-09 12:43:22.103   335  5678 I resolv  : ResNSendHandler::run: 0 / {100 983140 100 983140 1073 1}
+11-09 12:43:22.104   974   974 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-09 12:43:22.105   335  5678 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7e911f077d10
+11-09 12:43:22.107   974   974 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-09 12:43:22.108   974   974 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-09 12:43:22.108   974   974 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-09 12:43:22.109   974   974 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-09 12:43:22.109   974   974 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-09 12:43:22.110   974   974 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-09 12:43:22.110   974   974 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-09 12:43:22.112   974   974 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-09 12:43:22.112   974   974 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-09 12:43:22.143   134   134 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-09 12:43:22.144  5670  5677 I Gralloc4: mapper 4.x is not supported
+11-09 12:43:22.332     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+11-09 12:43:22.146   974   974 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-09 12:43:22.147   974   974 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-09 12:43:22.148   974   974 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-09 12:43:22.150   974  5673 D NetworkMonitor/100: PROBE_DNS connectivitycheck.gstatic.com 100ms OK 142.251.150.120,2607:f8b0:400a:801::2003
+11-09 12:43:22.151   974   974 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-09 12:43:22.177   974   974 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-09 12:43:22.177  4999  5552 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService started execution. cause:5 exec_start_elapsed_seconds: 94 [CONTEXT service_id=218 ]
+11-09 12:43:22.181   974   974 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-09 12:43:22.182   335  5679 I resolv  : GetAddrInfoHandler::run: {100 983140 100 983140 1073 1}
+11-09 12:43:22.184   974   974 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-09 12:43:22.189   335  5681 I resolv  : res_nmkquery: (QUERY, IN, A)
+11-09 12:43:22.189   335  5681 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7e92ef07c8d0
+11-09 12:43:22.189   335  5681 I resolv  : doQuery: rcode=0, ancount=1, return value=63
+11-09 12:43:22.190   974  5672 D NetworkMonitor/100: PROBE_DNS www.google.com 133ms OK 142.251.153.119,142.251.152.119,142.251.151.119,142.251.150.119,142.251.154.119,142.251.157.119,142.251.156.119,142.251.155.119,2001:4860:482c:7700::,200
+11-09 12:43:22.217   335  5680 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+11-09 12:43:22.217   335  5680 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7e92ef07e070
+11-09 12:43:22.217   335  5680 I resolv  : doQuery: rcode=0, ancount=1, return value=75
+11-09 12:43:22.218   974  5673 D TrafficStats: tagSocket(75) with statsTag=0xffffff81, statsUid=-1
+11-09 12:43:22.221  4999  5048 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService finished executing. cause:5 result: 1 elapsed_millis: 180 uptime_millis: 180 exec_start_elapsed_seconds: 
+11-09 12:43:22.224   335  5682 I resolv  : GetAddrInfoHandler::run: {100 983140 100 983140 1073 1}
+11-09 12:43:22.225   335  5683 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+11-09 12:43:22.225   335  5683 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7e912f07db50
+11-09 12:43:22.225   335  5683 I resolv  : doQuery: rcode=0, ancount=8, return value=256
+11-09 12:43:22.233   335  5684 I resolv  : res_nmkquery: (QUERY, IN, A)
+11-09 12:43:22.233   335  5684 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7e911f077d10
+11-09 12:43:22.233   335  5684 I resolv  : doQuery: rcode=0, ancount=8, return value=160
+11-09 12:43:22.235   974  5672 D TrafficStats: tagSocket(68) with statsTag=0xffffff81, statsUid=-1
+11-09 12:43:22.246   974  5673 D NetworkMonitor/100: PROBE_HTTP http://connectivitycheck.gstatic.com/generate_204 time=69ms ret=204 request={Connection=[close], User-Agent=[Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gec
+11-09 12:43:22.327  4999  5512 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-09 12:43:22.329  4999  5512 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-09 12:43:22.336  4999  5552 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.pay.gcmtask.PayGcmTaskService started execution. cause:5 exec_start_elapsed_seconds: 94 [CONTEXT service_id=218 ]
+11-09 12:43:22.357  5088  5202 I Pay     : Device does not support HCE. [CONTEXT service_id=198 ]
+11-09 12:43:22.369  4999  5511 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-09 12:43:22.369  4999  5048 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.pay.gcmtask.PayGcmTaskService finished executing. cause:5 result: 2 elapsed_millis: 109 uptime_millis: 109 exec_start_elapsed_second
+11-09 12:43:22.384  4999  5511 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-09 12:43:22.385  4999  5511 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)

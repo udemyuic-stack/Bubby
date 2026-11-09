@@ -1,0 +1,150 @@
+11-09 12:43:02.341  1643  1643 E A       : Caused by: com.google.android.apps.gsa.shared.speech.a.o: errorCode: 65586, engine: 2
+11-09 12:43:02.341  1643  1643 E A       : 	... 15 more
+11-09 12:43:02.341  1643  1643 E A       : Caused by: com.google.android.apps.gsa.shared.speech.a.k: errorCode: 401, engine: 2
+11-09 12:43:02.341  1643  1643 E A       : 	at com.google.android.apps.gsa.assistant.shared.n.h.a(PG:5)
+11-09 12:43:02.341  1643  1643 E A       : 	at com.google.android.apps.gsa.s3.producers.j.hE(PG:2)
+11-09 12:43:02.341  1643  1643 E A       : 	at com.google.android.apps.gsa.speech.k.a.g.d(PG:16)
+11-09 12:43:02.341  1643  1643 E A       : 	... 12 more
+11-09 12:43:02.344   399   617 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=5663
+11-09 12:43:02.344   399   617 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (1603 us)
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: Exception in upload method
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: com.google.android.apps.gsa.shared.r.d: Error code: 262182
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.shared.ab.bk.d(PG:5)
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.android.libraries.gsa.c.a.ar.d(PG:1)
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.android.libraries.gsa.c.a.bo.b(PG:5)
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.android.libraries.gsa.c.a.e.a(PG:2)
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.android.libraries.gsa.c.a.a.run(PG:2)
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.bf.execute(PG:1)
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.i(PG:1)
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.l(PG:12)
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.cancel(PG:8)
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.m(PG:2)
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.j.a(PG:1)
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.l(PG:3)
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.cancel(PG:8)
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.p(PG:11)
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.h.f(PG:2)
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.j.run(PG:12)
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.bf.execute(PG:1)
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.i(PG:1)
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.l(PG:12)
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.p(PG:4)
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.ch.run(PG:1)
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.bf.execute(PG:1)
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.i(PG:1)
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.l(PG:12)
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.n(PG:2)
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.i.f(PG:1)
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.j.run(PG:12)
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.bf.execute(PG:1)
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.i(PG:1)
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.l(PG:12)
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.p(PG:4)
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.ch.run(PG:1)
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.bf.execute(PG:1)
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.i(PG:1)
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.l(PG:12)
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.n(PG:2)
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.c.run(PG:10)
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.bf.execute(PG:1)
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.i(PG:1)
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.l(PG:12)
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.p(PG:4)
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.shared.util.c.x.run(PG:1)
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.bf.execute(PG:1)
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.bi.c(PG:1)
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.bi.b(PG:3)
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.cx.done(PG:1)
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: 	at java.util.concurrent.FutureTask.finishCompletion(FutureTask.java:381)
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: 	at java.util.concurrent.FutureTask.set(FutureTask.java:232)
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: 	at java.util.concurrent.FutureTask.run(FutureTask.java:272)
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.android.libraries.i.ae.run(PG:1)
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.android.libraries.i.k.run(PG:2)
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.android.libraries.i.p.run(PG:4)
+11-09 12:43:02.346  1643  2179 E cr_CronetUrlRequestContext: 	at java.lang.Thread.run(Thread.java:1012)
+11-09 12:43:02.349  1643  2087 W CronetNetworkRqstWrppr: Upload request without a content type.
+11-09 12:43:02.359  4128  4547 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1794228152638
+11-09 12:43:02.547     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+11-09 12:43:02.360  1643  5665 I A       : [Upload] Connected
+11-09 12:43:02.361  1643  1643 W A       : Failed to sync device settings.
+11-09 12:43:02.361  1643  1643 I A       : Retrying to sync device settings.
+11-09 12:43:02.364   141   141 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-09 12:43:02.364  5663  5664 I Gralloc4: mapper 4.x is not supported
+11-09 12:43:02.366  1643  2179 E cr_CronetUrlRequestContext: Exception in upload method
+11-09 12:43:02.366  1643  2179 E cr_CronetUrlRequestContext: com.google.android.apps.gsa.shared.r.d: Error code: 262182
+11-09 12:43:02.366  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.shared.ab.bk.d(PG:5)
+11-09 12:43:02.366  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.android.libraries.gsa.c.a.ar.d(PG:1)
+11-09 12:43:02.366  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.android.libraries.gsa.c.a.bo.b(PG:5)
+11-09 12:43:02.366  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.android.libraries.gsa.c.a.e.a(PG:2)
+11-09 12:43:02.366  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.android.libraries.gsa.c.a.a.run(PG:2)
+11-09 12:43:02.366  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.bf.execute(PG:1)
+11-09 12:43:02.366  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.i(PG:1)
+11-09 12:43:02.366  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.l(PG:12)
+11-09 12:43:02.366  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.cancel(PG:8)
+11-09 12:43:02.366  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.m(PG:2)
+11-09 12:43:02.366  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.j.a(PG:1)
+11-09 12:43:02.366  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.l(PG:3)
+11-09 12:43:02.366  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.cancel(PG:8)
+11-09 12:43:02.366  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.p(PG:11)
+11-09 12:43:02.366  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.h.f(PG:2)
+11-09 12:43:02.366  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.j.run(PG:12)
+11-09 12:43:02.366  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.bf.execute(PG:1)
+11-09 12:43:02.366  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.i(PG:1)
+11-09 12:43:02.366  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.l(PG:12)
+11-09 12:43:02.366  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.p(PG:4)
+11-09 12:43:02.366  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.h.f(PG:2)
+11-09 12:43:02.366  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.j.run(PG:12)
+11-09 12:43:02.366  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.bf.execute(PG:1)
+11-09 12:43:02.366  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.i(PG:1)
+11-09 12:43:02.366  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.l(PG:12)
+11-09 12:43:02.366  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.p(PG:4)
+11-09 12:43:02.366  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.ch.run(PG:1)
+11-09 12:43:02.366  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.bf.execute(PG:1)
+11-09 12:43:02.366  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.i(PG:1)
+11-09 12:43:02.366  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.l(PG:12)
+11-09 12:43:02.366  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.n(PG:2)
+11-09 12:43:02.366  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.c.run(PG:10)
+11-09 12:43:02.366  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.bf.execute(PG:1)
+11-09 12:43:02.366  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.i(PG:1)
+11-09 12:43:02.366  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.l(PG:12)
+11-09 12:43:02.366  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.p(PG:4)
+11-09 12:43:02.366  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.shared.util.c.x.run(PG:1)
+11-09 12:43:02.366  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.bf.execute(PG:1)
+11-09 12:43:02.366  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.bi.c(PG:1)
+11-09 12:43:02.366  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.bi.b(PG:3)
+11-09 12:43:02.366  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.cx.done(PG:1)
+11-09 12:43:02.366  1643  2179 E cr_CronetUrlRequestContext: 	at java.util.concurrent.FutureTask.finishCompletion(FutureTask.java:381)
+11-09 12:43:02.366  1643  2179 E cr_CronetUrlRequestContext: 	at java.util.concurrent.FutureTask.set(FutureTask.java:232)
+11-09 12:43:02.366  1643  2179 E cr_CronetUrlRequestContext: 	at java.util.concurrent.FutureTask.run(FutureTask.java:272)
+11-09 12:43:02.366  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.android.libraries.i.ae.run(PG:1)
+11-09 12:43:02.366  1643  2179 E cr_CronetUrlRequestContext: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-09 12:43:02.366  1643  2179 E cr_CronetUrlRequestContext: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-09 12:43:02.366  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.android.libraries.i.k.run(PG:2)
+11-09 12:43:02.366  1643  2179 E cr_CronetUrlRequestContext: 	at com.google.android.libraries.i.p.run(PG:4)
+11-09 12:43:02.366  1643  2179 E cr_CronetUrlRequestContext: 	at java.lang.Thread.run(Thread.java:1012)
+11-09 12:43:02.379   520  3127 W JobScheduler: Job didn't exist in JobStore: 5d47f58 #u0a132/-353 com.google.android.googlequicksearchbox/com.google.android.apps.gsa.tasks.BackgroundTasksJobService
+11-09 12:43:02.403  4128  4241 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f199/lottie.json
+11-09 12:43:02.408  4128  4241 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f199/lottie.json)
+11-09 12:43:02.436  4128  4800 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1794228152639
+11-09 12:43:02.451  4128  4241 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1794228152640
+11-09 12:43:02.455  5486  5486 I com.example.buddy: Perf: native scene 29 fps
+11-09 12:43:02.474  4128  4547 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f192/lottie.json
+11-09 12:43:02.474  4128  4547 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f192/lottie.json)
+11-09 12:43:02.478  4128  4800 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f6ae/lottie.json
+11-09 12:43:02.478  4128  4800 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f6ae/lottie.json)
+11-09 12:43:02.509  4128  4547 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1794228152641
+11-09 12:43:02.510  4128  4800 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1794228152642
+11-09 12:43:02.515  4128  4241 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f3b6/lottie.json
+11-09 12:43:02.515  4128  4241 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f3b6/lottie.json)
+11-09 12:43:02.519  4128  4800 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/2795/lottie.json
+11-09 12:43:02.519  4128  4800 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/2795/lottie.json)
+11-09 12:43:02.544  4128  4241 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1794228152643
+11-09 12:43:02.551  4128  4547 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f3c1/lottie.json
+11-09 12:43:02.551  4128  4547 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f3c1/lottie.json)
+11-09 12:43:02.558  4128  4800 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1794228152644
+11-09 12:43:02.566  4128  4241 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f6a9/lottie.json
+11-09 12:43:02.566  4128  4241 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f6a9/lottie.json)
+11-09 12:43:02.582  4128  4547 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1794228152645
+11-09 12:43:02.593  1036  1036 D CarrierSvcBindHelper: onPackageModified: com.google.android.contacts

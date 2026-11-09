@@ -1,0 +1,150 @@
+11-09 12:40:28.256  1029  1313 I bt_stack: [INFO:le_scanning_manager.cc(268)] ScanFilterEnable in shim layer
+11-09 12:40:28.256  1029  1198 D BtGatt.GattService: onScanFilterEnableDisabled() - clientIf=2, status=0, action=1
+11-09 12:40:28.258  1029  1198 D BtGatt.ScanManager: callback done for scannerId - 2 status - 0
+11-09 12:40:28.258  1029  1313 I bt_stack: [INFO:le_scanning_manager.cc(243)] ScanFilterAdd in shim layer
+11-09 12:40:28.258  1029  1198 D BtGatt.GattService: onScanFilterConfig() - clientIf=2, action = 0 status = 0, filterType=0, availableSpace=0
+11-09 12:40:28.258   522  2284 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+11-09 12:40:28.258   522  2284 D PackageManager: Clear ephemeral installer activity
+11-09 12:40:28.258  1029  1198 D BtGatt.ScanManager: callback done for scannerId - 2 status - 0
+11-09 12:40:28.259  1029  1313 D BtGatt.ScanManager: configureFilterParamter 500 10000 1 0
+11-09 12:40:28.259  1029  1313 I bt_stack: [INFO:le_scanning_manager.cc(204)] ScanFilterParamSetup in shim layer
+11-09 12:40:28.259  1029  1198 D BtGatt.GattService: onScanFilterParamsConfigured() - clientIf=2, status=0, action=0, availableSpace=0
+11-09 12:40:28.259  1029  1198 D BtGatt.ScanManager: callback done for scannerId - 2 status - 0
+11-09 12:40:28.259  1029  1313 I bt_stack: [INFO:le_scanning_manager.cc(243)] ScanFilterAdd in shim layer
+11-09 12:40:28.259  1029  1198 D BtGatt.GattService: onScanFilterConfig() - clientIf=2, action = 0 status = 0, filterType=0, availableSpace=0
+11-09 12:40:28.259  1029  1198 D BtGatt.ScanManager: callback done for scannerId - 2 status - 0
+11-09 12:40:28.259  1029  1313 D BtGatt.ScanManager: configureFilterParamter 500 10000 1 0
+11-09 12:40:28.259  1029  1313 I bt_stack: [INFO:le_scanning_manager.cc(204)] ScanFilterParamSetup in shim layer
+11-09 12:40:28.259  1029  1198 D BtGatt.GattService: onScanFilterParamsConfigured() - clientIf=2, status=0, action=0, availableSpace=0
+11-09 12:40:28.259  1029  1198 D BtGatt.ScanManager: callback done for scannerId - 2 status - 0
+11-09 12:40:28.259  1029  1313 I bt_stack: [INFO:le_scanning_manager.cc(243)] ScanFilterAdd in shim layer
+11-09 12:40:28.259  1029  1198 D BtGatt.GattService: onScanFilterConfig() - clientIf=2, action = 0 status = 0, filterType=0, availableSpace=0
+11-09 12:40:28.259  1029  1198 D BtGatt.ScanManager: callback done for scannerId - 2 status - 0
+11-09 12:40:28.259  1029  1313 D BtGatt.ScanManager: configureFilterParamter 500 10000 1 0
+11-09 12:40:28.259  1029  1313 I bt_stack: [INFO:le_scanning_manager.cc(204)] ScanFilterParamSetup in shim layer
+11-09 12:40:28.260  1029  1198 D BtGatt.GattService: onScanFilterParamsConfigured() - clientIf=2, status=0, action=0, availableSpace=0
+11-09 12:40:28.260  1029  1198 D BtGatt.ScanManager: callback done for scannerId - 2 status - 0
+11-09 12:40:28.260  1029  1313 I bt_stack: [INFO:le_scanning_manager.cc(243)] ScanFilterAdd in shim layer
+11-09 12:40:28.260  1029  1198 D BtGatt.GattService: onScanFilterConfig() - clientIf=2, action = 0 status = 0, filterType=0, availableSpace=0
+11-09 12:40:28.260  1029  1198 D BtGatt.ScanManager: callback done for scannerId - 2 status - 0
+11-09 12:40:28.260  1029  1313 D BtGatt.ScanManager: configureFilterParamter 500 10000 1 0
+11-09 12:40:28.260  1029  1313 I bt_stack: [INFO:le_scanning_manager.cc(204)] ScanFilterParamSetup in shim layer
+11-09 12:40:28.260  1029  1198 D BtGatt.GattService: onScanFilterParamsConfigured() - clientIf=2, status=0, action=0, availableSpace=0
+11-09 12:40:28.260  1029  1198 D BtGatt.ScanManager: callback done for scannerId - 2 status - 0
+11-09 12:40:28.260  1029  1313 I bt_stack: [INFO:le_scanning_manager.cc(243)] ScanFilterAdd in shim layer
+11-09 12:40:28.260  1029  1198 D BtGatt.GattService: onScanFilterConfig() - clientIf=2, action = 0 status = 0, filterType=0, availableSpace=0
+11-09 12:40:28.260  1029  1198 D BtGatt.ScanManager: callback done for scannerId - 2 status - 0
+11-09 12:40:28.260  1029  1313 D BtGatt.ScanManager: configureFilterParamter 500 10000 1 0
+11-09 12:40:28.260  1029  1313 I bt_stack: [INFO:le_scanning_manager.cc(204)] ScanFilterParamSetup in shim layer
+11-09 12:40:28.260  1029  1198 D BtGatt.GattService: onScanFilterParamsConfigured() - clientIf=2, status=0, action=0, availableSpace=0
+11-09 12:40:28.260  1029  1198 D BtGatt.ScanManager: callback done for scannerId - 2 status - 0
+11-09 12:40:28.260  1029  1313 D BtGatt.ScanManager: start gattClientScanNative from startRegularScan()
+11-09 12:40:28.261  1029  1313 I bt_stack: [INFO:le_scanning_manager.cc(168)] Scan in shim layer started
+11-09 12:40:28.261  1029  1189 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_scanning_manager.cc:588 stop_scan: Scanning already stopped, return!
+11-09 12:40:28.261  1029  1189 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_address_manager.cc:175 register_client: Scheduled address rotation for first client registered
+11-09 12:40:28.261  1029  1189 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_address_manager.cc:178 register_client: Client registered
+11-09 12:40:28.261  1029  1313 D BtGatt.ScanManager: configureRegularScanParams() - queue=2
+11-09 12:40:28.261  1029  1313 I bt_stack: [INFO:le_scanning_manager.cc(168)] Scan in shim layer stopped
+11-09 12:40:28.261  1029  1189 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_address_manager.cc:193 unregister_client: Client unregistered
+11-09 12:40:28.261  1029  1189 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_address_manager.cc:197 unregister_client: Cancelled address rotation alarm
+11-09 12:40:28.261  1029  1313 D BtGatt.ScanManager: Start gattClientScanNative with old scanMode -1 new scanMode 2 ( in MS: 100 / 100, in scan unit: 160 / 160 ) [ScanClient scanModeApp 2 scanModeUsed 2 [appScanStats com.google.uid.shared:1
+11-09 12:40:28.261  1029  1313 I bt_stack: [INFO:le_scanning_manager.cc(346)] SetScanParameters in shim layer
+11-09 12:40:28.261  1029  1198 D BtGatt.GattService: onScanParamSetupCompleted : 0
+11-09 12:40:28.261  1029  1313 I bt_stack: [INFO:le_scanning_manager.cc(168)] Scan in shim layer started
+11-09 12:40:28.262  1029  1189 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_scanning_manager.cc:588 stop_scan: Scanning already stopped, return!
+11-09 12:40:28.262  1029  1189 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_address_manager.cc:175 register_client: Scheduled address rotation for first client registered
+11-09 12:40:28.262  1029  1189 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_address_manager.cc:178 register_client: Client registered
+11-09 12:40:28.262  1029  1313 D BtGatt.ScanManager: apply scan timeout (600000)to scannerId 2
+11-09 12:40:28.264   522   603 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+11-09 12:40:28.264   522   603 D PackageManager: Clear ephemeral installer activity
+11-09 12:40:28.264  2802  5034 W SystemServiceRegistry: No service published for: persistent_data_block
+11-09 12:40:28.266  1029  1189 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_scanning_manager.cc:1369 on_advertising_filter_complete: Got a Command complete LE_ADV_FILTER, status UNKNOWN_CONNECTION
+11-09 12:40:28.268  1029  1189 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_scanning_manager.cc:1369 on_advertising_filter_complete: Got a Command complete LE_ADV_FILTER, status UNKNOWN_CONNECTION
+11-09 12:40:28.273  4201  4339 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of bdxy@5f82042
+11-09 12:40:28.273  1029  1189 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_scanning_manager.cc:1369 on_advertising_filter_complete: Got a Command complete LE_ADV_FILTER, status UNKNOWN_CONNECTION
+11-09 12:40:28.275  1029  1189 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_scanning_manager.cc:1369 on_advertising_filter_complete: Got a Command complete LE_ADV_FILTER, status UNKNOWN_CONNECTION
+11-09 12:40:28.278  5043  5095 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.ads.social.GcmSchedulerWakeupService started execution. cause:5 exec_start_elapsed_seconds: 94 [CONTEXT service_id=218 ]
+11-09 12:40:28.283  1029  1189 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_scanning_manager.cc:1369 on_advertising_filter_complete: Got a Command complete LE_ADV_FILTER, status UNKNOWN_CONNECTION
+11-09 12:40:28.294  5108  5448 I PeopleGalProvider: Gal directories started.
+11-09 12:40:28.294  5108  5448 I PeopleGalProvider: Method 1 completed.
+11-09 12:40:28.294  5108  5448 I PeopleGalProvider: Method 1 finished successfully.
+11-09 12:40:28.301  5043  5457 I Fitness : OnPackageChangedOperation got intent: Intent { act=android.intent.action.PACKAGE_CHANGED dat=package: flg=0x45000010 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.PersistentIntentO
+11-09 12:40:28.310  5043  5455 I Fitness : FitCleanupIntentOperation received Intent android.intent.action.PACKAGE_CHANGED [CONTEXT service_id=17 ]
+11-09 12:40:28.310  5043  5043 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.presencemanager.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+11-09 12:40:28.311  5043  5043 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.presencemanager.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+11-09 12:40:28.315  5043  5043 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.presencemanager.service.INTERNAL_IDENTITY dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+11-09 12:40:28.315  5043  5043 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.presencemanager.service.INTERNAL_IDENTITY dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiServic
+11-09 12:40:28.344  5043  5087 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.ads.social.GcmSchedulerWakeupService finished executing. cause:5 result: 1 elapsed_millis: 138 uptime_millis: 138 exec_start_elapsed
+11-09 12:40:28.368  5043  5043 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.tapandpay.service.BIND dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+11-09 12:40:28.369  5043  5043 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.tapandpay.service.BIND dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+11-09 12:40:28.418   522   613 D ActivityManager: freezing 1746 com.google.android.youtube
+11-09 12:40:28.451  5495  5495 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+11-09 12:40:28.453  5495  5495 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-09 12:40:28.455   401   416 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=5495
+11-09 12:40:28.455   401   416 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (281 us)
+11-09 12:40:28.653     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+11-09 12:40:28.469   136   136 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-09 12:40:28.469  5495  5498 I Gralloc4: mapper 4.x is not supported
+11-09 12:40:28.532  5043  5087 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.gass.chimera.SchedulePeriodicTasksService started execution. cause:5 exec_start_elapsed_seconds: 94 [CONTEXT service_id=218 ]
+11-09 12:40:28.546  2802  2802 W binder:2802_7: type=1400 audit(0.0:40): avc:  denied  { read } for  name="u:object_r:system_adbd_prop:s0" dev="tmpfs" ino=292 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:system_adbd_prop:s0 tcl
+11-09 12:40:28.555  2802  5034 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+11-09 12:40:28.568  2802  5034 W libc    : Access denied finding property "service.adb.tls.port"
+11-09 12:40:28.562  2802  2802 W binder:2802_7: type=1400 audit(0.0:41): avc:  denied  { read } for  name="u:object_r:adbd_prop:s0" dev="tmpfs" ino=60 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:adbd_prop:s0 tclass=file permis
+11-09 12:40:28.603  5108  5117 I gle.android.gms: Background concurrent copying GC freed 377643(18MB) AllocSpace objects, 280(9684KB) LOS objects, 49% free, 10122KB/19MB, paused 24us,11us total 380.834ms
+11-09 12:40:28.622  5043  5086 I TapAndPay: Disabling TapAndPay HCE service [CONTEXT service_id=79 ]
+11-09 12:40:28.656  5108  5406 W Pay     : Active account was null, notification task will be cancelled. [CONTEXT service_id=198 ]
+11-09 12:40:28.656  5108  5406 W Pay     : [eMoney card recovery task] exiting without init: active tapandpay account not found! [CONTEXT service_id=198 ]
+11-09 12:40:28.683  5043  5087 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.gass.chimera.SchedulePeriodicTasksService finished executing. cause:5 result: 1 elapsed_millis: 216 uptime_millis: 216 exec_start_el
+11-09 12:40:28.700  5108  5406 I Pay     : Requested immediate check to see whether to show pay module downloading complete notification. [CONTEXT service_id=198 ]
+11-09 12:40:28.702  5108  5406 I Pay     : Requested check of feature migrations. [CONTEXT service_id=198 ]
+11-09 12:40:28.704  5108  5406 W Pay     : Mdl not supported. Not triggering periodic MSO refresh task. [CONTEXT service_id=198 ]
+11-09 12:40:28.707  5108  5193 I Checkin : [CheckinOperation] Starting Checkin: Default Task Reason : 1 Force : false UserId : 0 Start time : 94791
+11-09 12:40:28.715  5043  5086 I TapAndPay: Disabling TapAndPay HCE service [CONTEXT service_id=79 ]
+11-09 12:40:28.716  5108  5406 W Pay     : Active account was null, notification task will be cancelled. [CONTEXT service_id=198 ]
+11-09 12:40:28.717  5108  5406 W Pay     : [eMoney txn sync] exiting without init: active tapandpay account not found! [CONTEXT service_id=198 ]
+11-09 12:40:28.722  5108  5193 I CheckinUtil: Classify the device as Phone. [CONTEXT service_id=130 ]
+11-09 12:40:28.732  5108  5185 W PeoplePU: getComponentEnabledSetting failed.
+11-09 12:40:28.732  5108  5185 W PeoplePU: java.lang.IllegalArgumentException: Unknown component: ComponentInfo{com.google.android.syncadapters.contacts/com.google.android.syncadapters.contacts.ProxyGalProvider}
+11-09 12:40:28.732  5108  5185 W PeoplePU: 	at android.os.Parcel.createExceptionOrNull(Parcel.java:3061)
+11-09 12:40:28.732  5108  5185 W PeoplePU: 	at android.os.Parcel.createException(Parcel.java:3041)
+11-09 12:40:28.732  5108  5185 W PeoplePU: 	at android.os.Parcel.readException(Parcel.java:3024)
+11-09 12:40:28.732  5108  5185 W PeoplePU: 	at android.os.Parcel.readException(Parcel.java:2966)
+11-09 12:40:28.732  5108  5185 W PeoplePU: 	at android.content.pm.IPackageManager$Stub$Proxy.getComponentEnabledSetting(IPackageManager.java:6034)
+11-09 12:40:28.732  5108  5185 W PeoplePU: 	at android.app.ApplicationPackageManager.getComponentEnabledSetting(ApplicationPackageManager.java:3097)
+11-09 12:40:28.732  5108  5185 W PeoplePU: 	at bvox.b(:com.google.android.gms@231818047@23.18.18 (190800-535401451):1)
+11-09 12:40:28.732  5108  5185 W PeoplePU: 	at buru.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-09 12:40:28.732  5108  5185 W PeoplePU: 	at com.google.android.gms.people.api.init.PeopleModuleInitIntentOperation.b(:com.google.android.gms@231818047@23.18.18 (190800-535401451):5)
+11-09 12:40:28.732  5108  5185 W PeoplePU: 	at zdm.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-09 12:40:28.732  5108  5185 W PeoplePU: 	at com.google.android.chimera.IntentOperation.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-09 12:40:28.732  5108  5185 W PeoplePU: 	at zhv.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+11-09 12:40:28.732  5108  5185 W PeoplePU: 	at hjm.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3)
+11-09 12:40:28.732  5108  5185 W PeoplePU: 	at hjl.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):11)
+11-09 12:40:28.732  5108  5185 W PeoplePU: 	at dfhf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-09 12:40:28.732  5108  5185 W PeoplePU: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-09 12:40:28.732  5108  5185 W PeoplePU: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-09 12:40:28.732  5108  5185 W PeoplePU: 	at java.lang.Thread.run(Thread.java:1012)
+11-09 12:40:28.732  5108  5185 W PeoplePU: Caused by: android.os.RemoteException: Remote stack trace:
+11-09 12:40:28.732  5108  5185 W PeoplePU: 	at com.android.server.pm.ComputerEngine.getComponentEnabledSettingInternal(ComputerEngine.java:5159)
+11-09 12:40:28.732  5108  5185 W PeoplePU: 	at com.android.server.pm.ComputerEngine.getComponentEnabledSetting(ComputerEngine.java:5141)
+11-09 12:40:28.732  5108  5185 W PeoplePU: 	at com.android.server.pm.IPackageManagerBase.getComponentEnabledSetting(IPackageManagerBase.java:388)
+11-09 12:40:28.732  5108  5185 W PeoplePU: 	at android.content.pm.IPackageManager$Stub.onTransact(IPackageManager.java:3012)
+11-09 12:40:28.732  5108  5185 W PeoplePU: 	at com.android.server.pm.PackageManagerService$IPackageManagerImpl.onTransact(PackageManagerService.java:6334)
+11-09 12:40:28.732  5108  5185 W PeoplePU: 
+11-09 12:40:28.767  5108  5406 W PeoplePU: getServiceInfo failed.
+11-09 12:40:28.767  5108  5406 W PeoplePU: android.content.pm.PackageManager$NameNotFoundException: ComponentInfo{com.google.android.gms/com.google.android.gms.people.sync.focus.ContactsSyncAdapterService}
+11-09 12:40:28.767  5108  5406 W PeoplePU: 	at android.app.ApplicationPackageManager.getServiceInfo(ApplicationPackageManager.java:616)
+11-09 12:40:28.767  5108  5406 W PeoplePU: 	at android.app.ApplicationPackageManager.getServiceInfo(ApplicationPackageManager.java:599)
+11-09 12:40:28.767  5108  5406 W PeoplePU: 	at bvox.b(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3)
+11-09 12:40:28.767  5108  5406 W PeoplePU: 	at com.google.android.gms.people.sync.focus.ContactsSyncIntentOperation.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):43)
+11-09 12:40:28.767  5108  5406 W PeoplePU: 	at com.google.android.chimera.IntentOperation.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-09 12:40:28.767  5108  5406 W PeoplePU: 	at zhv.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+11-09 12:40:28.767  5108  5406 W PeoplePU: 	at hjm.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3)
+11-09 12:40:28.767  5108  5406 W PeoplePU: 	at hjl.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):11)
+11-09 12:40:28.767  5108  5406 W PeoplePU: 	at dfhf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-09 12:40:28.767  5108  5406 W PeoplePU: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-09 12:40:28.767  5108  5406 W PeoplePU: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-09 12:40:28.767  5108  5406 W PeoplePU: 	at java.lang.Thread.run(Thread.java:1012)
+11-09 12:40:28.767  5108  5406 I FSA2_ContactsSyncIntentOp: Sync is disabled. Skip prepareToSync
+11-09 12:40:28.819  5108  5185 I PeopleGalProvider: Gal directories started.
+11-09 12:40:28.819  5108  5185 I PeopleGalProvider: Method 1 completed.
+11-09 12:40:28.822  5108  5185 I PeopleGalProvider: Method 1 finished successfully.

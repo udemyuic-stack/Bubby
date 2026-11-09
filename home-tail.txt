@@ -1,0 +1,150 @@
+11-09 12:40:30.015  4119  4704 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1794228011738
+11-09 12:40:30.019  4119  4716 D cevx    : Starting download: https://c.tenor.com/eU6_2iB4wpIAAAAk/thanksgiving-canada.gif
+11-09 12:40:30.019  4119  4716 V cevx    : Is http uri, downloading (uri: https://c.tenor.com/eU6_2iB4wpIAAAAk/thanksgiving-canada.gif)
+11-09 12:40:30.030  4119  4217 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1794228011739
+11-09 12:40:30.031  1031  1050 D VolumeSliceHelper: Unregistering uri broadcast relay: content://com.android.settings.slices/action/separate_ring_volume
+11-09 12:40:30.032  1031  3979 D SliceBuilder: Creating slice for: com.android.settings.notification.NotificationVolumePreferenceController
+11-09 12:40:30.037  4119  4704 D cevx    : Starting download: https://c.tenor.com/j9Nm0LhcZwEAAAAk/thanksgiving-canada.gif
+11-09 12:40:30.037  4119  4704 V cevx    : Is http uri, downloading (uri: https://c.tenor.com/j9Nm0LhcZwEAAAAk/thanksgiving-canada.gif)
+11-09 12:40:30.042  1031  1050 D SliceBuilder: Creating slice for: com.android.settings.notification.AlarmVolumePreferenceController
+11-09 12:40:30.049  4119  4716 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1794228011740
+11-09 12:40:30.059  4119  4217 D cevx    : Starting download: https://media.tenor.com/8yuNf9wYjdwAAAAk/brunch-cartoon.gif
+11-09 12:40:30.059  4119  4217 V cevx    : Is http uri, downloading (uri: https://media.tenor.com/8yuNf9wYjdwAAAAk/brunch-cartoon.gif)
+11-09 12:40:30.060  4119  4704 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1794228011741
+11-09 12:40:30.076  4119  4716 D cevx    : Starting download: https://media.tenor.com/eKF_xIa1bUcAAAAk/dessert-eat.gif
+11-09 12:40:30.076  4119  4716 V cevx    : Is http uri, downloading (uri: https://media.tenor.com/eKF_xIa1bUcAAAAk/dessert-eat.gif)
+11-09 12:40:30.079  1031  3980 D VolumeSliceHelper: Unregistering uri broadcast relay: content://com.android.settings.slices/action/notification_volume
+11-09 12:40:30.083   335  5262 I resolv  : GetAddrInfoHandler::run: {101 786533 101 983141 10130 0}
+11-09 12:40:30.084   335  5263 I resolv  : GetAddrInfoHandler::run: {101 786533 101 983141 10130 0}
+11-09 12:40:30.087  1031  3980 D SliceBuilder: Creating slice for: com.android.settings.accessibility.MagnificationGesturesPreferenceController
+11-09 12:40:30.089  1031  3987 D VolumeSliceHelper: Unregistering uri broadcast relay: content://com.android.settings.slices/action/alarm_volume
+11-09 12:40:30.090  1031  3987 D SliceBroadcastRelay: Unregistering uri broadcast relay: content://com.android.settings.slices/action/volume_slices
+11-09 12:40:30.094   335  5265 I resolv  : res_nmkquery: (QUERY, IN, A)
+11-09 12:40:30.095   335  5267 I resolv  : res_nmkquery: (QUERY, IN, A)
+11-09 12:40:30.095   335  5267 I resolv  : resolv_cache_lookup: Waiting for previous request
+11-09 12:40:30.095   335  5266 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+11-09 12:40:30.103   335  5264 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+11-09 12:40:30.103   335  5264 I resolv  : resolv_cache_lookup: Waiting for previous request
+11-09 12:40:30.103   518   546 E system_server: No package ID 7f found for resource ID 0x7f080107.
+11-09 12:40:30.126  5143  5143 W SystemServiceRegistry: No service published for: contexthub
+11-09 12:40:30.146  5188  5246 I Auth    : [SupervisedAccountIntentOperation] onHandleIntent(): com.google.android.gms.chimera.container.CONTAINER_UPDATED
+11-09 12:40:30.149  5188  5246 I Auth    : [SupervisedAccountIntentOperation] onContainerUpdated
+11-09 12:40:30.150  5188  5246 I Auth    : [SupervisedAccountIntentOperation] Skipping token refresh
+11-09 12:40:30.162   518   546 E system_server: No package ID 7f found for resource ID 0x7f150560.
+11-09 12:40:30.166  5188  5249 I BlockstoreModuleInit: Container update. Module updated: true [CONTEXT service_id=258 ]
+11-09 12:40:30.170   335  5265 I resolv  : res_nsend: used send_dg 192 terrno: 0
+11-09 12:40:30.171   335  5265 I resolv  : doQuery: rcode=0, ancount=9, return value=192
+11-09 12:40:30.171   335  5267 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7b09cc661090
+11-09 12:40:30.171   335  5267 I resolv  : doQuery: rcode=0, ancount=9, return value=192
+11-09 12:40:30.182  5188  5248 V Backup  : [CustomDownloadSchedulingIO] Received Action: com.google.android.gms.chimera.container.CONTAINER_UPDATED
+11-09 12:40:30.184  5188  5248 V Backup  : [CustomDownloadSchedulingIO] listenToSetupWizardFinishedBroadcast or customBackupDownloadEnableSuwTriggerWithGmsUpdateCheck flag on
+11-09 12:40:30.189  1031  1049 D SliceBuilder: Creating slice for: com.android.settings.deviceinfo.firmwareversion.FirmwareVersionDetailPreferenceController
+11-09 12:40:30.192  5188  5250 V Backup  : [G1ModuleInitIntentOperation] Running restore operation is disabled by flag
+11-09 12:40:30.193  5188  5243 V Backup  : [ShowPhotosNotifIO] Flag not enabled; returning.
+11-09 12:40:30.201  5188  5243 V Backup  : [GsfHelper] backup_enabled:com.android.calllogbackup : fetched from GSF: 0
+11-09 12:40:30.205  5188  5243 V Backup  : [GsfHelper] user_full_data_backup_aware : fetched from GSF: 0
+11-09 12:40:30.206  5188  5243 I Backup  : [CallLogFlagSetter] Whitelisted for call log backup, but not enabling because user_full_data_backup_aware not set.
+11-09 12:40:30.209   335  5266 I resolv  : res_nsend: used send_dg 288 terrno: 0
+11-09 12:40:30.209   335  5266 I resolv  : doQuery: rcode=0, ancount=9, return value=288
+11-09 12:40:30.209   335  5264 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7b0afc668dd0
+11-09 12:40:30.209   335  5264 I resolv  : doQuery: rcode=0, ancount=9, return value=288
+11-09 12:40:30.211  4119  4911 D TrafficStats: tagSocket(150) with statsTag=0xffffffff, statsUid=-1
+11-09 12:40:30.211  4119  4912 D TrafficStats: tagSocket(152) with statsTag=0xffffffff, statsUid=-1
+11-09 12:40:30.216  5188  5249 I CloudSyncBpTkSvc: scheduling a periodic backup task. [CONTEXT service_id=258 ]
+11-09 12:40:30.227  1031  3980 D SliceBuilder: Creating slice for: com.android.settings.deviceinfo.hardwareinfo.DeviceModelPreferenceController
+11-09 12:40:30.229  5188  5273 I BlockstoreModuleInit: scheduleOneOffTaskIfAlreadyScheduled finished [CONTEXT service_id=258 ]
+11-09 12:40:30.231  5188  5218 I BlockstoreModuleInit: cloudRestoreSourceId cleared [CONTEXT service_id=258 ]
+11-09 12:40:30.234   518  3055 E TaskPersister: File error accessing recents directory (directory doesn't exist?).
+11-09 12:40:30.246  1031  1050 D SubscriptionUtil: getSelectableSubscriptionInfoList: [[SubscriptionInfo: id=1 iccId=89860318640220133897 simSlotIndex=0 portIndex=0 isEmbedded=false carrierId=1 displayName=T-Mobile carrierName=T-Mobile isOp
+11-09 12:40:30.250  1031  1050 D SubscriptionUtil: getSelectableSubscriptionInfoList: [[SubscriptionInfo: id=1 iccId=89860318640220133897 simSlotIndex=0 portIndex=0 isEmbedded=false carrierId=1 displayName=T-Mobile carrierName=T-Mobile isOp
+11-09 12:40:30.255  5143  5143 I AlarmManager: set [name: SystemMemoryCache type: 2 triggerAtMillis: 315360084931 windowMillis: -1 intervalMillis: 0]
+11-09 12:40:30.262   335  5275 I resolv  : GetAddrInfoHandler::run: {101 786533 101 983141 10131 0}
+11-09 12:40:30.269   335  5277 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+11-09 12:40:30.271  1031  1050 D SubscriptionUtil: getSelectableSubscriptionInfoList: [[SubscriptionInfo: id=1 iccId=89860318640220133897 simSlotIndex=0 portIndex=0 isEmbedded=false carrierId=1 displayName=T-Mobile carrierName=T-Mobile isOp
+11-09 12:40:30.271   335  5278 I resolv  : res_nmkquery: (QUERY, IN, A)
+11-09 12:40:30.272  5143  5143 W SystemServiceRegistry: No service published for: contexthub
+11-09 12:40:30.274  1031  1050 D SubscriptionUtil: getSelectableSubscriptionInfoList: [[SubscriptionInfo: id=1 iccId=89860318640220133897 simSlotIndex=0 portIndex=0 isEmbedded=false carrierId=1 displayName=T-Mobile carrierName=T-Mobile isOp
+11-09 12:40:30.281  5188  5249 I ChimeraConfigurator: Starting update, reason: 4 urgentFeatures: tflite_dynamite:-1, vision.ocr:-1, mlkit.ocr.common:1, maps_core:-1, mlkit.barcode.ui:0
+11-09 12:40:30.282   335  5278 I resolv  : res_nsend: used send_dg 111 terrno: 0
+11-09 12:40:30.282   335  5278 I resolv  : doQuery: rcode=0, ancount=4, return value=111
+11-09 12:40:30.286   335  5279 I resolv  : GetAddrInfoHandler::run: {101 786533 101 983141 10131 0}
+11-09 12:40:30.290   335  5281 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+11-09 12:40:30.291   335  5281 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7b096c663af0
+11-09 12:40:30.291   335  5281 I resolv  : doQuery: rcode=0, ancount=2, return value=91
+11-09 12:40:30.295   335  5282 I resolv  : res_nmkquery: (QUERY, IN, A)
+11-09 12:40:30.295   335  5282 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7b096c6619b0
+11-09 12:40:30.295   335  5282 I resolv  : doQuery: rcode=0, ancount=2, return value=79
+11-09 12:40:30.297   518  3101 D CompatibilityChangeReporter: Compat change id reported: 168936375; UID 10131; state: ENABLED
+11-09 12:40:30.298   335  5277 I resolv  : res_nsend: used send_dg 159 terrno: 0
+11-09 12:40:30.298   335  5277 I resolv  : doQuery: rcode=0, ancount=4, return value=159
+11-09 12:40:30.301   518  3101 D CompatibilityChangeReporter: Compat change id reported: 73144566; UID 10131; state: ENABLED
+11-09 12:40:30.305  5188  5271 D TrafficStats: tagSocket(82) with statsTag=0x107, statsUid=-1
+11-09 12:40:30.315  5143  5256 W ProviderHelper: Unknown dynamite feature providerinstaller.dynamite
+11-09 12:40:30.320  4119  4716 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1794228011743
+11-09 12:40:30.321  4119  4217 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1794228011742
+11-09 12:40:30.335  1031  1049 D SliceBroadcastRelay: Unregistering uri broadcast relay: content://com.android.settings.slices/action/mobile_data
+11-09 12:40:30.340  4119  4704 D cevx    : Starting download: https://media.tenor.com/H1dJQhNZtI8AAAAk/feed-me-om-nom.gif
+11-09 12:40:30.340  4119  4704 V cevx    : Is http uri, downloading (uri: https://media.tenor.com/H1dJQhNZtI8AAAAk/feed-me-om-nom.gif)
+11-09 12:40:30.343  1721  1721 I AiAiEcho: AppFetcherImpl onPackageChanged com.google.android.contacts.
+11-09 12:40:30.344  1721  2716 I AiAiEcho: AppIndexer Package:[com.google.android.contacts] UserProfile:[0] Enabled:[true].
+11-09 12:40:30.344  1721  2716 I AiAiEcho: AppFetcherImplV2 updateApps package:[com.google.android.contacts], userId:[0], reason:[package is updated.].
+11-09 12:40:30.351  4119  4217 D cevx    : Starting download: https://media.tenor.com/wqOj61NglK4AAAAk/%E3%81%8A%E8%85%B9%E7%A9%BA%E3%81%84%E3%81%9F-%E6%97%A9%E3%81%8F.gif
+11-09 12:40:30.351  4119  4217 V cevx    : Is http uri, downloading (uri: https://media.tenor.com/wqOj61NglK4AAAAk/%E3%81%8A%E8%85%B9%E7%A9%BA%E3%81%84%E3%81%9F-%E6%97%A9%E3%81%8F.gif)
+11-09 12:40:30.354  1031  1031 D SettingsSliceProvider: Stopping background worker for: content://com.android.settings.slices/action/mobile_data
+11-09 12:40:30.358  4119  4704 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1794228011744
+11-09 12:40:30.373  4119  4217 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1794228011745
+11-09 12:40:30.382  5143  5143 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+11-09 12:40:30.394  4119  4716 D cevx    : Starting download: https://media.tenor.com/F75I2eQRtsgAAAAk/hungry-mmm.gif
+11-09 12:40:30.394  4119  4716 V cevx    : Is http uri, downloading (uri: https://media.tenor.com/F75I2eQRtsgAAAAk/hungry-mmm.gif)
+11-09 12:40:30.395  5080  5080 I Choreographer: Skipped 170 frames!  The application may be doing too much work on its main thread.
+11-09 12:40:30.395   518   546 I CredManSysServiceImpl: CredentialManagerServiceImpl constructed for: com.google.android.gms/.auth.api.credentials.credman.service.PasswordAndPasskeyService
+11-09 12:40:30.395   518   546 I CredManSysServiceImpl: newServiceInfoLocked, mInfo null, com.google.android.gms/com.google.android.gms.auth.api.credentials.credman.service.PasswordAndPasskeyService
+11-09 12:40:30.404  5143  5256 I DynamiteModule: Considering local module com.google.android.gms.providerinstaller.dynamite:1 and remote module com.google.android.gms.providerinstaller.dynamite:0
+11-09 12:40:30.404  5143  5256 I DynamiteModule: Selected local version of com.google.android.gms.providerinstaller.dynamite
+11-09 12:40:30.405  4119  4217 D cevx    : Starting download: https://media.tenor.com/NyS3bV41OIsAAAAk/danger-hangry-peach-life.gif
+11-09 12:40:30.405  4119  4217 V cevx    : Is http uri, downloading (uri: https://media.tenor.com/NyS3bV41OIsAAAAk/danger-hangry-peach-life.gif)
+11-09 12:40:30.407  5143  5143 E NanoAppLogging: Failed to begin contexthub communication
+11-09 12:40:30.414  5080  5098 I OpenGLRenderer: Davey! duration=2867ms; Flags=1, FrameTimelineVsyncId=5788, IntendedVsync=82195218936, Vsync=82211885602, InputEventId=0, HandleInputStart=82215507252, AnimationStart=82215507563, PerformTrav
+11-09 12:40:30.415  4119  4716 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1794228011746
+11-09 12:40:30.419   518   975 D CompatibilityChangeReporter: Compat change id reported: 214016041; UID 10192; state: ENABLED
+11-09 12:40:30.420   518   975 I ImeTracker: com.example.buddy:e95f1572: onRequestHide at ORIGIN_SERVER_HIDE_INPUT reason HIDE_UNSPECIFIED_WINDOW
+11-09 12:40:30.420   518   537 I ServiceWatcher: [GeofenceProxy] connected to {com.google.android.gms/com.google.android.location.internal.GoogleLocationManagerService}
+11-09 12:40:30.420   518   537 W Looper  : Drained
+11-09 12:40:30.421   518   975 I ImeTracker: com.example.buddy:e95f1572: onCancelled at PHASE_SERVER_SHOULD_HIDE
+11-09 12:40:30.422  5080  5098 I OpenGLRenderer: Davey! duration=2867ms; Flags=0, FrameTimelineVsyncId=5803, IntendedVsync=82228552268, Vsync=85061885488, InputEventId=0, HandleInputStart=85072116560, AnimationStart=85072117040, PerformTrav
+11-09 12:40:30.424  4119  4217 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1794228011747
+11-09 12:40:30.429  4119  4704 D cevx    : Starting download: https://media.tenor.com/vXPFFhsy-D4AAAAk/kstr-kochstrasse.gif
+11-09 12:40:30.429  4119  4704 V cevx    : Is http uri, downloading (uri: https://media.tenor.com/vXPFFhsy-D4AAAAk/kstr-kochstrasse.gif)
+11-09 12:40:30.434  1721  1721 I AiAiEcho: AppFetcherImpl onPackageChanged com.google.android.gms.
+11-09 12:40:30.435  1494  1494 I GoogleInputMethodService: GoogleInputMethodService.onFinishInput():3227 
+11-09 12:40:30.437  1721  3475 I AiAiEcho: AppIndexer Package:[com.google.android.gms] UserProfile:[0] Enabled:[true].
+11-09 12:40:30.437  1721  3475 I AiAiEcho: AppFetcherImplV2 updateApps package:[com.google.android.gms], userId:[0], reason:[package is updated.].
+11-09 12:40:30.443  4119  4217 D cevx    : Starting download: https://media.tenor.com/6h-mSv5CbPEAAAAk/tonton-tonton-friends.gif
+11-09 12:40:30.443  4119  4217 V cevx    : Is http uri, downloading (uri: https://media.tenor.com/6h-mSv5CbPEAAAAk/tonton-tonton-friends.gif)
+11-09 12:40:30.448  1494  1494 I GoogleInputMethodService: GoogleInputMethodService.updateDeviceLockedStatus():2087 repeatCheckTimes = 0, unlocked = true
+11-09 12:40:30.448  1494  1494 I GoogleInputMethodService: GoogleInputMethodService.onStartInput():1877 onStartInput(EditorInfo{inputType=0x0(NULL) imeOptions=0x0 privateImeOptions=null actionName=UNSPECIFIED actionLabel=null actionId=0 ini
+11-09 12:40:30.448  1494  1494 I GoogleInputMethodService: GoogleInputMethodService.shouldHideHeaderOnInitialState():4008 ShouldHideHeaderOnInitialState = false
+11-09 12:40:30.448  1494  1494 I GoogleInputMethodService: GoogleInputMethodService.updateDeviceLockedStatus():2087 repeatCheckTimes = 2, unlocked = true
+11-09 12:40:30.451  4119  4704 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1794228011748
+11-09 12:40:30.461  5188  5249 W ConfigFileUtils: Failed to read asset ChimeraModuleSetList.pb: java.io.FileNotFoundException: ChimeraModuleSetList.pb
+11-09 12:40:30.465  4119  4217 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1794228011749
+11-09 12:40:30.481  4119  4716 D cevx    : Starting download: https://media.tenor.com/fMBMEN6dHt0AAAAk/yum-yummers.gif
+11-09 12:40:30.481  4119  4716 V cevx    : Is http uri, downloading (uri: https://media.tenor.com/fMBMEN6dHt0AAAAk/yum-yummers.gif)
+11-09 12:40:30.495  5188  5248 I SyncIntentOperation: Handling the intent: Intent { act=com.google.android.gms.chimera.container.CONTAINER_UPDATED pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService }. [
+11-09 12:40:30.500  4119  4716 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1794228011750
+11-09 12:40:30.511  4119  4704 D cevx    : Starting download: https://media.tenor.com/g6Qs3CZC7gkAAAAk/eat-the-pet-collective.gif
+11-09 12:40:30.511  4119  4704 V cevx    : Is http uri, downloading (uri: https://media.tenor.com/g6Qs3CZC7gkAAAAk/eat-the-pet-collective.gif)
+11-09 12:40:30.531  4119  4704 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1794228011751
+11-09 12:40:30.539  4119  4217 D cevx    : Starting download: https://media.tenor.com/EQ2_Y8LKgKEAAAAk/pancake-joypixels.gif
+11-09 12:40:30.539  4119  4217 V cevx    : Is http uri, downloading (uri: https://media.tenor.com/EQ2_Y8LKgKEAAAAk/pancake-joypixels.gif)
+11-09 12:40:30.550  5188  5248 I AppDoctorManager: Updating appdoctor Uri Permissions. [CONTEXT service_id=256 ]
+11-09 12:40:30.558  4119  4217 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1794228011752
+11-09 12:40:30.580  4119  4716 D cevx    : Starting download: https://media.tenor.com/YZXxTDUIH9AAAAAk/decorating-cake-kimjoy.gif
+11-09 12:40:30.580  4119  4716 V cevx    : Is http uri, downloading (uri: https://media.tenor.com/YZXxTDUIH9AAAAAk/decorating-cake-kimjoy.gif)
+11-09 12:40:30.602  4119  4716 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1794228011753
+11-09 12:40:30.607  4119  4704 D cevx    : Starting download: https://media.tenor.com/WoXYIyTOceYAAAAk/piffle-cat.gif
+11-09 12:40:30.607  4119  4704 V cevx    : Is http uri, downloading (uri: https://media.tenor.com/WoXYIyTOceYAAAAk/piffle-cat.gif)
+11-09 12:40:30.623  5188  5188 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.common.BIND_SHARED_PREFS pkg=com.google.android.gms }
+11-09 12:40:30.626  4119  4704 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1794228011754
+11-09 12:40:30.626  5188  5188 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.common.BIND_SHARED_PREFS pkg=com.google.android.gms }
+11-09 12:40:30.627  1031  3980 D WifiCallingSliceHelper: Wifi calling is either not provisioned or not enabled by Platform

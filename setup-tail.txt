@@ -1,0 +1,150 @@
+11-09 12:43:02.578   521   592 D CompatibilityChangeReporter: Compat change id reported: 132649864; UID 2000; state: DISABLED
+11-09 12:43:02.580  1586  4819 W MediaProvider: isAppCloneUserPair for user 0: false
+11-09 12:43:02.588  5443  5443 W AccessibilityNodeInfoDumper: Fetch time: 26ms
+11-09 12:43:02.589  5333  5404 W ChimeraConfigService: Retry attempt was throttled. [CONTEXT service_id=264 ]
+11-09 12:43:02.592  5215  5281 D CompatibilityChangeReporter: Compat change id reported: 150939131; UID 10131; state: ENABLED
+11-09 12:43:02.593  5215  5245 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+11-09 12:43:02.593  5215  5245 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-09 12:43:02.593  5215  5245 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-09 12:43:02.595  1593  4813 I AiAiEcho: Settings changed for uri: content://settings/secure/accessibility_enabled
+11-09 12:43:02.595   521  2049 W WindowMagnificationMgr: requestConnection duplicated request: connect=false, mConnectionState=DISCONNECTED
+11-09 12:43:02.596   521  2049 D AccessibilityManagerService: restoreCurrentUserForTestAutomationIfNeededLocked(): ignoring because device doesn't support visible background users
+11-09 12:43:02.596  1593  2062 I AiAiEcho: Predicting[0]: 
+11-09 12:43:02.596  1593  2062 I AiAiEcho: EchoTargets: 
+11-09 12:43:02.596  1593  2062 I AiAiEcho: Filtered by AiAi flag check: 
+11-09 12:43:02.597  1593  2062 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+11-09 12:43:02.597  1593  2062 I AiAiEcho: Predicting[0]: 
+11-09 12:43:02.598  1593  2062 I AiAiEcho: EchoTargets: 
+11-09 12:43:02.598  1593  2062 I AiAiEcho: Filtered by AiAi flag check: 
+11-09 12:43:02.598  1593  2062 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+11-09 12:43:02.599  1593  2062 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0 (types=[])
+11-09 12:43:02.599  1593  2062 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0 (types=[])
+11-09 12:43:02.612  5443  5443 D AndroidRuntime: Shutting down VM
+11-09 12:43:02.617   829   829 W PageIndicator: Total number of pages invalid: 0. Assuming 1 page.
+11-09 12:43:02.618  1655  2130 I A       : NGA enabled in interactor.
+11-09 12:43:02.618  1655  2130 I A       : Nga state changed to NgaStateDetails{state=ENABLED, isSpecialExperience=false}
+11-09 12:43:02.620  1607  3432 I A       : Initializing all components
+11-09 12:43:02.622  1607  3432 I A       : APA or Classic session decision: SessionDecision(sessionVariance=CLASSIC, platformVariance=CLASSIC, justification=CURRENT_PLATFORM_VARIANCE).
+11-09 12:43:02.623  1607  3432 I A       : [Memory] eligibility: StashEligibility{6}
+11-09 12:43:02.623   521   521 D BatterySaverPolicy: accessibility changed to false, updating policy.
+11-09 12:43:02.624  5333  5404 I GmsDebugLogger: [83] 1 [mlkit.barcode.ui]
+11-09 12:43:02.625  1607  2311 I A       : Initialize
+11-09 12:43:02.626  1607  2311 I A       : onIsEnabledChanged, isEnabled: false
+11-09 12:43:02.626  1607  2311 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:43:02.626  1607  2311 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:43:02.627  1607  2311 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:43:02.627  1607  2311 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:43:02.627  1607  2311 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:43:02.627  1607  2311 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:43:02.627  1607  2311 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:43:02.627  1607  2311 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:43:02.627  1607  2311 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:43:02.628  1607  2311 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:43:02.628  1607  2311 I A       : onOpaVisibilityChanged: false
+11-09 12:43:02.628  1607  2311 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:43:02.628  1607  2311 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:43:02.628  1607  2311 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:43:02.628  1607  2311 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:43:02.628  1607  2311 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:43:02.628  1607  2311 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:43:02.628  1607  2311 I A       : Setting session to type: NO_SESSION
+11-09 12:43:02.629  1607  2311 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:43:02.629  1607  2311 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:43:02.629  1607  2311 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:43:02.629  1607  2311 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:43:02.629  1607  2311 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:43:02.629  1607  2311 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:43:02.629  1607  2311 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:43:02.629  1607  2311 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:43:02.629  1607  2311 I A       : setNavBarVisible: GestureNavBarVisible{navbarVisible=true}
+11-09 12:43:02.630  1607  2311 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:43:02.630  1607  2311 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:43:02.630  1607  2311 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:43:02.630  1607  2311 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:43:02.630  1607  2311 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:43:02.630  1607  2311 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-09 12:43:02.630  1607  2320 I A       : stopListening(NGA_PAUSED_UNKNOWN_REASON, NGA_CREATE), idleOverride=NOT_LISTENING
+11-09 12:43:02.633  5333  5404 I ChimeraConfigurator: Starting update, reason: 4 urgentFeatures: tflite_dynamite:-1
+11-09 12:43:02.642  1607  2320 I A       : State changed: IDLE => IDLE by NGA_STATE_CHANGED and N/A with Optional.empty
+11-09 12:43:02.653  5215  5255 W GlsClientGrpc: Voilatile gRPC failure INVALID_ARGUMENT: Application credential header not valid. Please fix the client to pass a valid application credential header. [CONTEXT service_id=6 ]
+11-09 12:43:02.653  5215  5255 W GlsClientGrpc: enms: INVALID_ARGUMENT: Application credential header not valid. Please fix the client to pass a valid application credential header.
+11-09 12:43:02.653  5215  5255 W GlsClientGrpc: 	at enmr.h(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-09 12:43:02.653  5215  5255 W GlsClientGrpc: 	at abxw.u(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-09 12:43:02.653  5215  5255 W GlsClientGrpc: 	at abxw.e(:com.google.android.gms@231818047@23.18.18 (190800-535401451):17)
+11-09 12:43:02.653  5215  5255 W GlsClientGrpc: 	at abxw.g(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-09 12:43:02.653  5215  5255 W GlsClientGrpc: 	at cyeg.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):27)
+11-09 12:43:02.653  5215  5255 W GlsClientGrpc: 	at czpd.call(:com.google.android.gms@231818047@23.18.18 (190800-535401451):78)
+11-09 12:43:02.653  5215  5255 W GlsClientGrpc: 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+11-09 12:43:02.653  5215  5255 W GlsClientGrpc: 	at aced.c(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+11-09 12:43:02.653  5215  5255 W GlsClientGrpc: 	at aced.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):7)
+11-09 12:43:02.653  5215  5255 W GlsClientGrpc: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-09 12:43:02.653  5215  5255 W GlsClientGrpc: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-09 12:43:02.653  5215  5255 W GlsClientGrpc: 	at acjn.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-09 12:43:02.653  5215  5255 W GlsClientGrpc: 	at java.lang.Thread.run(Thread.java:1012)
+11-09 12:43:02.655  1607  2311 I A       : onDisabled. Registered: false
+11-09 12:43:02.657  1607  2311 I A       : on opa visibility changed false
+11-09 12:43:02.658  1607  2311 I A       : on opa visibility changed false
+11-09 12:43:02.660  1607  2311 I NgaEntryPointEventSendr: setupConnection
+11-09 12:43:02.662  1655  1655 I A       : Creating pss binder().
+11-09 12:43:02.663  1607  2311 I NgaEntryPointEventSendr: State changed: Disconnected => Connecting
+11-09 12:43:02.663  1607  2311 I NgaEntryPointEventSendr: onServiceConnected
+11-09 12:43:02.664  1655  5211 I A       : Calling beginBinderSession().
+11-09 12:43:02.665  1607  2320 I A       : Recognizer choice: (recognizer_type: 1, recognizer_mode: 1, choice_reason: 4)
+11-09 12:43:02.674  1607  2320 I A       : onActiveStateChangeEvent: IDLE => IDLE
+11-09 12:43:02.674  1655  5211 I A       : beginBinderSession(): calling binder
+11-09 12:43:02.689  1607  2311 I NgaEntryPointEventSendr: State changed: Connecting => Ready
+11-09 12:43:02.692  1607  2311 W A       : Routing took 31 ms
+11-09 12:43:02.693   521  1170 W ActivityManager: Unable to start service Intent { cmp=com.google.android.apps.tachyon/.clientapi.ClientApiService } U=0: not found
+11-09 12:43:02.695  1607  2311 I A       : Successfully initialized all components
+11-09 12:43:02.710  1607  2311 I NgaEntryPointEventSendr: State changed: Ready => Disconnected (onOpaDisconnected)
+11-09 12:43:02.710  1655  2308 I PBSessionCacheImpl: Deleted sessionId[7280561203999373] from persistence.
+11-09 12:43:02.711  1655  2308 W A       : UiCallbackStub-onGenericEvent[ServiceEvent = 60] task was not run. Callback from Service received after client was disposed.
+11-09 12:43:02.711  1607  2320 W A       : Missing generator mapping for generator GENERATOR_CONTEXTUAL_SUGGESTIONS
+11-09 12:43:02.711  1607  2320 W A       : Missing generator mapping for generator GENERATOR_FRE_SUGGESTIONS_ON_TIMEOUT
+11-09 12:43:02.711  1607  2320 W A       : Missing generator mapping for generator GENERATOR_FRE_SUGGESTIONS_ON_INVOCATION
+11-09 12:43:02.712  1655  2308 W SearchServiceCore: Abort, client detached.
+11-09 12:43:02.719  5333  5404 I ChimeraConfigurator: Detected pending changes for urgent request: [tflite_dynamite]. Pending module sets: container:2318189190800,tflite_dynamite:2640104055100800+tflite_dynamite
+11-09 12:43:02.724  1607  2320 I A       : #onActiveStateChangeEvent, newState: IDLE, previousState: IDLE.
+11-09 12:43:02.730  5333  5404 I GmsDebugLogger: [73] 1801
+11-09 12:43:02.732  5333  5404 W ZappDownloader: No successful module downloads for requested features [tflite_dynamite].
+11-09 12:43:02.732  5333  5404 I GmsDebugLogger: [30] [TfliteDynamiteDynamite.integ:264010405100800]
+11-09 12:43:02.733  5333  5404 W ChimeraConfigService: Retry attempt was throttled. [CONTEXT service_id=264 ]
+11-09 12:43:02.733  5333  5404 I GmsDebugLogger: [83] 1 [tflite_dynamite]
+11-09 12:43:02.925     0     0 I binder  : 5404:5333 cannot find target node
+11-09 12:43:02.926     0     0 I binder  : 5333:5404 transaction async to 0:0 failed 524831/29189/-22, size 160-0 line 3210
+11-09 12:43:02.742  5333  5404 E IPCThreadState: Binder transaction failure: 524831/29189/-22
+11-09 12:43:02.742  5333  5404 E ChimeraUPLUtils: Failed to invoke updateComplete: android.os.DeadObjectException
+11-09 12:43:02.743  5333  5407 I ChimeraConfigurator: Starting update, reason: 4 urgentFeatures: tflite_dynamite:-1
+11-09 12:43:02.756  5333  5407 I ChimeraConfigurator: Detected pending changes for urgent request: [tflite_dynamite]. Pending module sets: container:2318189190800,tflite_dynamite:2640104055100800+tflite_dynamite
+11-09 12:43:02.760  5333  5407 I GmsDebugLogger: [73] 1801
+11-09 12:43:02.761  5333  5407 W ZappDownloader: No successful module downloads for requested features [tflite_dynamite].
+11-09 12:43:02.761  5333  5407 I GmsDebugLogger: [30] [TfliteDynamiteDynamite.integ:264010405100800]
+11-09 12:43:02.763  5333  5407 W ChimeraConfigService: Retry attempt was throttled. [CONTEXT service_id=264 ]
+11-09 12:43:02.763  5333  5407 I GmsDebugLogger: [83] 1 [tflite_dynamite]
+11-09 12:43:02.771  5333  5407 I ChimeraConfigurator: Starting update, reason: 4 urgentFeatures: vision.ocr:-1
+11-09 12:43:02.790  5215  5215 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.clearcut.bootcount.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentBoundBrokerService }
+11-09 12:43:02.790  5215  5215 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.clearcut.bootcount.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentBoundBrokerService
+11-09 12:43:02.791  1607  1668 I hbox:interactor: Background young concurrent copying GC freed 40472(2357KB) AllocSpace objects, 8(160KB) LOS objects, 20% free, 8208KB/10MB, paused 26us,9us total 124.091ms
+11-09 12:43:02.810  5333  5407 I ChimeraConfigurator: Detected pending changes for urgent request: [vision.ocr]. Pending module sets: container:2318189190800+mlkit.ocr.common,tflite_dynamite:2640104055100800+tflite_dynamite,vision_ocr:23160
+11-09 12:43:02.818  5333  5407 I GmsDebugLogger: [73] 1801
+11-09 12:43:02.822  5333  5407 W ZappDownloader: No successful module downloads for requested features [vision.ocr].
+11-09 12:43:02.822  5333  5407 I GmsDebugLogger: [30] [VisionOcrDynamite.integ:231602402100000],[TfliteDynamiteDynamite.integ:264010405100800],[MlkitOcrCommon.optional:231818100800]
+11-09 12:43:02.828  5333  5407 W ChimeraConfigService: Retry attempt was throttled. [CONTEXT service_id=264 ]
+11-09 12:43:02.828  5333  5407 I GmsDebugLogger: [83] 1 [vision.ocr]
+11-09 12:43:02.833  5333  5339 I gle.android.gms: Background concurrent copying GC freed 651317(28MB) AllocSpace objects, 289(11MB) LOS objects, 49% free, 12MB/25MB, paused 33us,14us total 249.520ms
+11-09 12:43:02.834  5215  5221 I .gms.persistent: Background concurrent copying GC freed 661663(34MB) AllocSpace objects, 85(2264KB) LOS objects, 49% free, 14MB/29MB, paused 30us,16us total 309.464ms
+11-09 12:43:02.843  5333  5403 W Vision  : Request for optional module download of ocr failed. Request again.
+11-09 12:43:02.844  5333  5403 W Vision  : Would have logged:
+11-09 12:43:02.844  5333  5403 W Vision  : # dsae@37884fe7
+11-09 12:43:02.844  5333  5403 I Vision  : Schedule retrying download ocr at 93089 with backoff 10 seconds
+11-09 12:43:02.869  5333  5338 I gle.android.gms: Compiler allocated 4748KB to compile boolean zec.j(int, zdr, java.util.List, zeb)
+11-09 12:43:02.878  5215  5283 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService started execution. cause:9 exec_start_elapsed_seconds: 93 [CONTEXT service_id=218 ]
+11-09 12:43:02.885  5215  5369 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService finished executing. cause:9 result: 1 elapsed_millis: 78 uptime_millis: 78 exec_start_elapsed_seconds: 93
+11-09 12:43:02.943  5120  5138 D EGL_emulation: app_time_stats: avg=33.11ms min=22.31ms max=44.88ms count=31
+11-09 12:43:03.561  5542  5542 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+11-09 12:43:03.561  5542  5542 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-09 12:43:03.562   402   570 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=5542
+11-09 12:43:03.562   402   570 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (195 us)
+11-09 12:43:03.578   136   136 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-09 12:43:03.578  5542  5543 I Gralloc4: mapper 4.x is not supported
+11-09 12:43:03.767     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.

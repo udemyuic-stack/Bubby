@@ -1,0 +1,150 @@
+11-09 12:45:57.978   404   419 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=5114
+11-09 12:45:57.978   404   419 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (427 us)
+11-09 12:45:58.446     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+11-09 12:45:57.999   141   141 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-09 12:45:58.005  1486  4777 I ChimeraCfgMgr: Updating module config: container:2318189190800 -> container:2318189190800
+11-09 12:45:58.005  1486  4777 E DowngradeHelper: isModuleDowngradeRequired false
+11-09 12:45:58.007  5114  5117 I Gralloc4: mapper 4.x is not supported
+11-09 12:45:58.054  1486  1486 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.chimera.container.moduleinstall.ModuleInstallService.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsApiService }
+11-09 12:45:58.120  1486  4777 I GmsDebugLogger: [46] container:2318189190800
+11-09 12:45:58.123  2066  5118 D DownloadManager: [5] Starting
+11-09 12:45:58.131  1486  5069 I Icing   : Indexing com.google.android.gms-apps from com.google.android.gms
+11-09 12:45:58.152  1486  4777 I ChimeraModuleLdr: Module config changed, forcing restart due to module com.google.android.gms.rcs
+11-09 12:45:58.152  1486  4777 I Process : Sending signal. PID: 1486 SIG: 9
+11-09 12:45:58.153  1433  4618 I ChimeraModuleLdr: Module config changed, forcing restart due to module com.google.android.gms.rcs
+11-09 12:45:58.153  1433  4618 I Process : Sending signal. PID: 1433 SIG: 9
+11-09 12:45:58.164   337  5119 I resolv  : GetAddrInfoHandler::run: {100 983140 100 983140 10087 0}
+11-09 12:45:58.170   337  5120 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+11-09 12:45:58.170   337  5120 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7be2b7916bd0
+11-09 12:45:58.170   337  5120 I resolv  : doQuery: rcode=0, ancount=1, return value=61
+11-09 12:45:58.185   337  5121 I resolv  : res_nmkquery: (QUERY, IN, A)
+11-09 12:45:58.185   337  5121 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7be2b7916450
+11-09 12:45:58.185   337  5121 I resolv  : doQuery: rcode=0, ancount=1, return value=49
+11-09 12:45:58.209  2066  5118 D TrafficStats: tagSocket(75) with statsTag=0xffffff01, statsUid=10129
+11-09 12:45:58.270   525  2357 I ActivityManager: Process com.google.android.gms (pid 1486) has died: fg  SVC 
+11-09 12:45:58.272   525  2357 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.chimera.GmsIntentOperationService in 1000ms for start-requested
+11-09 12:45:58.272   525  2357 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.chimera.container.ExternalFileApkService in 11000ms for start-requested
+11-09 12:45:58.274   338   338 I Zygote  : Process 1486 exited due to signal 9 (Killed)
+11-09 12:45:58.278   525   556 I libprocessgroup: Successfully killed process cgroup uid 10131 pid 1486 in 0ms
+11-09 12:45:58.852     0     0 W binder_debug: 2 callbacks suppressed
+11-09 12:45:58.852     0     0 I binder  : undelivered TRANSACTION_COMPLETE
+11-09 12:45:58.855     0     0 I binder  : undelivered transaction 425389, process died.
+11-09 12:45:58.859     0     0 I binder  : release 1433:1723 transaction 424712 in, still active
+11-09 12:45:58.404  1780  3374 W GmsClient: IGmsServiceBroker.getService failed
+11-09 12:45:58.404  1780  3374 W GmsClient: android.os.DeadObjectException
+11-09 12:45:58.404  1780  3374 W GmsClient: 	at android.os.BinderProxy.transactNative(Native Method)
+11-09 12:45:58.404  1780  3374 W GmsClient: 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+11-09 12:45:58.404  1780  3374 W GmsClient: 	at com.google.android.gms.common.internal.n.J(PG:15)
+11-09 12:45:58.404  1780  3374 W GmsClient: 	at com.google.android.gms.common.api.internal.ao.a(PG:7)
+11-09 12:45:58.404  1780  3374 W GmsClient: 	at com.google.android.gms.common.api.internal.as.run(PG:4)
+11-09 12:45:58.404  1780  3374 W GmsClient: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:487)
+11-09 12:45:58.404  1780  3374 W GmsClient: 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+11-09 12:45:58.404  1780  3374 W GmsClient: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-09 12:45:58.404  1780  3374 W GmsClient: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-09 12:45:58.404  1780  3374 W GmsClient: 	at com.google.android.gms.common.util.a.d.run(PG:2)
+11-09 12:45:58.404  1780  3374 W GmsClient: 	at java.lang.Thread.run(Thread.java:1012)
+11-09 12:45:58.862     0     0 I binder  : send failed reply for transaction 424712 to 1780:3374
+11-09 12:45:58.887     0     0 I binder  : undelivered TRANSACTION_COMPLETE
+11-09 12:45:58.888     0     0 I binder  : undelivered transaction 425197, process died.
+11-09 12:45:58.890     0     0 I binder  : undelivered TRANSACTION_COMPLETE
+11-09 12:45:58.891     0     0 I binder  : undelivered transaction 425198, process died.
+11-09 12:45:58.911     0     0 I binder  : undelivered transaction 425196, process died.
+11-09 12:45:58.456  2066  5118 D DownloadManager: [5] Finished with status SUCCESS
+11-09 12:45:58.916     0     0 I binder  : undelivered transaction 425418, process died.
+11-09 12:45:58.461   525  1990 D PackageManager: Binder to instant app resolver died
+11-09 12:45:58.462   525   553 V PackageManager: [Optimistic Bind] Binding to instant app resolver
+11-09 12:45:58.464  1032  1332 D BtGatt.GattService: Binder is dead - unregistering scanner (2)!
+11-09 12:45:58.464  1032  4721 D BtGatt.GattService: Binder is dead - unregistering scanner (1)!
+11-09 12:45:58.465   525   542 I ServiceWatcher: [network] disconnected from 10131/com.google.android.gms/com.google.android.location.network.NetworkLocationService@2
+11-09 12:45:58.465   525   542 I ServiceWatcher: [GeocoderProxy] disconnected from 10131/com.google.android.gms/.location.geocode.GeocodeService@2
+11-09 12:45:58.465   525   542 I ServiceWatcher: [fused] disconnected from 10131/com.google.android.gms/com.google.android.location.fused.FusedLocationService@1
+11-09 12:45:58.465   525   542 I ServiceWatcher: [HardwareActivityRecognitionProxy] disconnected from 10131/com.google.android.gms/com.google.android.location.internal.server.HardwareArProviderService@1
+11-09 12:45:58.465   525   542 I ServiceWatcher: [GeofenceProxy] disconnected from 10131/com.google.android.gms/com.google.android.location.internal.GoogleLocationManagerService@1
+11-09 12:45:58.466   525   542 I ServiceWatcher: [RealLocationTimeZoneProviderProxy] disconnected from 10131/com.google.android.gms/.geotimezone.GeoTimeZoneService@1
+11-09 12:45:58.467   338   338 I Zygote  : Process 1433 exited due to signal 9 (Killed)
+11-09 12:45:58.473   525   525 D PackageManager: Disconnected from instant app resolver
+11-09 12:45:58.479  1780  2141 E A       : Failed updating experiments for package com.google.android.apps.search.soundsearch.device#com.google.android.googlequicksearchbox
+11-09 12:45:58.479  1780  2141 E A       : com.google.android.libraries.phenotype.client.a.h: 20: 20: The connection to Google Play services was lost due to service disconnection.
+11-09 12:45:58.479  1780  2141 E A       : 	at com.google.android.libraries.phenotype.client.a.j.apply(PG:1)
+11-09 12:45:58.479  1780  2141 E A       : 	at com.google.common.util.concurrent.a.e(PG:2)
+11-09 12:45:58.479  1780  2141 E A       : 	at com.google.common.util.concurrent.c.run(PG:12)
+11-09 12:45:58.479  1780  2141 E A       : 	at com.google.common.util.concurrent.bf.execute(PG:1)
+11-09 12:45:58.479  1780  2141 E A       : 	at com.google.common.util.concurrent.d.i(PG:1)
+11-09 12:45:58.479  1780  2141 E A       : 	at com.google.common.util.concurrent.d.l(PG:12)
+11-09 12:45:58.479  1780  2141 E A       : 	at com.google.common.util.concurrent.d.o(PG:3)
+11-09 12:45:58.479  1780  2141 E A       : 	at com.google.android.libraries.v.c.a(PG:5)
+11-09 12:45:58.479  1780  2141 E A       : 	at com.google.android.gms.tasks.n.run(PG:1)
+11-09 12:45:58.479  1780  2141 E A       : 	at com.google.common.util.concurrent.bf.execute(PG:1)
+11-09 12:45:58.479  1780  2141 E A       : 	at com.google.android.gms.tasks.o.a(PG:3)
+11-09 12:45:58.479  1780  2141 E A       : 	at com.google.android.gms.tasks.ad.b(PG:5)
+11-09 12:45:58.479  1780  2141 E A       : 	at com.google.android.gms.tasks.aj.u(PG:4)
+11-09 12:45:58.479  1780  2141 E A       : 	at com.google.android.gms.common.api.internal.ad.a(PG:13)
+11-09 12:45:58.479  1780  2141 E A       : 	at com.google.android.gms.common.api.internal.bk.k(PG:7)
+11-09 12:45:58.479  1780  2141 E A       : 	at com.google.android.gms.common.api.internal.bk.lb(PG:2)
+11-09 12:45:58.479  1780  2141 E A       : 	at com.google.android.gms.common.internal.aa.b(PG:1)
+11-09 12:45:58.479  1780  2141 E A       : 	at com.google.android.gms.common.internal.f.handleMessage(PG:27)
+11-09 12:45:58.479  1780  2141 E A       : 	at android.os.Handler.dispatchMessage(Handler.java:106)
+11-09 12:45:58.479  1780  2141 E A       : 	at android.os.Looper.loopOnce(Looper.java:205)
+11-09 12:45:58.479  1780  2141 E A       : 	at android.os.Looper.loop(Looper.java:294)
+11-09 12:45:58.479  1780  2141 E A       : 	at android.os.HandlerThread.run(HandlerThread.java:67)
+11-09 12:45:58.479  1780  2141 E A       : Caused by: com.google.android.gms.common.api.n: 20: The connection to Google Play services was lost due to service disconnection.
+11-09 12:45:58.479  1780  2141 E A       : 	at com.google.android.gms.common.api.internal.ad.a(PG:12)
+11-09 12:45:58.479  1780  2141 E A       : 	... 8 more
+11-09 12:45:58.483  1032  1332 D BtGatt.GattService: stopScan() - queue size =2
+11-09 12:45:58.485  1032  4721 D BtGatt.GattService: stopScan() - queue size =2
+11-09 12:45:58.486  1032  1332 D ActivityAttributionService: notifyActivityAttributionInfo UID=1002 packageName=com.google.android.bluetooth deviceAddress=no_active_device_address
+11-09 12:45:58.486  1032  1332 I bt_btif : packages/modules/Bluetooth/system/btif/src/bluetooth.cc:829 get_profile_interface: get_profile_interface: id = activity_attribution
+11-09 12:45:58.486  1032  1309 D BtGatt.ScanManager: handling stopping scan  [ScanClient scanModeApp -1 scanModeUsed -1 [appScanStats com.google.uid.shared:10131]]
+11-09 12:45:58.486  1032  1309 D BtGatt.ScanManager: stop gattClientScanNative
+11-09 12:45:58.486  1032  1309 I bt_stack: [INFO:le_scanning_manager.cc(168)] Scan in shim layer stopped
+11-09 12:45:58.486  1032  1218 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_scanning_manager.cc:588 stop_scan: Scanning already stopped, return!
+11-09 12:45:58.486  1032  1309 W bt_shim_scanner: packages/modules/Bluetooth/system/main/shim/le_scanning_manager.cc:190 Scan: Invalid state: start:0, current scan state: 0
+11-09 12:45:58.486  1032  1309 W BtGatt.ScanManager: There is no scan radio to stop
+11-09 12:45:58.486  1032  1309 D BtGatt.ScanManager: app died, unregister scanner - 2
+11-09 12:45:58.487  1032  1309 D BtGatt.GattService: unregisterScanner() - scannerId=2
+11-09 12:45:58.487  1032  1309 I bt_stack: [INFO:le_scanning_manager.cc(162)] Unregister in shim layer, scanner_id:2
+11-09 12:45:58.487   525  1892 I ActivityManager: Process com.google.android.gms.persistent (pid 1433) has died: fg  BFGS
+11-09 12:45:58.491   525   556 I libprocessgroup: Successfully killed process cgroup uid 10131 pid 1433 in 0ms
+11-09 12:45:58.515   525   773 D ConnectivityService: releasing NetworkRequest [ REQUEST id=98, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10131 RequestorUid: 10131 RequestorPkg: com.google.android.gms UnderlyingNe
+11-09 12:45:58.516   525  1892 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/com.google.android.location.internal.server.GoogleLocationService in 20757ms for start-requested
+11-09 12:45:58.516   525  1892 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.auth.setup.devicesignals.LockScreenService in 30756ms for start-requested
+11-09 12:45:58.517   525   770 W WificondScannerImpl: stopBatchedScan() is not supported
+11-09 12:45:58.518   525  1892 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.clearcut.debug.ClearcutDebugDumpService in 40754ms for start-requested
+11-09 12:45:58.519   525  1892 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/com.google.android.contextmanager.service.ContextManagerService in 50753ms for start-requested
+11-09 12:45:58.543  1032  4721 D ActivityAttributionService: notifyActivityAttributionInfo UID=1002 packageName=com.google.android.bluetooth deviceAddress=no_active_device_address
+11-09 12:45:58.543  1032  4721 I bt_btif : packages/modules/Bluetooth/system/btif/src/bluetooth.cc:829 get_profile_interface: get_profile_interface: id = activity_attribution
+11-09 12:45:58.543  1032  1309 D BtGatt.ScanManager: handling stopping scan  [ScanClient scanModeApp -1 scanModeUsed -1 [appScanStats com.google.uid.shared:10131]]
+11-09 12:45:58.543  1032  1309 D BtGatt.ScanManager: stop gattClientScanNative
+11-09 12:45:58.543  1032  1309 I bt_stack: [INFO:le_scanning_manager.cc(168)] Scan in shim layer stopped
+11-09 12:45:58.543  1032  1218 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_scanning_manager.cc:588 stop_scan: Scanning already stopped, return!
+11-09 12:45:58.543  1032  1309 W bt_shim_scanner: packages/modules/Bluetooth/system/main/shim/le_scanning_manager.cc:190 Scan: Invalid state: start:0, current scan state: 0
+11-09 12:45:58.543  1032  1309 W BtGatt.ScanManager: There is no scan radio to stop
+11-09 12:45:58.543  1032  1309 D BtGatt.ScanManager: app died, unregister scanner - 1
+11-09 12:45:58.543  1032  1309 D BtGatt.GattService: unregisterScanner() - scannerId=1
+11-09 12:45:58.543  1032  1309 I bt_stack: [INFO:le_scanning_manager.cc(162)] Unregister in shim layer, scanner_id:1
+11-09 12:45:58.544   525  1892 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/com.google.android.location.fused.FusedLocationService in 60728ms for connection
+11-09 12:45:58.544   525  1892 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.nearby.exposurenotification.service.ExposureMatchingService in 70728ms for start-requested
+11-09 12:45:58.544   525  1892 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.chimera.PersistentBoundBrokerService in 80728ms for connection
+11-09 12:45:58.544   525  1892 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.chimera.PersistentApiService in 90728ms for connection
+11-09 12:45:58.544   525  1892 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.gcm.nts.SchedulerService in 100728ms for start-requested
+11-09 12:45:58.544   525  1892 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.nearby.messages.service.NearbyMessagesService in 110728ms for start-requested
+11-09 12:45:58.544   525  1892 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.nearby.sharing.ReceiveSurfaceService in 120728ms for start-requested
+11-09 12:45:58.544   525  1892 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.common.stats.GmsCoreStatsService in 130728ms for start-requested
+11-09 12:45:58.544   525  1892 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.deviceconnection.service.DeviceConnectionWatcherService in 140728ms for start-requested
+11-09 12:45:58.544   525  1892 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.nearby.exposurenotification.service.ExposureNotificationInternalService in 150728ms for start-requested
+11-09 12:45:58.544   525  1892 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.auth.account.authenticator.GoogleAccountAuthenticatorService in 160727ms for connection
+11-09 12:45:58.544   525  1892 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/com.google.android.location.internal.GoogleLocationManagerService in 170727ms for start-requested
+11-09 12:45:58.544   525  1892 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/com.google.android.location.network.NetworkLocationService in 180727ms for connection
+11-09 12:45:58.545   525  1892 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.location.persistent.LocationPersistentService in 190727ms for start-requested
+11-09 12:45:58.545   525  1892 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/com.google.android.location.internal.server.HardwareArProviderService in 200727ms for connection
+11-09 12:45:58.545   525  1892 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.stats.service.DropBoxEntryAddedService in 210727ms for start-requested
+11-09 12:45:58.545   525  1892 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.thunderbird.EmergencyPersistentService in 220727ms for start-requested
+11-09 12:45:58.545   525  1892 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.chimera.PersistentDirectBootAwareApiService in 230727ms for connection
+11-09 12:45:58.545   525  1892 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.geotimezone.GeoTimeZoneService in 240727ms for connection
+11-09 12:45:58.545   525  1892 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.location.geocode.GeocodeService in 250727ms for connection
+11-09 12:45:58.545   525  1892 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.gcm.GcmService in 260727ms for start-requested
+11-09 12:45:58.545   525  1892 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.chimera.PersistentIntentOperationService in 270727ms for start-requested
+11-09 12:45:58.566   525   553 D CompatibilityChangeReporter: Compat change id reported: 135634846; UID 10131; state: DISABLED
+11-09 12:45:58.569   525   555 D CompatibilityChangeReporter: Compat change id reported: 143937733; UID 10131; state: ENABLED
+11-09 12:45:58.579  2066  5135 D DownloadManager: [6] Starting
+11-09 12:45:58.594  2066  5135 D TrafficStats: tagSocket(76) with statsTag=0xffffff01, statsUid=10129

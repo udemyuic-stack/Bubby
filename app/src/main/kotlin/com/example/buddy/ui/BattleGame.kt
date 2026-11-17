@@ -21,14 +21,20 @@ object BattleOpps {
     )
 }
 
-class BattleGame(val oppIndex: Int, private val meaning: (RunnerPhrase) -> String, seed: Long = System.nanoTime()) {
+class BattleGame(
+    val oppIndex: Int,
+    private val meaning: (RunnerPhrase) -> String,
+    seed: Long = System.nanoTime(),
+    phrases: List<RunnerPhrase> = RunnerPhrases.sectors.flatMap { it.second },
+    private val translate: Boolean = true
+) {
     enum class Ev { ROUND, PLAYER_HIT, BOT_HIT, PLAYER_WRONG, TIMEOUT, OVER }
 
     var onEvent: ((Ev, Int) -> Unit)? = null
 
     val opp = BattleOpps.all[oppIndex]
     private val rnd = Random(seed)
-    private val allPhrases = RunnerPhrases.sectors.flatMap { it.second }
+    private val allPhrases = phrases
     private val allWords = allPhrases.flatMap { it.pool }.distinct()
     private val deck = ArrayDeque<RunnerPhrase>()
 
@@ -70,7 +76,7 @@ class BattleGame(val oppIndex: Int, private val meaning: (RunnerPhrase) -> Strin
     private fun nextRound() {
         round++
         val p = draw()
-        val tr = rnd.nextFloat() < opp.translate
+        val tr = translate && rnd.nextFloat() < opp.translate
         val q = if (tr) translation(p) else gap(p)
         question = q
         chosen = -1; resolved = false; elapsed = 0f; pause = 0f

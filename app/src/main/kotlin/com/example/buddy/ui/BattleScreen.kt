@@ -6,9 +6,9 @@ import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.TextView
 
-class BattleScreen(act: UiActivity) : Screen(act) {
+class BattleScreen(act: UiActivity, private val grammar: Boolean = false) : Screen(act) {
     override val coversScene = true
-    override fun title() = t("Битва с Bubby", "Bubby Battle", "Bubby jangi")
+    override fun title() = name()
     override val padH = 12
 
     private var current = -1
@@ -25,7 +25,9 @@ class BattleScreen(act: UiActivity) : Screen(act) {
     private val accents = intArrayOf(P.orange, P.violet, P.teal, P.rose)
     private var playing = false
 
-    private fun stars(i: Int) = Backend.int(ctx, "bb_stars_$i", 0)
+    private fun name() = if (grammar) t("Грамматическая битва", "Grammar Battle", "Grammatika jangi") else t("Битва с Bubby", "Bubby Battle", "Bubby jangi")
+    private fun key(i: Int) = (if (grammar) "gb_stars_" else "bb_stars_") + i
+    private fun stars(i: Int) = Backend.int(ctx, key(i), 0)
     private fun unlocked(i: Int) = i == 0 || stars(i - 1) >= 1
     private fun oppName(o: BattleOpp) = t(o.ru, o.en, o.uz)
     private fun starsText(n: Int) = "★".repeat(n) + "☆".repeat(3 - n)
@@ -37,7 +39,7 @@ class BattleScreen(act: UiActivity) : Screen(act) {
     private fun renderPicker(c: LinearLayout) {
         stop()
         c.add(ctx.card(pad = 16) {
-            add(ctx.text(t("Битва с Bubby", "Bubby Battle", "Bubby jangi"), T.Title), MATCH, WRAP)
+            add(ctx.text(name(), T.Title), MATCH, WRAP)
             add(ctx.text(t("Отвечай быстрее Bubby: верный ответ бьёт соперника. Победа открывает следующего.",
                 "Answer faster than Bubby: a right answer hits your rival. A win unlocks the next one.",
                 "Bubbydan tez javob ber: to'g'ri javob raqibga uradi. G'alaba keyingisini ochadi."), T.Body), MATCH, WRAP, top = 4)
@@ -78,7 +80,7 @@ class BattleScreen(act: UiActivity) : Screen(act) {
 
     private fun renderDuel(c: LinearLayout) {
         stop()
-        val g = BattleGame(current, { p -> t(p.ru, p.ru, p.uz) })
+        val g = if (grammar) BattleGame(current, { p -> p.ru }, phrases = GrammarBattle.phrases(), translate = false) else BattleGame(current, { p -> t(p.ru, p.ru, p.uz) })
         game = g
         val v = BattleView(ctx, g).apply {
             contentDescription = t("Арена", "Arena", "Arena")
@@ -227,7 +229,7 @@ class BattleScreen(act: UiActivity) : Screen(act) {
         val i = current
         val st = g.stars
         val prev = stars(i)
-        if (st > prev) Backend.setInt(ctx, "bb_stars_$i", st)
+        if (st > prev) Backend.setInt(ctx, key(i), st)
         val earned = (st - prev).coerceAtLeast(0) * (i + 1) + if (prev == 0 && st >= 1) 2 else 0
         DailyStreak.addStars(ctx, earned)
         var title: TextView? = null

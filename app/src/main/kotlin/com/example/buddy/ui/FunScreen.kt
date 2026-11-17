@@ -22,6 +22,8 @@ class FunScreen(act: UiActivity) : Screen(act) {
         t("Битва с Bubby", "Bubby Battle", "Bubby jangi") to "battle",
         t("Слово дня", "Daily word", "Kun so'zi") to "word",
         t("Английский", "English", "Inglizcha") to "english",
+        t("Грамматика", "Grammar", "Grammatika") to "grammar",
+        t("IELTS лексика", "IELTS vocabulary", "IELTS lug'ati") to "ielts",
         t("Словарь", "Vocabulary", "Lug'at") to "vocab",
         t("Найди пару", "Memory match", "Juftini top") to "memory",
         t("20 вопросов", "20 questions", "20 ta savol") to "twenty",
@@ -130,7 +132,7 @@ class FunScreen(act: UiActivity) : Screen(act) {
                 if (voice) add(ctx.icon(R.drawable.ic_mic, P.onSurface, 18), WRAP, WRAP, end = 8)
                 add(ctx.text(g, T.Label), WRAP, WRAP)
                 press {
-                    if (kind == "room") act.push(MatchMapScreen(act)) else if (kind == "runner") act.push(RunnerScreen(act)) else if (kind == "battle") act.push(BattleScreen(act)) else if (kind == "word") act.push(WordScreen(act)) else if (kind == "english") act.push(EnglishScreen(act)) else if (kind == "vocab") act.push(com.example.buddy.ui.vocab.VocabScreen(act)) else if (kind != null) act.push(GameScreen(act, kind))
+                    if (kind == "room") act.push(MatchMapScreen(act)) else if (kind == "runner") act.push(RunnerScreen(act)) else if (kind == "battle") act.push(BattleScreen(act)) else if (kind == "word") act.push(WordScreen(act)) else if (kind == "english") act.push(EnglishScreen(act)) else if (kind == "grammar") act.push(GrammarScreen(act)) else if (kind == "ielts") act.push(IeltsVocabScreen(act)) else if (kind == "vocab") act.push(com.example.buddy.ui.vocab.VocabScreen(act)) else if (kind != null) act.push(GameScreen(act, kind))
                     else {
                         val err = Backend.startGame(ctx, g)
                         ctx.toast(err ?: t("Нажмите на Bubby и говорите", "Tap Bubby and speak", "Bubby ni bosing va gapiring"))

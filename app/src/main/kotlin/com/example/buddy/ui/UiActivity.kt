@@ -293,9 +293,11 @@ class UiActivity : Activity() {
         if (scene != null) stack.lastOrNull()?.second?.visibility = View.INVISIBLE   // see-through pages: the one below must not show
         host.addView(page, FrameLayout.LayoutParams(MATCH, MATCH))
         stack += s to page
-        page.alpha = 0f
-        page.translationX = dp(PAGE_SLIDE_DP).toFloat()
-        page.animate().alpha(1f).translationX(0f).setDuration(Motion.run { page.ms(STANDARD) }).setInterpolator(Motion.standard).start()
+        if (Motion.enabled(this)) {
+            page.alpha = 0f
+            page.translationX = dp(PAGE_SLIDE_DP).toFloat()
+            page.animate().alpha(1f).translationX(0f).setDuration(Motion.STANDARD).setInterpolator(Motion.standard).start()
+        }
         s.onShow()
         updateChrome()
     }

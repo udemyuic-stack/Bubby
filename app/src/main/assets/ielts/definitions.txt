@@ -1,0 +1,245 @@
+education|certificate|for short academic programs|sertifikat
+education|diploma|university level programs shorter than a degree|diplom
+education|degree|relatively long academic programs covering specific areas in great depth|ilmiy daraja
+education|to revise|to make changes especially to correct or improve (something); to study (something) again|takrorlamoq
+education|to research|to study (something) carefully; to collect information about or for (something)|tadqiq qilmoq
+education|to attend (classes)|to go to or be present at some event|darslarga qatnashmoq
+education|to major in a subject|to pursue an academic major|fan bo'yicha mutaxassislashmoq
+education|to deliver a lecture|to carry out/conduct a lecture|ma'ruza o'qimoq
+education|to graduate (from a university)|to earn a degree or diploma from a school, college, or university|universitetni bitirmoq
+education|to demonstrate academic gains|to show academic progress/education achievement|o'quv yutuqlarini ko'rsatmoq
+education|to broaden horizons|to enlarge / expand someone's scope|dunyoqarashni kengaytirmoq
+education|to fall behind (with studies)|lag behind|o'qishda orqada qolmoq
+education|to evaluate|to determine or fix the value of something; to determine the significance, worth, or condition of usually by careful appraisal and study|baholamoq
+education|to procrastinate|to put off intentionally the doing of something that should be done|ishni kechiktirmoq
+education|campus|the area and buildings around a university, college, school, etc.|talabalar shaharchasi
+education|essay|a short piece of writing that tells a person's thoughts or opinions about a subject|insho
+education|debate|a discussion between people in which they express different opinions about something|munozara
+education|attendance|the number of people present at an event, meeting, etc.|qatnashish, davomat
+education|compulsory|required by a law or rule; having the power of forcing someone to do something|majburiy
+education|inquisitive|tending to ask questions; having a desire to know or learn more asking too many questions about other people's lives|qiziquvchan
+education|dissertation|a long piece of writing about a particular subject that is done to earn an advanced degree at a university|dissertatsiya
+education|discipline|a field of study|fan sohasi
+education|faculty|a branch of teaching or learning in an educational institution|fakultet
+education|peer|a person who belongs to the same age group or social group as someone else|tengdosh
+education|literacy|the ability to read and write; knowledge that relates to a specified subject|savodxonlik
+education|alumnus (pl.-i-)|someone who was a student at a particular school, college, or university|bitiruvchi
+education|assignment|a specified task or amount of work assigned or undertaken as if assigned by authority|topshiriq
+education|thesis|a long piece of writing on a particular subject that is done to earn a degree at a university|diplom ishi, tezis
+environment|climate change|changes in the Earth's weather patterns|iqlim o'zgarishi
+environment|acid rain|rain that contains dangerous chemicals because of smoke from cars and factories|kislotali yomg'ir
+environment|industrial waste|damaged, defective, or superfluous material produced by undustry|sanoat chiqindisi
+environment|urbanization|the process by which towns and cities are formed and become larger as more and more people begin living and working in central areas|urbanizatsiya
+environment|biodegradable|capable of being slowly destroyed and broken down into very small parts by natural processes, bacteria, etc.|tabiatda parchalanadigan
+environment|environmentalist / environmental activist|a person who works to protect the natural world from pollution and other threats|ekolog faol
+environment|natural disaster|a sudden and terrible event in nature (such as a hurricane, tornado, or flood) that usually results in serious damage and many deaths|tabiiy ofat
+environment|hybrid cars|cars in which two or more distinct types of power, such as internal combustion engine+electric motor are used|gibrid avtomobillar
+environment|fertilizers|a substance (such as manure or a special chemical) that is added to soil to help the growth of plants|o'g'itlar
+environment|rainforest|a tropical forest that receives a lot of rain and that has very tall trees|yomg'irli o'rmon
+environment|chemicals|substances obtained by a chemical process or producing a chemical effect|kimyoviy moddalar
+environment|sustainable agriculture|is the act of farming based on an understanding of ecosystem services, the study of relationships between organisms and their environment; (Wikipedia)|barqaror qishloq xo'jaligi
+environment|adverse environmental effects|abnormal, harmful, or undesirable impact on environment|ekologik zarar
+environment|climate change mitigation|consists of actions to limit the magnitude or rate of long-term climate change (Wikipedia).|iqlim o'zgarishini yumshatish
+environment|emissions|substances discharged into the air (as by a smokestack or an automobile engine)|chiqindi gazlar
+environment|exhaust fumes|gases ejected from an engine as waste products|chiqindi tutun (avtomobil)
+environment|to conserve energy|use energy carefully in order to prevent loss or waste|energiyani tejamoq
+environment|toxic|containing poisonous substances|zaharli
+environment|to recycle|t o send (used newspapers, bottles, cans, etc.) to a place where they are made into something new|qayta ishlamoq
+food|syrupy|having the appearance or quality of syrup; thick or sweet|sharbatsimon, quyuq shirin
+food|sugary|tasting or looking like sugar|shakarli, shirin
+food|crispy|pleasantly thin, dry, and easily broken : having a pleasantly crisp outer layer|qirsillagan, qarsildoq
+food|bitter|having a strong and often unpleasant flavor that is the opposite of sweet|taxir, achchiq
+food|juicy|containing a lot of juice|sersuv
+food|sour|having an acid taste that is like the taste of a lemon|nordon
+food|zesty|having a strong, pleasant, and somewhat spicy flavor|o'tkir, o'ziga xos ta'mli
+food|chewy|something requiring to use your teeth to cut food into small pieces before you swallow it|chaynaladigan, cho'ziluvchan
+food|spicy|flavored with or containing strong spices and especially ones that cause a burning feeling in your mouth|ziravorli, achchiq
+food|peppery|containing pepper or having the qualities of pepper|murchli
+food|ambrosial|something extremely pleasing to taste or smell|ajoyib mazali, xushbo'y
+food|crunchy|having a hard texture and making a loud sound when chewed or crushed: not soft or mushy|g'ijirlaydigan
+food|delicious|very pleasant to taste|mazali
+food|savoury|having a pleasant taste or smell|sho'r va ziravorli (shirin emas)
+food|unflavoured|without flavor additives|ta'msiz, ziravorsiz
+food|allergy|a medical condition that causes someone to become sick after eating, touching, or breathing something that is harmless to most people|allergiya
+food|intolerance|exceptional sensitivity (as to a drug); specifically: inability to properly metabolize or absorb a substance|ko'tara olmaslik (oziqa)
+food|bulimia|a serious physical and emotional illness in which people and especially young women eat large amounts of food and then cause themselves to vomit in order to not gain weight|bulimiya
+food|anorexia|a serious physical and emotional illness in which an abnormal fear of being fat leads to very poor eating habits and dangerous weight loss|anoreksiya
+food|lactose intolerance|the state when the body cannot easily digest lactose, a type of natural sugar found in milk and dairy products|laktozani ko'tara olmaslik
+food|obesity|a condition characterized by the excessive accumulation and storage of fat in the body|semirib ketish
+food|addiction|a strong and harmful need to regularly have something (such as a food) or do something (such as gamble)|qaramlik
+food|famine|a situation in which many people do not have enough food to eat.|ocharchilik
+food|to grill|to cook (food) on a metal frame over fire|panjarada pishirmoq
+food|to steam|to cook with steam|bug'da pishirmoq
+food|to stirfry|to fry (something) quickly over high heat while stirring it constantly|tez qovurmoq (aralashtirib)
+food|to deep fry|to cook (food) in a deep layer of oil or fat|moyda qovurmoq
+food|to boil|to cook (something) in water that is boiling|qaynatmoq
+food|to broil|to cook by direct exposure to radiant heat|yuqoridan qizdirib pishirmoq
+food|to mince|to cut food into very small pieces|qiymalamoq
+food|to roast|to cook food with dry heat in an oven or over a fire.|dudlab/pechda pishirmoq
+food|to bite|to seize with teeth or jaws so as to eat something|tishlamoq
+food|to chew|to use your teeth to cut food into small pieces before you swallow it|chaynamoq
+food|to taste|to have a particular taste, to sense the flavor of something you eat or drink|tatib ko'rmoq
+food|to savour|to enjoy the taste or smell of something|maza qilib totmoq
+food|to swallow|to take (something) into your stomach through your mouth and throat|yutmoq
+food|to digest|to change (food that you have eaten) by a biological process into simpler forms that can be used by the body|hazm qilmoq
+food|to indulge|to allow (yourself) to have or do something as a special pleasure|o'zini erkalamoq, ko'ngil qo'ymoq
+food|to devour|to eat up greedily or ravenously.|ochko'zlik bilan yemoq
+food|to be dying of hunger|exaggeration of saying that you are hungry|ochlikdan o'lay deb turmoq
+food|to have a sweet tooth|to love sugary foods|shirinlikka o'ch bo'lmoq
+food|to take the biscuit|refers to something very annoying or irritating|hammasidan oshib tushmoq (jahl chiqaradigan)
+food|to butter someone up|to flatter, be very nice to someone, usually for selfish reasons|xushomad qilmoq
+food|piece of cake|something very easy|juda oson ish
+food|like chalk and cheese|completely different|osmon bilan yerdek farq
+food|cry over spilled milk|get upset over something that cannot be changed|o'tgan ishga achinmoq
+food|tough cookie|a self-confident ambitious person who will do what is necessary to get what they want.|baquvvat, qattiq odam
+food|to eat humble pie|to be forced to admit that you did something wrong and apologize|xatosini tan olib kechirim so'ramoq
+globalization|global village|the idea that we became a single community due to affordable and effective transportation, mass media, and electronic communications.|global qishloq
+globalization|World Trade Organization (WTO)|global organization that helps countries and producers trade fairly and effectively.|Jahon savdo tashkiloti
+globalization|antiglobalization movement|s a social movement critical of the globalization of corporate capitalism. (Wikipedia)|globallashuvga qarshi harakat
+globalization|standardization|is the process of implementing and developing technical standards. (Wikipedia)|standartlashtirish
+globalization|national sovereignty|the idea that independent nations, which have declared their independence, have an organized government and are self-contained, have a right to exist without other nations interfering (ask.com)|milliy suverenitet
+globalization|to accelerate|cause (something) to happen sooner or more quickly|tezlashtirmoq
+globalization|affluence|abundance of property|farovonlik, boylik
+globalization|to dominate|to have control of or power over (someone or something)|ustunlik qilmoq
+globalization|economic growth drivers|something that provides development and growth of economy|iqtisodiy o'sish omillari
+globalization|imbalance / inequality|a state or condition in which different things do not occur in equal or proper amounts|nomutanosiblik / tengsizlik
+globalization|superpower|an extremely powerful nation|super davlat
+globalization|tariff|a tax on goods coming into or leaving a country|bojxona boji
+globalization|trade barrier|a government-induced restriction on international trade|savdo to'sig'i
+globalization|borders|boundaries between countries|chegaralar
+globalization|fair trade|trade in conformity with a fair-trade agreement|adolatli savdo
+globalization|interdependence|the mutual reliance between two or more groups|o'zaro bog'liqlik
+technology|user-friendly|easy to learn, use, understand, or deal with|foydalanishga qulay
+technology|computer literate|able to use computers and related technology efficiently|kompyuterdan foydalana oladigan
+technology|obsolete / outdated|no longer used because something newer exists : replaced by something newer|eskirgan
+technology|e-commerce|activities that relate to the buying and selling of goods and services over the Internet|elektron tijorat
+technology|social media|forms of electronic communication through which users create online communities to share information, ideas, personal messages, and other content|ijtimoiy tarmoqlar
+technology|blogs|a Web site on which someone writes about personal opinions, activities, and experiences|bloglar
+technology|viral|quickly and widely circulated from one Internet user to another, as in "a viral video"|tez tarqaladigan (viral)
+technology|to browse|to use a special program (called a browser) to find and look at information on the Internet|internetda ko'zdan kechirmoq
+technology|to download|to move or copy a file, program, etc., from a usually larger computer system to another computer or device|yuklab olmoq
+technology|connection|the state when two or more devices are connected through the Internet or a network|ulanish
+technology|cyber|of, relating to, or involving computers or computer networks (as the Internet)|kiber
+technology|privacy|is the ability of an individual or group to seclude themselves, or information about themselves, and thereby express themselves selectively|shaxsiy daxlsizlik
+technology|applications / apps|is a computer program designed to perform a group of coordinated functions, tasks, or activities for the benefit of the user|ilovalar
+technology|software|the programs that run on a computer and perform certain functions.|dasturiy ta'minot
+health|epidemic breakout|when an epidemic starts suddenly|epidemiya boshlanishi
+health|to reach epidemic proportions|means that an epidemic has reached a large scale.|epidemiya darajasiga yetmoq
+health|chronic|existing frequently or most of the time|surunkali
+health|to feel poorly|feel bad or sick|o'zini yomon his qilmoq
+health|to have a filling|have your tooth fixed when you have a dental caries|tish plombalatmoq
+health|to have a tooth out|to have your tooth pulled out|tish oldirmoq
+health|a heavy cold|a bad/severe cold|qattiq shamollash
+health|to make a speedy recovery|to recover fast|tez tuzalmoq
+health|immediate action|emergency measures, first aid|zudlik bilan chora
+health|to perform surgery on|to operate|jarrohlik amaliyoti qilmoq
+health|eye drops|liquid substance used for eye treatment|ko'z tomchisi
+health|syringe|a device made of a hollow tube and a needle that is used to force fluids into or take fluids out of the body|shprits
+health|a dose of medicine|a dose of a substance that is used in treating disease or relieving pain and that is usually in the form of a pill or a liquid|dori dozasi
+health|pill|a small, rounded object that you swallow and that contains medicine, vitamins, etc.|tabletka
+health|shot / injection|the act or process of forcing a liquid medicine or drug into someone or something by using a special needle|ukol
+health|painkiller|a drug that decreases or removes pain that you feel in your body|og'riq qoldiruvchi
+health|antibiotics|a drug that is used to kill harmful bacteria and to cure infections|antibiotiklar
+health|remedy|a medicine or treatment that relieves pain or cures a usually minor illness|davo, chora
+health|ophtalmologist|a doctor who studies and treats problems and diseases of the eye|oftalmolog (ko'z shifokori)
+health|dentist|a person whose job is to care for people's teeth|tish shifokori
+health|general practitioner|a doctor whose work is not limited to a special area: a person who is not a specialist|umumiy amaliyot shifokori
+health|nurse|a person who is trained to care for sick or injured people and who usually works in a hospital or doctor's office|hamshira
+health|surgeon|a doctor who performs operations that involve cutting into someone's body in order to repair or remove damaged or diseased parts : a doctor who performs surgery|jarroh
+health|asthma|a physical condition that makes it difficult for someone to breathe|astma
+health|bronchitis|an illness in which your bronchial tubes become sore or damaged and you cough a lot|bronxit
+health|cancer|a serious disease caused by cells that are not normal and that can spread to one or many parts of the body|saraton
+health|cold|a common illness that affects the nose, throat, and eyes and that usually causes coughing, sneezing, etc.|shamollash
+health|flu (influenza)|a common disease that is caused by a virus and that causes fever, weakness, body aches, and breathing problems|gripp
+health|cough|a physical condition or illness that causes someone to cough|yo'tal
+health|diabetes|a serious disease in which the body cannot properly control the amount of sugar in your blood because it does not have enough insulin|diabet
+health|disease|an illness that affects a person, animal, or plant : a condition that prevents the body or mind from working normally|kasallik
+health|fatigue|the state of being very tired : extreme weariness|charchoq
+health|food poisoning|sickness caused by bacteria or chemicals in food|oziqdan zaharlanish
+health|fracture|the result of breaking something : a crack or break; especially : a|suyak sinishi
+health|fever|a disease that causes an increase in body temperature|isitma
+health|heart attack|a sudden painful and dangerous condition in which your heart stops beating properly|infarkt
+health|heart stroke|a heart condition caused by the interruption of flow of blood to the brain (ischemic stroke) or the rupture of blood vessels in the brain (hemorrhagic stroke)|yurak xuruji
+health|infection|a disease caused by germs that enter the body|infeksiya
+health|insomnia|the condition of not being able to sleep|uyqusizlik
+health|cuts|a wound on a person's body that is made by something sharp|kesilgan jarohat
+health|bruises|a dark and painful area on your skin that is caused by an injury|ko'karish
+crime|petty crime|not a serious crime|mayda jinoyat
+crime|violent crime|crime which includes assault|zo'ravonlik jinoyati
+crime|organized crime|organized group of people commits crimes or engages in criminal enterprises for profit.|uyushgan jinoyatchilik
+crime|white-collar crime|a term mostly referring to business world crimes. Usually crimes committed by businessmen or office workers for financial gain.|iqtisodiy (oq yoqali) jinoyat
+crime|victimless crime|a crime with no apparent victim|jabrlanuvchisiz jinoyat
+crime|to carry out a crime|to commit a crime|jinoyat sodir etmoq
+crime|to investigate a crime|to detect / solve a crime|jinoyatni tergov qilmoq
+crime|to fight crime|to tackle crime|jinoyatga qarshi kurashmoq
+crime|to prevent crime|to preclude crime|jinoyatning oldini olmoq
+crime|a crackdown on crime|a serious attempt to punish people for committing crimes|jinoyatga qarshi qattiq choralar
+crime|life of crime|criminal way of living|jinoyat yo'li
+crime|a crime wave|a sudden increase in the amount of crime in an area|jinoyatlar to'lqini
+crime|circumstances of the crime|conditions under which a crime was committed|jinoyat holatlari
+crime|the incidence of crime|the number of times crime happens or develops|jinoyatlar soni, ko'lami
+crime|assault|a violent physical attack|hujum, tan jarohati
+crime|burglary|illegal entrance into premises with criminal intent|o'g'irlik (uyga bosib kirish)
+crime|child abuse|physical or emotional mistreatment of a child|bolalarga zo'ravonlik
+crime|drug trafficking|production, distribution, and sale of illegal drugs|giyohvand moddalar savdosi
+crime|fraud|If you are promised a million dollars on the Internet, it’s fraud. Fraud is trickery intended to gain an advantage.|firibgarlik
+crime|hacking|special type of Internet crime. When somebody’s website or server is hacked, it means that the server or website is broken.|xakerlik
+crime|hijacking|stopping and stealing a vehicle|transportni tortib olish
+crime|murder|the crime of deliberately killing a person|qasddan odam o'ldirish
+crime|manslaughter|also killing a person, BUT accidentally - without the intent to do so.|qasddan bo'lmagan qotillik
+crime|terrorism|violence or threat of violence as a way of trying to achieve a political goal|terrorizm
+crime|blackmailing|using secret information to get something in return (usually money)|shantaj
+crime|felony|a serious crime such as murder or burglary|og'ir jinoyat
+crime|pickpocketing|stealing someone’s belongings from pockets and purses|cho'ntak o'g'irligi
+crime|shoplifting|stealing things from a shop or store.|do'kondan o'g'irlash
+crime|a defendant|a person accused of a crime in court|sudlanuvchi
+crime|a prosecutor|the lawyer who represents the side that tries to prove the person guilty|prokuror
+crime|a witness|a person who sees something (such as crime) happening|guvoh
+crime|guilty|responsible for committing a crime or doing something wrong|aybdor
+crime|victim|a person who has been attacked in some way by somebody.|jabrlanuvchi
+crime|innocent / unsuspecting victim|not deserving to be harmed|begunoh jabrlanuvchi
+crime|a suspect|a person who is believed to be guilty|gumon qilinuvchi
+crime|an attorney|a lawyer who can sue or defend people.|advokat
+crime|evidence|something that can serve to prove something. In our context evidence is usually presented in court to prove that someone is guilty or innocent.|dalil
+crime|hearsay evidence|evidence based not on a witness's personal knowledge but on another's statement not made under oath|eshitgan gapga asoslangan dalil
+crime|criminal evidence|evidence related to a criminal case|jinoiy dalil
+crime|not a scrap of evidence|no evidence|zarracha dalil yo'q
+crime|verdict|the decision made by a jury in a trial.|hukm
+crime|favorable verdict|positive verdict|qulay hukm
+crime|adverse verdict|negative verdict|salbiy hukm
+crime|to appeal against a verdict|to protest a verdict|hukmga apellyatsiya bermoq
+crime|final verdict|definitive verdict.|yakuniy hukm
+crime|a judge|a public official given the right to decide on questions brought before a court of justice|sudya
+crime|jury|a group of people that decides on a court case|hakamlar hay'ati
+crime|suspended sentence|the judge’s decision to delay a prison or jail sentence.|shartli hukm
+crime|forfeiture|the loss of property or money because of legal obligation or as a judge’s decision.|musodara
+crime|probation|a period of time in which a person who has committed a crime is allowed to stay out of prison if that person behaves well.|sinov muddati
+crime|to suspend a license|usually refers to a driver’s license and means that your license is taken away for a period of time.|guvohnomani to'xtatib qo'ymoq
+crime|corporal punishment|physical punishment|jismoniy jazo
+crime|a ban|sometimes a jury can impose a ban which means that you are prohibited from doing something.|taqiq
+crime|a fine|an amount of money an offender must pay|jarima
+crime|community service|Sometimes a jury can decide to send a guilty person to perform some community service. Community service refers to unpaid work beneficial for the community.|ijtimoiy foydali ish
+art|fine arts|Type of art that creates beautiful things. It could be painting, sculpture, or music.|tasviriy san'at
+art|arts and crafts|the activity of making beautiful and useful objects.|amaliy san'at va hunarmandchilik
+art|visual arts|creations that we can look at. For instance, painting, sculpture, architecture, film|ko'rgazmali san'at
+art|plastic arts|every type of art we can touch. Sculpture would be a good example.|haykaltaroshlik va shakl san'ati
+art|performing arts|a very wide term meaning anything from cinema, theater, or any other form of visual art to modern computer presentations. The key characteristic is that it’s performed.|sahna san'ati
+art|portrait|is a portrayal of a person showing the person’s face (could be a drawing, a photograph, or a sculpture).|portret
+art|landscape|is a work of art that features a scene of land or countryside (in other words nature)|manzara
+art|still-life painting|is a painting featuring anything that does not move.|natyurmort
+art|oil painting|is a technique of painting with oil paints. The second meaning is a picture painted with oil paints.|moybo'yoq rasm
+art|figurative art|is any type of art that accurately represents an image from the real world.|predmetli (realistik) san'at
+art|contemporary art|a bit controversial term. The easy definition is contemporary to us. It means that it has been created during our lifetimes. Usually contemporary art refers to artworks made after 1970 by still living artists.|zamonaviy san'at
+art|realism|an artistic movement attempting to portray the lives of ordinary people and their environments|realizm
+art|impressionism|a style in which the artist captures the image of an object as someone would see it if they just caught a glimpse of it. In other words, it’s about the artist’s|impressionizm
+art|aesthetics|the study of beauty|estetika
+art|pattern|a principle of art which means the repetition of elements|naqsh
+art|motif|a repeated pattern, often creating a sense of rhythm|asosiy motiv
+art|a culture vulture|someone who is very interested in art and culture|madaniyat ishqibozi
+art|art gallery / exhibits|place where pieces of art are displayed|san'at galereyasi / eksponatlar
+art|curator|a person who is in charge of the things in a art gallery, museum, etc.|kurator
+art|artifact|a simple object (such as a tool or weapon) that was made by people in the past|artefakt, tarixiy buyum
+art|masterpiece|a person’s greatest peace of work|durdona asar
+art|heritage|the traditions, achievements, beliefs, etc., that are part of the history of a group or nation|meros
+art|philistine|a person who is guided by materialism and is usually disdainful of intellectual or artistic values|badiiy did past odam
+art|visual metaphor|visual pattern or object.|vizual metafora

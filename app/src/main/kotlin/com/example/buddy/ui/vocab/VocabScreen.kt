@@ -108,6 +108,7 @@ class VocabScreen(act: UiActivity) : Screen(act) {
     private fun practiceCard(c: LinearLayout) {
         val holder = ctx.col {}
         c.add(holder, MATCH, WRAP, bottom = 12)
+        c.add(ctx.button(t("Мои папки", "My folders", "Mening papkalarim"), BtnStyle.Outline, com.example.buddy.R.drawable.ic_folder) { act.push(SourcesScreen(act)) }, MATCH, WRAP, bottom = 8)
         c.add(ctx.button(t("Мой прогресс", "My progress", "Mening natijam"), BtnStyle.Outline) { act.push(ProgressScreen(act)) }, MATCH, WRAP, bottom = 8)
         c.add(ctx.button(t("Репетитор", "Tutor", "Repetitor"), BtnStyle.Outline) { act.push(TutorScreen(act)) }, MATCH, WRAP, bottom = 8)
         Thread {
@@ -180,7 +181,7 @@ class VocabScreen(act: UiActivity) : Screen(act) {
                 val label = if (cur == null) t("Без источника", "No source", "Manbasiz")
                 else SourceTree.path(VocabDb.sources(ctx), cur).let { p -> t("Источник: $p", "Source: $p", "Manba: $p") }
                 srcBox.add(ctx.row {
-                    add(ctx.pill(label, P.violet) { pickSource(true) { id -> VocabDb.setLastSource(ctx, id); showSource() } }, WRAP, WRAP)
+                    add(ctx.pill(label, P.violet) { pickSource(true, cur) { id -> VocabDb.setLastSource(ctx, id); showSource() } }, WRAP, WRAP)
                 }, MATCH, WRAP)
             }
             showSource()
@@ -195,24 +196,8 @@ class VocabScreen(act: UiActivity) : Screen(act) {
         return id.takeIf { s -> VocabDb.sources(ctx).any { it.id == s } }
     }
 
-    private fun pickSource(withNone: Boolean, onPick: (Long?) -> Unit) {
-        val labels = ArrayList<String>()
-        val ids = ArrayList<Long?>()
-        if (withNone) { labels.add(t("Без источника", "No source", "Manbasiz")); ids.add(null) }
-        fun walk(list: List<SourceBranch>, depth: Int) {
-            for (b in list) {
-                labels.add(" ".repeat(depth) + b.node.title)
-                ids.add(b.node.id)
-                walk(b.children, depth + 1)
-            }
-        }
-        walk(SourceTree.build(VocabDb.sources(ctx)), 0)
-        val manage = labels.size
-        labels.add(t("Управлять источниками", "Manage sources", "Manbalarni boshqarish"))
-        ctx.dialogBuilder().setTitle(t("Источник", "Source", "Manba"))
-            .setItems(labels.toTypedArray()) { _, i -> if (i == manage) act.push(SourcesScreen(act)) else onPick(ids[i]) }
-            .setNegativeButton(t("Отмена", "Cancel", "Bekor qilish"), null)
-            .show()
+    private fun pickSource(withNone: Boolean, selected: Long?, onPick: (Long?) -> Unit) {
+        act.push(SourcesScreen(act, sourceOnly = true, allowNone = withNone, selected = selected) { s, _ -> onPick(s) })
     }
 
     private fun filterRow(c: LinearLayout) {
@@ -225,7 +210,7 @@ class VocabScreen(act: UiActivity) : Screen(act) {
         filterSource?.let { s -> flow.addView(ctx.chip(SourceTree.path(rows, s) + "  ×", true) { filterSource = null; refresh() }) }
         if (topic != null) flow.addView(ctx.chip(Topics.display(topic, ui()) + "  ×", true) { filterTopic = null; refresh() })
         flow.addView(ctx.chip(t("Фильтр", "Filter", "Filtr"), false) {
-            act.push(SourcesScreen(act) { s, tp -> filterSource = s ?: filterSource; filterTopic = tp ?: filterTopic })
+            act.push(SourcesScreen(act, pick = { s, tp -> filterSource = s ?: filterSource; filterTopic = tp ?: filterTopic }))
         })
         c.add(flow, MATCH, WRAP, bottom = 8)
     }
@@ -495,7 +480,7 @@ class VocabScreen(act: UiActivity) : Screen(act) {
             }, MATCH, WRAP, top = 4)
         }
         box.add(ctx.button(t("Добавить источник", "Add source", "Manba qo'shish"), BtnStyle.Text, com.example.buddy.R.drawable.ic_add) {
-            pickSource(false) { sid -> if (sid != null) { VocabDb.linkSource(ctx, id, sid); fillList(activePair) } }
+            pickSource(false, null) { sid -> if (sid != null) { VocabDb.linkSource(ctx, id, sid); fillList(activePair) } }
         }, WRAP, WRAP, top = 4)
     }
 

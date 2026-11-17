@@ -58,6 +58,8 @@ class ThemeDef(
 )
 
 object Theme {
+    private const val SCENE_INK_MIX = 0.4f
+
     val GLASS = ThemeDef("glass", 0xFFE3EBF4.toInt(), 0xFFCBD8E6.toInt(), 0xFFAEBFD5.toInt(), 0xFF7F9BBD.toInt(), 0xFFF3F6FA.toInt(),
         0xFF1C2B45.toInt(), 0xFF3B4D6E.toInt(), 0xFFE08A4A.toInt(), 0xFF7A6BD0.toInt(), 0xFFB8672F.toInt(), 0xFF341E1A.toInt(), 0xFF7F9BBD.toInt(), 0xFFE2A0B0.toInt(), 0xFF466496.toInt(),
         0xFFFFFFFF.toInt(), 0xFFFFFFFF.toInt(),
@@ -142,7 +144,8 @@ object Theme {
         cur = byId(Backend.str(ctx, "theme", "glass"))
         SvgArt.init(ctx)
         val t = cur
-        Glass.TEXT = t.ink; Glass.TEXT2 = t.ink2; Glass.TEXT_LABEL = t.ink2
+        val ink2 = if (t.scene != null && !t.night) P.mix(t.ink2, t.ink, SCENE_INK_MIX) else t.ink2
+        Glass.TEXT = t.ink; Glass.TEXT2 = ink2; Glass.TEXT_LABEL = ink2
         Glass.ACCENT = t.accent; Glass.ACCENT2 = t.accent2; Glass.DATE = t.date
         Glass.OK = t.ok; Glass.NAVY_A = t.navyA; Glass.NAVY_B = t.navyB
         Glass.NIGHT = t.night

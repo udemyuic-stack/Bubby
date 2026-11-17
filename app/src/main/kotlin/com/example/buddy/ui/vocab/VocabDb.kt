@@ -159,10 +159,10 @@ class VocabDb private constructor(ctx: Context) : SQLiteOpenHelper(ctx.applicati
 
         fun count(ctx: Context, pair: Long): Int = get(ctx).readableDatabase.rawQuery("SELECT COUNT(*) FROM entry WHERE pair = ?", arrayOf(pair.toString())).use { if (it.moveToFirst()) it.getInt(0) else 0 }
 
-        fun entries(ctx: Context, pair: Long, query: String = "", limit: Int = 200, source: Long? = null, topic: Long? = null): List<Entry> {
+        fun entries(ctx: Context, pair: Long, query: String = "", limit: Int = 200, source: Long? = null, topic: Long? = null, direct: Boolean = false): List<Entry> {
             val q = VocabText.fold(query)
             val args = ArrayList<String>()
-            val pre = if (source == null) "" else {
+            val pre = if (source == null || direct) "" else {
                 args.add(source.toString())
                 "WITH RECURSIVE sub(id) AS (SELECT ? UNION SELECT s.id FROM source s JOIN sub ON s.parent = sub.id) "
             }
@@ -172,7 +172,11 @@ class VocabDb private constructor(ctx: Context) : SQLiteOpenHelper(ctx.applicati
                 sb.append(" AND folded LIKE ? ESCAPE '\\'")
                 args.add("%" + q.replace("\\", "\\\\").replace("%", "\\%").replace("_", "\\_") + "%")
             }
-            if (source != null) sb.append(" AND id IN (SELECT entry FROM entry_source WHERE source IN (SELECT id FROM sub))")
+            when {
+                direct && source == null -> sb.append(" AND id NOT IN (SELECT entry FROM entry_source)")
+                direct -> { sb.append(" AND id IN (SELECT entry FROM entry_source WHERE source = ?)"); args.add(source.toString()) }
+                source != null -> sb.append(" AND id IN (SELECT entry FROM entry_source WHERE source IN (SELECT id FROM sub))")
+            }
             if (topic != null) { sb.append(" AND id IN (SELECT entry FROM entry_topic WHERE topic = ?)"); args.add(topic.toString()) }
             sb.append(" ORDER BY id DESC LIMIT $limit")
             return get(ctx).readableDatabase.rawQuery(sb.toString(), args.toTypedArray()).use {

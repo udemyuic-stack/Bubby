@@ -12,6 +12,7 @@ import android.graphics.Path
 import android.graphics.RadialGradient
 import android.graphics.RectF
 import android.graphics.Shader
+import com.example.buddy.ui.home.SpaceEarth
 import kotlin.math.PI
 import kotlin.math.ceil
 import kotlin.math.cos
@@ -418,7 +419,11 @@ class SpaceScene : ThemeScene() {
         cv.restore()
 
         // ---- near: the Earth and its moon ----
-        cv.save(); cv.translate(ox - sh * 1.25f, oy); cv.scale(sc, sc); cv.translate(84f, 368f)
+        SpaceEarth.x = ox - sh * 1.25f + 84f * sc
+        SpaceEarth.y = oy + 368f * sc
+        SpaceEarth.r = 40f * sc
+        if (SpaceEarth.hidden) return
+        cv.save(); cv.translate(ox - sh * 1.25f + SpaceEarth.shake * sc, oy + SpaceEarth.shakeY * sc); cv.scale(sc, sc); cv.translate(84f, 368f)
         drawBlob(cv, atmo!!, 0f, 0f, 1f, 0.45f * G)
         pSh.shader = oceanSh; pSh.alpha = a(G); cv.drawCircle(0f, 0f, 40f, pSh)
         lm.setScale(1f / earthBs, 1f / earthBs); lm.postTranslate(-40f - 80f * frac(t / 16f), -40f)

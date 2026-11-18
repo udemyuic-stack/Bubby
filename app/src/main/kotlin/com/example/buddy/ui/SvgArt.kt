@@ -80,6 +80,12 @@ class Art(val name: String, svg: String) {
     val animated = true
 
     var error: String? = null
+    var sad = false
+    var tapP = -1f
+    var tapLevel = 1
+    var tapEgg = false
+    private val bubble = Paint(Paint.ANTI_ALIAS_FLAG).apply { style = Paint.Style.STROKE; strokeWidth = 1.2f; color = 0xFFFFFFFF.toInt() }
+    private var tint: android.graphics.ColorFilter? = null
     val ok get() = root != null
 
     init { try { parse(svg) } catch (e: Exception) { root = null; error = e.toString() + " at " + (e.stackTrace.firstOrNull()?.toString() ?: "") } }
@@ -317,6 +323,13 @@ class Art(val name: String, svg: String) {
     // --------------------------------------------------------------------------------------------------------- drawing
 
     private val HIDDEN = setOf("sun-sad", "tear", "cl-bolt", "sf-o", "glint")
+    private val SAD_TINTED = setOf("sun-body", "sun-rays", "sun-rays2")
+    private val SAD_FILTER = android.graphics.ColorMatrixColorFilter(
+        android.graphics.ColorMatrix().apply {
+            setSaturation(0.55f)
+            postConcat(android.graphics.ColorMatrix(floatArrayOf(0.92f, 0f, 0f, 0f, 0f, 0f, 0.92f, 0f, 0f, 0f, 0f, 0f, 0.92f, 0f, 0f, 0f, 0f, 0f, 1f, 0f)))
+        }
+    )
 
     private fun ease(x: Float) = (1f - cos(PI * x.coerceIn(0f, 1f)).toFloat()) / 2f
     /** 0..1..0 over one period (for ease-in-out infinite) */
@@ -336,13 +349,15 @@ class Art(val name: String, svg: String) {
     fun draw(cv: Canvas, t: Float, blinkClosed: Float = 0f) {
         val r = root ?: return
         time = t; blink = blinkClosed; alphaMul = 1f
-        try { node(cv, r) } catch (e: Exception) { if (error == null) { error = e.toString(); android.util.Log.w("com.example.buddy", "SvgArt: $name draw failed: $e") } }
+        try { node(cv, r); if (tapP >= 0f && name == "shark") TapMotion.sharkBubbles(cv, tapP, bubble) } catch (e: Exception) { if (error == null) { error = e.toString(); android.util.Log.w("com.example.buddy", "SvgArt: $name draw failed: $e") } }
     }
 
     private fun node(cv: Canvas, n: Node) {
-        if (n.style["display"] == "none" || n.classes.any { it in HIDDEN }) return
+        if (n.style["display"] == "none" || n.classes.any { hidden(it) }) return
         cv.save()
         val savedAlpha = alphaMul
+        val savedTint = tint
+        if (sad && n.classes.any { it in SAD_TINTED }) tint = SAD_FILTER
         n.matrix?.let { cv.concat(it) }
         motion(cv, n)
         alphaMul *= animate(cv, n)
@@ -352,10 +367,21 @@ class Art(val name: String, svg: String) {
         if (clip != null) cv.clipPath(clip)
         when (n.tag) {
             "svg", "g" -> for (c in n.children) node(cv, c)
-            else -> n.shape?.let { drawShape(cv, n, it) }
+            else -> n.shape?.let {
+                fill.colorFilter = tint
+                line.colorFilter = tint
+                try { drawShape(cv, n, it) } finally { fill.colorFilter = null; line.colorFilter = null }
+            }
         }
+        tint = savedTint
         alphaMul = savedAlpha
         cv.restore()
+    }
+
+    private fun hidden(cls: String) = when (cls) {
+        "sun-sad", "tear" -> !sad
+        "sun-happy" -> sad
+        else -> cls in HIDDEN
     }
 
     private fun ref(s: String): String? = Regex("url\\(#([^)]+)\\)").find(s)?.groupValues?.get(1)
@@ -381,6 +407,8 @@ class Art(val name: String, svg: String) {
         val t = time
         var a = 1f
         for (c in n.classes) when (c) {
+            "tear" -> { val f = (((t - n.delay) / 1.2f) % 1f).let { if (it < 0) it + 1f else it }
+                cv.translate(0f, 12f * f * f); a = if (f < .2f) f / .2f else 1f - (f - .2f) / .8f }
             "sun-rays" -> about(cv, 85f, 70f, rot = 360f * (t / 18f))
             "sun-rays2" -> about(cv, 85f, 70f, rot = -360f * (t / 26f))
             "sun-body" -> { val s = 1f + .04f * tri(t, 3f).let { ease(it) }; about(cv, 85f, 70f, sx = s, sy = s) }
@@ -403,15 +431,17 @@ class Art(val name: String, svg: String) {
             "nose" -> { val b = n.bounds ?: RectF(84f, 84f, 116f, 97f)
                 val r = keys(t, 4f, floatArrayOf(0f, .8f, .85f, .9f, .95f, 1f), floatArrayOf(0f, 0f, -8f, 7f, -3f, 0f)); about(cv, b.left, b.centerY(), rot = r) }
             "bf" -> { val at = floatArrayOf(0f, .25f, .5f, .75f, 1f)
-                about(cv, 85f, 70f, rot = keys(t, 4.4f, at, floatArrayOf(-2f, 2f, -1f, 3f, -2f)), tx = keys(t, 4.4f, at, floatArrayOf(0f, 4f, 0f, -4f, 0f)), ty = keys(t, 4.4f, at, floatArrayOf(0f, -8f, -3f, -9f, 0f))) }
+                about(cv, 85f, 70f, rot = keys(t, 4.4f, at, floatArrayOf(-2f, 2f, -1f, 3f, -2f)), tx = keys(t, 4.4f, at, floatArrayOf(0f, 4f, 0f, -4f, 0f)), ty = keys(t, 4.4f, at, floatArrayOf(0f, -8f, -3f, -9f, 0f)))
+                if (tapP >= 0f) TapMotion.butterflyBody(cv, tapP, tapLevel, tapEgg) }
             "wh" -> { val at = floatArrayOf(0f, .5f, 1f)
-                about(cv, 85f, 70f, rot = keys(t, 5.5f, at, floatArrayOf(-1.5f, 1.5f, -1.5f)), tx = keys(t, 5.5f, at, floatArrayOf(-6f, 6f, -6f)), ty = keys(t, 5.5f, at, floatArrayOf(0f, -6f, 0f))) }
-            "bf-wings" -> about(cv, 85f, 72f, sx = keys(t, 2.6f, floatArrayOf(0f, .08f, .16f, .24f, .34f, 1f), floatArrayOf(1f, .38f, .95f, .38f, 1f, 1f)))
-            "bf-ant" -> about(cv, 85f, 44f, rot = -5f + 10f * ease(tri(t, 4.4f)))
-            "sk-tail" -> { val p = ease(tri(t, 1.6f)); about(cv, 40f, 72f, rot = -15f + 28f * p, sy = .94f + .1f * p) }
+                about(cv, 85f, 70f, rot = keys(t, 5.5f, at, floatArrayOf(-1.5f, 1.5f, -1.5f)), tx = keys(t, 5.5f, at, floatArrayOf(-6f, 6f, -6f)), ty = keys(t, 5.5f, at, floatArrayOf(0f, -6f, 0f)))
+                if (tapP >= 0f) TapMotion.sharkBody(cv, tapP, tapLevel, tapEgg) }
+            "bf-wings" -> about(cv, 85f, 72f, sx = if (tapP >= 0f) TapMotion.butterflyWings(tapP) else keys(t, 2.6f, floatArrayOf(0f, .08f, .16f, .24f, .34f, 1f), floatArrayOf(1f, .38f, .95f, .38f, 1f, 1f)))
+            "bf-ant" -> about(cv, 85f, 44f, rot = -5f + 10f * ease(tri(t, 4.4f)) + (if (tapP >= 0f) TapMotion.butterflyAntenna(tapP) else 0f))
+            "sk-tail" -> { val p = ease(tri(t, 1.6f)); about(cv, 40f, 72f, rot = -15f + 28f * p + (if (tapP >= 0f) TapMotion.sharkTail(tapP) else 0f), sy = .94f + .1f * p) }
             "sk-fin" -> about(cv, 98f, 88f, rot = -8f + 18f * ease(tri(t, 3.2f)))
-            "sk-gill" -> a = .3f + .7f * ease(tri(t, 2.4f))
-            "sk-eye" -> { val b = n.bounds; val sy = keys(t, 5f, floatArrayOf(0f, .94f, .97f, 1f), floatArrayOf(1f, 1f, .1f, 1f))
+            "sk-gill" -> a = ((.3f + .7f * ease(tri(t, 2.4f))) * (if (tapP >= 0f) TapMotion.sharkGill(tapP) else 1f)).coerceAtMost(1f)
+            "sk-eye" -> { val b = n.bounds; val sy = keys(t, 5f, floatArrayOf(0f, .94f, .97f, 1f), floatArrayOf(1f, 1f, .1f, 1f)) * (if (tapP >= 0f) TapMotion.sharkEye(tapP) else 1f)
                 if (b != null) { cv.translate(b.centerX(), b.centerY()); cv.scale(1f, sy); cv.translate(-b.centerX(), -b.centerY()) } }
             "cheek" -> if (name == "snowman") a = .35f + .35f * ease(tri(t, 6f))
             "eye" -> {

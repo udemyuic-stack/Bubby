@@ -1,0 +1,202 @@
+environment|air pollution|ob-havo ifloslanishi|Air pollution in major cities has reached dangerously high levels globally.
+environment|air contamination|havo ifloslanishi (keng)|Air contamination from factories seriously affects millions of urban residents.
+environment|noise pollution|shovqin ifloslanishi|Noise pollution from heavy traffic causes serious sleep and health disorders.
+environment|fossil fuels|qazilma yoqilg'i|Cars that run on fossil fuels release harmful greenhouse gases into the air.
+environment|toxic fumes|zaharli gazlar / hid|Factories release toxic fumes that severely damage the human respiratory system.
+environment|carbon emissions|karbonat angidrid chiqindilari|Carbon emissions must be drastically reduced to effectively combat climate change.
+environment|carbon dioxide|karbonat angidrid (CO2)|Burning fossil fuels releases large amounts of carbon dioxide into the atmosphere.
+environment|global warming|global isish|Global warming is accelerating the melting of polar ice caps at an alarming rate.
+environment|lung cancer|o'pka saratoni|Long-term exposure to severe air pollution significantly increases lung cancer risk.
+environment|sleep disorders|uyqu buzilishi|Noise pollution is a leading cause of sleep disorders in densely populated urban areas.
+environment|renewable energy|qayta tiklanuvchi energiya|Governments must invest in renewable energy such as solar and wind power urgently.
+environment|solar panels|quyosh panellari|Installing solar panels can significantly reduce household electricity bills.
+environment|wind turbines|shamol turbinalari|Wind turbines convert kinetic wind energy into clean, sustainable electricity.
+environment|sustainable energy barqaror energiya sources|manbalari|Sustainable energy sources are absolutely essential for building a greener future.
+environment|carbon footprint|uglerod izi (chiqarilgan gazlar miqdori)|Every individual should actively strive to reduce their personal carbon footprint.
+environment|deforestation|o'rmonsizlashtirish|Deforestation in the Amazon region contributes significantly to accelerating global warming.
+environment|climate crisis|iqlim inqirozi|The climate crisis demands urgent, coordinated, and sustained global action immediately.
+environment|biodiversity|hayvonlar va o'simliklar xilma-xilligi|Deforestation poses a serious and growing threat to biodiversity across the planet.
+environment|flora and fauna|o'simlik va hayvonot dunyosi|The Amazon rainforest is home to an extraordinary diversity of flora and fauna.
+environment|ecological issues|ekologik muammolar|Governments must urgently address serious ecological issues before it is too late.
+environment|poaching|noqonuniy ravishda hayvon ovlash|Poaching has driven many rare and precious species to the brink of extinction.
+environment|loss of habitats|yashash joylarining yo'qolishi|Loss of habitats is currently one of the leading causes of species extinction worldwide.
+environment|reproduction of species|turlarning ko'payishi|Protected natural areas help ensure the healthy reproduction of many endangered species.
+environment|water contamination|suvning ifloslanishi|Industrial waste has led to severe and widespread water contamination in rural areas.
+environment|human waste|maishiy chiqindilar|Improper disposal of human waste frequently contaminates vital drinking water sources.
+environment|pose a threat|xavf va tahdid solmoq|Climate change poses an increasingly serious threat to global food security.
+environment|run on fossil fuels|qazilma yoqilg'ida ishlash|Most vehicles still run on fossil fuels, contributing heavily to daily air pollution.
+environment|burn fossil fuels|qazilma yoqilg'ilarni yoqish|Industries that burn fossil fuels must urgently transition to clean energy alternatives.
+environment|release carbon dioxide|CO2 chiqarmoq|Deforestation releases the carbon dioxide stored in trees directly into the atmosphere.
+environment|exacerbate the problem|muammoni keskinlashtirmoq|Government inaction will only significantly exacerbate the ongoing environmental crisis.
+environment|mitigate the problem|muammoni yumshatmoq|Switching to renewable energy can effectively mitigate the effects of climate change.
+environment|perpetuate the problem|muammoni davom ettirmoq|Outdated industrial practices continue to perpetuate the serious problem of air pollution.
+environment|safeguard the nature|tabiatni himoya qilmoq|Governments must introduce and enforce strict environmental laws to safeguard the nature.
+environment|implement green policies|ekologik siyosatni amalga oshirmoq|All nations must implement ambitious green policies to significantly reduce carbon emissions.
+environment|strengthen the bond between human and nature|inson va tabiat munosabatini mustahkamlash|Environmental education can meaningfully strengthen the bond between human and nature.
+technology|innovation|innovatsiya, yangi g'oya|Technological innovation has fundamentally transformed every sector of modern society.
+technology|automation|avtomatizatsiya|Automation poses a serious threat to many low-skilled jobs in manufacturing sectors.
+technology|breakthrough|olamshumul kashfiyot|Scientists recently achieved a major breakthrough in renewable energy storage technology.
+technology|advancements|rivojlanish, oldga siljish|Rapid advancements in artificial intelligence are fundamentally reshaping the global economy.
+technology|cybersecurity|kiberxavfsizlik|Cybersecurity has become an increasingly critical concern for both individuals and governments.
+technology|privacy concern|maxfiylikka doir tashvish|Privacy concerns have intensified dramatically with the widespread rise of big data.
+technology|techno literacy|texnologik savodxonlik|Techno literacy is now widely considered an absolutely essential 21st century skill.
+technology|cutting-edge technology|eng zamonaviy texnologiya|Cutting-edge technology is rapidly revolutionising the entire global healthcare industry.
+technology|widespread usage of technology|texnologiyaning keng tarqalishi|The widespread usage of technology has dramatically and permanently changed daily life.
+technology|user-friendly apps|foydalanuvchiga qulay ilovalar|User-friendly apps have made online banking conveniently accessible to virtually everyone.
+technology|automation of jobs|ishlarni avtomatlashtirish|The rapid automation of jobs is creating serious and widespread concerns about unemployment.
+technology|internet addiction|internetga qaramlik|Internet addiction is increasingly being formally recognised as a serious mental health issue.
+technology|a double-edged sword|ikki tomonlama (salbiy va ijobiy)|Social media is a double-edged sword, simultaneously connecting yet isolating people.
+technology|vulnerable|himoyasiz, nozik|Children are particularly vulnerable to the numerous harmful effects of unregulated social media.
+technology|sophisticated|murakkab, rivojlangan|Modern smartphones are becoming increasingly sophisticated and feature-rich devices every year.
+technology|digitalisation|raqamlashtirish|Digitalisation has fundamentally transformed how governments efficiently deliver public services.
+technology|connectivity|bog'liqlik, ulanish imkoniyati|Global connectivity has made international communication virtually instantaneous and effortless.
+technology|dependency|qaramlik, tobe bo'lish|Many people have developed a deeply unhealthy dependency on their digital devices.
+technology|efficiency|samaradorlik|Technology has significantly improved the operational efficiency of businesses worldwide.
+technology|tech-savvy|texnologiyadan xabardor|Today's younger generation is far more tech-savvy than any previous generation.
+technology|overreliance|haddan tashqari tayanish|Dangerous overreliance on GPS navigation has reduced people's ability to navigate independently.
+technology|interactive|interaktiv|Interactive learning platforms have significantly and positively transformed modern education.
+technology|technology-driven era|texnologiya yetakchi davr|We currently live in a technology-driven era where innovation defines all human progress.
+technology|artificial intelligence (AI)|sun'iy intellekt|Artificial intelligence is now being used to diagnose diseases far more accurately.
+technology|communicate via technology|texnologiya orqali muloqot qilmoq|People increasingly communicate via technology rather than engaging in face-to-face interaction.
+technology|rely on technology|texnologiyaga tayanmoq|Modern society has come to rely heavily on technology for almost every daily task.
+technology|adopt technology|texnologiyani qabul qilmoq|Businesses must adopt emerging technology quickly to remain globally competitive.
+technology|share information online|onlayn ma'lumot almashmoq|Social media platforms allow people to share information online instantly worldwide.
+technology|access the internet|internetga kirmoq|Millions of people in developing nations sadly still cannot access the internet.
+technology|facilitate learning|o'qishni osonlashtirmoq|Digital educational tools can significantly facilitate learning in even the most remote communities.
+health|well-being|farovonlik / eson-omonlik|Economic growth does not always automatically lead to improved citizen well-being.
+health|public health|aholi salomatligi|Governments must invest substantially more in public health infrastructure and services.
+health|mental resilience|ruhiy chidamlilik|Mental resilience helps individuals effectively cope with life's inevitable challenges.
+health|chronic illness|surunkali kasalliklar|Chronic illnesses such as diabetes place enormous costs on healthcare systems annually.
+health|sedentary lifestyle|kamharakat (o'tiriqchi) turmush tarzi|A sedentary lifestyle significantly and directly increases the risk of obesity and disease.
+health|obesity rates|semizlik darajasi|Obesity rates have alarmingly tripled in many countries over just three decades.
+health|psychological illness|psixologik kasallik|Psychological illness is frequently overlooked in underfunded developing healthcare systems.
+health|fitness|jismoniy chiniqqanlik|Regular fitness activities significantly reduce the serious risk of cardiovascular disease.
+health|access to healthcare|tibbiyotdan foydalanish imkoniyati|Equal access to quality healthcare is widely regarded as a fundamental human right.
+health|preventable disease|oldini olish mumkin bo'lgan kasallik|Many deaths are tragically caused by preventable diseases linked to poor lifestyle choices.
+health|healthcare costs|tibbiy xizmat xarajatlari|Rapidly rising healthcare costs are placing enormous and growing pressure on government budgets.
+health|wellness programs|sog'lomlashtirish dasturlari|Many forward-thinking companies now actively offer wellness programs to support their employees.
+health|healthy lifestyle|sog'lom turmush tarzi|Actively promoting a healthy lifestyle is essential for significantly reducing chronic disease rates.
+health|public health campaigns|aholi salomatligi kampaniyalari|Well-funded public health campaigns have successfully and measurably reduced national smoking rates.
+health|burnout|kasbiy tushkunlik / g'ayrat so'nishi|Burnout is increasingly common among professionals working in highly pressured environments.
+health|long working hours|uzoq ish soatlari|Excessively long working hours are strongly linked to serious physical and mental health problems.
+health|mental exhaustion|ruhiy charchoq|Severe mental exhaustion can dramatically reduce a person's daily productivity and quality of life.
+health|long-term damage|uzoq muddatli zarar|Consistently poor dietary habits can cause serious long-term damage to vital internal organs.
+health|immune system|immunitet tizimi|Regular moderate exercise measurably helps strengthen the body's immune system significantly.
+health|dietary habits|ovqatlanish odatlari|Consistently poor dietary habits remain a leading cause of chronic disease worldwide.
+health|life expectancy|umr ko'rish davomiyligi|Average life expectancy has increased dramatically and consistently over the past hundred years.
+health|lead a healthy lifestyle|sog'lom turmush tarzini olib bormoq|Individuals should consciously lead a healthy lifestyle to significantly reduce their disease risk.
+health|adopt healthy habits|sog'lom odatlarni shakllantirmoq|Schools should actively encourage young students to adopt healthy habits from an early age.
+health|maintain a balanced diet|muvozanatlashgan parhezni ushlab turmoq|It is absolutely essential to maintain a balanced diet for sustainable long-term well-being.
+health|engage in regular exercise|muntazam jismoniy mashq bilan shug'ullanmoq|All adults should engage in regular exercise for at least thirty minutes, three times weekly.
+health|lack of physical activity|jismoniy harakatning yetishmasligi|A serious lack of physical activity is a major contributor to the global obesity epidemic.
+health|drain one's energy|energiyani tuketmoq / charchatmoq|Consistently long working hours significantly drain employees' energy and reduce their overall well-being.
+health|yield positive results|ijobiy natija bermoq|Strategic investment in preventive healthcare consistently and measurably yields positive long-term results.
+health|cause long-term damage|uzoq muddatli zarar keltirmoq|Prolonged and excessive stress can cause serious long-term damage to both the mind and body.
+crime|offence|jinoyat / huquqbuzarlik|A first-time offence may appropriately result in a community service order rather than imprisonment.
+crime|criminal activity|jinoiy faoliyat|Criminal activity in urban areas is consistently and closely linked to deep-rooted poverty.
+crime|law enforcement|huquqni muhofaza qilish organlari|Law enforcement agencies must be adequately and consistently funded to effectively combat crime.
+crime|victim|qurbon / jabrlanuvchi|The criminal justice system must firmly prioritise both the rights and welfare of the victim.
+crime|rehabilitation|qayta tiklanish / reabilitatsiya|Well-designed rehabilitation programmes help offenders successfully and permanently reintegrate into society.
+crime|prosecution|jinoiy ishni yuritish|Successful prosecution of serious offenders requires thorough preparation and compelling solid evidence.
+crime|fraud|firibgarlik / aldamoq|Online fraud has increased dramatically and significantly with the widespread rise of digital banking.
+crime|theft|o'g'irlik|Petty theft is frequently driven by severe poverty, personal desperation, and lack of opportunity.
+crime|juvenile delinquency|o'smirlar jinoyatchiligi|Juvenile delinquency is closely and consistently linked to the absence of adequate parental guidance.
+crime|prison overcrowding|qamoqxona to'lib ketishi|Prison overcrowding remains a persistent, serious, and costly problem in many countries worldwide.
+crime|wrongdoers|aybdorlar / qonunbuzarlar|All wrongdoers must face fair yet appropriately proportionate consequences for their harmful actions.
+crime|deterrent|oldini oluvchi vosita|Sufficiently harsh and consistent penalties serve as an effective deterrent to potential future offenders.
+crime|criminal justice system|jinoiy adliya tizimi|The criminal justice system must carefully and thoughtfully balance punishment with meaningful rehabilitation.
+crime|life-long imprisonment|umrbod qamoq jazosi|Life-long imprisonment is appropriately reserved only for the most extremely serious violent crimes.
+crime|rehabilitation programs|isloh qilish dasturlari|Well-structured rehabilitation programs measurably reduce the likelihood of subsequent reoffending significantly.
+crime|commit a crime|jinoyat sodir qilmoq|Extreme poverty and complete hopelessness frequently drive vulnerable individuals to commit a crime.
+crime|break the law|qonunni buzmoq|Those who knowingly and deliberately break the law must be held fully and appropriately accountable.
+crime|enforce the law|qonun ijrosini ta'minlamoq|Police forces must consistently have adequate resources to effectively enforce the law at all times.
+crime|impose harsh penalties|qattiq jazo qo'llamoq|Governments should impose appropriately harsh penalties specifically for serious and repeat offenders.
+crime|pay a fine|jarima to'lamoq|Minor traffic violations typically and appropriately result in the offender having to pay a fine.
+crime|reduce the crime rate|jinoyat darajasini kamaytirmoq|Quality education and meaningful employment opportunities consistently and measurably help reduce the crime rate.
+crime|protect innocent citizens|begunoh fuqarolarni himoya qilmoq|The primary and most fundamental duty of any responsible government is to protect innocent citizens.
+education|tertiary education|oliy ta'lim (universitet)|Tertiary education is becoming increasingly essential and competitive in the modern global job market.
+education|curriculum|o'quv dasturi|The national curriculum must genuinely reflect the real and evolving demands of the modern workplace.
+education|literacy rate|savodxonlik darajasi|Improving the national literacy rate is absolutely essential for achieving sustainable long-term development.
+education|well-educated citizens|yaxshi ta'lim olgan fuqarolar|Well-educated citizens contribute far more meaningfully and productively to national economic growth.
+education|illiterate|savodsiz|Millions of disadvantaged adults in developing nations remain illiterate primarily due to deep poverty.
+education|financial constraint moliyaviy qiyinchilik /|cheklov|Severe financial constraints unfortunately prevent many talented students from pursuing higher education.
+education|tuition fees|o'qish to'lovi (kontrakt)|Excessively high tuition fees prevent many bright and talented students from accessing quality education.
+education|academic performance|akademik ko'rsatkich / o'zlashtirish|Academic performance is powerfully influenced by both the quality of teaching and student motivation.
+education|interactive learning|interaktiv o'qish|Interactive learning meaningfully encourages students to engage far more actively in their own education.
+education|rote learning|yodlab olish (yodaki o'rganish)|Many education critics argue that rote learning fundamentally discourages truly creative and independent thinking.
+education|comprehensive curriculum|har tomonlama qamrovli o'quv dasturi|A genuinely comprehensive curriculum should carefully address both academic and essential practical life skills.
+education|financial assistance / scholarship|moliyaviy yordam / stipendiya|Scholarships enable many talented students from low- income families to access quality university education.
+education|bridge the gap|tafovutni kamaytirmoq|Quality education powerfully helps bridge the persistent gap between different social and economic classes.
+education|affordable education|hamyonbop / arzon ta'lim|Governments have a clear responsibility to ensure that affordable education is genuinely available to all citizens.
+education|academic pressure|akademik bosim|Excessive and relentless academic pressure can ultimately lead to serious mental health problems in students.
+education|lifelong learning|umr bo'yi o'qish|In our rapidly and constantly changing world, lifelong learning has become absolutely essential for professional success.
+education|vocational training|kasb-hunar ta'limi|Practical vocational training effectively prepares students for real-world, immediately applicable careers.
+education|extracurricular activities|darsdan tashqari faoliyat|Meaningful extracurricular activities help students develop important leadership, teamwork, and social skills.
+education|distance learning|masofaviy o'qish|Distance learning has dramatically made quality higher education far more accessible to people worldwide.
+education|standardised testing|standartlashtirilgan sinov|Many education critics widely argue that excessive standardised testing ultimately stifles students' natural creativity.
+education|critical thinking|tanqidiy fikrlash|Modern education must prioritise the genuine development of critical thinking skills over simple rote memorisation.
+education|well-rounded education|har tomonlama ta'lim|A genuinely well-rounded education thoughtfully includes both rigorous academic knowledge and essential life skills.
+work|cultural homogenization|madaniyatlarning bir xillashib ketishi|Globalisation risks causing the dangerous cultural homogenization of the world's diverse societies.
+work|loss of identity|o'zlikni yo'qotish|Rapid and unchecked globalisation can tragically result in a devastating loss of cultural identity.
+work|multinational corporation|transmilliy korporatsiya|Large multinational corporations frequently exploit the availability of cheap labour in developing nations.
+work|foster international xalqaro hamkorlikni cooperation|rivojlantirmoq|International organisations play a crucial key role in actively fostering meaningful international cooperation.
+work|foster cultural appreciation|madaniy qadriyatlarni hurmat qilishni shakllantirmoq|Well-designed cultural exchange programmes effectively foster genuine cultural appreciation among diverse peoples.
+work|job security|ish o'rnining barqarorligi / kafolati|Many workers today feel deeply uncertain that their job security is under serious and growing threat.
+work|employment opportunities|ish bilan ta'minlanish imkoniyatlari|Governments must actively create more meaningful employment opportunities specifically for young graduates.
+work|work-life balance|ish va shaxsiy hayot muvozanati|A genuinely healthy work-life balance is absolutely essential for sustaining long-term employee well-being.
+work|flexible working hours|moslashuvchan ish soatlari|Flexible working hours meaningfully allow employees to far better manage their personal responsibilities.
+work|remote working|masofadan turib ishlash|Remote working has become dramatically and permanently more widespread since the global pandemic.
+work|brain drain|aqlli kadrlarning chetga ketishi|Persistent brain drain poses an extremely serious long- term challenge for many developing nations.
+work|boost economy|iqtisodiyotni ko'tarmoq / rivojlantirmoq|Strategic foreign investment can significantly and sustainably boost the economy of developing countries.
+work|local businesses|mahalliy bizneslar|Governments should actively prioritise and consistently support thriving small local businesses.
+work|income inequality|daromad tengsizligi|Persistent income inequality remains one of the most serious and damaging global challenges today.
+work|free trade|erkin savdo|Free trade agreements can powerfully boost economic growth but may harm vulnerable local industries.
+work|outsourcing|tashqaridan buyurtma berish|Outsourcing can dramatically reduce operational costs but frequently leads to significant domestic job losses.
+work|economic disparity|iqtisodiy tafovut|The economic disparity between wealthy urban and poor rural areas continues to widen dangerously.
+work|tax revenue|soliq daromadi|Businesses play a crucial and indispensable role in generating vital tax revenue for governments.
+work|entrepreneurship|tadbirkorlik|Actively promoting entrepreneurship is consistently one of the most effective ways to reduce unemployment.
+work|purchasing power|xarid qobiliyati|Persistently rising inflation steadily and significantly reduces the purchasing power of ordinary working citizens.
+tourism|tourist influx|turistlar oqimi|The massive tourist influx has brought significant economic benefits to the local host community.
+tourism|cultural exchange|madaniy almashinuv|Genuine cultural exchange through tourism meaningfully promotes mutual understanding between diverse nations.
+tourism|economic dependency|iqtisodiy qaramlik|Many small island nations suffer from severe and dangerous economic dependency solely on tourism revenue.
+tourism|overcrowding|odam haddan tashqari ko'pligi|Severe overcrowding at popular tourist destinations causes serious damage to both culture and environment.
+tourism|environmental degradation|atrof-muhitning yomonlashishi|Completely unregulated mass tourism frequently leads to significant and often irreversible environmental degradation.
+tourism|generate revenue|daromad keltirmoq|A well-managed tourism industry can generate substantial and sustainable revenue for national governments.
+tourism|promote cultural understanding|madaniy tushunishni targ'ib qilmoq|Well-designed educational travel programmes effectively promote genuine cultural understanding among today's youth.
+tourism|allocate budget|byudjet ajratmoq|Governments must carefully and strategically allocate budget to address the most pressing social needs.
+tourism|government spending|davlat xarajatlari|Critics argue that excessive government spending on luxury tourism infrastructure is often highly wasteful.
+tourism|taxpayers' money|soliq to'lovchilarning mablag'i|Taxpayers' money must always be spent wisely and responsibly on truly essential public services first.
+tourism|subsidize|subsidiyalamoq / moliyaviy ko'mak bermoq|Governments frequently subsidize public transport systems to ensure they remain genuinely accessible for all.
+tourism|implement strict regulations|qat'iy qoidalarni joriy etmoq|Authorities must implement strict and consistently enforced regulations to properly protect invaluable heritage sites.
+tourism|impose taxes|soliqlar solmoq|Governments can strategically impose higher taxes on heavily polluting industries to fund important green initiatives.
+tourism|cultural heritage|madaniy meros|Governments have a fundamental responsibility to actively protect their irreplaceable cultural heritage from commercialisation.
+tourism|national identity|milliy o'zlik|Language is widely and rightly considered a core and irreplaceable component of national identity and pride.
+tourism|responsible tourism|mas'uliyatli turizm|Genuinely responsible tourism meaningfully minimises harmful environmental and cultural impacts on vulnerable host countries.
+tourism|local customs|mahalliy urf-odatlar|All tourists should consistently and respectfully respect local customs and traditions wherever they choose to travel.
+tourism|heritage site|tarixiy / meros joyi|UNESCO-designated heritage sites attract many tens of millions of enthusiastic visitors from around the world annually.
+tourism|overtourism|haddan ziyod turizm|Destructive overtourism has already caused significant and often irreversible damage to several iconic world landmarks.
+city|urbanization|urbanizatsiya / shaharlashuv|Rapid and unplanned urbanization has led to severe housing shortages in many major global cities.
+city|commute|uydan ishga qatnash / yo'l bosish|The average daily commute in congested major cities now frequently exceeds one full hour each way.
+city|infrastructure|infratuzilma|Inadequate and crumbling infrastructure remains a major barrier to sustainable economic growth in developing regions.
+city|housing shortage|uy-joy yetishmovchiligi|A severe housing shortage in major capital cities is persistently driving property prices to record highs.
+city|cost of living|yashash xarajati|The increasingly high cost of living in major global cities is forcing many long-term residents to relocate.
+city|metropolitan area|katta shahar hududi / metropoliya|Large and vibrant metropolitan areas consistently attract highly skilled workers seeking better career opportunities.
+city|traffic congestion|transport tirbandligi|Severe traffic congestion costs urban economies many billions of dollars annually in lost productivity.
+city|amenities|qulayliklar (maktab, shifoxona, do'konlar)|Convenient access to quality amenities is a key determining factor in residential property market valuation.
+city|public transport system|jamoat transporti tizimi|An efficient and reliable public transport system meaningfully reduces both serious congestion and carbon emissions.
+city|rural areas|qishloq hududlari|Many ambitious young people migrate from rural areas to cities in constant search of better prospects.
+city|urban sprawl|shaharning tartibsiz kengayishi|Uncontrolled and poorly planned urban sprawl inevitably leads to traffic congestion and significant habitat loss.
+society|nuclear family|kichik oila (faqat ota-ona va farzandlar)|The nuclear family has gradually become the most common family structure in most modern Western societies.
+society|extended family|katta oila (bobo, buvi, amakilar bilan)|In many traditional cultures, the extended family continues to play a central role in child-rearing.
+society|generation gap|avlodlar o'rtasidagi tafovut|The persistent generation gap frequently leads to significant misunderstandings between parents and their teenagers.
+society|single-parent family|yolg'iz ota yoki onali oila|Children from single-parent families may face additional and complex social and economic challenges.
+society|bring up children|bolalarni tarbiyalamoq|Both parents share an equal and important responsibility in bringing up children in a supportive healthy environment.
+society|peer pressure|tengdoshlar bosimi|Intense peer pressure is widely considered one of the most powerful influences on adolescent behaviour.
+society|social cohesion|jamiyat jipsligi / birdamligi|Strong and genuine social cohesion helps communities far better withstand economic hardships together.
+society|gender equality|gender tengligi|Achieving genuine gender equality in the workplace remains an ongoing and critically important social challenge.
+society|foster social skills|ijtimoiy ko'nikmalarni rivojlantirmoq|Diverse extracurricular activities effectively help children develop and foster essential social skills.
+society|social inequality|ijtimoiy tengsizlik|Persistent and deep social inequality fundamentally undermines all serious efforts to build a genuinely fair society.
+society|welfare state|ijtimoiy davlat|A well-funded and comprehensive welfare state ensures a basic standard of living for all vulnerable citizens.
+society|civil society|fuqarolik jamiyati|A vibrant and independent civil society plays a vital role in holding governments accountable for actions.
+society|corruption|korrupsiya|Widespread corruption seriously undermines public trust and significantly hinders sustainable national development.
+society|transparency|shaffoflik|Government transparency is absolutely essential for genuinely maintaining and building lasting public confidence.

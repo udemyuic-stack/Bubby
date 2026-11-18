@@ -36,6 +36,15 @@ android {
         targetSdk = 36
         versionCode = buddyCode
         versionName = buddyVersion
+        val sttFile = File(System.getProperty("user.home"), ".stt-token")
+        val urlFile = File(System.getProperty("user.home"), ".stt-url")
+        val sttToken = if (sttFile.isFile) sttFile.readText().trim() else ""
+        buildConfigField("String", "STT_URL", "\"" + (if (sttToken.isEmpty()) "" else if (urlFile.isFile) urlFile.readText().trim() else "http://localhost:7860") + "\"")
+        buildConfigField("String", "STT_TOKEN", "\"" + sttToken + "\"")
+    }
+
+    buildFeatures {
+        buildConfig = true
     }
 
     // One fixed signing key for every build. CI used to sign with a fresh random debug key on each run, so a new APK could

@@ -66,6 +66,15 @@ class NightScene : ThemeScene() {
     private val moonPaint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val glowPaint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val aurPaint = Paint(Paint.FILTER_BITMAP_FLAG)
+    private val fogPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        shader = RadialGradient(0f, 0f, 1f, intArrayOf(0x55B8C4E8, 0x00B8C4E8), floatArrayOf(0f, 1f), Shader.TileMode.CLAMP)
+    }
+    private val silPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = 0xFF05060B.toInt() }
+    private val silPath = android.graphics.Path()
+    private val eyePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = 0xFFFFE3A0.toInt() }
+    private val eyeGlow = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        shader = RadialGradient(0f, 0f, 1f, intArrayOf(0x55FFD27A, 0x00FFD27A), floatArrayOf(0f, 1f), Shader.TileMode.CLAMP)
+    }
     private var glowFrom: RadialGradient? = null
     private var glowTo: RadialGradient? = null
     private var glowFromR = 0f
@@ -197,6 +206,7 @@ class NightScene : ThemeScene() {
     }
 
     override fun onSize(w: Float, h: Float, density: Float) {
+        buildSilhouettes(w, h, density)
         dens = density
         // aurora 1: left -10% top 6% 70% x 22%; aurora 2: left 30% top 14% 80% x 18%
         aurBmp[0]?.recycle(); aurBmp[1]?.recycle()
@@ -221,6 +231,70 @@ class NightScene : ThemeScene() {
 
         // shooting star: 110 x 2 px, transparent -> white towards the head
         shootPaint.shader = LinearGradient(-110f * density, 0f, 0f, 0f, 0x00FFFFFF, 0xFFFFFFFF.toInt(), Shader.TileMode.CLAMP)
+    }
+
+    private fun buildSilhouettes(w: Float, h: Float, d: Float) {
+        silPath.rewind()
+        val base = h * SIL_BASE
+        var x = -20f * d
+        var i = 0
+        silPath.moveTo(x, h)
+        while (x < w + 40f * d) {
+            val tw = (14f + hash(i, 5) * 16f) * d
+            val th = (34f + hash(i, 6) * 54f) * d
+            silPath.lineTo(x, base)
+            silPath.lineTo(x + tw * .5f, base - th)
+            silPath.lineTo(x + tw, base)
+            x += tw * (.7f + hash(i, 7) * .5f)
+            i++
+        }
+        silPath.lineTo(w + 40f * d, h)
+        silPath.close()
+    }
+
+    private fun drawNightLayer(cv: Canvas, w: Float, h: Float, t: Float, shift: Float) {
+        val dn = dens
+        silPaint.alpha = (38f + 22f * (.5f + .5f * Math.sin(t * .35).toFloat())).toInt()
+        cv.save()
+        cv.translate(shift * .5f, 0f)
+        cv.drawPath(silPath, silPaint)
+        cv.restore()
+        for (i in 0 until FOG_BANDS) {
+            val sp = .012f + i * .007f
+            var u = t * sp + i * .37f
+            u -= floor(u)
+            val x = (u * 1.6f - .3f) * w + shift * (.6f + i * .2f)
+            val y = h * (SIL_BASE - .04f + i * .07f)
+            val a = .35f + .35f * Math.sin(t * .2 + i * 2.1).toFloat()
+            fogPaint.alpha = (255f * a).toInt().coerceIn(0, 255)
+            cv.save()
+            cv.translate(x, y)
+            cv.scale(w * .55f, 46f * dn * (1f + i * .4f))
+            cv.drawCircle(0f, 0f, 1f, fogPaint)
+            cv.restore()
+        }
+        val cycle = floor(t / EYE_PERIOD).toInt()
+        val local = t - cycle * EYE_PERIOD - hash(cycle, 9) * (EYE_PERIOD - EYE_LIFE - 4f) - 2f
+        if (local < 0f || local > EYE_LIFE) return
+        var open = when {
+            local < 1.2f -> local / 1.2f
+            local > EYE_LIFE - 1.4f -> (EYE_LIFE - local) / 1.4f
+            else -> 1f
+        }
+        if (local in 2.2f..2.4f) open *= .08f
+        val corner = cycle % 3
+        val ex = w * (if (corner == 0) .1f else if (corner == 1) .9f else .78f) + shift * .5f
+        val ey = h * (SIL_BASE - .06f - corner * .02f)
+        val gap = 7f * dn
+        eyeGlow.alpha = (140f * open).toInt()
+        cv.save()
+        cv.translate(ex, ey)
+        cv.scale(22f * dn, 22f * dn)
+        cv.drawCircle(0f, 0f, 1f, eyeGlow)
+        cv.restore()
+        eyePaint.alpha = (190f * open).toInt()
+        cv.drawOval(ex - gap - 2.6f * dn, ey - 1.4f * dn * open - .4f * dn, ex - gap + 2.6f * dn, ey + 1.4f * dn * open + .4f * dn, eyePaint)
+        cv.drawOval(ex + gap - 2.6f * dn, ey - 1.4f * dn * open - .4f * dn, ex + gap + 2.6f * dn, ey + 1.4f * dn * open + .4f * dn, eyePaint)
     }
 
     override fun draw(cv: Canvas, w: Float, h: Float, t: Float, dt: Float, page: Float) {
@@ -288,5 +362,14 @@ class NightScene : ThemeScene() {
             cv.drawRect(-110f * dn, -1f * dn, 0f, 1f * dn, shootPaint)
             cv.restore()
         }
+
+        drawNightLayer(cv, w, h, t, shift)
+    }
+
+    private companion object {
+        const val SIL_BASE = .66f
+        const val FOG_BANDS = 3
+        const val EYE_PERIOD = 34f
+        const val EYE_LIFE = 5.2f
     }
 }

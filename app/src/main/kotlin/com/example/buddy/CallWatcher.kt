@@ -81,7 +81,7 @@ class CallWatcher(
         onRinging(name)
     }
 
-    private fun nameFor(number: String): String? {
+    fun nameFor(number: String): String? {
         if (ctx.checkSelfPermission(Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) return null
         return try {
             val uri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI, Uri.encode(number))
@@ -115,6 +115,7 @@ class CallWatcher(
         @Volatile var lastNumber: String? = null
         @Volatile var lastName: String? = null
         @Volatile var lastRingMs: Long = 0L
+        @Volatile var pendingSay: String? = null
 
         private val textStems = listOf("напиши", "написать", "напишите", "смс", "sms", "сообщен", "скажи", "yoz", "xabar", "deb ayt", "message", "text ", "tell him", "tell her", "tell them", "busy", "занят", "band", "за рул", "rulda", "driving")
 

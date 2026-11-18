@@ -213,4 +213,34 @@ object ProviderFormat {
     private val visionRe = Regex("vision|-vl\\b|\\bvl-|-vl-|llama-4|llama4|gpt-4o|gpt-4\\.1|gpt-5|gemma-?3|gemma-?4|gemini|claude|pixtral|llava|minicpm-v|moondream|grok-4|qwen2\\.5-vl|qwen3-vl|qwen-vl|kimi-vl|glm-4\\.5v|glm-4v|mistral-small-3|mistral-medium", RegexOption.IGNORE_CASE)
     /** Best guess whether an OpenAI-compatible model accepts images. */
     fun visionModel(model: String): Boolean = visionRe.containsMatchIn(model)
+
+    fun openAiImageBody(model: String, sys: String, text: String, jpegB64: String): JSONObject {
+        val parts = JSONArray()
+            .put(JSONObject().put("type", "text").put("text", text))
+            .put(JSONObject().put("type", "image_url").put("image_url", JSONObject().put("url", "data:image/jpeg;base64,$jpegB64")))
+        val msgs = JSONArray()
+            .put(JSONObject().put("role", "system").put("content", sys))
+            .put(JSONObject().put("role", "user").put("content", parts))
+        return JSONObject().put("model", model).put("stream", false).put("messages", msgs)
+    }
+
+    fun anthropicImageBody(model: String, sys: String, text: String, jpegB64: String, maxTokens: Int = 4096): JSONObject {
+        val content = JSONArray()
+            .put(JSONObject().put("type", "image").put("source",
+                JSONObject().put("type", "base64").put("media_type", "image/jpeg").put("data", jpegB64)))
+            .put(JSONObject().put("type", "text").put("text", text))
+        return JSONObject().put("model", model).put("max_tokens", maxTokens).put("system", sys)
+            .put("messages", JSONArray().put(JSONObject().put("role", "user").put("content", content)))
+    }
+
+    fun geminiImageBody(sys: String, text: String, jpegB64: String): JSONObject {
+        val parts = JSONArray()
+            .put(JSONObject().put("inline_data", JSONObject().put("mime_type", "image/jpeg").put("data", jpegB64)))
+            .put(JSONObject().put("text", text))
+        return JSONObject()
+            .put("system_instruction", JSONObject().put("parts", JSONArray().put(JSONObject().put("text", sys))))
+            .put("contents", JSONArray().put(JSONObject().put("role", "user").put("parts", parts)))
+    }
 }
+
+class ImageUnsupported(val model: String?, message: String) : Exception(message)

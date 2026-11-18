@@ -482,6 +482,7 @@ object QuickIntent {
         val t = tk.joinToString(" ")
 
         if (TIME_RX.matches(t)) return ParsedQuick("time")
+        com.example.buddy.ui.MyWordsGrammar.parse(t)?.let { return ParsedQuick("word_save", mapOf("en" to it)) }
         if (DATE_RX.matches(t)) return ParsedQuick("date")
         if (BATT_RX.matches(t)) return ParsedQuick("battery")
 
@@ -617,6 +618,11 @@ object QuickIntent {
                 emo = "proud"
                 val hm = hhmm(pr["hour"] as Int, pr["minute"] as Int)
                 t("Будильник на $hm", "Alarm set for $hm", "Budilnik $hm ga qo'yildi")
+            }
+            "word_save" -> {
+                emo = "proud"
+                val w = pr["en"] as String
+                t("Сохранил слово: $w", "Saved the word: $w", "So'z saqlandi: $w")
             }
             "timer" -> {
                 emo = "proud"

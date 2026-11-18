@@ -8,7 +8,8 @@ import android.widget.TextView
  * "Bubby's Room": a match-3 puzzle. Swap two neighbours to make three or more in a row; four make a roller, five a
  * sparkle, an L or T a splash. Reach the level's goals before the moves run out; stars are kept per level.
  */
-class RoomScreen(act: UiActivity) : Screen(act) {
+class RoomScreen(act: UiActivity, private val startAt: Int = -1) : Screen(act) {
+    override val coversScene = true
     override fun title() = t("Комната Bubby", "Bubby's room", "Bubby xonasi")
 
     private val prefs get() = ctx.getSharedPreferences("buddy", android.content.Context.MODE_PRIVATE)
@@ -24,6 +25,13 @@ class RoomScreen(act: UiActivity) : Screen(act) {
     private lateinit var actions: LinearLayout
     private var index = 0
     private var over = false
+    private var bonus = 0
+
+    private fun tightMoves(base: Int, i: Int): Int {
+        val world = (i / 8).coerceAtMost(3)
+        val factor = 1f - 0.07f * world - (if (i % 8 == 7) 0.1f else 0f)
+        return maxOf(6, Math.round(base * factor))
+    }
 
     private fun unlocked() = prefs.getInt("bm_level", 1).coerceIn(1, levels.size)
     private fun starsOf(i: Int) = prefs.getInt("bm_stars_$i", 0)
@@ -56,7 +64,7 @@ class RoomScreen(act: UiActivity) : Screen(act) {
         c.add(board, MATCH, WRAP)
         c.add(actions, MATCH, WRAP, top = 12)
         c.add(android.widget.HorizontalScrollView(ctx).apply { isHorizontalScrollBarEnabled = false; addView(picker) }, MATCH, WRAP, top = 10)
-        index = (unlocked() - 1).coerceIn(0, levels.size - 1)
+        index = (if (startAt >= 0) startAt else unlocked() - 1).coerceIn(0, levels.size - 1)
         start(index)
         // CI: plays the first legal moves by itself so that the screenshots show the animations and any crash shows in the log
         if (act.intent.getBooleanExtra("autoplay", false)) {
@@ -69,7 +77,8 @@ class RoomScreen(act: UiActivity) : Screen(act) {
         index = i; over = false
         val lvl = levels[i]
         engine.fill()
-        engine.setLevel(lvl.moves, lvl.dustCells())
+        bonus = prefs.getInt("bm_bonus", 0)
+        engine.setLevel(tightMoves(lvl.moves, index) + bonus, lvl.dustCells())
         for (k in lvl.dustCells()) engine.dust[k] = lvl.dustLayerAt(k)
         board.syncFromEngine(); board.locked = false
         board.post { board.introDrop() }   // the pieces rain in
@@ -120,11 +129,14 @@ class RoomScreen(act: UiActivity) : Screen(act) {
     private fun win() {
         over = true; board.locked = true
         val lvl = levels[index]
-        val stars = when { engine.movesLeft * 100 >= lvl.moves * 30 -> 3; engine.movesLeft * 100 >= lvl.moves * 10 -> 2; else -> 1 }
+        val left = maxOf(0, engine.movesLeft - bonus)
+        val stars = when { left * 100 >= tightMoves(lvl.moves, index) * 30 -> 3; left * 100 >= tightMoves(lvl.moves, index) * 10 -> 2; else -> 1 }
+        if (bonus > 0) prefs.edit().putInt("bm_bonus", 0).apply()
         if (stars > starsOf(index)) prefs.edit().putInt("bm_stars_$index", stars).apply()
         if (index + 2 > unlocked()) prefs.edit().putInt("bm_level", minOf(levels.size, index + 2)).apply()
         react("🥳", "⭐".repeat(stars) + "  " + t("Комната стала уютнее!", "The room got cosier!", "Xona yanada shinam bo'ldi!"))
         act.confetti()
+        face.cheer()
         actionRows(win = true); pickerRows()
     }
 

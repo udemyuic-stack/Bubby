@@ -14,6 +14,10 @@ data class AgentFile(
     val tooLarge: Boolean = false, val isNew: Boolean = false
 )
 
+/** A Claude Desktop (Code tab) session a task can continue: [id] is the CLI session id, [title] its name there. */
+data class RunEntry(val id: String, val sessionId: String, val project: String, val prompt: String, val state: String, val text: String)
+data class DesktopSession(val id: String, val title: String, val project: String)
+
 /** One running agent. [project], [steps], [finalLine] come with `details`, [files] with `diffs`; empty when not offered. */
 data class AgentSession(
     val pillId: String, val agent: String, val state: String, val statusText: String, val stepIndex: Int, val stepCount: Int,
@@ -36,7 +40,7 @@ data class DiffPart(
 
 object AgentProto {
     /** What this phone understands; it uses only those that `welcome.caps` offers back. */
-    val CAPS = listOf("details", "answers", "diffs", "relay", "always", "run")
+    val CAPS = listOf("details", "answers", "diffs", "relay", "always", "run", "runlive")
 
     const val MAX_SESSIONS = 50
     const val MAX_AGENT = 40

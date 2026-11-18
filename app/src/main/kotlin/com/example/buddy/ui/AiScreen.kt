@@ -26,6 +26,7 @@ class AiScreen(act: UiActivity) : Screen(act) {
     private var advanced = false
     private var status: String? = null
     private var statusOk = false
+    private var statusRetry: (() -> Unit)? = null
     private var testing = -1
     private var clip: String? = null
     private var busy: String? = null
@@ -123,11 +124,13 @@ class AiScreen(act: UiActivity) : Screen(act) {
     }
 
     private fun test(i: Int) {
+        statusRetry = null
+        if (!ctx.isOnline()) { statusOk = false; status = AiApi.hint(ctx, "network"); statusRetry = { test(i) }; refresh(); return }
         testing = i; status = null; refresh()
         val spec = keys[i]
         Thread {
             val (ok, raw) = AiApi.test(spec, ctx)
-            act.runOnUiThread {
+            act.runIfAlive {
                 testing = -1; statusOk = ok
                 status = if (ok) t("Подключение работает", "The connection works", "Ulanish ishlayapti") else AiApi.hint(ctx, raw)
                 refresh()
@@ -152,6 +155,7 @@ class AiScreen(act: UiActivity) : Screen(act) {
             errors["groq"] = t("Это не похоже на ключ Groq: он начинается с gsk_", "This does not look like a Groq key: it starts with gsk_", "Bu Groq kalitiga o'xshamaydi: u gsk_ bilan boshlanadi")
             refresh(); return
         }
+        if (!ctx.isOnline()) { errors["groq"] = AiApi.groqHint(ctx, "network"); refresh(); return }
         errors.remove("groq"); busy = "groq"; refresh()
         Thread {
             var err: String? = null
@@ -169,7 +173,7 @@ class AiScreen(act: UiActivity) : Screen(act) {
                     if (!ok) err = AiApi.groqHint(ctx, raw)
                 }
             }
-            act.runOnUiThread {
+            act.runIfAlive {
                 busy = null
                 if (err != null) errors["groq"] = err
                 else {
@@ -298,7 +302,7 @@ class AiScreen(act: UiActivity) : Screen(act) {
         busy = p.id; refresh()
         Thread {
             val (ok, raw) = AiApi.test(spec, ctx)
-            act.runOnUiThread {
+            act.runIfAlive {
                 busy = null
                 if (!ok) errors[p.id] = AiApi.hint(ctx, raw)
                 else if (addSpec(spec)) { for (k in listOf(":key", ":url", ":model")) fields[p.id + k]?.setText(""); act.confetti() }
@@ -389,7 +393,9 @@ class AiScreen(act: UiActivity) : Screen(act) {
                 })
             }, MATCH, WRAP, top = 12)
         }
-        status?.let {
+        val retry = statusRetry
+        if (status != null && !statusOk && retry != null) c.add(ctx.offlineCard(status!!, retry), MATCH, WRAP, top = 12)
+        else status?.let {
             c.add(ctx.card(pad = 12, fill = if (statusOk) P.secondaryContainer else P.errorContainer, stroke = 0) {
                 add(ctx.row {
                     add(ctx.icon(if (statusOk) R.drawable.ic_check_circle else R.drawable.ic_error, if (statusOk) P.onSecondaryContainer else P.onErrorContainer, 22), WRAP, WRAP, end = 8)

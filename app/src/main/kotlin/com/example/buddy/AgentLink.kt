@@ -63,9 +63,12 @@ class AgentLink(ctx: Context, val listener: Listener) {
         fun onApprovalResolved(fp: String)
         fun onUsage(u: Usage) {}
         /** State of the task started from the phone: running, done, error or stopped (capability `run`). */
-        fun onRun(id: String, state: String, text: String) {}
+        fun onRun(id: String, state: String, text: String, sessionId: String = "") {}
         /** The folders of the computer a task can run in, and the default one (capability `run`). */
         fun onProjects(list: List<String>, current: String) {}
+        /** The Claude Desktop sessions a task can continue (capability `run`). */
+        fun onDesktopSessions(list: List<DesktopSession>) {}
+        fun onRuns(list: List<RunEntry>) {}
         /** A question from Claude Code (only with the `answers` capability); it ends with [onApprovalResolved]. */
         fun onQuestion(q: AgentQuestion) {}
         /** One part of a diff asked for with [getDiff]. */
@@ -147,10 +150,11 @@ class AgentLink(ctx: Context, val listener: Listener) {
     }
 
     /** Starts a Claude Code task on the computer (capability `run`; the computer must have been started with --allow-run). */
-    fun runTask(id: String, prompt: String, project: String = ""): Boolean {
+    fun runTask(id: String, prompt: String, project: String = "", sessionId: String = ""): Boolean {
         if (!connected || "run" !in caps || prompt.isBlank() || prompt.length > 4000) return false
         val o = JSONObject().put("type", "run").put("id", id).put("prompt", prompt)
         if (project.isNotEmpty()) o.put("project", project.take(80))
+        if (sessionId.isNotEmpty()) o.put("sessionId", sessionId.take(36))
         out.add(o.toString())
         return true
     }
@@ -383,9 +387,28 @@ class AgentLink(ctx: Context, val listener: Listener) {
                 val cur = str(j, "current").take(80)
                 post(g) { listener.onProjects(names, cur) }
             }
+            "desktopSessions" -> if (welcomed && "run" in caps) {
+                val arr = j.optJSONArray("list")
+                val sessions = ArrayList<DesktopSession>()
+                if (arr != null) for (i in 0 until minOf(arr.length(), 30)) arr.optJSONObject(i)?.let { o ->
+                    val sid = str(o, "id")
+                    if (sid.length == 36) sessions.add(DesktopSession(sid, str(o, "title").take(80), str(o, "project").take(80)))
+                }
+                post(g) { listener.onDesktopSessions(sessions) }
+            }
+            "runs" -> if (welcomed && "run" in caps) {
+                val arr = j.optJSONArray("list")
+                val runs = ArrayList<RunEntry>()
+                if (arr != null) for (i in 0 until minOf(arr.length(), 20)) arr.optJSONObject(i)?.let { o ->
+                    val rid = str(o, "id").take(40)
+                    if (rid.isNotEmpty()) runs.add(RunEntry(rid, str(o, "sessionId").takeIf { it.length == 36 }.orEmpty(), str(o, "project").take(80), str(o, "prompt").take(200), str(o, "state").take(10), str(o, "text").take(1000)))
+                }
+                post(g) { listener.onRuns(runs) }
+            }
             "runState" -> if (welcomed && "run" in caps) {
                 val id = str(j, "id").take(40); val st = str(j, "state"); val tx = str(j, "text").take(4000)
-                if (id.isNotEmpty() && st in setOf("running", "done", "error", "stopped")) post(g) { listener.onRun(id, st, tx) }
+                val sid = str(j, "sessionId").takeIf { it.length == 36 }.orEmpty()
+                if (id.isNotEmpty() && st in setOf("running", "progress", "done", "error", "stopped")) post(g) { listener.onRun(id, st, tx, sid) }
             }
             // the computer tells us where its relay is (only on the home-network link, which is certificate-pinned)
             "relay" -> if (welcomed && !viaRelay && "relay" in caps) {

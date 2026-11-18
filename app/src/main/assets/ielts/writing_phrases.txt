@@ -1,0 +1,42 @@
+Muammoni ifodalash|give rise to|sabab bo'lmoq|This pollution gives rise to serious health issues.
+Muammoni ifodalash|be driven by|tomonidan boshqarilmoq|Society is driven by technological advancement.
+Muammoni ifodalash|be fuelled by|kuchaytirilmoq|The debate is fuelled by growing public concern.
+Muammoni ifodalash|undermine|zaiflashtirmoq|Corruption undermines public trust in institutions.
+Muammoni ifodalash|exacerbate|yanada yomonlashtirmoq|Poverty exacerbates social inequality.
+Muammoni ifodalash|pose a threat to|xavf tug'dirmoq|Climate change poses a serious threat to biodiversity.
+Muammoni ifodalash|be at stake|xavf ostida bo'lmoq|The future of our planet is at stake.
+Muammoni ifodalash|take a toll on|salbiy ta'sir qilmoq|Overwork takes a toll on mental health.
+Muammoni ifodalash|be on the rise|ortib bormoqda|Obesity rates are on the rise globally.
+Muammoni ifodalash|stem from|kelib chiqmoq|These issues stem from a lack of proper education.
+Yechim taklif qilish|tackle / address|hal qilmoq|Governments must tackle rising unemployment rates.
+Yechim taklif qilish|mitigate|kamaytirmoq|Renewable energy can mitigate the effects of climate change.
+Yechim taklif qilish|alleviate|yengillashtirmoq|Education can alleviate poverty in developing nations.
+Yechim taklif qilish|implement|amalga oshirmoq|Authorities should implement stricter environmental laws.
+Yechim taklif qilish|enforce|majburlash / kuchga kiritish|Rules must be enforced consistently.
+Yechim taklif qilish|advocate for|himoya qilmoq / qo'llab-quvvatlamoq|NGOs advocate for human rights.
+Yechim taklif qilish|prioritise|ustuvor qilmoq|Governments should prioritise mental health funding.
+Yechim taklif qilish|invest in|sarmoya kiritmoq|Nations must invest in renewable energy infrastructure.
+Yechim taklif qilish|facilitate|osonlashtirmoq|Technology facilitates access to quality education.
+Yechim taklif qilish|combat|kurashmoq|Communities must work together to combat crime effectively.
+Fikrni kuchaytirish va ta'kidlash|constitute|tashkil etmoq|Education constitutes a vital part of development.
+Fikrni kuchaytirish va ta'kidlash|be integral to|ajralmas qismi bo'lmoq|Trust is integral to any relationship.
+Fikrni kuchaytirish va ta'kidlash|underscore the need for|zarurligini ta'kidlamoq|This underscores the need for reform.
+Fikrni kuchaytirish va ta'kidlash|serve as a catalyst for|turtki bo'lmoq|Technology serves as a catalyst for change.
+Fikrni kuchaytirish va ta'kidlash|be cited as|sifatida ko'rsatilmoq|Stress is often cited as a cause of illness.
+Fikrni kuchaytirish va ta'kidlash|be associated with|bilan bog'liq|Smoking is closely associated with lung cancer.
+Fikrni kuchaytirish va ta'kidlash|at the cost of|evaziga|Growth was achieved at the cost of the environment.
+Fikrni kuchaytirish va ta'kidlash|be on the verge of|yoqasida bo'lmoq|Some species are on the verge of extinction.
+Fikrni kuchaytirish va ta'kidlash|failure to|bajarmaslik|Failure to act now will have irreversible consequences.
+Fikrni kuchaytirish va ta'kidlash|had it not been for|agar ... bo'lmaganida|Had it not been for technology, progress would have stalled.
+Introduction uchun iboralar|It is widely argued / debated that...|Savolni paraphrase qilish|
+Introduction uchun iboralar|There is a growing concern that...|Muammoni kiritish|
+Introduction uchun iboralar|In recent years, X has become increasingly...|Trend yoki o'zgarishni kiritish|
+Introduction uchun iboralar|The question of whether X or Y has long been debated...|Discuss both views uchun|
+Introduction uchun iboralar|X has emerged as one of the most pressing issues of our time.|Muammoning muhimligini ko'rsatish|
+Introduction uchun iboralar|It is undeniable that X plays a crucial role in...|Kuchli boshlash|
+Conclusion uchun iboralar|In conclusion, while..., I firmly believe that...|Ikki fikrni birlashtirish|
+Conclusion uchun iboralar|Ultimately, the responsibility lies with...|Mas'uliyatni belgilash|
+Conclusion uchun iboralar|All things considered, it is evident that...|Umumiy xulosa|
+Conclusion uchun iboralar|The aforementioned arguments suggest that...|Body ga murojaat qilish|
+Conclusion uchun iboralar|It is therefore recommended that...|Tavsiya bilan tugatish|
+Conclusion uchun iboralar|Only by + V(ing) can S + achieve + O.|Inversiyali kuchli xulosa|

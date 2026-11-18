@@ -80,6 +80,26 @@ class BuddyNotifications : NotificationListenerService() {
             } catch (e: Exception) { false }
         }
 
+        @JvmStatic fun answerFromNotification(): Boolean {
+            val svc = instance ?: return false
+            return try {
+                val active = svc.activeNotifications ?: return false
+                for (sbn in active) {
+                    val n = sbn.notification ?: continue
+                    if (n.category != Notification.CATEGORY_CALL) continue
+                    val a = n.actions?.firstOrNull { AutoAnswerRules.isAnswerAction(it.title?.toString().orEmpty()) } ?: continue
+                    val pi = a.actionIntent ?: continue
+                    pi.send()
+                    android.util.Log.i("AutoAnswer", "answered through the ${sbn.packageName} notification")
+                    return true
+                }
+                false
+            } catch (e: Exception) {
+                android.util.Log.w("AutoAnswer", "notification answer", e)
+                false
+            }
+        }
+
         @JvmStatic fun dismiss(key: String) {
             try { instance?.cancelNotification(key) } catch (e: Exception) { }
             synchronized(lock) { entries.removeAll { it.item.key == key } }

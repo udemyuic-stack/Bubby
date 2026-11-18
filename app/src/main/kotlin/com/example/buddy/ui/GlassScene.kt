@@ -100,6 +100,65 @@ class GlassScene : ThemeScene() {
         cv.restore()
     }
 
+    private val gr = kotlin.random.Random(77)
+    private val NSP = 22
+    private val spX = FloatArray(NSP) { gr.nextFloat() }
+    private val spY = FloatArray(NSP) { gr.nextFloat() }
+    private val spP = FloatArray(NSP) { 2.5f + gr.nextFloat() * 4f }
+    private val spS = FloatArray(NSP) { 3f + gr.nextFloat() * 6f }
+    private val NST = 4
+    private val stPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply { style = Paint.Style.FILL }
+    private val spPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply { style = Paint.Style.STROKE; strokeCap = Paint.Cap.ROUND; color = 0xFFFFFFFF.toInt() }
+    private val rbPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply { style = Paint.Style.STROKE }
+    private val rbRect = android.graphics.RectF()
+    private val rbCol = intArrayOf(0xFFFF6B8A.toInt(), 0xFFFFB86B.toInt(), 0xFFFFF27A.toInt(), 0xFF7AF2A8.toInt(), 0xFF6BC4FF.toInt(), 0xFFB48CFF.toInt())
+
+    private fun extras(cv: Canvas, w: Float, h: Float, t: Float, shift: Float) {
+        val dn = dens
+        for (i in 0 until NST) {
+            val dur = 9f + i * 3.3f
+            val u = ((t + i * 2.7f) % dur) / dur
+            if (u > 0.4f) continue
+            val k = u / 0.4f
+            val len = 0.42f * w
+            val x = -len + (w + 2f * len) * k + shift * 0.5f
+            val y = h * (0.15f + 0.22f * i) + k * 0.1f * h
+            val a = sin(k * 3.1416f)
+            spPaint.strokeWidth = (1.6f + i * 0.5f) * dn
+            spPaint.alpha = (a * 90f).toInt()
+            cv.drawLine(x, y, x + len * 0.55f, y + len * 0.18f, spPaint)
+            spPaint.alpha = (a * 40f).toInt()
+            cv.drawLine(x - 10f * dn, y - 6f * dn, x + len * 0.5f, y + len * 0.16f - 6f * dn, spPaint)
+        }
+        spPaint.strokeWidth = 1.6f * dn
+        for (i in 0 until NSP) {
+            val tw = sin(6.2832f * t / spP[i] + i * 1.9f)
+            if (tw < 0f) continue
+            val x = spX[i] * w + shift * 0.8f
+            val xx = x - w * floor(x / w)
+            val y = spY[i] * h
+            val s = spS[i] * dn * tw
+            spPaint.alpha = (tw * 230f).toInt()
+            cv.drawLine(xx - s, y, xx + s, y, spPaint)
+            cv.drawLine(xx, y - s, xx, y + s, spPaint)
+            stPaint.color = 0xFFFFFFFF.toInt(); stPaint.alpha = (tw * 255f).toInt()
+            cv.drawCircle(xx, y, 1.3f * dn, stPaint)
+        }
+        val ru = (t % 17f) / 3.2f
+        if (ru < 1f) {
+            val e = sin(ru * 3.1416f)
+            val cx = w * 0.5f + shift
+            val cy = h * 0.92f
+            for (k in rbCol.indices) {
+                val r = w * (0.62f - k * 0.035f)
+                rbPaint.color = rbCol[k]; rbPaint.strokeWidth = 7f * dn
+                rbPaint.alpha = (e * 110f).toInt()
+                rbRect.set(cx - r, cy - r, cx + r, cy + r)
+                cv.drawArc(rbRect, 195f, 150f, false, rbPaint)
+            }
+        }
+    }
+
     override fun draw(cv: Canvas, w: Float, h: Float, t: Float, dt: Float, page: Float) {
         val dn = dens
         val shift = -page * 8f * dn
@@ -150,5 +209,6 @@ class GlassScene : ThemeScene() {
             dust.alpha = ((.15f + .65f * e) * .85f * 255f).toInt()
             cv.drawCircle(x, y, dustS[i] * dn / 2f, dust)
         }
+        extras(cv, w, h, t, shift)
     }
 }

@@ -118,3 +118,9 @@ These pin down what the spec above left open; the bridge does exactly this.
   it on the phone; nothing is sent.
 - `diff` messages that break the limits (more than 2 parts, `part` out of range, other ids) are ignored; a part with more
   than 100 lines is cut and shown as truncated. The phone itself also keeps at most 20 `getDiff` per 10 s.
+
+## Terminal tasks, live progress, history
+
+- Bridge flag `--terminal`: a new phone task (or Continue) opens `ghostty -e claude --session-id|--resume <id> -- <prompt>` on the computer; `runState` carries `sessionId`.
+- Cap `runlive`: runner uses `stream-json`; the bridge sends `runState` with `state:"progress"` (at most one per 500 ms). Phones without the cap only get `done`.
+- Message `runs` (cap `run`): `{type:"runs", list:[{id, sessionId, project, prompt, state, text, at}]}`, last 20, stored in `~/.bubby/runs.json` (mode 600). The phone may send `{type:"runs"}` to refresh.

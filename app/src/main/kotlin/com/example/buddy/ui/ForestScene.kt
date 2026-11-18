@@ -9,6 +9,8 @@ import android.graphics.Path
 import android.graphics.RadialGradient
 import android.graphics.RectF
 import android.graphics.Shader
+import com.example.buddy.ui.home.ForestStorm
+import com.example.buddy.ui.home.ForestTrees
 import kotlin.math.ceil
 import kotlin.math.floor
 import kotlin.math.max
@@ -46,6 +48,8 @@ class ForestScene : ThemeScene() {
         Cloud(360f, 160f, 120f, 40f, .45f, 56f, -41.2f),
     )
     private val cloudPs = .5f
+    private val BURNT_CANOPY = 0xFF3A2A22.toInt()
+    private val BURNT_TRUNK = 0xFF241C18.toInt()
     private val cloudPaint = Paint(Paint.FILTER_BITMAP_FLAG)
 
     // ---------------------------------------------------------------------------------------------------- tree line
@@ -65,14 +69,7 @@ class ForestScene : ThemeScene() {
         364f, 741f, .514077f, -8.8f, 6.6f,
         398f, 744f, .5934463f, -9.6f, 4.5f,
     )
-    private val front = floatArrayOf(
-        22f, 820f, 1.05f, 0f, 4.5f,
-        92f, 838f, .9f, -.8f, 5.2f,
-        165f, 826f, 1.15f, -1.6f, 5.9f,
-        240f, 840f, .95f, -2.4f, 6.6f,
-        312f, 824f, 1.1f, -3.2f, 4.5f,
-        378f, 836f, .95f, -4f, 5.2f,
-    )
+    private val front = ForestTrees.front
     // canopy circles: kind (0 = light "cn2", 1 = dark "cn"), cx, cy, r  (back to front)
     private val canopy = floatArrayOf(
         0f, 0f, -118f, 34f,
@@ -155,6 +152,12 @@ class ForestScene : ThemeScene() {
 
     // ---------------------------------------------------------------------------------------------------- lightning
     private val flashPaint = Paint()
+    private val darkPaint = Paint()
+    private val stormGlow = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        shader = RadialGradient(0f, 0f, 1f, intArrayOf(0xFFD6E6FF.toInt(), 0x80A9C6F5.toInt(), 0x00A9C6F5), floatArrayOf(0f, .55f, 1f), Shader.TileMode.CLAMP)
+    }
+    private var ts = 0f
+    private var wind = 0f
     private val flashM = Matrix()
     private val fk = floatArrayOf(0f, .06f, .15f, .24f, .6f)
     private val fv = floatArrayOf(0f, .55f, .1f, .45f, 0f)
@@ -198,6 +201,7 @@ class ForestScene : ThemeScene() {
         k = sc * density
         ox = (boxW - 390f * sc) / 2f - 12f
         oy = (boxH - 844f * sc) / 2f - 12f
+        ForestTrees.setView(dens, k, ox, oy)
 
         // clouds: one blurred ellipse each (sigma 16), rendered small and drawn enlarged
         val sigma = 16f
@@ -232,13 +236,17 @@ class ForestScene : ThemeScene() {
     // ---------------------------------------------------------------------------------------------------- frame
     override fun draw(cv: Canvas, w: Float, h: Float, t: Float, dt: Float, page: Float) {
         val band = bandBmp ?: return
+        ForestStorm.step(dt, com.example.buddy.ui.home.HomeClock.ms())
+        val lvl = ForestStorm.level
+        ts += dt * (1f + 1.4f * lvl)
+        wind = lvl
 
         // clouds (far: 8 dp per page)
         cv.save()
         place(cv, page, 1f)
         for (c in clouds) {
             val bm = c.bmp ?: continue
-            val dx = -30f + 60f * tri((t - c.delay) / c.dur)
+            val dx = -30f + 60f * tri((ts - c.delay) / c.dur)
             cloudPaint.alpha = (c.op * .46f * 255f + .5f).toInt()
             cv.save()
             cv.translate(c.cx + dx, c.cy)
@@ -249,7 +257,7 @@ class ForestScene : ThemeScene() {
         cv.restore()
 
         // trees, hills, puddles (a little nearer: 10 dp per page)
-        val frame = (t * 20f).toInt()
+        val frame = (ts * 20f).toInt()
         if (frame != bandFrame) { bandFrame = frame; renderBand(frame / 20f); band.prepareToDraw() }
         cv.save()
         place(cv, page, 1.25f)
@@ -261,12 +269,24 @@ class ForestScene : ThemeScene() {
         cv.save()
         place(cv, page, 1.25f)
         drawRipples(cv, t)
-        drawLeaves(cv, t)
+        drawLeaves(cv, ts)
         cv.restore()
 
-        drawRain(cv, t, page)
+        drawRain(cv, ts, page)
+        if (lvl > .01f) {
+            darkPaint.color = android.graphics.Color.argb((lvl * .42f * 255f).toInt(), 8, 14, 30)
+            cv.drawRect(0f, 0f, w, h, darkPaint)
+        }
+        val gl = ForestStorm.glow
+        if (gl > .01f) {
+            stormGlow.alpha = (gl * 255f).toInt().coerceIn(0, 255)
+            cv.save(); cv.translate(w * .6f, h * .1f); cv.scale(w * .55f, h * .15f)
+            cv.drawCircle(0f, 0f, 1f, stormGlow)
+            cv.restore()
+        }
 
         val f = flash(t)
+        ForestTrees.flash = f
         if (f > .004f) {
             flashPaint.alpha = (f * 255f + .5f).toInt().coerceIn(0, 255)
             cv.drawRect(0f, 0f, w, h, flashPaint)
@@ -301,22 +321,40 @@ class ForestScene : ThemeScene() {
 
     private fun tree(c: Canvas, a: FloatArray, i: Int, q: Float, light: Int, dark: Int, trunkColor: Int) {
         val o = i * 5
-        val ang = -2.6f + 5.2f * bez(.42f, 0f, .58f, 1f, tri((q - a[o + 3]) / a[o + 4]))
+        val live = a === front
+        val opacity = if (live) ForestTrees.opacity[i] else 1f
+        val sx = if (live) ForestTrees.scaleX[i] else 1f
+        val sy = if (live) ForestTrees.scaleY[i] else 1f
+        if (opacity <= 0.01f || sx <= 0.01f || sy <= 0.01f) return
+        val burn = if (live) ForestTrees.burn[i] else 0f
+        val alpha = (opacity * 255f + .5f).toInt()
+        val ang = (-2.6f + 5.2f * bez(.42f, 0f, .58f, 1f, tri((q - a[o + 3]) / a[o + 4]))) * (1f + 2.6f * wind) + 2.4f * wind
         c.save()
         c.translate(a[o], a[o + 1])
         c.scale(a[o + 2], a[o + 2])
+        c.scale(sx, sy)
         c.translate(.5f, 0f)
         c.rotate(ang)
         c.translate(-.5f, 0f)
-        treePaint.color = trunkColor
+        treePaint.color = mix(trunkColor, BURNT_TRUNK, burn)
+        treePaint.alpha = alpha
         c.drawPath(trunk, treePaint)
         var j = 0
         while (j < canopy.size) {
-            treePaint.color = if (canopy[j] == 0f) light else dark
+            treePaint.color = mix(if (canopy[j] == 0f) light else dark, BURNT_CANOPY, burn)
+            treePaint.alpha = alpha
             c.drawCircle(canopy[j + 1], canopy[j + 2], canopy[j + 3], treePaint)
             j += 4
         }
         c.restore()
+    }
+
+    private fun mix(from: Int, to: Int, p: Float): Int {
+        if (p <= 0f) return from
+        val r = ((from shr 16 and 255) + ((to shr 16 and 255) - (from shr 16 and 255)) * p).toInt()
+        val g = ((from shr 8 and 255) + ((to shr 8 and 255) - (from shr 8 and 255)) * p).toInt()
+        val b = ((from and 255) + ((to and 255) - (from and 255)) * p).toInt()
+        return -0x1000000 or (r shl 16) or (g shl 8) or b
     }
 
     private fun drawRipples(cv: Canvas, t: Float) {
@@ -361,6 +399,9 @@ class ForestScene : ThemeScene() {
     }
 
     private fun drawRain(cv: Canvas, t: Float, page: Float) {
+        val lvl = ForestStorm.level
+        val sl = .18f + .3f * lvl
+        for (b in 0 until 4) rainPaint[b].strokeWidth = (if (b % 2 == 1) 1.2f else .8f) * (1f + .9f * lvl)
         for (b in 0 until 4) { splashPath[b].reset(); splashCount[b] = 0 }
         for (b in 0 until 4) {
             val idx = binIdx[b]
@@ -375,11 +416,11 @@ class ForestScene : ThemeScene() {
                 val kd = kk.toDouble()
                 val x0 = (-60.0 + (RW + 120.0) * hs(i * 97.13 + kd * 13.7 + .5)).toFloat()
                 val y = dA[i] + dVs[i] * ph
-                val x = x0 - .18f * dVs[i] * ph
-                ln[n++] = x; ln[n++] = y; ln[n++] = x + dLen[i] * .18f; ln[n++] = y - dLen[i]
+                val x = x0 - sl * dVs[i] * ph
+                ln[n++] = x; ln[n++] = y; ln[n++] = x + dLen[i] * sl; ln[n++] = y - dLen[i]
                 if (ph < .33f) {
                     val px0 = (-60.0 + (RW + 120.0) * hs(i * 97.13 + (kd - 1.0) * 13.7 + .5)).toFloat()
-                    val lx = px0 - .18f * dVs[i] * tc
+                    val lx = px0 - sl * dVs[i] * tc
                     val r = 1f + 27f * ph
                     val sb = min(3, (ph / .0825f).toInt())
                     splashPath[sb].addOval(lx - r * 1.6f, dYl[i] - r * .45f, lx + r * 1.6f, dYl[i] + r * .45f, Path.Direction.CW)

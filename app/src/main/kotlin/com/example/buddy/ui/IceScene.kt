@@ -386,5 +386,56 @@ class IceScene : ThemeScene() {
             else { val e = lk(easeStd, (u - 0.5f) * 2f); y = 420f + 450f * e; x = snow[o] + 18f - 28f * e }
             cv.drawCircle(shSnow + x * s, ty + y * s, snow[o + 3] * s, pFill)
         }
+        extras(cv, w, h, t)
+    }
+
+    private val ir = kotlin.random.Random(66)
+    private val NCR = 14
+    private val crX = FloatArray(NCR) { ir.nextFloat() }
+    private val crDur = FloatArray(NCR) { 11f + ir.nextFloat() * 10f }
+    private val crOff = FloatArray(NCR) { ir.nextFloat() * 20f }
+    private val crSz = FloatArray(NCR) { 3f + ir.nextFloat() * 5f }
+    private val crSpin = FloatArray(NCR) { (ir.nextFloat() - 0.5f) * 720f }
+    private val iFill = Paint(Paint.ANTI_ALIAS_FLAG).apply { style = Paint.Style.FILL }
+    private val iLine = Paint(Paint.ANTI_ALIAS_FLAG).apply { style = Paint.Style.STROKE; strokeCap = Paint.Cap.ROUND }
+
+    private fun extras(cv: Canvas, w: Float, h: Float, t: Float) {
+        val dn = dens
+        iLine.color = 0xFFE6F6FF.toInt()
+        iLine.strokeWidth = 1.2f * dn
+        for (i in 0 until NCR) {
+            val u = ((t + crOff[i]) % crDur[i]) / crDur[i]
+            val x = crX[i] * w + kotlin.math.sin(u * 9.42f + i) * 20f * dn
+            val y = -12f * dn + (h + 24f * dn) * u
+            val r = crSz[i] * dn
+            val fade = if (u < 0.06f) u / 0.06f else if (u > 0.94f) (1f - u) / 0.06f else 1f
+            iLine.alpha = (200f * fade).toInt()
+            cv.save(); cv.translate(x, y); cv.rotate(crSpin[i] * u)
+            for (k in 0 until 3) {
+                cv.rotate(60f)
+                cv.drawLine(-r, 0f, r, 0f, iLine)
+            }
+            cv.restore()
+        }
+        val su = (t % 13f) / 2.2f
+        if (su < 1f) {
+            val sx = w * 0.1f + su * w * 0.6f
+            val sy = h * 0.05f + su * h * 0.2f
+            val fa = 1f - su
+            for (k in 0 until 7) {
+                iLine.strokeWidth = (2.8f - k * 0.36f) * dn
+                iLine.alpha = (fa * 230f / (1 + k)).toInt()
+                cv.drawLine(sx - k * 15f * dn, sy - k * 6f * dn, sx - (k + 1) * 15f * dn, sy - (k + 1) * 6f * dn, iLine)
+            }
+            iFill.color = 0xFFFFFFFF.toInt(); iFill.alpha = (fa * 255f).toInt()
+            cv.drawCircle(sx, sy, 2.8f * dn, iFill)
+        }
+        val gu = (t % 17f) / 5f
+        if (gu < 1f) {
+            iFill.color = 0xFF9CFFD8.toInt(); iFill.alpha = (kotlin.math.sin(gu * 3.1416f) * 34f).toInt()
+            cv.save(); cv.translate(w * (0.9f - 0.8f * gu), 0f); cv.rotate(-12f)
+            cv.drawRect(-0.09f * w, -0.1f * h, 0.09f * w, 0.7f * h, iFill)
+            cv.restore()
+        }
     }
 }

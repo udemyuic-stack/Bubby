@@ -32,7 +32,7 @@ class AgentsScreen(act: UiActivity) : Screen(act) {
     /** What the page last showed of the live link state; the poll redraws only when it changes. */
     private var shownLive: Any? = null
     private fun live(): Any = listOf(BuddyService.agentDesktop, BuddyService.agentConnected, BuddyService.agentViaRelay, BuddyService.agentSessions, BuddyService.agentUsage, BuddyService.agentApprovals,
-        BuddyService.agentQuestions, BuddyService.agentCaps, BuddyService.agentRun, BuddyService.agentProjects)
+        BuddyService.agentQuestions, BuddyService.agentCaps, BuddyService.agentRun, BuddyService.agentProjects, BuddyService.agentDesktopSessions)
     private val openSteps = HashSet<String>()     // sessions whose step list is unfolded
     private val allFiles = HashSet<String>()      // sessions showing every changed file, not only the first few
     private val qSel = HashMap<String, List<Set<Int>>>()   // picks so far per question fingerprint (kept across redraws)
@@ -251,11 +251,14 @@ class AgentsScreen(act: UiActivity) : Screen(act) {
             dlg.getButton(android.app.AlertDialog.BUTTON_POSITIVE).setOnClickListener { btn ->
                 val digits = code.text.toString().filter { it.isDigit() }
                 if (digits.length != 6) { ctx.toast(t("Нужно 6 цифр", "6 digits needed", "6 ta raqam kerak")); return@setOnClickListener }
+                val label = (btn as? android.widget.TextView)?.text
                 btn.isEnabled = false; pairing = true
+                (btn as? android.widget.TextView)?.text = t("Подключаю…", "Connecting…", "Ulanmoqda…")
                 Thread {
                     val r = AgentPairing.pair(host, port, digits, fp, name)
-                    act.runOnUiThread {
+                    act.runIfAlive {
                         pairing = false
+                        (btn as? android.widget.TextView)?.text = label
                         val link = r.link
                         if (link != null) {
                             val err = Backend.agentSave(ctx, link)
@@ -299,16 +302,17 @@ class AgentsScreen(act: UiActivity) : Screen(act) {
 
     // ---- paired: the dashboard ----
 
-    private fun statCard(title: String, sub: String, body: LinearLayout.() -> Unit): LinearLayout = ctx.card(pad = 14) {
+    private fun statCard(title: String, sub: String, subColor: Int = 0, body: LinearLayout.() -> Unit): LinearLayout = ctx.card(pad = 14) {
         gravity = Gravity.CENTER_HORIZONTAL
         body()
         add(ctx.text(title, T.Title).apply { gravity = Gravity.CENTER; textSize = 14.5f }, MATCH, WRAP, top = 6)
-        if (sub.isNotEmpty()) add(ctx.text(sub, T.Small).apply { gravity = Gravity.CENTER }, MATCH, WRAP, top = 1)
+        if (sub.isNotEmpty()) add(ctx.text(sub, T.Small).apply { gravity = Gravity.CENTER; if (subColor != 0) setTextColor(subColor) }, MATCH, WRAP, top = 1)
     }
 
     private fun dashboard(c: LinearLayout, s: AgentInfo) {
         val st = AgentWidgets.overall()
         val color = AgentWidgets.color(st)
+        if ("run" in BuddyService.agentCaps) c.add(runCard(), MATCH, WRAP, bottom = 12)
         // every agent as a small coloured cube around the mascot
         if (s.sessions.isNotEmpty()) {
             val seen = LinkedHashMap<String, AgentOrbit.Item>()
@@ -336,8 +340,7 @@ class AgentsScreen(act: UiActivity) : Screen(act) {
         }, MATCH, WRAP, bottom = 12)
 
         // a task for Claude Code, started from the phone (only when the computer allows it)
-        if ("run" in BuddyService.agentCaps) c.add(runCard(), MATCH, WRAP, bottom = 12)
-        else if (s.connected) c.add(ctx.card(pad = 16) {
+        if ("run" !in BuddyService.agentCaps && s.connected) c.add(ctx.card(pad = 16) {
             add(ctx.row {
                 add(ctx.icon(R.drawable.ic_bolt, P.primary, 24), WRAP, WRAP, end = 10)
                 add(ctx.text(t("Задачи для Claude Code с телефона", "Tasks for Claude Code from the phone", "Telefondan Claude Code'ga vazifa"), T.Title), 0, WRAP, 1f)
@@ -382,10 +385,12 @@ class AgentsScreen(act: UiActivity) : Screen(act) {
 
         // usage rings and done today
         val u = AgentStats.current(ctx)
+        val stale = u != null && u.updatedAt > 0L && System.currentTimeMillis() - u.updatedAt > 3_600_000L
         fun ringCard(value: Float?, resets: Long, title: String): LinearLayout = statCard(title,
             if (value == null) t("нет данных", "no data", "ma'lumot yo'q") else (AgentWidgets.until(ctx, resets).let { r -> if (r.isEmpty()) "" else t("сброс через $r", "resets in $r", "$r dan keyin yangilanadi") } +
                 // numbers only change when Claude Code answers: say how old they are instead of looking live
-                AgentWidgets.ago(ctx, u?.updatedAt ?: 0L).let { a -> if (a.isEmpty()) "" else "\n" + t("обновлено $a", "updated $a", "yangilangan: $a") }).trim()) {
+                AgentWidgets.ago(ctx, u?.updatedAt ?: 0L).let { a -> if (a.isEmpty()) "" else "\n" + t("обновлено $a", "updated $a", "yangilangan: $a") } +
+                (if (stale) " · " + t("устарело", "old", "eskirgan") else "")).trim(), if (stale && value != null) P.alpha(P.onSurfaceVariant, 150) else 0) {
             add(RingGauge(ctx).apply { setValue(value) }, ctx.dp(112), ctx.dp(112))
         }
         c.add(ctx.row(Gravity.TOP) {
@@ -427,10 +432,11 @@ class AgentsScreen(act: UiActivity) : Screen(act) {
 
     private var taskDraft = ""
     private var taskProject = ""
+    private var taskSession = ""
 
     private fun runCard(): LinearLayout = ctx.card(pad = 16) {
         val run = BuddyService.agentRun
-        val running = run?.second == "running"
+        val running = run?.second == "running" || run?.second == "progress"
         add(ctx.row {
             add(ctx.icon(R.drawable.ic_bolt, P.primary, 24), WRAP, WRAP, end = 10)
             add(ctx.text(t("Задача для Claude Code", "Task for Claude Code", "Claude Code uchun vazifa"), T.Title), 0, WRAP, 1f)
@@ -447,21 +453,19 @@ class AgentsScreen(act: UiActivity) : Screen(act) {
         add(field, MATCH, WRAP, top = 10)
         // the project (a folder of the computer) the task runs in: pick any of them
         val (projects, current) = BuddyService.agentProjects
-        if (projects.isNotEmpty()) {
-            if (taskProject !in projects) taskProject = if (current in projects) current else projects.first()
-            add(ctx.text(t("Проект", "Project", "Loyiha"), T.Small), MATCH, WRAP, top = 10)
-            val flow = FlowLayout(ctx)
-            for (name in projects) {
-                val on = name == taskProject
-                flow.addView(ctx.row(Gravity.CENTER) {
-                    setPadding(ctx.dp(14), ctx.dp(8), ctx.dp(14), ctx.dp(8))
-                    background = ctx.glass(if (on) GlassKind.Active else GlassKind.Dim, 20f)
-                    add(ctx.text(name, T.Small, if (on) Glass.ON_ACTIVE else Glass.TEXT).apply { maxLines = 1 }, WRAP, WRAP)
-                    if (!running) press { taskProject = name; refresh() }
-                })
-            }
-            add(flow, MATCH, WRAP, top = 4)
-        }
+        if (projects.isNotEmpty() && taskProject !in projects) taskProject = if (current in projects) current else projects.first()
+        val desktopSessions = BuddyService.agentDesktopSessions
+        val lastSession = BuddyService.agentRunSession
+        val picked = BuddyService.agentRuns.firstOrNull { it.sessionId == taskSession && it.sessionId != lastSession && desktopSessions.none { d -> d.id == it.sessionId } }
+        val lastOffered = lastSession.isNotEmpty() && desktopSessions.none { it.id == lastSession }
+        val hasSessions = desktopSessions.isNotEmpty() || lastOffered || picked != null
+        if (hasSessions && desktopSessions.none { it.id == taskSession } && !(lastOffered && taskSession == lastSession) && picked == null) taskSession = ""
+        if (!hasSessions) taskSession = ""
+        val choices = listOf("" to t("Новая задача", "New task", "Yangi vazifa")) + (if (lastOffered) listOf(lastSession to t("Последняя задача", "Last task", "Oxirgi vazifa")) else emptyList()) + (if (picked != null) listOf(picked.sessionId to picked.prompt.take(24)) else emptyList()) + desktopSessions.map { it.id to it.title.ifEmpty { it.project } }
+        add(ctx.row {
+            if (projects.isNotEmpty()) add(dropdown(taskProject, projects.map { it to it }, !running) { taskProject = it; refresh() }, 0, WRAP, 1f, end = if (hasSessions) 8 else 0)
+            if (hasSessions) add(dropdown(choices.firstOrNull { it.first == taskSession }?.second ?: choices.first().second, choices, !running) { taskSession = it; refresh() }, 0, WRAP, 1f)
+        }, MATCH, WRAP, top = 10)
         add(ctx.row {
             if (running) {
                 add(ctx.button(t("Остановить", "Stop", "To'xtatish"), BtnStyle.Outline) {
@@ -476,7 +480,7 @@ class AgentsScreen(act: UiActivity) : Screen(act) {
                         if (ok) {
                             taskDraft = ""
                             ctx.startService(android.content.Intent(ctx, BuddyService::class.java).setAction(BuddyService.ACTION_AGENT_RUN)
-                                .putExtra("id", "t" + System.currentTimeMillis()).putExtra("prompt", text).putExtra("project", taskProject))
+                                .putExtra("id", "t" + System.currentTimeMillis()).putExtra("prompt", text).putExtra("project", taskProject).putExtra("session", taskSession))
                             content.postDelayed({ refresh() }, 300)
                         } else ctx.toast(t("Нужен экран блокировки", "Lock screen required", "Ekran qulfi kerak"))
                     }
@@ -484,12 +488,51 @@ class AgentsScreen(act: UiActivity) : Screen(act) {
             }
         }, MATCH, WRAP, top = 8)
         if (run != null) {
-            val label = when (run.second) { "running" -> t("Работает…", "Working…", "Ishlayapti…"); "done" -> t("Готово", "Done", "Tayyor")
+            val label = when (run.second) { "running", "progress" -> t("Работает…", "Working…", "Ishlayapti…"); "done" -> t("Готово", "Done", "Tayyor")
                 "stopped" -> t("Остановлено", "Stopped", "To'xtatildi"); else -> t("Ошибка", "Error", "Xato") }
             add(ctx.text(label, T.Label), MATCH, WRAP, top = 12)
             if (run.third.isNotEmpty()) add(ctx.text(run.third, T.Body).apply { setTextIsSelectable(true); maxLines = 14; ellipsize = android.text.TextUtils.TruncateAt.END
                 background = ctx.rounded(P.container, 12f); setPadding(ctx.dp(10), ctx.dp(8), ctx.dp(10), ctx.dp(8)) }, MATCH, WRAP, top = 6)
             add(ctx.text(t("Каждое действие задачи спросит разрешение на телефоне", "Each action of the task asks for permission on the phone", "Vazifaning har bir amali telefondan ruxsat so'raydi"), T.Small), MATCH, WRAP, top = 8)
+        }
+        val past = BuddyService.agentRuns
+        if (past.isNotEmpty()) {
+            add(ctx.text(t("История задач", "Task history", "Vazifalar tarixi"), T.Label), MATCH, WRAP, top = 14)
+            for (r in past) {
+                val mark = when (r.state) { "done" -> "✓"; "stopped" -> "■"; else -> "✕" }
+                add(ctx.row {
+                    setPadding(ctx.dp(10), ctx.dp(8), ctx.dp(10), ctx.dp(8))
+                    background = ctx.rounded(P.container, 12f)
+                    add(ctx.col {
+                        add(ctx.text("$mark ${r.prompt}", T.Small, Glass.TEXT).apply { maxLines = 2; ellipsize = android.text.TextUtils.TruncateAt.END }, MATCH, WRAP)
+                        if (r.project.isNotEmpty()) add(ctx.text(r.project, T.Small).apply { maxLines = 1 }, MATCH, WRAP, top = 2)
+                        if (r.text.isNotEmpty()) add(ctx.text(r.text, T.Small).apply { maxLines = 3; ellipsize = android.text.TextUtils.TruncateAt.END }, MATCH, WRAP, top = 2)
+                    }, 0, WRAP, 1f)
+                    if (!running && r.sessionId.isNotEmpty()) press {
+                        taskSession = r.sessionId
+                        if (r.project.isNotEmpty() && r.project in BuddyService.agentProjects.first) taskProject = r.project
+                        ctx.toast(t("Продолжение этой задачи выбрано", "Continuing this task", "Shu vazifa davom ettiriladi"))
+                        refresh()
+                    }
+                }, MATCH, WRAP, top = 6)
+            }
+        }
+    }
+
+    private fun dropdown(label: String, options: List<Pair<String, String>>, enabled: Boolean, onPick: (String) -> Unit): View = ctx.row(Gravity.CENTER_VERTICAL) {
+        minimumHeight = ctx.dp(48)
+        setPadding(ctx.dp(14), ctx.dp(8), ctx.dp(10), ctx.dp(8))
+        background = ctx.glass(GlassKind.Dim, 20f)
+        add(ctx.text(label, T.Small, Glass.TEXT).apply { maxLines = 1; ellipsize = android.text.TextUtils.TruncateAt.END }, 0, WRAP, 1f)
+        add(ctx.text("▾", T.Small, Glass.TEXT), WRAP, WRAP, start = 6)
+        if (enabled) {
+            val anchor = this
+            press {
+                val menu = android.widget.PopupMenu(ctx, anchor)
+                options.forEachIndexed { i, o -> menu.menu.add(0, i, i, o.second.take(60)) }
+                menu.setOnMenuItemClickListener { onPick(options[it.itemId].first); true }
+                menu.show()
+            }
         }
     }
 

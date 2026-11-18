@@ -1,0 +1,260 @@
+P|Fikr bildirish|Personally, I'd say...|Shaxsan men aytardimki...|Personally, I'd say mornings are my most productive time.
+P|Fikr bildirish|If you ask me,...|Mendan so'rasangiz,...|If you ask me, people spend too much time on their phones.
+P|Fikr bildirish|I'm pretty sure that...|Ishonchim komilki...|I'm pretty sure that most of my friends feel the same.
+P|Fikr bildirish|As far as I'm concerned,...|Menimcha (rasmiyroq)...|As far as I'm concerned, homework should be optional.
+P|Fikr bildirish|I'd go along with the idea that...|... degan fikrga qo'shilaman|I'd go along with the idea that travel broadens the mind.
+P|Fikr bildirish|I'm in two minds about it.|Ikkilanib turibman.|I'm in two minds about it, because both options have real benefits.
+P|Vaqt yutish|That's an interesting question.|Qiziq savol ekan.|That's an interesting question. I've never really thought about it.
+P|Vaqt yutish|Let me think about that for a second.|Bir soniya o'ylab olay.|Let me think about that for a second... I'd probably choose the beach.
+P|Vaqt yutish|I've never really thought about it, but...|Bu haqda hech o'ylamaganman, lekin...|I've never really thought about it, but I guess I prefer cities.
+P|Vaqt yutish|How can I put it?|Qanday desam ekan?|How can I put it? It's a kind of calm, relaxed feeling.
+P|Vaqt yutish|Off the top of my head,...|Darrov esimga kelgani...|Off the top of my head, I can name three good restaurants nearby.
+P|Misol keltirish|For instance, just last week...|Masalan, o'tgan haftaning o'zida...|For instance, just last week I cooked plov for my whole family.
+P|Misol keltirish|A good example of this is...|Bunga yaxshi misol...|A good example of this is how quickly people adopted online banking.
+P|Misol keltirish|Take my brother, for example.|Akamni olaylik, masalan.|Take my brother, for example: he reads every single evening.
+P|Misol keltirish|What I mean is...|Demoqchi bo'lganim...|What I mean is that I enjoy it, but only in small doses.
+P|O'tmish va hozir|When I was a kid, I used to...|Bolaligimda ... qilardim|When I was a kid, I used to play football in the street every day.
+P|O'tmish va hozir|These days, though,...|Hozir esa...|These days, though, I hardly have any free time.
+P|O'tmish va hozir|Things have changed a lot since...|... dan beri ko'p narsa o'zgardi|Things have changed a lot since my parents were young.
+P|O'tmish va hozir|I've been into ... for years.|Yillardan beri ... ga qiziqaman|I've been into photography for about five years.
+P|O'tmish va hozir|I've recently got into...|Yaqinda ... ga qiziqib qoldim|I've recently got into running in the park before work.
+P|Kelajak va taxmin|I'd love to... one day.|Bir kun ... ni juda xohlardim|I'd love to visit Japan one day.
+P|Kelajak va taxmin|I'm hoping to...|... qilishni umid qilaman|I'm hoping to start a master's degree next year.
+P|Kelajak va taxmin|It's hard to say, but I imagine...|Aytish qiyin, lekin tasavvur qilamanki...|It's hard to say, but I imagine most jobs will be remote.
+P|Kelajak va taxmin|Chances are that...|Ehtimol...|Chances are that cash will disappear completely.
+P|Kelajak va taxmin|I'd probably...|Ehtimol men ... qilardim|If I had more money, I'd probably travel more.
+P|Qisman rozilik|That's true to some extent, but...|Ma'lum darajada to'g'ri, lekin...|That's true to some extent, but it depends on the person.
+P|Qisman rozilik|I see what you mean, however...|Nimani nazarda tutayotganingizni tushunaman, ammo...|I see what you mean, however, not everyone can afford it.
+P|Qisman rozilik|It depends on...|Bu ... ga bog'liq|It depends on the situation and on the people involved.
+P|Qisman rozilik|On the one hand..., on the other hand...|Bir tomondan..., ikkinchi tomondan...|On the one hand it saves time, on the other hand it's expensive.
+P|His-tuyg'u|I was over the moon.|Juda xursand bo'ldim.|When I passed the exam, I was over the moon.
+P|His-tuyg'u|It really made my day.|Kunimni yaxshi qilib yubordi.|A stranger helped me with my bags, and it really made my day.
+P|His-tuyg'u|I was a bit nervous at first.|Avvaliga biroz hayajonlandim.|I was a bit nervous at first, but then I relaxed.
+P|His-tuyg'u|It drives me crazy.|Jahlimni chiqaradi.|Slow internet really drives me crazy.
+P|His-tuyg'u|I can't stand...|... ni yomon ko'raman|I can't stand waiting in long queues.
+P|His-tuyg'u|I'm a huge fan of...|... ning katta muxlisiman|I'm a huge fan of old black-and-white films.
+P|Part 2 hikoya|I'm going to talk about...|... haqida gapirib beraman|I'm going to talk about a trip I took to Samarkand.
+P|Part 2 hikoya|This happened about two years ago.|Bu taxminan ikki yil oldin bo'lgan.|This happened about two years ago, during my summer holidays.
+P|Part 2 hikoya|The first thing I remember is...|Birinchi eslaganim...|The first thing I remember is the smell of fresh bread.
+P|Part 2 hikoya|What made it special was...|Uni o'ziga xos qilgan narsa...|What made it special was that the whole family was there.
+P|Part 2 hikoya|Looking back,...|Orqaga qarab,...|Looking back, it was one of the best decisions I've made.
+P|Part 2 hikoya|So, that's why it means so much to me.|Shuning uchun u men uchun juda qadrli.|So, that's why this watch means so much to me.
+P|Part 3 umumlashtirish|Generally speaking,...|Umuman olganda,...|Generally speaking, young people adapt to change faster.
+P|Part 3 umumlashtirish|In my country, people tend to...|Mamlakatimda odamlar ... ga moyil|In my country, people tend to live with their parents until marriage.
+P|Part 3 umumlashtirish|There are a couple of reasons for this.|Buning bir nechta sababi bor.|There are a couple of reasons for this. Firstly, housing is expensive.
+P|Part 3 umumlashtirish|The main reason is probably...|Asosiy sababi, ehtimol...|The main reason is probably the cost of living.
+P|Part 3 umumlashtirish|This is mainly because...|Bu asosan ... sababli|This is mainly because people have less free time than before.
+P|Part 3 umumlashtirish|In the long run,...|Uzoq muddatda,...|In the long run, investing in education pays off.
+P|So'z esdan chiqqanda|It's a kind of...|Bu bir turdagi...|It's a kind of soup with noodles and meat.
+P|So'z esdan chiqqanda|I can't think of the word, but it's what you use to...|So'zi esimga kelmayapti, lekin bu ... uchun ishlatiladi|I can't think of the word, but it's what you use to open tins.
+P|So'z esdan chiqqanda|Something like...|... ga o'xshash narsa|It was something like a small festival in the street.
+P|So'z esdan chiqqanda|Or rather,...|To'g'rirog'i,...|I was annoyed, or rather, disappointed.
+P|Javobni kengaytirish|The thing is,...|Gap shundaki,...|The thing is, I don't have enough time for sport.
+P|Javobni kengaytirish|On top of that,...|Bunga qo'shimcha...|On top of that, the tickets were really cheap.
+P|Javobni kengaytirish|Not to mention...|... ni aytmasa ham bo'ladi|The city is beautiful, not to mention the amazing food.
+P|Javobni kengaytirish|That said,...|Shunday bo'lsa-da,...|I love my job. That said, it can be stressful sometimes.
+W|hometown|bustling|gavjum, qaynoq|My hometown is a bustling city with markets on every corner.
+W|hometown|laid-back|xotirjam, shoshilmaydigan|The pace of life there is pretty laid-back.
+W|hometown|a stone's throw from|... ga juda yaqin|My house is a stone's throw from the main square.
+W|hometown|the outskirts|chekka hudud|I live on the outskirts, so it's quiet but far from the centre.
+W|hometown|historic landmarks|tarixiy obidalar|The city is famous for its historic landmarks.
+W|hometown|vibrant nightlife|qaynoq tungi hayot|Young people love it because of its vibrant nightlife.
+W|hometown|traffic congestion|tirbandlik|The worst thing is the traffic congestion during rush hour.
+W|hometown|well-connected|transporti yaxshi bog'langan|It's well-connected, so you can get anywhere by metro.
+W|hometown|run-down|eskirib qolgan|Some old districts are a bit run-down now.
+W|hometown|grew up in|... da o'sganman|I grew up in a small town near the mountains.
+W|hometown|close-knit community|ahil jamoa|It's a close-knit community where everyone knows each other.
+W|hometown|tourist trap|turistlarni aldaydigan joy|The main street has become a bit of a tourist trap.
+W|home|cosy|shinam|My room is small but really cosy.
+W|home|spacious|keng|We moved to a more spacious flat last year.
+W|home|a block of flats|ko'p qavatli uy|I live in a block of flats on the ninth floor.
+W|home|natural light|tabiiy yorug'lik|What I like most is the natural light in the living room.
+W|home|move out|ko'chib chiqmoq|I'm planning to move out of my parents' place next year.
+W|home|share a flat|kvartirani bo'lishmoq|At university I shared a flat with two friends.
+W|home|neighbourhood|mahalla|It's a friendly neighbourhood with lots of children.
+W|home|clutter|tartibsizlik, keraksiz buyumlar|I try to keep my desk free of clutter.
+W|home|homey|uydagidek iliq|The café has a homey atmosphere.
+W|home|feel at home|o'zini uydagidek his qilmoq|I instantly felt at home there.
+W|work-study|a nine-to-five job|soat 9 dan 5 gacha ish|I don't think I could do a nine-to-five job forever.
+W|work-study|work from home|uydan ishlamoq|I work from home twice a week.
+W|work-study|deadline|muddat|I always have a lot of deadlines at the end of the month.
+W|work-study|be snowed under|ishga ko'milib qolmoq|I'm snowed under with assignments right now.
+W|work-study|job satisfaction|ishdan qoniqish|For me, job satisfaction matters more than salary.
+W|work-study|colleagues|hamkasblar|My colleagues are really supportive.
+W|work-study|major in|... yo'nalishida o'qimoq|I'm majoring in computer science.
+W|work-study|cram for an exam|imtihonga shoshib tayyorlanmoq|I always end up cramming for exams the night before.
+W|work-study|hands-on experience|amaliy tajriba|The internship gave me real hands-on experience.
+W|work-study|career path|kasb yo'li|I haven't decided on my career path yet.
+W|work-study|well-paid|yaxshi maoshli|It's a well-paid job, but the hours are long.
+W|work-study|work-life balance|ish va hayot muvozanati|Good work-life balance is really important to me.
+W|free time|unwind|dam olib bo'shashmoq|I usually unwind by listening to music.
+W|free time|be into|... ga qiziqmoq|I'm really into board games at the moment.
+W|free time|take up a hobby|yangi hobbi boshlamoq|I took up painting during the lockdown.
+W|free time|a couch potato|divandan turmaydigan dangasa|At weekends I turn into a bit of a couch potato.
+W|free time|hang out with|... bilan vaqt o'tkazmoq|I usually hang out with my friends on Fridays.
+W|free time|binge-watch|seriallarni ketma-ket ko'rmoq|I binge-watched a whole series last weekend.
+W|free time|recharge my batteries|kuch to'plamoq|A walk in the park helps me recharge my batteries.
+W|free time|keep fit|sog'lom va chaqqon yurmoq|I go swimming to keep fit.
+W|free time|time flies|vaqt tez o'tadi|When I'm reading, time just flies.
+W|free time|pastime|bo'sh vaqt mashg'uloti|Chess is my favourite pastime.
+W|family-friends|get on well with|... bilan yaxshi chiqishmoq|I get on really well with my younger sister.
+W|family-friends|take after|... ga o'xshamoq (oiladan)|I take after my father; we're both very calm.
+W|family-friends|look up to|... ni o'ziga ibrat qilmoq|I've always looked up to my grandmother.
+W|family-friends|a close friend|yaqin do'st|My closest friend lives in the same building.
+W|family-friends|keep in touch|aloqani uzmaslik|We keep in touch through video calls.
+W|family-friends|extended family|katta oila (qarindoshlar)|In Uzbekistan we often live close to our extended family.
+W|family-friends|bring up|tarbiyalamoq|I was brought up by my grandparents.
+W|family-friends|have a lot in common|umumiy jihatlari ko'p bo'lmoq|We have a lot in common, especially our taste in music.
+W|family-friends|fall out with|... bilan urishib qolmoq|I fell out with a friend once, but we made up quickly.
+W|family-friends|someone I can rely on|tayanadigan odam|My brother is someone I can rely on.
+W|family-friends|outgoing|dilkash, kirishimli|My best friend is really outgoing.
+W|family-friends|down-to-earth|oddiy, kamtar|She's very down-to-earth despite her success.
+W|travel|off the beaten track|odamlar kam boradigan joy|I prefer places that are off the beaten track.
+W|travel|breathtaking views|hayratlanarli manzaralar|The mountains had breathtaking views.
+W|travel|go sightseeing|diqqatga sazovor joylarni ko'rmoq|We went sightseeing in the old town.
+W|travel|a package holiday|tayyor tur paketi|I don't like package holidays; I prefer to plan myself.
+W|travel|travel light|yengil safarga chiqmoq|I always travel light with just a backpack.
+W|travel|a getaway|qisqa dam olish safari|We had a weekend getaway in Chimgan.
+W|travel|jet lag|vaqt farqidan charchoq|I had terrible jet lag after flying to New York.
+W|travel|local cuisine|mahalliy taomlar|Trying the local cuisine is the best part of travelling.
+W|travel|itinerary|safar rejasi|Our itinerary was packed with museums.
+W|travel|get away from it all|hammasidan uzoqlashmoq|I go to the countryside to get away from it all.
+W|travel|hit the road|yo'lga chiqmoq|We hit the road early in the morning.
+W|travel|memorable|esda qolarli|It was the most memorable trip of my life.
+W|food|mouth-watering|og'iz suvini keltiradigan|My mum makes mouth-watering samsa.
+W|food|a home-cooked meal|uyda pishirilgan ovqat|Nothing beats a home-cooked meal.
+W|food|grab a bite|tezda tamaddi qilmoq|We grabbed a bite before the film.
+W|food|a balanced diet|muvozanatli ovqatlanish|I try to stick to a balanced diet.
+W|food|junk food|zararli tez ovqat|I eat less junk food than I used to.
+W|food|be starving|juda och bo'lmoq|After the gym I'm always starving.
+W|food|a fussy eater|ovqat tanlaydigan odam|As a child I was a really fussy eater.
+W|food|eat out|tashqarida ovqatlanmoq|We eat out about once a week.
+W|food|signature dish|o'ziga xos taom|Plov is the signature dish of my region.
+W|food|healthy alternative|sog'lomroq muqobil|I switched to fruit as a healthy alternative to sweets.
+W|technology|tech-savvy|texnologiyani yaxshi biladigan|My younger brother is much more tech-savvy than me.
+W|technology|be glued to the screen|ekrandan ko'z uzmaslik|Kids today are glued to their screens.
+W|technology|keep up with|... dan orqada qolmaslik|It's hard to keep up with all the new apps.
+W|technology|can't live without|... siz yashay olmaslik|I can't live without my phone, honestly.
+W|technology|a must-have|albatta kerak narsa|Wireless headphones are a must-have for me.
+W|technology|go online|internetga kirmoq|I go online mainly to watch tutorials.
+W|technology|screen time|ekran vaqti|I'm trying to reduce my screen time.
+W|technology|user-friendly|foydalanishga qulay|The app is really user-friendly.
+W|technology|outdated|eskirgan|My laptop is a bit outdated now.
+W|technology|stay connected|aloqada bo'lmoq|Social media helps me stay connected with old friends.
+W|shopping|shop around|narxlarni solishtirib xarid qilmoq|I always shop around before buying electronics.
+W|shopping|a bargain|arzon va foydali xarid|I got these shoes for half price, a real bargain.
+W|shopping|window-shopping|faqat ko'rib yurish|I love window-shopping, but I rarely buy anything.
+W|shopping|impulse buy|o'ylamay qilingan xarid|This jacket was a total impulse buy.
+W|shopping|cost a fortune|juda qimmat turmoq|Good headphones can cost a fortune.
+W|shopping|on a tight budget|cheklangan pul bilan|As a student I'm on a tight budget.
+W|shopping|brand-name|brend|I don't care much about brand-name clothes.
+W|shopping|try on|kiyib ko'rmoq|I always try on clothes before buying them.
+W|shopping|good value for money|narxiga arziydigan|The market is good value for money.
+W|shopping|shopaholic|xaridga o'ch odam|My sister is a real shopaholic.
+W|weather|scorching hot|jazirama issiq|Summers in Tashkent are scorching hot.
+W|weather|freezing cold|qahraton sovuq|It gets freezing cold in January.
+W|weather|a heatwave|issiq to'lqini|We had a heatwave last July.
+W|weather|mild|mo''tadil|Spring is mild and pleasant.
+W|weather|pouring with rain|jala quyib yog'moq|It was pouring with rain all day.
+W|weather|under the weather|biroz betob|I was a bit under the weather yesterday.
+W|weather|a sunny spell|qisqa quyoshli payt|There were a few sunny spells in the afternoon.
+W|weather|my favourite season|sevimli faslim|Autumn is my favourite season because of the colours.
+W|weather|humid|nam, dim|The coast is very humid in summer.
+W|weather|chilly|salqin|Mornings are a bit chilly in October.
+W|sport-health|work out|mashq qilmoq|I work out three times a week.
+W|sport-health|get in shape|qomatini tiklamoq|I'm trying to get in shape before summer.
+W|sport-health|out of breath|nafasi qisilgan|I was completely out of breath after the stairs.
+W|sport-health|a team player|jamoada ishlay oladigan|Football taught me to be a team player.
+W|sport-health|stay active|harakatda bo'lmoq|I walk to work to stay active.
+W|sport-health|burn off energy|energiya sarflamoq|Kids need sport to burn off energy.
+W|sport-health|a healthy lifestyle|sog'lom turmush tarzi|A healthy lifestyle starts with good sleep.
+W|sport-health|be fit as a fiddle|sog'-salomat bo'lmoq|My grandfather is ninety and fit as a fiddle.
+W|sport-health|catch a cold|shamollamoq|I catch a cold every winter.
+W|sport-health|get enough sleep|yetarli uxlamoq|I rarely get enough sleep during exams.
+W|arts-media|catchy|tez yodda qoladigan|The song has a really catchy chorus.
+W|arts-media|a blockbuster|mashhur katta film|I usually watch blockbusters at the cinema.
+W|arts-media|a page-turner|qo'yib bo'lmaydigan kitob|The novel was a real page-turner.
+W|arts-media|based on a true story|haqiqiy voqea asosida|My favourite film is based on a true story.
+W|arts-media|plot|syujet|The plot was a bit predictable.
+W|arts-media|go viral|tez tarqalmoq|His video went viral overnight.
+W|arts-media|background music|fon musiqasi|I study with background music on.
+W|arts-media|live performance|jonli ijro|Nothing compares to a live performance.
+W|arts-media|thought-provoking|o'ylantiradigan|It was a thought-provoking documentary.
+W|arts-media|be moved by|... dan ta'sirlanmoq|I was deeply moved by the ending.
+W|people|easy-going|og'ir-bosiq, oson muloqotli|My teacher was very easy-going.
+W|people|hard-working|mehnatkash|My mother is the most hard-working person I know.
+W|people|in his/her mid-twenties|yigirma yoshlar o'rtasida|She's in her mid-twenties.
+W|people|has a great sense of humour|hazilkash|He has a great sense of humour.
+W|people|good-natured|xushfe'l|He's good-natured and never gets angry.
+W|people|a role model|ibrat namunasi|My uncle has always been a role model for me.
+W|people|stand out|ajralib turmoq|She stands out because of her confidence.
+W|people|open-minded|keng fikrli|Travelling made me more open-minded.
+W|people|reliable|ishonchli|He's reliable; he always keeps his promises.
+W|people|strong-willed|irodali|She's strong-willed and never gives up.
+Q|hometown|Where is your hometown?
+Q|hometown|What do you like most about your hometown?
+Q|hometown|Has your hometown changed much since you were a child?
+Q|hometown|Would you like to live there in the future?
+Q|home|Do you live in a house or a flat?
+Q|home|Which room do you like most in your home?
+Q|home|What would you change about your home?
+Q|work-study|Do you work or are you a student?
+Q|work-study|Why did you choose that subject or job?
+Q|work-study|What do you find most difficult about it?
+Q|free time|What do you usually do in your free time?
+Q|free time|Have your hobbies changed since you were a child?
+Q|free time|Is there a new hobby you'd like to try?
+Q|family-friends|Do you spend a lot of time with your family?
+Q|family-friends|What do you usually do with your friends?
+Q|family-friends|Who are you closest to in your family?
+Q|travel|Do you like travelling?
+Q|travel|Where did you go on your last holiday?
+Q|travel|Do you prefer travelling alone or with others?
+Q|food|What is your favourite food?
+Q|food|Do you prefer eating at home or eating out?
+Q|food|Can you cook?
+Q|technology|How often do you use your phone?
+Q|technology|What apps do you use the most?
+Q|technology|Could you live without the internet for a week?
+Q|shopping|Do you enjoy shopping?
+Q|shopping|Do you prefer shopping online or in shops?
+Q|weather|What's the weather like in your country?
+Q|weather|What's your favourite season and why?
+Q|sport-health|Do you do any sport?
+Q|sport-health|What do you do to stay healthy?
+Q|arts-media|What kind of music do you listen to?
+Q|arts-media|When did you last watch a film at the cinema?
+Q|people|Who is the most interesting person you know?
+C|Describe a place you visited that you really liked.|where it was;when you went there;what you did there;and explain why you liked it|travel
+C|Describe a person who has influenced you.|who this person is;how you know them;what they have done;and explain how they influenced you|people
+C|Describe a skill you would like to learn.|what the skill is;why you want to learn it;how you would learn it;and explain how it would help you|work-study
+C|Describe a memorable meal you had.|where you had it;who you were with;what you ate;and explain why it was memorable|food
+C|Describe a piece of technology you find useful.|what it is;when you got it;how often you use it;and explain why it is useful|technology
+C|Describe a time you helped someone.|who you helped;what the problem was;how you helped;and explain how you felt|family-friends
+C|Describe a book or film that made you think.|what it was;when you read or watched it;what it was about;and explain why it made you think|arts-media
+C|Describe a happy event from your childhood.|what happened;when and where it happened;who was there;and explain why it made you happy|family-friends
+C|Describe a hobby you enjoy.|what it is;when you started;how often you do it;and explain why you enjoy it|free time
+C|Describe your favourite room or place at home.|where it is;what it looks like;what you do there;and explain why you like it|home
+C|Describe a time you were very busy.|when it was;what you had to do;how you managed;and explain how you felt|work-study
+C|Describe something you bought recently that you are happy with.|what it is;where you bought it;how much it cost;and explain why you are happy with it|shopping
+C|Describe a time when the weather affected your plans.|when it was;what you had planned;what the weather was like;and explain what you did instead|weather
+C|Describe a sport or exercise you would like to try.|what it is;where you would do it;who you would do it with;and explain why you want to try it|sport-health
+C|Describe a city you would like to visit.|which city it is;how you know about it;what you would do there;and explain why you want to go|travel
+C|Describe a friend you have known for a long time.|how you met;how long you have known them;what you do together;and explain why your friendship lasts|family-friends
+C|Describe a goal you hope to achieve.|what the goal is;when you set it;what you are doing to reach it;and explain why it matters to you|work-study
+C|Describe a festival or celebration in your country.|what it is;when it takes place;what people do;and explain why it is important|hometown
+T|travel|Why do some people prefer to travel abroad rather than in their own country?
+T|travel|How has tourism changed in the last twenty years?
+T|people|What qualities make someone a good role model?
+T|work-study|Should schools teach practical skills like cooking and budgeting?
+T|work-study|Is it better to have a well-paid job or a job you enjoy?
+T|food|Why do young people eat more fast food than older people?
+T|technology|Has technology made people more or less sociable?
+T|technology|Should children's screen time be limited by parents?
+T|family-friends|Is it easier to make friends now than in the past?
+T|family-friends|How have family roles changed in your country?
+T|arts-media|Should governments fund museums and theatres?
+T|shopping|Why do people buy things they don't need?
+T|sport-health|Whose responsibility is public health: individuals or the government?
+T|hometown|What are the advantages and disadvantages of living in a big city?
+T|weather|How might climate change affect daily life in the future?

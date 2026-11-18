@@ -61,7 +61,7 @@ object Safety {
     private val reAskDelete = Regex("удал|убери|очист|delete|remove|clear|o'?chir|o.chir|tozala", RegexOption.IGNORE_CASE)
     private val reAskBright = Regex("яркост|brightness|yorqinlik|yorug", RegexOption.IGNORE_CASE)
     private val reAskDnd = Regex("беспоко|тишин|dnd|disturb|silent|bezovta|jim", RegexOption.IGNORE_CASE)
-    private val reAskReject = Regex("rad|отклон|сброс|сброс|reject|decline|hang|band|занят|busy|ko.?tarma|не бер", RegexOption.IGNORE_CASE)
+    private val reAskReject = Regex("bekor|cancel|tashla|uzib|отмен|заверш|end|rad|отклон|сброс|сброс|reject|decline|hang|band|занят|busy|ko.?tarma|не бер", RegexOption.IGNORE_CASE)
     private val reAskAuto = Regex("авто|ответ|занят|за рул|auto|reply|busy|driv|meeting|javob|band\\b|rul|haydov|majlis", RegexOption.IGNORE_CASE)
     private val reAskTimeout = Regex("экран|screen|display|timeout|таймаут|ekran|o'?chib|засып|sleep", RegexOption.IGNORE_CASE)
     private val reAskShare = Regex("подел|отправ|перешли|share|send|forward|ulash|yubor", RegexOption.IGNORE_CASE)

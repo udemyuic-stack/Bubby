@@ -56,7 +56,12 @@ class Actions(private val ctx: Context) {
     }
 
     private fun asyncError(msg: String) {
-        main.post { try { onAsyncError?.invoke(msg) } catch (_: Exception) { } }
+        main.post {
+            val h = onAsyncError
+            try {
+                if (h != null) h(msg) else android.widget.Toast.makeText(ctx, msg, android.widget.Toast.LENGTH_LONG).show()
+            } catch (e: Exception) { android.util.Log.w("Actions", "asyncError", e) }
+        }
     }
 
     fun run(a: JSONObject): String? {
@@ -104,7 +109,8 @@ class Actions(private val ctx: Context) {
                 view("geo:0,0?q=" + enc(q))
             }
             "call" -> call(s(a, "to"))
-            "answer_call" -> answerCall()
+            "word_save" -> wordSave(a)
+            "answer_call" -> answerCall(s(a, "say"))
             "end_call" -> endCall()
             "speaker" -> {
                 val am = ctx.getSystemService(Context.AUDIO_SERVICE) as AudioManager
@@ -202,7 +208,19 @@ class Actions(private val ctx: Context) {
                 else { prefs.edit().putString("species", n).apply(); null }
             }
             // Bubby lives in the status bar next to the clock; its place and size are fixed
-            "size", "move" -> tr("Моё место у часов, его не меняют", "My place is next to the clock and it does not change", "Mening joyim soat yonida, u o'zgarmaydi")
+            "size" -> {
+                val cur = prefs.getFloat("size", 1f)
+                val v = s(a, "value").lowercase()
+                val n = when (v) {
+                    "bigger", "larger", "big" -> cur * 1.25f
+                    "smaller", "small" -> cur / 1.25f
+                    "normal", "default", "reset" -> 1f
+                    else -> v.toFloatOrNull() ?: a.optDouble("value", Double.NaN).toFloat()
+                }
+                if (n.isNaN()) tr("Не понял размер", "Did not understand the size", "O'lchamni tushunmadim")
+                else { prefs.edit().putFloat("size", n.coerceIn(0.15f, 6f)).apply(); null }
+            }
+            "move" -> tr("Моё место у часов, его не меняют", "My place is next to the clock and it does not change", "Mening joyim soat yonida, u o'zgarmaydi")
             "quiet" -> {
                 prefs.edit().putBoolean("quiet", a.optBoolean("on", true)).apply()
                 null
@@ -323,7 +341,8 @@ class Actions(private val ctx: Context) {
             val html = buf.toString("UTF-8")
             Regex("\"videoRenderer\":\\{\"videoId\":\"([A-Za-z0-9_-]{11})\"").find(html)?.groupValues?.get(1)
                 ?: Regex("\"videoId\":\"([A-Za-z0-9_-]{11})\"").find(html)?.groupValues?.get(1)
-        } catch (_: Exception) {
+        } catch (e: Exception) {
+            android.util.Log.w("Actions", "resolveVideoId", e)
             null
         } finally {
             try { conn?.disconnect() } catch (_: Exception) { }
@@ -332,8 +351,8 @@ class Actions(private val ctx: Context) {
 
     private fun lookup(q: String, then: (String?) -> Unit) {
         Thread {
-            val id = try { resolveVideoId(q) } catch (_: Throwable) { null }
-            main.post { try { then(id) } catch (_: Exception) { } }
+            val id = try { resolveVideoId(q) } catch (e: Throwable) { android.util.Log.w("Actions", "lookup", e); null }
+            main.post { try { then(id) } catch (e: Exception) { android.util.Log.w("Actions", "lookup callback", e); asyncError(tr("Не получилось выполнить команду", "Could not run the command", "Buyruqni bajarib bo'lmadi")) } }
         }.start()
     }
 
@@ -389,7 +408,8 @@ class Actions(private val ctx: Context) {
                         start(Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=$id")))
                     }
                 }
-            } catch (_: Exception) {
+            } catch (e: Exception) {
+                android.util.Log.w("Actions", "music", e)
                 asyncError(tr("Не получилось включить музыку", "Could not play the music", "Musiqani yoqib bo'lmadi"))
             }
         }
@@ -482,6 +502,15 @@ class Actions(private val ctx: Context) {
         val msg = text.trim().take(300).ifEmpty { AutoReply.defaultText(ctx, "busy") }
         main.post { sendNow("sms", Contacts.normalizeNumber(number), msg) }
         return null
+    }
+
+    fun sendCallSms(number: String, text: String): Boolean {
+        if (!granted(Manifest.permission.SEND_SMS)) {
+            asyncError(tr("Нет разрешения отправлять SMS", "No permission to send SMS", "SMS yuborishga ruxsat yo'q"))
+            return false
+        }
+        main.post { sendNow("sms", Contacts.normalizeNumber(number), text) }
+        return true
     }
 
     /** Opens a ready email draft in the mail app; the user reads it and taps Send (Android cannot send email silently). */
@@ -788,11 +817,24 @@ class Actions(private val ctx: Context) {
         return null
     }
 
+    private fun wordSave(a: JSONObject): String? {
+        val word = s(a, "en")
+        if (word.isEmpty()) return tr("Пустое слово", "Empty word", "So'z bo'sh")
+        val pair = com.example.buddy.ui.vocab.VocabDb.ensurePair(ctx)
+        return when (com.example.buddy.ui.vocab.VocabDb.addEntry(ctx, pair, word)) {
+            is com.example.buddy.ui.vocab.AddResult.Added -> { com.example.buddy.ui.vocab.EnrichJob.schedule(ctx); null }
+            is com.example.buddy.ui.vocab.AddResult.Duplicate -> tr("Это слово уже в списке", "That word is already in your list", "Bu so'z ro'yxatda bor")
+            is com.example.buddy.ui.vocab.AddResult.TooLong -> tr("Слишком длинное слово", "That is too long", "Juda uzun")
+            else -> tr("Не получилось сохранить слово", "Could not save the word", "So'zni saqlab bo'lmadi")
+        }
+    }
+
     private fun telecom() = ctx.getSystemService(Context.TELECOM_SERVICE) as TelecomManager
 
     @Suppress("MissingPermission")
-    private fun answerCall(): String? {
+    private fun answerCall(say: String = ""): String? {
         if (!granted(Manifest.permission.ANSWER_PHONE_CALLS)) return tr("Нет разрешения отвечать на звонки", "No permission to answer calls", "Qo'ng'iroqqa javob berishga ruxsat yo'q")
+        CallWatcher.pendingSay = say.trim().take(300).ifEmpty { null }
         telecom().acceptRingingCall()
         return null
     }

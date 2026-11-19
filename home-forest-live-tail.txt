@@ -1,0 +1,150 @@
+11-19 10:35:34.116  1627  2257 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-19 10:35:34.116  1627  2257 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-19 10:35:34.116  1627  2257 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-19 10:35:34.116  1627  2257 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-19 10:35:34.116  1627  2257 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-19 10:35:34.116  1627  2257 I A       : setNavBarVisible: GestureNavBarVisible{navbarVisible=true}
+11-19 10:35:34.119  1627  2265 I A       : on opa visibility changed false
+11-19 10:35:34.119  1627  2265 I A       : on opa visibility changed false
+11-19 10:35:34.120  1627  2257 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-19 10:35:34.120  1627  2257 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-19 10:35:34.120  1627  2257 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-19 10:35:34.120  1627  2257 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-19 10:35:34.120  1627  2257 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-19 10:35:34.120  1627  2257 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-19 10:35:34.120  1627  2257 I A       : onDisabled. Registered: false
+11-19 10:35:34.123  1627  2265 I A       : State changed: IDLE => IDLE by NGA_STATE_CHANGED and N/A with Optional.empty
+11-19 10:35:34.123  1627  2257 I A       : Initialize
+11-19 10:35:34.123  1627  2265 I A       : Recognizer choice: (recognizer_type: 1, recognizer_mode: 1, choice_reason: 4)
+11-19 10:35:34.124  1627  2257 I A       : stopListening(NGA_PAUSED_UNKNOWN_REASON, NGA_CREATE), idleOverride=NOT_LISTENING
+11-19 10:35:34.125  1627  2257 I NgaEntryPointEventSendr: setupConnection
+11-19 10:35:34.128  1627  2265 I A       : onActiveStateChangeEvent: IDLE => IDLE
+11-19 10:35:34.130  1731  1731 I A       : Creating pss binder().
+11-19 10:35:34.134  1627  2257 I NgaEntryPointEventSendr: State changed: Disconnected => Connecting
+11-19 10:35:34.134  1627  2257 I NgaEntryPointEventSendr: onServiceConnected
+11-19 10:35:34.135  1731  1832 I A       : Calling beginBinderSession().
+11-19 10:35:34.136  1627  2265 W A       : Missing generator mapping for generator GENERATOR_CONTEXTUAL_SUGGESTIONS
+11-19 10:35:34.137  1627  2265 W A       : Missing generator mapping for generator GENERATOR_FRE_SUGGESTIONS_ON_TIMEOUT
+11-19 10:35:34.137  1731  1832 I A       : beginBinderSession(): calling binder
+11-19 10:35:34.137  1627  2257 I NgaEntryPointEventSendr: State changed: Connecting => Ready
+11-19 10:35:34.138  1627  2257 W A       : Routing took 0 ms
+11-19 10:35:34.144   524   553 W ActivityManager: Unable to start service Intent { cmp=com.google.android.apps.tachyon/.clientapi.ClientApiService } U=0: not found
+11-19 10:35:34.144  5060  5145 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService finished executing. cause:9 result: 1 elapsed_millis: 54 uptime_millis: 54 exec_start_elapsed_seconds: 88
+11-19 10:35:34.146  1627  2265 W A       : Missing generator mapping for generator GENERATOR_FRE_SUGGESTIONS_ON_INVOCATION
+11-19 10:35:34.147  1627  2265 I A       : #onActiveStateChangeEvent, newState: IDLE, previousState: IDLE.
+11-19 10:35:34.151  1731  2571 W A       : UiCallbackStub-onGenericEvent[ServiceEvent = 241] task was not run. Callback from Service received after client was disposed.
+11-19 10:35:34.152  1731  2571 W A       : UiCallbackStub-onGenericEvent[ServiceEvent = 241] task was not run. Callback from Service received after client was disposed.
+11-19 10:35:34.153  1731  2571 I PBSessionCacheImpl: Deleted sessionId[7614813595195770] from persistence.
+11-19 10:35:34.154  1731  2571 W A       : UiCallbackStub-onGenericEvent[ServiceEvent = 60] task was not run. Callback from Service received after client was disposed.
+11-19 10:35:34.154  1627  2257 I NgaEntryPointEventSendr: State changed: Ready => Disconnected (onOpaDisconnected)
+11-19 10:35:34.154  1627  2257 I A       : Successfully initialized all components
+11-19 10:35:34.156  1731  2571 W SearchServiceCore: Abort, client detached.
+11-19 10:35:34.159   524   553 D CompatibilityChangeReporter: Compat change id reported: 197654537; UID 10192; state: ENABLED
+11-19 10:35:34.469  5637  5659 D EGL_emulation: app_time_stats: avg=14.04ms min=1.60ms max=34.34ms count=49
+11-19 10:35:35.002  5752  5752 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+11-19 10:35:35.002  5752  5752 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-19 10:35:35.007   404  1089 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=5752
+11-19 10:35:35.007   404  1089 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (205 us)
+11-19 10:35:35.021   135   135 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-19 10:35:35.021  5752  5753 I Gralloc4: mapper 4.x is not supported
+11-19 10:35:35.217     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+11-19 10:35:35.491  5637  5637 I com.example.buddy: Perf: native scene 30 fps
+11-19 10:35:35.503  5637  5659 D EGL_emulation: app_time_stats: avg=33.32ms min=26.10ms max=43.21ms count=31
+11-19 10:35:35.666   524   628 D ActivityManager: freezing 5307 com.google.android.gms.ui
+11-19 10:35:35.845  1841  1841 V ContactsProvider: Scheduled notifyChange started.
+11-19 10:35:35.846  1029  1029 D BluetoothPbapService:  onChange on contact uri 
+11-19 10:35:35.853  1029  5754 D BluetoothPbapUtils: primaryVersionCounter = 0, secondaryVersionCounter=0
+11-19 10:35:35.865  5060  5091 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.icing.proxy.IcingInternalCorporaUpdateService started execution. cause:9 exec_start_elapsed_seconds: 90 [CONTEXT service_id=218 ]
+11-19 10:35:35.867  5060  5091 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.icing.proxy.IcingInternalCorporaUpdateService finished executing. cause:9 result: 1 elapsed_millis: 9 uptime_millis: 9 exec_start_el
+11-19 10:35:36.535  5637  5659 D EGL_emulation: app_time_stats: avg=33.29ms min=31.27ms max=36.50ms count=31
+11-19 10:35:36.853   524  3406 W JobScheduler: Job didn't exist in JobStore: 2cde3a3 #u0a155/7 com.google.android.contacts/com.google.android.apps.contacts.shortcut.ShortcutJobService
+11-19 10:35:37.073  5123  5123 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.ocr.service.internal.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsInternalApiService }
+11-19 10:35:37.215  5757  5757 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+11-19 10:35:37.215  5757  5757 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-19 10:35:37.220   135   135 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-19 10:35:37.220  5757  5758 I Gralloc4: mapper 4.x is not supported
+11-19 10:35:37.417     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+11-19 10:35:37.569  5637  5659 D EGL_emulation: app_time_stats: avg=29.03ms min=1.94ms max=37.84ms count=34
+11-19 10:35:37.614  5060  5060 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.auth.account.data.service.START pkg=com.google.android.gms }
+11-19 10:35:37.851   524  1689 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+11-19 10:35:37.851   524  1689 D PackageManager: Clear ephemeral installer activity
+11-19 10:35:37.855   524  3406 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+11-19 10:35:37.855   524  3406 D PackageManager: Clear ephemeral installer activity
+11-19 10:35:38.570  5637  5659 D EGL_emulation: app_time_stats: avg=33.34ms min=29.97ms max=36.78ms count=30
+11-19 10:35:38.636  5060  5060 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.nearby.exposurenotification.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiServiceNoInstantApps }
+11-19 10:35:38.816   524   628 D ActivityManager: freezing 2765 com.google.android.tts
+11-19 10:35:38.859  1053  1053 D CarrierSvcBindHelper: onPackageModified: com.google.android.contacts
+11-19 10:35:38.866   524   639 I InputReader: Reconfiguring input devices, changes=KEYBOARD_LAYOUTS
+11-19 10:35:38.867   849   967 I PermissionControllerServiceImpl: Updating user sensitive for uid 10155
+11-19 10:35:38.867  1029  1029 V MediaPlayerList: mPackageChangedBroadcastReceiver: action: android.intent.action.PACKAGE_CHANGED
+11-19 10:35:38.867  1029  1029 V MediaPlayerList: mPackageChangedBroadcastReceiver: action: android.intent.action.PACKAGE_CHANGED
+11-19 10:35:38.872  1053  1053 D CarrierSvcBindHelper: No carrier app for: 0
+11-19 10:35:38.873   847   919 D StylusManager: Stylus InputDevice changed: 14 virtio_input_multi_touch_11
+11-19 10:35:38.877   847   847 D ControlsListingControllerImpl: ServiceConfig reloaded, count: 0
+11-19 10:35:38.878   847   919 D StylusManager: Stylus InputDevice changed: 12 virtio_input_multi_touch_9
+11-19 10:35:38.879  1053  1369 D ImsResolver: maybeAddedImsService, packageName: com.google.android.contacts
+11-19 10:35:38.880   847   919 D StylusManager: Stylus InputDevice changed: 8 virtio_input_multi_touch_5
+11-19 10:35:38.880   847   919 D StylusManager: Stylus InputDevice changed: 11 virtio_input_multi_touch_8
+11-19 10:35:38.880   847   919 D StylusManager: Stylus InputDevice changed: 13 virtio_input_multi_touch_10
+11-19 10:35:38.881   847   919 D StylusManager: Stylus InputDevice changed: 10 virtio_input_multi_touch_7
+11-19 10:35:38.882   847   919 D StylusManager: Stylus InputDevice changed: 9 virtio_input_multi_touch_6
+11-19 10:35:38.882   847   919 D StylusManager: Stylus InputDevice changed: 6 virtio_input_multi_touch_3
+11-19 10:35:38.882   847   919 D StylusManager: Stylus InputDevice changed: 4 virtio_input_multi_touch_1
+11-19 10:35:38.882   847   919 D StylusManager: Stylus InputDevice changed: 5 virtio_input_multi_touch_2
+11-19 10:35:38.883   847   919 D StylusManager: Stylus InputDevice changed: 7 virtio_input_multi_touch_4
+11-19 10:35:38.914   524   621 D ActivityManager: sync unfroze 1726 com.google.android.apps.youtube.music for 6
+11-19 10:35:38.921   524   568 E system_server: No package ID 7f found for resource ID 0x7f080107.
+11-19 10:35:38.921   524   568 E system_server: No package ID 7f found for resource ID 0x7f150560.
+11-19 10:35:38.921   524   553 D ConnectivityService: requestNetwork for uid/pid:10156/1726 activeRequest: null callbackRequest: 144 [NetworkRequest [ REQUEST id=145, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 1015
+11-19 10:35:38.923   524   769 D WifiNetworkFactory: got request NetworkRequest [ REQUEST id=145, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10156 RequestorUid: 10156 RequestorPkg: com.google.android.apps.youtube.m
+11-19 10:35:38.923   524   769 D UntrustedWifiNetworkFactory: got request NetworkRequest [ REQUEST id=145, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10156 RequestorUid: 10156 RequestorPkg: com.google.android.apps.
+11-19 10:35:38.929   524   769 D OemPaidWifiNetworkFactory: got request NetworkRequest [ REQUEST id=145, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10156 RequestorUid: 10156 RequestorPkg: com.google.android.apps.yo
+11-19 10:35:38.929   524   769 D MultiInternetWifiNetworkFactory: got request NetworkRequest [ REQUEST id=145, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10156 RequestorUid: 10156 RequestorPkg: com.google.android.a
+11-19 10:35:38.929   524   776 D ConnectivityService: NetReassign [145 : null → 100] [c 1] [a 0] [i 0]
+11-19 10:35:38.931  1589  1589 I AiAiEcho: AppFetcherImpl onPackageChanged com.google.android.contacts.
+11-19 10:35:38.933  1589  2759 I AiAiEcho: AppIndexer Package:[com.google.android.contacts] UserProfile:[0] Enabled:[true].
+11-19 10:35:38.933  1589  2759 I AiAiEcho: AppFetcherImplV2 updateApps package:[com.google.android.contacts], userId:[0], reason:[package is updated.].
+11-19 10:35:39.015  1726  2592 W YouTubeMusic: Invalid playback type; streaming data is not playable
+11-19 10:35:39.019  1726  1726 E Widget.RecentlyPlayed: Filling bundle but recently played items are EMPTY.
+11-19 10:35:39.025   524   628 D ActivityManager: freezing 1823 com.google.android.partnersetup
+11-19 10:35:39.355   524  3406 D OomAdjuster: Not killing cached processes
+11-19 10:35:39.356  4162  4275 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of bdxy@3f38056
+11-19 10:35:39.362  5060  5560 I Fitness : OnPackageChangedOperation got intent: Intent { act=android.intent.action.PACKAGE_CHANGED dat=package: flg=0x45000010 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.PersistentIntentO
+11-19 10:35:39.377  5060  5763 I Fitness : FitCleanupIntentOperation received Intent android.intent.action.PACKAGE_CHANGED [CONTEXT service_id=17 ]
+11-19 10:35:39.382  5060  5094 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:39.386  5060  5094 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:39.387  5123  5250 I Icing   : IndexChimeraService.getServiceInterface callingPackage=com.google.android.gms componentName=AppsCorpus serviceId=36
+11-19 10:35:39.398  5123  5672 I Icing   : Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0
+11-19 10:35:39.402  5123  5672 I Icing   : Indexing com.google.android.gms-apps from com.google.android.gms
+11-19 10:35:39.406  5123  5672 I Icing   : Indexing done com.google.android.gms-apps
+11-19 10:35:39.410  5123  5672 I Icing   : Indexing com.google.android.gms-internal.3p:MobileApplication from com.google.android.gms
+11-19 10:35:39.413  5123  5672 I Icing   : Indexing done com.google.android.gms-internal.3p:MobileApplication
+11-19 10:35:39.493  5637  5637 I com.example.buddy: Perf: native scene 29 fps
+11-19 10:35:39.517   524   628 D ActivityManager: freezing 4454 com.google.android.googlequicksearchbox
+11-19 10:35:39.572  5637  5659 D EGL_emulation: app_time_stats: avg=25.98ms min=1.71ms max=45.58ms count=35
+11-19 10:35:39.614   524   628 D ActivityManager: freezing 3645 com.google.android.gm
+11-19 10:35:39.810   524   628 D ActivityManager: freezing 1765 com.google.android.youtube
+11-19 10:35:39.917  5123  5123 I NearbySharing: SharingTileService destroyed [CONTEXT service_id=194 ]
+11-19 10:35:40.175   524   628 D ActivityManager: freezing 2033 android.process.media
+11-19 10:35:40.176   524   628 D ActivityManager: freezing 1054 com.android.settings
+11-19 10:35:40.247   524   628 D ActivityManager: freezing 4758 com.google.android.settings.intelligence
+11-19 10:35:40.545  5123  5194 D TrafficStats: tagSocket(81) with statsTag=0x30001803, statsUid=-1
+11-19 10:35:40.577  5637  5659 D EGL_emulation: app_time_stats: avg=10.47ms min=1.61ms max=34.03ms count=59
+11-19 10:35:41.578  5637  5659 D EGL_emulation: app_time_stats: avg=7.68ms min=1.59ms max=33.95ms count=60
+11-19 10:35:41.761  5123  5771 I ChimeraConfigurator: Starting update, reason: 4 urgentFeatures: vision.ocr:-1
+11-19 10:35:41.777  5123  5771 I ChimeraConfigurator: Detected pending changes for urgent request: [vision.ocr]. Pending module sets: container:2318189190800+mlkit.ocr.common,tflite_dynamite:2640104055100800+tflite_dynamite,vision_ocr:23160
+11-19 10:35:41.782  5123  5771 I GmsDebugLogger: [73] 1801
+11-19 10:35:41.784  5123  5771 W ZappDownloader: No successful module downloads for requested features [vision.ocr].
+11-19 10:35:41.784  5123  5771 I GmsDebugLogger: [30] [VisionOcrDynamite.integ:231602402100000],[TfliteDynamiteDynamite.integ:264010405100800],[MlkitOcrCommon.optional:231818100800]
+11-19 10:35:41.786  5123  5771 W ChimeraConfigService: Retry attempt was throttled. [CONTEXT service_id=264 ]
+11-19 10:35:41.787  5123  5771 I GmsDebugLogger: [83] 1 [vision.ocr]
+11-19 10:35:41.788  5123  5764 W Vision  : Request for optional module download of ocr failed. Request again.
+11-19 10:35:41.788  5123  5764 W Vision  : Would have logged:
+11-19 10:35:41.788  5123  5764 W Vision  : # dsae@37884fe7
+11-19 10:35:41.789  5123  5764 I Vision  : Schedule retrying download ocr at 96009 with backoff 20 seconds
+11-19 10:35:42.442  5780  5780 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+11-19 10:35:42.442  5780  5780 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-19 10:35:42.452   135   135 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-19 10:35:42.452  5780  5781 I Gralloc4: mapper 4.x is not supported
+11-19 10:35:42.648     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+11-19 10:35:42.591  5637  5659 D EGL_emulation: app_time_stats: avg=9.28ms min=1.73ms max=44.68ms count=56

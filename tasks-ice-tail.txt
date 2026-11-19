@@ -1,0 +1,150 @@
+11-19 10:32:49.845  4991  4991 W ProximityAuth: [PhoneHubNotificationProcessor] shutdown(): context is null.
+11-19 10:32:49.845  4991  4991 I ProximityAuth: [PhoneHubService] All devices have disconnected. Performing cleanup...
+11-19 10:32:49.846  4991  4991 W ChimeraUtils: Module com.google.android.gms.auth_proximity missing resource null(0)
+11-19 10:32:49.852  5071  5209 V Backup  : [AccountChangedIO] Received intent, action = android.intent.action.BOOT_COMPLETED
+11-19 10:32:49.862  5071  5228 I Backup  : [GmsBackupAccountManager] Backup account not found in gmscore.
+11-19 10:32:49.872  4991  5141 W ChimeraUtils: Module com.google.android.gms.backup_base missing resource null(0)
+11-19 10:32:49.872  5071  5108 I GmsSyncPolicyEngine: Periodic sync 4 disabled by policy, cancelled.
+11-19 10:32:49.874  5071  5228 V Backup  : [NoBackupNotification] Disabled, not scheduling
+11-19 10:32:49.875  5071  5228 I Backup  : [TargetEnabler] Setting target components to enabled = true
+11-19 10:32:49.875   523   594 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+11-19 10:32:49.875   523   594 D PackageManager: Clear ephemeral installer activity
+11-19 10:32:49.879  4991  4997 I .gms.persistent: Background young concurrent copying GC freed 130242(6551KB) AllocSpace objects, 4(80KB) LOS objects, 18% free, 21MB/26MB, paused 42us,19us total 159.953ms
+11-19 10:32:49.882  4991  5141 V Backup  : [BackupAccountNotifier] Handling new intent. Show notification: true
+11-19 10:32:49.883  5071  5228 I Backup  : [SourceEnabler] Setting source components to enabled = true
+11-19 10:32:49.883  5071  5228 V Backup  : [MigrateUtil] Using O+ select transport api
+11-19 10:32:49.884  5071  5228 W Backup  : [ComponentEnablerUtil] Unable to set component 'com.google.android.gms.backup.component.CloudRestoreFlowActivity' to enabled=true
+11-19 10:32:49.884  5071  5228 W Backup  : [ComponentEnablerUtil] Unable to set component 'com.google.android.gms.backup.component.RestoreSessionV0Service' to enabled=true
+11-19 10:32:49.885  5071  5228 W Backup  : [ComponentEnablerUtil] Unable to set component 'com.google.android.gms.backup.component.D2dMigrateFlowActivity' to enabled=false
+11-19 10:32:49.886  5071  5228 V Backup  : [GmsBackupScheduler] Disabled, not scheduling.
+11-19 10:32:49.898  5071  5228 V Backup  : [ClearcutLoggerWithVerifier] Logging to Clearcut eventCode: 30, event: # dirw@c01c53bc
+11-19 10:32:49.900  5071  5228 V Backup  : [ClearcutLoggerWithVerifier] Checking UsageReportingClient and (maybe) logging eventCode: 30, event: # dirw@c01c53bc
+11-19 10:32:49.905  5071  5228 V Backup  : [MmsBackupScheduler] Ineligible, not scheduling.
+11-19 10:32:49.910  5071  5209 I Backup  : [GmsBackupAccountManager] Backup account not found in gmscore.
+11-19 10:32:49.912  4991  5141 W ChimeraUtils: Module com.google.android.gms.backup_base missing resource null(0)
+11-19 10:32:49.912  4991  5141 V Backup  : [BackupAccountNotifier] Handling new intent. Show notification: true
+11-19 10:32:49.916  5071  5071 V Backup  : [ClearcutLoggerWithVerifier] Did not log event due to checkbox denial
+11-19 10:32:49.916  4991  4991 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.chimera.container.BIND_FIND_BUFFER_SIZE dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentInternalBoundBrokerService }
+11-19 10:32:49.925  4991  4991 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.chimera.container.BIND_FIND_BUFFER_SIZE dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentInternalBou
+11-19 10:32:49.943  5071  5228 I WakefulBroadcastRcvr: Processing wakeful broadcast: com.google.android.gms.checkin.CHECKIN_START_ACTION
+11-19 10:32:49.945  5071  5225 I SyncIntentOperation: Handling the intent: Intent { act=android.intent.action.BOOT_COMPLETED flg=0x89000010 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras
+11-19 10:32:49.957  5071  5218 E IPCThreadState: Binder transaction failure: 523145/29201/-28
+11-19 10:32:50.177     0     0 I binder_alloc: 4991: binder_alloc_buf size 1056768 failed, no address space
+11-19 10:32:50.179     0     0 I binder_alloc: allocated: 3576 (num: 1 largest: 3576), free: 1036808 (num: 1 largest: 1036808)
+11-19 10:32:50.181     0     0 I binder  : cannot allocate buffer: no space left
+11-19 10:32:50.181     0     0 I binder  : 5071:5218 transaction call to 4991:0 failed 523145/29201/-28, size 1056768-0 line 3406
+11-19 10:32:49.958  5071  5218 W BpBinder: Large outgoing transaction of 1056768 bytes, interface descriptor , code 1
+11-19 10:32:49.958  5071  5218 E JavaBinder: !!! FAILED BINDER TRANSACTION !!!  (parcel size = 1056768)
+11-19 10:32:49.964  5071  5209 I Backup  : [GmsBackupAccountManager] Backup account not found in gmscore.
+11-19 10:32:49.965  4991  4991 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.chimera.container.BIND_FIND_BUFFER_SIZE dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentInternalBoundBrokerService }
+11-19 10:32:49.965  5071  5218 I AppDoctorManager: Updating appdoctor Uri Permissions. [CONTEXT service_id=256 ]
+11-19 10:32:49.968  4991  5138 W ChimeraUtils: Module com.google.android.gms.backup_base missing resource null(0)
+11-19 10:32:49.968  4991  5138 V Backup  : [BackupAccountNotifier] Handling new intent. Show notification: true
+11-19 10:32:49.968  5071  5228 I Checkin : [EventLogChimeraService] Opted in for usage reporting: false
+11-19 10:32:49.971  5071  5209 V Backup  : [AccountChangedIO] currentDestinationString: null
+11-19 10:32:49.974   523   594 D BackupTransportManager: [UserID:0] Transport com.google.android.gms/.backup.BackupTransportService updated its attributes
+11-19 10:32:49.977  5071  5209 I constellation: [intent_handler] Received onBootCompleted intent
+11-19 10:32:49.977  5071  5209 I constellation: [reboot_checker] Reboot checker check status.
+11-19 10:32:49.982  5071  5229 W ChimeraUtils: Module com.google.android.gms.dck_stub missing resource null(0)
+11-19 10:32:49.983  5071  5229 I DckStubModuleInit: Loading stub module components [CONTEXT service_id=289 ]
+11-19 10:32:49.983  5071  5229 I Dck     : doesDeviceHaveSupportedWirelessCapabilities: wccSysProp:0, wccMendel:3, deviceWccOverride:false [CONTEXT service_id=289 ]
+11-19 10:32:49.983  5071  5229 I Dck     : isDckModuleEligible: isAtLeastR:true, hasWccSupport:false, downloadAllowed:false [CONTEXT service_id=289 ]
+11-19 10:32:49.983  5071  5229 W Dck     : Dck module not eligible for asynchronous downloading [CONTEXT service_id=289 ]
+11-19 10:32:49.987  5071  5228 W GmsTaskScheduler: ScheduledCheckinGmsTaskService is not available. This may cause the task to be lost.
+11-19 10:32:50.001  5071  5228 I Checkin : [EventLogChimeraService] Accumulating logs since 1795084329661
+11-19 10:32:50.004  5071  5071 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.common.BIND_SHARED_PREFS pkg=com.google.android.gms }
+11-19 10:32:50.004  5071  5071 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.common.BIND_SHARED_PREFS pkg=com.google.android.gms }
+11-19 10:32:50.012  5071  5229 I AlarmManager: set [name: ApiService type: 2 triggerAtMillis: 120000 windowMillis: -1 intervalMillis: 0]
+11-19 10:32:50.014  5071  5209 I constellation: [reboot_checker] Reboot Sync didn't run.
+11-19 10:32:50.018  5071  5071 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.common.BIND_SHARED_PREFS pkg=com.google.android.gms }
+11-19 10:32:50.265     0     0 I logd    : logdr: UID=10128 GID=10128 PID=5071 n tail=0 logMask=4 pid=0 start=0ns deadline=0ns
+11-19 10:32:50.042   523   612 D ActivityManager: freezing 2177 android.process.media
+11-19 10:32:50.047  5071  5071 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.common.BIND_SHARED_PREFS pkg=com.google.android.gms }
+11-19 10:32:50.050  5071  5071 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.common.BIND_SHARED_PREFS pkg=com.google.android.gms }
+11-19 10:32:50.056  5071  5071 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.common.BIND_SHARED_PREFS pkg=com.google.android.gms }
+11-19 10:32:50.062  5071  5071 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.common.BIND_SHARED_PREFS pkg=com.google.android.gms }
+11-19 10:32:50.062  5071  5071 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.common.BIND_SHARED_PREFS pkg=com.google.android.gms }
+11-19 10:32:50.073  5071  5071 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.common.BIND_SHARED_PREFS pkg=com.google.android.gms }
+11-19 10:32:50.073  5071  5209 I constellation: [intent_handler] on init with intent Intent { act=android.intent.action.BOOT_COMPLETED flg=0x89000010 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (
+11-19 10:32:50.076  5071  5209 I Dtdi    : [DtdiModuleInitIntentOperation] Cannot initialize Device Discovery. Flag is disabled. [CONTEXT service_id=312 ]
+11-19 10:32:50.077  5071  5209 I Dtdi    : [DtdiModuleInitIntentOperation] Cannot initialize Spatial Orchestration. Flag is disabled. [CONTEXT service_id=312 ]
+11-19 10:32:50.079  5071  5228 D CompatibilityChangeReporter: Compat change id reported: 247079863; UID 10128; state: DISABLED
+11-19 10:32:50.081  5071  5209 I Dtdi    : [DtdiModuleInitIntentOperation] Cannot initialize Media Transfer. Flag is disabled. [CONTEXT service_id=312 ]
+11-19 10:32:50.084  5071  5209 I EnterpriseLoader: [ConditionsChecker] ZT config not present. [CONTEXT service_id=225 ]
+11-19 10:32:50.104  5071  5209 I EsimModuleInit: onHandleIntent action: android.intent.action.BOOT_COMPLETED [CONTEXT service_id=333 ]
+11-19 10:32:50.105  5071  5209 I Fido    : [FidoInitIntentOperation] Initializing Fido module, InitRuntimeState=2
+11-19 10:32:50.117  4991  4991 I Fido    : [CableAuthenticatorChimeraService] Unregistering receiver.
+11-19 10:32:50.118  4991  4991 I Fido    : [CableAuthenticatorChimeraService] Registering broadcast receiver.
+11-19 10:32:50.128  4991  4991 I Fido    : [AuthenticatorChimeraService] Unregistered the broadcast receiver [CONTEXT service_id=287 ]
+11-19 10:32:50.138   523   594 D BiometricService: canAuthenticate: User=0, Caller=0, Authenticators=255
+11-19 10:32:50.140   523   594 D BiometricService/PreAuthInfo: Package: com.google.android.gms Sensor ID: 4 Modality: 8 Status: 7
+11-19 10:32:50.140   523   594 D BiometricService/PreAuthInfo: Package: com.google.android.gms Sensor ID: 0 Modality: 2 Status: 7
+11-19 10:32:50.140   523   594 D BiometricService/PreAuthInfo: getCanAuthenticateInternal Modality: 8 AuthenticatorStatus: 7
+11-19 10:32:50.141   523   594 D AuthService: canAuthenticate, userId: 0, callingUserId: 0, authenticators: 255, result: 11
+11-19 10:32:50.146  5071  5080 I gle.android.gms: Background young concurrent copying GC freed 233909(9716KB) AllocSpace objects, 142(6192KB) LOS objects, 55% free, 11MB/27MB, paused 238us,12us total 158.693ms
+11-19 10:32:50.147  3118  3697 W DG      : [flow checkin] DroidGuardRunner.newVmProcessForFastSignalCollection(): Fast program not found [CONTEXT service_id=25 ]
+11-19 10:32:50.162  5071  5229 W gle.android.gms: Accessing hidden method Landroid/net/ConnectivityManager;->isNetworkTypeMobile(I)Z (max-target-p, reflection, denied)
+11-19 10:32:50.162  5071  5229 W gle.android.gms: Accessing hidden method Landroid/os/PowerManager;->isLightDeviceIdleMode()Z (max-target-s, reflection, denied)
+11-19 10:32:50.169  4991  5050 I AlarmManager: setExactAndAllowWhileIdle [name: GCM_CONN_ALARM type: 2 triggerAtMillis: 93472]
+11-19 10:32:50.172   523  1879 I RemoteProvisionSysSvc: getRegistration(android.hardware.security.keymint.IRemotelyProvisionedComponent/default)
+11-19 10:32:50.173   523  1879 D ActivityManager: sync unfroze 3748 com.google.android.rkpdapp for 6
+11-19 10:32:50.182   523   523 I RegistrationProxy: onServiceConnected: com.android.rkpdapp.service.RemoteProvisioningService
+11-19 10:32:50.412     0     0 I servicemanager: Found android.hardware.security.keymint.IRemotelyProvisionedComponent/default in device VINTF manifest.
+11-19 10:32:50.195   523  2231 I RegistrationProxy: IGetRegistrationCallback.onSuccess
+11-19 10:32:50.196   523  1879 I RemoteProvisionSysSvc: Fetching key 10128 for client 182428412
+11-19 10:32:50.196   523  1879 I RegistrationProxy: getKeyAsync operation started with callback 264854917
+11-19 10:32:50.197  3748  3857 I RkpdRegistrationBinder: Key requested for : android.hardware.security.keymint.IRemotelyProvisionedComponent/default, clientUid: 1017, keyId: 10128, callback: 34850613
+11-19 10:32:50.198  3748  3857 I RkpdRegistrationBinder: Key successfully assigned to client
+11-19 10:32:50.198   523   523 I RemoteProvisionSysSvc: Successfully fetched key for client 182428412
+11-19 10:32:50.201   523  2827 D CompatibilityChangeReporter: Compat change id reported: 171306433; UID 10128; state: ENABLED
+11-19 10:32:50.202   523  2827 D CompatibilityChangeReporter: Compat change id reported: 218533173; UID 10128; state: ENABLED
+11-19 10:32:50.218  5071  5229 W ChimeraUtils: Module com.google.android.gms.growth missing resource growth_module_display_name(0)
+11-19 10:32:50.225  5071  5229 W ChimeraUtils: Module com.google.android.gms.growth missing resource growth_module_display_name(0)
+11-19 10:32:50.271  5479  5479 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+11-19 10:32:50.274  5479  5479 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-19 10:32:50.298   401   570 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=5479
+11-19 10:32:50.298   401   570 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (11162 us)
+11-19 10:32:50.312   136   136 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-19 10:32:50.312  5479  5485 I Gralloc4: mapper 4.x is not supported
+11-19 10:32:50.538     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+11-19 10:32:50.380  4991  4997 I .gms.persistent: Background concurrent copying GC freed 311598(13MB) AllocSpace objects, 8(576KB) LOS objects, 50% free, 17MB/35MB, paused 2.275ms,14us total 188.428ms
+11-19 10:32:50.399  5324  5343 D EGL_emulation: app_time_stats: avg=34.46ms min=18.00ms max=76.02ms count=29
+11-19 10:32:50.527  5071  5222 I LSRModuleInit: Attempting to change container components state to enabled: true [CONTEXT service_id=277 ]
+11-19 10:32:50.534  5324  5324 I com.example.buddy: Perf: native scene 29 fps
+11-19 10:32:50.549   335  5488 I resolv  : GetAddrInfoHandler::run: {100 786532 100 983140 10128 0}
+11-19 10:32:50.553  3118  3697 D TrafficStats: tagSocket(113) with statsTag=0x1809, statsUid=-1
+11-19 10:32:50.554  3118  3697 D TrafficStats: tagSocket(113) with statsTag=0x1809, statsUid=-1
+11-19 10:32:50.556  3118  3697 D TrafficStats: tagSocket(113) with statsTag=0x1809, statsUid=-1
+11-19 10:32:50.559  4991  5138 I LSR     : Handling LSR module init in persistent process [CONTEXT service_id=277 ]
+11-19 10:32:50.565  3118  3697 W SystemServiceRegistry: No service published for: persistent_data_block
+11-19 10:32:50.577  5071  5108 I LSR     : Empty geofences. [CONTEXT service_id=277 ]
+11-19 10:32:50.583  4991  5049 I MagicTether: [WifiSyncService] Disabled for all users, clearing cache and stopping service. [CONTEXT service_id=276 ]
+11-19 10:32:50.592  5071  5209 I Google Maps Android API: Validating conditions for requesting maps_core feature. [CONTEXT service_id=71 ]
+11-19 10:32:50.592  5071  5209 I Google Maps Android API: Is maps_core feature installed? 2 [CONTEXT service_id=71 ]
+11-19 10:32:50.593  5071  5209 I Google Maps Android API: cutoffSize=2147483648, internalFreeBytes=5149245440
+11-19 10:32:50.593  5071  5209 I Google Maps Android API: Eligible to request maps_core feature. [CONTEXT service_id=71 ]
+11-19 10:32:50.595  5071  5209 I Google Maps Android API: maps_core feature request succeeded. [CONTEXT service_id=71 ]
+11-19 10:32:50.607   834  3724 I PermissionControllerServiceImpl: Updating user sensitive for uid 10128
+11-19 10:32:50.613  1015  1015 V MediaPlayerList: mPackageChangedBroadcastReceiver: action: android.intent.action.PACKAGE_CHANGED
+11-19 10:32:50.613  1015  1015 V MediaPlayerList: mPackageChangedBroadcastReceiver: action: android.intent.action.PACKAGE_CHANGED
+11-19 10:32:50.613  1040  1040 D CarrierSvcBindHelper: onPackageModified: com.google.android.gms
+11-19 10:32:50.614  1040  1040 D CarrierSvcBindHelper: No carrier app for: 0
+11-19 10:32:50.615  5071  5229 I ChimeraConfigurator: Starting update, reason: 4 urgentFeatures: maps_core:-1
+11-19 10:32:50.618   523   626 I InputReader: Reconfiguring input devices, changes=KEYBOARD_LAYOUTS
+11-19 10:32:50.621   832   832 D ControlsListingControllerImpl: ServiceConfig reloaded, count: 0
+11-19 10:32:50.642   523   612 D ActivityManager: freezing 1717 com.google.android.apps.youtube.music
+11-19 10:32:50.644   523   612 D ActivityManager: freezing 2683 com.android.chrome
+11-19 10:32:50.651   832   904 D StylusManager: Stylus InputDevice changed: 14 virtio_input_multi_touch_11
+11-19 10:32:50.663  1040  1326 D ImsResolver: maybeAddedImsService, packageName: com.google.android.gms
+11-19 10:32:50.684   832   904 D StylusManager: Stylus InputDevice changed: 11 virtio_input_multi_touch_8
+11-19 10:32:50.671   523   613 I RoleService: Granting default roles...
+11-19 10:32:50.685   523   605 D ActivityManager: sync unfroze 1762 com.google.android.youtube for 6
+11-19 10:32:50.707  1757  1757 I BgTaskExecutorImpl: Starting EXCLUSIVE background task UPLOAD_ASSISTANT_DEVICE_SETTINGS.
+11-19 10:32:50.711  1757  2862 W LocationOracle: getBestLocation(): no location is available
+11-19 10:32:50.712  1757  2595 I NetworkRecognitionRnr: Using pair HTTP connection
+11-19 10:32:50.712  4991  5029 I TetheringManager: registerTetheringEventCallback:com.google.android.gms
+11-19 10:32:50.719  1757  2590 I A       : [Upload] Connected
+11-19 10:32:50.730   832   904 D StylusManager: Stylus InputDevice changed: 12 virtio_input_multi_touch_9
+11-19 10:32:50.742  4991  5029 W MagicTether: [TetherListenerService] Invalid account list. [CONTEXT service_id=276 ]
+11-19 10:32:50.746  1757  2269 W CronetNetworkRqstWrppr: Upload request without a content type.
+11-19 10:32:50.752   832   904 D StylusManager: Stylus InputDevice changed: 10 virtio_input_multi_touch_7

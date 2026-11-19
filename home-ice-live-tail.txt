@@ -1,0 +1,150 @@
+11-19 10:32:30.883  1426  2201 I HeterodyneSyncScheduler: Scheduling adaptive one off task with window [14400, 604800] in seconds [CONTEXT service_id=51 ]
+11-19 10:32:30.892  1798  1866 I earchbox:search: JIT allocated 57KB for compiled code of java.lang.Object com.google.android.apps.gsa.binaries.velvet.app.amm.h()
+11-19 10:32:30.968  2726  2824 W TimedProcessReaper: Scheduling killing of process to refresh configuration
+11-19 10:32:30.971  1471  1471 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.constellation.service.START pkg=com.google.android.gms }
+11-19 10:32:31.009  1798  2287 I BgTaskExecutorImpl: Starting EXCLUSIVE background task FETCH_CONFIGS_FROM_PHENOTYPE.
+11-19 10:32:31.011  1798  2683 W SearchServiceCore: Abort, client detached.
+11-19 10:32:31.038   522  2297 W JobScheduler: Job didn't exist in JobStore: f92cb29 #u0a131/-43 com.google.android.googlequicksearchbox/com.google.android.apps.gsa.tasks.BackgroundTasksJobService
+11-19 10:32:31.041  1798  1798 I A       : Refusing EXCLUSIVE task 21, it is already pending. Try again in 359 seconds.
+11-19 10:32:31.044   838   838 D StatusBarIconController: ignoring old pipeline callbacks, because the new mobile icons are enabled
+11-19 10:32:31.049   522   552 D ActivityManager: sync unfroze 3512 com.google.android.configupdater for 3
+11-19 10:32:31.061  3512  4655 I ConfigUpdater: Update started
+11-19 10:32:31.062   522  2297 D CompatibilityChangeReporter: Compat change id reported: 261072174; UID 10130; state: DISABLED
+11-19 10:32:31.071  1426  4688 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-19 10:32:31.072  1426  4688 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-19 10:32:31.072  1426  4688 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-19 10:32:31.073  1426  4688 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-19 10:32:31.073  1426  4688 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-19 10:32:31.074  1426  4688 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-19 10:32:31.074  1426  4688 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-19 10:32:31.075  1426  4688 I NamespaceManager: Package 1 name not found! Using module version.
+11-19 10:32:31.099   522  2974 D ConnectivityService: requestNetwork for uid/pid:1000/522 asUid: 10130 activeRequest: null callbackRequest: 126 [NetworkRequest [ REQUEST id=127, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGE
+11-19 10:32:31.101   522   769 D ConnectivityService: NetReassign [127 : null → 100] [c 0] [a 1] [i 0]
+11-19 10:32:31.101   522   762 D WifiNetworkFactory: got request NetworkRequest [ REQUEST id=127, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10130 RequestorUid: 1000 RequestorPkg: android UnderlyingNetworks: Null] 
+11-19 10:32:31.102   522   762 D UntrustedWifiNetworkFactory: got request NetworkRequest [ REQUEST id=127, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10130 RequestorUid: 1000 RequestorPkg: android UnderlyingNetwork
+11-19 10:32:31.102   522   762 D OemPaidWifiNetworkFactory: got request NetworkRequest [ REQUEST id=127, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10130 RequestorUid: 1000 RequestorPkg: android UnderlyingNetworks:
+11-19 10:32:31.103   522   762 D MultiInternetWifiNetworkFactory: got request NetworkRequest [ REQUEST id=127, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10130 RequestorUid: 1000 RequestorPkg: android UnderlyingNet
+11-19 10:32:31.107  2173  4937 D DownloadManager: [3] Starting
+11-19 10:32:31.117   335  4938 I resolv  : GetAddrInfoHandler::run: {100 983140 100 983140 10087 0}
+11-19 10:32:31.120  1798  2537 W TimedProcessReaper: Scheduling killing of process to refresh configuration
+11-19 10:32:31.122  1798  1798 I A       : Refusing EXCLUSIVE task 21, it is already pending. Try again in 359 seconds.
+11-19 10:32:31.124  1798  1798 I A       : Refusing EXCLUSIVE task 21, it is already pending. Try again in 359 seconds.
+11-19 10:32:31.124   335  4940 I resolv  : res_nmkquery: (QUERY, IN, A)
+11-19 10:32:31.125   335  4940 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7e148d074a30
+11-19 10:32:31.125   335  4939 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+11-19 10:32:31.126   335  4940 I resolv  : doQuery: rcode=0, ancount=8, return value=161
+11-19 10:32:31.126   335  4939 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7e13ed07b410
+11-19 10:32:31.126   335  4939 I resolv  : doQuery: rcode=0, ancount=8, return value=257
+11-19 10:32:31.127  2173  4937 D TrafficStats: tagSocket(79) with statsTag=0xffffff01, statsUid=10130
+11-19 10:32:31.140  3512  4655 I ConfigUpdater: Update started
+11-19 10:32:31.153  2173  4942 D DownloadManager: [4] Starting
+11-19 10:32:31.157   838   918 D EGL_emulation: app_time_stats: avg=1115.45ms min=156.10ms max=2074.80ms count=2
+11-19 10:32:31.167  2173  4942 D TrafficStats: tagSocket(75) with statsTag=0xffffff01, statsUid=10130
+11-19 10:32:31.170  1426  4653 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.phenotype.service.sync.PhenotypeConfigurator finished executing. cause:5 result: 1 elapsed_millis: 8771 uptime_millis: 8771 exec_sta
+11-19 10:32:31.244  1798  2300 W A       : Can't format flag AndroidGsaVelourJars__velour_birthdaydoodle_jar__name to integer.
+11-19 10:32:31.245  1426  1963 W BpBinder: Large outgoing transaction of 324036 bytes, interface descriptor , code 4
+11-19 10:32:31.249  1798  2300 W A       : Can't format flag AndroidGsaVelourJars__velour_call_jar__name to integer.
+11-19 10:32:31.258  1798  2300 W A       : Can't format flag AndroidGsaVelourJars__velour_canvas_jar__name to integer.
+11-19 10:32:31.259  1798  2300 W A       : Can't format flag AndroidGsaVelourJars__velour_chkpkg_jar__name to integer.
+11-19 10:32:31.259  1798  2300 W A       : Can't format flag AndroidGsaVelourJars__velour_crashtest_jar__name to integer.
+11-19 10:32:31.259  1798  2300 W A       : Can't format flag AndroidGsaVelourJars__velour_dining_jar__name to integer.
+11-19 10:32:31.259  1798  2300 W A       : Can't format flag AndroidGsaVelourJars__velour_doodle_notifications_jar__name to integer.
+11-19 10:32:31.260  1798  2300 W A       : Can't format flag AndroidGsaVelourJars__velour_imageviewer_jar__name to integer.
+11-19 10:32:31.260  1798  2300 W A       : Can't format flag AndroidGsaVelourJars__velour_ipa_jar__name to integer.
+11-19 10:32:31.260  1798  2300 W A       : Can't format flag AndroidGsaVelourJars__velour_jslocation_jar__name to integer.
+11-19 10:32:31.260  1798  2300 W A       : Can't format flag AndroidGsaVelourJars__velour_localintent_jar__name to integer.
+11-19 10:32:31.260  1798  2300 W A       : Can't format flag AndroidGsaVelourJars__velour_messaging_jar__name to integer.
+11-19 10:32:31.260  1798  2300 W A       : Can't format flag AndroidGsaVelourJars__velour_nativesrp_activity_jar__name to integer.
+11-19 10:32:31.260  1798  2300 W A       : Can't format flag AndroidGsaVelourJars__velour_nativesrp_presenter_jar__name to integer.
+11-19 10:32:31.261  1798  2300 W A       : Can't format flag AndroidGsaVelourJars__velour_nowcontent_jar__name to integer.
+11-19 10:32:31.261  1798  2300 W A       : Can't format flag AndroidGsaVelourJars__velour_recents_activity_jar__name to integer.
+11-19 10:32:31.261  1798  2300 W A       : Can't format flag AndroidGsaVelourJars__velour_save_jar__name to integer.
+11-19 10:32:31.261  1798  2300 W A       : Can't format flag AndroidGsaVelourJars__velour_searchresults_activity_jar__name to integer.
+11-19 10:32:31.261  1798  2300 W A       : Can't format flag AndroidGsaVelourJars__velour_test_jar__name to integer.
+11-19 10:32:31.261  1798  2300 W A       : Can't format flag AndroidGsaVelourJars__velour_weather_jar__name to integer.
+11-19 10:32:31.261  1798  2300 W A       : Can't format flag bindle_flags__bloblobber_blob to integer.
+11-19 10:32:31.263  1798  2300 W A       : Can't format flag bindle_flags__velour_jar to integer.
+11-19 10:32:31.331  2173  4937 D DownloadManager: [3] Finished with status SUCCESS
+11-19 10:32:31.332  2173  4942 D DownloadManager: [4] Finished with status SUCCESS
+11-19 10:32:31.395  1798  2287 W TimedProcessReaper: Scheduling killing of process to refresh configuration
+11-19 10:32:31.400  1798  1798 I A       : Refusing EXCLUSIVE task 21, it is already pending. Try again in 359 seconds.
+11-19 10:32:31.492  1426  4688 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-19 10:32:31.492  1426  4688 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-19 10:32:31.492  1426  4688 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-19 10:32:31.493  1426  4688 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-19 10:32:31.493  1426  4688 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-19 10:32:31.493  1426  4688 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-19 10:32:31.493  1426  4688 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-19 10:32:31.493  1426  4688 I NamespaceManager: Package 1 name not found! Using module version.
+11-19 10:32:31.535  1798  2301 I A       : Refusing EXCLUSIVE task 24, it is already pending. Try again in 324 seconds.
+11-19 10:32:31.557  1798  2298 I FedAssExpListener: Fed-ass not supported for signed out users.
+11-19 10:32:31.564  1798  2298 I FedAssExpListener: Successfully processed experiments changed.
+11-19 10:32:31.570  1798  2299 I A       : NGA enabled in interactor.
+11-19 10:32:31.619  1789  2651 W YouTubeMusic: Could not register for notifications with InnerTube: 
+11-19 10:32:31.619  1789  2651 W YouTubeMusic: abqx: zvm: Precondition check failed.
+11-19 10:32:31.619  1789  2651 W YouTubeMusic: 	at abqn.apply(Unknown Source:4)
+11-19 10:32:31.619  1789  2651 W YouTubeMusic: 	at yyi.r(PG:5)
+11-19 10:32:31.619  1789  2651 W YouTubeMusic: 	at yyi.b(PG:2)
+11-19 10:32:31.619  1789  2651 W YouTubeMusic: 	at abqp.d(PG:4)
+11-19 10:32:31.619  1789  2651 W YouTubeMusic: 	at agsb.c(PG:63)
+11-19 10:32:31.619  1789  2651 W YouTubeMusic: 	at agsb.j(PG:38)
+11-19 10:32:31.619  1789  2651 W YouTubeMusic: 	at agsb.d(PG:3)
+11-19 10:32:31.619  1789  2651 W YouTubeMusic: 	at agrz.run(Unknown Source:2)
+11-19 10:32:31.619  1789  2651 W YouTubeMusic: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:487)
+11-19 10:32:31.619  1789  2651 W YouTubeMusic: 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+11-19 10:32:31.619  1789  2651 W YouTubeMusic: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-19 10:32:31.619  1789  2651 W YouTubeMusic: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-19 10:32:31.619  1789  2651 W YouTubeMusic: 	at smg.run(PG:2)
+11-19 10:32:31.619  1789  2651 W YouTubeMusic: 	at java.lang.Thread.run(Thread.java:1012)
+11-19 10:32:31.619  1789  2651 W YouTubeMusic: 	at snu.run(PG:5)
+11-19 10:32:31.619  1789  2651 W YouTubeMusic: Caused by: zvm: Precondition check failed.
+11-19 10:32:31.619  1789  2651 W YouTubeMusic: 	at abpb.e(PG:5)
+11-19 10:32:31.619  1789  2651 W YouTubeMusic: 	at zhp.f(PG:1)
+11-19 10:32:31.619  1789  2651 W YouTubeMusic: 	at zhp.e(PG:1)
+11-19 10:32:31.619  1789  2651 W YouTubeMusic: 	at zgl.run(PG:19)
+11-19 10:32:31.619  1789  2651 W YouTubeMusic: 	at aosb.run(PG:3)
+11-19 10:32:31.619  1789  2651 W YouTubeMusic: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-19 10:32:31.619  1789  2651 W YouTubeMusic: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-19 10:32:31.619  1789  2651 W YouTubeMusic: 	at yxr.run(PG:11)
+11-19 10:32:31.619  1789  2651 W YouTubeMusic: 	at java.lang.Thread.run(Thread.java:1012)
+11-19 10:32:31.619  1789  2651 W YouTubeMusic: Caused by: efc
+11-19 10:32:31.619  1789  2651 W YouTubeMusic: 	at zgl.run(PG:13)
+11-19 10:32:31.619  1789  2651 W YouTubeMusic: 	... 5 more
+11-19 10:32:31.634  1798  2301 I OpaEligibilityChecker: send OpaEligibilityChange broadcast to CommonBroadcastReceiver
+11-19 10:32:31.641  1798  2301 W CorpusConfigHelper: Invalid input from icing corpus JSON flag.
+11-19 10:32:31.641  1798  2301 W CorpusConfigHelper: android.util.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 123 column 2
+11-19 10:32:31.641  1798  2301 W CorpusConfigHelper: 	at android.util.JsonReader.syntaxError(JsonReader.java:1162)
+11-19 10:32:31.641  1798  2301 W CorpusConfigHelper: 	at android.util.JsonReader.checkLenient(JsonReader.java:840)
+11-19 10:32:31.641  1798  2301 W CorpusConfigHelper: 	at android.util.JsonReader.nextInArray(JsonReader.java:615)
+11-19 10:32:31.641  1798  2301 W CorpusConfigHelper: 	at android.util.JsonReader.peek(JsonReader.java:345)
+11-19 10:32:31.641  1798  2301 W CorpusConfigHelper: 	at android.util.JsonReader.hasNext(JsonReader.java:321)
+11-19 10:32:31.641  1798  2301 W CorpusConfigHelper: 	at com.google.android.apps.gsa.searchbox.c.b.b.k.c(PG:7)
+11-19 10:32:31.641  1798  2301 W CorpusConfigHelper: 	at com.google.android.apps.gsa.searchbox.c.b.b.j.a(Unknown Source:2)
+11-19 10:32:31.641  1798  2301 W CorpusConfigHelper: 	at com.google.android.apps.gsa.search.core.i.r.run(PG:5)
+11-19 10:32:31.641  1798  2301 W CorpusConfigHelper: 	at com.google.android.libraries.gsa.k.a.h.run(PG:2)
+11-19 10:32:31.641  1798  2301 W CorpusConfigHelper: 	at com.google.android.apps.gsa.shared.util.c.a.cf.b(PG:1)
+11-19 10:32:31.641  1798  2301 W CorpusConfigHelper: 	at com.google.android.apps.gsa.shared.util.c.a.ci.run(PG:1)
+11-19 10:32:31.641  1798  2301 W CorpusConfigHelper: 	at com.google.android.libraries.i.ae.run(PG:1)
+11-19 10:32:31.641  1798  2301 W CorpusConfigHelper: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-19 10:32:31.641  1798  2301 W CorpusConfigHelper: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-19 10:32:31.641  1798  2301 W CorpusConfigHelper: 	at com.google.android.libraries.i.k.run(PG:2)
+11-19 10:32:31.641  1798  2301 W CorpusConfigHelper: 	at com.google.android.libraries.i.p.run(PG:4)
+11-19 10:32:31.641  1798  2301 W CorpusConfigHelper: 	at java.lang.Thread.run(Thread.java:1012)
+11-19 10:32:31.647  1471  1506 I Icing   : IndexChimeraService.getServiceInterface callingPackage=com.google.android.googlequicksearchbox componentName=agsa_icing_connection serviceId=32
+11-19 10:32:31.649  1471  3426 I Icing   : IndexChimeraService.getServiceInterface callingPackage=com.google.android.googlequicksearchbox componentName=agsa_icing_connection serviceId=33
+11-19 10:32:31.651  1471  1504 W Icing   : No valid account for uploading user actions
+11-19 10:32:31.668  1471  1504 I Icing   : Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0
+11-19 10:32:31.680  1798  2603 W TimedProcessReaper: Scheduling killing of process to refresh configuration
+11-19 10:32:31.681  1471  1504 W Icing   : No valid account for uploading user actions
+11-19 10:32:31.694  1798  1798 I A       : Refusing EXCLUSIVE task 21, it is already pending. Try again in 359 seconds.
+11-19 10:32:31.703  1798  1798 I A       : Refusing EXCLUSIVE task 21, it is already pending. Try again in 359 seconds.
+11-19 10:32:31.704  4163  4194 W System  : A resource failed to call AbstractCursor.close. 
+11-19 10:32:31.727  1426  3703 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.gcm.gmsproc.GcmInGmsTaskService started execution. cause:5 exec_start_elapsed_seconds: 88 [CONTEXT service_id=218 ]
+11-19 10:32:31.727  1426  3703 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.auth.account.be.legacy.AuthCronService started execution. cause:5 exec_start_elapsed_seconds: 88 [CONTEXT service_id=218 ]
+11-19 10:32:31.727  1471  3559 I GCM-GMS : Registering GMS for direct boot.
+11-19 10:32:31.756  1696  2046 W TimedProcessReaper: Scheduling killing of process to refresh configuration
+11-19 10:32:31.807  4858  4858 I Choreographer: Skipped 261 frames!  The application may be doing too much work on its main thread.
+11-19 10:32:31.807  4858  4858 I com.example.buddy: Perf: native scene 0 fps
+11-19 10:32:31.808  1471  1504 I Icing   : Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0
+11-19 10:32:31.835  4858  4873 I OpenGLRenderer: Davey! duration=4378ms; Flags=1, FrameTimelineVsyncId=4175, IntendedVsync=84547793364, Vsync=84547793364, InputEventId=0, HandleInputStart=84552271633, AnimationStart=84552271984, PerformTrav
+11-19 10:32:31.895  1696  2572 W TimedProcessReaper: Scheduling killing of process to refresh configuration

@@ -1,0 +1,150 @@
+11-19 10:32:56.644  1687  2410 W YouTubeMusic: 	... 5 more
+11-19 10:32:56.664  4045  4147 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f9a6/lottie.json
+11-19 10:32:56.664  4045  4147 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f9a6/lottie.json)
+11-19 10:32:56.680  4045  4523 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795084337665
+11-19 10:32:56.689  4045  4155 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f987/lottie.json
+11-19 10:32:56.689  4045  4155 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f987/lottie.json)
+11-19 10:32:56.703  4045  4147 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795084337666
+11-19 10:32:56.707  4045  4523 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f426/lottie.json
+11-19 10:32:56.707  4045  4523 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f426/lottie.json)
+11-19 10:32:56.714  1687  2410 W YouTubeMusic: Could not register for notifications with InnerTube: 
+11-19 10:32:56.714  1687  2410 W YouTubeMusic: abqx: zvm: Precondition check failed.
+11-19 10:32:56.714  1687  2410 W YouTubeMusic: 	at abqn.apply(Unknown Source:4)
+11-19 10:32:56.714  1687  2410 W YouTubeMusic: 	at yyi.r(PG:5)
+11-19 10:32:56.714  1687  2410 W YouTubeMusic: 	at yyi.b(PG:2)
+11-19 10:32:56.714  1687  2410 W YouTubeMusic: 	at abqp.d(PG:4)
+11-19 10:32:56.714  1687  2410 W YouTubeMusic: 	at agsb.c(PG:63)
+11-19 10:32:56.714  1687  2410 W YouTubeMusic: 	at agsb.i(PG:4)
+11-19 10:32:56.714  1687  2410 W YouTubeMusic: 	at agsb.c(PG:92)
+11-19 10:32:56.714  1687  2410 W YouTubeMusic: 	at agsb.j(PG:38)
+11-19 10:32:56.714  1687  2410 W YouTubeMusic: 	at agsb.d(PG:3)
+11-19 10:32:56.714  1687  2410 W YouTubeMusic: 	at agrz.run(Unknown Source:2)
+11-19 10:32:56.714  1687  2410 W YouTubeMusic: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:487)
+11-19 10:32:56.714  1687  2410 W YouTubeMusic: 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+11-19 10:32:56.714  1687  2410 W YouTubeMusic: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-19 10:32:56.714  1687  2410 W YouTubeMusic: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-19 10:32:56.714  1687  2410 W YouTubeMusic: 	at smg.run(PG:2)
+11-19 10:32:56.714  1687  2410 W YouTubeMusic: 	at java.lang.Thread.run(Thread.java:1012)
+11-19 10:32:56.714  1687  2410 W YouTubeMusic: 	at snu.run(PG:5)
+11-19 10:32:56.714  1687  2410 W YouTubeMusic: Caused by: zvm: Precondition check failed.
+11-19 10:32:56.714  1687  2410 W YouTubeMusic: 	at abpb.e(PG:5)
+11-19 10:32:56.714  1687  2410 W YouTubeMusic: 	at zhp.f(PG:1)
+11-19 10:32:56.714  1687  2410 W YouTubeMusic: 	at zhp.e(PG:1)
+11-19 10:32:56.714  1687  2410 W YouTubeMusic: 	at zgl.run(PG:19)
+11-19 10:32:56.714  1687  2410 W YouTubeMusic: 	at aosb.run(PG:3)
+11-19 10:32:56.714  1687  2410 W YouTubeMusic: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-19 10:32:56.714  1687  2410 W YouTubeMusic: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-19 10:32:56.714  1687  2410 W YouTubeMusic: 	at yxr.run(PG:11)
+11-19 10:32:56.714  1687  2410 W YouTubeMusic: 	at java.lang.Thread.run(Thread.java:1012)
+11-19 10:32:56.714  1687  2410 W YouTubeMusic: Caused by: efc
+11-19 10:32:56.714  1687  2410 W YouTubeMusic: 	at zgl.run(PG:13)
+11-19 10:32:56.714  1687  2410 W YouTubeMusic: 	... 5 more
+11-19 10:32:56.719  4045  4155 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795084337667
+11-19 10:32:56.723  4045  4147 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f426_200d_2b1b/lottie.json
+11-19 10:32:56.723  4045  4147 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f426_200d_2b1b/lottie.json)
+11-19 10:32:56.738  4045  4523 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795084337668
+11-19 10:32:56.751  4045  4155 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f413/lottie.json
+11-19 10:32:56.751  4045  4155 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f413/lottie.json)
+11-19 10:32:56.756  4045  4147 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795084337669
+11-19 10:32:56.764  4045  4523 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f423/lottie.json
+11-19 10:32:56.765  4045  4523 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f423/lottie.json)
+11-19 10:32:56.780  4045  4155 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795084337670
+11-19 10:32:56.787  4045  4147 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f424/lottie.json
+11-19 10:32:56.787  4045  4147 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f424/lottie.json)
+11-19 10:32:56.814  4045  4523 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795084337671
+11-19 10:32:56.824  4045  4155 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f425/lottie.json
+11-19 10:32:56.824  4045  4155 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f425/lottie.json)
+11-19 10:32:56.835  4045  4147 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795084337672
+11-19 10:32:56.838  4045  4523 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f985/lottie.json
+11-19 10:32:56.838  4045  4523 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f985/lottie.json)
+11-19 10:32:56.867  4045  4155 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795084337673
+11-19 10:32:56.867  4045  4523 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795084337674
+11-19 10:32:56.873  4045  4147 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f54a_fe0f/lottie.json
+11-19 10:32:56.873  4045  4147 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f54a_fe0f/lottie.json)
+11-19 10:32:56.880  4045  4523 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1fabf/lottie.json
+11-19 10:32:56.880  4045  4523 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1fabf/lottie.json)
+11-19 10:32:56.913  4045  4523 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795084337676
+11-19 10:32:56.913  4045  4147 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795084337675
+11-19 10:32:56.920  4045  4155 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f99a/lottie.json
+11-19 10:32:56.920  4045  4155 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f99a/lottie.json)
+11-19 10:32:56.929  4045  4147 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f9ad/lottie.json
+11-19 10:32:56.929  4045  4147 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f9ad/lottie.json)
+11-19 10:32:56.954  4045  4155 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795084337677
+11-19 10:32:56.956  4045  4147 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795084337678
+11-19 10:32:56.968  4045  4523 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f988/lottie.json
+11-19 10:32:56.968  4045  4523 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f988/lottie.json)
+11-19 10:32:56.992  4045  4155 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f42c/lottie.json
+11-19 10:32:56.992  4045  4155 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f42c/lottie.json)
+11-19 10:32:56.997  4045  4523 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795084337679
+11-19 10:32:57.017  4045  4147 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f433/lottie.json
+11-19 10:32:57.017  4045  4147 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f433/lottie.json)
+11-19 10:32:57.034  4045  4155 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795084337680
+11-19 10:32:57.039  4045  4523 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f421/lottie.json
+11-19 10:32:57.039  4045  4523 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f421/lottie.json)
+11-19 10:32:57.048  2628  3616 I DialerOmtpVvmCarrierConfigHelper: com.android.voicemail.impl.OmtpVvmCarrierConfigHelper.handleEvent:527 OmtpEvent:CONFIG_STATUS_SMS_TIME_OUT PhoneAccountHandle: [ComponentName: com.android.phone/com.android.
+11-19 10:32:57.049  2628  2628 I DialerRetryPolicy: com.android.voicemail.impl.scheduling.RetryPolicy.onCompleted:118 discarding deferred status [CONTEXT enable_persistent_logger=true ]
+11-19 10:32:57.056  2628  2628 I DialerTaskExecutor: com.android.voicemail.impl.scheduling.TaskExecutor.prepareStop:371 no more tasks, stopping service if no task are added in 5000 millis [CONTEXT enable_persistent_logger=true ]
+11-19 10:32:57.057  2628  2628 I DialerLogcatLoggingBindings: com.android.dialer.logging.logcat.LogcatLoggingBindings.logImpression:41 Impression: VVM_AUTO_RETRY_ACTIVATION
+11-19 10:32:57.057  2628  2628 I DialerTaskReceiver: com.android.voicemail.impl.scheduling.TaskReceiver.onReceive:68 task received [CONTEXT enable_persistent_logger=true ]
+11-19 10:32:57.057  2628  2628 I DialerTaskReceiver: com.android.voicemail.impl.scheduling.TaskReceiver.onReceive:73 TaskExecutor already running [CONTEXT enable_persistent_logger=true ]
+11-19 10:32:57.058  2628  2628 I DialerTasks: com.android.voicemail.impl.scheduling.Tasks.createTask:59 Task.createTask create task:com.android.voicemail.impl.ActivationTask [CONTEXT enable_persistent_logger=true ]
+11-19 10:32:57.058  2628  2628 I DialerRetryPolicy: com.android.voicemail.impl.scheduling.RetryPolicy.onCreate:81 retry #1 for com.android.voicemail.impl.ActivationTask@42da49a queued, executing in 5000 [CONTEXT enable_persistent_logger=tru
+11-19 10:32:57.062  4045  4147 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795084337681
+11-19 10:32:57.069  2628  2628 I DialerTaskExecutor: com.android.voicemail.impl.scheduling.TaskExecutor.addTask:299 com.android.voicemail.impl.ActivationTask@42da49a added [CONTEXT enable_persistent_logger=true ]
+11-19 10:32:57.070  2628  2628 I DialerTaskExecutor: com.android.voicemail.impl.scheduling.TaskExecutor.runNextTask:345 minimal wait time:4988 [CONTEXT enable_persistent_logger=true ]
+11-19 10:32:57.070  2628  2628 I DialerTaskExecutor: com.android.voicemail.impl.scheduling.TaskExecutor.sleep:355 sleep for 4988 millis [CONTEXT enable_persistent_logger=true ]
+11-19 10:32:57.079  4045  4523 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795084337682
+11-19 10:32:57.105  4045  4155 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f980/lottie.json
+11-19 10:32:57.105  4045  4155 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f980/lottie.json)
+11-19 10:32:57.122  4045  4147 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f419/lottie.json
+11-19 10:32:57.122  4045  4147 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f419/lottie.json)
+11-19 10:32:57.134  4045  4155 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795084337683
+11-19 10:32:57.156  4045  4523 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1fabc/lottie.json
+11-19 10:32:57.156  4045  4523 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1fabc/lottie.json)
+11-19 10:32:57.161  4045  4147 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795084337684
+11-19 10:32:57.170  4045  4155 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f577_fe0f/lottie.json
+11-19 10:32:57.170  4045  4155 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f577_fe0f/lottie.json)
+11-19 10:32:57.172  4994  5547 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:32:57.172  5646  5646 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+11-19 10:32:57.172  5646  5646 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-19 10:32:57.181  4994  5547 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:32:57.186  4045  4523 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795084337685
+11-19 10:32:57.202  4045  4155 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795084337686
+11-19 10:32:57.409     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+11-19 10:32:57.209   134   134 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-19 10:32:57.209  5646  5647 I Gralloc4: mapper 4.x is not supported
+11-19 10:32:57.209  4045  4147 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f40c/lottie.json
+11-19 10:32:57.209  4045  4147 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f40c/lottie.json)
+11-19 10:32:57.222  4045  4523 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f41c/lottie.json
+11-19 10:32:57.223  4045  4523 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f41c/lottie.json)
+11-19 10:32:57.243  5382  5403 D EGL_emulation: app_time_stats: avg=30.70ms min=7.54ms max=48.12ms count=33
+11-19 10:32:57.263  4045  4147 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795084337687
+11-19 10:32:57.264  4045  4523 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795084337688
+11-19 10:32:57.299  4994  5027 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:32:57.300  4045  4155 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f99f/lottie.json
+11-19 10:32:57.300  4045  4155 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f99f/lottie.json)
+11-19 10:32:57.377  4045  4155 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795084337689
+11-19 10:32:57.392  4045  4147 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1fab3/lottie.json
+11-19 10:32:57.392  4045  4147 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1fab3/lottie.json)
+11-19 10:32:57.396  4045  4523 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1fab0/lottie.json
+11-19 10:32:57.396  4045  4523 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1fab0/lottie.json)
+11-19 10:32:57.426  4045  4094 I .apps.messaging: Background concurrent copying GC freed 107736(5344KB) AllocSpace objects, 128(6656KB) LOS objects, 49% free, 11MB/22MB, paused 34us,25us total 147.348ms
+11-19 10:32:57.440  4045  4147 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795084337690
+11-19 10:32:57.447  4045  4523 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795084337691
+11-19 10:32:57.472  4045  4155 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f41d/lottie.json
+11-19 10:32:57.472  4045  4155 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f41d/lottie.json)
+11-19 10:32:57.474  4045  4523 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f41e/lottie.json
+11-19 10:32:57.474  4045  4523 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f41e/lottie.json)
+11-19 10:32:57.506  4045  4523 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795084337693
+11-19 10:32:57.507  4045  4155 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795084337692
+11-19 10:32:57.518  4045  4147 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f98b/lottie.json
+11-19 10:32:57.518  4045  4147 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f98b/lottie.json)
+11-19 10:32:57.569  4045  4523 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f41b/lottie.json
+11-19 10:32:57.569  4045  4523 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f41b/lottie.json)
+11-19 10:32:57.578  4045  4147 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795084337694
+11-19 10:32:57.600  4045  4523 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795084337695
+11-19 10:32:57.605  4045  4155 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1fab1/lottie.json
+11-19 10:32:57.605  4045  4155 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1fab1/lottie.json)
+11-19 10:32:57.617  4045  4147 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f43e/lottie.json
+11-19 10:32:57.617  4045  4147 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f43e/lottie.json)
+11-19 10:32:57.634  4045  4155 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795084337696

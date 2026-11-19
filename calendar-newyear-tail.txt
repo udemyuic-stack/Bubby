@@ -1,0 +1,150 @@
+11-19 10:34:07.390  4977  5131 W Pay     : [eMoney txn sync] exiting without init: active tapandpay account not found! [CONTEXT service_id=198 ]
+11-19 10:34:07.393  4977  4977 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.common.BIND_SHARED_PREFS pkg=com.google.android.gms }
+11-19 10:34:07.395  4977  5131 I Pay     : Requested immediate check to see whether to show pay module downloading complete notification. [CONTEXT service_id=198 ]
+11-19 10:34:07.398  4977  5386 I ChimeraConfigurator: Starting update, reason: 4 urgentFeatures: mlkit.barcode.ui:0
+11-19 10:34:07.401  4895  4951 I TapAndPay: Disabling TapAndPay HCE service [CONTEXT service_id=79 ]
+11-19 10:34:07.415  4977  5131 W Pay     : Active account was null, notification task will be cancelled. [CONTEXT service_id=198 ]
+11-19 10:34:07.415  4977  5131 W Pay     : [eMoney card recovery task] exiting without init: active tapandpay account not found! [CONTEXT service_id=198 ]
+11-19 10:34:07.417  4977  5131 I Pay     : Requested check of feature migrations. [CONTEXT service_id=198 ]
+11-19 10:34:07.420  4977  5386 I ChimeraConfigurator: Detected pending changes for urgent request: [mlkit.barcode.ui]. Pending module sets: container:2318189190800+mlkit.barcode.ui+vision.barcode,tflite_dynamite:2640104055100800+tflite_dyna
+11-19 10:34:07.429  4977  5386 I GmsDebugLogger: [73] 1801
+11-19 10:34:07.432  4977  5386 W ZappDownloader: No successful module downloads for requested features [mlkit.barcode.ui].
+11-19 10:34:07.432  4977  5386 I GmsDebugLogger: [30] [VisionBarcode.optional:231818100800],[TfliteDynamiteDynamite.integ:264010405100800],[MlkitBarcodeUi.optional:231818100000]
+11-19 10:34:07.434  4977  5386 W ChimeraConfigService: Retry attempt was throttled. [CONTEXT service_id=264 ]
+11-19 10:34:07.435  4977  5386 I GmsDebugLogger: [83] 1 [mlkit.barcode.ui]
+11-19 10:34:07.436  5175  5175 I com.example.buddy: Perf: native scene 29 fps
+11-19 10:34:07.458   336  5511 I resolv  : GetAddrInfoHandler::run: {100 786532 100 983140 10131 0}
+11-19 10:34:07.461   336  5512 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+11-19 10:34:07.462   336  5512 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7180fcb31fd0
+11-19 10:34:07.462   336  5512 I resolv  : doQuery: rcode=0, ancount=8, return value=264
+11-19 10:34:07.465   336  5513 I resolv  : res_nmkquery: (QUERY, IN, A)
+11-19 10:34:07.465   336  5513 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x71814cb353d0
+11-19 10:34:07.465   336  5513 I resolv  : doQuery: rcode=0, ancount=8, return value=168
+11-19 10:34:07.466  4977  5143 D TrafficStats: tagSocket(98) with statsTag=0x30000408, statsUid=-1
+11-19 10:34:07.473  4977  5143 W ProviderHelper: Unknown dynamite feature providerinstaller.dynamite
+11-19 10:34:07.473  4977  5143 I DynamiteModule: Considering local module com.google.android.gms.providerinstaller.dynamite:1 and remote module com.google.android.gms.providerinstaller.dynamite:0
+11-19 10:34:07.474  4977  5143 I DynamiteModule: Selected local version of com.google.android.gms.providerinstaller.dynamite
+11-19 10:34:07.476  4977  5143 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+11-19 10:34:07.477  4977  5143 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-19 10:34:07.477  4977  5143 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-19 10:34:07.486  4895  4971 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.gass.chimera.SchedulePeriodicTasksService started execution. cause:5 exec_start_elapsed_seconds: 101 [CONTEXT service_id=218 ]
+11-19 10:34:07.522  4977  5131 I AlarmManager: setExactAndAllowWhileIdle [name: RemindersNSREFRESH_TIME_REMINDERS_ALARM type: 0 triggerAtMillis: 1795132800000]
+11-19 10:34:07.553  4977  5143 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+11-19 10:34:07.555  4977  5143 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-19 10:34:07.555  4977  5143 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-19 10:34:07.559  4977  5493 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.geller.GellerCleanupService.GellerCleanup is scheduled to run EVERY_DAY [CONTEXT service_id=173 ]
+11-19 10:34:07.580  4895  5057 W .gms.persistent: Long monitor contention with owner lowpool[2] (4971) at void bytb.n(byps, byps, int)(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6) waiters=0 in int bytb.l(bysm, aphn) for 
+11-19 10:34:07.615  4977  5132 V SmartDevice: [ModuleInitializer] ModuleInitializer got intent Intent { act=android.intent.action.BOOT_COMPLETED flg=0x89000010 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperatio
+11-19 10:34:07.625  4977  5132 W ChimeraUtils: Module com.google.android.gms.smartdevice missing resource null(0)
+11-19 10:34:07.669   523  2620 I RemoteProvisionSysSvc: getRegistration(android.hardware.security.keymint.IRemotelyProvisionedComponent/default)
+11-19 10:34:07.686   523   523 I RegistrationProxy: onServiceConnected: com.android.rkpdapp.service.RemoteProvisioningService
+11-19 10:34:07.884     0     0 I servicemanager: Found android.hardware.security.keymint.IRemotelyProvisionedComponent/default in device VINTF manifest.
+11-19 10:34:07.690   523  1702 I RegistrationProxy: IGetRegistrationCallback.onSuccess
+11-19 10:34:07.694  4977  5132 D SmartDevice: [ModuleInitializer] Module init - scheduling buffered logs cleanup task
+11-19 10:34:07.695   523   599 I RemoteProvisionSysSvc: Fetching key 10131 for client 153779811
+11-19 10:34:07.695   523   599 I RegistrationProxy: getKeyAsync operation started with callback 220998240
+11-19 10:34:07.696  4977  5132 I SmartDevice: [CleanBufferedLogsService] Periodic task upload_buffered_logs_periodic scheduled!
+11-19 10:34:07.696  3651  3683 I RkpdRegistrationBinder: Key requested for : android.hardware.security.keymint.IRemotelyProvisionedComponent/default, clientUid: 1017, keyId: 10131, callback: 61806524
+11-19 10:34:07.697  3651  3683 I RkpdRegistrationBinder: Key successfully assigned to client
+11-19 10:34:07.698   523   523 I RemoteProvisionSysSvc: Successfully fetched key for client 153779811
+11-19 10:34:07.746  4895  5392 I TapAndPay: Disabling TapAndPay HCE service [CONTEXT service_id=79 ]
+11-19 10:34:07.747  4977  5132 I TelephonySpamInit: On boot completed TelephonySpam module initialized [CONTEXT service_id=150 ]
+11-19 10:34:07.748  4977  5132 I TelephonySpamInit: onModuleUpdated TelephonySpam module initialized [CONTEXT service_id=150 ]
+11-19 10:34:07.750  4977  5131 I ThreadNetworkModuleInit: Initializing runtime states: 2 [CONTEXT service_id=305 ]
+11-19 10:34:07.752  4977  5131 I ThreadNetworkModuleInit: Enabled component com.google.android.gms.threadnetwork.ui.ShareCredentialsActivity [CONTEXT service_id=305 ]
+11-19 10:34:07.756  4977  5131 I ThreadBrSynchronizer: Scheduled periodic Border Router sync task: PeriodicBrSync [CONTEXT service_id=305 ]
+11-19 10:34:07.760  4977  5132 I SpamListSync: scheduleSyncTasks [CONTEXT service_id=150 ]
+11-19 10:34:07.760  4977  5132 I SpamListSync: schedulePeriodicTask [CONTEXT service_id=150 ]
+11-19 10:34:07.763  4977  5131 I TrustedTime: Skip initializing when trusted time feature disabled. [CONTEXT service_id=326 ]
+11-19 10:34:07.769  2925  3626 W SystemServiceRegistry: No service published for: persistent_data_block
+11-19 10:34:07.791  4977  5132 I SpamListSync: scheduleOneTimeTask [CONTEXT service_id=150 ]
+11-19 10:34:07.820  4977  5128 I SystemUpdate: [Control,UpdateReminderDialogControl] Received action: android.intent.action.BOOT_COMPLETED
+11-19 10:34:07.829  4977  5131 W ActiveUnlock: Tried to set empty triggers [CONTEXT service_id=327 ]
+11-19 10:34:07.836  4977  5131 W ChimeraUtils: Module com.google.android.gms.activeunlock_primary missing resource null(0)
+11-19 10:34:07.844  5529  5529 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+11-19 10:34:07.846  5529  5529 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-19 10:34:07.857   401   625 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=5529
+11-19 10:34:07.858   401   625 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (777 us)
+11-19 10:34:07.863  4895  5051 I SemanticLocation: [MDD] ModelBundleMetadata: File not found [CONTEXT service_id=173 ]
+11-19 10:34:07.863  4895  5051 I SemanticLocation: java.io.FileNotFoundException: /data/user/0/com.google.android.gms/files/model_bundle_metadata.pb: open failed: ENOENT (No such file or directory)
+11-19 10:34:07.863  4895  5051 I SemanticLocation: 	at libcore.io.IoBridge.open(IoBridge.java:574)
+11-19 10:34:07.863  4895  5051 I SemanticLocation: 	at java.io.FileInputStream.<init>(FileInputStream.java:160)
+11-19 10:34:07.863  4895  5051 I SemanticLocation: 	at android.app.ContextImpl.openFileInput(ContextImpl.java:745)
+11-19 10:34:07.863  4895  5051 I SemanticLocation: 	at android.content.ContextWrapper.openFileInput(ContextWrapper.java:249)
+11-19 10:34:07.863  4895  5051 I SemanticLocation: 	at android.content.ContextWrapper.openFileInput(ContextWrapper.java:249)
+11-19 10:34:07.863  4895  5051 I SemanticLocation: 	at android.content.ContextWrapper.openFileInput(ContextWrapper.java:249)
+11-19 10:34:07.863  4895  5051 I SemanticLocation: 	at bzxt.h(:com.google.android.gms@231818047@23.18.18 (190800-535401451):1)
+11-19 10:34:07.863  4895  5051 I SemanticLocation: 	at bzxd.c(:com.google.android.gms@231818047@23.18.18 (190800-535401451):9)
+11-19 10:34:07.863  4895  5051 I SemanticLocation: 	at bzxd.<init>(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-19 10:34:07.863  4895  5051 I SemanticLocation: 	at cadn.j(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-19 10:34:07.863  4895  5051 I SemanticLocation: 	at cadn.h(:com.google.android.gms@231818047@23.18.18 (190800-535401451):36)
+11-19 10:34:07.863  4895  5051 I SemanticLocation: 	at cadn.b(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-19 10:34:07.863  4895  5051 I SemanticLocation: 	at com.google.android.gms.semanticlocation.service.SemanticLocationChimeraService.k(:com.google.android.gms@231818047@23.18.18 (190800-535401451):9)
+11-19 10:34:07.863  4895  5051 I SemanticLocation: 	at com.google.android.gms.semanticlocation.service.SemanticLocationChimeraService.h(:com.google.android.gms@231818047@23.18.18 (190800-535401451):17)
+11-19 10:34:07.863  4895  5051 I SemanticLocation: 	at cacs.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):68)
+11-19 10:34:07.863  4895  5051 I SemanticLocation: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:487)
+11-19 10:34:07.863  4895  5051 I SemanticLocation: 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+11-19 10:34:07.863  4895  5051 I SemanticLocation: 	at aced.c(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+11-19 10:34:07.863  4895  5051 I SemanticLocation: 	at aced.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):7)
+11-19 10:34:07.863  4895  5051 I SemanticLocation: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-19 10:34:07.863  4895  5051 I SemanticLocation: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-19 10:34:07.863  4895  5051 I SemanticLocation: 	at acjn.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-19 10:34:07.863  4895  5051 I SemanticLocation: 	at java.lang.Thread.run(Thread.java:1012)
+11-19 10:34:07.863  4895  5051 I SemanticLocation: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+11-19 10:34:07.863  4895  5051 I SemanticLocation: 	at libcore.io.Linux.open(Native Method)
+11-19 10:34:07.863  4895  5051 I SemanticLocation: 	at libcore.io.ForwardingOs.open(ForwardingOs.java:563)
+11-19 10:34:07.863  4895  5051 I SemanticLocation: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:274)
+11-19 10:34:07.863  4895  5051 I SemanticLocation: 	at libcore.io.ForwardingOs.open(ForwardingOs.java:563)
+11-19 10:34:07.863  4895  5051 I SemanticLocation: 	at android.app.ActivityThread$AndroidOs.open(ActivityThread.java:8063)
+11-19 10:34:07.863  4895  5051 I SemanticLocation: 	at libcore.io.IoBridge.open(IoBridge.java:560)
+11-19 10:34:07.863  4895  5051 I SemanticLocation: 	... 22 more
+11-19 10:34:07.864   133   133 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-19 10:34:07.865  5529  5531 I Gralloc4: mapper 4.x is not supported
+11-19 10:34:08.059     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+11-19 10:34:07.922  4977  5143 I Checkin : [CheckinRequestProcessor] updateCheckinIdTokenFileFromResponse, Reading existing AID
+11-19 10:34:07.945  2925  3626 D TrafficStats: tagSocket(119) with statsTag=0x1809, statsUid=-1
+11-19 10:34:07.946  2925  3626 D TrafficStats: tagSocket(119) with statsTag=0x1809, statsUid=-1
+11-19 10:34:07.948  2925  3626 D TrafficStats: tagSocket(119) with statsTag=0x1809, statsUid=-1
+11-19 10:34:07.957  4977  5493 I ChimeraConfigurator: Starting update, reason: 4 urgentFeatures: tflite_dynamite:-1
+11-19 10:34:07.959  5175  5207 D EGL_emulation: app_time_stats: avg=28.85ms min=8.13ms max=43.03ms count=35
+11-19 10:34:07.963  4977  5143 I Checkin : [CheckinRequestProcessor] Default Task : Checkin Succeeded: https://android.googleapis.com/checkin (fragment #1).
+11-19 10:34:08.014  1738  2971 W A       : [Download] response code: 400
+11-19 10:34:08.042  4977  5128 I Wear_Controller: Wearable module requires a companion app to be installed.
+11-19 10:34:08.042  4977  5128 I Wear_Controller: onStartup - Wear is not available on this device.
+11-19 10:34:08.074  4977  5143 I Checkin : [CheckinOperation] Checkin Operation finished with result: SUCCESS finish time: 101806.
+11-19 10:34:08.089  4895  4971 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.gass.chimera.SchedulePeriodicTasksService finished executing. cause:5 result: 1 elapsed_millis: 343 uptime_millis: 343 exec_start_el
+11-19 10:34:08.096  4977  5132 I AccountSeedingPrefetchI: AccountSeedingPrefetchInit intent operation started. [CONTEXT service_id=42 ]
+11-19 10:34:08.130  4977  5234 I Icing   : Indexing com.google.android.gms-apps from com.google.android.gms
+11-19 10:34:08.139  4895  5057 W .gms.persistent: Long monitor contention with owner lowpool[2] (4971) at void bytb.n(byps, byps, int)(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6) waiters=0 in int bytb.l(bysm, aphn) for 
+11-19 10:34:08.161  4977  5493 I ChimeraConfigurator: Detected pending changes for urgent request: [tflite_dynamite]. Pending module sets: container:2318189190800,tflite_dynamite:2640104055100800+tflite_dynamite
+11-19 10:34:08.163  4895  5256 W SystemServiceRegistry: No service published for: contexthub
+11-19 10:34:08.183  4977  5493 I GmsDebugLogger: [73] 1801
+11-19 10:34:08.190  4895  5051 I SemanticLocation: [MDD] ModelBundleMetadata: File not found [CONTEXT service_id=173 ]
+11-19 10:34:08.190  4895  5051 I SemanticLocation: java.io.FileNotFoundException: /data/user/0/com.google.android.gms/files/model_bundle_metadata.pb: open failed: ENOENT (No such file or directory)
+11-19 10:34:08.190  4895  5051 I SemanticLocation: 	at libcore.io.IoBridge.open(IoBridge.java:574)
+11-19 10:34:08.190  4895  5051 I SemanticLocation: 	at java.io.FileInputStream.<init>(FileInputStream.java:160)
+11-19 10:34:08.190  4895  5051 I SemanticLocation: 	at android.app.ContextImpl.openFileInput(ContextImpl.java:745)
+11-19 10:34:08.190  4895  5051 I SemanticLocation: 	at android.content.ContextWrapper.openFileInput(ContextWrapper.java:249)
+11-19 10:34:08.190  4895  5051 I SemanticLocation: 	at android.content.ContextWrapper.openFileInput(ContextWrapper.java:249)
+11-19 10:34:08.190  4895  5051 I SemanticLocation: 	at android.content.ContextWrapper.openFileInput(ContextWrapper.java:249)
+11-19 10:34:08.190  4895  5051 I SemanticLocation: 	at bzxt.h(:com.google.android.gms@231818047@23.18.18 (190800-535401451):1)
+11-19 10:34:08.190  4895  5051 I SemanticLocation: 	at bzxd.c(:com.google.android.gms@231818047@23.18.18 (190800-535401451):9)
+11-19 10:34:08.190  4895  5051 I SemanticLocation: 	at cadb.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-19 10:34:08.190  4895  5051 I SemanticLocation: 	at aced.c(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+11-19 10:34:08.190  4895  5051 I SemanticLocation: 	at aced.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):8)
+11-19 10:34:08.190  4895  5051 I SemanticLocation: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-19 10:34:08.190  4895  5051 I SemanticLocation: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-19 10:34:08.190  4895  5051 I SemanticLocation: 	at acjn.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-19 10:34:08.190  4895  5051 I SemanticLocation: 	at java.lang.Thread.run(Thread.java:1012)
+11-19 10:34:08.190  4895  5051 I SemanticLocation: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+11-19 10:34:08.190  4895  5051 I SemanticLocation: 	at libcore.io.Linux.open(Native Method)
+11-19 10:34:08.190  4895  5051 I SemanticLocation: 	at libcore.io.ForwardingOs.open(ForwardingOs.java:563)
+11-19 10:34:08.190  4895  5051 I SemanticLocation: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:274)
+11-19 10:34:08.190  4895  5051 I SemanticLocation: 	at libcore.io.ForwardingOs.open(ForwardingOs.java:563)
+11-19 10:34:08.190  4895  5051 I SemanticLocation: 	at android.app.ActivityThread$AndroidOs.open(ActivityThread.java:8063)
+11-19 10:34:08.190  4895  5051 I SemanticLocation: 	at libcore.io.IoBridge.open(IoBridge.java:560)
+11-19 10:34:08.190  4895  5051 I SemanticLocation: 	... 14 more
+11-19 10:34:08.194  4977  5493 W ZappDownloader: No successful module downloads for requested features [tflite_dynamite].
+11-19 10:34:08.194  4977  5493 I GmsDebugLogger: [30] [TfliteDynamiteDynamite.integ:264010405100800]
+11-19 10:34:08.201  4977  5493 W ChimeraConfigService: Retry attempt was throttled. [CONTEXT service_id=264 ]
+11-19 10:34:08.202  4977  5493 I GmsDebugLogger: [83] 1 [tflite_dynamite]

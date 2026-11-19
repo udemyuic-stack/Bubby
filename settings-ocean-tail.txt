@@ -1,0 +1,150 @@
+11-19 10:32:48.553   522   550 D ActivityManager: sync unfroze 3738 com.google.android.projection.gearhead:shared for 3
+11-19 10:32:48.580   999  5082 D NetworkMonitor/101: PROBE_DNS connectivitycheck.gstatic.com 138ms OK 142.251.150.120,2001:4860:4826:7800::
+11-19 10:32:48.597  4088  4517 I BugleRcsProvisioning: BugleSystemBindingManager: onBuglePhenotypeFlagChanged
+11-19 10:32:48.597   999   999 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-19 10:32:48.598  1755  1755 I A       : Refusing EXCLUSIVE task 21, it is already pending. Try again in 357 seconds.
+11-19 10:32:48.598  4088  4517 I BugleTransport: onBuglePhenotypeFlagChanged: kicking off updateActiveTransport
+11-19 10:32:48.600  4088  4515 W BugleRcsEngine: [78] bpxc.w: Unable to send diagnostic log
+11-19 10:32:48.601  4088  4206 W BugleAction: Null config in BugleSharedPrefs
+11-19 10:32:48.601  4088  4206 W BugleAction: Failed to get msisdn from Bugle
+11-19 10:32:48.601  4088  4206 W BugleAction: Failed to get msisdn from RcsProfileService
+11-19 10:32:48.601  4088  4206 W BugleAction: cksi: Jibe SDK Service not available. Is the Jibe SDK service running? Did you call connect() and wait for the notification before calling an API function?
+11-19 10:32:48.601  4088  4206 W BugleAction: 	at cksa.b(PG:2)
+11-19 10:32:48.601  4088  4206 W BugleAction: 	at com.google.android.rcs.client.profile.RcsProfileService.g(PG:1)
+11-19 10:32:48.601  4088  4206 W BugleAction: 	at com.google.android.rcs.client.profile.RcsProfileService.getMsisdn(PG:3)
+11-19 10:32:48.601  4088  4206 W BugleAction: 	at awsw.aj(PG:17)
+11-19 10:32:48.601  4088  4206 W BugleAction: 	at awsw.z(PG:2)
+11-19 10:32:48.601  4088  4206 W BugleAction: 	at aule.k(PG:1)
+11-19 10:32:48.601  4088  4206 W BugleAction: 	at aulc.call(Unknown Source:2)
+11-19 10:32:48.601  4088  4206 W BugleAction: 	at cnsg.a(PG:1)
+11-19 10:32:48.601  4088  4206 W BugleAction: 	at cnpm.a(PG:3)
+11-19 10:32:48.601  4088  4206 W BugleAction: 	at ctfv.a(PG:1)
+11-19 10:32:48.601  4088  4206 W BugleAction: 	at ctet.run(PG:4)
+11-19 10:32:48.601  4088  4206 W BugleAction: 	at ctfx.run(PG:1)
+11-19 10:32:48.601  4088  4206 W BugleAction: 	at bxfd.run(PG:1)
+11-19 10:32:48.601  4088  4206 W BugleAction: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-19 10:32:48.601  4088  4206 W BugleAction: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-19 10:32:48.601  4088  4206 W BugleAction: 	at bxef.run(PG:2)
+11-19 10:32:48.601  4088  4206 W BugleAction: 	at java.lang.Thread.run(Thread.java:1012)
+11-19 10:32:48.601  4088  4206 W BugleAction: 	at bxfj.run(PG:5)
+11-19 10:32:48.601  4088  4206 W SubscriptionMetadataUti: Bugle: SubscriptionMetadataUtils get: unexpected subId = -2, replacing with -1
+11-19 10:32:48.601  4088  4206 W SubscriptionMetadataUti: cpwb: FULL
+11-19 10:32:48.601  4088  4206 W SubscriptionMetadataUti: 	at bdsy.h(PG:6)
+11-19 10:32:48.601  4088  4206 W SubscriptionMetadataUti: 	at bdvp.a(PG:1)
+11-19 10:32:48.601  4088  4206 W SubscriptionMetadataUti: 	at bgit.<init>(PG:1)
+11-19 10:32:48.601  4088  4206 W SubscriptionMetadataUti: 	at bgiu.a(PG:1)
+11-19 10:32:48.601  4088  4206 W SubscriptionMetadataUti: 	at awsw.ai(PG:3)
+11-19 10:32:48.601  4088  4206 W SubscriptionMetadataUti: 	at awsw.aj(PG:25)
+11-19 10:32:48.601  4088  4206 W SubscriptionMetadataUti: 	at awsw.z(PG:2)
+11-19 10:32:48.601  4088  4206 W SubscriptionMetadataUti: 	at aule.k(PG:1)
+11-19 10:32:48.601  4088  4206 W SubscriptionMetadataUti: 	at aulc.call(Unknown Source:2)
+11-19 10:32:48.601  4088  4206 W SubscriptionMetadataUti: 	at cnsg.a(PG:1)
+11-19 10:32:48.601  4088  4206 W SubscriptionMetadataUti: 	at cnpm.a(PG:3)
+11-19 10:32:48.601  4088  4206 W SubscriptionMetadataUti: 	at ctfv.a(PG:1)
+11-19 10:32:48.601  4088  4206 W SubscriptionMetadataUti: 	at ctet.run(PG:4)
+11-19 10:32:48.601  4088  4206 W SubscriptionMetadataUti: 	at ctfx.run(PG:1)
+11-19 10:32:48.601  4088  4206 W SubscriptionMetadataUti: 	at bxfd.run(PG:1)
+11-19 10:32:48.601  4088  4206 W SubscriptionMetadataUti: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-19 10:32:48.601  4088  4206 W SubscriptionMetadataUti: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-19 10:32:48.601  4088  4206 W SubscriptionMetadataUti: 	at bxef.run(PG:2)
+11-19 10:32:48.601  4088  4206 W SubscriptionMetadataUti: 	at java.lang.Thread.run(Thread.java:1012)
+11-19 10:32:48.601  4088  4206 W SubscriptionMetadataUti: 	at bxfj.run(PG:5)
+11-19 10:32:48.602  4088  4206 W SubscriptionMetadataUti: Bugle: SubscriptionMetadataUtils get: unexpected subId = -2, replacing with -1
+11-19 10:32:48.602  4088  4206 W SubscriptionMetadataUti: cpwb: FULL
+11-19 10:32:48.602  4088  4206 W SubscriptionMetadataUti: 	at bdsy.h(PG:6)
+11-19 10:32:48.602  4088  4206 W SubscriptionMetadataUti: 	at bgit.<init>(PG:2)
+11-19 10:32:48.602  4088  4206 W SubscriptionMetadataUti: 	at bgiu.a(PG:1)
+11-19 10:32:48.602  4088  4206 W SubscriptionMetadataUti: 	at awsw.ai(PG:3)
+11-19 10:32:48.602  4088  4206 W SubscriptionMetadataUti: 	at awsw.aj(PG:25)
+11-19 10:32:48.602  4088  4206 W SubscriptionMetadataUti: 	at awsw.z(PG:2)
+11-19 10:32:48.602  4088  4206 W SubscriptionMetadataUti: 	at aule.k(PG:1)
+11-19 10:32:48.602  4088  4206 W SubscriptionMetadataUti: 	at aulc.call(Unknown Source:2)
+11-19 10:32:48.602  4088  4206 W SubscriptionMetadataUti: 	at cnsg.a(PG:1)
+11-19 10:32:48.602  4088  4206 W SubscriptionMetadataUti: 	at cnpm.a(PG:3)
+11-19 10:32:48.602  4088  4206 W SubscriptionMetadataUti: 	at ctfv.a(PG:1)
+11-19 10:32:48.602  4088  4206 W SubscriptionMetadataUti: 	at ctet.run(PG:4)
+11-19 10:32:48.602  4088  4206 W SubscriptionMetadataUti: 	at ctfx.run(PG:1)
+11-19 10:32:48.602  4088  4206 W SubscriptionMetadataUti: 	at bxfd.run(PG:1)
+11-19 10:32:48.602  4088  4206 W SubscriptionMetadataUti: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-19 10:32:48.602  4088  4206 W SubscriptionMetadataUti: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-19 10:32:48.602  4088  4206 W SubscriptionMetadataUti: 	at bxef.run(PG:2)
+11-19 10:32:48.602  4088  4206 W SubscriptionMetadataUti: 	at java.lang.Thread.run(Thread.java:1012)
+11-19 10:32:48.602  4088  4206 W SubscriptionMetadataUti: 	at bxfj.run(PG:5)
+11-19 10:32:48.608   999   999 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-19 10:32:48.609  4088  5077 I BugleRcsEngine: [114] brnl.A: ProvisioningConsent from user settings: false
+11-19 10:32:48.610   999   999 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-19 10:32:48.611  1755  1755 I A       : Refusing EXCLUSIVE task 21, it is already pending. Try again in 357 seconds.
+11-19 10:32:48.611  4088  4187 I BugleRcsEngine: [43] bptz.run: SystemBindingManager: SystemBinding enabled: true
+11-19 10:32:48.612   999   999 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-19 10:32:48.612   335  5090 I resolv  : GetAddrInfoHandler::run: {101 983141 101 983141 1073 1}
+11-19 10:32:48.614  4088  4187 I BugleRcsEngine: [43] bpua.b: System Binding updated
+11-19 10:32:48.615  1471  5049 W Icing   : No valid account for uploading user actions
+11-19 10:32:48.615   999   999 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-19 10:32:48.616  1755  1755 I A       : Refusing EXCLUSIVE task 21, it is already pending. Try again in 357 seconds.
+11-19 10:32:48.619   999   999 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-19 10:32:48.620   335  5092 I resolv  : res_nmkquery: (QUERY, IN, A)
+11-19 10:32:48.620   335  5092 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x72959cb4f390
+11-19 10:32:48.620   335  5092 I resolv  : doQuery: rcode=0, ancount=1, return value=63
+11-19 10:32:48.621   999   999 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-19 10:32:48.623   335  5091 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+11-19 10:32:48.624   335  5091 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x72959cb50c10
+11-19 10:32:48.624   335  5091 I resolv  : doQuery: rcode=0, ancount=1, return value=75
+11-19 10:32:48.625   999  5082 D TrafficStats: tagSocket(107) with statsTag=0xffffff81, statsUid=-1
+11-19 10:32:48.626   999   999 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-19 10:32:48.627   999   999 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-19 10:32:48.628   999   999 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-19 10:32:48.629   999   999 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-19 10:32:48.629   999   999 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-19 10:32:48.630   999   999 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-19 10:32:48.631   999   999 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-19 10:32:48.632   999   999 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-19 10:32:48.637   999  5081 D NetworkMonitor/101: PROBE_DNS www.google.com 194ms OK 142.251.157.119,142.251.152.119,142.251.153.119,142.251.155.119,142.251.156.119,142.251.151.119,142.251.154.119,142.251.150.119,2001:4860:482c:7700::,200
+11-19 10:32:48.641  4088  4191 W BugleRcsEngine: [45] bpxc.w: Unable to send diagnostic log
+11-19 10:32:48.646  1471  5049 I Icing   : Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0
+11-19 10:32:48.646   335  5093 I resolv  : GetAddrInfoHandler::run: {101 983141 101 983141 1073 1}
+11-19 10:32:48.652   335  5095 I resolv  : res_nmkquery: (QUERY, IN, A)
+11-19 10:32:48.652   335  5095 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x72949cb4f8d0
+11-19 10:32:48.652   335  5095 I resolv  : doQuery: rcode=0, ancount=8, return value=160
+11-19 10:32:48.652   335  5094 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+11-19 10:32:48.652   335  5094 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x72960cb50650
+11-19 10:32:48.652   335  5094 I resolv  : doQuery: rcode=0, ancount=8, return value=256
+11-19 10:32:48.653  4088  5077 I BugleRcsEngine: [114] brnl.e: No RCS Configuration was found in Bugle for simID: redacted-pii:sim_id[chars:20,last3:897]
+11-19 10:32:48.653   999  5081 D TrafficStats: tagSocket(68) with statsTag=0xffffff81, statsUid=-1
+11-19 10:32:48.654  4088  5077 W BugleRcsEngine: [114] brfq.e: (PEv2-SM-Bugle-141003264): Could not retrieve MSISDN from configuration. Configuration is empty. [3754ba59-9927-48ea-a6de-f756bb8459cc]
+11-19 10:32:48.654  4088  5077 W BugleRcsEngine: [114] brfq.e: (PEv2-SM-Bugle-141003264): Skipping adding Tachyon identity key to request. Null/empty RCS msisdn from configuration for sim ID: 89860318640220133897. [3754ba59-9927-48ea-a6de-f
+11-19 10:32:48.655  4088  5077 I BugleRcsEngine: [114] brnl.A: ProvisioningConsent from user settings: false
+11-19 10:32:48.656  4088  4515 I BugleTransport: isChatAvailable: RcsAvailability is CARRIER_SETUP_PENDING (Carrier RCS is not set up)
+11-19 10:32:48.659   999  5082 D NetworkMonitor/101: PROBE_HTTP http://connectivitycheck.gstatic.com/generate_204 time=56ms ret=204 request={Connection=[close], User-Agent=[Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gec
+11-19 10:32:48.692  3213  4293 W DG      : [flow rcs_provisioning] DroidGuardRunner.newVmProcessForFastSignalCollection(): Fast program not found [CONTEXT service_id=25 ]
+11-19 10:32:48.705  1471  5049 W Icing   : No valid account for uploading user actions
+11-19 10:32:48.711  3213  3721 D TrafficStats: tagSocket(116) with statsTag=0x1803, statsUid=10130
+11-19 10:32:48.719  4088  4206 W SubscriptionMetadataUti: Bugle: SubscriptionMetadataUtils get: unexpected subId = -2, replacing with -1
+11-19 10:32:48.719  4088  4206 W SubscriptionMetadataUti: cpwb: FULL
+11-19 10:32:48.719  4088  4206 W SubscriptionMetadataUti: 	at bdsy.h(PG:6)
+11-19 10:32:48.719  4088  4206 W SubscriptionMetadataUti: 	at awsw.ai(PG:18)
+11-19 10:32:48.719  4088  4206 W SubscriptionMetadataUti: 	at awsw.aj(PG:25)
+11-19 10:32:48.719  4088  4206 W SubscriptionMetadataUti: 	at awsw.z(PG:2)
+11-19 10:32:48.719  4088  4206 W SubscriptionMetadataUti: 	at aule.k(PG:1)
+11-19 10:32:48.719  4088  4206 W SubscriptionMetadataUti: 	at aulc.call(Unknown Source:2)
+11-19 10:32:48.719  4088  4206 W SubscriptionMetadataUti: 	at cnsg.a(PG:1)
+11-19 10:32:48.719  4088  4206 W SubscriptionMetadataUti: 	at cnpm.a(PG:3)
+11-19 10:32:48.719  4088  4206 W SubscriptionMetadataUti: 	at ctfv.a(PG:1)
+11-19 10:32:48.719  4088  4206 W SubscriptionMetadataUti: 	at ctet.run(PG:4)
+11-19 10:32:48.719  4088  4206 W SubscriptionMetadataUti: 	at ctfx.run(PG:1)
+11-19 10:32:48.719  4088  4206 W SubscriptionMetadataUti: 	at bxfd.run(PG:1)
+11-19 10:32:48.719  4088  4206 W SubscriptionMetadataUti: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-19 10:32:48.719  4088  4206 W SubscriptionMetadataUti: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-19 10:32:48.719  4088  4206 W SubscriptionMetadataUti: 	at bxef.run(PG:2)
+11-19 10:32:48.719  4088  4206 W SubscriptionMetadataUti: 	at java.lang.Thread.run(Thread.java:1012)
+11-19 10:32:48.719  4088  4206 W SubscriptionMetadataUti: 	at bxfj.run(PG:5)
+11-19 10:32:48.734   999  5081 D NetworkMonitor/101: PROBE_HTTPS https://www.google.com/generate_204 time=94ms ret=204 request={Connection=[close], User-Agent=[Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60
+11-19 10:32:48.742   999  5080 D NetworkMonitor/101: isCaptivePortal: isSuccessful()=true isPortal()=false RedirectUrl=null isPartialConnectivity()=false Time=425ms
+11-19 10:32:48.743   522   766 D ConnectivityService: [101 WIFI] validation passed
+11-19 10:32:48.744  1471  5049 I Icing   : Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0
+11-19 10:32:48.763  4088  4206 I Bugle   : SubscriptionUtilsAsOfLMR1: getActiveSubscriptionInfo(): empty sub info for subscription{id:-1}
+11-19 10:32:48.763  4088  4206 I Bugle   : SubscriptionUtilsAsOfLMR1: getActiveSubscriptionInfo(): empty sub info for subscription{id:-1}
+11-19 10:32:48.763  4088  4206 W Bugle   : SubscriptionUtilsAsOfLMR1: getSelfRawNumber: subInfo is null for subscription{id:-1}
+11-19 10:32:48.767  4088  4206 W BugleAction: No default number, returning empty msisdn
+11-19 10:32:48.767  4088  4517 I BugleTransport: updateActiveTransport: refreshing chat transport
+11-19 10:32:48.767  4088  4517 I BugleTransport: RCS Configuration is empty. Enabled transport is Dual Reg [CONTEXT ratelimit_period="5 SECONDS" skipped=1 ]
+11-19 10:32:48.768  4088  4517 I BugleTransport: refreshChatTransport: isChatAvailable: false, enabledTransport: 1, configuration: <empty>

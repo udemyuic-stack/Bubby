@@ -1,0 +1,150 @@
+11-19 10:32:52.394  4911  5433 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-19 10:32:52.394  4911  5433 I NamespaceManager: Package 1 name not found! Using module version.
+11-19 10:32:52.395  4911  5433 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-19 10:32:52.395  4911  5433 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-19 10:32:52.396  4911  5433 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-19 10:32:52.396  4911  5433 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-19 10:32:52.396  4911  5433 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-19 10:32:52.396  4911  5433 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-19 10:32:52.397  4911  5433 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-19 10:32:52.397  4911  5433 I NamespaceManager: Package 1 name not found! Using module version.
+11-19 10:32:52.402  4911  5641 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-19 10:32:52.403  4911  5641 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-19 10:32:52.403  4911  5641 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-19 10:32:52.403  4911  5641 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-19 10:32:52.403  4911  5641 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-19 10:32:52.406  4911  5641 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-19 10:32:52.406  4911  5641 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-19 10:32:52.406  4911  5641 I NamespaceManager: Package 1 name not found! Using module version.
+11-19 10:32:52.407  4911  5641 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-19 10:32:52.408  4911  5641 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-19 10:32:52.408  4911  5641 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-19 10:32:52.408  4911  5641 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-19 10:32:52.409  4911  5641 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-19 10:32:52.409  4911  5641 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-19 10:32:52.409  4911  5641 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-19 10:32:52.410  4911  5641 I NamespaceManager: Package 1 name not found! Using module version.
+11-19 10:32:52.420  4911  5433 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-19 10:32:52.421  4911  5433 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-19 10:32:52.421  4911  5433 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-19 10:32:52.421  4911  5433 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-19 10:32:52.422  4911  5433 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-19 10:32:52.422  4911  5433 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-19 10:32:52.422  4911  5433 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-19 10:32:52.422  4911  5433 I NamespaceManager: Package 1 name not found! Using module version.
+11-19 10:32:52.423  4911  5433 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-19 10:32:52.424  4911  5433 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-19 10:32:52.424  4911  5433 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-19 10:32:52.424  4911  5433 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-19 10:32:52.425  4911  5433 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-19 10:32:52.425  4911  5433 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-19 10:32:52.425  4911  5433 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-19 10:32:52.426  4911  5433 I NamespaceManager: Package 1 name not found! Using module version.
+11-19 10:32:52.430   522   620 I RescueParty: Starting to observe: [android], updated namespace: display_manager
+11-19 10:32:52.430   522   551 I PackageWatchdog: Syncing state, reason: observing new packages
+11-19 10:32:52.431   522   551 D PackageWatchdog: rescue-party-observer added the following packages to monitor [android]
+11-19 10:32:52.431   522   569 W BrightnessThrottler: DeviceConfig ThermalBrightnessThrottlingData is null
+11-19 10:32:52.431   522   551 I PackageWatchdog: Syncing state, reason: updated observers
+11-19 10:32:52.431   522   551 I PackageWatchdog: Not pruning observers, elapsed time: 0ms
+11-19 10:32:52.431   522   522 I PackageWatchdog: Syncing health check requests for packages: {}
+11-19 10:32:52.431   522   522 I ExplicitHealthCheckController: Service not ready to get health check supported packages. Binding...
+11-19 10:32:52.433   522   522 I ExplicitHealthCheckController: Explicit health check service is bound
+11-19 10:32:52.433   522   522 I PackageWatchdog: Syncing health check requests for packages: {}
+11-19 10:32:52.433   522   522 I ExplicitHealthCheckController: Service not ready to get health check supported packages. Binding...
+11-19 10:32:52.434   522   522 I ExplicitHealthCheckController: Not binding to service, service already connecting
+11-19 10:32:52.434   522   522 I ExplicitHealthCheckController: Explicit health check service is connected ComponentInfo{com.google.android.ext.services/android.ext.services.watchdog.ExplicitHealthCheckServiceImpl}
+11-19 10:32:52.435   522   522 I ExplicitHealthCheckController: Service initialized, syncing requests
+11-19 10:32:52.435   522   522 I PackageWatchdog: Syncing health check requests for packages: {}
+11-19 10:32:52.435   522   522 D ExplicitHealthCheckController: Getting health check supported packages
+11-19 10:32:52.435   522  1729 I ExplicitHealthCheckController: Explicit health check supported packages [PackageConfig{com.google.android.networkstack, 86400000}]
+11-19 10:32:52.435   522  1729 D PackageWatchdog: Received supported packages [PackageConfig{com.google.android.networkstack, 86400000}]
+11-19 10:32:52.435   522  1729 D ExplicitHealthCheckController: Getting health check requested packages
+11-19 10:32:52.436   522  1729 I ExplicitHealthCheckController: Explicit health check requested packages []
+11-19 10:32:52.436   522  1729 I ExplicitHealthCheckController: No more health check requests, unbinding...
+11-19 10:32:52.436   522  1729 I ExplicitHealthCheckController: Explicit health check service is unbound
+11-19 10:32:52.442   522   551 I PackageWatchdog: Saving observer state to file
+11-19 10:32:52.445  4183  5654 W BugleRcsEngine: [117] bpxc.w: Unable to send diagnostic log
+11-19 10:32:52.446  4911  5435 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-19 10:32:52.446  4911  5435 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-19 10:32:52.446  4183  5644 I BugleRcsEngine: [116] brfq.d: (PEv2-SM-Bugle-172695754): RequestWithImsiState: event HTTP Response [b909277f-3d50-44e0-9382-20a613354629]
+11-19 10:32:52.447  4911  5435 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-19 10:32:52.447  4911  5435 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-19 10:32:52.447  4183  5644 I BugleRcsEngine: [116] brfq.d: (PEv2-SM-Bugle-172695754): InProgressState: event HTTP Response [b909277f-3d50-44e0-9382-20a613354629]
+11-19 10:32:52.447  4911  5435 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-19 10:32:52.447  4911  5435 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-19 10:32:52.447  4911  5435 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-19 10:32:52.447  4911  5435 I NamespaceManager: Package 1 name not found! Using module version.
+11-19 10:32:52.448  4183  5644 W BugleRcsEngine: [116] bpxc.w: Unable to send diagnostic log
+11-19 10:32:52.448  4911  5435 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-19 10:32:52.448  4911  5435 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-19 10:32:52.448  4183  5644 I BugleRcsEngine: [116] brfq.d: (PEv2-SM-Bugle-172695754): RequestWithImsiState: event HTTP 503 (Unavailable) [b909277f-3d50-44e0-9382-20a613354629]
+11-19 10:32:52.448  4911  5435 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-19 10:32:52.448  4183  5644 I BugleRcsEngine: [116] brfq.d: (PEv2-SM-Bugle-172695754): InProgressState: event HTTP 503 (Unavailable) [b909277f-3d50-44e0-9382-20a613354629]
+11-19 10:32:52.448  4911  5435 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-19 10:32:52.449  4183  5644 I BugleRcsEngine: [116] brfq.d: (PEv2-SM-Bugle-172695754): Connection unavailable. Retry in 2502 seconds [b909277f-3d50-44e0-9382-20a613354629]
+11-19 10:32:52.449  4911  5435 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-19 10:32:52.449  4911  5435 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-19 10:32:52.449  4183  5644 I BugleRcsEngine: [116] brfq.d: (PEv2-SM-Bugle-172695754): transitionTo: destState=ReplayRequestState [b909277f-3d50-44e0-9382-20a613354629]
+11-19 10:32:52.449  4911  5435 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-19 10:32:52.449  4183  5644 I BugleRcsEngine: [116] brfq.d: (PEv2-SM-Bugle-172695754): onTransitionRequested RequestWithImsiState [b909277f-3d50-44e0-9382-20a613354629]
+11-19 10:32:52.449  4911  5435 I NamespaceManager: Package 1 name not found! Using module version.
+11-19 10:32:52.449  4183  5644 I BugleRcsEngine: [116] brfq.d: (PEv2-SM-Bugle-172695754): Exit RequestWithImsiState [b909277f-3d50-44e0-9382-20a613354629]
+11-19 10:32:52.449  4183  5644 W BugleRcsEngine: [116] bpxc.w: Unable to send diagnostic log
+11-19 10:32:52.450  4183  5644 I BugleRcsEngine: [116] brfq.d: (PEv2-SM-Bugle-172695754): Exit InProgressState [b909277f-3d50-44e0-9382-20a613354629]
+11-19 10:32:52.450  4183  5644 W BugleRcsEngine: [116] bpxc.w: Unable to send diagnostic log
+11-19 10:32:52.450  4183  5644 I BugleRcsEngine: [116] brfq.d: (PEv2-SM-Bugle-172695754): Enter ReplayRequestState [b909277f-3d50-44e0-9382-20a613354629]
+11-19 10:32:52.455  4183  5644 W BugleRcsEngine: [116] bpxc.w: Unable to send diagnostic log
+11-19 10:32:52.455  4183  5644 I BugleRcsEngine: [116] brfq.d: (PEv2-SM-Bugle-172695754): ReplayRequestState: event Retry after [b909277f-3d50-44e0-9382-20a613354629]
+11-19 10:32:52.461  4183  4289 W BugleRcsEngine: [43] bpxc.w: Unable to send diagnostic log
+11-19 10:32:52.468  4183  5644 I BugleRcsWorker: [seqId=0][workId=9e94708d-5d53-4554-8c30-4242fde2010b] Provisioning Engine entered ReplayRequestState, request will be re-attempted in 2502
+11-19 10:32:52.468  4183  5644 I BugleRcsWorker: [seqId=0][workId=9e94708d-5d53-4554-8c30-4242fde2010b] finish provisioning task with result Success {mOutputData=Data {}}
+11-19 10:32:52.469  4183  5644 I BugleRcsWorker: [seqId=0][workId=9e94708d-5d53-4554-8c30-4242fde2010b] RCS provisioning task has finished with result Success {mOutputData=Data {}}
+11-19 10:32:52.469  4183  4309 W BugleRcsEngine: [57] brcu.d: [SR]: Single Registration is disabled. Skipping Single Registration capability check for subId: 1, OS.isAtLeastS:[true], enableSingleRegistrationProvisioning:[false]
+11-19 10:32:52.470  4911  5435 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-19 10:32:52.471  4183  4651 I BugleRcsEngine: [93] brfq.d: (PEv2-SM-Bugle-172695754): quit [b909277f-3d50-44e0-9382-20a613354629]
+11-19 10:32:52.471  4911  5435 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-19 10:32:52.471  4911  5435 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-19 10:32:52.472  4911  5435 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-19 10:32:52.473  4911  5435 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-19 10:32:52.473  4911  5435 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-19 10:32:52.473  4183  5644 I BugleRcsEngine: [116] brfq.d: (PEv2-SM-Bugle-172695754): transitionTo: destState=bqjk [b909277f-3d50-44e0-9382-20a613354629]
+11-19 10:32:52.473  4911  5435 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-19 10:32:52.473  4911  5435 I NamespaceManager: Package 1 name not found! Using module version.
+11-19 10:32:52.474  4183  5644 I BugleRcsEngine: [116] brfq.d: (PEv2-SM-Bugle-172695754): Exit ReplayRequestState [b909277f-3d50-44e0-9382-20a613354629]
+11-19 10:32:52.474  4183  5644 W BugleRcsEngine: [116] bpxc.w: Unable to send diagnostic log
+11-19 10:32:52.475  4911  5435 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-19 10:32:52.475  4183  5644 W BugleRcsEngine: [116] brfq.e: (PEv2-SM-Bugle-172695754): onQuitting [b909277f-3d50-44e0-9382-20a613354629]
+11-19 10:32:52.475  4911  5435 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-19 10:32:52.475  4183  5644 I BugleRcsEngine: [116] brjv.b: RcsAvailabilityManager: Calculating Rcs Availability
+11-19 10:32:52.475  4911  5435 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-19 10:32:52.476  4911  5435 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-19 10:32:52.476  4911  5435 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-19 10:32:52.476  4911  5435 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-19 10:32:52.478  4911  5435 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-19 10:32:52.479  4183  5644 I BugleRcsEngine: [116] brnl.C: Bugle is default SMS app: true
+11-19 10:32:52.479  4911  5435 I NamespaceManager: Package 1 name not found! Using module version.
+11-19 10:32:52.479  4183  5644 I BugleRcsEngine: [116] brjv.b: Bugle has minimum required RCS permissions: true
+11-19 10:32:52.479  4183  5644 I BugleRcsEngine: [116] brnl.B: Rcs is enabled from user settings: true
+11-19 10:32:52.480  4183  5644 I BugleRcsEngine: [116] brox.b: Using config server URL from bqas
+11-19 10:32:52.481  4183  5644 I BugleRcsEngine: [116] brnl.e: No RCS Configuration was found in Bugle for simID: redacted-pii:sim_id[chars:20,last3:897]
+11-19 10:32:52.482  4183  5644 I BugleRcsEngine: [116] brnl.e: No RCS Configuration was found in Bugle for simID: redacted-pii:sim_id[chars:20,last3:897]
+11-19 10:32:52.482  4183  4320 I WM-WorkerWrapper: Worker result SUCCESS for Work [ id=9072c5ba-5318-4403-9d9f-d893b7531b69, tags={ com.google.android.apps.messaging.rcsprovisioning.RcsProvisioningListenableWorker, provisioning } ]
+11-19 10:32:52.485  4911  5435 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-19 10:32:52.485  4911  5435 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-19 10:32:52.485  4911  5435 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-19 10:32:52.485  4911  5435 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-19 10:32:52.486  4183  4309 I BugleRcsEngine: [57] brnl.e: No RCS Configuration was found in Bugle for simID: redacted-pii:sim_id[chars:20,last3:897]
+11-19 10:32:52.486  4911  5435 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-19 10:32:52.486  4911  5435 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-19 10:32:52.486  4911  5435 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-19 10:32:52.486  4911  5435 I NamespaceManager: Package 1 name not found! Using module version.
+11-19 10:32:52.491  4183  5644 I BugleRcsEngine: [116] brjv.b: Config state is not ACCEPTED, provisioning still in progress
+11-19 10:32:52.491  4183  5644 I BugleRcsEngine: [116] brjv.b: RcsAvailabilityManager: Rcs Availability still CARRIER_SETUP_PENDING (Carrier RCS is not set up)
+11-19 10:32:52.492  4183  5644 W BugleRcsEngine: [116] bpxc.w: Unable to send diagnostic log
+11-19 10:32:52.493  4183  4309 I BugleRcsEngine: [57] zzo.l: Scheduled provisioning task with 2502 seconds delay, APPEND policy, trigger is STATE_MACHINE_REPLAY, workerId is 326b56ea-e125-4474-8e56-cd35a40b7b46
+11-19 10:32:52.503   522  1729 W JobScheduler: Job didn't exist in JobStore: 6d09aeb #u0a130/1008 com.google.android.apps.messaging/androidx.work.impl.background.systemjob.SystemJobService
+11-19 10:32:52.506  4911  5435 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-19 10:32:52.506  4911  5435 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-19 10:32:52.506  4911  5435 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-19 10:32:52.507  4911  5435 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-19 10:32:52.507  4911  5435 I NamespaceManager: Package com.android.appsearch name not found! Using module version.

@@ -1,0 +1,150 @@
+11-19 10:30:06.261   993  5206 D TrafficStats: tagSocket(75) with statsTag=0xffffff81, statsUid=-1
+11-19 10:30:06.279   336  5212 I resolv  : ResNSendHandler::run: 0 / {100 983140 100 983140 1073 1}
+11-19 10:30:06.280   336  5213 I resolv  : ResNSendHandler::run: 0 / {100 983140 100 983140 1073 1}
+11-19 10:30:06.280   336  5212 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x72a233618890
+11-19 10:30:06.280   336  5213 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x72a2336189b0
+11-19 10:30:06.281   993   993 D TrafficStats: tagSocket(75) with statsTag=0xffffffff, statsUid=-1
+11-19 10:30:06.282   993   993 D TrafficStats: tagSocket(75) with statsTag=0xffffffff, statsUid=-1
+11-19 10:30:06.283   993  5206 D NetworkMonitor/100: PROBE_DNS connectivitycheck.gstatic.com 22ms OK 142.251.150.120,2001:4860:4826:7800::
+11-19 10:30:06.289  4191  4304 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of bdxy@b54671c
+11-19 10:30:06.291  1413  4768 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-19 10:30:06.291   993  5205 D NetworkMonitor/100: PROBE_HTTPS https://www.google.com/generate_204 time=47ms ret=204 request={Connection=[close], User-Agent=[Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60
+11-19 10:30:06.292   336  5214 I resolv  : GetAddrInfoHandler::run: {100 983140 100 983140 1073 1}
+11-19 10:30:06.293   993  5204 D NetworkMonitor/100: isCaptivePortal: isSuccessful()=true isPortal()=false RedirectUrl=null isPartialConnectivity()=false Time=86ms
+11-19 10:30:06.294  1467  1480 I PeopleGalProvider: Gal directories started.
+11-19 10:30:06.294  1467  1480 I PeopleGalProvider: Method 1 completed.
+11-19 10:30:06.294  1467  1480 I PeopleGalProvider: Method 1 finished successfully.
+11-19 10:30:06.310   521   762 D ConnectivityService: [100 WIFI] validation passed
+11-19 10:30:06.312   336  5216 I resolv  : res_nmkquery: (QUERY, IN, A)
+11-19 10:30:06.313   336  5216 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x72a2336189b0
+11-19 10:30:06.313   336  5216 I resolv  : doQuery: rcode=0, ancount=1, return value=92
+11-19 10:30:06.314   336  5215 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+11-19 10:30:06.314   336  5215 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x72a233618890
+11-19 10:30:06.314   336  5215 I resolv  : doQuery: rcode=0, ancount=1, return value=104
+11-19 10:30:06.315   993  5206 D TrafficStats: tagSocket(68) with statsTag=0xffffff81, statsUid=-1
+11-19 10:30:06.315  1413  4768 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-19 10:30:06.317  1413  3267 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:30:06.321  1413  4768 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-19 10:30:06.323  1413  4768 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-19 10:30:06.324  1413  4768 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-19 10:30:06.324  1413  4768 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-19 10:30:06.324  1413  4768 I NamespaceManager: Package 1 name not found! Using module version.
+11-19 10:30:06.325  1413  4768 I NamespaceManager: Package rkpd name not found! Using module version.
+11-19 10:30:06.325  1413  4768 I NamespaceManager: Package android.companion name not found! Using module version.
+11-19 10:30:06.326  1413  4768 I NamespaceManager: Package com.google.android.aicore name not found! Using module version.
+11-19 10:30:06.326  1413  4768 I NamespaceManager: Package com.google.android.apps.agentunderstander name not found! Using module version.
+11-19 10:30:06.326  1413  4768 I NamespaceManager: Package com.google.android.audioproxy name not found! Using module version.
+11-19 10:30:06.327  1413  4768 I NamespaceManager: Package com.google.android.apps.pixel.psi name not found! Using module version.
+11-19 10:30:06.328  1413  4768 I NamespaceManager: Package com.google.android.apps.safetycore name not found! Using module version.
+11-19 10:30:06.328  1413  4768 I NamespaceManager: Package com.google.android.crashrecovery name not found! Using module version.
+11-19 10:30:06.328  1413  4768 I NamespaceManager: Package com.google.android.profiling name not found! Using module version.
+11-19 10:30:06.328  1413  4768 I NamespaceManager: Package com.google.android.bt name not found! Using module version.
+11-19 10:30:06.329  1413  4768 I NamespaceManager: Package com.google.android.nfcservices name not found! Using module version.
+11-19 10:30:06.346  1413  4768 I NamespaceManager: Package com.google.android.webapp name not found! Using module version.
+11-19 10:30:06.346  1413  4768 I NamespaceManager: Package com.google.android.telephonycore name not found! Using module version.
+11-19 10:30:06.348  1413  4768 I NamespaceManager: Package com.google.android.uprobestats name not found! Using module version.
+11-19 10:30:06.350  1413  4768 W PhenotypeConfigurationU: Update for unknown DeviceConfig package com.google.android.gms.ipa [CONTEXT service_id=204 ]
+11-19 10:30:06.350  1413  4768 W PhenotypeConfigurationU: bwix: No package exists for config package: com.google.android.gms.ipa
+11-19 10:30:06.350  1413  4768 W PhenotypeConfigurationU: 	at com.google.android.gms.platformconfigurator.PhenotypeConfigurationUpdateListener.b(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+11-19 10:30:06.350  1413  4768 W PhenotypeConfigurationU: 	at com.google.android.gms.platformconfigurator.PhenotypeConfigurationUpdateListener.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+11-19 10:30:06.350  1413  4768 W PhenotypeConfigurationU: 	at com.google.android.gms.platformconfigurator.PhenotypeConfigurationUpdateListener.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):21)
+11-19 10:30:06.350  1413  4768 W PhenotypeConfigurationU: 	at com.google.android.chimera.IntentOperation.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-19 10:30:06.350  1413  4768 W PhenotypeConfigurationU: 	at zhv.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+11-19 10:30:06.350  1413  4768 W PhenotypeConfigurationU: 	at hjm.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3)
+11-19 10:30:06.350  1413  4768 W PhenotypeConfigurationU: 	at hjl.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):11)
+11-19 10:30:06.350  1413  4768 W PhenotypeConfigurationU: 	at dfhf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-19 10:30:06.350  1413  4768 W PhenotypeConfigurationU: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-19 10:30:06.350  1413  4768 W PhenotypeConfigurationU: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-19 10:30:06.350  1413  4768 W PhenotypeConfigurationU: 	at java.lang.Thread.run(Thread.java:1012)
+11-19 10:30:06.358  1413  3267 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:30:06.390  1467  4930 W PrereqChecker: No rear-facing camera detected.
+11-19 10:30:06.391  1467  4930 I OcrModelUpStIntentOp: Downloading text recognizer
+11-19 10:30:06.408  1467  1467 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.chimera.container.moduleinstall.ModuleInstallService.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsApiService }
+11-19 10:30:06.408  1467  1467 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.chimera.container.moduleinstall.ModuleInstallService.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.Gm
+11-19 10:30:06.414  1413  5197 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-19 10:30:06.416  1413  5197 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-19 10:30:06.419  1413  5197 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-19 10:30:06.420  1413  5197 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-19 10:30:06.421  1413  5197 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-19 10:30:06.422  1413  5197 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-19 10:30:06.423  1413  5197 I NamespaceManager: Package 1 name not found! Using module version.
+11-19 10:30:06.424  1413  5197 I NamespaceManager: Package rkpd name not found! Using module version.
+11-19 10:30:06.425  1413  5197 I NamespaceManager: Package android.companion name not found! Using module version.
+11-19 10:30:06.426  1413  5197 I NamespaceManager: Package com.google.android.aicore name not found! Using module version.
+11-19 10:30:06.426  1413  5197 I NamespaceManager: Package com.google.android.apps.agentunderstander name not found! Using module version.
+11-19 10:30:06.448  1413  4666 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:30:06.450  1467  1467 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.ocr.service.internal.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsInternalApiService }
+11-19 10:30:06.450  1467  1467 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.ocr.service.internal.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsInternalApiService }
+11-19 10:30:06.456  1413  5197 I NamespaceManager: Package com.google.android.audioproxy name not found! Using module version.
+11-19 10:30:06.457  1413  5197 I NamespaceManager: Package com.google.android.apps.pixel.psi name not found! Using module version.
+11-19 10:30:06.478  1413  5197 I NamespaceManager: Package com.google.android.apps.safetycore name not found! Using module version.
+11-19 10:30:06.480   521  1873 D OomAdjuster: Not killing cached processes
+11-19 10:30:06.481  1413  5197 I NamespaceManager: Package com.google.android.crashrecovery name not found! Using module version.
+11-19 10:30:06.481  1413  5197 I NamespaceManager: Package com.google.android.profiling name not found! Using module version.
+11-19 10:30:06.482  1413  5197 I NamespaceManager: Package com.google.android.bt name not found! Using module version.
+11-19 10:30:06.483  1413  5197 I NamespaceManager: Package com.google.android.nfcservices name not found! Using module version.
+11-19 10:30:06.484  1413  5197 I NamespaceManager: Package com.google.android.webapp name not found! Using module version.
+11-19 10:30:06.484  1413  5197 I NamespaceManager: Package com.google.android.telephonycore name not found! Using module version.
+11-19 10:30:06.484  1413  5197 I NamespaceManager: Package com.google.android.uprobestats name not found! Using module version.
+11-19 10:30:06.486  1413  5197 W PhenotypeConfigurationU: Update for unknown DeviceConfig package com.google.android.gms.ocr [CONTEXT service_id=204 ]
+11-19 10:30:06.486  1413  5197 W PhenotypeConfigurationU: bwix: No package exists for config package: com.google.android.gms.ocr
+11-19 10:30:06.486  1413  5197 W PhenotypeConfigurationU: 	at com.google.android.gms.platformconfigurator.PhenotypeConfigurationUpdateListener.b(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+11-19 10:30:06.486  1413  5197 W PhenotypeConfigurationU: 	at com.google.android.gms.platformconfigurator.PhenotypeConfigurationUpdateListener.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+11-19 10:30:06.486  1413  5197 W PhenotypeConfigurationU: 	at com.google.android.gms.platformconfigurator.PhenotypeConfigurationUpdateListener.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):21)
+11-19 10:30:06.486  1413  5197 W PhenotypeConfigurationU: 	at com.google.android.chimera.IntentOperation.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-19 10:30:06.486  1413  5197 W PhenotypeConfigurationU: 	at zhv.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+11-19 10:30:06.486  1413  5197 W PhenotypeConfigurationU: 	at hjm.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3)
+11-19 10:30:06.486  1413  5197 W PhenotypeConfigurationU: 	at hjl.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):11)
+11-19 10:30:06.486  1413  5197 W PhenotypeConfigurationU: 	at dfhf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-19 10:30:06.486  1413  5197 W PhenotypeConfigurationU: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-19 10:30:06.486  1413  5197 W PhenotypeConfigurationU: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-19 10:30:06.486  1413  5197 W PhenotypeConfigurationU: 	at java.lang.Thread.run(Thread.java:1012)
+11-19 10:30:06.514   993  5206 D NetworkMonitor/100: PROBE_HTTP http://connectivitycheck.gstatic.com/generate_204 time=229ms ret=204 request={Connection=[close], User-Agent=[Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Ge
+11-19 10:30:06.525  1413  4666 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:30:06.528  5222  5222 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+11-19 10:30:06.528  5222  5222 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-19 10:30:06.542   401   415 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=5222
+11-19 10:30:06.542   401   415 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (735 us)
+11-19 10:30:06.550  1413  2884 W NetworkScheduler: The extras of the task (com.google.android.gms.ocr.service.ModelCleanUpTaskService:type_[2]) are not valid to be persisted so that the task is not persisted [CONTEXT service_id=218 ]
+11-19 10:30:06.550  1413  2884 W NetworkScheduler: java.lang.IllegalArgumentException: Only the following extra parameter types are supported: Integer, Long, Double, String, Boolean, and nested Bundles with the same restrictions.
+11-19 10:30:06.550  1413  2884 W NetworkScheduler: 	at awaz.e(:com.google.android.gms@231818047@23.18.18 (190800-535401451):10)
+11-19 10:30:06.550  1413  2884 W NetworkScheduler: 	at byui.f(:com.google.android.gms@231818047@23.18.18 (190800-535401451):44)
+11-19 10:30:06.550  1413  2884 W NetworkScheduler: 	at bytb.n(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3)
+11-19 10:30:06.550  1413  2884 W NetworkScheduler: 	at bytb.u(:com.google.android.gms@231818047@23.18.18 (190800-535401451):20)
+11-19 10:30:06.550  1413  2884 W NetworkScheduler: 	at bytb.h(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3)
+11-19 10:30:06.550  1413  2884 W NetworkScheduler: 	at byot.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):9)
+11-19 10:30:06.550  1413  2884 W NetworkScheduler: 	at aced.c(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+11-19 10:30:06.550  1413  2884 W NetworkScheduler: 	at aced.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):8)
+11-19 10:30:06.550  1413  2884 W NetworkScheduler: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-19 10:30:06.550  1413  2884 W NetworkScheduler: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-19 10:30:06.550  1413  2884 W NetworkScheduler: 	at acjn.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-19 10:30:06.550  1413  2884 W NetworkScheduler: 	at java.lang.Thread.run(Thread.java:1012)
+11-19 10:30:06.554   137   137 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-19 10:30:06.751     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+11-19 10:30:06.555  5222  5223 I Gralloc4: mapper 4.x is not supported
+11-19 10:30:06.613   829   829 D StatusBarIconController: ignoring old pipeline callback because the new wifi icon is enabled
+11-19 10:30:06.687  1413  4768 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-19 10:30:06.694  1413  4768 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-19 10:30:06.716  1413  4768 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-19 10:30:06.721  1467  4930 I Pay     : A Phenotype flag has been updated. [CONTEXT service_id=198 ]
+11-19 10:30:06.722  1467  4930 I Pay     : Requested check of feature migrations. [CONTEXT service_id=198 ]
+11-19 10:30:06.723  1413  4768 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-19 10:30:06.724  1413  4768 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-19 10:30:06.725  1413  4768 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-19 10:30:06.726  1413  4768 I NamespaceManager: Package 1 name not found! Using module version.
+11-19 10:30:06.727  1413  4768 I NamespaceManager: Package rkpd name not found! Using module version.
+11-19 10:30:06.728  1413  4768 I NamespaceManager: Package android.companion name not found! Using module version.
+11-19 10:30:06.728  1413  4768 I NamespaceManager: Package com.google.android.aicore name not found! Using module version.
+11-19 10:30:06.743  1413  4768 I NamespaceManager: Package com.google.android.apps.agentunderstander name not found! Using module version.
+11-19 10:30:06.744  1413  4768 I NamespaceManager: Package com.google.android.audioproxy name not found! Using module version.
+11-19 10:30:06.744  1413  4768 I NamespaceManager: Package com.google.android.apps.pixel.psi name not found! Using module version.
+11-19 10:30:06.747  1413  4768 I NamespaceManager: Package com.google.android.apps.safetycore name not found! Using module version.
+11-19 10:30:06.749  1413  4768 I NamespaceManager: Package com.google.android.crashrecovery name not found! Using module version.
+11-19 10:30:06.749  1413  4768 I NamespaceManager: Package com.google.android.profiling name not found! Using module version.
+11-19 10:30:06.749  1413  4768 I NamespaceManager: Package com.google.android.bt name not found! Using module version.
+11-19 10:30:06.751  1413  4768 I NamespaceManager: Package com.google.android.nfcservices name not found! Using module version.
+11-19 10:30:06.753  1413  4768 I NamespaceManager: Package com.google.android.webapp name not found! Using module version.
+11-19 10:30:06.753  1413  4768 I NamespaceManager: Package com.google.android.telephonycore name not found! Using module version.
+11-19 10:30:06.755  1413  4768 I NamespaceManager: Package com.google.android.uprobestats name not found! Using module version.
+11-19 10:30:06.758  1413  2962 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:30:06.761  1413  2962 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)

@@ -1,0 +1,150 @@
+11-19 10:30:00.571  1633  2244 W A       : Missing generator mapping for generator GENERATOR_FRE_SUGGESTIONS_ON_INVOCATION
+11-19 10:30:00.573  1633  2244 I A       : #onActiveStateChangeEvent, newState: IDLE, previousState: IDLE.
+11-19 10:30:00.574   520  2999 D CompatibilityChangeReporter: Compat change id reported: 197654537; UID 10192; state: ENABLED
+11-19 10:30:00.575  1633  2244 I A       : on opa visibility changed false
+11-19 10:30:00.576  1633  2244 I A       : on opa visibility changed false
+11-19 10:30:00.578  1633  2244 I A       : stopListening(NGA_PAUSED_UNKNOWN_REASON, NGA_CREATE), idleOverride=NOT_LISTENING
+11-19 10:30:00.581  1633  2244 I NgaEntryPointEventSendr: setupConnection
+11-19 10:30:00.582   520  2999 D OomAdjuster: Not killing cached processes
+11-19 10:30:00.582  1633  2245 W A       : Routing took 1 ms
+11-19 10:30:00.587  1692  1692 I A       : Creating pss binder().
+11-19 10:30:00.589  1633  2244 I NgaEntryPointEventSendr: State changed: Disconnected => Connecting
+11-19 10:30:00.589  1633  2244 I NgaEntryPointEventSendr: onServiceConnected
+11-19 10:30:00.590  1692  2332 I A       : Calling beginBinderSession().
+11-19 10:30:00.592  1692  2332 I A       : beginBinderSession(): calling binder
+11-19 10:30:00.593  1633  2244 I NgaEntryPointEventSendr: State changed: Connecting => Ready
+11-19 10:30:00.596   520  2003 W ActivityManager: Unable to start service Intent { cmp=com.google.android.apps.tachyon/.clientapi.ClientApiService } U=0: not found
+11-19 10:30:00.609  5281  5360 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService started execution. cause:9 exec_start_elapsed_seconds: 92 [CONTEXT service_id=218 ]
+11-19 10:30:00.614  1692  2391 I PBSessionCacheImpl: Deleted sessionId[7443289780928490] from persistence.
+11-19 10:30:00.615  1692  2391 W A       : UiCallbackStub-onGenericEvent[ServiceEvent = 60] task was not run. Callback from Service received after client was disposed.
+11-19 10:30:00.617  1692  2391 W SearchServiceCore: Abort, client detached.
+11-19 10:30:00.620  1633  2244 I NgaEntryPointEventSendr: State changed: Ready => Disconnected (onOpaDisconnected)
+11-19 10:30:00.621  1633  2244 I A       : Successfully initialized all components
+11-19 10:30:00.631  5281  5317 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService finished executing. cause:9 result: 1 elapsed_millis: 41 uptime_millis: 41 exec_start_elapsed_seconds: 92
+11-19 10:30:00.786  5281  5281 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.auth.account.data.service.START pkg=com.google.android.gms }
+11-19 10:30:01.055   520  2999 D ConnectivityService: requestNetwork for uid/pid:10156/1678 activeRequest: null callbackRequest: 148 [NetworkRequest [ REQUEST id=149, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 1015
+11-19 10:30:01.063   520   754 D WifiNetworkFactory: got request NetworkRequest [ REQUEST id=149, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10156 RequestorUid: 10156 RequestorPkg: com.google.android.apps.youtube.m
+11-19 10:30:01.065   520   754 D UntrustedWifiNetworkFactory: got request NetworkRequest [ REQUEST id=149, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10156 RequestorUid: 10156 RequestorPkg: com.google.android.apps.
+11-19 10:30:01.065   520   754 D OemPaidWifiNetworkFactory: got request NetworkRequest [ REQUEST id=149, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10156 RequestorUid: 10156 RequestorPkg: com.google.android.apps.yo
+11-19 10:30:01.065   520   754 D MultiInternetWifiNetworkFactory: got request NetworkRequest [ REQUEST id=149, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10156 RequestorUid: 10156 RequestorPkg: com.google.android.a
+11-19 10:30:01.071   520   761 D ConnectivityService: NetReassign [149 : null → 100] [c 3] [a 0] [i 1]
+11-19 10:30:01.082  1692  1692 I BgTaskExecutorImpl: Starting EXCLUSIVE background task UPLOAD_ASSISTANT_DEVICE_SETTINGS.
+11-19 10:30:01.086  1692  2776 W LocationOracle: getBestLocation(): no location is available
+11-19 10:30:01.087  1692  2653 I NetworkRecognitionRnr: Using pair HTTP connection
+11-19 10:30:01.091  1692  2700 I A       : [Upload] Connected
+11-19 10:30:01.098  1692  2264 W CronetNetworkRqstWrppr: Upload request without a content type.
+11-19 10:30:01.099  1692  2258 W LocationOracle: No location returned by GMS core getLastLocation()
+11-19 10:30:01.110  1692  2700 I NetworkRecognitionRnr: Using pair HTTP connection
+11-19 10:30:01.110  5201  5217 D EGL_emulation: app_time_stats: avg=33.43ms min=29.75ms max=37.45ms count=31
+11-19 10:30:01.112  1692  2776 I A       : [Upload] Connected
+11-19 10:30:01.112  1692  1692 E A       : onError
+11-19 10:30:01.112  1692  1692 E A       : com.google.android.apps.gsa.shared.speech.a.m: errorCode: 65561, engine: 2
+11-19 10:30:01.112  1692  1692 E A       : 	at com.google.android.apps.gsa.staticplugins.dc.a.e.a(PG:3)
+11-19 10:30:01.112  1692  1692 E A       : 	at com.google.android.apps.gsa.s3.n.hh(PG:1)
+11-19 10:30:01.112  1692  1692 E A       : 	at com.google.cd.g.a.f.e(PG:2)
+11-19 10:30:01.112  1692  1692 E A       : 	at com.google.android.apps.gsa.speech.k.a.g.d(PG:22)
+11-19 10:30:01.112  1692  1692 E A       : 	at com.google.android.apps.gsa.speech.k.a.g.ks(PG:6)
+11-19 10:30:01.112  1692  1692 E A       : 	at com.google.android.apps.gsa.s3.o.e(PG:14)
+11-19 10:30:01.112  1692  1692 E A       : 	at com.google.android.apps.gsa.s3.p.run(PG:1)
+11-19 10:30:01.112  1692  1692 E A       : 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:487)
+11-19 10:30:01.112  1692  1692 E A       : 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+11-19 10:30:01.112  1692  1692 E A       : 	at com.google.android.apps.gsa.shared.util.c.a.e.run(PG:2)
+11-19 10:30:01.112  1692  1692 E A       : 	at com.google.android.apps.gsa.shared.util.c.a.bi.run(PG:1)
+11-19 10:30:01.112  1692  1692 E A       : 	at com.google.android.apps.gsa.shared.util.c.a.bi.run(PG:1)
+11-19 10:30:01.112  1692  1692 E A       : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-19 10:30:01.112  1692  1692 E A       : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-19 10:30:01.112  1692  1692 E A       : 	at java.lang.Thread.run(Thread.java:1012)
+11-19 10:30:01.112  1692  1692 E A       : 	at com.google.android.apps.gsa.shared.util.c.a.l.run(PG:5)
+11-19 10:30:01.112  1692  1692 E A       : Caused by: com.google.android.apps.gsa.shared.speech.a.o: errorCode: 65586, engine: 2
+11-19 10:30:01.112  1692  1692 E A       : 	... 15 more
+11-19 10:30:01.112  1692  1692 E A       : Caused by: com.google.android.apps.gsa.shared.speech.a.k: errorCode: 401, engine: 2
+11-19 10:30:01.112  1692  1692 E A       : 	at com.google.android.apps.gsa.assistant.shared.n.h.a(PG:5)
+11-19 10:30:01.112  1692  1692 E A       : 	at com.google.android.apps.gsa.s3.producers.j.hE(PG:2)
+11-19 10:30:01.112  1692  1692 E A       : 	at com.google.android.apps.gsa.speech.k.a.g.d(PG:16)
+11-19 10:30:01.112  1692  1692 E A       : 	... 12 more
+11-19 10:30:01.115  1692  2265 W CronetNetworkRqstWrppr: Upload request without a content type.
+11-19 10:30:01.118   520   603 D ActivityManager: sync unfroze 1702 com.google.android.youtube for 6
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: Exception in upload method
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: com.google.android.apps.gsa.shared.r.d: Error code: 262182
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.shared.ab.bk.d(PG:5)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.android.libraries.gsa.c.a.ar.d(PG:1)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.android.libraries.gsa.c.a.bo.b(PG:5)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.android.libraries.gsa.c.a.e.a(PG:2)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.android.libraries.gsa.c.a.a.run(PG:2)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.bf.execute(PG:1)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.i(PG:1)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.l(PG:12)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.cancel(PG:8)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.m(PG:2)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.j.a(PG:1)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.l(PG:3)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.cancel(PG:8)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.m(PG:2)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.j.a(PG:1)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.l(PG:3)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.cancel(PG:8)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.m(PG:2)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.j.a(PG:1)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.l(PG:3)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.cancel(PG:8)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.m(PG:2)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.j.a(PG:1)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.l(PG:3)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.cancel(PG:8)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.m(PG:2)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.c.a(PG:1)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.l(PG:3)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.cancel(PG:8)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.bu.cancel(PG:1)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.cancel(PG:17)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.staticplugins.bk.b.h.run(PG:2)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.bf.execute(PG:1)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.i(PG:1)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.l(PG:12)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.cancel(PG:8)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.m(PG:2)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.j.a(PG:1)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.l(PG:3)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.cancel(PG:8)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.shared.util.c.aj.a(PG:2)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.l(PG:3)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.cancel(PG:8)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.m(PG:2)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.c.a(PG:1)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.l(PG:3)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.cancel(PG:8)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.s3.r.c(PG:1)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.s3.n.e(PG:1)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.s3.n.hh(PG:2)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.cd.g.a.f.e(PG:2)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.speech.k.a.g.d(PG:22)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.speech.k.a.g.ks(PG:6)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.s3.o.e(PG:14)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.s3.p.run(PG:1)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:487)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.shared.util.c.a.e.run(PG:2)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.shared.util.c.a.bi.run(PG:1)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.shared.util.c.a.bi.run(PG:1)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at java.lang.Thread.run(Thread.java:1012)
+11-19 10:30:01.127  1692  2298 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.shared.util.c.a.l.run(PG:5)
+11-19 10:30:01.127  1692  1692 W A       : Failed to sync device settings.
+11-19 10:30:01.127  1692  1692 I A       : Retrying to sync device settings.
+11-19 10:30:01.144   520  2999 W JobScheduler: Job didn't exist in JobStore: a0a034f #u0a132/-353 com.google.android.googlequicksearchbox/com.google.android.apps.gsa.tasks.BackgroundTasksJobService
+11-19 10:30:01.152   520  2152 D ConnectivityService: requestNetwork for uid/pid:10139/1702 activeRequest: null callbackRequest: 150 [NetworkRequest [ REQUEST id=151, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 1013
+11-19 10:30:01.153   520   761 D ConnectivityService: NetReassign [151 : null → 100] [c 0] [a 0] [i 1]
+11-19 10:30:01.153   520   754 D WifiNetworkFactory: got request NetworkRequest [ REQUEST id=151, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10139 RequestorUid: 10139 RequestorPkg: com.google.android.youtube Underl
+11-19 10:30:01.153   520   754 D UntrustedWifiNetworkFactory: got request NetworkRequest [ REQUEST id=151, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10139 RequestorUid: 10139 RequestorPkg: com.google.android.youtu
+11-19 10:30:01.153   520   754 D OemPaidWifiNetworkFactory: got request NetworkRequest [ REQUEST id=151, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10139 RequestorUid: 10139 RequestorPkg: com.google.android.youtube
+11-19 10:30:01.153   520   754 D MultiInternetWifiNetworkFactory: got request NetworkRequest [ REQUEST id=151, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10139 RequestorUid: 10139 RequestorPkg: com.google.android.y
+11-19 10:30:01.159  1678  2234 W YouTubeMusic: Invalid playback type; streaming data is not playable
+11-19 10:30:01.163  1678  1678 E Widget.RecentlyPlayed: Filling bundle but recently played items are EMPTY.
+11-19 10:30:01.489  5572  5572 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+11-19 10:30:01.489  5572  5572 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-19 10:30:01.491   400   414 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=5572
+11-19 10:30:01.491   400   414 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (132 us)
+11-19 10:30:01.507   135   135 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-19 10:30:01.761     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+11-19 10:30:01.508  5572  5573 I Gralloc4: mapper 4.x is not supported

@@ -1,0 +1,150 @@
+11-19 10:35:24.835   522   522 D BatterySaverPolicy: accessibility changed to false, updating policy.
+11-19 10:35:24.838  5066  5066 D AndroidRuntime: Shutting down VM
+11-19 10:35:24.848  1703  1762 I A       : Initializing all components
+11-19 10:35:24.848  1703  1762 I A       : APA or Classic session decision: SessionDecision(sessionVariance=CLASSIC, platformVariance=CLASSIC, justification=CURRENT_PLATFORM_VARIANCE).
+11-19 10:35:24.848  1703  1762 I A       : [Memory] eligibility: StashEligibility{6}
+11-19 10:35:24.850  1703  2226 I A       : onIsEnabledChanged, isEnabled: false
+11-19 10:35:24.850  1703  2226 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-19 10:35:24.850  1703  2226 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-19 10:35:24.850  1703  2226 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-19 10:35:24.850  1703  2226 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-19 10:35:24.850  1703  2226 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-19 10:35:24.850  1703  2226 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-19 10:35:24.850  1703  2226 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-19 10:35:24.850  1703  2226 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-19 10:35:24.850  1703  2226 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-19 10:35:24.850  1703  2226 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-19 10:35:24.850  1703  2226 I A       : onOpaVisibilityChanged: false
+11-19 10:35:24.850  1703  2226 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-19 10:35:24.850  1703  2226 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-19 10:35:24.850  1703  2226 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-19 10:35:24.850  1703  2226 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-19 10:35:24.850  1703  2226 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-19 10:35:24.850  1703  2226 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-19 10:35:24.850  1703  2226 I A       : Setting session to type: NO_SESSION
+11-19 10:35:24.851  1703  2226 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-19 10:35:24.851  1703  2226 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-19 10:35:24.851  1703  2226 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-19 10:35:24.851  1703  2226 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-19 10:35:24.851  1703  2226 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-19 10:35:24.851  1703  2226 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-19 10:35:24.851  1703  2226 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-19 10:35:24.851  1703  2226 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-19 10:35:24.851  1703  2226 I A       : setNavBarVisible: GestureNavBarVisible{navbarVisible=true}
+11-19 10:35:24.851  1703  2226 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-19 10:35:24.851  1703  2226 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-19 10:35:24.851  1703  2226 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-19 10:35:24.851  1703  2226 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-19 10:35:24.851  1703  2226 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-19 10:35:24.851  1703  2226 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-19 10:35:24.851  1703  2226 I A       : onDisabled. Registered: false
+11-19 10:35:24.855  1703  2240 I A       : on opa visibility changed false
+11-19 10:35:24.855  1703  2240 I A       : on opa visibility changed false
+11-19 10:35:24.859  1703  2240 I A       : State changed: IDLE => IDLE by NGA_STATE_CHANGED and N/A with Optional.empty
+11-19 10:35:24.875  1703  2226 I NgaEntryPointEventSendr: setupConnection
+11-19 10:35:24.878  1703  2240 I A       : Recognizer choice: (recognizer_type: 1, recognizer_mode: 1, choice_reason: 4)
+11-19 10:35:24.879  1703  2240 I A       : onActiveStateChangeEvent: IDLE => IDLE
+11-19 10:35:24.887  1458  4867 I GmscoreIpa: Starting mediastore instant index [CONTEXT service_id=255 ]
+11-19 10:35:24.901  1781  1781 I A       : Creating pss binder().
+11-19 10:35:24.911  1703  2226 I NgaEntryPointEventSendr: State changed: Disconnected => Connecting
+11-19 10:35:24.912  1703  2226 I NgaEntryPointEventSendr: onServiceConnected
+11-19 10:35:24.912  1781  3589 I A       : Calling beginBinderSession().
+11-19 10:35:24.913  1703  2240 W A       : Missing generator mapping for generator GENERATOR_CONTEXTUAL_SUGGESTIONS
+11-19 10:35:24.913  1703  2240 W A       : Missing generator mapping for generator GENERATOR_FRE_SUGGESTIONS_ON_TIMEOUT
+11-19 10:35:24.913  1703  2240 W A       : Missing generator mapping for generator GENERATOR_FRE_SUGGESTIONS_ON_INVOCATION
+11-19 10:35:24.915  1703  2240 I A       : #onActiveStateChangeEvent, newState: IDLE, previousState: IDLE.
+11-19 10:35:24.933  1409  3227 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:24.933  1781  3589 I A       : beginBinderSession(): calling binder
+11-19 10:35:24.935  1703  2226 I NgaEntryPointEventSendr: State changed: Connecting => Ready
+11-19 10:35:24.941   522   925 W ActivityManager: Unable to start service Intent { cmp=com.google.android.apps.tachyon/.clientapi.ClientApiService } U=0: not found
+11-19 10:35:24.942   522   594 D OomAdjuster: Not killing cached processes
+11-19 10:35:24.945  1703  2226 I A       : Initialize
+11-19 10:35:24.946  1703  2226 I A       : stopListening(NGA_PAUSED_UNKNOWN_REASON, NGA_CREATE), idleOverride=NOT_LISTENING
+11-19 10:35:24.957  1703  2240 W A       : Routing took 0 ms
+11-19 10:35:24.967  1703  2226 I A       : Successfully initialized all components
+11-19 10:35:24.969  1409  3227 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:24.980  1409  3227 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:25.012  1409  1478 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService started execution. cause:9 exec_start_elapsed_seconds: 95 [CONTEXT service_id=218 ]
+11-19 10:35:25.042  1781  2558 W A       : UiCallbackStub-onGenericEvent[ServiceEvent = 60] task was not run. Callback from Service received after client was disposed.
+11-19 10:35:25.044  1781  2523 I PBSessionCacheImpl: Deleted sessionId[7834715920743833] from persistence.
+11-19 10:35:25.054  1781  2558 W SearchServiceCore: Abort, client detached.
+11-19 10:35:25.064  1409  4955 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService finished executing. cause:9 result: 1 elapsed_millis: 84 uptime_millis: 84 exec_start_elapsed_seconds: 95
+11-19 10:35:25.061  1703  2240 I NgaEntryPointEventSendr: State changed: Ready => Disconnected (onOpaDisconnected)
+11-19 10:35:25.068  1703  1746 I hbox:interactor: Background young concurrent copying GC freed 39807(2356KB) AllocSpace objects, 5(100KB) LOS objects, 22% free, 7953KB/10202KB, paused 11.765ms,10us total 103.255ms
+11-19 10:35:25.075   522   925 D CompatibilityChangeReporter: Compat change id reported: 182734110; UID 10131; state: ENABLED
+11-19 10:35:25.077  1409  4583 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:25.110   522  2254 D CompatibilityChangeReporter: Compat change id reported: 149924527; UID 10131; state: ENABLED
+11-19 10:35:25.113  1409  4583 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:25.114  1409  4583 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:25.124   522  1966 D CompatibilityChangeReporter: Compat change id reported: 132649864; UID 10131; state: DISABLED
+11-19 10:35:25.212  1409  1471 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:25.239  1409  1989 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.checkin.CheckinService started execution. cause:5 exec_start_elapsed_seconds: 96 [CONTEXT service_id=218 ]
+11-19 10:35:25.241  1409  1471 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:25.248  1409  1471 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:25.326  4896  4896 I com.example.buddy: Perf: native scene 21 fps
+11-19 10:35:25.332  1409  4955 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.checkin.CheckinService finished executing. cause:5 result: 3 elapsed_millis: 121 uptime_millis: 121 exec_start_elapsed_seconds: 96 [
+11-19 10:35:25.352  1409  3221 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:25.360  1409  3221 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:25.361  1409  1418 I .gms.persistent: Background young concurrent copying GC freed 245613(13MB) AllocSpace objects, 0(0B) LOS objects, 31% free, 27MB/40MB, paused 26us,24us total 117.494ms
+11-19 10:35:25.363  1703  1703 V ClearcutMetricXmitter: Transmission is done.
+11-19 10:35:25.366  1409  3221 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:25.416  1409  1471 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:25.426  1409  1471 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:25.432  1409  1471 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:25.450  1409  4583 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:25.464  1409  4583 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:25.468  1409  4583 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:25.530  1409  3221 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:25.535  1409  3221 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:25.536  1409  3221 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:25.570  1409  1471 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:25.574  4896  4921 D EGL_emulation: app_time_stats: avg=41.75ms min=35.94ms max=50.80ms count=24
+11-19 10:35:25.585  1409  1471 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:25.598  1409  1471 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:25.618  1409  4583 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:25.629  1409  4583 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:25.635  1409  4583 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:25.676  1409  3221 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:25.686  1409  3221 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:25.689  1409  3221 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:25.733  1409  1471 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:25.760  1409  1471 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:25.766  1409  1471 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:25.813  1409  4583 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:25.844  1409  4583 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:25.850  1409  4583 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:25.877  1409  1471 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:25.889  1409  1471 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:25.891  1409  1471 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:25.913  1409  4583 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:25.935   522   614 D ActivityManager: freezing 4650 com.google.android.googlequicksearchbox
+11-19 10:35:25.938  1409  4583 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:25.939  1409  4583 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:26.024  1409  3221 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:26.031  1409  3221 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:26.037  1409  3221 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:26.060  5092  5092 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+11-19 10:35:26.061  5092  5092 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-19 10:35:26.064   401   415 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=5092
+11-19 10:35:26.064   401   415 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (151 us)
+11-19 10:35:26.111   135   135 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-19 10:35:26.309     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+11-19 10:35:26.112  5092  5093 I Gralloc4: mapper 4.x is not supported
+11-19 10:35:26.114  1409  1471 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:26.135  1409  1471 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:26.136  1409  1471 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:26.213  1409  4583 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:26.265  1409  4583 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:26.283  1409  4583 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:26.316  1409  3221 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:26.325  1409  3221 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:26.326  1409  3221 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:26.424  1409  3221 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:26.426   522   614 D ActivityManager: freezing 3696 com.google.android.rkpdapp
+11-19 10:35:26.441  1409  3221 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:26.443  1409  3221 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:26.508  1409  1471 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:26.526  1409  1471 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:26.528  1409  1471 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:26.560  1409  3221 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-19 10:35:26.600  4896  4921 D EGL_emulation: app_time_stats: avg=44.00ms min=32.95ms max=58.41ms count=23

@@ -1,0 +1,150 @@
+11-19 10:30:02.934  1456  5119 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-19 10:30:02.935  1456  5119 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-19 10:30:02.938  1456  5119 V Backup  : [PhenotypeConfigIO] Phenotype broadcast received for different package
+11-19 10:30:02.943  1456  5117 I SyncIntentOperation: Handling the intent: Intent { act=com.google.android.gms.phenotype.COMMITTED flg=0x10 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras
+11-19 10:30:02.944  1456  4905 I MdiSyncModule: flag handling is skipping irrelevant intent.
+11-19 10:30:02.948  1456  4905 I MlBenchmarkInstaller: Intent: com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=340 ]
+11-19 10:30:02.949  1456  4905 I MlBenchmarkInstaller: COMMITTED Extra package name: com.google.android.gms.people [CONTEXT service_id=340 ]
+11-19 10:30:02.953  1755  2333 W A       : Can't format flag AndroidGsaVelourJars__velour_ipa_jar__name to integer.
+11-19 10:30:02.953  1755  2333 W A       : Can't format flag AndroidGsaVelourJars__velour_jslocation_jar__name to integer.
+11-19 10:30:02.954  1456  4664 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-19 10:30:02.955  1755  2333 W A       : Can't format flag AndroidGsaVelourJars__velour_localintent_jar__name to integer.
+11-19 10:30:02.955  1456  4664 I LocationHistory: [IntentOperation] Module is disabled [CONTEXT service_id=314 ]
+11-19 10:30:02.956  1755  2333 W A       : Can't format flag AndroidGsaVelourJars__velour_messaging_jar__name to integer.
+11-19 10:30:02.957  1755  2333 W A       : Can't format flag AndroidGsaVelourJars__velour_nativesrp_activity_jar__name to integer.
+11-19 10:30:02.959  1755  2333 W A       : Can't format flag AndroidGsaVelourJars__velour_nativesrp_presenter_jar__name to integer.
+11-19 10:30:02.959  1755  2333 W A       : Can't format flag AndroidGsaVelourJars__velour_nowcontent_jar__name to integer.
+11-19 10:30:02.960  1755  2333 W A       : Can't format flag AndroidGsaVelourJars__velour_recents_activity_jar__name to integer.
+11-19 10:30:02.961  1456  4905 W PeoplePU: getServiceInfo failed.
+11-19 10:30:02.961  1456  4905 W PeoplePU: android.content.pm.PackageManager$NameNotFoundException: ComponentInfo{com.google.android.gms/com.google.android.gms.people.sync.focus.ContactsSyncAdapterService}
+11-19 10:30:02.961  1456  4905 W PeoplePU: 	at android.app.ApplicationPackageManager.getServiceInfo(ApplicationPackageManager.java:616)
+11-19 10:30:02.961  1456  4905 W PeoplePU: 	at android.app.ApplicationPackageManager.getServiceInfo(ApplicationPackageManager.java:599)
+11-19 10:30:02.961  1456  4905 W PeoplePU: 	at bvox.b(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3)
+11-19 10:30:02.961  1456  4905 W PeoplePU: 	at bvgq.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3)
+11-19 10:30:02.961  1456  4905 W PeoplePU: 	at com.google.android.gms.people.service.SettingsChangedBroadcastIntentOperation.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):11)
+11-19 10:30:02.961  1456  4905 W PeoplePU: 	at com.google.android.chimera.IntentOperation.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-19 10:30:02.961  1456  4905 W PeoplePU: 	at zhv.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+11-19 10:30:02.961  1456  4905 W PeoplePU: 	at hjm.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3)
+11-19 10:30:02.961  1456  4905 W PeoplePU: 	at hjl.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):11)
+11-19 10:30:02.961  1456  4905 W PeoplePU: 	at dfhf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-19 10:30:02.961  1456  4905 W PeoplePU: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-19 10:30:02.961  1456  4905 W PeoplePU: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-19 10:30:02.961  1456  4905 W PeoplePU: 	at java.lang.Thread.run(Thread.java:1012)
+11-19 10:30:02.962  1456  4905 W PeoplePU: getComponentEnabledSetting failed.
+11-19 10:30:02.962  1456  4905 W PeoplePU: java.lang.IllegalArgumentException: Unknown component: ComponentInfo{com.google.android.syncadapters.contacts/com.google.android.syncadapters.contacts.ContactsSyncAdapterService}
+11-19 10:30:02.962  1456  4905 W PeoplePU: 	at android.os.Parcel.createExceptionOrNull(Parcel.java:3061)
+11-19 10:30:02.962  1456  4905 W PeoplePU: 	at android.os.Parcel.createException(Parcel.java:3041)
+11-19 10:30:02.962  1456  4905 W PeoplePU: 	at android.os.Parcel.readException(Parcel.java:3024)
+11-19 10:30:02.962  1456  4905 W PeoplePU: 	at android.os.Parcel.readException(Parcel.java:2966)
+11-19 10:30:02.962  1456  4905 W PeoplePU: 	at android.content.pm.IPackageManager$Stub$Proxy.getComponentEnabledSetting(IPackageManager.java:6034)
+11-19 10:30:02.962  1456  4905 W PeoplePU: 	at android.app.ApplicationPackageManager.getComponentEnabledSetting(ApplicationPackageManager.java:3097)
+11-19 10:30:02.962  1456  4905 W PeoplePU: 	at bvox.b(:com.google.android.gms@231818047@23.18.18 (190800-535401451):1)
+11-19 10:30:02.962  1456  4905 W PeoplePU: 	at bvgq.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):5)
+11-19 10:30:02.962  1456  4905 W PeoplePU: 	at com.google.android.gms.people.service.SettingsChangedBroadcastIntentOperation.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):11)
+11-19 10:30:02.962  1456  4905 W PeoplePU: 	at com.google.android.chimera.IntentOperation.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-19 10:30:02.962  1456  4905 W PeoplePU: 	at zhv.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+11-19 10:30:02.962  1456  4905 W PeoplePU: 	at hjm.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3)
+11-19 10:30:02.962  1456  4905 W PeoplePU: 	at hjl.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):11)
+11-19 10:30:02.962  1456  4905 W PeoplePU: 	at dfhf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-19 10:30:02.962  1456  4905 W PeoplePU: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-19 10:30:02.962  1456  4905 W PeoplePU: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-19 10:30:02.962  1456  4905 W PeoplePU: 	at java.lang.Thread.run(Thread.java:1012)
+11-19 10:30:02.962  1456  4905 W PeoplePU: Caused by: android.os.RemoteException: Remote stack trace:
+11-19 10:30:02.962  1456  4905 W PeoplePU: 	at com.android.server.pm.ComputerEngine.getComponentEnabledSettingInternal(ComputerEngine.java:5159)
+11-19 10:30:02.962  1456  4905 W PeoplePU: 	at com.android.server.pm.ComputerEngine.getComponentEnabledSetting(ComputerEngine.java:5141)
+11-19 10:30:02.962  1456  4905 W PeoplePU: 	at com.android.server.pm.IPackageManagerBase.getComponentEnabledSetting(IPackageManagerBase.java:388)
+11-19 10:30:02.962  1456  4905 W PeoplePU: 	at android.content.pm.IPackageManager$Stub.onTransact(IPackageManager.java:3012)
+11-19 10:30:02.962  1456  4905 W PeoplePU: 	at com.android.server.pm.PackageManagerService$IPackageManagerImpl.onTransact(PackageManagerService.java:6334)
+11-19 10:30:02.962  1456  4905 W PeoplePU: 
+11-19 10:30:02.964  1755  2333 W A       : Can't format flag AndroidGsaVelourJars__velour_save_jar__name to integer.
+11-19 10:30:02.965  1405  5091 I Fitness : OnPackageChangedOperation got intent: Intent { act=android.intent.action.PACKAGE_CHANGED dat=package: flg=0x45000010 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.PersistentIntentO
+11-19 10:30:02.968  1755  2333 W A       : Can't format flag AndroidGsaVelourJars__velour_searchresults_activity_jar__name to integer.
+11-19 10:30:02.969  1755  2333 W A       : Can't format flag AndroidGsaVelourJars__velour_test_jar__name to integer.
+11-19 10:30:02.970  1755  2333 W A       : Can't format flag AndroidGsaVelourJars__velour_weather_jar__name to integer.
+11-19 10:30:02.971  1755  2333 W A       : Can't format flag bindle_flags__bloblobber_blob to integer.
+11-19 10:30:02.972  1755  2333 W A       : Can't format flag bindle_flags__velour_jar to integer.
+11-19 10:30:02.972  1603  1603 I GsaVoiceInteractionSrv: O received Intent { act=android.intent.action.PACKAGE_ADDED dat=package: flg=0x4000010 (has extras) }
+11-19 10:30:02.999  1755  2435 W SearchServiceCore: Abort, client detached.
+11-19 10:30:02.999  1755  2435 W SearchServiceCore: Abort, client detached.
+11-19 10:30:03.006  3680  4625 I ConfigUpdater: doneInstall
+11-19 10:30:03.008  1405  2636 I Fitness : FitCleanupIntentOperation received Intent android.intent.action.PACKAGE_CHANGED [CONTEXT service_id=17 ]
+11-19 10:30:03.008  1456  4905 I FsaEntryPointSwitcher: setting component enabled=1 for com.google.android.gms.people.sync.focus.ContactsSyncAdapterService
+11-19 10:30:03.008   520  2668 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+11-19 10:30:03.008   520  2668 D PackageManager: Clear ephemeral installer activity
+11-19 10:30:03.017  1456  4905 I FsaEntryPointSwitcher: Setting component enabled succeeds.
+11-19 10:30:03.017  1456  4905 W PeoplePU: getComponentEnabledSetting failed.
+11-19 10:30:03.017  1456  4905 W PeoplePU: java.lang.IllegalArgumentException: Unknown component: ComponentInfo{com.google.android.syncadapters.contacts/com.google.android.syncadapters.contacts.ContactsSyncAdapterService}
+11-19 10:30:03.017  1456  4905 W PeoplePU: 	at android.os.Parcel.createExceptionOrNull(Parcel.java:3061)
+11-19 10:30:03.017  1456  4905 W PeoplePU: 	at android.os.Parcel.createException(Parcel.java:3041)
+11-19 10:30:03.017  1456  4905 W PeoplePU: 	at android.os.Parcel.readException(Parcel.java:3024)
+11-19 10:30:03.017  1456  4905 W PeoplePU: 	at android.os.Parcel.readException(Parcel.java:2966)
+11-19 10:30:03.017  1456  4905 W PeoplePU: 	at android.content.pm.IPackageManager$Stub$Proxy.getComponentEnabledSetting(IPackageManager.java:6034)
+11-19 10:30:03.017  1456  4905 W PeoplePU: 	at android.app.ApplicationPackageManager.getComponentEnabledSetting(ApplicationPackageManager.java:3097)
+11-19 10:30:03.017  1456  4905 W PeoplePU: 	at bvox.b(:com.google.android.gms@231818047@23.18.18 (190800-535401451):1)
+11-19 10:30:03.017  1456  4905 W PeoplePU: 	at bvgq.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):29)
+11-19 10:30:03.017  1456  4905 W PeoplePU: 	at com.google.android.gms.people.service.SettingsChangedBroadcastIntentOperation.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):11)
+11-19 10:30:03.017  1456  4905 W PeoplePU: 	at com.google.android.chimera.IntentOperation.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-19 10:30:03.017  1456  4905 W PeoplePU: 	at zhv.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+11-19 10:30:03.017  1456  4905 W PeoplePU: 	at hjm.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3)
+11-19 10:30:03.017  1456  4905 W PeoplePU: 	at hjl.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):11)
+11-19 10:30:03.017  1456  4905 W PeoplePU: 	at dfhf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-19 10:30:03.017  1456  4905 W PeoplePU: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-19 10:30:03.017  1456  4905 W PeoplePU: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-19 10:30:03.017  1456  4905 W PeoplePU: 	at java.lang.Thread.run(Thread.java:1012)
+11-19 10:30:03.020  2239  5115 V DownloadManager: Deleting /data/data/com.android.providers.downloads/cache/model.smfb.metadata via provider delete
+11-19 10:30:03.025  1611  1687 W ModernMediaScanner: Failed to visit /data/data/com.android.providers.downloads/cache/model.smfb.metadata: java.nio.file.NoSuchFileException: /data/data/com.android.providers.downloads/cache/model.smfb.metada
+11-19 10:30:03.034  1611  1687 I MediaProvider: Scanned internal due to REASON_DEMAND, found 0 items in 9ms, 0 inserts 0 updates 0 deletes
+11-19 10:30:03.042  2239  5115 V DownloadManager: Deleting /data/data/com.android.providers.downloads/cache/model.smfb via provider delete
+11-19 10:30:03.048  1611  1687 W ModernMediaScanner: Failed to visit /data/data/com.android.providers.downloads/cache/model.smfb: java.nio.file.NoSuchFileException: /data/data/com.android.providers.downloads/cache/model.smfb
+11-19 10:30:03.066  1456  4905 W PeoplePU: getComponentEnabledSetting failed.
+11-19 10:30:03.066  1456  4905 W PeoplePU: java.lang.IllegalArgumentException: Unknown component: ComponentInfo{com.google.android.syncadapters.contacts/com.google.android.syncadapters.contacts.ProxyGalProvider}
+11-19 10:30:03.066  1456  4905 W PeoplePU: 	at android.os.Parcel.createExceptionOrNull(Parcel.java:3061)
+11-19 10:30:03.066  1456  4905 W PeoplePU: 	at android.os.Parcel.createException(Parcel.java:3041)
+11-19 10:30:03.066  1456  4905 W PeoplePU: 	at android.os.Parcel.readException(Parcel.java:3024)
+11-19 10:30:03.066  1456  4905 W PeoplePU: 	at android.os.Parcel.readException(Parcel.java:2966)
+11-19 10:30:03.066  1456  4905 W PeoplePU: 	at android.content.pm.IPackageManager$Stub$Proxy.getComponentEnabledSetting(IPackageManager.java:6034)
+11-19 10:30:03.066  1456  4905 W PeoplePU: 	at android.app.ApplicationPackageManager.getComponentEnabledSetting(ApplicationPackageManager.java:3097)
+11-19 10:30:03.066  1456  4905 W PeoplePU: 	at bvox.b(:com.google.android.gms@231818047@23.18.18 (190800-535401451):1)
+11-19 10:30:03.066  1456  4905 W PeoplePU: 	at buru.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-19 10:30:03.066  1456  4905 W PeoplePU: 	at com.google.android.gms.people.service.SettingsChangedBroadcastIntentOperation.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):14)
+11-19 10:30:03.066  1456  4905 W PeoplePU: 	at com.google.android.chimera.IntentOperation.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-19 10:30:03.066  1456  4905 W PeoplePU: 	at zhv.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+11-19 10:30:03.066  1456  4905 W PeoplePU: 	at hjm.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3)
+11-19 10:30:03.066  1456  4905 W PeoplePU: 	at hjl.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):11)
+11-19 10:30:03.066  1456  4905 W PeoplePU: 	at dfhf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-19 10:30:03.066  1456  4905 W PeoplePU: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-19 10:30:03.066  1456  4905 W PeoplePU: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-19 10:30:03.066  1456  4905 W PeoplePU: 	at java.lang.Thread.run(Thread.java:1012)
+11-19 10:30:03.069  1611  1687 I MediaProvider: Scanned internal due to REASON_DEMAND, found 0 items in 20ms, 0 inserts 0 updates 0 deletes
+11-19 10:30:03.071  5009  5009 I Choreographer: Skipped 282 frames!  The application may be doing too much work on its main thread.
+11-19 10:30:03.071   520   621 I InputDispatcher: 6d1365e com.example.buddy/com.example.buddy.ui.UiActivity (server) spent 3506ms processing FocusEvent(hasFocus=true)
+11-19 10:30:03.072  5009  5009 I com.example.buddy: Perf: native scene 0 fps
+11-19 10:30:03.075  5009  5020 I OpenGLRenderer: Davey! duration=4779ms; Flags=1, FrameTimelineVsyncId=5341, IntendedVsync=88879310235, Vsync=88929310233, InputEventId=0, HandleInputStart=88936795974, AnimationStart=88936796274, PerformTrav
+11-19 10:30:03.076   520   910 D CompatibilityChangeReporter: Compat change id reported: 214016041; UID 10192; state: ENABLED
+11-19 10:30:03.077   520   910 I ImeTracker: com.example.buddy:114b3d4b: onRequestHide at ORIGIN_SERVER_HIDE_INPUT reason HIDE_UNSPECIFIED_WINDOW
+11-19 10:30:03.077   520   910 I ImeTracker: com.example.buddy:114b3d4b: onCancelled at PHASE_SERVER_SHOULD_HIDE
+11-19 10:30:03.080  1513  1513 I GoogleInputMethodService: GoogleInputMethodService.onFinishInput():3227 
+11-19 10:30:03.083  1513  1513 I GoogleInputMethodService: GoogleInputMethodService.updateDeviceLockedStatus():2087 repeatCheckTimes = 0, unlocked = true
+11-19 10:30:03.083  1513  1513 I GoogleInputMethodService: GoogleInputMethodService.onStartInput():1877 onStartInput(EditorInfo{inputType=0x0(NULL) imeOptions=0x0 privateImeOptions=null actionName=UNSPECIFIED actionLabel=null actionId=0 ini
+11-19 10:30:03.083  1513  1513 I GoogleInputMethodService: GoogleInputMethodService.shouldHideHeaderOnInitialState():4008 ShouldHideHeaderOnInitialState = false
+11-19 10:30:03.090  1513  1513 I GoogleInputMethodService: GoogleInputMethodService.updateDeviceLockedStatus():2087 repeatCheckTimes = 2, unlocked = true
+11-19 10:30:03.090  1513  1513 I DeviceModeUtil: DeviceModeUtil.getDeviceMode():122 Get device mode phone by ui mode:1 and smallestScreenWidthDp:413
+11-19 10:30:03.090  1513  1513 I KeyboardModeManager: KeyboardModeManager.setInputView():364 setInputView() : supportsOneHandedMode=true
+11-19 10:30:03.090  1513  1513 I NormalModeController: NormalModeController.getKeyboardBodyViewHolderPaddingBottom():116 currentPrimeKeyboardType:SOFT systemPaddingBottom:-1
+11-19 10:30:03.091  1513  1513 I KeyboardModeManager: KeyboardModeManager.setInputView():356 setInputView() : entry=hwn{languageTag=en-US, variant=qwerty, hasLocalizedResources=true, conditionCacheKey=_device=phone_device_size=default_enabl
+11-19 10:30:03.094  1513  1513 I StyledKeyboardTheme: StyledKeyboardTheme.<init>():87 Pref: [], themeName: [silk:], darkMode: [false], cacheKey: [overlay_builtin_dynamic_color_light_base.binarypb:dynamic-light-fff1f0f7-ffb2c5ff-734dbefe1e6f
+11-19 10:30:03.094  1513  1513 I DeviceModeUtil: DeviceModeUtil.getDeviceMode():122 Get device mode phone by ui mode:1 and smallestScreenWidthDp:413
+11-19 10:30:03.094  1513  1513 I DeviceModeUtil: DeviceModeUtil.getDeviceMode():122 Get device mode phone by ui mode:1 and smallestScreenWidthDp:413
+11-19 10:30:03.094  1513  1513 I DeviceModeUtil: DeviceModeUtil.getDeviceMode():122 Get device mode phone by ui mode:1 and smallestScreenWidthDp:413
+11-19 10:30:03.095  1513  1513 I DeviceModeUtil: DeviceModeUtil.getDeviceMode():122 Get device mode phone by ui mode:1 and smallestScreenWidthDp:413
+11-19 10:30:03.095  1513  1513 I DeviceModeUtil: DeviceModeUtil.getDeviceMode():122 Get device mode phone by ui mode:1 and smallestScreenWidthDp:413
+11-19 10:30:03.095  1513  1513 I GoogleInputMethodService: GoogleInputMethodService.initializeKeyboardTheme():1343 Apply keyboard theme: theme_border_stylesheet_noshadow_gsans_pillkey_silkpopup_refinedkp_materiallight_phone_400_overlay_buil
+11-19 10:30:03.096  1513  1513 I GoogleInputMethodService: GoogleInputMethodService.onCreateInputView():1768 onCreateInputView()
+11-19 10:30:03.104  1513  1513 I DeviceModeUtil: DeviceModeUtil.getDeviceMode():122 Get device mode phone by ui mode:1 and smallestScreenWidthDp:413
+11-19 10:30:03.108  1513  1513 I KeyboardViewUtil: KeyboardViewUtil.getKeyboardHeightRatio():189 systemKeyboardHeightRatio:1.000000; userKeyboardHeightRatio:1.000000.
+11-19 10:30:03.111  1513  1513 I DeviceModeUtil: DeviceModeUtil.getDeviceMode():122 Get device mode phone by ui mode:1 and smallestScreenWidthDp:413
+11-19 10:30:03.113  1513  1513 I KeyboardModeManager: KeyboardModeManager.setInputView():364 setInputView() : supportsOneHandedMode=true
+11-19 10:30:03.113  1513  1513 I AndroidIME: KeyboardViewManager.updateKeyboardBackgroundFrameVisibility():357 Set background frame visibility. old:8, new:8
+11-19 10:30:03.114  1513  1513 I NormalModeController: NormalModeController.getKeyboardBodyViewHolderPaddingBottom():116 currentPrimeKeyboardType:SOFT systemPaddingBottom:-1
+11-19 10:30:03.114  1513  1513 I NormalModeController: NormalModeController.getKeyboardBodyViewHolderPaddingBottom():116 currentPrimeKeyboardType:SOFT systemPaddingBottom:-1
+11-19 10:30:03.114  1513  1513 I KeyboardModeManager: KeyboardModeManager.setInputView():356 setInputView() : entry=hwn{languageTag=en-US, variant=qwerty, hasLocalizedResources=true, conditionCacheKey=_device=phone_device_size=default_enabl

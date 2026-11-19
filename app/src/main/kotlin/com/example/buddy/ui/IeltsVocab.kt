@@ -19,15 +19,26 @@ class IeltsDef(val topic: String, val word: String, val def: String, val uz: Str
 
 class IeltsPhrase(val group: String, val phrase: String, val uz: String, val example: String)
 
-class IeltsStruct(val n: Int, val title: String, val uz: String, val formula: String, val examples: List<String>) {
-    val key: String get() = title.split(" ", "/", "+", "(", ")", ",").firstOrNull { it.length >= 2 && it.all { c -> c.isLetter() || c == '\'' } && it != "S" && it != "V" }?.lowercase().orEmpty()
+class IeltsStruct(val n: Int, val title: String, val uz: String, val formula: String, val markers: List<List<String>>, val examples: List<String>) {
+    val answer: String get() = markers.joinToString(" … ") { it.first() }
 
-    fun gapExample(): String? {
-        if (key.isEmpty()) return null
-        val re = Regex("\\b" + Regex.escape(key) + "\\b", RegexOption.IGNORE_CASE)
-        val ex = examples.firstOrNull { re.containsMatchIn(it) } ?: return null
-        return re.replaceFirst(ex, "_____")
+    fun gap(example: String): Pair<String, String>? {
+        if (markers.isEmpty()) return null
+        var out = example
+        var from = 0
+        val parts = ArrayList<String>()
+        for (slot in markers) {
+            val hit = slot.mapNotNull { alt ->
+                Regex("(?<![\\w'])" + Regex.escape(alt) + "(?![\\w'])", RegexOption.IGNORE_CASE).find(out, from)
+            }.minByOrNull { it.range.first } ?: return null
+            parts.add(hit.value.lowercase())
+            out = out.replaceRange(hit.range, "_____")
+            from = hit.range.first + 5
+        }
+        return out to parts.joinToString(" … ")
     }
+
+    fun gaps(): List<Pair<String, String>> = examples.mapNotNull { gap(it) }
 }
 
 class IeltsCue(val title: String, val bullets: List<String>, val topic: String)
@@ -101,7 +112,9 @@ object IeltsVocab {
     fun parseStructs(text: String): List<IeltsStruct> = text.lineSequence().mapNotNull { l ->
         val f = l.split("|")
         val n = f.getOrNull(0)?.trim()?.toIntOrNull()
-        if (n == null || f.size < 5) null else IeltsStruct(n, f[1].trim(), f[2].trim(), f[3].trim(), f.drop(4).joinToString("|").split("||").map { it.trim() }.filter { it.isNotEmpty() })
+        if (n == null || f.size < 6) null else IeltsStruct(n, f[1].trim(), f[2].trim(), f[3].trim(),
+            f[4].split(";").map { slot -> slot.split("/").map { it.trim() }.filter { it.isNotEmpty() } }.filter { it.isNotEmpty() },
+            f.drop(5).joinToString("|").split("||").map { it.trim() }.filter { it.isNotEmpty() })
     }.toList()
 
     fun byTopic(words: List<IeltsWord>): Map<String, List<IeltsWord>> {
@@ -127,17 +140,15 @@ object IeltsVocab {
             }
         }
 
-    fun structGaps(all: List<IeltsStruct>, rnd: Random, size: Int): List<IeltsQuestion> {
-        val usable = all.filter { it.gapExample() != null }
-        val keys = usable.map { it.key }.distinct()
-        return usable.shuffled(rnd).take(size).mapNotNull { s ->
-            val others = keys.filter { it != s.key }.shuffled(rnd).take(3)
+    fun structGaps(all: List<IeltsStruct>, rnd: Random, size: Int): List<IeltsQuestion> =
+        all.filter { it.gaps().isNotEmpty() }.shuffled(rnd).take(size).mapNotNull { s ->
+            val (prompt, answer) = s.gaps().random(rnd)
+            val others = all.filter { it.n != s.n }.map { it.answer }.filter { it != answer }.distinct().shuffled(rnd).take(3)
             if (others.size < 3) null else {
-                val opts = (others + s.key).shuffled(rnd)
-                IeltsQuestion(s.gapExample().orEmpty(), opts, opts.indexOf(s.key), s.title + " — " + s.formula)
+                val opts = (others + answer).shuffled(rnd)
+                IeltsQuestion(prompt, opts, opts.indexOf(answer), s.title + " — " + s.formula)
             }
         }
-    }
 
     fun phraseQuiz(all: List<IeltsPhrase>, rnd: Random, size: Int): List<IeltsQuestion> =
         all.shuffled(rnd).take(size).mapNotNull { p ->

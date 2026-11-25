@@ -47,6 +47,12 @@ class IeltsAsk(val topic: String, val question: String)
 
 class IeltsSpeaking(val phrases: List<IeltsPhrase>, val words: List<IeltsWord>, val part1: List<IeltsAsk>, val cues: List<IeltsCue>, val part3: List<IeltsAsk>)
 
+class IeltsQa(val question: String, val answer: String)
+
+class IeltsModel(val id: Int, val title: String, val bullets: List<String>, val paras: List<String>, val vocab: List<Pair<String, String>>, val follow: List<IeltsQa>) {
+    val kind: String get() = IeltsVocab.cardKind(title)
+}
+
 class IeltsQuestion(val prompt: String, val options: List<String>, val answer: Int, val explain: String)
 
 object IeltsVocab {
@@ -111,6 +117,42 @@ object IeltsVocab {
         if (f.size < 4 || f[1].isBlank() || f[2].isBlank()) null
         else IeltsPhrase(f[0].trim(), f[1].trim(), f[2].trim(), f.drop(3).joinToString("|").split("||").map { it.trim() }.filter { it.isNotEmpty() }.joinToString("\n"))
     }.toList()
+
+    val kindOrder = listOf("person", "place", "object", "media", "event", "other")
+
+    fun cardKind(title: String): String {
+        val t = title.lowercase()
+        fun has(vararg w: String) = w.any { Regex("\\b$it").containsMatchIn(t) }
+        return when {
+            Regex("^(describe|talk about) (a|an|the) (time|occasion|event|experience|day|moment|situation)\\b").containsMatchIn(t) -> "event"
+            has("book", "film", "movie", "tv", "song", "music", "app", "website", "program", "advertisement", "story", "novel", "article", "photo", "picture", "magazine", "news", "video", "series", "show") -> "media"
+            has("person", "people", "someone", "somebody", "friend", "man", "woman", "child", "teacher", "family member", "leader", "athlete", "neighbour", "neighbor", "businessman", "parent", "celebrity", "singer", "visitor", "relative", "artist", "musician", "doctor", "player", "boss", "colleague") -> "person"
+            has("place", "city", "country", "building", "park", "street", "restaurant", "café", "cafe", "house", "home", "room", "river", "area", "shop", "garden", "town", "hotel", "beach", "school", "museum", "stadium", "apartment", "village", "mountain", "lake") -> "place"
+            has("time", "occasion", "event", "experience", "day", "trip", "journey", "holiday", "party", "celebrat", "festival", "decision", "change", "moment", "problem", "situation", "mistake", "success", "meeting", "achievement", "period", "era") -> "event"
+            has("thing", "something", "object", "item", "gift", "present", "toy", "technology", "machine", "equipment", "device", "piece", "clothes", "vehicle", "car", "bicycle", "food", "meal", "dish", "cake", "flower", "plant", "animal", "letter", "product") -> "object"
+            else -> "other"
+        }
+    }
+
+    fun parseAnswers(text: String): List<IeltsModel> {
+        val cards = LinkedHashMap<Int, IeltsModel>()
+        val vocab = HashMap<Int, MutableList<Pair<String, String>>>()
+        val follow = HashMap<Int, MutableList<IeltsQa>>()
+        for (l in text.lineSequence()) {
+            val f = l.split("|", limit = 5)
+            val id = f.getOrNull(1)?.trim()?.toIntOrNull() ?: continue
+            when (f[0]) {
+                "A" -> if (f.size == 5) {
+                    val bullets = f[3].split(";").map { it.trim() }.filter { it.isNotEmpty() }
+                    val paras = f[4].split("||").map { it.trim() }.filter { it.isNotEmpty() }
+                    if (f[2].isNotBlank() && bullets.isNotEmpty() && paras.isNotEmpty()) cards[id] = IeltsModel(id, f[2].trim(), bullets, paras, emptyList(), emptyList())
+                }
+                "V" -> if (f.size >= 4 && f[2].isNotBlank() && f[3].isNotBlank()) vocab.getOrPut(id) { ArrayList() }.add(f[2].trim() to f.drop(3).joinToString("|").trim())
+                "F" -> if (f.size >= 4 && f[2].isNotBlank() && f[3].isNotBlank()) follow.getOrPut(id) { ArrayList() }.add(IeltsQa(f[2].trim(), f.drop(3).joinToString("|").trim()))
+            }
+        }
+        return cards.values.map { IeltsModel(it.id, it.title, it.bullets, it.paras, vocab[it.id].orEmpty(), follow[it.id].orEmpty()) }
+    }
 
     fun speakByTopic(words: List<IeltsWord>): Map<String, List<IeltsWord>> {
         val g = words.groupBy { it.topic }

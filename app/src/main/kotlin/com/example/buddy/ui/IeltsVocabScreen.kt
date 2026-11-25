@@ -27,9 +27,15 @@ class IeltsVocabScreen(act: UiActivity) : Screen(act) {
     private val speakTopics by lazy { IeltsVocab.speakByTopic(speak.words) }
     private val isSpeak get() = view.startsWith("s:")
     private val sk get() = view.removePrefix("s:")
-    private fun curWords(): List<IeltsWord> = if (isSpeak) speakTopics[sk].orEmpty() else topics[view].orEmpty()
-    private fun wordPool(): List<IeltsWord> = if (isSpeak) speak.words else words
-    private fun wkey(i: Int) = if (isSpeak) "s_${sk}_$i" else "${view}_$i"
+    private val colloc by lazy { IeltsVocab.parseWords(asset("collocations.txt")) }
+    private val collocTopics by lazy { IeltsVocab.collocByTopic(colloc) }
+    private val idioms by lazy { IeltsVocab.parseIdioms(asset("idioms.txt")) }
+    private val isColl get() = view.startsWith("k:")
+    private val ck get() = view.removePrefix("k:")
+    private fun curWords(): List<IeltsWord> = if (isSpeak) speakTopics[sk].orEmpty() else if (isColl) collocTopics[ck].orEmpty() else topics[view].orEmpty()
+    private fun wordPool(): List<IeltsWord> = if (isSpeak) speak.words else if (isColl) colloc else words
+    private fun wkey(i: Int) = if (isSpeak) "s_${sk}_$i" else if (isColl) "k_${ck}_$i" else "${view}_$i"
+    private fun phraseSet(): List<IeltsPhrase>? = when (view) { "ph" -> phrases; "sp" -> speak.phrases; "id" -> idioms; else -> null }
 
     private var view = ""
     private var mode = -1
@@ -64,6 +70,31 @@ class IeltsVocabScreen(act: UiActivity) : Screen(act) {
         else -> t("Общество", "Society", "Jamiyat")
     }
 
+    private fun collocName(k: String) = when (k) {
+        "work" -> t("Работа и занятость", "Work & employment", "Ish va bandlik")
+        "tourism" -> t("Туризм и путешествия", "Tourism & travel", "Turizm va sayohat")
+        "city" -> t("Урбанизация и город", "Urbanisation & city life", "Urbanizatsiya va shahar")
+        "crime" -> t("Преступление и наказание", "Crime & punishment", "Jinoyat va jazo")
+        "environment" -> t("Экология и загрязнение", "Environment & pollution", "Ekologiya va ifloslanish")
+        "food" -> t("Сельское хозяйство и еда", "Agriculture & food", "Qishloq xo'jaligi va oziq-ovqat")
+        "art" -> t("Искусство и музыка", "Art & music", "San'at va musiqa")
+        "transport" -> t("Транспорт", "Transport", "Transport")
+        "media" -> t("СМИ и реклама", "Media & advertising", "OAV va reklama")
+        "culture" -> t("Культура и традиции", "Culture & traditions", "Madaniyat va an'analar")
+        "government" -> t("Государство и политика", "Government & politics", "Davlat va siyosat")
+        "social" -> t("Социальные проблемы", "Social issues", "Ijtimoiy muammolar")
+        "sport" -> t("Спорт и досуг", "Sport & leisure", "Sport va dam olish")
+        "science" -> t("Наука и инновации", "Science & innovation", "Fan va innovatsiya")
+        "family" -> t("Семья и отношения", "Family & relationships", "Oila va munosabatlar")
+        "population" -> t("Рост населения", "Population growth", "Aholi o'sishi")
+        "housing" -> t("Жильё и архитектура", "Housing & architecture", "Uy-joy va arxitektura")
+        "climate" -> t("Изменение климата", "Climate change", "Iqlim o'zgarishi")
+        "economy" -> t("Экономика и финансы", "Economy & finance", "Iqtisodiyot va moliya")
+        "immigration" -> t("Иммиграция и мультикультурализм", "Immigration & multiculturalism", "Immigratsiya va ko'p madaniyatlilik")
+        "space" -> t("Освоение космоса", "Space exploration", "Koinotni o'rganish")
+        else -> topicName(k)
+    }
+
     private fun starsText(n: Int) = "★".repeat(n) + "☆".repeat(3 - n)
     private fun box(key: String) = Backend.int(ctx, "iv_box_$key", 1)
     private fun today() = LocalDate.now().toEpochDay().toInt()
@@ -88,6 +119,8 @@ class IeltsVocabScreen(act: UiActivity) : Screen(act) {
         for ((k, list) in defTopics) for ((i, d) in list.withIndex()) out.add(Cand("d_${k}_$i") { typed -> IeltsDrills.def(d, "d_${k}_$i", typed, defs, kotlin.random.Random.Default) })
         for ((k, list) in speakTopics) for ((i, w) in list.withIndex()) out.add(Cand("s_${k}_$i") { typed -> IeltsDrills.word(w, "s_${k}_$i", typed, speak.words, kotlin.random.Random.Default) })
         for ((i, p) in speak.phrases.withIndex()) out.add(Cand("sp_$i") { _ -> IeltsDrills.phrase(p, "sp_$i", speak.phrases, kotlin.random.Random.Default) })
+        for ((k, list) in collocTopics) for ((i, w) in list.withIndex()) out.add(Cand("k_${k}_$i") { typed -> IeltsDrills.word(w, "k_${k}_$i", typed, colloc, kotlin.random.Random.Default) })
+        for ((i, p) in idioms.withIndex()) out.add(Cand("id_$i") { _ -> IeltsDrills.phrase(p, "id_$i", idioms, kotlin.random.Random.Default) })
         return out
     }
 
@@ -150,15 +183,18 @@ class IeltsVocabScreen(act: UiActivity) : Screen(act) {
             add(ctx.text(t("30 структур Task 2", "30 Task 2 structures", "Task 2 uchun 30 struktura"), T.Label), MATCH, WRAP)
             add(ctx.text(t("Формула, значение, примеры · знаю $stKnown из ${structs.size}", "Formula, meaning, examples · known $stKnown of ${structs.size}", "Formula, ma'no, misollar · bildim $stKnown / ${structs.size}"), T.Small), MATCH, WRAP, top = 2)
         }, MATCH, WRAP, bottom = 8)
+        c.add(ctx.section(t("Тематические коллокации", "Topic collocations", "Mavzu kollokatsiyalari")), MATCH, WRAP)
+        c.add(ctx.text(t("Для Writing и Speaking: словосочетание, перевод, пример с переводом.", "For Writing and Speaking: collocation, meaning, example with translation.", "Writing va Speaking uchun: birikma, tarjima, misol va uning tarjimasi."), T.Small), MATCH, WRAP, bottom = 8)
+        for ((k, list) in collocTopics) topicCard(c, k, list.size, "k_${k}_", "k:$k", collocName(k))
         speakingHome(c)
     }
 
-    private fun topicCard(c: LinearLayout, k: String, size: Int, prefix: String, target: String) {
+    private fun topicCard(c: LinearLayout, k: String, size: Int, prefix: String, target: String, name: String = topicName(k)) {
         val known = (0 until size).count { IeltsSrs.mastered(box("$prefix$it")) && Backend.int(ctx, "iv_last_$prefix$it", 0) > 0 }
         c.add(ctx.card(pad = 14, onClick = { view = target; mode = -1; refresh() }) {
             add(ctx.row {
                 add(ctx.col {
-                    add(ctx.text(topicName(k), T.Label), MATCH, WRAP)
+                    add(ctx.text(name, T.Label), MATCH, WRAP)
                     add(ctx.text(t("Усвоено $known из $size", "Mastered $known of $size", "O'zlashtirildi $known / $size"), T.Small), MATCH, WRAP, top = 2)
                     add(bar(known.toFloat() / size.coerceAtLeast(1)), MATCH, WRAP, top = 6)
                 }, 0, WRAP, 1f)
@@ -182,6 +218,8 @@ class IeltsVocabScreen(act: UiActivity) : Screen(act) {
         tintCard(c, t("Part 3: обсуждение", "Part 3: discussion", "Part 3: muhokama"), t("${speak.part3.size} вопросов · ответ 45 секунд", "${speak.part3.size} questions · 45-second answers", "${speak.part3.size} ta savol · 45 soniyalik javob"), "s3")
         val spKnown = speak.phrases.indices.count { box("sp_$it") >= 3 }
         tintCard(c, t("Разговорные фразы", "Speaking phrases", "Speaking iboralari"), t("Мнение, пауза, пример, история · знаю $spKnown из ${speak.phrases.size}", "Opinion, buying time, examples, stories · known $spKnown of ${speak.phrases.size}", "Fikr, vaqt yutish, misol, hikoya · bildim $spKnown / ${speak.phrases.size}"), "sp")
+        val idKnown = idioms.indices.count { box("id_$it") >= 3 }
+        tintCard(c, t("Идиомы", "Idioms", "Idiomalar"), t("${idioms.size} идиом с примерами · знаю $idKnown", "${idioms.size} idioms with examples · known $idKnown", "${idioms.size} ta idioma misollar bilan · bildim $idKnown"), "id")
         c.add(ctx.text(t("Слова по темам Speaking", "Speaking topic words", "Speaking mavzu so'zlari"), T.Label), MATCH, WRAP, top = 6, bottom = 6)
         for ((k, list) in speakTopics) topicCard(c, k, list.size, "s_${k}_", "s:$k")
     }
@@ -192,7 +230,7 @@ class IeltsVocabScreen(act: UiActivity) : Screen(act) {
             Triple(1, t("Пропуски", "Gap-fill", "Bo'sh joy"), t("Вставь нужное слово структуры", "Fill in the structure word", "Struktura so'zini qo'y")),
             Triple(3, t("Список", "Read all", "Hammasini o'qish"), t("Все структуры с примерами", "All structures with examples", "Barcha strukturalar misollar bilan"))
         )
-        "ph", "sp" -> listOf(
+        "ph", "sp", "id" -> listOf(
             Triple(0, t("Карточки", "Flashcards", "Kartochkalar"), t("Фраза и её назначение", "Phrase and its job", "Ibora va uning vazifasi")),
             Triple(2, t("Тест", "Quiz", "Test"), t("Выбери назначение фразы", "Pick what the phrase does", "Ibora vazifasini tanla")),
             Triple(3, t("Список", "Read all", "Hammasini o'qish"), t("Все фразы по группам", "All phrases by group", "Barcha iboralar guruh bo'yicha"))
@@ -213,7 +251,7 @@ class IeltsVocabScreen(act: UiActivity) : Screen(act) {
 
     private fun modes(c: LinearLayout) {
         c.add(back(t("← Темы", "← Topics", "← Mavzular")) { view = "" }, WRAP, ctx.dp(48))
-        val name = when (view) { "ph" -> t("Фразы для эссе", "Essay phrases", "Essay iboralari"); "sp" -> t("Разговорные фразы", "Speaking phrases", "Speaking iboralari"); "st" -> t("30 структур Task 2", "30 Task 2 structures", "Task 2 uchun 30 struktura"); else -> topicName(if (isSpeak) sk else dk) }
+        val name = when (view) { "ph" -> t("Фразы для эссе", "Essay phrases", "Essay iboralari"); "sp" -> t("Разговорные фразы", "Speaking phrases", "Speaking iboralari"); "st" -> t("30 структур Task 2", "30 Task 2 structures", "Task 2 uchun 30 struktura"); "id" -> t("Идиомы", "Idioms", "Idiomalar"); else -> if (isColl) collocName(ck) else topicName(if (isSpeak) sk else dk) }
         c.add(ctx.text(name, T.Title), MATCH, WRAP, bottom = 8)
         for ((id, n, d) in modeNames()) {
             c.add(ctx.card(pad = 14, onClick = { mode = id; refresh() }) {
@@ -227,7 +265,7 @@ class IeltsVocabScreen(act: UiActivity) : Screen(act) {
         when (mode) {
             0 -> cards(cardItems())
             4 -> typedSession()
-            2 -> if (isDef) quiz(IeltsVocab.quizDefs(defTopics[dk].orEmpty(), defs, kotlin.random.Random.Default, 10), "d_${dk}_quiz") else if (view == "ph") quiz(IeltsVocab.phraseQuiz(phrases, kotlin.random.Random.Default, 10), "ph_quiz") else if (view == "sp") quiz(IeltsVocab.phraseQuiz(speak.phrases, kotlin.random.Random.Default, 10), "sp_quiz") else quiz(IeltsVocab.quiz(curWords(), wordPool(), kotlin.random.Random.Default, 10), "${view}_quiz")
+            2 -> if (isDef) quiz(IeltsVocab.quizDefs(defTopics[dk].orEmpty(), defs, kotlin.random.Random.Default, 10), "d_${dk}_quiz") else if (phraseSet() != null) quiz(IeltsVocab.phraseQuiz(phraseSet().orEmpty(), kotlin.random.Random.Default, 10), "${view}_quiz") else quiz(IeltsVocab.quiz(curWords(), wordPool(), kotlin.random.Random.Default, 10), "${view}_quiz")
             1 -> if (view == "st") quiz(IeltsVocab.structGaps(structs, kotlin.random.Random.Default, 10), "st_gap") else quiz(IeltsVocab.gaps(curWords(), wordPool(), kotlin.random.Random.Default, 10), "${view}_gap")
             else -> list()
         }
@@ -236,8 +274,9 @@ class IeltsVocabScreen(act: UiActivity) : Screen(act) {
     private fun cardItems(): List<IvCard> = when (view) {
         "ph" -> phrases.mapIndexed { i, p -> IvCard("ph_$i", p.phrase, p.uz, p.example) }
         "sp" -> speak.phrases.mapIndexed { i, p -> IvCard("sp_$i", p.phrase, p.uz, p.example) }
+        "id" -> idioms.mapIndexed { i, p -> IvCard("id_$i", p.phrase, p.uz, p.example) }
         "st" -> structs.mapIndexed { i, s -> IvCard("st_$i", s.title, s.uz + "\n\n" + s.formula, s.examples.joinToString("\n\n")) }
-        else -> if (isDef) defTopics[dk].orEmpty().mapIndexed { i, d -> IvCard("d_${dk}_$i", d.word, d.uz.ifEmpty { d.def }, if (d.uz.isEmpty()) "" else d.def) } else curWords().mapIndexed { i, w -> IvCard(wkey(i), w.word, w.uz, w.example) }
+        else -> if (isDef) defTopics[dk].orEmpty().mapIndexed { i, d -> IvCard("d_${dk}_$i", d.word, d.uz.ifEmpty { d.def }, if (d.uz.isEmpty()) "" else d.def) } else curWords().mapIndexed { i, w -> IvCard(wkey(i), w.word, w.uz, if (w.exUz.isEmpty()) w.example else w.example + "\n" + w.exUz) }
     }
 
     private fun cards(all: List<IvCard>) {
@@ -423,9 +462,9 @@ class IeltsVocabScreen(act: UiActivity) : Screen(act) {
 
     private fun list() {
         when (view) {
-            "ph", "sp" -> {
+            "ph", "sp", "id" -> {
                 var g = ""
-                for (p in if (view == "sp") speak.phrases else phrases) {
+                for (p in phraseSet().orEmpty()) {
                     if (p.group != g) { g = p.group; stage.add(ctx.section(g), MATCH, WRAP) }
                     stage.add(ctx.card(pad = 12) {
                         add(ctx.text(p.phrase, T.Label), MATCH, WRAP)
@@ -453,6 +492,7 @@ class IeltsVocabScreen(act: UiActivity) : Screen(act) {
                     add(ctx.text(w.word, T.Label), MATCH, WRAP)
                     add(ctx.text(w.uz, T.Body), MATCH, WRAP, top = 2)
                     add(ctx.text(w.example, T.Small), MATCH, WRAP, top = 4)
+                    if (w.exUz.isNotEmpty()) add(ctx.text(w.exUz, T.Small, P.orange), MATCH, WRAP, top = 2)
                 }, MATCH, WRAP, bottom = 6)
             }
         }

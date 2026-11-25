@@ -1,0 +1,250 @@
+education|play a pivotal role|muhim rol o'ynamoq|Education plays a pivotal role in shaping a nation's future.|Ta'lim mamlakat kelajagini shakllantirishda muhim rol o'ynaydi.
+education|acquire knowledge and skills|bilim va ko'nikma egallamoq|Students acquire knowledge and skills through formal education.|O'quvchilar rasmiy ta'lim orqali bilim va ko'nikmalarni egallaydilar.
+education|prepare students for the workforce|talabalarni mehnat bozoriga tayyorlamoq|Universities prepare students for the workforce.|Universitetlar talabalarni mehnat bozoriga tayyorlaydi.
+education|critical thinking skills|tanqidiy fikrlash ko'nikmalari|Schools should develop critical thinking skills in learners.|Maktablar o'quvchilarda tanqidiy fikrlash ko'nikmalarini rivojlantirishi kerak.
+education|social mobility|ijtimoiy harakatchanlik|Education improves social mobility in society.|Ta'lim jamiyatda ijtimoiy harakatchanlikni oshiradi.
+education|equal access to education|ta'limga teng imkoniyat|Governments must ensure equal access to education.|Hukumatlar ta'limga teng kirish imkonini ta'minlashi kerak.
+education|outdated teaching methods|eskirgan o'qitish usullari|Outdated teaching methods reduce student engagement.|Eskirgan o'qitish usullari o'quvchilar qiziqishini kamaytiradi.
+education|vocational training programs|kasb-hunar ta'lim dasturlari|Vocational training programs help people gain practical skills.|Kasb-hunar ta'lim dasturlari odamlarga amaliy ko'nikmalar beradi.
+education|lifelong learning|umrbod o'rganish|Lifelong learning is essential in the modern world.|Zamonaviy dunyoda umrbod o'rganish juda muhim.
+education|invest in education|ta'limga sarmoya kiritmoq|Countries should invest in education to ensure development.|Mamlakatlar rivojlanish uchun ta'limga sarmoya kiritishi kerak.
+crime|criminal behavior|jinoiy xatti-harakat|Poverty often leads to criminal behavior.|Qashshoqlik ko'pincha jinoyatchilik xatti-harakatlariga olib keladi.
+crime|root causes of crime|jinoyatning asosiy sabablari|Unemployment is one of the root causes of crime.|Ishsizlik jinoyatning asosiy sabablaridan biridir.
+crime|socioeconomic inequality|ijtimoiy-iqtisodiy tengsizlik|Socioeconomic inequality increases crime rates.|Ijtimoiy-iqtisodiy tengsizlik jinoyatchilikni oshiradi.
+crime|crime prevention strategies|jinoyatning oldini olish strategiyalari|Education is an effective crime prevention strategy.|Ta'lim jinoyatning oldini olishda samarali strategiyadir.
+crime|law enforcement agencies|huquqni muhofaza qiluvchi organlar|Law enforcement agencies maintain public safety.|Huquqni muhofaza qiluvchi organlar jamoat xavfsizligini ta'minlaydi.
+crime|harsh punishment|qattiq jazo|Harsh punishment does not always reduce crime.|Qattiq jazo har doim ham jinoyatni kamaytirmaydi.
+crime|rehabilitation programs|reabilitatsiya dasturlari|Rehabilitation programs help criminals reintegrate into society.|Reabilitatsiya dasturlari jinoyatchilarni jamiyatga qayta moslashtiradi.
+crime|repeat offenders|qayta jinoyat qiluvchilar|Repeat offenders are difficult to rehabilitate.|Qayta-qayta jinoyat qiluvchilarni tuzatish qiyin.
+crime|justice system|sud-huquq tizimi|A fair justice system builds public trust.|Adolatli sud tizimi jamoatchilik ishonchini oshiradi.
+crime|capital punishment|o'lim jazosi|Many countries have abolished capital punishment.|Ko'plab davlatlar o'lim jazosini bekor qilgan.
+health|preventative healthcare|profilaktik tibbiyot|Preventative healthcare reduces long-term costs.|Profilaktik tibbiyot uzoq muddatli xarajatlarni kamaytiradi.
+health|healthy lifestyle choices|sog'lom turmush tanlovlari|Healthy lifestyle choices prevent serious illnesses.|Sog'lom turmush tanlovlari jiddiy kasalliklarning oldini oladi.
+health|early detection|erta aniqlash|Early detection increases survival rates.|Kasallikni erta aniqlash yashash imkoniyatini oshiradi.
+health|chronic diseases|surunkali kasalliklar|Chronic diseases require long-term treatment.|Surunkali kasalliklar uzoq muddatli davolashni talab qiladi.
+health|mental health issues|ruhiy salomatlik muammolari|Mental health issues are common among young people.|Yoshlar orasida ruhiy salomatlik muammolari keng tarqalgan.
+health|access to healthcare services|tibbiy xizmatlardan foydalanish imkoni|Rural areas lack access to healthcare services.|Qishloq hududlarida tibbiy xizmatlarga kirish cheklangan.
+health|vaccination programs|emlash dasturlari|Vaccination programs prevent deadly diseases.|Emlash dasturlari xavfli kasalliklarning oldini oladi.
+health|public health campaigns|jamoat salomatligi kampaniyalari|Public health campaigns raise awareness.|Jamoat salomatligi kampaniyalari xabardorlikni oshiradi.
+health|healthcare costs|tibbiy xarajatlar|Healthcare costs are rising rapidly.|Tibbiy xizmat xarajatlari tez oshmoqda.
+health|overall well-being|umumiy farovonlik|Exercise improves overall well-being.|Jismoniy mashqlar umumiy farovonlikni oshiradi.
+environment|environmental pollution|atrof-muhit ifloslanishi|Environmental pollution threatens human health.|Atrof-muhit ifloslanishi inson salomatligiga tahdid soladi.
+environment|industrial emissions|sanoat chiqindilari (gazlar)|Industrial emissions damage air quality.|Sanoat chiqindilari havo sifatini buzadi.
+environment|air and water pollution|havo va suv ifloslanishi|Air and water pollution affect ecosystems.|Havo va suv ifloslanishi ekotizimlarga zarar yetkazadi.
+environment|plastic waste|plastik chiqindilar|Plastic waste harms marine life.|Plastik chiqindilar dengiz hayotiga zarar yetkazadi.
+environment|climate change|iqlim o'zgarishi|Climate change causes extreme weather events.|Iqlim o'zgarishi keskin ob-havo hodisalarini keltirib chiqaradi.
+environment|renewable energy sources|qayta tiklanuvchi energiya manbalari|Renewable energy sources reduce pollution.|Qayta tiklanuvchi energiya manbalari ifloslanishni kamaytiradi.
+environment|carbon footprint|karbon izi|Flying increases your carbon footprint.|Samolyotda uchish karbon izini oshiradi.
+environment|environmental regulations|ekologik qoidalar|Environmental regulations protect nature.|Ekologik qoidalar tabiatni himoya qiladi.
+environment|sustainable practices|barqaror amaliyotlar|Businesses should adopt sustainable practices.|Korxonalar barqaror amaliyotlarni joriy qilishi kerak.
+environment|public awareness campaigns|jamoatchilikni xabardor qilish kampaniyalari|Public awareness campaigns encourage recycling.|Jamoatchilikni xabardor qilish harakatlari qayta ishlashni rag'batlantiradi.
+technology|technological advancements|texnologik yutuqlar|Technological advancements improve productivity.|Texnologik rivojlanishlar samaradorlikni oshiradi.
+technology|digital divide|raqamli tafovut|The digital divide limits access to information.|Raqamli tafovut axborotga kirishni cheklaydi.
+technology|artificial intelligence|sun'iy intellekt|Artificial intelligence is transforming industries.|Sun'iy intellekt sanoatlarni o'zgartirmoqda.
+technology|automate repetitive tasks|takroriy ishlarni avtomatlashtirmoq|Robots automate repetitive tasks in factories.|Robotlar zavodlarda takroriy ishlarni avtomatlashtiradi.
+technology|data privacy concerns|ma'lumotlar maxfiyligi xavotirlari|Users have serious data privacy concerns.|Foydalanuvchilarda ma'lumotlar maxfiyligi bo'yicha xavotirlar bor.
+technology|technological innovation|texnologik innovatsiya|Technological innovation drives economic growth.|Texnologik innovatsiya iqtisodiy o'sishni ta'minlaydi.
+technology|online platforms|onlayn platformalar|Online platforms connect people globally.|Onlayn platformalar odamlarni global miqyosda bog'laydi.
+technology|cybercrime threats|kiberjinoyat tahdidlari|Cybercrime threats are increasing worldwide.|Kiberjinoyat xavflari butun dunyoda ortmoqda.
+technology|digital literacy|raqamli savodxonlik|Digital literacy is essential for modern jobs.|Raqamli savodxonlik zamonaviy ishlar uchun zarur.
+technology|ethical challenges|axloqiy muammolar|New technologies create ethical challenges.|Yangi texnologiyalar axloqiy muammolarni keltirib chiqaradi.
+work|job market|mehnat bozori|The job market is highly competitive today.|Bugungi kunda mehnat bozori juda raqobatbardosh.
+work|remote work|masofaviy ish|Remote work has become popular since the pandemic.|Pandemiyadan keyin masofaviy ish ommalashdi.
+work|work-life balance|ish va hayot muvozanati|Flexible schedules improve work-life balance.|Moslashuvchan jadval ish va hayot muvozanatini yaxshilaydi.
+work|job security|ish o'rnining kafolati|Many workers worry about job security.|Ko'plab ishchilar ish barqarorligi haqida xavotirda.
+work|professional development|kasbiy rivojlanish|Companies invest in professional development.|Kompaniyalar xodimlarning kasbiy rivojlanishiga sarmoya kiritadi.
+work|skilled workforce|malakali ishchi kuchi|A skilled workforce boosts productivity.|Malakali ishchi kuchi samaradorlikni oshiradi.
+work|flexible working hours|moslashuvchan ish vaqti|Flexible working hours increase employee satisfaction.|Moslashuvchan ish vaqti xodimlar qoniqishini oshiradi.
+work|gig economy|gig iqtisodiyot (vaqtinchalik ishlar)|The gig economy offers short-term employment.|Gig iqtisodiyoti qisqa muddatli ishlarni taklif qiladi.
+work|career prospects|karyera istiqbollari|Education improves career prospects.|Ta'lim kasbiy imkoniyatlarni yaxshilaydi.
+work|workplace culture|ish joyidagi madaniyat|A positive workplace culture motivates employees.|Ijobiy ish muhiti xodimlarni rag'batlantiradi.
+globalization|economic growth|iqtisodiy o'sish|Global trade contributes to economic growth.|Global savdo iqtisodiy o'sishga hissa qo'shadi.
+globalization|global markets|jahon bozorlari|Companies compete in global markets.|Kompaniyalar global bozorlarda raqobatlashadi.
+globalization|cultural exchange|madaniy almashinuv|Globalization encourages cultural exchange.|Globalizatsiya madaniy almashinuvni rivojlantiradi.
+globalization|multinational corporations|transmilliy korporatsiyalar|Multinational corporations operate worldwide.|Ko'pmillatli korporatsiyalar butun dunyoda faoliyat yuritadi.
+globalization|foreign investment|xorijiy sarmoya|Foreign investment creates new jobs.|Chet el investitsiyasi yangi ish o'rinlari yaratadi.
+globalization|labor exploitation|mehnat ekspluatatsiyasi|Some companies are accused of labor exploitation.|Ayrim kompaniyalar mehnat ekspluatatsiyasida ayblanadi.
+globalization|economic inequality|iqtisodiy tengsizlik|Globalization can increase economic inequality.|Globalizatsiya iqtisodiy tengsizlikni oshirishi mumkin.
+globalization|cultural erosion|madaniyatning yemirilishi|Global media may cause cultural erosion.|Global media madaniy yemirilishga olib kelishi mumkin.
+globalization|international cooperation|xalqaro hamkorlik|International cooperation solves global problems.|Xalqaro hamkorlik global muammolarni hal qiladi.
+globalization|global challenges|global muammolar|Climate change is one of the biggest global challenges.|Iqlim o'zgarishi eng katta global muammolardan biridir.
+transport|public transportation systems|jamoat transporti tizimlari|Public transportation systems reduce traffic.|Jamoat transport tizimlari tirbandlikni kamaytiradi.
+transport|traffic congestion|tirbandlik|Traffic congestion causes stress.|Yo'l tirbandligi stress keltirib chiqaradi.
+transport|private vehicles|shaxsiy avtomobillar|Private vehicles increase pollution.|Shaxsiy avtomobillar ifloslanishni oshiradi.
+transport|carbon emissions|karbon chiqindilari|Cars produce high carbon emissions.|Mashinalar ko'p karbon chiqindilari chiqaradi.
+transport|sustainable transport|barqaror transport|Cycling is a form of sustainable transport.|Velosiped barqaror transport turidir.
+transport|transportation infrastructure|transport infratuzilmasi|Governments invest in transportation infrastructure.|Hukumatlar transport infratuzilmasiga sarmoya kiritadi.
+transport|urban mobility|shahar ichida harakatlanish|Smart cities improve urban mobility.|Aqlli shaharlar shahar harakatlanishini yaxshilaydi.
+transport|eco-friendly alternatives|ekologik toza muqobillar|Electric buses are eco-friendly alternatives.|Elektr avtobuslar ekologik toza muqobildir.
+transport|commuting experience|ishga qatnash tajribasi|Remote work improves the commuting experience.|Masofaviy ish qatnov tajribasini yaxshilaydi.
+transport|congestion charges|tirbandlik uchun to'lov|Congestion charges reduce city traffic.|Tirbandlik to'lovlari shahar tirbandligini kamaytiradi.
+media|public opinion|jamoatchilik fikri|Media strongly influences public opinion.|OAV jamoatchilik fikriga kuchli ta'sir ko'rsatadi.
+media|mass media|ommaviy axborot vositalari|Mass media spreads information quickly.|Ommaviy axborot vositalari axborotni tez tarqatadi.
+media|biased reporting|xolis bo'lmagan xabar berish|Biased reporting misleads audiences.|Bir tomonlama xabar berish odamlarni chalg'itadi.
+media|misinformation|noto'g'ri ma'lumot|Social media spreads misinformation easily.|Ijtimoiy tarmoqlar yolg'on ma'lumotni tez tarqatadi.
+media|digital advertising|raqamli reklama|Digital advertising targets young users.|Raqamli reklama yosh foydalanuvchilarga yo'naltiriladi.
+media|consumer behavior|iste'molchi xulq-atvori|Advertising affects consumer behavior.|Reklama iste'molchi xulqiga ta'sir qiladi.
+media|targeted advertisements|maqsadli reklamalar|Targeted advertisements increase sales.|Maqsadli reklamalar savdoni oshiradi.
+media|social media platforms|ijtimoiy tarmoq platformalari|Social media platforms shape modern communication.|Ijtimoiy tarmoqlar zamonaviy muloqotni shakllantiradi.
+media|ethical journalism|axloqiy jurnalistika|Ethical journalism builds trust.|Axloqiy jurnalistika ishonchni mustahkamlaydi.
+media|advertising regulations|reklama qoidalari|Advertising regulations protect consumers.|Reklama qoidalari iste'molchilarni himoya qiladi.
+culture|cultural heritage|madaniy meros|Historic sites represent cultural heritage.|Tarixiy obidalar madaniy merosni ifodalaydi.
+culture|sense of identity|o'zlik hissi|Traditions create a sense of identity.|An'analar shaxsiy va milliy o'zlikni shakllantiradi.
+culture|traditional practices|an'anaviy urf-odatlar|Many traditional practices are disappearing.|Ko'plab an'anaviy urf-odatlar yo'qolib bormoqda.
+culture|cultural preservation|madaniyatni asrash|Museums support cultural preservation.|Muzeylar madaniyatni saqlashga yordam beradi.
+culture|pass down traditions|an'analarni avloddan avlodga o'tkazmoq|Families pass down traditions to children.|Oilalar an'analarni avloddan avlodga o'tkazadi.
+culture|social values|ijtimoiy qadriyatlar|Culture reflects social values.|Madaniyat ijtimoiy qadriyatlarni aks ettiradi.
+culture|globalization influence|globallashuv ta'siri|Globalization influences local cultures.|Globalizatsiya mahalliy madaniyatlarga ta'sir qiladi.
+culture|cultural diversity|madaniy xilma-xillik|Cities promote cultural diversity.|Shaharlar madaniy xilma-xillikni rivojlantiradi.
+culture|traditional festivals|an'anaviy bayramlar|Traditional festivals attract tourists.|An'anaviy bayramlar sayyohlarni jalb qiladi.
+culture|cultural erosion|madaniyatning yemirilishi|Western media may cause cultural erosion.|G'arb ommaviy madaniyati madaniy yemirilishga olib kelishi mumkin.
+government|political system|siyosiy tizim|Every country has a different political system.|Har bir davlatning o'ziga xos siyosiy tizimi bor.
+government|law enforcement|huquqni muhofaza qilish|Law enforcement is responsible for public safety.|Huquqni muhofaza qilish organlari jamoat xavfsizligiga mas'ul.
+government|economic development|iqtisodiy rivojlanish|Stable policies support economic development.|Barqaror siyosat iqtisodiy rivojlanishni qo'llab-quvvatlaydi.
+government|public services|davlat xizmatlari|Taxes are used to fund public services.|Soliqlar jamoat xizmatlarini moliyalashtirish uchun ishlatiladi.
+government|democratic institutions|demokratik institutlar|Strong democratic institutions protect citizens' rights.|Kuchli demokratik institutlar fuqarolar huquqlarini himoya qiladi.
+government|human rights|inson huquqlari|Governments must respect human rights.|Hukumatlar inson huquqlarini hurmat qilishi kerak.
+government|government accountability|hukumatning hisobdorligi|Government accountability increases public trust.|Hukumatning javobgarligi xalq ishonchini oshiradi.
+government|political stability|siyosiy barqarorlik|Political stability attracts foreign investors.|Siyosiy barqarorlik chet ellik investorlarni jalb qiladi.
+government|transparent governance|shaffof boshqaruv|Transparent governance reduces corruption.|Shaffof boshqaruv korrupsiyani kamaytiradi.
+government|policy implementation|siyosatni amalga oshirish|Effective policy implementation is essential.|Siyosatni samarali amalga oshirish juda muhim.
+social|income inequality|daromadlar tengsizligi|Income inequality causes social problems.|Daromad tengsizligi ijtimoiy muammolarni keltirib chiqaradi.
+social|poverty cycle|qashshoqlik doirasi|Education helps break the poverty cycle.|Ta'lim qashshoqlik davrini buzishga yordam beradi.
+social|social mobility|ijtimoiy harakatchanlik|Education increases social mobility.|Ta'lim ijtimoiy harakatchanlikni oshiradi.
+social|disadvantaged groups|nochor guruhlar|Disadvantaged groups need government support.|Kam ta'minlangan guruhlar hukumat yordamiga muhtoj.
+social|social welfare programs|ijtimoiy yordam dasturlari|Social welfare programs support the poor.|Ijtimoiy ta'minot dasturlari kambag'allarga yordam beradi.
+social|equal opportunities|teng imkoniyatlar|Society should provide equal opportunities.|Jamiyat teng imkoniyatlar yaratishi kerak.
+social|economic disparity|iqtisodiy tafovut|Economic disparity leads to tension.|Iqtisodiy tafovut ijtimoiy keskinlikka olib keladi.
+social|social cohesion|ijtimoiy hamjihatlik|Shared values strengthen social cohesion.|Umumiy qadriyatlar ijtimoiy birdamlikni mustahkamlaydi.
+social|community support|jamiyat yordami|Community support helps vulnerable people.|Jamoa yordami zaif qatlamlarga yordam beradi.
+social|social reform|ijtimoiy islohot|Social reform improves living conditions.|Ijtimoiy islohotlar yashash sharoitini yaxshilaydi.
+art|artistic expression|badiiy ifoda|Art allows artistic expression.|San'at ijodiy ifodaga imkon beradi.
+art|cultural identity|madaniy o'zlik|Music reflects cultural identity.|Musiqa madaniy o'zlikni aks ettiradi.
+art|creative industries|ijodiy sohalar|Creative industries contribute to the economy.|Ijodiy sanoatlar iqtisodiyotga hissa qo'shadi.
+art|emotional impact|hissiy ta'sir|Music has a strong emotional impact.|Musiqa kuchli hissiy ta'sir ko'rsatadi.
+art|artistic heritage|badiiy meros|Museums protect artistic heritage.|Muzeylar badiiy merosni asraydi.
+art|music therapy|musiqa terapiyasi|Music therapy reduces stress.|Musiqa terapiyasi stressni kamaytiradi.
+art|cultural preservation|madaniyatni asrash|Art supports cultural preservation.|San'at madaniyatni saqlashga yordam beradi.
+art|artistic creativity|badiiy ijodkorlik|Children should develop artistic creativity.|Bolalarda ijodiy qobiliyatni rivojlantirish kerak.
+art|global audience|global auditoriya|Digital platforms reach a global audience.|Raqamli platformalar global auditoriyaga yetib boradi.
+art|digital platforms|raqamli platformalar|Artists share work on digital platforms.|San'atkorlar asarlarini raqamli platformalarda ulashadi.
+sport|physical fitness|jismoniy tayyorgarlik|Regular exercise improves physical fitness.|Muntazam mashqlar jismoniy sog'lomlikni oshiradi.
+sport|mental well-being|ruhiy farovonlik|Sports improve mental well-being.|Sport ruhiy farovonlikni yaxshilaydi.
+sport|leisure activities|bo'sh vaqt mashg'ulotlari|People need leisure activities to relax.|Dam olish faoliyatlari hordiq chiqarish uchun zarur.
+sport|team spirit|jamoaviy ruh|Team sports develop team spirit.|Jamoaviy sport jamoaviy ruhni rivojlantiradi.
+sport|competitive sports|musobaqaviy sport|Competitive sports require discipline.|Raqobatli sport turlari intizom talab qiladi.
+sport|healthy competition|sog'lom raqobat|Healthy competition motivates athletes.|Sog'lom raqobat sportchilarni rag'batlantiradi.
+sport|recreational facilities|dam olish maskanlari|Cities should build recreational facilities.|Shaharlar dam olish inshootlarini qurishi kerak.
+sport|professional athletes|professional sportchilar|Professional athletes train daily.|Professional sportchilar har kuni mashq qiladi.
+sport|sporting events|sport tadbirlari|Sporting events unite communities.|Sport tadbirlari jamiyatni birlashtiradi.
+sport|active lifestyle|faol turmush tarzi|An active lifestyle prevents diseases.|Faol turmush tarzi kasalliklarning oldini oladi.
+science|scientific research|ilmiy tadqiqot|Scientific research leads to discoveries.|Ilmiy tadqiqotlar kashfiyotlarga olib keladi.
+science|technological breakthroughs|texnologik kashfiyotlar|Medical breakthroughs save lives.|Tibbiy yutuqlar hayotni saqlab qoladi.
+science|innovation process|innovatsiya jarayoni|The innovation process takes time.|Innovatsiya jarayoni vaqt talab qiladi.
+science|research funding|tadqiqotlarni moliyalashtirish|Research funding is essential for progress.|Tadqiqotlarni moliyalashtirish taraqqiyot uchun zarur.
+science|scientific discoveries|ilmiy kashfiyotlar|Scientific discoveries change the world.|Ilmiy kashfiyotlar dunyoni o'zgartiradi.
+science|practical applications|amaliy qo'llanilishi|Research must have practical applications.|Tadqiqotlar amaliy qo'llanilishga ega bo'lishi kerak.
+science|cutting-edge technology|eng ilg'or texnologiya|Hospitals use cutting-edge technology.|Shifoxonalar ilg'or texnologiyalardan foydalanadi.
+science|experimental studies|tajriba tadqiqotlari|Experimental studies test new ideas.|Tajribaviy tadqiqotlar yangi g'oyalarni sinovdan o'tkazadi.
+science|problem-solving approach|muammoni hal qilish yondashuvi|Science promotes a problem-solving approach.|Fan muammoni hal qilish yondashuvini rivojlantiradi.
+science|future developments|kelajakdagi rivojlanishlar|Future developments may change lifestyles.|Kelajakdagi rivojlanishlar turmush tarzini o'zgartirishi mumkin.
+family|family bonds|oilaviy rishtalar|Strong family bonds provide emotional security.|Mustahkam oila rishtalari ruhiy barqarorlikni ta'minlaydi.
+family|emotional support|hissiy qo'llab-quvvatlash|Parents should give emotional support to children.|Ota-onalar bolalarga ruhiy yordam berishi kerak.
+family|close relationships|yaqin munosabatlar|Close relationships improve happiness.|Yaqin munosabatlar baxtni oshiradi.
+family|generation gap|avlodlar tafovuti|The generation gap causes misunderstandings.|Avlodlar o'rtasidagi tafovut tushunmovchiliklarga olib keladi.
+family|parental responsibility|ota-onalik mas'uliyati|Parental responsibility shapes children's future.|Ota-onalik mas'uliyati bolalarning kelajagini shakllantiradi.
+family|work-family balance|ish va oila muvozanati|Flexible jobs help maintain work-family balance.|Moslashuvchan ishlar ish va oila muvozanatini saqlashga yordam beradi.
+family|mutual respect|o'zaro hurmat|Mutual respect strengthens relationships.|O'zaro hurmat munosabatlarni mustahkamlaydi.
+family|family values|oilaviy qadriyatlar|Family values are taught at home.|Oila qadriyatlari uyda o'rgatiladi.
+family|household responsibilities|uy yumushlari|Children should share household responsibilities.|Bolalar uy ishlarida mas'uliyatni bo'lishishi kerak.
+family|social support system|ijtimoiy qo'llab-quvvatlash tizimi|A strong social support system helps families.|Kuchli ijtimoiy qo'llab-quvvatlash tizimi oilalarga yordam beradi.
+city|rapid urbanization|tez urbanizatsiya|Rapid urbanization puts pressure on cities.|Tez urbanizatsiya shaharlarga bosim o'tkazadi.
+city|population density|aholi zichligi|High population density causes housing problems.|Aholi zichligi yuqori bo'lsa, uy-joy muammolari yuzaga keladi.
+city|urban infrastructure|shahar infratuzilmasi|Cities need modern urban infrastructure.|Shaharlarga zamonaviy shahar infratuzilmasi kerak.
+city|housing shortages|uy-joy tanqisligi|Housing shortages affect low-income families.|Uy-joy yetishmovchiligi kam daromadli oilalarga ta'sir qiladi.
+city|traffic congestion|tirbandlik|Traffic congestion increases stress levels.|Yo'l tirbandligi stressni oshiradi.
+city|city planning|shaharsozlik|Proper city planning improves living conditions.|To'g'ri shahar rejalashtiruvi yashash sharoitini yaxshilaydi.
+city|living standards|turmush darajasi|Urban areas often have higher living standards.|Shahar hududlarida turmush darajasi yuqoriroq bo'ladi.
+city|public services|davlat xizmatlari|Cities must improve public services.|Shaharlar jamoat xizmatlarini yaxshilashi kerak.
+city|urban lifestyle|shahar turmush tarzi|Urban lifestyle is fast-paced.|Shahar hayot tarzi tezkor.
+city|environmental pressure|atrof-muhitga bosim|Urban growth creates environmental pressure.|Shaharlar kengayishi atrof-muhitga bosim qiladi.
+tourism|tourist destinations|sayyohlik manzillari|Paris is one of the most popular tourist destinations.|Parij eng mashhur sayyohlik manzillaridan biridir.
+tourism|cultural attractions|madaniy diqqatga sazovor joylar|Museums are major cultural attractions.|Muzeylar asosiy madaniy diqqatga sazovor joylardir.
+tourism|travel experience|sayohat tajribasi|Technology improves the travel experience.|Texnologiya sayohat tajribasini yaxshilaydi.
+tourism|tourism industry|turizm sanoati|The tourism industry creates jobs.|Turizm sanoati ish o'rinlari yaratadi.
+tourism|local economy|mahalliy iqtisodiyot|Tourism supports the local economy.|Turizm mahalliy iqtisodiyotga yordam beradi.
+tourism|sustainable tourism|barqaror turizm|Sustainable tourism protects nature.|Barqaror turizm tabiatni himoya qiladi.
+tourism|travel facilities|sayohat qulayliklari|Airports provide modern travel facilities.|Aeroportlar zamonaviy sayohat qulayliklarini taqdim etadi.
+tourism|international travel|xalqaro sayohat|International travel increases cultural understanding.|Xalqaro sayohat madaniy tushunishni oshiradi.
+tourism|tourist infrastructure|turizm infratuzilmasi|Good tourist infrastructure attracts visitors.|Yaxshi sayyohlik infratuzilmasi mehmonlarni jalb qiladi.
+tourism|cultural exchange|madaniy almashinuv|Tourism encourages cultural exchange.|Turizm madaniy almashinuvni rivojlantiradi.
+population|population explosion|aholi portlashi|Population explosion strains resources.|Aholining keskin ko'payishi resurslarga bosim qiladi.
+population|birth rate|tug'ilish darajasi|The birth rate is declining in many countries.|Ko'plab mamlakatlarda tug'ilish darajasi pasaymoqda.
+population|aging population|qariyotgan aholi|An aging population needs more healthcare.|Qariyotgan aholi ko'proq tibbiy xizmat talab qiladi.
+population|demographic changes|demografik o'zgarishlar|Demographic changes affect the economy.|Demografik o'zgarishlar iqtisodiyotga ta'sir qiladi.
+population|resource scarcity|resurslar tanqisligi|Population growth causes resource scarcity.|Aholi o'sishi resurslar tanqisligiga olib keladi.
+population|urban overcrowding|shaharning haddan tashqari gavjumligi|Urban overcrowding lowers living standards.|Shaharlarda haddan tashqari zichlik turmush darajasini pasaytiradi.
+population|economic pressure|iqtisodiy bosim|Population growth creates economic pressure.|Aholi o'sishi iqtisodiy bosimni kuchaytiradi.
+population|population control|aholi sonini nazorat qilish|Some countries introduce population control policies.|Ba'zi davlatlar aholini nazorat qilish siyosatini joriy etadi.
+population|living conditions|yashash sharoitlari|Overpopulation worsens living conditions.|Aholining ortib ketishi yashash sharoitlarini yomonlashtiradi.
+population|social services|ijtimoiy xizmatlar|Population growth increases demand for social services.|Aholi o'sishi ijtimoiy xizmatlarga talabni oshiradi.
+food|food security|oziq-ovqat xavfsizligi|Food security is a global concern.|Oziq-ovqat xavfsizligi global muammodir.
+food|agricultural practices|qishloq xo'jaligi amaliyotlari|Modern agricultural practices increase productivity.|Zamonaviy qishloq xo'jaligi amaliyotlari samaradorlikni oshiradi.
+food|crop yields|hosildorlik|Improved seeds increase crop yields.|Yaxshilangan urug'lar hosildorlikni oshiradi.
+food|farming techniques|dehqonchilik usullari|New farming techniques save water.|Yangi dehqonchilik usullari suvni tejaydi.
+food|food supply chain|oziq-ovqat yetkazib berish zanjiri|The food supply chain was disrupted.|Oziq-ovqat ta'minoti zanjiri buzildi.
+food|organic farming|organik dehqonchilik|Organic farming reduces chemical use.|Organik dehqonchilik kimyoviy moddalarni kamaytiradi.
+food|sustainable agriculture|barqaror qishloq xo'jaligi|Sustainable agriculture protects soil quality.|Barqaror qishloq xo'jaligi tuproq sifatini saqlaydi.
+food|rural development|qishloqlarni rivojlantirish|Agriculture supports rural development.|Qishloq xo'jaligi qishloq rivojlanishini qo'llab-quvvatlaydi.
+food|climate impact|iqlim ta'siri|Climate change has a strong impact on farming.|Iqlim o'zgarishi dehqonchilikka kuchli ta'sir qiladi.
+food|food shortages|oziq-ovqat tanqisligi|Droughts can cause food shortages.|Qurg'oqchilik oziq-ovqat tanqisligiga olib kelishi mumkin.
+housing|housing affordability|uy-joyning arzonligi|Housing affordability is a serious issue in big cities.|Uy-joyning hamyonbopligi katta shaharlarda jiddiy muammodir.
+housing|urban housing|shahardagi uy-joy|Urban housing is becoming more expensive.|Shahardagi uy-joylar tobora qimmatlashmoqda.
+housing|architectural design|arxitektura dizayni|Good architectural design improves comfort.|Yaxshi arxitektura dizayni qulaylikni oshiradi.
+housing|living conditions|yashash sharoitlari|Poor housing leads to unhealthy living conditions.|Yomon uy-joy sog'lom bo'lmagan yashash sharoitlariga olib keladi.
+housing|residential areas|turar-joy hududlari|Residential areas should be well planned.|Turar joy hududlari yaxshi rejalashtirilgan bo'lishi kerak.
+housing|construction industry|qurilish sanoati|The construction industry creates many jobs.|Qurilish sanoati ko'plab ish o'rinlari yaratadi.
+housing|sustainable buildings|barqaror (ekologik) binolar|Sustainable buildings reduce energy use.|Barqaror binolar energiya sarfini kamaytiradi.
+housing|housing shortage|uy-joy tanqisligi|Housing shortage affects young families.|Uy-joy tanqisligi yosh oilalarga ta'sir qiladi.
+housing|infrastructure development|infratuzilmani rivojlantirish|Infrastructure development supports urban growth.|Infratuzilma rivoji shahar o'sishini qo'llab-quvvatlaydi.
+housing|modern architecture|zamonaviy arxitektura|Modern architecture combines beauty and function.|Zamonaviy arxitektura go'zallik va qulaylikni uyg'unlashtiradi.
+climate|global warming|global isish|Global warming threatens ecosystems.|Global isish ekotizimlarga tahdid solmoqda.
+climate|greenhouse gas emissions|issiqxona gazlari chiqindilari|Greenhouse gas emissions must be reduced.|Issiqxona gazlari chiqindilarini kamaytirish kerak.
+climate|extreme weather events|keskin ob-havo hodisalari|Climate change causes extreme weather events.|Iqlim o'zgarishi ekstremal ob-havo hodisalarini keltirib chiqaradi.
+climate|rising sea levels|dengiz sathining ko'tarilishi|Rising sea levels endanger coastal cities.|Dengiz sathining ko'tarilishi qirg'oq shaharlariga xavf tug'diradi.
+climate|environmental impact|atrof-muhitga ta'sir|Industrial activity has a negative environmental impact.|Sanoat faoliyati atrof-muhitga salbiy ta'sir ko'rsatadi.
+climate|climate policies|iqlim siyosati|Governments must enforce climate policies.|Hukumatlar iqlim siyosatini amalga oshirishi kerak.
+climate|renewable energy|qayta tiklanuvchi energiya|Renewable energy helps fight climate change.|Qayta tiklanuvchi energiya iqlim o'zgarishiga qarshi kurashadi.
+climate|carbon emissions|karbon chiqindilari|Carbon emissions contribute to global warming.|Uglerod chiqindilari global isishga hissa qo'shadi.
+climate|environmental sustainability|ekologik barqarorlik|Environmental sustainability ensures future survival.|Atrof-muhit barqarorligi kelajakni ta'minlaydi.
+climate|international agreements|xalqaro kelishuvlar|International agreements address climate change.|Xalqaro kelishuvlar iqlim o'zgarishini hal qilishga qaratilgan.
+economy|economic growth|iqtisodiy o'sish|Economic growth improves living standards.|Iqtisodiy o'sish turmush darajasini oshiradi.
+economy|financial stability|moliyaviy barqarorlik|Financial stability is vital for development.|Moliyaviy barqarorlik rivojlanish uchun muhim.
+economy|unemployment rate|ishsizlik darajasi|The unemployment rate has decreased.|Ishsizlik darajasi kamaydi.
+economy|inflation rate|inflyatsiya darajasi|A high inflation rate reduces purchasing power.|Yuqori inflyatsiya darajasi xarid qobiliyatini pasaytiradi.
+economy|income distribution|daromad taqsimoti|Unequal income distribution causes social tension.|Daromadlarning teng taqsimlanmasligi ijtimoiy keskinlik keltiradi.
+economy|economic recession|iqtisodiy tanazzul|Economic recession affects small businesses.|Iqtisodiy inqiroz kichik biznesga ta'sir qiladi.
+economy|government spending|davlat xarajatlari|Government spending supports public services.|Davlat xarajatlari jamoat xizmatlarini qo'llab-quvvatlaydi.
+economy|financial markets|moliya bozorlari|Financial markets react to global events.|Moliyaviy bozorlar global voqealarga ta'sirchan.
+economy|investment opportunities|sarmoya imkoniyatlari|The country offers investment opportunities.|Mamlakat investitsiya imkoniyatlarini taklif etadi.
+economy|cost of living|yashash narxi|The cost of living is rising rapidly.|Yashash narxi tez oshmoqda.
+immigration|immigration policies|immigratsiya siyosati|Immigration policies must be fair.|Immigratsiya siyosati adolatli bo'lishi kerak.
+immigration|cultural diversity|madaniy xilma-xillik|Cultural diversity enriches society.|Madaniy xilma-xillik jamiyatni boyitadi.
+immigration|social integration|ijtimoiy integratsiya|Social integration helps immigrants adapt.|Ijtimoiy integratsiya muhojirlarga moslashishga yordam beradi.
+immigration|migrant workers|mehnat muhojirlari|Migrant workers support key industries.|Mehnat muhojirlari muhim sohalarni qo'llab-quvvatlaydi.
+immigration|host countries|qabul qiluvchi davlatlar|Host countries must protect migrants' rights.|Qabul qiluvchi davlatlar muhojirlar huquqlarini himoya qilishi kerak.
+immigration|cultural adaptation|madaniy moslashuv|Cultural adaptation takes time.|Madaniy moslashuv vaqt talab qiladi.
+immigration|economic contribution|iqtisodiy hissa|Immigrants make an economic contribution.|Muhojirlar iqtisodiy hissa qo'shadi.
+immigration|social cohesion|ijtimoiy hamjihatlik|Multiculturalism can strengthen social cohesion.|Ko'p madaniyatlilik ijtimoiy birdamlikni mustahkamlaydi.
+immigration|discrimination issues|kamsitish muammolari|Governments must address discrimination issues.|Hukumatlar kamsitish muammolarini hal qilishi kerak.
+immigration|multicultural societies|ko'p madaniyatli jamiyatlar|Multicultural societies promote tolerance.|Ko'p madaniyatli jamiyatlar bag'rikenglikni targ'ib qiladi.
+space|space missions|kosmik missiyalar|Space missions expand scientific knowledge.|Kosmik missiyalar ilmiy bilimlarni kengaytiradi.
+space|scientific exploration|ilmiy tadqiq qilish|Space allows scientific exploration.|Kosmos ilmiy tadqiqotlarga imkon yaratadi.
+space|technological innovation|texnologik innovatsiya|Space research drives technological innovation.|Kosmik tadqiqotlar texnologik innovatsiyani rivojlantiradi.
+space|space research|kosmik tadqiqotlar|Governments invest heavily in space research.|Hukumatlar kosmik tadqiqotlarga katta mablag' ajratadi.
+space|satellite technology|sun'iy yo'ldosh texnologiyasi|Satellite technology improves communication.|Sun'iy yo'ldosh texnologiyasi aloqani yaxshilaydi.
+space|international cooperation|xalqaro hamkorlik|Space exploration requires international cooperation.|Kosmosni o'rganish xalqaro hamkorlikni talab qiladi.
+space|space travel|kosmik sayohat|Space travel may become common in the future.|Kelajakda kosmik sayohat ommalashishi mumkin.
+space|scientific advancement|ilmiy taraqqiyot|Space programs lead to scientific advancement.|Kosmik dasturlar ilmiy taraqqiyotga olib keladi.
+space|exploration costs|tadqiqot xarajatlari|Exploration costs remain extremely high.|Tadqiqot xarajatlari juda yuqori bo'lib qolmoqda.
+space|future missions|kelajakdagi missiyalar|Future missions will explore Mars.|Kelajak missiyalar Marsni o'rganadi.

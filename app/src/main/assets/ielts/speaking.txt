@@ -258,3 +258,26 @@ T|shopping|Why do people buy things they don't need?
 T|sport-health|Whose responsibility is public health: individuals or the government?
 T|hometown|What are the advantages and disadvantages of living in a big city?
 T|weather|How might climate change affect daily life in the future?
+P|Bog'lovchilar|What really stands out to me is...|Menga eng ko'zga tashlanadigan jihat shuki...|What really stands out to me is how much more confident people become when they practise speaking every day.
+P|Bog'lovchilar|The main reason behind this is that...|Buning asosiy sababi shundaki...|The main reason behind this is that regular practice helps ideas come naturally.
+P|Bog'lovchilar|From a long-term perspective, ...|Uzoq muddatli nuqtai nazardan qaraganda...|From a long-term perspective, improving speaking skills can open up better career opportunities.
+P|Bog'lovchilar|It can be seen as both a blessing and a curse.|Buni ham foyda, ham zarar deb ko'rish mumkin.|Social media can be seen as both a blessing and a curse, depending on how it is used.
+P|Bog'lovchilar|It plays a crucial role in...|...da juda muhim rol o'ynaydi.|Confidence plays a crucial role in performing well in speaking exams.
+P|Bog'lovchilar|Initially..., but over time...|Dastlab..., lekin vaqt o'tishi bilan...|Initially I found it hard to speak English, but over time it became much easier.
+P|Bog'lovchilar|These days..., whereas in the past...|Hozirgi kunda..., holbuki ilgari...|These days most people read news online, whereas in the past they bought newspapers.
+P|Bog'lovchilar|Looking ahead, I suppose...|Kelajakka nazar tashlasak, menimcha...|Looking ahead, I suppose more people will work from home.
+P|Bog'lovchilar|That being said, ...|Shuni aytgan holda / shunga qaramay|That being said, we should also consider the long-term consequences.
+P|Bog'lovchilar|Having said that, ...|Shu bilan birga (qarama-qarshi fikr)|Having said that, not everyone has access to such opportunities.
+P|Bog'lovchilar|At the same time, ...|Shu paytning o'zida / baribir|Online shopping is convenient. At the same time, it can encourage people to overspend.
+P|Bog'lovchilar|Be that as it may, ...|Shunday bo'lsa ham|Be that as it may, financial issues remain a major concern.
+P|Bog'lovchilar|Even though...|Shunga qaramay / ...bo'lsa-da|Even though I live far from the city centre, I rarely feel bored.
+P|Bog'lovchilar|Notwithstanding this, ...|Bunga qaramasdan|Notwithstanding this, public opinion is slowly changing.
+P|Bog'lovchilar|As a direct consequence, ...|To'g'ridan-to'g'ri natijada|Many factories closed. As a direct consequence, thousands of people lost their jobs.
+P|Bog'lovchilar|This, in turn, ...|Bu esa o'z navbatida|Stress reduces sleep. This, in turn, affects people's mental health.
+P|Bog'lovchilar|With this in mind, ...|Shuni inobatga olgan holda|With this in mind, governments should invest more in education.
+P|Bog'lovchilar|By and large, ...|Umuman olganda (Part 1 javobini shu bilan boshlash mumkin)|By and large, I enjoy living in my hometown.
+P|Bog'lovchilar|On balance, ...|Tarozuga solib ko'rilsa|On balance, the advantages outweigh the drawbacks.
+P|Bog'lovchilar|All things considered, ...|Hamma jihatlarini hisobga olsak|All things considered, I would rather live in a small town.
+P|Bog'lovchilar|To put it another way, ...|Boshqacha aytganda|To put it another way, people value convenience over quality.
+P|Bog'lovchilar|In practical terms, ...|Amaliy jihatdan olganda|In practical terms, this means people spend less time commuting.
+P|Bog'lovchilar|From a broader perspective, ...|Kengroq nuqtayi nazardan|From a broader perspective, I would say that online courses make learning more accessible.

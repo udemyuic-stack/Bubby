@@ -77,3 +77,28 @@ fun ieltsSpeakingTests() {
     val q = IeltsVocab.quiz(by.getValue("travel"), sp.words, Random(3), 10)
     check("speak: word quiz", q.size == 10 && q.all { it.options.distinct().size == 4 })
 }
+
+fun ieltsSpeakingResourceTests() {
+    val dir = File(System.getenv("BUBBY_SRC") + "/../../../../assets/ielts")
+    val rnd = kotlin.random.Random(11)
+    val col = IeltsVocab.parseWords(File(dir, "collocations.txt").readText())
+    val cb = IeltsVocab.collocByTopic(col)
+    check("colloc: 250 loaded", col.size == 250, col.size.toString())
+    check("colloc: 25 topics x 10", cb.size == 25 && cb.values.all { it.size == 10 }, cb.mapValues { it.value.size }.toString())
+    check("colloc: every topic known", col.all { it.topic in IeltsVocab.collocOrder })
+    check("colloc: uz and example uz filled", col.all { it.uz.isNotBlank() && it.exUz.isNotBlank() && it.example.isNotBlank() }, col.filter { it.exUz.isBlank() }.joinToString { it.word })
+    check("colloc: example uses a word of the phrase", col.all { w -> w.word.split(" ").filter { it.length > 3 }.any { w.example.contains(it.take(it.length - 1), ignoreCase = true) } }, col.filter { w -> w.word.split(" ").filter { it.length > 3 }.none { w.example.contains(it.take(it.length - 1), ignoreCase = true) } }.joinToString { it.word })
+    check("colloc: unique per topic", cb.values.all { l -> l.map { it.word }.distinct().size == l.size })
+    val cq = IeltsVocab.quiz(cb.getValue("education"), col, rnd, 10)
+    check("colloc: quiz 4 options", cq.size == 10 && cq.all { it.options.distinct().size == 4 && it.answer in 0..3 }, cq.size.toString())
+    val id = IeltsVocab.parseIdioms(File(dir, "idioms.txt").readText())
+    check("idioms: >= 260", id.size >= 260, id.size.toString())
+    check("idioms: meaning and example", id.all { it.uz.isNotBlank() && it.example.isNotBlank() && !it.uz.endsWith(".") }, id.filter { it.example.isBlank() || it.uz.endsWith(".") }.joinToString { it.phrase })
+    check("idioms: unique", id.map { it.phrase.lowercase() }.distinct().size == id.size, id.groupBy { it.phrase.lowercase() }.filter { it.value.size > 1 }.keys.toString())
+    check("idioms: letter groups", id.all { it.group.length == 1 && it.group[0].isUpperCase() })
+    val iq = IeltsVocab.phraseQuiz(id, rnd, 10)
+    check("idioms: quiz 4 options", iq.size == 10 && iq.all { it.options.distinct().size == 4 })
+    val sp = IeltsVocab.parseSpeaking(File(dir, "speaking.txt").readText())
+    val link = sp.phrases.filter { it.group == "Bog'lovchilar" }
+    check("speaking: linkers >= 20", link.size >= 20 && link.all { it.uz.isNotBlank() && it.example.isNotBlank() }, link.size.toString())
+}

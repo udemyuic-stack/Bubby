@@ -2,7 +2,7 @@ package com.example.buddy.ui
 
 import kotlin.random.Random
 
-class IeltsWord(val topic: String, val word: String, val uz: String, val example: String) {
+class IeltsWord(val topic: String, val word: String, val uz: String, val example: String, val exUz: String = "") {
     val id: String get() = "$topic:$word"
 
     fun gap(): String {
@@ -54,7 +54,7 @@ object IeltsVocab {
 
     fun parseWords(text: String): List<IeltsWord> = text.lineSequence().mapNotNull { l ->
         val f = l.split("|")
-        if (f.size < 4 || f[1].isBlank() || f[2].isBlank()) null else IeltsWord(f[0].trim(), f[1].trim(), f[2].trim(), f[3].trim())
+        if (f.size < 4 || f[1].isBlank() || f[2].isBlank()) null else IeltsWord(f[0].trim(), f[1].trim(), f[2].trim(), f[3].trim(), f.getOrNull(4)?.trim().orEmpty())
     }.toList()
 
     val defOrder = listOf("education", "environment", "food", "globalization", "technology", "health", "crime", "art")
@@ -98,6 +98,19 @@ object IeltsVocab {
         }
         return IeltsSpeaking(ph, w, p1, cues, p3)
     }
+
+    val collocOrder = listOf("education", "crime", "health", "environment", "technology", "work", "globalization", "transport", "media", "culture", "government", "social", "art", "sport", "science", "family", "city", "tourism", "population", "food", "housing", "climate", "economy", "immigration", "space")
+
+    fun collocByTopic(words: List<IeltsWord>): Map<String, List<IeltsWord>> {
+        val g = words.groupBy { it.topic }
+        return collocOrder.filter { g.containsKey(it) }.associateWith { g.getValue(it) }
+    }
+
+    fun parseIdioms(text: String): List<IeltsPhrase> = text.lineSequence().mapNotNull { l ->
+        val f = l.split("|")
+        if (f.size < 4 || f[1].isBlank() || f[2].isBlank()) null
+        else IeltsPhrase(f[0].trim(), f[1].trim(), f[2].trim(), f.drop(3).joinToString("|").split("||").map { it.trim() }.filter { it.isNotEmpty() }.joinToString("\n"))
+    }.toList()
 
     fun speakByTopic(words: List<IeltsWord>): Map<String, List<IeltsWord>> {
         val g = words.groupBy { it.topic }

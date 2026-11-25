@@ -102,3 +102,23 @@ fun ieltsSpeakingResourceTests() {
     val link = sp.phrases.filter { it.group == "Bog'lovchilar" }
     check("speaking: linkers >= 20", link.size >= 20 && link.all { it.uz.isNotBlank() && it.example.isNotBlank() }, link.size.toString())
 }
+
+fun ieltsModelAnswerTests() {
+    val dir = File(System.getenv("BUBBY_SRC") + "/../../../../assets/ielts")
+    val text = File(dir, "speaking_answers.txt").readText()
+    val ms = IeltsVocab.parseAnswers(text)
+    check("models: >= 250 cards", ms.size >= 250, ms.size.toString())
+    check("models: >= 3 bullets, >= 2 paragraphs", ms.all { it.bullets.size >= 3 && it.paras.size >= 2 }, ms.filter { it.bullets.size < 3 || it.paras.size < 2 }.joinToString { it.title })
+    check("models: unique ids", ms.map { it.id }.distinct().size == ms.size)
+    check("models: unique titles", ms.map { it.title.lowercase().filter { c -> c.isLetter() } }.distinct().size == ms.size)
+    check("models: no noise", Regex("https?:|www\\.|Made with Xodo|facebook|\\d{8,}", RegexOption.IGNORE_CASE).find(text) == null, Regex("https?:|www\\.|Made with Xodo|facebook|\\d{8,}", RegexOption.IGNORE_CASE).find(text)?.value ?: "")
+    val ids = ms.map { it.id }.toSet()
+    val refs = text.lineSequence().filter { it.startsWith("V|") || it.startsWith("F|") }.map { it.split("|")[1].toInt() }.toList()
+    check("models: V/F refer to cards", refs.all { it in ids })
+    check("models: vocab and follow-ups loaded", ms.sumOf { it.vocab.size } >= 1000 && ms.sumOf { it.follow.size } >= 500, "${ms.sumOf { it.vocab.size }} ${ms.sumOf { it.follow.size }}")
+    check("models: kinds valid", ms.all { it.kind in IeltsVocab.kindOrder })
+    check("models: other <= 30%", ms.count { it.kind == "other" } * 10 <= ms.size * 3, ms.count { it.kind == "other" }.toString())
+    check("models: kind rules", IeltsVocab.cardKind("Describe a time when someone helped you") == "event" && IeltsVocab.cardKind("Describe a film that made you laugh") == "media" && IeltsVocab.cardKind("Describe a person who likes to grow plants") == "person" && IeltsVocab.cardKind("Describe a city you enjoyed visiting") == "place")
+    val bad = IeltsVocab.parseAnswers("A|x|t|a;b|p\nA|1||a;b|p1||p2\nA|2|T|a;b;c|p1||p2\nV|9|w|m\nF|2|q?|ans\nV|2|w|")
+    check("models: malformed lines skipped", bad.size == 1 && bad[0].follow.size == 1 && bad[0].vocab.isEmpty())
+}

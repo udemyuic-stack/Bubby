@@ -30,6 +30,9 @@ class IeltsVocabScreen(act: UiActivity) : Screen(act) {
     private val colloc by lazy { IeltsVocab.parseWords(asset("collocations.txt")) }
     private val collocTopics by lazy { IeltsVocab.collocByTopic(colloc) }
     private val idioms by lazy { IeltsVocab.parseIdioms(asset("idioms.txt")) }
+    private val models by lazy { IeltsVocab.parseAnswers(asset("speaking_answers.txt")) }
+    private var pinned = -1
+    private fun studied(id: Int) = Backend.int(ctx, "iv_ma_$id", 0) > 0
     private val isColl get() = view.startsWith("k:")
     private val ck get() = view.removePrefix("k:")
     private fun curWords(): List<IeltsWord> = if (isSpeak) speakTopics[sk].orEmpty() else if (isColl) collocTopics[ck].orEmpty() else topics[view].orEmpty()
@@ -132,7 +135,8 @@ class IeltsVocabScreen(act: UiActivity) : Screen(act) {
         when {
             view == "" -> home(c)
             view == "s1" || view == "s2" || view == "s3" -> {
-                c.add(back(t("← Темы", "← Topics", "← Mavzular")) { view = ""; mode = -1 }, WRAP, ctx.dp(48))
+                if (view == "s2" && pinned >= 0) c.add(back(t("← Карточка", "← Cue card", "← Kartochka")) { view = "mc:$pinned"; pinned = -1 }, WRAP, ctx.dp(48))
+                else c.add(back(t("← Темы", "← Topics", "← Mavzular")) { view = ""; mode = -1 }, WRAP, ctx.dp(48))
                 stage = ctx.col {}
                 c.add(stage, MATCH, WRAP)
                 if (view == "s2") partTwo() else partAsk(view == "s3")
@@ -143,6 +147,9 @@ class IeltsVocabScreen(act: UiActivity) : Screen(act) {
                 c.add(stage, MATCH, WRAP)
                 daily()
             }
+            view == "ma" -> modelKinds(c)
+            view.startsWith("ma:") -> modelList(c, view.removePrefix("ma:"))
+            view.startsWith("mc:") -> modelCard(c, view.removePrefix("mc:").toIntOrNull() ?: -1)
             mode < 0 -> modes(c)
             else -> {
                 c.add(back(t("← Режимы", "← Modes", "← Rejimlar")) { mode = -1 }, WRAP, ctx.dp(48))
@@ -215,6 +222,8 @@ class IeltsVocabScreen(act: UiActivity) : Screen(act) {
         c.add(ctx.text(t("Говори вслух. Ответ: мысль + причина + пример. Таймер как на экзамене.", "Speak out loud. Answer: point + reason + example. Exam-style timer.", "Ovoz chiqarib gapir. Javob: fikr + sabab + misol. Imtihondagi kabi taymer."), T.Small), MATCH, WRAP, bottom = 8)
         tintCard(c, t("Part 1: короткие вопросы", "Part 1: short questions", "Part 1: qisqa savollar"), t("${speak.part1.size} вопросов · ответ 20 секунд", "${speak.part1.size} questions · 20-second answers", "${speak.part1.size} ta savol · 20 soniyalik javob"), "s1")
         tintCard(c, t("Part 2: карточка, 1 + 2 минуты", "Part 2: cue card, 1 + 2 minutes", "Part 2: kartochka, 1 + 2 daqiqa"), t("${speak.cues.size} карточек · подготовка и монолог", "${speak.cues.size} cue cards · prepare, then talk", "${speak.cues.size} ta kartochka · tayyorlan, keyin gapir"), "s2")
+        val maDone = models.count { studied(it.id) }
+        tintCard(c, t("Образцы ответов Part 2 и 3", "Part 2 & 3 model answers", "Part 2 va 3 namuna javoblari"), t("${models.size} карточек: говоришь сам, потом читаешь образец · изучено $maDone", "${models.size} cue cards: talk first, then read the model · studied $maDone", "${models.size} ta kartochka: avval o'zing gapir, keyin namunani o'qi · o'rganildi $maDone"), "ma")
         tintCard(c, t("Part 3: обсуждение", "Part 3: discussion", "Part 3: muhokama"), t("${speak.part3.size} вопросов · ответ 45 секунд", "${speak.part3.size} questions · 45-second answers", "${speak.part3.size} ta savol · 45 soniyalik javob"), "s3")
         val spKnown = speak.phrases.indices.count { box("sp_$it") >= 3 }
         tintCard(c, t("Разговорные фразы", "Speaking phrases", "Speaking iboralari"), t("Мнение, пауза, пример, история · знаю $spKnown из ${speak.phrases.size}", "Opinion, buying time, examples, stories · known $spKnown of ${speak.phrases.size}", "Fikr, vaqt yutish, misol, hikoya · bildim $spKnown / ${speak.phrases.size}"), "sp")
@@ -588,13 +597,15 @@ class IeltsVocabScreen(act: UiActivity) : Screen(act) {
     }
 
     private fun partTwo() {
-        if (speak.cues.isEmpty()) { stage.add(ctx.text(t("Нет данных", "No data", "Ma'lumot yo'q"), T.Body), MATCH, WRAP); return }
-        val order = speak.cues.shuffled()
+        val pool = (speak.cues.map { it to null } + models.map { IeltsCue(it.title, it.bullets, "") to it }).shuffled()
+        if (pool.isEmpty()) { stage.add(ctx.text(t("Нет данных", "No data", "Ma'lumot yo'q"), T.Body), MATCH, WRAP); return }
+        val first = models.firstOrNull { it.id == pinned }
+        val order: List<Pair<IeltsCue, IeltsModel?>> = if (first == null) pool else listOf(IeltsCue(first.title, first.bullets, "") to first) + pool.filter { it.second?.id != first.id }
         var pos = 0
         fun show() {
             stage.removeAllViews()
-            val cue = order[pos % order.size]
-            stage.add(ctx.text("Part 2 · " + topicName(cue.topic), T.Small).apply { gravity = Gravity.CENTER }, MATCH, WRAP, top = 8)
+            val (cue, model) = order[pos % order.size]
+            stage.add(ctx.text("Part 2 · " + (if (model != null) kindName(model.kind) else topicName(cue.topic)), T.Small).apply { gravity = Gravity.CENTER }, MATCH, WRAP, top = 8)
             stage.add(ctx.card(pad = 18, kind = CardKind.Hero, onClick = { Pronounce.speak(ctx, cue.title) }) {
                 add(ctx.text(cue.title, T.Title).apply { textSize = 19f }, MATCH, WRAP)
                 add(ctx.text("You should say:", T.Small), MATCH, WRAP, top = 8)
@@ -605,6 +616,7 @@ class IeltsVocabScreen(act: UiActivity) : Screen(act) {
             stage.add(timer, MATCH, WRAP)
             stage.add(status, MATCH, WRAP, bottom = 10)
             val follow = ctx.card(pad = 14, kind = CardKind.Tint) { visibility = View.GONE }
+            val answerBtn = ctx.button(t("Посмотреть образец ответа", "See the model answer", "Namuna javobni ko'rish"), BtnStyle.Tonal) { if (model != null) { pinned = -1; view = "mc:${model.id}"; refresh() } }.apply { visibility = View.GONE }
             var phase = 0
             var onPrep: () -> Unit = {}
             var onTalk: () -> Unit = {}
@@ -619,11 +631,14 @@ class IeltsVocabScreen(act: UiActivity) : Screen(act) {
                 countdown(timer, 120) {
                     payOnce("s2")
                     status.text = t("Отлично! Теперь ответь на вопрос экзаменатора:", "Well done! Now answer the examiner's follow-up:", "Zo'r! Endi imtihonchining qo'shimcha savoliga javob ber:")
-                    val p3 = speak.part3.filter { it.topic == cue.topic }.ifEmpty { speak.part3 }.randomOrNull()
+                    val own = model?.follow?.randomOrNull()
+                    val p3 = own?.question ?: speak.part3.filter { it.topic == cue.topic }.ifEmpty { speak.part3 }.randomOrNull()?.question
                     if (p3 != null) {
-                        follow.addView(ctx.text(p3.question, T.Label))
+                        follow.addView(ctx.text(p3, T.Label))
+                        if (own != null) reveal(follow, own.answer)
                         follow.visibility = View.VISIBLE
                     }
+                    if (model != null) answerBtn.visibility = View.VISIBLE
                 }
             }
             onTalk = { talk() }
@@ -638,6 +653,7 @@ class IeltsVocabScreen(act: UiActivity) : Screen(act) {
             stage.add(main, MATCH, WRAP, bottom = 8)
             stage.add(ready, MATCH, WRAP, bottom = 8)
             stage.add(follow, MATCH, WRAP, bottom = 8)
+            stage.add(answerBtn, MATCH, WRAP, bottom = 8)
             stage.add(ctx.button(t("Другая карточка", "Another cue card", "Boshqa kartochka"), BtnStyle.Outline) { pos++; show() }, MATCH, WRAP, bottom = 12)
             stage.add(ctx.card(pad = 14) {
                 add(ctx.text(t("План рассказа", "Story plan", "Hikoya rejasi"), T.Label), MATCH, WRAP)
@@ -646,5 +662,122 @@ class IeltsVocabScreen(act: UiActivity) : Screen(act) {
             stage.add(ctx.card(pad = 14) { add(helpers(cue.topic, listOf("His-tuyg'u", "Javobni kengaytirish"), 3), MATCH, WRAP) }, MATCH, WRAP, bottom = 8)
         }
         show()
+    }
+
+    private fun kindName(k: String) = when (k) {
+        "person" -> t("Люди", "People", "Odamlar")
+        "place" -> t("Места", "Places", "Joylar")
+        "object" -> t("Вещи", "Objects & things", "Narsalar")
+        "media" -> t("Книги, фильмы, медиа", "Books, films & media", "Kitob, film, media")
+        "event" -> t("События и опыт", "Events & experiences", "Voqea va tajriba")
+        else -> t("Занятия, навыки и другое", "Activities, skills & more", "Mashg'ulot, ko'nikma va boshqalar")
+    }
+
+    private fun reveal(parent: LinearLayout, answer: String, label: String = t("Показать ответ", "Show answer", "Javobni ko'rish")) {
+        val body = ctx.text(answer, T.Body).apply { visibility = View.GONE }
+        lateinit var btn: View
+        btn = ctx.button(label, BtnStyle.Text) { body.visibility = View.VISIBLE; btn.visibility = View.GONE }
+        parent.add(btn, WRAP, ctx.dp(48), top = 4)
+        parent.add(body, MATCH, WRAP, top = 4)
+    }
+
+    private fun modelKinds(c: LinearLayout) {
+        c.add(back(t("← Темы", "← Topics", "← Mavzular")) { view = ""; mode = -1 }, WRAP, ctx.dp(48))
+        c.add(ctx.section(t("Образцы ответов", "Model answers", "Namuna javoblar")), MATCH, WRAP)
+        c.add(ctx.text(t("Как учиться: 1) расскажи сам по таймеру 2) прочитай и послушай образец 3) выпиши полезные слова 4) ответь на вопросы Part 3. Одну историю можно использовать для похожих карточек.", "How to study: 1) talk yourself with the timer 2) read and listen to the model 3) note the useful words 4) answer the Part 3 questions. One story can serve several similar cards.", "Qanday o'rganish: 1) taymer bilan o'zing gapir 2) namunani o'qi va tingla 3) foydali so'zlarni yozib ol 4) Part 3 savollariga javob ber. Bitta hikoyani o'xshash kartochkalarda ham ishlatsa bo'ladi."), T.Small), MATCH, WRAP, bottom = 10)
+        val groups = models.groupBy { it.kind }
+        for (k in IeltsVocab.kindOrder) {
+            val list = groups[k] ?: continue
+            val done = list.count { studied(it.id) }
+            c.add(ctx.card(pad = 14, onClick = { view = "ma:$k"; refresh() }) {
+                add(ctx.row {
+                    add(ctx.col {
+                        add(ctx.text(kindName(k), T.Label), MATCH, WRAP)
+                        add(ctx.text(t("Изучено $done из ${list.size}", "Studied $done of ${list.size}", "O'rganildi $done / ${list.size}"), T.Small), MATCH, WRAP, top = 2)
+                        add(bar(done.toFloat() / list.size), MATCH, WRAP, top = 6)
+                    }, 0, WRAP, 1f)
+                    add(ctx.text("›", T.Title), WRAP, WRAP, start = 8)
+                })
+            }, MATCH, WRAP, bottom = 8)
+        }
+    }
+
+    private fun modelList(c: LinearLayout, k: String) {
+        c.add(back(t("← Группы", "← Groups", "← Guruhlar")) { view = "ma" }, WRAP, ctx.dp(48))
+        c.add(ctx.section(kindName(k)), MATCH, WRAP)
+        val list = models.filter { it.kind == k }.sortedBy { studied(it.id) }
+        for (m in list) {
+            c.add(ctx.card(pad = 14, onClick = { view = "mc:${m.id}"; refresh() }) {
+                add(ctx.row {
+                    add(ctx.col {
+                        add(ctx.text(m.title, T.Body), MATCH, WRAP)
+                        val extra = listOfNotNull(
+                            if (m.vocab.isNotEmpty()) t("${m.vocab.size} слов", "${m.vocab.size} words", "${m.vocab.size} ta so'z") else null,
+                            if (m.follow.isNotEmpty()) t("${m.follow.size} вопросов Part 3", "${m.follow.size} Part 3 questions", "${m.follow.size} ta Part 3 savol") else null
+                        )
+                        if (extra.isNotEmpty()) add(ctx.text(extra.joinToString(" · "), T.Small), MATCH, WRAP, top = 2)
+                    }, 0, WRAP, 1f)
+                    add(ctx.text(if (studied(m.id)) "✓" else "›", T.Title, if (studied(m.id)) P.success else P.onSurface), WRAP, WRAP, start = 8)
+                })
+            }, MATCH, WRAP, bottom = 8)
+        }
+    }
+
+    private fun modelCard(c: LinearLayout, id: Int) {
+        val m = models.firstOrNull { it.id == id }
+        if (m == null) { view = "ma"; modelKinds(c); return }
+        c.add(back("← " + kindName(m.kind)) { view = "ma:${m.kind}" }, WRAP, ctx.dp(48))
+        c.add(ctx.card(pad = 18, kind = CardKind.Hero, onClick = { Pronounce.speak(ctx, m.title) }) {
+            add(ctx.text(m.title, T.Title).apply { textSize = 19f }, MATCH, WRAP)
+            add(ctx.text("You should say:", T.Small), MATCH, WRAP, top = 8)
+            for (b in m.bullets) add(ctx.text("• $b", T.Body), MATCH, WRAP, top = 2)
+        }, MATCH, WRAP, top = 4, bottom = 12)
+
+        c.add(ctx.text(t("Шаг 1. Сначала расскажи сам", "Step 1. Talk first yourself", "1-qadam. Avval o'zing gapir"), T.Label), MATCH, WRAP, bottom = 4)
+        c.add(ctx.button(t("Тренировка: 1 + 2 минуты", "Practise: 1 + 2 minutes", "Mashq: 1 + 2 daqiqa"), BtnStyle.Outline) { pinned = m.id; view = "s2"; refresh() }, MATCH, WRAP, bottom = 12)
+
+        c.add(ctx.text(t("Шаг 2. Образец ответа", "Step 2. Model answer", "2-qadam. Namuna javob"), T.Label), MATCH, WRAP, bottom = 4)
+        val answer = ctx.col {}
+        answer.visibility = View.GONE
+        answer.add(ctx.text(t("Нажми на абзац, чтобы послушать.", "Tap a paragraph to listen.", "Tinglash uchun bo'lakni bos."), T.Small), MATCH, WRAP, bottom = 6)
+        for ((i, para) in m.paras.withIndex()) {
+            answer.add(ctx.card(pad = 14, kind = if (i == 0) CardKind.Tint else CardKind.Raised, onClick = { Pronounce.speak(ctx, para) }) {
+                add(ctx.text(para, T.Body), MATCH, WRAP)
+            }, MATCH, WRAP, bottom = 6)
+        }
+        lateinit var open: View
+        open = ctx.button(t("Показать образец", "Show the model answer", "Namuna javobni ochish"), BtnStyle.Tonal) { answer.visibility = View.VISIBLE; open.visibility = View.GONE }
+        c.add(open, MATCH, WRAP, bottom = 8)
+        c.add(answer, MATCH, WRAP, bottom = 6)
+
+        if (m.vocab.isNotEmpty()) {
+            c.add(ctx.text(t("Шаг 3. Полезные слова", "Step 3. Useful words", "3-qadam. Foydali so'zlar"), T.Label), MATCH, WRAP, top = 6, bottom = 4)
+            c.add(ctx.card(pad = 14) {
+                for ((w, mean) in m.vocab) {
+                    add(ctx.text(w, T.Label, P.orange).apply { setOnClickListener { Pronounce.speak(ctx, w) } }, MATCH, WRAP, top = 6)
+                    add(ctx.text(mean, T.Small), MATCH, WRAP, top = 1)
+                }
+            }, MATCH, WRAP, bottom = 12)
+        }
+
+        if (m.follow.isNotEmpty()) {
+            c.add(ctx.text(t("Шаг 4. Вопросы Part 3: ответь вслух, потом сравни", "Step 4. Part 3 questions: answer aloud, then compare", "4-qadam. Part 3 savollari: ovoz chiqarib javob ber, keyin solishtir"), T.Label), MATCH, WRAP, top = 6, bottom = 4)
+            for (q in m.follow) {
+                c.add(ctx.card(pad = 14, kind = CardKind.Tint) {
+                    add(ctx.text(q.question, T.Label).apply { setOnClickListener { Pronounce.speak(ctx, q.question) } }, MATCH, WRAP)
+                    reveal(this, q.answer, t("Показать образец", "Show model answer", "Namuna javob"))
+                }, MATCH, WRAP, bottom = 8)
+            }
+        }
+
+        val done = studied(m.id)
+        c.add(ctx.button(if (done) t("✓ Изучено (снять отметку)", "✓ Studied (undo)", "✓ O'rganildi (bekor qilish)") else t("Я это выучил", "I've studied this", "O'rgandim"), if (done) BtnStyle.Outline else BtnStyle.Filled) {
+            Backend.setInt(ctx, "iv_ma_${m.id}", if (done) 0 else 1)
+            if (!done) payOnce("ma")
+            refresh()
+        }, MATCH, WRAP, top = 8, bottom = 8)
+        val same = models.filter { it.kind == m.kind }
+        val next = same.firstOrNull { it.id != m.id && !studied(it.id) } ?: same.getOrNull((same.indexOf(m) + 1) % same.size)
+        if (next != null && next.id != m.id) c.add(ctx.button(t("Следующая карточка ›", "Next cue card ›", "Keyingi kartochka ›"), BtnStyle.Text) { view = "mc:${next.id}"; refresh() }, MATCH, ctx.dp(48), bottom = 12)
     }
 }

@@ -503,7 +503,7 @@ fun agentsV3() {
 
 fun main() {
     quick(); contacts(); apps(); mathTools(); comms(); groq(); pairing(); agentsV3(); agentTests(); myWordsTests(); vocabTests(); enrichTests(); learnTests(); exerciseTests(); analyticsTests(); enrichMergeTests(); enrichMergeOrderTests(); retryPolicyTests(); contextTests(); sourceTests(); pronTests(); newExerciseTests(); tutorTests(); ocrTests(); autoAnswerTests(); callProfilesTests(); grammarTests(); ieltsVocabTests(); ieltsLearnTests(); ieltsSpeakingTests()
-    ieltsSpeakingResourceTests(); if (System.getenv("PROBE") != null) probe()
+    ieltsSpeakingResourceTests(); ieltsModelAnswerTests(); if (System.getenv("PROBE") != null) probe()
     println("RESULT: $pass passed, $fail failed (${pass + fail} assertions)")
     if (fail > 0) System.exit(1)
 }

@@ -1,0 +1,150 @@
+11-25 10:48:08.880  4959  5037 I PeopleGalProvider: Gal directories started.
+11-25 10:48:08.880  4959  5037 I PeopleGalProvider: Method 1 completed.
+11-25 10:48:08.880  4959  5037 I PeopleGalProvider: Method 1 finished successfully.
+11-25 10:48:08.881  4959  5000 W Icing   : No valid account for uploading user actions
+11-25 10:48:08.900  4119  4290 I BugleRcsProvisioning: RcsProvisioningEventReceiver: Received ProvisioningEvent: Availability updated
+11-25 10:48:08.904  1708  2600 W SearchServiceCore: Abort, client detached.
+11-25 10:48:08.905  1708  2600 W SearchServiceCore: Abort, client detached.
+11-25 10:48:08.915  4959  5000 I Icing   : Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0
+11-25 10:48:08.916  1708  2600 W SearchServiceCore: Abort, client detached.
+11-25 10:48:08.916  1708  2600 W SearchServiceCore: Abort, client detached.
+11-25 10:48:08.918  1708  2600 W SearchServiceCore: Abort, client detached.
+11-25 10:48:08.918  1708  2600 W SearchServiceCore: Abort, client detached.
+11-25 10:48:08.921  4119  4290 I BugleRcsProvisioning: RcsProvisioningEventReceiver: Bugle receives rcs availability update to: 10
+11-25 10:48:08.923  1708  2600 W SearchServiceCore: Abort, client detached.
+11-25 10:48:08.923  1708  2600 W SearchServiceCore: Abort, client detached.
+11-25 10:48:08.934  1024  5638 D BluetoothPbapUtils: primaryVersionCounter = 0, secondaryVersionCounter=0
+11-25 10:48:08.948  1708  2600 W SearchServiceCore: Abort, client detached.
+11-25 10:48:08.954  2614  2907 W TimedProcessReaper: Scheduling killing of process to refresh configuration
+11-25 10:48:08.975   522   765 D ConnectivityService: reportNetworkConnectivity(100, false) by 10132
+11-25 10:48:08.976  1002  2722 D NetworkMonitor/100: Forcing reevaluation for UID 10132. Dns signal count: 0
+11-25 10:48:08.992  1002  5646 D TrafficStats: tagSocket(68) with statsTag=0xffffff81, statsUid=-1
+11-25 10:48:08.993  1002  5647 D TrafficStats: tagSocket(75) with statsTag=0xffffff81, statsUid=-1
+11-25 10:48:08.994  1002  5647 D TrafficStats: tagSocket(75) with statsTag=0xffffff81, statsUid=-1
+11-25 10:48:08.997  1002  5646 D TrafficStats: tagSocket(68) with statsTag=0xffffff81, statsUid=-1
+11-25 10:48:09.009   336  5649 I resolv  : ResNSendHandler::run: 0 / {100 983140 100 983140 1073 1}
+11-25 10:48:09.009   336  5650 I resolv  : ResNSendHandler::run: 0 / {100 983140 100 983140 1073 1}
+11-25 10:48:09.009   336  5649 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7457a5c1bdd0
+11-25 10:48:09.010   336  5650 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x745785c21550
+11-25 10:48:09.011   336  5648 I resolv  : ResNSendHandler::run: 0 / {100 983140 100 983140 1073 1}
+11-25 10:48:09.012   336  5648 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x745785c22c10
+11-25 10:48:09.013   336  5651 I resolv  : ResNSendHandler::run: 0 / {100 983140 100 983140 1073 1}
+11-25 10:48:09.013   336  5651 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7457b5c17650
+11-25 10:48:09.014  1002  1002 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-25 10:48:09.014  1002  1002 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-25 10:48:09.019  1002  5647 D NetworkMonitor/100: PROBE_DNS connectivitycheck.gstatic.com 26ms OK 142.251.150.120,2001:4860:4826:7800::
+11-25 10:48:09.031   336  5652 I resolv  : GetAddrInfoHandler::run: {100 983140 100 983140 1073 1}
+11-25 10:48:09.032  1002  1002 D TrafficStats: tagSocket(75) with statsTag=0xffffffff, statsUid=-1
+11-25 10:48:09.036   336   369 I netd    : tetherGetStats() -> {[]} <0.47ms>
+11-25 10:48:09.037  1002  1002 D TrafficStats: tagSocket(75) with statsTag=0xffffffff, statsUid=-1
+11-25 10:48:09.037  1002  1002 D TrafficStats: tagSocket(75) with statsTag=0xffffffff, statsUid=-1
+11-25 10:48:09.038  1002  1002 D TrafficStats: tagSocket(75) with statsTag=0xffffffff, statsUid=-1
+11-25 10:48:09.039  1002  1002 D TrafficStats: tagSocket(75) with statsTag=0xffffffff, statsUid=-1
+11-25 10:48:09.039  1002  1002 D TrafficStats: tagSocket(75) with statsTag=0xffffffff, statsUid=-1
+11-25 10:48:09.040  1002  1002 D TrafficStats: tagSocket(75) with statsTag=0xffffffff, statsUid=-1
+11-25 10:48:09.046   336  5654 I resolv  : res_nmkquery: (QUERY, IN, A)
+11-25 10:48:09.046   336  5654 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x745785c21550
+11-25 10:48:09.046   336  5654 I resolv  : doQuery: rcode=0, ancount=1, return value=63
+11-25 10:48:09.046  1002  1002 D TrafficStats: tagSocket(75) with statsTag=0xffffffff, statsUid=-1
+11-25 10:48:09.046  1002  1002 D TrafficStats: tagSocket(75) with statsTag=0xffffffff, statsUid=-1
+11-25 10:48:09.047  1002  1002 D TrafficStats: tagSocket(75) with statsTag=0xffffffff, statsUid=-1
+11-25 10:48:09.047  1002  1002 D TrafficStats: tagSocket(75) with statsTag=0xffffffff, statsUid=-1
+11-25 10:48:09.047  1002  1002 D TrafficStats: tagSocket(75) with statsTag=0xffffffff, statsUid=-1
+11-25 10:48:09.048   336  5653 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+11-25 10:48:09.048   336  5653 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x745785c22c10
+11-25 10:48:09.048   336  5653 I resolv  : doQuery: rcode=0, ancount=1, return value=75
+11-25 10:48:09.049  1002  1002 D TrafficStats: tagSocket(75) with statsTag=0xffffffff, statsUid=-1
+11-25 10:48:09.049  1002  1002 D TrafficStats: tagSocket(75) with statsTag=0xffffffff, statsUid=-1
+11-25 10:48:09.049  1002  1002 D TrafficStats: tagSocket(75) with statsTag=0xffffffff, statsUid=-1
+11-25 10:48:09.051  1002  5647 D TrafficStats: tagSocket(68) with statsTag=0xffffff81, statsUid=-1
+11-25 10:48:09.053  1002  1002 D TrafficStats: tagSocket(75) with statsTag=0xffffffff, statsUid=-1
+11-25 10:48:09.056  1002  5646 D NetworkMonitor/100: PROBE_DNS www.google.com 63ms OK 142.251.153.119,142.251.156.119,142.251.155.119,142.251.157.119,142.251.154.119,142.251.150.119,142.251.151.119,142.251.152.119,2001:4860:4828:7700::,2001
+11-25 10:48:09.058  5474  5496 D EGL_emulation: app_time_stats: avg=30.43ms min=12.96ms max=163.86ms count=33
+11-25 10:48:09.063  1708  3613 W TimedProcessReaper: Scheduling killing of process to refresh configuration
+11-25 10:48:09.069   336   369 I netd    : bandwidthSetGlobalAlert(2097152) <0.11ms>
+11-25 10:48:09.071   336   369 I netd    : bandwidthRemoveInterfaceQuota(eth0) <0.68ms>
+11-25 10:48:09.074   336   369 I netd    : bandwidthSetInterfaceQuota(eth0, 9223372036854775807) <0.45ms>
+11-25 10:48:09.079  1002  5647 D NetworkMonitor/100: PROBE_HTTP http://connectivitycheck.gstatic.com/generate_204 time=59ms ret=204 request={Connection=[close], User-Agent=[Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gec
+11-25 10:48:09.084   336  5655 I resolv  : GetAddrInfoHandler::run: {100 983140 100 983140 1073 1}
+11-25 10:48:09.087   336  5656 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+11-25 10:48:09.087   336  5656 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7457a5c1bdd0
+11-25 10:48:09.087   336  5656 I resolv  : doQuery: rcode=0, ancount=8, return value=256
+11-25 10:48:09.087  5644  5644 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+11-25 10:48:09.087  5644  5644 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-25 10:48:09.091  4119  4276 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of com.google.android.apps.messaging.shared.receiver.RcsProvisioningEventReceiver@d46cf4e
+11-25 10:48:09.095   401   414 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=5644
+11-25 10:48:09.096   401   414 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (2479 us)
+11-25 10:48:09.109   522   619 I RescueParty: Starting to observe: [android], updated namespace: alarm_manager
+11-25 10:48:09.110   135   135 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-25 10:48:09.297     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+11-25 10:48:09.111   336  5657 I resolv  : res_nmkquery: (QUERY, IN, A)
+11-25 10:48:09.112   336  5657 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7457b5c17650
+11-25 10:48:09.112   336  5657 I resolv  : doQuery: rcode=0, ancount=8, return value=160
+11-25 10:48:09.112   522   550 I PackageWatchdog: Syncing state, reason: observing new packages
+11-25 10:48:09.114  5644  5658 I Gralloc4: mapper 4.x is not supported
+11-25 10:48:09.115   522   550 D PackageWatchdog: rescue-party-observer added the following packages to monitor [android]
+11-25 10:48:09.118  1002  5646 D TrafficStats: tagSocket(68) with statsTag=0xffffff81, statsUid=-1
+11-25 10:48:09.125   522   550 I PackageWatchdog: Syncing state, reason: updated observers
+11-25 10:48:09.130  4119  4119 W BugleRcsEngine: [2] brcu.d: [SR]: Single Registration is disabled. Skipping Single Registration capability check for subId: 1, OS.isAtLeastS:[true], enableSingleRegistrationProvisioning:[false]
+11-25 10:48:09.131  4119  4119 I BugleRcsEngine: [2] brnl.e: No RCS Configuration was found in Bugle for simID: redacted-pii:sim_id[chars:20,last3:897]
+11-25 10:48:09.131  4119  4119 I BugleRcsProvisioning: RcsAvailabilityUpdaterLocal: RcsAvailability configuration availability and enabled status: simId: redacted-pii:sim_id[chars:20,last3:897], SipConnectionType: DUAL_REG, isConfigurationA
+11-25 10:48:09.131  4119  4119 I BugleRcsEngine: [2] brox.b: Using config server URL from bqas
+11-25 10:48:09.131  4119  4119 I BugleRcsProvisioning: RcsAvailabilityUpdaterLocal: RcsAvailability subscription{id:1}, simId: redacted-pii:sim_id[chars:20,last3:897], sipConnectionType: DUAL_REG, isRcsAvailable: false
+11-25 10:48:09.131  4119  4119 I BugleRcsProvisioning: RcsAvailabilityUpdaterLocal: updateRcsAvailability, currentAvailability: 10, newAvailability: 10, hint: NO_HINT
+11-25 10:48:09.150  4119  4278 I BugleRcsProvisioning: RcsProvisioningEventReceiver: Received ProvisioningEvent: Update provisioning status
+11-25 10:48:09.171   522   522 I PackageWatchdog: Syncing health check requests for packages: {}
+11-25 10:48:09.172   522   522 I ExplicitHealthCheckController: Service not ready to get health check supported packages. Binding...
+11-25 10:48:09.178   522   522 I ExplicitHealthCheckController: Explicit health check service is bound
+11-25 10:48:09.179   522   522 I PackageWatchdog: Syncing health check requests for packages: {}
+11-25 10:48:09.179   522   522 I ExplicitHealthCheckController: Service not ready to get health check supported packages. Binding...
+11-25 10:48:09.179   522   522 I ExplicitHealthCheckController: Not binding to service, service already connecting
+11-25 10:48:09.181   522   522 I ExplicitHealthCheckController: Explicit health check service is connected ComponentInfo{com.google.android.ext.services/android.ext.services.watchdog.ExplicitHealthCheckServiceImpl}
+11-25 10:48:09.182   522   522 I ExplicitHealthCheckController: Service initialized, syncing requests
+11-25 10:48:09.182   522   522 I PackageWatchdog: Syncing health check requests for packages: {}
+11-25 10:48:09.182   522   522 D ExplicitHealthCheckController: Getting health check supported packages
+11-25 10:48:09.182   522  2867 I ExplicitHealthCheckController: Explicit health check supported packages [PackageConfig{com.google.android.networkstack, 86400000}]
+11-25 10:48:09.183   522  2867 D PackageWatchdog: Received supported packages [PackageConfig{com.google.android.networkstack, 86400000}]
+11-25 10:48:09.184   522  2867 D ExplicitHealthCheckController: Getting health check requested packages
+11-25 10:48:09.184   522  2618 I ExplicitHealthCheckController: Explicit health check requested packages []
+11-25 10:48:09.184   522  2618 I ExplicitHealthCheckController: No more health check requests, unbinding...
+11-25 10:48:09.188   522  2618 I ExplicitHealthCheckController: Explicit health check service is unbound
+11-25 10:48:09.197   522   550 I PackageWatchdog: Saving observer state to file
+11-25 10:48:09.209  4872  4882 I .gms.persistent: Background concurrent copying GC freed 386831(15MB) AllocSpace objects, 4(208KB) LOS objects, 49% free, 13MB/27MB, paused 57us,19us total 116.925ms
+11-25 10:48:09.244  4872  5543 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-25 10:48:09.254  4872  5543 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-25 10:48:09.255  4872  5543 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-25 10:48:09.255  4872  5543 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-25 10:48:09.259  4872  5543 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-25 10:48:09.259  4872  5543 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-25 10:48:09.259  4872  5543 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-25 10:48:09.260  4872  5543 I NamespaceManager: Package 1 name not found! Using module version.
+11-25 10:48:09.260  4872  5543 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-25 10:48:09.261  4872  5543 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-25 10:48:09.261  4872  5543 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-25 10:48:09.261  4872  5543 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-25 10:48:09.261  4872  5543 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-25 10:48:09.261  4872  5543 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-25 10:48:09.261  4872  5543 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-25 10:48:09.262  4872  5543 I NamespaceManager: Package 1 name not found! Using module version.
+11-25 10:48:09.298  4119  4276 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of com.google.android.apps.messaging.shared.receiver.RcsProvisioningEventReceiver@8c4925a
+11-25 10:48:09.324  1002  5646 D NetworkMonitor/100: PROBE_HTTPS https://www.google.com/generate_204 time=257ms ret=204 request={Connection=[close], User-Agent=[Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/6
+11-25 10:48:09.326  1002  5645 D NetworkMonitor/100: isCaptivePortal: isSuccessful()=true isPortal()=false RedirectUrl=null isPartialConnectivity()=false Time=347ms
+11-25 10:48:09.334   522   765 D ConnectivityService: [100 WIFI] validation passed
+11-25 10:48:09.341  4119  4289 I BugleRcsProvisioning: RcsProvisioningTrigger: onRcsAvailabilityUpdate : availability is updated to Carrier RCS is not set up, lastAvailability is Carrier RCS is not set up, simId hash = 1791429464374226036, 
+11-25 10:48:09.385  4872  5629 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-25 10:48:09.387  4872  5629 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-25 10:48:09.387  4872  5629 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-25 10:48:09.389  4872  5629 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-25 10:48:09.398  4872  5629 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-25 10:48:09.404  4872  5629 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-25 10:48:09.405  4872  5629 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-25 10:48:09.405  4872  5629 I NamespaceManager: Package 1 name not found! Using module version.
+11-25 10:48:09.406  4872  5629 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-25 10:48:09.406  4872  5629 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-25 10:48:09.406  4872  5629 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-25 10:48:09.407  4872  5629 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-25 10:48:09.407  4872  5629 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-25 10:48:09.407  4872  5629 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-25 10:48:09.408  4872  5629 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-25 10:48:09.408  4872  5629 I NamespaceManager: Package 1 name not found! Using module version.
+11-25 10:48:09.429  4872  4904 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.icing.proxy.IcingInternalCorporaUpdateService started execution. cause:9 exec_start_elapsed_seconds: 94 [CONTEXT service_id=218 ]

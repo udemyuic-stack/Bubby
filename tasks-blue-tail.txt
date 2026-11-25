@@ -1,0 +1,150 @@
+11-25 10:53:24.473  4194  4806 D cevx    : Starting download: https://media.tenor.com/eKF_xIa1bUcAAAAk/dessert-eat.gif
+11-25 10:53:24.473  4194  4806 V cevx    : Is http uri, downloading (uri: https://media.tenor.com/eKF_xIa1bUcAAAAk/dessert-eat.gif)
+11-25 10:53:24.482   338  5229 I resolv  : GetAddrInfoHandler::run: {100 786532 100 983140 10129 0}
+11-25 10:53:24.483   338  5231 I resolv  : res_nmkquery: (QUERY, IN, A)
+11-25 10:53:24.483   338  5231 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x788431c6bf30
+11-25 10:53:24.483   338  5231 I resolv  : doQuery: rcode=0, ancount=9, return value=192
+11-25 10:53:24.484   338  5230 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+11-25 10:53:24.484   338  5230 I resolv  : resolv_cache_lookup: Waiting for previous request
+11-25 10:53:24.520   338  5227 I resolv  : res_nsend: used send_dg 288 terrno: 0
+11-25 10:53:24.520   338  5227 I resolv  : doQuery: rcode=0, ancount=9, return value=288
+11-25 10:53:24.520   338  5230 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7884b1c6e350
+11-25 10:53:24.520   338  5230 I resolv  : doQuery: rcode=0, ancount=9, return value=288
+11-25 10:53:24.521  4194  4965 D TrafficStats: tagSocket(146) with statsTag=0xffffffff, statsUid=-1
+11-25 10:53:24.522  4194  4967 D TrafficStats: tagSocket(148) with statsTag=0xffffffff, statsUid=-1
+11-25 10:53:24.608  4194  4811 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603981142
+11-25 10:53:24.616  4194  4808 D cevx    : Starting download: https://media.tenor.com/H1dJQhNZtI8AAAAk/feed-me-om-nom.gif
+11-25 10:53:24.616  4194  4808 V cevx    : Is http uri, downloading (uri: https://media.tenor.com/H1dJQhNZtI8AAAAk/feed-me-om-nom.gif)
+11-25 10:53:24.633  4194  4806 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603981143
+11-25 10:53:24.637  4194  4808 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603981144
+11-25 10:53:24.659  4194  4811 D cevx    : Starting download: https://media.tenor.com/wqOj61NglK4AAAAk/%E3%81%8A%E8%85%B9%E7%A9%BA%E3%81%84%E3%81%9F-%E6%97%A9%E3%81%8F.gif
+11-25 10:53:24.659  4194  4811 V cevx    : Is http uri, downloading (uri: https://media.tenor.com/wqOj61NglK4AAAAk/%E3%81%8A%E8%85%B9%E7%A9%BA%E3%81%84%E3%81%9F-%E6%97%A9%E3%81%8F.gif)
+11-25 10:53:24.680  4194  4811 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603981145
+11-25 10:53:24.682  4194  4806 D cevx    : Starting download: https://media.tenor.com/F75I2eQRtsgAAAAk/hungry-mmm.gif
+11-25 10:53:24.682  4194  4806 V cevx    : Is http uri, downloading (uri: https://media.tenor.com/F75I2eQRtsgAAAAk/hungry-mmm.gif)
+11-25 10:53:24.699  4194  4806 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603981146
+11-25 10:53:24.706  4194  4808 D cevx    : Starting download: https://media.tenor.com/NyS3bV41OIsAAAAk/danger-hangry-peach-life.gif
+11-25 10:53:24.706  4194  4808 V cevx    : Is http uri, downloading (uri: https://media.tenor.com/NyS3bV41OIsAAAAk/danger-hangry-peach-life.gif)
+11-25 10:53:24.722  4194  4811 D cevx    : Starting download: https://media.tenor.com/vXPFFhsy-D4AAAAk/kstr-kochstrasse.gif
+11-25 10:53:24.722  4194  4811 V cevx    : Is http uri, downloading (uri: https://media.tenor.com/vXPFFhsy-D4AAAAk/kstr-kochstrasse.gif)
+11-25 10:53:24.724  4194  4808 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603981147
+11-25 10:53:24.735  4194  4806 D cevx    : Starting download: https://media.tenor.com/6h-mSv5CbPEAAAAk/tonton-tonton-friends.gif
+11-25 10:53:24.735  4194  4806 V cevx    : Is http uri, downloading (uri: https://media.tenor.com/6h-mSv5CbPEAAAAk/tonton-tonton-friends.gif)
+11-25 10:53:24.738  4194  4811 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603981148
+11-25 10:53:24.749  4194  4808 D cevx    : Starting download: https://media.tenor.com/fMBMEN6dHt0AAAAk/yum-yummers.gif
+11-25 10:53:24.749  4194  4808 V cevx    : Is http uri, downloading (uri: https://media.tenor.com/fMBMEN6dHt0AAAAk/yum-yummers.gif)
+11-25 10:53:24.764  4194  4806 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603981149
+11-25 10:53:24.766  4194  4808 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603981150
+11-25 10:53:24.776  4194  4811 D cevx    : Starting download: https://media.tenor.com/g6Qs3CZC7gkAAAAk/eat-the-pet-collective.gif
+11-25 10:53:24.776  4194  4811 V cevx    : Is http uri, downloading (uri: https://media.tenor.com/g6Qs3CZC7gkAAAAk/eat-the-pet-collective.gif)
+11-25 10:53:24.789  4194  4808 D cevx    : Starting download: https://media.tenor.com/EQ2_Y8LKgKEAAAAk/pancake-joypixels.gif
+11-25 10:53:24.789  4194  4808 V cevx    : Is http uri, downloading (uri: https://media.tenor.com/EQ2_Y8LKgKEAAAAk/pancake-joypixels.gif)
+11-25 10:53:24.798  4194  4811 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603981151
+11-25 10:53:24.808  4194  4808 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603981152
+11-25 10:53:24.821  4194  4806 D cevx    : Starting download: https://media.tenor.com/YZXxTDUIH9AAAAAk/decorating-cake-kimjoy.gif
+11-25 10:53:24.821  4194  4806 V cevx    : Is http uri, downloading (uri: https://media.tenor.com/YZXxTDUIH9AAAAAk/decorating-cake-kimjoy.gif)
+11-25 10:53:24.839  4194  4806 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603981153
+11-25 10:53:24.853  4194  4811 D cevx    : Starting download: https://media.tenor.com/WoXYIyTOceYAAAAk/piffle-cat.gif
+11-25 10:53:24.853  4194  4811 V cevx    : Is http uri, downloading (uri: https://media.tenor.com/WoXYIyTOceYAAAAk/piffle-cat.gif)
+11-25 10:53:24.859  4194  4808 D cevx    : Starting download: https://media.tenor.com/di1fAyCBPeMAAAAk/pizza-pizza-time.gif
+11-25 10:53:24.859  4194  4808 V cevx    : Is http uri, downloading (uri: https://media.tenor.com/di1fAyCBPeMAAAAk/pizza-pizza-time.gif)
+11-25 10:53:24.860  5065  5065 I com.example.buddy: Perf: native scene 29 fps
+11-25 10:53:24.877  4194  4811 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603981154
+11-25 10:53:24.882  4194  4808 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603981155
+11-25 10:53:24.887  4194  4806 D cevx    : Starting download: https://media.tenor.com/k11wXOCj6HkAAAAk/%E3%82%AA%E3%83%A0%E3%83%A9%E3%82%A4%E3%82%B9-%E3%81%84%E3%81%9F%E3%81%A0%E3%81%8D%E3%81%BE%E3%81%99.gif
+11-25 10:53:24.887  4194  4806 V cevx    : Is http uri, downloading (uri: https://media.tenor.com/k11wXOCj6HkAAAAk/%E3%82%AA%E3%83%A0%E3%83%A9%E3%82%A4%E3%82%B9-%E3%81%84%E3%81%9F%E3%81%A0%E3%81%8D%E3%81%BE%E3%81%99.gif)
+11-25 10:53:24.896  4194  4808 D cevx    : Starting download: https://media.tenor.com/HALGiFUMzT8AAAAk/dinner-is-served-om-nom.gif
+11-25 10:53:24.896  4194  4808 V cevx    : Is http uri, downloading (uri: https://media.tenor.com/HALGiFUMzT8AAAAk/dinner-is-served-om-nom.gif)
+11-25 10:53:24.910  4194  4806 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603981156
+11-25 10:53:24.930  4194  4808 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603981157
+11-25 10:53:24.930  4194  4811 D cevx    : Starting download: https://media.tenor.com/sqBO7Yvu4SkAAAAk/siamese-cat.gif
+11-25 10:53:24.930  4194  4811 V cevx    : Is http uri, downloading (uri: https://media.tenor.com/sqBO7Yvu4SkAAAAk/siamese-cat.gif)
+11-25 10:53:24.946  4194  4811 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603981158
+11-25 10:53:24.954  4194  4806 D cevx    : Starting download: https://media.tenor.com/6a_4Q6DHoWcAAAAk/chef-cooking.gif
+11-25 10:53:24.954  4194  4806 V cevx    : Is http uri, downloading (uri: https://media.tenor.com/6a_4Q6DHoWcAAAAk/chef-cooking.gif)
+11-25 10:53:24.973  4194  4806 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603981159
+11-25 10:53:24.973  4194  4811 D cevx    : Starting download: https://media.tenor.com/-0nrZ8IubicAAAAk/raf-rafs.gif
+11-25 10:53:24.973  4194  4811 V cevx    : Is http uri, downloading (uri: https://media.tenor.com/-0nrZ8IubicAAAAk/raf-rafs.gif)
+11-25 10:53:24.980  4194  4808 D cevx    : Starting download: https://media.tenor.com/ViBJL3aU4uoAAAAk/cooking-molang.gif
+11-25 10:53:24.980  4194  4808 V cevx    : Is http uri, downloading (uri: https://media.tenor.com/ViBJL3aU4uoAAAAk/cooking-molang.gif)
+11-25 10:53:24.997  4194  4811 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603981160
+11-25 10:53:25.004  4194  4808 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603981161
+11-25 10:53:25.007  4194  4806 D cevx    : Starting download: https://media.tenor.com/G32yCkHMUSQAAAAk/%E3%83%91%E3%83%B3-%E3%81%8A%E3%82%84%E3%81%99%E3%81%BF.gif
+11-25 10:53:25.007  4194  4806 V cevx    : Is http uri, downloading (uri: https://media.tenor.com/G32yCkHMUSQAAAAk/%E3%83%91%E3%83%B3-%E3%81%8A%E3%82%84%E3%81%99%E3%81%BF.gif)
+11-25 10:53:25.020  4194  4811 D cevx    : Starting download: https://media.tenor.com/uxnyAewyRoQAAAAk/shourimajo-bubble-kittea.gif
+11-25 10:53:25.020  4194  4811 V cevx    : Is http uri, downloading (uri: https://media.tenor.com/uxnyAewyRoQAAAAk/shourimajo-bubble-kittea.gif)
+11-25 10:53:25.031  4194  4806 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603981162
+11-25 10:53:25.038  4194  4811 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603981163
+11-25 10:53:25.042  4194  4808 D cevx    : Starting download: https://media.tenor.com/b0hb7xUg4aMAAAAk/pumpkin-pumpkin-spice.gif
+11-25 10:53:25.042  4194  4808 V cevx    : Is http uri, downloading (uri: https://media.tenor.com/b0hb7xUg4aMAAAAk/pumpkin-pumpkin-spice.gif)
+11-25 10:53:25.047  4194  4806 D cevx    : Starting download: https://media.tenor.com/gkh0rTd7dGMAAAAk/smile-kopi.gif
+11-25 10:53:25.047  4194  4806 V cevx    : Is http uri, downloading (uri: https://media.tenor.com/gkh0rTd7dGMAAAAk/smile-kopi.gif)
+11-25 10:53:25.064  4194  4808 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603981164
+11-25 10:53:25.067  4194  4806 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603981165
+11-25 10:53:25.070  1459  5149 I GmscoreIpa: Starting mediastore instant index [CONTEXT service_id=255 ]
+11-25 10:53:25.076  4194  4811 D cevx    : Starting download: https://media.tenor.com/rLsTS3eQiyoAAAAk/tonton-friends-tobi.gif
+11-25 10:53:25.076  4194  4811 V cevx    : Is http uri, downloading (uri: https://media.tenor.com/rLsTS3eQiyoAAAAk/tonton-friends-tobi.gif)
+11-25 10:53:25.090   521  1889 D CompatibilityChangeReporter: Compat change id reported: 182734110; UID 10131; state: ENABLED
+11-25 10:53:25.090   521  1889 D CompatibilityChangeReporter: Compat change id reported: 149924527; UID 10131; state: ENABLED
+11-25 10:53:25.091   521  1889 D CompatibilityChangeReporter: Compat change id reported: 132649864; UID 10131; state: DISABLED
+11-25 10:53:25.092  4194  4811 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603981166
+11-25 10:53:25.105  4194  4806 D cevx    : Starting download: https://media.tenor.com/fw1tSaC3MvUAAAAk/danser-encourager.gif
+11-25 10:53:25.105  4194  4806 V cevx    : Is http uri, downloading (uri: https://media.tenor.com/fw1tSaC3MvUAAAAk/danser-encourager.gif)
+11-25 10:53:25.109  5065  5083 D EGL_emulation: app_time_stats: avg=30.42ms min=3.62ms max=43.75ms count=32
+11-25 10:53:25.128  4194  4806 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603981167
+11-25 10:53:25.130  4194  4808 D cevx    : Starting download: https://media.tenor.com/PeVTYLl4H0UAAAAk/cheering-encouraging.gif
+11-25 10:53:25.130  4194  4808 V cevx    : Is http uri, downloading (uri: https://media.tenor.com/PeVTYLl4H0UAAAAk/cheering-encouraging.gif)
+11-25 10:53:25.162  4194  4808 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603981168
+11-25 10:53:25.176  4194  4811 D cevx    : Starting download: https://media.tenor.com/yz6NdVlFMnwAAAAk/graduation-grad.gif
+11-25 10:53:25.176  4194  4811 V cevx    : Is http uri, downloading (uri: https://media.tenor.com/yz6NdVlFMnwAAAAk/graduation-grad.gif)
+11-25 10:53:25.187  4194  4806 D cevx    : Starting download: https://media.tenor.com/WHKPJhsQ69AAAAAk/heytvm-tvm.gif
+11-25 10:53:25.187  4194  4806 V cevx    : Is http uri, downloading (uri: https://media.tenor.com/WHKPJhsQ69AAAAAk/heytvm-tvm.gif)
+11-25 10:53:25.201  4194  4806 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603981170
+11-25 10:53:25.204  4194  4811 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603981169
+11-25 10:53:25.216  4194  4808 D cevx    : Starting download: https://media.tenor.com/Oy_rYG15YzgAAAAk/raf-rafs.gif
+11-25 10:53:25.216  4194  4808 V cevx    : Is http uri, downloading (uri: https://media.tenor.com/Oy_rYG15YzgAAAAk/raf-rafs.gif)
+11-25 10:53:25.229  4194  4806 D cevx    : Starting download: https://media.tenor.com/I_YaFQsuN84AAAAk/going-to-school-nibble-nom.gif
+11-25 10:53:25.229  4194  4806 V cevx    : Is http uri, downloading (uri: https://media.tenor.com/I_YaFQsuN84AAAAk/going-to-school-nibble-nom.gif)
+11-25 10:53:25.233  4194  4808 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603981171
+11-25 10:53:25.234  5237  5237 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+11-25 10:53:25.234  5237  5237 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-25 10:53:25.238   402   416 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=5237
+11-25 10:53:25.238   402   416 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (386 us)
+11-25 10:53:25.266  4194  4806 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603981172
+11-25 10:53:25.267  4194  4811 D cevx    : Starting download: https://media.tenor.com/XUC7T_bcbcYAAAAk/raf-rafs.gif
+11-25 10:53:25.267  4194  4811 V cevx    : Is http uri, downloading (uri: https://media.tenor.com/XUC7T_bcbcYAAAAk/raf-rafs.gif)
+11-25 10:53:25.269   140   140 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-25 10:53:25.269  5237  5238 I Gralloc4: mapper 4.x is not supported
+11-25 10:53:25.432     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+11-25 10:53:25.281  4194  4811 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603981173
+11-25 10:53:25.291  4194  4808 D cevx    : Starting download: https://media.tenor.com/qidX4V9FxCcAAAAk/reading-nibble-nom.gif
+11-25 10:53:25.291  4194  4808 V cevx    : Is http uri, downloading (uri: https://media.tenor.com/qidX4V9FxCcAAAAk/reading-nibble-nom.gif)
+11-25 10:53:25.316  4194  4808 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603981174
+11-25 10:53:25.325  4194  4811 D cevx    : Starting download: https://media.tenor.com/hBr38cG4IzcAAAAk/homework-research.gif
+11-25 10:53:25.325  4194  4811 V cevx    : Is http uri, downloading (uri: https://media.tenor.com/hBr38cG4IzcAAAAk/homework-research.gif)
+11-25 10:53:25.349  4194  4806 D cevx    : Starting download: https://media.tenor.com/tXffFYxygbQAAAAk/raf-rafs.gif
+11-25 10:53:25.349  4194  4806 V cevx    : Is http uri, downloading (uri: https://media.tenor.com/tXffFYxygbQAAAAk/raf-rafs.gif)
+11-25 10:53:25.354  4194  4811 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603981175
+11-25 10:53:25.369  4194  4806 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603981176
+11-25 10:53:25.373  4194  4808 D cevx    : Starting download: https://media.tenor.com/8FzDBsdoLcwAAAAk/animated-cute.gif
+11-25 10:53:25.373  4194  4808 V cevx    : Is http uri, downloading (uri: https://media.tenor.com/8FzDBsdoLcwAAAAk/animated-cute.gif)
+11-25 10:53:25.375  4194  4806 D cevx    : Starting download: https://media.tenor.com/5muD2FopQK0AAAAk/reading-om-nelle.gif
+11-25 10:53:25.375  4194  4806 V cevx    : Is http uri, downloading (uri: https://media.tenor.com/5muD2FopQK0AAAAk/reading-om-nelle.gif)
+11-25 10:53:25.391  4194  4808 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603981177
+11-25 10:53:25.393  4194  4806 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603981178
+11-25 10:53:25.417  4194  4811 D cevx    : Starting download: https://www.gstatic.com/messages/smarts/smarts_expressive_content_scoped_v1/smart_tenor_stickers_pack_scoped_v2.pb_1734978962204
+11-25 10:53:25.417  4194  4811 V cevx    : Is http uri, downloading (uri: https://www.gstatic.com/messages/smarts/smarts_expressive_content_scoped_v1/smart_tenor_stickers_pack_scoped_v2.pb_1734978962204)
+11-25 10:53:25.468  4194  4811 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603981179
+11-25 10:53:25.475  4194  4811 D cevx    : Starting download: https://www.gstatic.com/icing/idd/smart_actions_ml_models/multi_sr_phn_loc_wea_res_mov_spam_20190324_1554245216.pb
+11-25 10:53:25.475  4194  4811 V cevx    : Is http uri, downloading (uri: https://www.gstatic.com/icing/idd/smart_actions_ml_models/multi_sr_phn_loc_wea_res_mov_spam_20190324_1554245216.pb)
+11-25 10:53:25.482  4194  4808 D cevx    : Starting download: https://www.gstatic.com/messages/smarts/multitask_experiment/multi_lite_9head_20200301_model.tflite_1584573658696
+11-25 10:53:25.482  4194  4808 V cevx    : Is http uri, downloading (uri: https://www.gstatic.com/messages/smarts/multitask_experiment/multi_lite_9head_20200301_model.tflite_1584573658696)
+11-25 10:53:25.494  4194  4811 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603980785
+11-25 10:53:25.499   338  5241 I resolv  : GetAddrInfoHandler::run: {100 786532 100 983140 10129 0}
+11-25 10:53:25.509   338  5243 I resolv  : res_nmkquery: (QUERY, IN, A)
+11-25 10:53:25.509   338  5243 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x788431c6ec90
+11-25 10:53:25.509   338  5243 I resolv  : doQuery: rcode=0, ancount=8, return value=161
+11-25 10:53:25.510   338  5242 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+11-25 10:53:25.510   338  5242 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7884b1c70810
+11-25 10:53:25.510   338  5242 I resolv  : doQuery: rcode=0, ancount=8, return value=257
+11-25 10:53:25.515  4194  4967 D TrafficStats: tagSocket(137) with statsTag=0xffffffff, statsUid=-1

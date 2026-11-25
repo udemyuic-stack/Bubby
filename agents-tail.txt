@@ -1,0 +1,150 @@
+11-25 10:50:33.850  1761  2621 W A       : UiCallbackStub-onGenericEvent[ServiceEvent = 60] task was not run. Callback from Service received after client was disposed.
+11-25 10:50:33.966  1761  2621 W SearchServiceCore: Abort, client detached.
+11-25 10:50:33.967  1761  2621 W SearchServiceCore: Abort, client detached.
+11-25 10:50:33.968  1761  2621 W SearchServiceCore: Abort, client detached.
+11-25 10:50:33.976  1761  2621 W SearchServiceCore: Abort, client detached.
+11-25 10:50:33.984  1761  2621 W SearchServiceCore: Abort, client detached.
+11-25 10:50:34.021  1405  4853 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-25 10:50:34.025  1405  4853 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-25 10:50:34.026  1405  4853 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-25 10:50:34.026  1405  4853 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-25 10:50:34.026  1405  4853 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-25 10:50:34.027  1405  4853 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-25 10:50:34.028  1405  4853 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-25 10:50:34.028  1405  4853 I NamespaceManager: Package 1 name not found! Using module version.
+11-25 10:50:34.029  1405  4853 W PhenotypeConfigurationU: Update for unknown DeviceConfig package com.google.android.gms.auth_api_proxy [CONTEXT service_id=204 ]
+11-25 10:50:34.029  1405  4853 W PhenotypeConfigurationU: bwix: No package exists for config package: com.google.android.gms.auth_api_proxy
+11-25 10:50:34.029  1405  4853 W PhenotypeConfigurationU: 	at com.google.android.gms.platformconfigurator.PhenotypeConfigurationUpdateListener.b(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+11-25 10:50:34.029  1405  4853 W PhenotypeConfigurationU: 	at com.google.android.gms.platformconfigurator.PhenotypeConfigurationUpdateListener.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+11-25 10:50:34.029  1405  4853 W PhenotypeConfigurationU: 	at com.google.android.gms.platformconfigurator.PhenotypeConfigurationUpdateListener.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):21)
+11-25 10:50:34.029  1405  4853 W PhenotypeConfigurationU: 	at com.google.android.chimera.IntentOperation.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-25 10:50:34.029  1405  4853 W PhenotypeConfigurationU: 	at zhv.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+11-25 10:50:34.029  1405  4853 W PhenotypeConfigurationU: 	at hjm.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3)
+11-25 10:50:34.029  1405  4853 W PhenotypeConfigurationU: 	at hjl.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):11)
+11-25 10:50:34.029  1405  4853 W PhenotypeConfigurationU: 	at dfhf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-25 10:50:34.029  1405  4853 W PhenotypeConfigurationU: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-25 10:50:34.029  1405  4853 W PhenotypeConfigurationU: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-25 10:50:34.029  1405  4853 W PhenotypeConfigurationU: 	at java.lang.Thread.run(Thread.java:1012)
+11-25 10:50:34.054  4480  4519 I BugleRcsEngine: [48] ProvisioningEventReceiver.d: Received Provisioning Event: [Bugle information (100)]
+11-25 10:50:34.054  4480  4519 I BugleRcsEngine: [48] ProvisioningEventReceiver.d: JibeService is running, passing event to provisioning engine.
+11-25 10:50:34.056  1761  1804 I earchbox:search: Background concurrent copying GC freed 304320(10MB) AllocSpace objects, 19(1228KB) LOS objects, 49% free, 18MB/36MB, paused 29us,32us total 734.858ms
+11-25 10:50:34.117  1761  2621 W SearchServiceCore: Abort, client detached.
+11-25 10:50:34.131  4480  4519 I BugleRcsEngine: [48] ProvisioningEventReceiver.d: Received Provisioning Event: [Bugle information (100)]
+11-25 10:50:34.139  4480  4519 I BugleRcsEngine: [48] ProvisioningEventReceiver.d: JibeService is running, passing event to provisioning engine.
+11-25 10:50:34.149  1761  2539 I BgTaskExecutorImpl: Starting EXCLUSIVE background task FETCH_CONFIGS_FROM_PHENOTYPE.
+11-25 10:50:34.151  1405  3006 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-25 10:50:34.226  3999  4085 I PhenotypeBackgroundRecv: Successfully updated snapshot for com.google.android.libraries.mdi.sync#com.google.android.apps.messaging
+11-25 10:50:34.227  1405  3006 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-25 10:50:34.232  1405  4853 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-25 10:50:34.233  1405  4853 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-25 10:50:34.234  1405  4853 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-25 10:50:34.236  1405  4853 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-25 10:50:34.237  1405  4853 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-25 10:50:34.242  1405  2624 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.gcm.gmsproc.GcmInGmsTaskService started execution. cause:5 exec_start_elapsed_seconds: 103 [CONTEXT service_id=218 ]
+11-25 10:50:34.269  1405  1493 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-25 10:50:34.277  4480  4519 I BugleRcsEngine: [48] ProvisioningEventReceiver.d: Received Provisioning Event: [Bugle information (100)]
+11-25 10:50:34.279  1405  4853 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-25 10:50:34.281  3999  4118 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of com.google.android.apps.messaging.shared.experiments.receiver.BuglePhenotypeBroadcastReceiver@7bb087a
+11-25 10:50:34.286  1462  4872 I GCM-GMS : Registering GMS for direct boot.
+11-25 10:50:34.287  1405  4853 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-25 10:50:34.289  1405  4853 I NamespaceManager: Package 1 name not found! Using module version.
+11-25 10:50:34.301  1405  1493 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-25 10:50:34.302  1405  4853 W PhenotypeConfigurationU: Update for unknown DeviceConfig package com.google.android.gms.reminders [CONTEXT service_id=204 ]
+11-25 10:50:34.302  1405  4853 W PhenotypeConfigurationU: bwix: No package exists for config package: com.google.android.gms.reminders
+11-25 10:50:34.302  1405  4853 W PhenotypeConfigurationU: 	at com.google.android.gms.platformconfigurator.PhenotypeConfigurationUpdateListener.b(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+11-25 10:50:34.302  1405  4853 W PhenotypeConfigurationU: 	at com.google.android.gms.platformconfigurator.PhenotypeConfigurationUpdateListener.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+11-25 10:50:34.302  1405  4853 W PhenotypeConfigurationU: 	at com.google.android.gms.platformconfigurator.PhenotypeConfigurationUpdateListener.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):21)
+11-25 10:50:34.302  1405  4853 W PhenotypeConfigurationU: 	at com.google.android.chimera.IntentOperation.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-25 10:50:34.302  1405  4853 W PhenotypeConfigurationU: 	at zhv.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+11-25 10:50:34.302  1405  4853 W PhenotypeConfigurationU: 	at hjm.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3)
+11-25 10:50:34.302  1405  4853 W PhenotypeConfigurationU: 	at hjl.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):11)
+11-25 10:50:34.302  1405  4853 W PhenotypeConfigurationU: 	at dfhf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-25 10:50:34.302  1405  4853 W PhenotypeConfigurationU: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-25 10:50:34.302  1405  4853 W PhenotypeConfigurationU: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-25 10:50:34.302  1405  4853 W PhenotypeConfigurationU: 	at java.lang.Thread.run(Thread.java:1012)
+11-25 10:50:34.307  4480  4519 I BugleRcsEngine: [48] ProvisioningEventReceiver.d: JibeService is running, passing event to provisioning engine.
+11-25 10:50:34.326   521   549 D CompatibilityChangeReporter: Compat change id reported: 135634846; UID 10134; state: DISABLED
+11-25 10:50:34.326   521   550 D CompatibilityChangeReporter: Compat change id reported: 143937733; UID 10134; state: ENABLED
+11-25 10:50:34.333  1584  1689 I PhenotypeBackgroundRecv: Successfully updated snapshot for com.google.android.libraries.mdi.sync#com.google.android.apps.wellbeing
+11-25 10:50:34.354   338   338 D Zygote  : Forked child process 4891
+11-25 10:50:34.355   521   550 I ActivityManager: Start proc 4891:com.google.android.webview/u0a134 for broadcast {com.google.android.webview/com.google.android.libraries.phenotype.client.stable.PhenotypeUpdateBackgroundBroadcastReceiver}
+11-25 10:50:34.398  4891  4891 I android.webview: Using CollectorTypeCC GC.
+11-25 10:50:34.400  4891  4891 W android.webview: Unexpected CPU variant for x86: x86_64.
+11-25 10:50:34.400  4891  4891 W android.webview: Known variants: atom, sandybridge, silvermont, goldmont, goldmont-plus, tremont, kabylake, default
+11-25 10:50:34.403  4891  4891 E android.webview: Not starting debugger since process cannot load the jdwp agent.
+11-25 10:50:34.420  4887  4887 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+11-25 10:50:34.421  4887  4887 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-25 10:50:34.422  1584  1584 I PhenotypeBackgroundRecv: Skipping com.google.android.gms.kids#com.google.android.apps.wellbeing which doesn't use ProcessStable flags.
+11-25 10:50:34.428   401   631 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=4887
+11-25 10:50:34.428   401   631 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (395 us)
+11-25 10:50:34.429   521  2556 D CompatibilityChangeReporter: Compat change id reported: 168419799; UID 10134; state: DISABLED
+11-25 10:50:34.429   521  2556 D CompatibilityChangeReporter: Compat change id reported: 273564678; UID 10134; state: DISABLED
+11-25 10:50:34.434  1405  1493 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-25 10:50:34.440   521   602 D CompatibilityChangeReporter: Compat change id reported: 265195908; UID 10134; state: ENABLED
+11-25 10:50:34.445   137   137 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-25 10:50:34.445  4887  4903 I Gralloc4: mapper 4.x is not supported
+11-25 10:50:34.450  4891  4891 D CompatibilityChangeReporter: Compat change id reported: 171979766; UID 10134; state: ENABLED
+11-25 10:50:34.450  4891  4891 D CompatibilityChangeReporter: Compat change id reported: 242716250; UID 10134; state: ENABLED
+11-25 10:50:34.856     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+11-25 10:50:34.465   521   826 D CompatibilityChangeReporter: Compat change id reported: 170503758; UID 10134; state: ENABLED
+11-25 10:50:34.470  4891  4891 W ziparchive: Unable to open '/data/app/~~a-Q6uT2o3E33GcWg_er4SA==/com.google.android.trichromelibrary_567263637-DaLHy1gtm_Jl9eri10hC3A==/TrichromeLibrary.dm': No such file or directory
+11-25 10:50:34.470  4891  4891 W ziparchive: Unable to open '/data/app/~~a-Q6uT2o3E33GcWg_er4SA==/com.google.android.trichromelibrary_567263637-DaLHy1gtm_Jl9eri10hC3A==/TrichromeLibrary.dm': No such file or directory
+11-25 10:50:34.470  4891  4891 W android.webview: Entry not found
+11-25 10:50:34.477  4891  4891 D nativeloader: Configuring clns-6 for other apk /data/app/~~a-Q6uT2o3E33GcWg_er4SA==/com.google.android.trichromelibrary_567263637-DaLHy1gtm_Jl9eri10hC3A==/TrichromeLibrary.apk. target_sdk_version=34, uses_li
+11-25 10:50:34.513  4891  4891 D nativeloader: Configuring clns-7 for other apk /data/app/~~tww6X_3GgaCpQvu_GPoWMA==/com.google.android.webview-CQgchpbV7EjHBGdHluTXEg==/WebViewGoogle.apk. target_sdk_version=34, uses_libraries=, library_path
+11-25 10:50:34.526  3999  4057 I PhenotypeBackgroundRecv: Successfully updated snapshot for com.google.android.libraries.mobileconfiguration#com.google.android.apps.messaging
+11-25 10:50:34.560  3999  4118 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of com.google.android.apps.messaging.shared.experiments.receiver.BuglePhenotypeBroadcastReceiver@8561b5d
+11-25 10:50:34.601  1462  4869 I Icing   : Indexing com.google.android.gms-internal.3p:MobileApplication from com.google.android.gms
+11-25 10:50:34.603  4891  4891 V GraphicsEnvironment: Currently set values for:
+11-25 10:50:34.603  4891  4891 V GraphicsEnvironment:   angle_gl_driver_selection_pkgs=[]
+11-25 10:50:34.603  4891  4891 V GraphicsEnvironment:   angle_gl_driver_selection_values=[]
+11-25 10:50:34.605  1547  1759 I SP      : Sync for transformer_concept succeeded in 7220 ms: {added: [2023011913_en], metadata: false
+11-25 10:50:34.614  4891  4891 V GraphicsEnvironment: ANGLE GameManagerService for com.google.android.webview: false
+11-25 10:50:34.614  4891  4891 V GraphicsEnvironment: com.google.android.webview is not listed in per-application setting
+11-25 10:50:34.614  4891  4891 V GraphicsEnvironment: Neither updatable production driver nor prerelease driver is supported.
+11-25 10:50:34.617  4891  4891 I LoadedApk: No resource references to update in package com.google.android.trichromelibrary
+11-25 10:50:34.617  4891  4891 I cr_WebViewApkApp: Launched version=113.0.5672.136 minSdkVersion=29 isBundle=false processName=com.google.android.webview
+11-25 10:50:34.619   521  2606 I ActivityManager: Flag disabled. Ignoring finishAttachApplication from uid: 10134. pid: 4891
+11-25 10:50:34.623   521   594 W BatteryExternalStatsWorker: error reading Bluetooth stats: 11
+11-25 10:50:34.633  4480  4512 W TimedProcessReaper: Scheduling killing of process to refresh configuration
+11-25 10:50:34.636  1405  4870 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-25 10:50:34.637  3999  4085 I PhenotypeBackgroundRecv: Successfully updated snapshot for com.google.android.libraries.abuse.hades.moirai#com.google.android.apps.messaging
+11-25 10:50:34.639  1405  4870 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-25 10:50:34.643  1405  4870 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-25 10:50:34.644  1405  4870 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-25 10:50:34.645  1405  4870 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-25 10:50:34.646  1405  4870 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-25 10:50:34.651  1405  4870 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-25 10:50:34.652  1405  4870 I NamespaceManager: Package 1 name not found! Using module version.
+11-25 10:50:34.652  1405  4870 W PhenotypeConfigurationU: Update for unknown DeviceConfig package com.google.android.client_error_logging [CONTEXT service_id=204 ]
+11-25 10:50:34.652  1405  4870 W PhenotypeConfigurationU: bwix: No package exists for config package: com.google.android.client_error_logging
+11-25 10:50:34.652  1405  4870 W PhenotypeConfigurationU: 	at com.google.android.gms.platformconfigurator.PhenotypeConfigurationUpdateListener.b(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+11-25 10:50:34.652  1405  4870 W PhenotypeConfigurationU: 	at com.google.android.gms.platformconfigurator.PhenotypeConfigurationUpdateListener.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+11-25 10:50:34.652  1405  4870 W PhenotypeConfigurationU: 	at com.google.android.gms.platformconfigurator.PhenotypeConfigurationUpdateListener.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):21)
+11-25 10:50:34.652  1405  4870 W PhenotypeConfigurationU: 	at com.google.android.chimera.IntentOperation.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-25 10:50:34.652  1405  4870 W PhenotypeConfigurationU: 	at zhv.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+11-25 10:50:34.652  1405  4870 W PhenotypeConfigurationU: 	at hjm.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3)
+11-25 10:50:34.652  1405  4870 W PhenotypeConfigurationU: 	at hjl.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):11)
+11-25 10:50:34.652  1405  4870 W PhenotypeConfigurationU: 	at dfhf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-25 10:50:34.652  1405  4870 W PhenotypeConfigurationU: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-25 10:50:34.652  1405  4870 W PhenotypeConfigurationU: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-25 10:50:34.652  1405  4870 W PhenotypeConfigurationU: 	at java.lang.Thread.run(Thread.java:1012)
+11-25 10:50:34.658  4718  4718 I com.example.buddy: Perf: native scene 29 fps
+11-25 10:50:34.746  1547  1759 I SP      : GC for 'transformer_concept' (10) with ttl of 0 ms took 0 ms (0/0/0)
+11-25 10:50:34.750  1547  1759 I SP      : Sync for dynamic_art succeeded in 7431 ms: {added: [305f81355a729e382ea9f374dd286d9f, b1f6f47a53f7820be91b9fe247728980], metadata: false
+11-25 10:50:34.752  3999  4065 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of com.google.android.apps.messaging.shared.experiments.receiver.BuglePhenotypeBroadcastReceiver@4565915
+11-25 10:50:34.766  3999  4057 I PhenotypeBackgroundRecv: Successfully updated snapshot for com.google.android.libraries.internal.growth.growthkit#com.google.android.apps.messaging
+11-25 10:50:34.773  1462  4869 W Icing   : No valid account for uploading user actions
+11-25 10:50:34.774  1547  4278 I Environment: Environment.isPackageInstalled():237 com.bitstrips.imoji is not installed
+11-25 10:50:34.791  3999  4118 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of com.google.android.apps.messaging.shared.experiments.receiver.BuglePhenotypeBroadcastReceiver@2d07191
+11-25 10:50:34.805   521  2274 D OomAdjuster: Not killing cached processes
+11-25 10:50:34.818   337   362 I netd    : tetherGetStats() -> {[]} <0.45ms>
+11-25 10:50:34.832  4480  4486 I s.messaging:rcs: Background concurrent copying GC freed 83493(3971KB) AllocSpace objects, 13(580KB) LOS objects, 49% free, 3123KB/6247KB, paused 54us,12us total 376.969ms
+11-25 10:50:34.832  3999  4059 W Bugle   : TextClassifierLibManagerImpl: Reclaiming memory at level: 40
+11-25 10:50:34.838  4718  4737 D EGL_emulation: app_time_stats: avg=32.25ms min=11.48ms max=57.59ms count=29
+11-25 10:50:34.852  3999  4047 W Bugle   : TextClassifierLibManagerImpl: Reclaiming memory at level: 40
+11-25 10:50:34.861  3999  4047 W Bugle   : TextClassifierLibManagerImpl: Reclaiming memory at level: 40
+11-25 10:50:34.864  1547  1759 I SP      : Sync for emoji succeeded in 6911 ms: {added: [60932fe37d5f6d7a3e60488d8a1755c4], metadata: false
+11-25 10:50:34.870  1462  4869 I Icing   : Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0
+11-25 10:50:34.877  1405  4870 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-25 10:50:34.877  1405  4870 I NamespaceManager: Package com.google.oslo name not found! Using module version.

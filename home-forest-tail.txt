@@ -1,0 +1,150 @@
+11-25 10:50:46.075  1585  2106 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:50:46.075  1585  2106 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:50:46.075  1585  2106 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:50:46.075  1585  2106 I A       : Setting session to type: NO_SESSION
+11-25 10:50:46.075  1633  1972 I AiAiEcho: Predicting[0]: 
+11-25 10:50:46.083   518   518 D BatterySaverPolicy: accessibility changed to false, updating policy.
+11-25 10:50:46.084  1585  2106 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:50:46.084  5292  5292 D AndroidRuntime: Shutting down VM
+11-25 10:50:46.084  1585  2106 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:50:46.084  1585  2106 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:50:46.084  1585  2106 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:50:46.084  1585  2106 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:50:46.084  1585  2106 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:50:46.084  1585  2106 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:50:46.085  1585  2106 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:50:46.085  1585  2106 I A       : setNavBarVisible: GestureNavBarVisible{navbarVisible=true}
+11-25 10:50:46.085  1585  2106 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:50:46.085  1585  2106 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:50:46.085  1585  2106 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:50:46.085  1585  2106 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:50:46.085  1585  2106 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:50:46.085  1585  2106 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:50:46.085  1585  2106 I A       : onDisabled. Registered: false
+11-25 10:50:46.092  1633  1972 I AiAiEcho: EchoTargets: 
+11-25 10:50:46.092  1633  1972 I AiAiEcho: Filtered by AiAi flag check: 
+11-25 10:50:46.092  1633  1972 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+11-25 10:50:46.099  1633  1972 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0 (types=[])
+11-25 10:50:46.099   837   837 W PageIndicator: Total number of pages invalid: 0. Assuming 1 page.
+11-25 10:50:46.100  1633  1972 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0 (types=[])
+11-25 10:50:46.106  1585  2106 I A       : Initialize
+11-25 10:50:46.122  1585  2106 I A       : stopListening(NGA_PAUSED_UNKNOWN_REASON, NGA_CREATE), idleOverride=NOT_LISTENING
+11-25 10:50:46.123  1585  2106 I A       : on opa visibility changed false
+11-25 10:50:46.127  1585  2106 I A       : on opa visibility changed false
+11-25 10:50:46.129  1585  2099 I A       : State changed: IDLE => IDLE by NGA_STATE_CHANGED and N/A with Optional.empty
+11-25 10:50:46.138  1585  2099 I A       : Recognizer choice: (recognizer_type: 1, recognizer_mode: 1, choice_reason: 4)
+11-25 10:50:46.146  1585  2106 I NgaEntryPointEventSendr: setupConnection
+11-25 10:50:46.149  1688  1688 I A       : Creating pss binder().
+11-25 10:50:46.154  1585  2106 I NgaEntryPointEventSendr: State changed: Disconnected => Connecting
+11-25 10:50:46.165  4975  4992 I gle.android.gms: Background concurrent copying GC freed 337264(16MB) AllocSpace objects, 214(7696KB) LOS objects, 49% free, 7545KB/14MB, paused 25us,10us total 172.618ms
+11-25 10:50:46.167  1585  2099 I A       : onActiveStateChangeEvent: IDLE => IDLE
+11-25 10:50:46.172  1585  2106 I NgaEntryPointEventSendr: onServiceConnected
+11-25 10:50:46.184  1688  3255 I A       : Calling beginBinderSession().
+11-25 10:50:46.186  1688  3255 I A       : beginBinderSession(): calling binder
+11-25 10:50:46.190  1585  2099 W A       : Missing generator mapping for generator GENERATOR_CONTEXTUAL_SUGGESTIONS
+11-25 10:50:46.190  1585  2099 W A       : Missing generator mapping for generator GENERATOR_FRE_SUGGESTIONS_ON_TIMEOUT
+11-25 10:50:46.190  1585  2099 W A       : Missing generator mapping for generator GENERATOR_FRE_SUGGESTIONS_ON_INVOCATION
+11-25 10:50:46.190  1585  2106 I NgaEntryPointEventSendr: State changed: Connecting => Ready
+11-25 10:50:46.196   518  2057 W ActivityManager: Unable to start service Intent { cmp=com.google.android.apps.tachyon/.clientapi.ClientApiService } U=0: not found
+11-25 10:50:46.202  1585  2099 I A       : #onActiveStateChangeEvent, newState: IDLE, previousState: IDLE.
+11-25 10:50:46.214  1585  2106 W A       : Routing took 22 ms
+11-25 10:50:46.216  1585  2106 I A       : Successfully initialized all components
+11-25 10:50:46.219  1688  2351 W A       : UiCallbackStub-onGenericEvent[ServiceEvent = 241] task was not run. Callback from Service received after client was disposed.
+11-25 10:50:46.219  1688  2351 W A       : UiCallbackStub-onGenericEvent[ServiceEvent = 241] task was not run. Callback from Service received after client was disposed.
+11-25 10:50:46.236   518  2247 D CompatibilityChangeReporter: Compat change id reported: 197654537; UID 10192; state: ENABLED
+11-25 10:50:46.239  1688  2351 I PBSessionCacheImpl: Deleted sessionId[7425698114529157] from persistence.
+11-25 10:50:46.240  1688  2351 W A       : UiCallbackStub-onGenericEvent[ServiceEvent = 60] task was not run. Callback from Service received after client was disposed.
+11-25 10:50:46.243  1688  2351 W SearchServiceCore: Abort, client detached.
+11-25 10:50:46.244  1688  2351 W SearchServiceCore: Abort, client detached.
+11-25 10:50:46.246  1585  2106 I NgaEntryPointEventSendr: State changed: Ready => Disconnected (onOpaDisconnected)
+11-25 10:50:46.247  1688  2351 W SearchServiceCore: Abort, client detached.
+11-25 10:50:46.249  1688  2351 W SearchServiceCore: Abort, client detached.
+11-25 10:50:46.250  1688  2351 W SearchServiceCore: Abort, client detached.
+11-25 10:50:46.304  4929  5092 I Nearby  : [MBleClient] Start ble scanning from NearbyDirect:BluetoothAdapterWrapper, context tag = nearby_messages [CONTEXT service_id=49 ]
+11-25 10:50:46.305  4929  5092 D BluetoothAdapter: isLeEnabled(): ON
+11-25 10:50:46.307  1024  1052 D BtGatt.GattService: stopScan() - queue size =2
+11-25 10:50:46.308  1024  1052 D ActivityAttributionService: notifyActivityAttributionInfo UID=1002 packageName=com.google.android.bluetooth deviceAddress=no_active_device_address
+11-25 10:50:46.309  1024  1052 I bt_btif : packages/modules/Bluetooth/system/btif/src/bluetooth.cc:829 get_profile_interface: get_profile_interface: id = activity_attribution
+11-25 10:50:46.309  1024  1288 D BtGatt.ScanManager: handling stopping scan  [ScanClient scanModeApp 2 scanModeUsed 2 [appScanStats com.google.uid.shared:10131]]
+11-25 10:50:46.309  1024  1288 D BtGatt.ScanManager: stop gattClientScanNative
+11-25 10:50:46.309  1024  1288 I bt_stack: [INFO:le_scanning_manager.cc(168)] Scan in shim layer stopped
+11-25 10:50:46.310  1024  1187 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_address_manager.cc:193 unregister_client: Client unregistered
+11-25 10:50:46.310  1024  1187 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_address_manager.cc:197 unregister_client: Cancelled address rotation alarm
+11-25 10:50:46.311  1024  1288 I bt_stack: [INFO:le_scanning_manager.cc(204)] ScanFilterParamSetup in shim layer
+11-25 10:50:46.311  1024  1209 D BtGatt.GattService: onScanFilterParamsConfigured() - clientIf=2, status=0, action=0, availableSpace=0
+11-25 10:50:46.311  1024  1209 D BtGatt.ScanManager: callback done for scannerId - 2 status - 0
+11-25 10:50:46.312  1024  1288 I bt_stack: [INFO:le_scanning_manager.cc(204)] ScanFilterParamSetup in shim layer
+11-25 10:50:46.312  1024  1209 D BtGatt.GattService: onScanFilterParamsConfigured() - clientIf=2, status=0, action=0, availableSpace=0
+11-25 10:50:46.313  1024  1209 D BtGatt.ScanManager: callback done for scannerId - 2 status - 0
+11-25 10:50:46.313  1024  1288 I bt_stack: [INFO:le_scanning_manager.cc(204)] ScanFilterParamSetup in shim layer
+11-25 10:50:46.314  1024  1209 D BtGatt.GattService: onScanFilterParamsConfigured() - clientIf=2, status=0, action=0, availableSpace=0
+11-25 10:50:46.315  1024  1209 D BtGatt.ScanManager: callback done for scannerId - 2 status - 0
+11-25 10:50:46.315  1024  1288 I bt_stack: [INFO:le_scanning_manager.cc(204)] ScanFilterParamSetup in shim layer
+11-25 10:50:46.316  1024  1209 D BtGatt.GattService: onScanFilterParamsConfigured() - clientIf=2, status=0, action=0, availableSpace=0
+11-25 10:50:46.316  1024  1209 D BtGatt.ScanManager: callback done for scannerId - 2 status - 0
+11-25 10:50:46.316  1024  1288 I bt_stack: [INFO:le_scanning_manager.cc(204)] ScanFilterParamSetup in shim layer
+11-25 10:50:46.317  1024  1209 D BtGatt.GattService: onScanFilterParamsConfigured() - clientIf=2, status=0, action=0, availableSpace=0
+11-25 10:50:46.317  1024  1209 D BtGatt.ScanManager: callback done for scannerId - 2 status - 0
+11-25 10:50:46.317  1024  1288 D BtGatt.ScanManager: configureRegularScanParams() - queue=1
+11-25 10:50:46.318  1024  1288 D BtGatt.ScanManager: configureRegularScanParams() - queue empty, scan stopped
+11-25 10:50:46.318  1024  1052 D BtGatt.GattService: unregisterScanner() - scannerId=2
+11-25 10:50:46.318  1024  1052 I bt_stack: [INFO:le_scanning_manager.cc(162)] Unregister in shim layer, scanner_id:2
+11-25 10:50:46.318  4929  5092 I Nearby  : [MBleClient] M hardware scan: 1 clients, scanMode= OPPORTUNISTIC, filters size = 5 [CONTEXT service_id=49 ]
+11-25 10:50:46.319  4929  5092 D BluetoothAdapter: isLeEnabled(): ON
+11-25 10:50:46.325  1024  1052 D BtGatt.GattService: registerScanner() - UUID=cdf7d5aa-7827-4396-ada6-ad8be3334f84
+11-25 10:50:46.325  1024  1052 I bt_stack: [INFO:le_scanning_manager.cc(155)] RegisterScanner in shim layer
+11-25 10:50:46.325  1024  1209 D BtGatt.GattService: onScannerRegistered() - UUID=cdf7d5aa-7827-4396-ada6-ad8be3334f84, scannerId=2, status=0
+11-25 10:50:46.326  4929  4940 D BluetoothLeScanner: onScannerRegistered() - status=0 scannerId=2 mScannerId=0
+11-25 10:50:46.335  1024  1052 D BtGatt.GattService: start scan with filters
+11-25 10:50:46.335  4929  5016 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService started execution. cause:9 exec_start_elapsed_seconds: 99 [CONTEXT service_id=218 ]
+11-25 10:50:46.338  1024  1052 D BtGatt.GattService: enforcePrivilegedPermissionIfNeeded([BluetoothLeScanFilter [mDeviceName=null, mDeviceAddress=null, mUuid=null, mUuidMask=null, mServiceSolicitationUuid=null, mServiceSolicitationUuidMask=
+11-25 10:50:46.340  1024  1052 D BtGatt.ScanManager: startScan()  [ScanClient scanModeApp -1 scanModeUsed -1 [appScanStats com.google.uid.shared:10131]]
+11-25 10:50:46.340  1024  1052 D ActivityAttributionService: notifyActivityAttributionInfo UID=1002 packageName=com.google.android.bluetooth deviceAddress=no_active_device_address
+11-25 10:50:46.340  1024  1052 I bt_btif : packages/modules/Bluetooth/system/btif/src/bluetooth.cc:829 get_profile_interface: get_profile_interface: id = activity_attribution
+11-25 10:50:46.340  1024  1288 D BtGatt.ScanManager: handling starting scan
+11-25 10:50:46.347  4929  4968 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService finished executing. cause:9 result: 1 elapsed_millis: 60 uptime_millis: 60 exec_start_elapsed_seconds: 99
+11-25 10:50:46.380  4929  5016 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.clearcut.uploader.QosUploaderService started execution. cause:5 exec_start_elapsed_seconds: 100 [CONTEXT service_id=218 ]
+11-25 10:50:46.403  4929  4968 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.clearcut.uploader.QosUploaderService finished executing. cause:5 result: 1 elapsed_millis: 26 uptime_millis: 26 exec_start_elapsed_s
+11-25 10:50:46.446   518   612 D ActivityManager: freezing 3955 com.google.android.googlequicksearchbox
+11-25 10:50:46.741  4866  4908 D EGL_emulation: app_time_stats: avg=21.47ms min=1.94ms max=38.46ms count=43
+11-25 10:50:46.949   335   372 I netd    : setProcSysNet(4, 2, wlan0, retrans_time_ms, 750) <0.07ms>
+11-25 10:50:46.950   335   372 I netd    : setProcSysNet(4, 2, wlan0, ucast_solicit, 10) <0.02ms>
+11-25 10:50:46.951   335   372 I netd    : setProcSysNet(6, 2, wlan0, retrans_time_ms, 750) <0.02ms>
+11-25 10:50:46.951   335   372 I netd    : setProcSysNet(6, 2, wlan0, ucast_solicit, 10) <0.02ms>
+11-25 10:50:47.143  4975  5028 I Icing   : Indexing com.google.android.gms-apps from com.google.android.gms
+11-25 10:50:47.144  4111  4193 W Bugle   : TextClassifierLibManagerImpl: Reclaiming memory at level: 40
+11-25 10:50:47.156  4866  4866 I com.example.buddy: Perf: native scene 29 fps
+11-25 10:50:47.167  5320  5320 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+11-25 10:50:47.168  5320  5320 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-25 10:50:47.179   399   569 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=5320
+11-25 10:50:47.179   399   569 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (2290 us)
+11-25 10:50:47.192  4975  5028 I Icing   : Indexing done com.google.android.gms-apps
+11-25 10:50:47.217   134   134 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-25 10:50:47.217  5320  5321 I Gralloc4: mapper 4.x is not supported
+11-25 10:50:47.413     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+11-25 10:50:47.259  4975  5028 I Icing   : Indexing com.google.android.gms-internal.3p:MobileApplication from com.google.android.gms
+11-25 10:50:47.268  4975  5028 I Icing   : Indexing done com.google.android.gms-internal.3p:MobileApplication
+11-25 10:50:47.564   518   767 D ConnectivityService: reportNetworkConnectivity(100, false) by 10132
+11-25 10:50:47.564   995  2625 D NetworkMonitor/100: Forcing reevaluation for UID 10132. Dns signal count: 0
+11-25 10:50:47.566   995  5326 D TrafficStats: tagSocket(68) with statsTag=0xffffff81, statsUid=-1
+11-25 10:50:47.567   995  5326 D TrafficStats: tagSocket(68) with statsTag=0xffffff81, statsUid=-1
+11-25 10:50:47.569   995  5325 D TrafficStats: tagSocket(75) with statsTag=0xffffff81, statsUid=-1
+11-25 10:50:47.576   995  5325 D TrafficStats: tagSocket(75) with statsTag=0xffffff81, statsUid=-1
+11-25 10:50:47.579   335  5327 I resolv  : ResNSendHandler::run: 0 / {100 983140 100 983140 1073 1}
+11-25 10:50:47.579   335  5327 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7dbb38baff90
+11-25 10:50:47.582   335  5329 I resolv  : ResNSendHandler::run: 0 / {100 983140 100 983140 1073 1}
+11-25 10:50:47.582   335  5328 I resolv  : ResNSendHandler::run: 0 / {100 983140 100 983140 1073 1}
+11-25 10:50:47.583   335  5328 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7dbb38bae2b0
+11-25 10:50:47.583   335  5329 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7db9e8bb36d0
+11-25 10:50:47.583   335  5330 I resolv  : ResNSendHandler::run: 0 / {100 983140 100 983140 1073 1}
+11-25 10:50:47.584   335  5330 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7dba68badb10
+11-25 10:50:47.584   995   995 D TrafficStats: tagSocket(107) with statsTag=0xffffffff, statsUid=-1
+11-25 10:50:47.585   995   995 D TrafficStats: tagSocket(107) with statsTag=0xffffffff, statsUid=-1
+11-25 10:50:47.590   995   995 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-25 10:50:47.590   995  5326 D NetworkMonitor/100: PROBE_DNS connectivitycheck.gstatic.com 23ms OK 142.251.150.120,2001:4860:4826:7800::
+11-25 10:50:47.592   995   995 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-25 10:50:47.592   995   995 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-25 10:50:47.593   995   995 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-25 10:50:47.593   995   995 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-25 10:50:47.594   995   995 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-25 10:50:47.596   995   995 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1

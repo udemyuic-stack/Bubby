@@ -1,0 +1,150 @@
+11-25 10:47:57.405  4793  5582 W NetworkScheduler: 	at bytb.h(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3)
+11-25 10:47:57.405  4793  5582 W NetworkScheduler: 	at byot.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):9)
+11-25 10:47:57.405  4793  5582 W NetworkScheduler: 	at aced.c(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+11-25 10:47:57.405  4793  5582 W NetworkScheduler: 	at aced.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):8)
+11-25 10:47:57.405  4793  5582 W NetworkScheduler: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-25 10:47:57.405  4793  5582 W NetworkScheduler: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-25 10:47:57.405  4793  5582 W NetworkScheduler: 	at acjn.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-25 10:47:57.405  4793  5582 W NetworkScheduler: 	at java.lang.Thread.run(Thread.java:1012)
+11-25 10:47:57.406  4793  5606 I NamespaceManager: Package com.google.android.aicore name not found! Using module version.
+11-25 10:47:57.409  4793  5606 I NamespaceManager: Package com.google.android.apps.agentunderstander name not found! Using module version.
+11-25 10:47:57.409  4793  5606 I NamespaceManager: Package com.google.android.audioproxy name not found! Using module version.
+11-25 10:47:57.410  4793  5606 I NamespaceManager: Package com.google.android.apps.pixel.psi name not found! Using module version.
+11-25 10:47:57.410  4793  5606 I NamespaceManager: Package com.google.android.apps.safetycore name not found! Using module version.
+11-25 10:47:57.415  4793  5606 I NamespaceManager: Package com.google.android.crashrecovery name not found! Using module version.
+11-25 10:47:57.416  4793  5606 I NamespaceManager: Package com.google.android.profiling name not found! Using module version.
+11-25 10:47:57.416  4793  5606 I NamespaceManager: Package com.google.android.bt name not found! Using module version.
+11-25 10:47:57.418  4793  5606 I NamespaceManager: Package com.google.android.nfcservices name not found! Using module version.
+11-25 10:47:57.418  4793  5606 I NamespaceManager: Package com.google.android.webapp name not found! Using module version.
+11-25 10:47:57.431  4793  5606 I NamespaceManager: Package com.google.android.telephonycore name not found! Using module version.
+11-25 10:47:57.436  4899  5601 I ChimeraConfigurator: Detected pending changes for urgent request: [vision.ocr]. Pending module sets: container:2318189190800+mlkit.ocr.common,tflite_dynamite:2640104055100800+tflite_dynamite,vision_ocr:23160
+11-25 10:47:57.437  4793  5606 I NamespaceManager: Package com.google.android.uprobestats name not found! Using module version.
+11-25 10:47:57.438  4899  5524 I Pay     : A Phenotype flag has been updated. [CONTEXT service_id=198 ]
+11-25 10:47:57.438  4899  5524 I Pay     : Requested check of feature migrations. [CONTEXT service_id=198 ]
+11-25 10:47:57.441  4793  5606 W PhenotypeConfigurationU: Update for unknown DeviceConfig package com.google.android.gms.pay [CONTEXT service_id=204 ]
+11-25 10:47:57.441  4793  5606 W PhenotypeConfigurationU: bwix: No package exists for config package: com.google.android.gms.pay
+11-25 10:47:57.441  4793  5606 W PhenotypeConfigurationU: 	at com.google.android.gms.platformconfigurator.PhenotypeConfigurationUpdateListener.b(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+11-25 10:47:57.441  4793  5606 W PhenotypeConfigurationU: 	at com.google.android.gms.platformconfigurator.PhenotypeConfigurationUpdateListener.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+11-25 10:47:57.441  4793  5606 W PhenotypeConfigurationU: 	at com.google.android.gms.platformconfigurator.PhenotypeConfigurationUpdateListener.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):21)
+11-25 10:47:57.441  4793  5606 W PhenotypeConfigurationU: 	at com.google.android.chimera.IntentOperation.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-25 10:47:57.441  4793  5606 W PhenotypeConfigurationU: 	at zhv.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+11-25 10:47:57.441  4793  5606 W PhenotypeConfigurationU: 	at hjm.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3)
+11-25 10:47:57.441  4793  5606 W PhenotypeConfigurationU: 	at hjl.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):11)
+11-25 10:47:57.441  4793  5606 W PhenotypeConfigurationU: 	at dfhf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-25 10:47:57.441  4793  5606 W PhenotypeConfigurationU: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-25 10:47:57.441  4793  5606 W PhenotypeConfigurationU: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-25 10:47:57.441  4793  5606 W PhenotypeConfigurationU: 	at java.lang.Thread.run(Thread.java:1012)
+11-25 10:47:57.444  4793  5607 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-25 10:47:57.444  4793  5607 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-25 10:47:57.445  4793  5607 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-25 10:47:57.445  4793  5607 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-25 10:47:57.445  4793  5607 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-25 10:47:57.445  4793  5607 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-25 10:47:57.445  4793  5607 I NamespaceManager: Package 1 name not found! Using module version.
+11-25 10:47:57.445  4793  5607 I NamespaceManager: Package rkpd name not found! Using module version.
+11-25 10:47:57.445  4793  5607 I NamespaceManager: Package android.companion name not found! Using module version.
+11-25 10:47:57.445  4793  5607 I NamespaceManager: Package com.google.android.aicore name not found! Using module version.
+11-25 10:47:57.445  4793  5607 I NamespaceManager: Package com.google.android.apps.agentunderstander name not found! Using module version.
+11-25 10:47:57.445  4793  5607 I NamespaceManager: Package com.google.android.audioproxy name not found! Using module version.
+11-25 10:47:57.446  4793  5607 I NamespaceManager: Package com.google.android.apps.pixel.psi name not found! Using module version.
+11-25 10:47:57.446  4793  5607 I NamespaceManager: Package com.google.android.apps.safetycore name not found! Using module version.
+11-25 10:47:57.446  4793  5607 I NamespaceManager: Package com.google.android.crashrecovery name not found! Using module version.
+11-25 10:47:57.446  4793  5607 I NamespaceManager: Package com.google.android.profiling name not found! Using module version.
+11-25 10:47:57.446  4793  5607 I NamespaceManager: Package com.google.android.bt name not found! Using module version.
+11-25 10:47:57.446  4793  5607 I NamespaceManager: Package com.google.android.nfcservices name not found! Using module version.
+11-25 10:47:57.446  4793  5607 I NamespaceManager: Package com.google.android.webapp name not found! Using module version.
+11-25 10:47:57.446  4793  5607 I NamespaceManager: Package com.google.android.telephonycore name not found! Using module version.
+11-25 10:47:57.446  4793  5607 I NamespaceManager: Package com.google.android.uprobestats name not found! Using module version.
+11-25 10:47:57.447  4793  5607 W PhenotypeConfigurationU: Update for unknown DeviceConfig package com.google.android.gms.rcs [CONTEXT service_id=204 ]
+11-25 10:47:57.447  4793  5607 W PhenotypeConfigurationU: bwix: No package exists for config package: com.google.android.gms.rcs
+11-25 10:47:57.447  4793  5607 W PhenotypeConfigurationU: 	at com.google.android.gms.platformconfigurator.PhenotypeConfigurationUpdateListener.b(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+11-25 10:47:57.447  4793  5607 W PhenotypeConfigurationU: 	at com.google.android.gms.platformconfigurator.PhenotypeConfigurationUpdateListener.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+11-25 10:47:57.447  4793  5607 W PhenotypeConfigurationU: 	at com.google.android.gms.platformconfigurator.PhenotypeConfigurationUpdateListener.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):21)
+11-25 10:47:57.447  4793  5607 W PhenotypeConfigurationU: 	at com.google.android.chimera.IntentOperation.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-25 10:47:57.447  4793  5607 W PhenotypeConfigurationU: 	at zhv.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+11-25 10:47:57.447  4793  5607 W PhenotypeConfigurationU: 	at hjm.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3)
+11-25 10:47:57.447  4793  5607 W PhenotypeConfigurationU: 	at hjl.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):11)
+11-25 10:47:57.447  4793  5607 W PhenotypeConfigurationU: 	at dfhf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-25 10:47:57.447  4793  5607 W PhenotypeConfigurationU: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-25 10:47:57.447  4793  5607 W PhenotypeConfigurationU: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-25 10:47:57.447  4793  5607 W PhenotypeConfigurationU: 	at java.lang.Thread.run(Thread.java:1012)
+11-25 10:47:57.457  5434  5434 I com.example.buddy: Perf: native scene 29 fps
+11-25 10:47:57.467   521  1951 W JobScheduler: Job didn't exist in JobStore: e00d636 #u0a155/7 com.google.android.contacts/com.google.android.apps.contacts.shortcut.ShortcutJobService
+11-25 10:47:57.468  4899  5601 I GmsDebugLogger: [73] 1801
+11-25 10:47:57.469  4899  5601 W ZappDownloader: No successful module downloads for requested features [vision.ocr].
+11-25 10:47:57.470  4899  5601 I GmsDebugLogger: [30] [VisionOcrDynamite.integ:231602402100000],[TfliteDynamiteDynamite.integ:264010405100800],[MlkitOcrCommon.optional:231818100800]
+11-25 10:47:57.472  4899  5601 W ChimeraConfigService: Retry attempt was throttled. [CONTEXT service_id=264 ]
+11-25 10:47:57.472  4899  5601 I GmsDebugLogger: [83] 1 [vision.ocr]
+11-25 10:47:57.473  4899  5604 W Vision  : Request for optional module download of ocr failed. Request again.
+11-25 10:47:57.474  4899  5604 W Vision  : Would have logged:
+11-25 10:47:57.474  4899  5604 W Vision  : # dsae@37884fe7
+11-25 10:47:57.474  4899  5604 I Vision  : Schedule retrying download ocr at 95499 with backoff 10 seconds
+11-25 10:47:57.480  4793  5035 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-25 10:47:57.481  4793  5035 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-25 10:47:57.485  4793  5035 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-25 10:47:57.485  4793  5035 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-25 10:47:57.485  4793  5035 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-25 10:47:57.486  4793  5035 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-25 10:47:57.488  4793  5035 I NamespaceManager: Package 1 name not found! Using module version.
+11-25 10:47:57.488  4793  5035 I NamespaceManager: Package rkpd name not found! Using module version.
+11-25 10:47:57.489  4793  5035 I NamespaceManager: Package android.companion name not found! Using module version.
+11-25 10:47:57.489  4793  5035 I NamespaceManager: Package com.google.android.aicore name not found! Using module version.
+11-25 10:47:57.489  4793  5035 I NamespaceManager: Package com.google.android.apps.agentunderstander name not found! Using module version.
+11-25 10:47:57.489  4793  5035 I NamespaceManager: Package com.google.android.audioproxy name not found! Using module version.
+11-25 10:47:57.490  4793  5035 I NamespaceManager: Package com.google.android.apps.pixel.psi name not found! Using module version.
+11-25 10:47:57.490  4793  5035 I NamespaceManager: Package com.google.android.apps.safetycore name not found! Using module version.
+11-25 10:47:57.495  4793  5035 I NamespaceManager: Package com.google.android.crashrecovery name not found! Using module version.
+11-25 10:47:57.495  4793  5035 I NamespaceManager: Package com.google.android.profiling name not found! Using module version.
+11-25 10:47:57.496  4793  5035 I NamespaceManager: Package com.google.android.bt name not found! Using module version.
+11-25 10:47:57.496  4793  5035 I NamespaceManager: Package com.google.android.nfcservices name not found! Using module version.
+11-25 10:47:57.496  4793  5035 I NamespaceManager: Package com.google.android.webapp name not found! Using module version.
+11-25 10:47:57.496  4793  5035 I NamespaceManager: Package com.google.android.telephonycore name not found! Using module version.
+11-25 10:47:57.496  4793  5035 I NamespaceManager: Package com.google.android.uprobestats name not found! Using module version.
+11-25 10:47:57.496  4793  5035 W PhenotypeConfigurationU: Update for unknown DeviceConfig package com.google.android.gms.udc [CONTEXT service_id=204 ]
+11-25 10:47:57.496  4793  5035 W PhenotypeConfigurationU: bwix: No package exists for config package: com.google.android.gms.udc
+11-25 10:47:57.496  4793  5035 W PhenotypeConfigurationU: 	at com.google.android.gms.platformconfigurator.PhenotypeConfigurationUpdateListener.b(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+11-25 10:47:57.496  4793  5035 W PhenotypeConfigurationU: 	at com.google.android.gms.platformconfigurator.PhenotypeConfigurationUpdateListener.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+11-25 10:47:57.496  4793  5035 W PhenotypeConfigurationU: 	at com.google.android.gms.platformconfigurator.PhenotypeConfigurationUpdateListener.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):21)
+11-25 10:47:57.496  4793  5035 W PhenotypeConfigurationU: 	at com.google.android.chimera.IntentOperation.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-25 10:47:57.496  4793  5035 W PhenotypeConfigurationU: 	at zhv.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+11-25 10:47:57.496  4793  5035 W PhenotypeConfigurationU: 	at hjm.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3)
+11-25 10:47:57.496  4793  5035 W PhenotypeConfigurationU: 	at hjl.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):11)
+11-25 10:47:57.496  4793  5035 W PhenotypeConfigurationU: 	at dfhf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-25 10:47:57.496  4793  5035 W PhenotypeConfigurationU: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-25 10:47:57.496  4793  5035 W PhenotypeConfigurationU: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-25 10:47:57.496  4793  5035 W PhenotypeConfigurationU: 	at java.lang.Thread.run(Thread.java:1012)
+11-25 10:47:57.507  4793  5535 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-25 10:47:57.509  4793  5535 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-25 10:47:57.510  4793  5535 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-25 10:47:57.510  4793  5535 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-25 10:47:57.510  4793  5535 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-25 10:47:57.510  4793  5535 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-25 10:47:57.511  4793  5535 I NamespaceManager: Package 1 name not found! Using module version.
+11-25 10:47:57.511  4793  5535 I NamespaceManager: Package rkpd name not found! Using module version.
+11-25 10:47:57.511  4793  5535 I NamespaceManager: Package android.companion name not found! Using module version.
+11-25 10:47:57.511  4793  5535 I NamespaceManager: Package com.google.android.aicore name not found! Using module version.
+11-25 10:47:57.511  4793  5535 I NamespaceManager: Package com.google.android.apps.agentunderstander name not found! Using module version.
+11-25 10:47:57.511  4793  5535 I NamespaceManager: Package com.google.android.audioproxy name not found! Using module version.
+11-25 10:47:57.511  4793  5535 I NamespaceManager: Package com.google.android.apps.pixel.psi name not found! Using module version.
+11-25 10:47:57.511  4793  5535 I NamespaceManager: Package com.google.android.apps.safetycore name not found! Using module version.
+11-25 10:47:57.511  4793  5535 I NamespaceManager: Package com.google.android.crashrecovery name not found! Using module version.
+11-25 10:47:57.511  4793  5535 I NamespaceManager: Package com.google.android.profiling name not found! Using module version.
+11-25 10:47:57.511  4793  5535 I NamespaceManager: Package com.google.android.bt name not found! Using module version.
+11-25 10:47:57.512  4793  5535 I NamespaceManager: Package com.google.android.nfcservices name not found! Using module version.
+11-25 10:47:57.512  4793  5535 I NamespaceManager: Package com.google.android.webapp name not found! Using module version.
+11-25 10:47:57.512  4793  5535 I NamespaceManager: Package com.google.android.telephonycore name not found! Using module version.
+11-25 10:47:57.512  4793  5535 I NamespaceManager: Package com.google.android.uprobestats name not found! Using module version.
+11-25 10:47:57.512  4793  5535 W PhenotypeConfigurationU: Update for unknown DeviceConfig package com.google.android.gms.ulr [CONTEXT service_id=204 ]
+11-25 10:47:57.512  4793  5535 W PhenotypeConfigurationU: bwix: No package exists for config package: com.google.android.gms.ulr
+11-25 10:47:57.512  4793  5535 W PhenotypeConfigurationU: 	at com.google.android.gms.platformconfigurator.PhenotypeConfigurationUpdateListener.b(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+11-25 10:47:57.512  4793  5535 W PhenotypeConfigurationU: 	at com.google.android.gms.platformconfigurator.PhenotypeConfigurationUpdateListener.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+11-25 10:47:57.512  4793  5535 W PhenotypeConfigurationU: 	at com.google.android.gms.platformconfigurator.PhenotypeConfigurationUpdateListener.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):21)
+11-25 10:47:57.512  4793  5535 W PhenotypeConfigurationU: 	at com.google.android.chimera.IntentOperation.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-25 10:47:57.512  4793  5535 W PhenotypeConfigurationU: 	at zhv.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+11-25 10:47:57.512  4793  5535 W PhenotypeConfigurationU: 	at hjm.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3)
+11-25 10:47:57.512  4793  5535 W PhenotypeConfigurationU: 	at hjl.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):11)
+11-25 10:47:57.512  4793  5535 W PhenotypeConfigurationU: 	at dfhf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-25 10:47:57.512  4793  5535 W PhenotypeConfigurationU: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-25 10:47:57.512  4793  5535 W PhenotypeConfigurationU: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-25 10:47:57.512  4793  5535 W PhenotypeConfigurationU: 	at java.lang.Thread.run(Thread.java:1012)
+11-25 10:47:57.515  4793  5035 I PTCommittedOperation: Receive new configuration for com.google.android.gms.ulr

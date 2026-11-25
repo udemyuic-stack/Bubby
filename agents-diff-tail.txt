@@ -1,0 +1,150 @@
+11-25 10:47:58.767  1709  2420 W YouTubeMusic: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-25 10:47:58.767  1709  2420 W YouTubeMusic: 	at yxr.run(PG:11)
+11-25 10:47:58.767  1709  2420 W YouTubeMusic: 	at java.lang.Thread.run(Thread.java:1012)
+11-25 10:47:58.767  1709  2420 W YouTubeMusic: Caused by: efc
+11-25 10:47:58.767  1709  2420 W YouTubeMusic: 	at zgl.run(PG:13)
+11-25 10:47:58.767  1709  2420 W YouTubeMusic: 	... 5 more
+11-25 10:47:58.784  4128  4251 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603648814
+11-25 10:47:58.801  4128  4275 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f32a_fe0f/lottie.json
+11-25 10:47:58.801  4128  4275 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f32a_fe0f/lottie.json)
+11-25 10:47:58.818  4128  4672 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f4a7/lottie.json
+11-25 10:47:58.818  4128  4672 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f4a7/lottie.json)
+11-25 10:47:58.827  4128  4275 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603648815
+11-25 10:47:58.840  4128  4672 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603648816
+11-25 10:47:58.842  5164  5403 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.languageprofile.GcmTaskService finished executing. cause:5 result: 1 elapsed_millis: 159 uptime_millis: 159 exec_start_elapsed_secon
+11-25 10:47:58.844  4128  4251 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f327_fe0f/lottie.json
+11-25 10:47:58.844  4128  4251 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f327_fe0f/lottie.json)
+11-25 10:47:58.875  4128  4251 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603648817
+11-25 10:47:58.881  4128  4672 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f329_fe0f/lottie.json
+11-25 10:47:58.881  4128  4672 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f329_fe0f/lottie.json)
+11-25 10:47:58.884  5164  5399 W GLSUser : [AppCertManager] Exception while requesting key: 
+11-25 10:47:58.884  5164  5399 W GLSUser : java.util.concurrent.ExecutionException: avvw: Parse Proto Exception.
+11-25 10:47:58.884  5164  5399 W GLSUser : 	at dlnv.s(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3)
+11-25 10:47:58.884  5164  5399 W GLSUser : 	at dlnv.get(:com.google.android.gms@231818047@23.18.18 (190800-535401451):7)
+11-25 10:47:58.884  5164  5399 W GLSUser : 	at oub.b(:com.google.android.gms@231818047@23.18.18 (190800-535401451):78)
+11-25 10:47:58.884  5164  5399 W GLSUser : 	at otz.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):8)
+11-25 10:47:58.884  5164  5399 W GLSUser : 	at otv.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-25 10:47:58.884  5164  5399 W GLSUser : 	at otx.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+11-25 10:47:58.884  5164  5399 W GLSUser : 	at otx.b(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-25 10:47:58.884  5164  5399 W GLSUser : 	at abxk.r(:com.google.android.gms@231818047@23.18.18 (190800-535401451):1)
+11-25 10:47:58.884  5164  5399 W GLSUser : 	at abxw.e(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+11-25 10:47:58.884  5164  5399 W GLSUser : 	at abxw.g(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-25 10:47:58.884  5164  5399 W GLSUser : 	at cyeg.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):27)
+11-25 10:47:58.884  5164  5399 W GLSUser : 	at czpd.call(:com.google.android.gms@231818047@23.18.18 (190800-535401451):78)
+11-25 10:47:58.884  5164  5399 W GLSUser : 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+11-25 10:47:58.884  5164  5399 W GLSUser : 	at aced.c(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+11-25 10:47:58.884  5164  5399 W GLSUser : 	at aced.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):7)
+11-25 10:47:58.884  5164  5399 W GLSUser : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-25 10:47:58.884  5164  5399 W GLSUser : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-25 10:47:58.884  5164  5399 W GLSUser : 	at acjn.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-25 10:47:58.884  5164  5399 W GLSUser : 	at java.lang.Thread.run(Thread.java:1012)
+11-25 10:47:58.884  5164  5399 W GLSUser : Caused by: avvw: Parse Proto Exception.
+11-25 10:47:58.884  5164  5399 W GLSUser : 	at avwn.f(:com.google.android.gms@231818047@23.18.18 (190800-535401451):5)
+11-25 10:47:58.884  5164  5399 W GLSUser : 	at avxk.onSucceeded(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-25 10:47:58.884  5164  5399 W GLSUser : 	at jf.onSucceeded(:com.google.android.gms.dynamite_cronetdynamite@231818047@23.18.18 (190800-0):0)
+11-25 10:47:58.884  5164  5399 W GLSUser : 	at ie.run(:com.google.android.gms.dynamite_cronetdynamite@231818047@23.18.18 (190800-0):4)
+11-25 10:47:58.884  5164  5399 W GLSUser : 	... 6 more
+11-25 10:47:58.884  5164  5399 W GLSUser : Caused by: dzfz: Protocol message contained an invalid tag (zero).
+11-25 10:47:58.884  5164  5399 W GLSUser : 	at dzdb.k(:com.google.android.gms@231818047@23.18.18 (190800-535401451):13)
+11-25 10:47:58.884  5164  5399 W GLSUser : 	at dzha.c(:com.google.android.gms@231818047@23.18.18 (190800-535401451):47)
+11-25 10:47:58.884  5164  5399 W GLSUser : 	at dzha.h(:com.google.android.gms@231818047@23.18.18 (190800-535401451):45)
+11-25 10:47:58.884  5164  5399 W GLSUser : 	at dzfd.A(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-25 10:47:58.884  5164  5399 W GLSUser : 	at dzex.f(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-25 10:47:58.884  5164  5399 W GLSUser : 	at dzcx.d(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-25 10:47:58.884  5164  5399 W GLSUser : 	at dzcx.c(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-25 10:47:58.884  5164  5399 W GLSUser : 	at dzcx.n(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-25 10:47:58.884  5164  5399 W GLSUser : 	at avwn.h(:com.google.android.gms@231818047@23.18.18 (190800-535401451):7)
+11-25 10:47:58.884  5164  5399 W GLSUser : 	at avwn.f(:com.google.android.gms@231818047@23.18.18 (190800-535401451):1)
+11-25 10:47:58.884  5164  5399 W GLSUser : 	... 9 more
+11-25 10:47:58.890  5164  5399 W GLSUser : [DeviceKeyStore] Cannot load key: Device key file not found.
+11-25 10:47:58.897  4128  4251 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f30d/lottie.json
+11-25 10:47:58.897  4128  4251 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f30d/lottie.json)
+11-25 10:47:58.927  4128  4672 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603648818
+11-25 10:47:58.928  4128  4251 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603648819
+11-25 10:47:58.933   334  5585 I resolv  : GetAddrInfoHandler::run: {100 786532 100 983140 10131 0}
+11-25 10:47:58.940  4128  4275 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f30e/lottie.json
+11-25 10:47:58.940  4128  4275 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f30e/lottie.json)
+11-25 10:47:58.950   334  5586 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+11-25 10:47:58.950   334  5587 I resolv  : res_nmkquery: (QUERY, IN, A)
+11-25 10:47:58.951   334  5587 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x74b5a7064c70
+11-25 10:47:58.951   334  5587 I resolv  : doQuery: rcode=0, ancount=8, return value=173
+11-25 10:47:58.951   334  5586 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x74b6a706c250
+11-25 10:47:58.951   334  5586 I resolv  : doQuery: rcode=0, ancount=8, return value=269
+11-25 10:47:58.966  5164  5483 D TrafficStats: tagSocket(212) with statsTag=0x34000609, statsUid=10125
+11-25 10:47:58.967  4128  4275 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603648820
+11-25 10:47:58.974  4128  4672 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f30f/lottie.json
+11-25 10:47:58.974  4128  4672 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f30f/lottie.json)
+11-25 10:47:58.989  4128  4251 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/2604_fe0f/lottie.json
+11-25 10:47:58.989  4128  4251 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/2604_fe0f/lottie.json)
+11-25 10:47:58.993  4128  4672 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603648821
+11-25 10:47:58.996  5164  5483 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+11-25 10:47:59.008  4128  4251 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603648822
+11-25 10:47:59.010  5164  5483 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-25 10:47:59.011  5164  5483 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-25 10:47:59.020  4128  4275 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f42e/lottie.json
+11-25 10:47:59.020  4128  4275 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f42e/lottie.json)
+11-25 10:47:59.043  4128  4672 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f984/lottie.json
+11-25 10:47:59.043  4128  4672 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f984/lottie.json)
+11-25 10:47:59.046  4128  4275 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603648823
+11-25 10:47:59.048  4128  4251 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f98e/lottie.json
+11-25 10:47:59.048  4128  4251 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f98e/lottie.json)
+11-25 10:47:59.052  5199  5216 D EGL_emulation: app_time_stats: avg=23.28ms min=11.52ms max=39.24ms count=42
+11-25 10:47:59.058  5582  5582 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+11-25 10:47:59.058  5582  5582 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-25 10:47:59.061   398   810 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=5582
+11-25 10:47:59.061   398   810 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (161 us)
+11-25 10:47:59.064  4128  4672 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603648824
+11-25 10:47:59.067  4128  4251 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603648825
+11-25 10:47:59.078  5164  5483 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+11-25 10:47:59.079  5164  5483 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-25 10:47:59.079  5164  5483 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-25 10:47:59.085  4128  4275 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f409/lottie.json
+11-25 10:47:59.085  4128  4275 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f409/lottie.json)
+11-25 10:47:59.088   518  1514 D ConnectivityService: requestNetwork for uid/pid:10156/1709 activeRequest: null callbackRequest: 149 [NetworkRequest [ REQUEST id=150, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 1015
+11-25 10:47:59.276     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+11-25 10:47:59.089   135   135 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-25 10:47:59.091  5582  5588 I Gralloc4: mapper 4.x is not supported
+11-25 10:47:59.094   518   759 D ConnectivityService: NetReassign [150 : null → 100] [c 1] [a 0] [i 1]
+11-25 10:47:59.115   518   752 D WifiNetworkFactory: got request NetworkRequest [ REQUEST id=150, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10156 RequestorUid: 10156 RequestorPkg: com.google.android.apps.youtube.m
+11-25 10:47:59.115   518   752 D UntrustedWifiNetworkFactory: got request NetworkRequest [ REQUEST id=150, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10156 RequestorUid: 10156 RequestorPkg: com.google.android.apps.
+11-25 10:47:59.115   518   752 D OemPaidWifiNetworkFactory: got request NetworkRequest [ REQUEST id=150, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10156 RequestorUid: 10156 RequestorPkg: com.google.android.apps.yo
+11-25 10:47:59.115   518   752 D MultiInternetWifiNetworkFactory: got request NetworkRequest [ REQUEST id=150, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10156 RequestorUid: 10156 RequestorPkg: com.google.android.a
+11-25 10:47:59.120  4128  4275 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603648826
+11-25 10:47:59.153  4128  4251 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f996/lottie.json
+11-25 10:47:59.153  4128  4251 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f996/lottie.json)
+11-25 10:47:59.162  5164  5468 I NearbySharing: FastInitiation warming period has ended [CONTEXT service_id=194 ]
+11-25 10:47:59.192  4128  4251 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603648827
+11-25 10:47:59.220   518   601 D ActivityManager: sync unfroze 1716 com.google.android.youtube for 6
+11-25 10:47:59.230  4128  4275 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f995/lottie.json
+11-25 10:47:59.230  4128  4275 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f995/lottie.json)
+11-25 10:47:59.240  1709  2476 W YouTubeMusic: Invalid playback type; streaming data is not playable
+11-25 10:47:59.251  1709  1709 E Widget.RecentlyPlayed: Filling bundle but recently played items are EMPTY.
+11-25 10:47:59.273   518  3753 W system_server: Long monitor contention with owner appscheduling.default (601) at int com.android.server.am.ActivityManagerService.bindServiceInstance(android.app.IApplicationThread, android.os.IBinder, andro
+11-25 10:47:59.274   518  3753 D CompatibilityChangeReporter: Compat change id reported: 161145287; UID 10131; state: DISABLED
+11-25 10:47:59.274   518  3753 D CompatibilityChangeReporter: Compat change id reported: 161145287; UID 10131; state: ENABLED
+11-25 10:47:59.278  4128  4275 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603648828
+11-25 10:47:59.322  1713  1713 I BgTaskExecutorImpl: Starting EXCLUSIVE background task UPLOAD_ASSISTANT_DEVICE_SETTINGS.
+11-25 10:47:59.334  1713  2569 I NetworkRecognitionRnr: Using pair HTTP connection
+11-25 10:47:59.338  1713  2366 I A       : [Upload] Connected
+11-25 10:47:59.348  1713  2929 W LocationOracle: getBestLocation(): no location is available
+11-25 10:47:59.350  4128  4672 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f422/lottie.json
+11-25 10:47:59.350  4128  4672 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f422/lottie.json)
+11-25 10:47:59.364  5164  5399 W GlsClientGrpc: Voilatile gRPC failure INVALID_ARGUMENT: Application credential header not valid. Please fix the client to pass a valid application credential header. [CONTEXT service_id=6 ]
+11-25 10:47:59.364  5164  5399 W GlsClientGrpc: enms: INVALID_ARGUMENT: Application credential header not valid. Please fix the client to pass a valid application credential header.
+11-25 10:47:59.364  5164  5399 W GlsClientGrpc: 	at enmr.h(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-25 10:47:59.364  5164  5399 W GlsClientGrpc: 	at abxw.u(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-25 10:47:59.364  5164  5399 W GlsClientGrpc: 	at abxw.e(:com.google.android.gms@231818047@23.18.18 (190800-535401451):17)
+11-25 10:47:59.364  5164  5399 W GlsClientGrpc: 	at abxw.g(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-25 10:47:59.364  5164  5399 W GlsClientGrpc: 	at cyeg.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):27)
+11-25 10:47:59.364  5164  5399 W GlsClientGrpc: 	at czpd.call(:com.google.android.gms@231818047@23.18.18 (190800-535401451):78)
+11-25 10:47:59.364  5164  5399 W GlsClientGrpc: 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+11-25 10:47:59.364  5164  5399 W GlsClientGrpc: 	at aced.c(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+11-25 10:47:59.364  5164  5399 W GlsClientGrpc: 	at aced.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):7)
+11-25 10:47:59.364  5164  5399 W GlsClientGrpc: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-25 10:47:59.364  5164  5399 W GlsClientGrpc: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-25 10:47:59.364  5164  5399 W GlsClientGrpc: 	at acjn.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-25 10:47:59.364  5164  5399 W GlsClientGrpc: 	at java.lang.Thread.run(Thread.java:1012)
+11-25 10:47:59.371  4128  4251 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f40a/lottie.json
+11-25 10:47:59.371  4128  4251 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f40a/lottie.json)
+11-25 10:47:59.381  1713  2261 W LocationOracle: No location returned by GMS core getLastLocation()
+11-25 10:47:59.388   518  3699 D ConnectivityService: requestNetwork for uid/pid:10139/1716 activeRequest: null callbackRequest: 151 [NetworkRequest [ REQUEST id=152, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 1013

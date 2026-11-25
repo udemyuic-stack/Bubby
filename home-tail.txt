@@ -1,0 +1,150 @@
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.m(PG:2)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.j.a(PG:1)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.l(PG:3)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.cancel(PG:8)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.m(PG:2)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.j.a(PG:1)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.l(PG:3)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.cancel(PG:8)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.m(PG:2)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.j.a(PG:1)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.l(PG:3)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.cancel(PG:8)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.m(PG:2)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.j.a(PG:1)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.l(PG:3)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.cancel(PG:8)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.m(PG:2)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.c.a(PG:1)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.l(PG:3)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.cancel(PG:8)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.bu.cancel(PG:1)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.cancel(PG:17)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.staticplugins.bk.b.h.run(PG:2)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.bf.execute(PG:1)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.i(PG:1)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.l(PG:12)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.cancel(PG:8)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.m(PG:2)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.j.a(PG:1)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.l(PG:3)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.cancel(PG:8)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.shared.util.c.aj.a(PG:2)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.l(PG:3)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.cancel(PG:8)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.m(PG:2)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.c.a(PG:1)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.l(PG:3)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.cancel(PG:8)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.s3.o.c(PG:2)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.s3.r.a(PG:1)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.staticplugins.dc.a.c.e(PG:2)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.staticplugins.dc.a.c.c(PG:3)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.staticplugins.dc.a.e.a(PG:5)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.s3.n.hh(PG:1)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at com.google.cd.g.a.f.e(PG:2)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.speech.k.a.g.d(PG:22)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.speech.k.a.g.ks(PG:6)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.s3.o.e(PG:14)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.s3.p.run(PG:1)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:487)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.shared.util.c.a.e.run(PG:2)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.shared.util.c.a.bi.run(PG:1)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.shared.util.c.a.bi.run(PG:1)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at java.lang.Thread.run(Thread.java:1012)
+11-25 10:47:53.021  1774  2522 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.shared.util.c.a.l.run(PG:5)
+11-25 10:47:53.023  1774  2811 I NetworkRecognitionRnr: Using pair HTTP connection
+11-25 10:47:53.023  1774  2619 I A       : [Upload] Connected
+11-25 10:47:53.036  1774  1774 W A       : Failed to sync device settings.
+11-25 10:47:53.036  1774  1774 I A       : Retrying to sync device settings.
+11-25 10:47:53.041  5416  5416 D nativeloader: InitLlndkLibrariesProduct: libEGL.so:libGLESv1_CM.so:libGLESv2.so:libGLESv3.so:libRS.so:libandroid_net.so:libbinder_ndk.so:libc.so:libcgrouprc.so:libclang_rt.asan-x86_64-android.so:libcom.andro
+11-25 10:47:53.041  5416  5416 D nativeloader: Configuring product-clns-9 for unbundled product apk /product/priv-app/PrebuiltGmsCore/PrebuiltGmsCore.apk. target_sdk_version=33, uses_libraries=, library_path=/product/priv-app/PrebuiltGmsCor
+11-25 10:47:53.047  5416  5416 D nativeloader: InitVndkspLibrariesProduct: android.hardware.common-V2-ndk.so:android.hardware.common.fmq-V1-ndk.so:android.hardware.graphics.allocator-V2-ndk.so:android.hardware.graphics.common-V4-ndk.so:andr
+11-25 10:47:53.062  5302  5302 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.mobstore.service.START pkg=com.google.android.gms }
+11-25 10:47:53.072  5416  5416 V GraphicsEnvironment: Currently set values for:
+11-25 10:47:53.072  5416  5416 V GraphicsEnvironment:   angle_gl_driver_selection_pkgs=[]
+11-25 10:47:53.072  5416  5416 V GraphicsEnvironment:   angle_gl_driver_selection_values=[]
+11-25 10:47:53.072  5416  5416 V GraphicsEnvironment: ANGLE GameManagerService for com.google.android.gms: false
+11-25 10:47:53.072  5416  5416 V GraphicsEnvironment: com.google.android.gms is not listed in per-application setting
+11-25 10:47:53.072  5416  5416 V GraphicsEnvironment: Neither updatable production driver nor prerelease driver is supported.
+11-25 10:47:53.079  5302  5405 I GmsDebugLogger: [73] 1801
+11-25 10:47:53.118   519  2131 W JobScheduler: Job didn't exist in JobStore: e973f42 #u0a132/-353 com.google.android.googlequicksearchbox/com.google.android.apps.gsa.tasks.BackgroundTasksJobService
+11-25 10:47:53.135  5302  5405 W ZappDownloader: No successful module downloads for requested features [tflite_dynamite, maps_core, mlkit.barcode.ui, vision.ocr, mlkit.ocr.common].
+11-25 10:47:53.135  5302  5405 I GmsDebugLogger: [30] [VisionOcrDynamite.integ:231602402100000],[VisionBarcode.optional:231818100800],[TfliteDynamiteDynamite.integ:264010405100800],[MlkitOcrCommon.optional:231818100800],[MapsCoreDynamite.in
+11-25 10:47:53.168  5416  5416 D CompatibilityChangeReporter: Compat change id reported: 160794467; UID 10131; state: ENABLED
+11-25 10:47:53.182  5416  5416 W ProviderHelper: Unknown dynamite feature providerinstaller.dynamite
+11-25 10:47:53.183  5416  5416 I DynamiteModule: Considering local module com.google.android.gms.providerinstaller.dynamite:1 and remote module com.google.android.gms.providerinstaller.dynamite:0
+11-25 10:47:53.183  5416  5416 I DynamiteModule: Selected local version of com.google.android.gms.providerinstaller.dynamite
+11-25 10:47:53.202  5416  5416 V NativeCrypto: Registering com/google/android/gms/org/conscrypt/NativeCrypto's 295 native methods...
+11-25 10:47:53.208  5302  5405 I ChimeraConfigService: Scheduling checkin for one-off execution between [3300,43201] seconds from now (1795603673208) [CONTEXT service_id=264 ]
+11-25 10:47:53.208  5302  5405 I ChimeraConfigurator: Update complete: success
+11-25 10:47:53.215  5416  5416 I ProviderInstaller: Installed default security provider GmsCore_OpenSSL
+11-25 10:47:53.230  5200  5200 I NearbyDiscovery: DiscoveryService created [CONTEXT service_id=265 ]
+11-25 10:47:53.243  5200  5259 I NearbySharing: Failed to scan for fast initiation because we're already scanning with isHighPowerAllowed=false. [CONTEXT service_id=194 ]
+11-25 10:47:53.244  5200  5259 I NearbySharing: Dismissing HUN as there's no device nearby. [CONTEXT service_id=194 ]
+11-25 10:47:53.244  5200  5259 I NearbySharing: Cancelling in use notification [CONTEXT service_id=194 ]
+11-25 10:47:53.259  5416  5463 I GMS_MM_Logger: Start time: 246216
+11-25 10:47:53.259  5416  5463 I GMS_MM_Logger: Started.
+11-25 10:47:53.263  5416  5416 D CompatibilityChangeReporter: Compat change id reported: 183155436; UID 10131; state: ENABLED
+11-25 10:47:53.263  5416  5416 I GmsApplication: [gms_startup_benchmark] Static start time (ms): 104526, Startup latency (ms): 189, Is system user: true
+11-25 10:47:53.263  5416  5416 I cuir    : Primes not initialized, returning default (no-op) Primes instance which will ignore all calls. Please call Primes.initialize(...) before using any Primes API.
+11-25 10:47:53.271   519  2328 I ActivityManager: Flag disabled. Ignoring finishAttachApplication from uid: 10131. pid: 5416
+11-25 10:47:53.282   333  5467 I resolv  : GetAddrInfoHandler::run: {100 786532 100 983140 10131 0}
+11-25 10:47:53.290   333  5469 I resolv  : res_nmkquery: (QUERY, IN, A)
+11-25 10:47:53.291   333  5469 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x74c6196ac9d0
+11-25 10:47:53.291   333  5469 I resolv  : doQuery: rcode=0, ancount=8, return value=164
+11-25 10:47:53.299   333  5468 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+11-25 10:47:53.299   333  5468 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x74c5696a40d0
+11-25 10:47:53.299   333  5468 I resolv  : doQuery: rcode=0, ancount=8, return value=260
+11-25 10:47:53.310  5302  5405 I GmsModuleFndr: Beginning GMS chimera module scan
+11-25 10:47:53.314  5302  5405 I ModuleSetMgr: Computing pending module set with APKs: [[AdsFdrDynamite.integ:231004600100000], [Cronetdynamite:231818190800], [Dynamiteloader:231818190000], [Dynamitemodulesa:231818190000], [Dynamitemodulesc
+11-25 10:47:53.315  5302  5387 D TrafficStats: tagSocket(94) with statsTag=0x30001803, statsUid=-1
+11-25 10:47:53.315   333   362 E BpfHandler: Unsupported protocol: 1
+11-25 10:47:53.315  5302  5387 I TrafficStats: tagSocketFd(94, 805312515, -1) failed with errno-93
+11-25 10:47:53.373  5455  5455 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+11-25 10:47:53.373  5455  5455 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-25 10:47:53.374  5302  5302 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.checkin.START pkg=com.google.android.gms }
+11-25 10:47:53.375   398   413 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=5455
+11-25 10:47:53.375   398   413 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (199 us)
+11-25 10:47:53.376  5302  5302 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.checkin.START pkg=com.google.android.gms }
+11-25 10:47:53.381  5200  5259 I NearbySharing: Broadcasting NearbySharing state change. [CONTEXT service_id=194 ]
+11-25 10:47:53.382  5200  5200 W ChimeraUtils: Module com.google.android.gms.nearby missing resource null(0)
+11-25 10:47:53.397  5200  5200 W ChimeraUtils: Module com.google.android.gms.nearby missing resource null(0)
+11-25 10:47:53.405   134   134 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-25 10:47:53.602     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+11-25 10:47:53.412  5455  5470 I Gralloc4: mapper 4.x is not supported
+11-25 10:47:53.447  5200  5200 D BluetoothAdapter: registerBluetoothConnectionCallback()
+11-25 10:47:53.467  5200  5200 I NearbyShared: BTConnStateMgr: BluetoothConnectionCallback registered.
+11-25 10:47:53.475  5200  5200 I NearbyFastPair: NearbyAppHelper: Check Mainline Tethering module version code. [CONTEXT service_id=265 ]
+11-25 10:47:53.551  5044  5044 I com.example.buddy: Perf: native scene 30 fps
+11-25 10:47:53.566  5200  5200 I NearbyFastPair: NearbyAppHelper: Tethering package version code: 340818080 [CONTEXT service_id=265 ]
+11-25 10:47:53.574  5302  5385 I SnapshotHandler: Unable to retrieve flag snapshot for com.google.android.gms.phenotype, using defaults.
+11-25 10:47:53.577  5200  5381 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService finished executing. cause:9 result: 1 elapsed_millis: 1073 uptime_millis: 1073 exec_start_elapsed_seconds
+11-25 10:47:53.578  5302  5302 D BoundBrokerSvc: onBind: Intent { act=com.google.android.mdh.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsBoundBrokerService }
+11-25 10:47:53.580  5302  5302 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.mdh.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsBoundBrokerService }
+11-25 10:47:53.593  5200  5285 W GoogleHttpServiceClient: Timeout on service connection
+11-25 10:47:53.593  5200  5285 W GoogleHttpServiceClient: java.lang.Throwable
+11-25 10:47:53.593  5200  5285 W GoogleHttpServiceClient: 	at aqzs.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3)
+11-25 10:47:53.593  5200  5285 W GoogleHttpServiceClient: 	at abxw.H(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+11-25 10:47:53.593  5200  5285 W GoogleHttpServiceClient: 	at abxw.e(:com.google.android.gms@231818047@23.18.18 (190800-535401451):1)
+11-25 10:47:53.593  5200  5285 W GoogleHttpServiceClient: 	at abxw.g(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-25 10:47:53.593  5200  5285 W GoogleHttpServiceClient: 	at cyeg.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):27)
+11-25 10:47:53.593  5200  5285 W GoogleHttpServiceClient: 	at czpd.call(:com.google.android.gms@231818047@23.18.18 (190800-535401451):78)
+11-25 10:47:53.593  5200  5285 W GoogleHttpServiceClient: 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+11-25 10:47:53.593  5200  5285 W GoogleHttpServiceClient: 	at aced.c(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+11-25 10:47:53.593  5200  5285 W GoogleHttpServiceClient: 	at aced.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):7)
+11-25 10:47:53.593  5200  5285 W GoogleHttpServiceClient: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-25 10:47:53.593  5200  5285 W GoogleHttpServiceClient: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-25 10:47:53.593  5200  5285 W GoogleHttpServiceClient: 	at acjn.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-25 10:47:53.593  5200  5285 W GoogleHttpServiceClient: 	at java.lang.Thread.run(Thread.java:1012)
+11-25 10:47:53.615  5200  5259 I NearbyFastPair: DynamicSupportModule: onSupportStateUpdate start [CONTEXT service_id=265 ]
+11-25 10:47:53.616  5200  5259 I NearbyFastPair: DynamicSupportModule: onSupportStateUpdate end [CONTEXT service_id=265 ]
+11-25 10:47:53.626  5200  5259 I NearbyFastPair: DynamicSupportModule: onSupportStateUpdate start [CONTEXT service_id=265 ]
+11-25 10:47:53.634  5200  5259 I NearbyFastPair: DynamicSupportModule: onSupportStateUpdate end [CONTEXT service_id=265 ]
+11-25 10:47:53.645  5302  5385 E PhenotypeRegOp: Attempting to overwrite config package for com.google.android.gms.games [CONTEXT service_id=231 ]
+11-25 10:47:53.647  5302  5385 E PhenotypeRegOp: Attempting to overwrite config package for com.google.android.gms.maps#com.google.android.gms [CONTEXT service_id=231 ]
+11-25 10:47:53.648  5302  5385 E PhenotypeRegOp: Attempting to overwrite config package for com.google.android.gms.cast [CONTEXT service_id=231 ]
+11-25 10:47:53.648  5302  5385 E PhenotypeRegOp: Attempting to overwrite config package for com.google.android.gms.mobile_data_plan [CONTEXT service_id=231 ]

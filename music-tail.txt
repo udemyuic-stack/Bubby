@@ -1,0 +1,150 @@
+11-25 10:47:54.658  1051  1069 W PrefCtrlListHelper: Cannot instantiate controller from reflection: com.android.settings.accessibility.VibrationMainSwitchPreferenceController
+11-25 10:47:54.658  1051  1069 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.accessibility.RingVibrationTogglePreferenceController
+11-25 10:47:54.658  1051  1069 W PrefCtrlListHelper: Cannot instantiate controller from reflection: com.android.settings.accessibility.RingVibrationTogglePreferenceController
+11-25 10:47:54.658  1051  1069 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.accessibility.VibrationRampingRingerTogglePreferenceController
+11-25 10:47:54.658  1051  1069 W PrefCtrlListHelper: Cannot instantiate controller from reflection: com.android.settings.accessibility.VibrationRampingRingerTogglePreferenceController
+11-25 10:47:54.658  1051  1069 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.accessibility.NotificationVibrationTogglePreferenceController
+11-25 10:47:54.658  1051  1069 W PrefCtrlListHelper: Cannot instantiate controller from reflection: com.android.settings.accessibility.NotificationVibrationTogglePreferenceController
+11-25 10:47:54.658  1051  1069 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.accessibility.AlarmVibrationTogglePreferenceController
+11-25 10:47:54.658  1051  1069 W PrefCtrlListHelper: Cannot instantiate controller from reflection: com.android.settings.accessibility.AlarmVibrationTogglePreferenceController
+11-25 10:47:54.658  1051  1069 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.accessibility.HapticFeedbackTogglePreferenceController
+11-25 10:47:54.660  1051  1069 W PrefCtrlListHelper: Cannot instantiate controller from reflection: com.android.settings.accessibility.HapticFeedbackTogglePreferenceController
+11-25 10:47:54.661  1051  1069 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.accessibility.MediaVibrationTogglePreferenceController
+11-25 10:47:54.661  1051  1069 W PrefCtrlListHelper: Cannot instantiate controller from reflection: com.android.settings.accessibility.MediaVibrationTogglePreferenceController
+11-25 10:47:54.661   835   917 D StylusManager: Stylus InputDevice changed: 6 virtio_input_multi_touch_3
+11-25 10:47:54.662  1051  1069 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.accessibility.AccessibilityButtonPreferenceController
+11-25 10:47:54.662  1051  1069 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.accessibility.AccessibilityShortcutPreferenceController
+11-25 10:47:54.663  1051  1069 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.language.UserDictionaryPreferenceController
+11-25 10:47:54.667  1051  1069 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.inputmethod.GameControllerPreferenceController
+11-25 10:47:54.667  1051  1069 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.core.WorkPreferenceController
+11-25 10:47:54.668  1051  1069 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.inputmethod.SpellCheckerForWorkPreferenceController
+11-25 10:47:54.669  1784  2450 I OpaEligibilityChecker: send OpaEligibilityChange broadcast to CommonBroadcastReceiver
+11-25 10:47:54.671  1051  1069 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.deviceinfo.hardwareinfo.DeviceModelPreferenceController
+11-25 10:47:54.671  1051  1069 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.deviceinfo.hardwareinfo.SerialNumberPreferenceController
+11-25 10:47:54.671  1051  1069 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.deviceinfo.hardwareinfo.HardwareRevisionPreferenceController
+11-25 10:47:54.671  1051  1069 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.deviceinfo.hardwareinfo.ManufacturedYearPreferenceController
+11-25 10:47:54.678  2306  5457 D DownloadManager: [6] Starting
+11-25 10:47:54.679  1784  2696 W SearchServiceCore: Abort, client detached.
+11-25 10:47:54.679  1784  2696 W SearchServiceCore: Abort, client detached.
+11-25 10:47:54.683  1684  1684 I AiAiEcho: AppFetcherImpl onPackageChanged com.google.android.settings.intelligence.
+11-25 10:47:54.683  1684  3007 I AiAiEcho: AppIndexer Package:[com.google.android.settings.intelligence] UserProfile:[0] Enabled:[true].
+11-25 10:47:54.683  1684  3007 I AiAiEcho: AppFetcherImplV2 updateApps package:[com.google.android.settings.intelligence], userId:[0], reason:[package is updated.].
+11-25 10:47:54.735  1051  1069 E HardwareInfoFeatureProviderImpl: Could not parse manufactured year from serial.
+11-25 10:47:54.735  1051  1069 E HardwareInfoFeatureProviderImpl: java.lang.NumberFormatException: For input string: "E"
+11-25 10:47:54.735  1051  1069 E HardwareInfoFeatureProviderImpl: 	at java.lang.Integer.parseInt(Integer.java:797)
+11-25 10:47:54.735  1051  1069 E HardwareInfoFeatureProviderImpl: 	at java.lang.Integer.valueOf(Integer.java:1128)
+11-25 10:47:54.735  1051  1069 E HardwareInfoFeatureProviderImpl: 	at com.google.android.settings.deviceinfo.hardwareinfo.HardwareInfoFeatureProviderGoogleImpl.getManufacturedYear(HardwareInfoFeatureProviderGoogleImpl.kt:22)
+11-25 10:47:54.735  1051  1069 E HardwareInfoFeatureProviderImpl: 	at com.android.settings.deviceinfo.hardwareinfo.ManufacturedYearPreferenceController.<init>(ManufacturedYearPreferenceController.kt:26)
+11-25 10:47:54.735  1051  1069 E HardwareInfoFeatureProviderImpl: 	at java.lang.reflect.Constructor.newInstance0(Native Method)
+11-25 10:47:54.735  1051  1069 E HardwareInfoFeatureProviderImpl: 	at java.lang.reflect.Constructor.newInstance(Constructor.java:343)
+11-25 10:47:54.735  1051  1069 E HardwareInfoFeatureProviderImpl: 	at com.android.settings.core.BasePreferenceController.createInstance(BasePreferenceController.java:187)
+11-25 10:47:54.735  1051  1069 E HardwareInfoFeatureProviderImpl: 	at com.android.settings.core.PreferenceControllerListHelper.getPreferenceControllersFromXml(PreferenceControllerListHelper.java:83)
+11-25 10:47:54.735  1051  1069 E HardwareInfoFeatureProviderImpl: 	at com.android.settings.search.BaseSearchIndexProvider.getPreferenceControllers(BaseSearchIndexProvider.java:149)
+11-25 10:47:54.735  1051  1069 E HardwareInfoFeatureProviderImpl: 	at com.android.settings.search.BaseSearchIndexProvider.getDynamicRawDataToIndex(BaseSearchIndexProvider.java:87)
+11-25 10:47:54.735  1051  1069 E HardwareInfoFeatureProviderImpl: 	at com.android.settings.search.SettingsSearchIndexablesProvider.getDynamicSearchIndexableRawData(SettingsSearchIndexablesProvider.java:379)
+11-25 10:47:54.735  1051  1069 E HardwareInfoFeatureProviderImpl: 	at com.android.settings.search.SettingsSearchIndexablesProvider.queryDynamicRawData(SettingsSearchIndexablesProvider.java:180)
+11-25 10:47:54.735  1051  1069 E HardwareInfoFeatureProviderImpl: 	at android.provider.SearchIndexablesProvider.query(SearchIndexablesProvider.java:133)
+11-25 10:47:54.735  1051  1069 E HardwareInfoFeatureProviderImpl: 	at android.content.ContentProvider.query(ContentProvider.java:1596)
+11-25 10:47:54.735  1051  1069 E HardwareInfoFeatureProviderImpl: 	at android.content.ContentProvider.query(ContentProvider.java:1692)
+11-25 10:47:54.735  1051  1069 E HardwareInfoFeatureProviderImpl: 	at android.content.ContentProvider$Transport.query(ContentProvider.java:292)
+11-25 10:47:54.735  1051  1069 E HardwareInfoFeatureProviderImpl: 	at android.content.ContentProviderNative.onTransact(ContentProviderNative.java:107)
+11-25 10:47:54.735  1051  1069 E HardwareInfoFeatureProviderImpl: 	at android.os.Binder.execTransactInternal(Binder.java:1339)
+11-25 10:47:54.735  1051  1069 E HardwareInfoFeatureProviderImpl: 	at android.os.Binder.execTransact(Binder.java:1275)
+11-25 10:47:54.735  1051  1069 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.accessibility.MagnificationModePreferenceController
+11-25 10:47:54.735  1051  1069 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.location.RecentLocationAccessSeeAllPreferenceController
+11-25 10:47:54.739  1051  1069 W libc    : Access denied finding property "ro.vendor.aware_available"
+11-25 10:47:54.740  2306  5450 D DownloadManager: [5] Finished with status SUCCESS
+11-25 10:47:54.742  1784  2450 W CorpusConfigHelper: Invalid input from icing corpus JSON flag.
+11-25 10:47:54.742  1784  2450 W CorpusConfigHelper: android.util.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 123 column 2
+11-25 10:47:54.742  1784  2450 W CorpusConfigHelper: 	at android.util.JsonReader.syntaxError(JsonReader.java:1162)
+11-25 10:47:54.742  1784  2450 W CorpusConfigHelper: 	at android.util.JsonReader.checkLenient(JsonReader.java:840)
+11-25 10:47:54.742  1784  2450 W CorpusConfigHelper: 	at android.util.JsonReader.nextInArray(JsonReader.java:615)
+11-25 10:47:54.742  1784  2450 W CorpusConfigHelper: 	at android.util.JsonReader.peek(JsonReader.java:345)
+11-25 10:47:54.742  1784  2450 W CorpusConfigHelper: 	at android.util.JsonReader.hasNext(JsonReader.java:321)
+11-25 10:47:54.742  1784  2450 W CorpusConfigHelper: 	at com.google.android.apps.gsa.searchbox.c.b.b.k.c(PG:7)
+11-25 10:47:54.742  1784  2450 W CorpusConfigHelper: 	at com.google.android.apps.gsa.searchbox.c.b.b.j.a(Unknown Source:2)
+11-25 10:47:54.742  1784  2450 W CorpusConfigHelper: 	at com.google.android.apps.gsa.search.core.i.r.run(PG:5)
+11-25 10:47:54.742  1784  2450 W CorpusConfigHelper: 	at com.google.android.libraries.gsa.k.a.h.run(PG:2)
+11-25 10:47:54.742  1784  2450 W CorpusConfigHelper: 	at com.google.android.apps.gsa.shared.util.c.a.cf.b(PG:1)
+11-25 10:47:54.742  1784  2450 W CorpusConfigHelper: 	at com.google.android.apps.gsa.shared.util.c.a.ci.run(PG:1)
+11-25 10:47:54.742  1784  2450 W CorpusConfigHelper: 	at com.google.android.libraries.i.ae.run(PG:1)
+11-25 10:47:54.742  1784  2450 W CorpusConfigHelper: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-25 10:47:54.742  1784  2450 W CorpusConfigHelper: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-25 10:47:54.742  1784  2450 W CorpusConfigHelper: 	at com.google.android.libraries.i.k.run(PG:2)
+11-25 10:47:54.742  1784  2450 W CorpusConfigHelper: 	at com.google.android.libraries.i.p.run(PG:4)
+11-25 10:47:54.742  1784  2450 W CorpusConfigHelper: 	at java.lang.Thread.run(Thread.java:1012)
+11-25 10:47:54.746  1051  1069 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.network.telephony.CallsDefaultSubscriptionController
+11-25 10:47:54.746  1519  1519 V ContactsProvider: Scheduled notifyChange started.
+11-25 10:47:54.746  1051  1069 W PrefCtrlListHelper: Cannot instantiate controller from reflection: com.android.settings.network.telephony.CallsDefaultSubscriptionController
+11-25 10:47:54.746  1051  1069 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.network.telephony.SmsDefaultSubscriptionController
+11-25 10:47:54.746  1051  1069 W PrefCtrlListHelper: Cannot instantiate controller from reflection: com.android.settings.network.telephony.SmsDefaultSubscriptionController
+11-25 10:47:54.746  1051  1069 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.network.telephony.NetworkProviderWifiCallingPreferenceController
+11-25 10:47:54.747  1051  1069 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.google.android.settings.network.ConnectivityHelperCallQualityPreferenceController
+11-25 10:47:54.747  1051  1069 D ch_callQuality: isDeviceSupport: falsemIsChecked: true
+11-25 10:47:54.747  1051  1069 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.google.android.settings.network.ConnectivityHelperDeviceToDevicePreferenceController
+11-25 10:47:54.747  1051  1069 D ch_d2d  : isDeviceSupport: falsemIsChecked: false
+11-25 10:47:54.747  1051  1069 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.gestures.SystemNavigationPreferenceController
+11-25 10:47:54.747  1051  1069 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.gestures.OneHandedEnablePreferenceController
+11-25 10:47:54.747  1051  1069 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.accessibility.PowerButtonEndsCallPreferenceController
+11-25 10:47:54.747  1051  1069 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.accessibility.LockScreenRotationPreferenceController
+11-25 10:47:54.747  1051  1069 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.display.DeviceStateAutoRotateOverviewController
+11-25 10:47:54.749  1051  1069 V OnDeviceRecognitionPreferenceController: Recognition service in the same package as the default on-device recognizer with settings activity: com.google.android.as/com.google.android.apps.miphone.aiai.speech.
+11-25 10:47:54.749  1051  1069 V OnDeviceRecognitionPreferenceController: Recognition service not in the same package as the default on-device recognizer: com.google.android.tts/com.google.android.apps.speech.tts.googletts.service.GoogleTTS
+11-25 10:47:54.750  1051  1069 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.language.PhoneLanguagePreferenceController
+11-25 10:47:54.750  1051  1069 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.applications.appinfo.ManageAppLocalePreferenceController
+11-25 10:47:54.750  1051  1069 W PrefCtrlListHelper: Cannot instantiate controller from reflection: com.android.settings.applications.appinfo.ManageAppLocalePreferenceController
+11-25 10:47:54.750  1051  1069 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.regionalpreferences.RegionalPreferencesController
+11-25 10:47:54.750  1051  1069 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.language.OnDeviceRecognitionPreferenceController
+11-25 10:47:54.750  1051  1069 W PrefCtrlListHelper: on_device_recognition_settings already has a controller
+11-25 10:47:54.750  1051  1069 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.datausage.UnrestrictedDataAccessPreferenceController
+11-25 10:47:54.750  1051  1069 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.connecteddevice.NfcAndPaymentFragmentController
+11-25 10:47:54.750  1051  1069 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.wfd.WifiDisplayPreferenceController
+11-25 10:47:54.751  1051  1069 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.nfc.AndroidBeamPreferenceController
+11-25 10:47:54.751  1051  1069 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.uwb.UwbPreferenceController
+11-25 10:47:54.751  1051  1069 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.applications.specialaccess.DataSaverController
+11-25 10:47:54.752  1051  1069 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.accessibility.AccessibilityButtonPreviewPreferenceController
+11-25 10:47:54.752  1051  1069 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.accessibility.AccessibilityButtonLocationPreferenceController
+11-25 10:47:54.752  1051  1069 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.accessibility.AccessibilityButtonGesturePreferenceController
+11-25 10:47:54.752  1051  1069 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.accessibility.FloatingMenuSizePreferenceController
+11-25 10:47:54.752  1051  1069 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.accessibility.FloatingMenuFadePreferenceController
+11-25 10:47:54.752  1051  1069 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.accessibility.FloatingMenuTransparencyPreferenceController
+11-25 10:47:54.752  1051  1069 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.accessibility.AccessibilityButtonFooterPreferenceController
+11-25 10:47:54.755  1051  1069 I SettingsSearchProvider: Skip indexing category: com.android.settings.category.ia.privacy
+11-25 10:47:54.756  1051  1069 I SettingsSearchProvider: Skip indexing category: com.android.settings.category.ia.development
+11-25 10:47:54.756  1026  1026 D BluetoothPbapService:  onChange on contact uri 
+11-25 10:47:54.756   521   550 D CompatibilityChangeReporter: Compat change id reported: 135634846; UID 10118; state: DISABLED
+11-25 10:47:54.756   521   550 D CompatibilityChangeReporter: Compat change id reported: 177438394; UID 10118; state: DISABLED
+11-25 10:47:54.757   521   550 D CompatibilityChangeReporter: Compat change id reported: 135772972; UID 10118; state: DISABLED
+11-25 10:47:54.757   521   550 D CompatibilityChangeReporter: Compat change id reported: 135754954; UID 10118; state: ENABLED
+11-25 10:47:54.757   521   550 W ActivityManager: Slow operation: 78ms so far, now at startProcess: done starting proc!
+11-25 10:47:54.758   521   551 D CompatibilityChangeReporter: Compat change id reported: 143937733; UID 10118; state: ENABLED
+11-25 10:47:54.769   521   549 W WindowMagnificationMgr: requestConnection duplicated request: connect=false, mConnectionState=DISCONNECTED
+11-25 10:47:54.777   336   336 D Zygote  : Forked child process 5461
+11-25 10:47:54.778  1684  1743 I AiAiEcho: Settings changed for uri: content://settings/secure/accessibility_enabled
+11-25 10:47:54.779  1684  1977 I AiAiEcho: Predicting[0]: 
+11-25 10:47:54.780  1684  1977 I AiAiEcho: EchoTargets: 
+11-25 10:47:54.780  1684  1977 I AiAiEcho: Filtered by AiAi flag check: 
+11-25 10:47:54.780  1684  1977 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+11-25 10:47:54.780  1026  5460 D BluetoothPbapUtils: primaryVersionCounter = 0, secondaryVersionCounter=0
+11-25 10:47:54.780  1684  1977 I AiAiEcho: Predicting[0]: 
+11-25 10:47:54.780  1684  1977 I AiAiEcho: EchoTargets: 
+11-25 10:47:54.780  1684  1977 I AiAiEcho: Filtered by AiAi flag check: 
+11-25 10:47:54.780  1684  1977 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+11-25 10:47:54.783   521   549 D AppWidgetServiceImpl: Provider info from ComponentInfo{com.example.buddy/com.example.buddy.AgentWidgets$StatusWidget} won't be persisted.
+11-25 10:47:54.783   521   549 D AppWidgetServiceImpl: Provider info from ComponentInfo{com.example.buddy/com.example.buddy.AgentWidgets$UsageWidget} won't be persisted.
+11-25 10:47:54.783   521   549 D AppWidgetServiceImpl: Provider info from ComponentInfo{com.example.buddy/com.example.buddy.AgentWidgets$DoneWidget} won't be persisted.
+11-25 10:47:54.783   521   549 D AppWidgetServiceImpl: Provider info from ComponentInfo{com.example.buddy/com.example.buddy.AgentWidgets$AgentsWidget} won't be persisted.
+11-25 10:47:54.783   521   549 D AppWidgetServiceImpl: Provider info from ComponentInfo{com.example.buddy/com.example.buddy.AgentWidgets$BarWidget} won't be persisted.
+11-25 10:47:54.783   521   549 D AppWidgetServiceImpl: Provider info from ComponentInfo{com.example.buddy/com.example.buddy.AgentWidgets$MiniWidget} won't be persisted.
+11-25 10:47:54.783  1684  1977 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0 (types=[])
+11-25 10:47:54.784   521   551 W ActivityManager: Slow operation: 74ms so far, now at startProcess: returned from zygote!
+11-25 10:47:54.784  1684  1977 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0 (types=[])
+11-25 10:47:54.786   835   835 W PageIndicator: Total number of pages invalid: 0. Assuming 1 page.
+11-25 10:47:54.787   521   551 W ActivityManager: Slow operation: 78ms so far, now at startProcess: done updating battery stats
+11-25 10:47:54.799   521   551 W ActivityManager: Slow operation: 90ms so far, now at startProcess: building log message
+11-25 10:47:54.800   521   551 I ActivityManager: Start proc 5461:com.google.android.settings.intelligence/u0a118 for service {com.google.android.settings.intelligence/com.google.android.settings.intelligence.modules.routines.impl.ComputeNe
+11-25 10:47:54.801   521   551 W ActivityManager: Slow operation: 91ms so far, now at startProcess: starting to update pids map
+11-25 10:47:54.802   521   551 W ActivityManager: Slow operation: 92ms so far, now at startProcess: done updating pids map
+11-25 10:47:54.809  1784  2833 W TimedProcessReaper: Scheduling killing of process to refresh configuration
+11-25 10:47:54.809   521  2233 W JobScheduler: Job didn't exist in JobStore: ffb9390 #u0a132/-43 com.google.android.googlequicksearchbox/com.google.android.apps.gsa.tasks.BackgroundTasksJobService
+11-25 10:47:54.821  4270  4340 W Bugle   : TextClassifierLibManagerImpl: Reclaiming memory at level: 40

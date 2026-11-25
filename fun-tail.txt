@@ -1,0 +1,150 @@
+11-25 10:47:38.804  4072  4194 E ctbc    : 	at ctfm.run(PG:4)
+11-25 10:47:38.804  4072  4194 E ctbc    : 	at bxfd.run(PG:1)
+11-25 10:47:38.804  4072  4194 E ctbc    : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-25 10:47:38.804  4072  4194 E ctbc    : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-25 10:47:38.804  4072  4194 E ctbc    : 	at bxef.run(PG:2)
+11-25 10:47:38.804  4072  4194 E ctbc    : 	at java.lang.Thread.run(Thread.java:1012)
+11-25 10:47:38.804  4072  4194 E ctbc    : 	at bxfj.run(PG:5)
+11-25 10:47:38.805  4072  4194 E MDD     : FileGroupManager: Trying to add expired group webref-model-local-index.
+11-25 10:47:38.805  4072  4194 W MDD     : MDDManager class cbkc
+11-25 10:47:38.805  4072  4194 E PhFileGroupPop: Failed to add file group
+11-25 10:47:38.805  4072  4194 E PhFileGroupPop: cbkc
+11-25 10:47:38.805  4072  4194 E PhFileGroupPop: 	at cbqx.a(PG:90)
+11-25 10:47:38.805  4072  4194 E PhFileGroupPop: 	at cnpq.a(PG:3)
+11-25 10:47:38.805  4072  4194 E PhFileGroupPop: 	at ctbg.d(PG:2)
+11-25 10:47:38.805  4072  4194 E PhFileGroupPop: 	at ctbi.run(PG:9)
+11-25 10:47:38.805  4072  4194 E PhFileGroupPop: 	at ctfm.run(PG:4)
+11-25 10:47:38.805  4072  4194 E PhFileGroupPop: 	at bxfd.run(PG:1)
+11-25 10:47:38.805  4072  4194 E PhFileGroupPop: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-25 10:47:38.805  4072  4194 E PhFileGroupPop: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-25 10:47:38.805  4072  4194 E PhFileGroupPop: 	at bxef.run(PG:2)
+11-25 10:47:38.805  4072  4194 E PhFileGroupPop: 	at java.lang.Thread.run(Thread.java:1012)
+11-25 10:47:38.805  4072  4194 E PhFileGroupPop: 	at bxfj.run(PG:5)
+11-25 10:47:38.806  4072  4194 D PhFileGroupPop: Added file groups smart_actions_grammars
+11-25 10:47:38.806   334  5669 I resolv  : GetAddrInfoHandler::run: {100 786532 100 983140 10130 0}
+11-25 10:47:38.806  4072  4194 D PhFileGroupPop: Added file groups smart_actions_ml_models
+11-25 10:47:38.806  4072  4194 D PhFileGroupPop: Added file groups text_classifier
+11-25 10:47:38.806   334  5671 I resolv  : res_nmkquery: (QUERY, IN, A)
+11-25 10:47:38.806   334  5671 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7f994e62d4b0
+11-25 10:47:38.806   334  5671 I resolv  : doQuery: rcode=0, ancount=8, return value=161
+11-25 10:47:38.808  4072  4194 D PhFileGroupPop: Added file groups smart_actions_emotive_models
+11-25 10:47:38.817   334  5670 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+11-25 10:47:38.818   334  5670 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7f99ee62c810
+11-25 10:47:38.818   334  5670 I resolv  : doQuery: rcode=0, ancount=8, return value=257
+11-25 10:47:38.818  4072  5668 D TrafficStats: tagSocket(142) with statsTag=0xffffffff, statsUid=-1
+11-25 10:47:38.821  4072  4194 D PhFileGroupPop: Added file groups smarts_expressive_content_scoped_v1
+11-25 10:47:38.822  4072  4194 D PhFileGroupPop: Added file groups smart_actions_sensitive_classifier_models
+11-25 10:47:38.822  4072  4194 D PhFileGroupPop: Added file groups scripted_reply
+11-25 10:47:38.823  4072  4194 D PhFileGroupPop: Added file groups multitask_experiment
+11-25 10:47:38.823  4072  4194 D PhFileGroupPop: Added file groups spam_verdict_enforcement_policy_config
+11-25 10:47:38.823  4072  4194 D PhFileGroupPop: Added file groups smart_suggestion_reranker_models
+11-25 10:47:38.823  4072  4194 D PhFileGroupPop: Added file groups supersort_us_grammars
+11-25 10:47:38.823  4072  4194 D PhFileGroupPop: Added file groups nudge
+11-25 10:47:38.823  4072  4194 D PhFileGroupPop: Added file groups calendar_appointment_grammar
+11-25 10:47:38.823  4072  4194 D PhFileGroupPop: Added file groups birthday_suggestion
+11-25 10:47:38.823  4072  4194 D PhFileGroupPop: Added file groups birthday_grammars
+11-25 10:47:38.825  4072  4194 D PhFileGroupPop: Added file groups animated_emoji
+11-25 10:47:39.214   521   548 D OomAdjuster: Not killing cached processes
+11-25 10:47:39.234  4072  4807 I WM-WorkerWrapper: Worker result SUCCESS for Work [ id=4df67fb8-b317-471a-ae5c-cfa01646ae10, tags={ com.google.android.libraries.mdi.download.workmanager.workers.PeriodicWorker, MDD.WIFI.CHARGING.PERIODIC.TAS
+11-25 10:47:39.376  1644  2157 D CompatibilityChangeReporter: Compat change id reported: 183155436; UID 10181; state: ENABLED
+11-25 10:47:39.377   521   596 D CompatibilityChangeReporter: Compat change id reported: 149924527; UID 2000; state: ENABLED
+11-25 10:47:39.377   521   596 D CompatibilityChangeReporter: Compat change id reported: 132649864; UID 2000; state: DISABLED
+11-25 10:47:39.380  1644  2157 W MediaProvider: isAppCloneUserPair for user 0: false
+11-25 10:47:39.384  5578  5595 D EGL_emulation: app_time_stats: avg=33.22ms min=26.76ms max=39.29ms count=31
+11-25 10:47:39.397  4990  5023 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService started execution. cause:9 exec_start_elapsed_seconds: 82 [CONTEXT service_id=218 ]
+11-25 10:47:39.399  4990  5022 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService finished executing. cause:9 result: 1 elapsed_millis: 9 uptime_millis: 9 exec_start_elapsed_seconds: 82 [
+11-25 10:47:39.403  5652  5652 I AccessibilityNodeInfoDumper: Skipping invisible child: android.view.accessibility.AccessibilityNodeInfo@25884; boundsInParent: Rect(0, 0 - 296, 66); boundsInScreen: Rect(12, 646 - 308, 640); boundsInWindow: 
+11-25 10:47:39.403  5652  5652 I AccessibilityNodeInfoDumper: Skipping invisible child: android.view.accessibility.AccessibilityNodeInfo@27a4d; boundsInParent: Rect(0, 0 - 296, 66); boundsInScreen: Rect(12, 712 - 308, 640); boundsInWindow: 
+11-25 10:47:39.404  5652  5652 W AccessibilityNodeInfoDumper: Fetch time: 30ms
+11-25 10:47:39.405   521  2482 W WindowMagnificationMgr: requestConnection duplicated request: connect=false, mConnectionState=DISCONNECTED
+11-25 10:47:39.405   521  2482 D AccessibilityManagerService: restoreCurrentUserForTestAutomationIfNeededLocked(): ignoring because device doesn't support visible background users
+11-25 10:47:39.405  1625  2278 I AiAiEcho: Settings changed for uri: content://settings/secure/accessibility_enabled
+11-25 10:47:39.406  1625  1777 I AiAiEcho: Predicting[0]: 
+11-25 10:47:39.406  5652  5652 D AndroidRuntime: Shutting down VM
+11-25 10:47:39.407  1625  1777 I AiAiEcho: EchoTargets: 
+11-25 10:47:39.407  1625  1777 I AiAiEcho: Filtered by AiAi flag check: 
+11-25 10:47:39.407  1625  1777 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+11-25 10:47:39.409  1625  1777 I AiAiEcho: Predicting[0]: 
+11-25 10:47:39.409  1730  2342 I A       : NGA enabled in interactor.
+11-25 10:47:39.409  1730  2342 I A       : Nga state changed to NgaStateDetails{state=ENABLED, isSpecialExperience=false}
+11-25 10:47:39.411  1655  4475 I A       : Initializing all components
+11-25 10:47:39.415   521   521 D BatterySaverPolicy: accessibility changed to false, updating policy.
+11-25 10:47:39.415  1625  1777 I AiAiEcho: EchoTargets: 
+11-25 10:47:39.415  1625  1777 I AiAiEcho: Filtered by AiAi flag check: 
+11-25 10:47:39.415  1625  1777 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+11-25 10:47:39.415  1625  1777 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0 (types=[])
+11-25 10:47:39.416  1625  1777 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0 (types=[])
+11-25 10:47:39.418  1655  4475 I A       : APA or Classic session decision: SessionDecision(sessionVariance=CLASSIC, platformVariance=CLASSIC, justification=CURRENT_PLATFORM_VARIANCE).
+11-25 10:47:39.418  1655  4475 I A       : [Memory] eligibility: StashEligibility{6}
+11-25 10:47:39.418  1655  2241 I A       : onIsEnabledChanged, isEnabled: false
+11-25 10:47:39.418  1655  2241 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:47:39.418  1655  2241 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:47:39.418  1655  2241 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:47:39.418  1655  2241 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:47:39.418  1655  2241 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:47:39.418  1655  2241 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:47:39.418  1655  2241 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:47:39.418  1655  2241 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:47:39.418  1655  2241 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:47:39.418  1655  2241 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:47:39.418  1655  2241 I A       : onOpaVisibilityChanged: false
+11-25 10:47:39.418  1655  2241 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:47:39.418  1655  2241 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:47:39.418  1655  2241 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:47:39.418  1655  2241 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:47:39.419  1655  2241 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:47:39.419  1655  2241 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:47:39.419  1655  2241 I A       : Setting session to type: NO_SESSION
+11-25 10:47:39.419  1655  2241 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:47:39.419  1655  2241 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:47:39.419  1655  2241 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:47:39.419  1655  2241 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:47:39.419  1655  2241 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:47:39.419  1655  2241 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:47:39.419  1655  2241 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:47:39.419  1655  2241 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:47:39.419  1655  2241 I A       : setNavBarVisible: GestureNavBarVisible{navbarVisible=true}
+11-25 10:47:39.419  1655  2241 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:47:39.419  1655  2241 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:47:39.419  1655  2241 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:47:39.419  1655  2241 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:47:39.419  1655  2241 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:47:39.419  1655  2241 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:47:39.419  1655  2241 I A       : onDisabled. Registered: false
+11-25 10:47:39.422  1655  2189 I NgaEntryPointEventSendr: setupConnection
+11-25 10:47:39.424  1730  1730 I A       : Creating pss binder().
+11-25 10:47:39.424  1655  2189 I NgaEntryPointEventSendr: State changed: Disconnected => Connecting
+11-25 10:47:39.425  1655  2241 I A       : State changed: IDLE => IDLE by NGA_STATE_CHANGED and N/A with Optional.empty
+11-25 10:47:39.425   829   829 W PageIndicator: Total number of pages invalid: 0. Assuming 1 page.
+11-25 10:47:39.426  1655  2241 I A       : Recognizer choice: (recognizer_type: 1, recognizer_mode: 1, choice_reason: 4)
+11-25 10:47:39.427  1655  2189 I A       : Initialize
+11-25 10:47:39.428  1655  2189 I A       : on opa visibility changed false
+11-25 10:47:39.428  1655  2189 I A       : on opa visibility changed false
+11-25 10:47:39.428  1655  2189 I A       : stopListening(NGA_PAUSED_UNKNOWN_REASON, NGA_CREATE), idleOverride=NOT_LISTENING
+11-25 10:47:39.429  1655  2189 I NgaEntryPointEventSendr: onServiceConnected
+11-25 10:47:39.430  1730  1827 I A       : Calling beginBinderSession().
+11-25 10:47:39.431  1730  1827 I A       : beginBinderSession(): calling binder
+11-25 10:47:39.432  1655  2189 I NgaEntryPointEventSendr: State changed: Connecting => Ready
+11-25 10:47:39.433  1655  2189 W A       : Routing took 0 ms
+11-25 10:47:39.434   521  2328 W ActivityManager: Unable to start service Intent { cmp=com.google.android.apps.tachyon/.clientapi.ClientApiService } U=0: not found
+11-25 10:47:39.438  1655  2189 I A       : Successfully initialized all components
+11-25 10:47:39.439  1655  2241 I A       : onActiveStateChangeEvent: IDLE => IDLE
+11-25 10:47:39.441  1730  2423 I PBSessionCacheImpl: Deleted sessionId[7610416067813988] from persistence.
+11-25 10:47:39.441  1730  2423 W A       : UiCallbackStub-onGenericEvent[ServiceEvent = 60] task was not run. Callback from Service received after client was disposed.
+11-25 10:47:39.442  1655  2241 W A       : Missing generator mapping for generator GENERATOR_CONTEXTUAL_SUGGESTIONS
+11-25 10:47:39.442  1655  2241 W A       : Missing generator mapping for generator GENERATOR_FRE_SUGGESTIONS_ON_TIMEOUT
+11-25 10:47:39.442  1655  2241 W A       : Missing generator mapping for generator GENERATOR_FRE_SUGGESTIONS_ON_INVOCATION
+11-25 10:47:39.443  1730  2423 W SearchServiceCore: Abort, client detached.
+11-25 10:47:39.447  1655  2241 I A       : #onActiveStateChangeEvent, newState: IDLE, previousState: IDLE.
+11-25 10:47:39.449   521  2257 D CompatibilityChangeReporter: Compat change id reported: 197654537; UID 10192; state: ENABLED
+11-25 10:47:39.452  1655  2241 I NgaEntryPointEventSendr: State changed: Ready => Disconnected (onOpaDisconnected)
+11-25 10:47:39.467  1655  1655 V ClearcutMetricXmitter: Transmission is done.
+11-25 10:47:39.656   334   364 I netd    : tetherGetStats() -> {[]} <0.30ms>
+11-25 10:47:39.658   334   364 I netd    : bandwidthSetGlobalAlert(2097152) <0.08ms>
+11-25 10:47:40.296  5679  5679 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+11-25 10:47:40.296  5679  5679 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-25 10:47:40.298   399  1088 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=5679
+11-25 10:47:40.298   399  1088 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (199 us)
+11-25 10:47:40.482     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+11-25 10:47:40.307   134   134 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-25 10:47:40.307  5679  5680 I Gralloc4: mapper 4.x is not supported

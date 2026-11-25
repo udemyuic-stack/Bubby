@@ -1,0 +1,150 @@
+11-25 10:50:48.267  1607  1864 I AiAiEcho: Predicting[0]: 
+11-25 10:50:48.267  1607  1864 I AiAiEcho: EchoTargets: 
+11-25 10:50:48.267  1607  1864 I AiAiEcho: Filtered by AiAi flag check: 
+11-25 10:50:48.268  1607  1864 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata: 
+11-25 10:50:48.268  1607  1864 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0 (types=[])
+11-25 10:50:48.269  1607  1864 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0 (types=[])
+11-25 10:50:48.269   832   832 W PageIndicator: Total number of pages invalid: 0. Assuming 1 page.
+11-25 10:50:48.269  1714  2284 I A       : NGA enabled in interactor.
+11-25 10:50:48.269  1714  2284 I A       : Nga state changed to NgaStateDetails{state=ENABLED, isSpecialExperience=false}
+11-25 10:50:48.272  1626  1680 I A       : Initializing all components
+11-25 10:50:48.276  1626  1680 I A       : APA or Classic session decision: SessionDecision(sessionVariance=CLASSIC, platformVariance=CLASSIC, justification=CURRENT_PLATFORM_VARIANCE).
+11-25 10:50:48.276  1626  2250 I A       : onIsEnabledChanged, isEnabled: false
+11-25 10:50:48.276  1626  2250 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:50:48.276  1626  2250 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:50:48.277  1626  2250 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:50:48.277  1626  2250 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:50:48.277  1626  2250 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:50:48.277  1626  2250 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:50:48.277  1626  2250 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:50:48.277  1626  2250 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:50:48.277  1626  2250 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:50:48.277  1626  2250 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:50:48.277  1626  2250 I A       : onOpaVisibilityChanged: false
+11-25 10:50:48.277  1626  2250 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:50:48.277  1626  2250 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:50:48.277  1626  2250 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:50:48.277  1626  2250 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:50:48.277  1626  2250 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:50:48.277  1626  2250 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:50:48.277  1626  2250 I A       : Setting session to type: NO_SESSION
+11-25 10:50:48.277  1626  2250 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:50:48.277  1626  2250 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:50:48.277  1626  2250 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:50:48.277  1626  2250 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:50:48.277  1626  2250 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:50:48.277  1626  2250 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:50:48.277  1626  2250 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:50:48.277  1626  2250 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:50:48.277  1626  2250 I A       : setNavBarVisible: GestureNavBarVisible{navbarVisible=true}
+11-25 10:50:48.277  1626  2250 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:50:48.278  1626  2250 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:50:48.278  1626  2250 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:50:48.278  1626  2250 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:50:48.278  1626  2250 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:50:48.278  1626  2250 W A       : Disposing empty manager. Did you forgot to subscribe observables?
+11-25 10:50:48.278  1626  2250 I A       : onDisabled. Registered: false
+11-25 10:50:48.278  1626  1680 I A       : [Memory] eligibility: StashEligibility{6}
+11-25 10:50:48.282  4840  4902 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService started execution. cause:9 exec_start_elapsed_seconds: 84 [CONTEXT service_id=218 ]
+11-25 10:50:48.282  1626  2261 I A       : on opa visibility changed false
+11-25 10:50:48.282  1626  2261 I A       : on opa visibility changed false
+11-25 10:50:48.291  1626  2261 I A       : Initialize
+11-25 10:50:48.293  1626  2261 I NgaEntryPointEventSendr: setupConnection
+11-25 10:50:48.293  1626  2250 I A       : State changed: IDLE => IDLE by NGA_STATE_CHANGED and N/A with Optional.empty
+11-25 10:50:48.294  1626  2250 I A       : Recognizer choice: (recognizer_type: 1, recognizer_mode: 1, choice_reason: 4)
+11-25 10:50:48.296  1626  2250 I A       : onActiveStateChangeEvent: IDLE => IDLE
+11-25 10:50:48.296  4840  4904 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService finished executing. cause:9 result: 1 elapsed_millis: 23 uptime_millis: 23 exec_start_elapsed_seconds: 84
+11-25 10:50:48.298  1714  1714 I A       : Creating pss binder().
+11-25 10:50:48.300  1626  2261 I NgaEntryPointEventSendr: State changed: Disconnected => Connecting
+11-25 10:50:48.300  1626  2261 I NgaEntryPointEventSendr: onServiceConnected
+11-25 10:50:48.300  1714  4834 I A       : Calling beginBinderSession().
+11-25 10:50:48.302  1714  4834 I A       : beginBinderSession(): calling binder
+11-25 10:50:48.302  1626  2261 I NgaEntryPointEventSendr: State changed: Connecting => Ready
+11-25 10:50:48.302  1626  2261 I A       : stopListening(NGA_PAUSED_UNKNOWN_REASON, NGA_CREATE), idleOverride=NOT_LISTENING
+11-25 10:50:48.304   525   747 W ActivityManager: Unable to start service Intent { cmp=com.google.android.apps.tachyon/.clientapi.ClientApiService } U=0: not found
+11-25 10:50:48.306  1626  2261 W A       : Routing took 0 ms
+11-25 10:50:48.308  1626  2261 I A       : Successfully initialized all components
+11-25 10:50:48.309  1626  2250 W A       : Missing generator mapping for generator GENERATOR_CONTEXTUAL_SUGGESTIONS
+11-25 10:50:48.310  1626  2250 W A       : Missing generator mapping for generator GENERATOR_FRE_SUGGESTIONS_ON_TIMEOUT
+11-25 10:50:48.310  1626  2250 W A       : Missing generator mapping for generator GENERATOR_FRE_SUGGESTIONS_ON_INVOCATION
+11-25 10:50:48.322  1626  2250 I A       : #onActiveStateChangeEvent, newState: IDLE, previousState: IDLE.
+11-25 10:50:48.324   525   611 D ActivityManager: freezing 4672 com.google.android.settings.intelligence
+11-25 10:50:48.327  1626  2261 I NgaEntryPointEventSendr: State changed: Ready => Disconnected (onOpaDisconnected)
+11-25 10:50:48.327   525  1391 D CompatibilityChangeReporter: Compat change id reported: 197654537; UID 10192; state: ENABLED
+11-25 10:50:48.328  1714  2567 I PBSessionCacheImpl: Deleted sessionId[7540047323822791] from persistence.
+11-25 10:50:48.329  1714  2567 W A       : UiCallbackStub-onGenericEvent[ServiceEvent = 60] task was not run. Callback from Service received after client was disposed.
+11-25 10:50:48.331  1714  2567 W SearchServiceCore: Abort, client detached.
+11-25 10:50:48.332  4905  4996 D TrafficStats: tagSocket(109) with statsTag=0x30001803, statsUid=-1
+11-25 10:50:48.339  1626  1626 V ClearcutMetricXmitter: Transmission is done.
+11-25 10:50:48.812   525   552 W ProcessStats: Tracking association SourceState{cecd99a android.process.acore/10085 BFgs #9706} whose proc state 4 is better than process ProcessState{c4441de com.google.android.contacts/10155 pkg=com.google.
+11-25 10:50:48.817  1714  1714 I BgTaskExecutorImpl: Starting EXCLUSIVE background task UPLOAD_ASSISTANT_DEVICE_SETTINGS.
+11-25 10:50:48.819  1714  2765 W LocationOracle: getBestLocation(): no location is available
+11-25 10:50:48.819  1714  2610 I NetworkRecognitionRnr: Using pair HTTP connection
+11-25 10:50:48.821  1714  2970 I A       : [Upload] Connected
+11-25 10:50:48.823  1714  2342 W LocationOracle: No location returned by GMS core getLastLocation()
+11-25 10:50:48.824  1714  2319 W CronetNetworkRqstWrppr: Upload request without a content type.
+11-25 10:50:48.825  1714  2396 E cr_CronetUrlRequestContext: Exception in upload method
+11-25 10:50:48.825  1714  2396 E cr_CronetUrlRequestContext: com.google.android.apps.gsa.shared.r.d: Error code: 262182
+11-25 10:50:48.825  1714  2396 E cr_CronetUrlRequestContext: 	at com.google.android.libraries.gsa.c.a.ar.b(PG:1)
+11-25 10:50:48.825  1714  2396 E cr_CronetUrlRequestContext: 	at com.google.android.libraries.gsa.c.a.o.read(PG:2)
+11-25 10:50:48.825  1714  2396 E cr_CronetUrlRequestContext: 	at org.chromium.net.impl.r.run(PG:5)
+11-25 10:50:48.825  1714  2396 E cr_CronetUrlRequestContext: 	at com.google.android.libraries.gsa.c.a.al.run(Unknown Source:2)
+11-25 10:50:48.825  1714  2396 E cr_CronetUrlRequestContext: 	at com.google.android.libraries.gsa.k.a.h.run(PG:2)
+11-25 10:50:48.825  1714  2396 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.shared.util.c.a.cf.b(PG:1)
+11-25 10:50:48.825  1714  2396 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.shared.util.c.a.ci.run(PG:1)
+11-25 10:50:48.825  1714  2396 E cr_CronetUrlRequestContext: 	at com.google.android.libraries.i.ae.run(PG:1)
+11-25 10:50:48.825  1714  2396 E cr_CronetUrlRequestContext: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-25 10:50:48.825  1714  2396 E cr_CronetUrlRequestContext: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-25 10:50:48.825  1714  2396 E cr_CronetUrlRequestContext: 	at com.google.android.libraries.i.k.run(PG:2)
+11-25 10:50:48.825  1714  2396 E cr_CronetUrlRequestContext: 	at com.google.android.libraries.i.p.run(PG:4)
+11-25 10:50:48.825  1714  2396 E cr_CronetUrlRequestContext: 	at java.lang.Thread.run(Thread.java:1012)
+11-25 10:50:48.825  1714  2970 I NetworkRecognitionRnr: Using pair HTTP connection
+11-25 10:50:48.825  1714  1714 E A       : onError
+11-25 10:50:48.825  1714  1714 E A       : com.google.android.apps.gsa.shared.speech.a.m: errorCode: 65561, engine: 2
+11-25 10:50:48.825  1714  1714 E A       : 	at com.google.android.apps.gsa.staticplugins.dc.a.e.a(PG:3)
+11-25 10:50:48.825  1714  1714 E A       : 	at com.google.android.apps.gsa.s3.n.hh(PG:1)
+11-25 10:50:48.825  1714  1714 E A       : 	at com.google.cd.g.a.f.e(PG:2)
+11-25 10:50:48.825  1714  1714 E A       : 	at com.google.android.apps.gsa.speech.k.a.g.d(PG:22)
+11-25 10:50:48.825  1714  1714 E A       : 	at com.google.android.apps.gsa.speech.k.a.g.ks(PG:6)
+11-25 10:50:48.825  1714  1714 E A       : 	at com.google.android.apps.gsa.s3.o.e(PG:14)
+11-25 10:50:48.825  1714  1714 E A       : 	at com.google.android.apps.gsa.s3.p.run(PG:1)
+11-25 10:50:48.825  1714  1714 E A       : 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:487)
+11-25 10:50:48.825  1714  1714 E A       : 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+11-25 10:50:48.825  1714  1714 E A       : 	at com.google.android.apps.gsa.shared.util.c.a.e.run(PG:2)
+11-25 10:50:48.825  1714  1714 E A       : 	at com.google.android.apps.gsa.shared.util.c.a.bi.run(PG:1)
+11-25 10:50:48.825  1714  1714 E A       : 	at com.google.android.apps.gsa.shared.util.c.a.bi.run(PG:1)
+11-25 10:50:48.825  1714  1714 E A       : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-25 10:50:48.825  1714  1714 E A       : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-25 10:50:48.825  1714  1714 E A       : 	at java.lang.Thread.run(Thread.java:1012)
+11-25 10:50:48.825  1714  1714 E A       : 	at com.google.android.apps.gsa.shared.util.c.a.l.run(PG:5)
+11-25 10:50:48.825  1714  1714 E A       : Caused by: com.google.android.apps.gsa.shared.speech.a.o: errorCode: 65586, engine: 2
+11-25 10:50:48.825  1714  1714 E A       : 	... 15 more
+11-25 10:50:48.825  1714  1714 E A       : Caused by: com.google.android.apps.gsa.shared.speech.a.k: errorCode: 401, engine: 2
+11-25 10:50:48.825  1714  1714 E A       : 	at com.google.android.apps.gsa.assistant.shared.n.h.a(PG:5)
+11-25 10:50:48.825  1714  1714 E A       : 	at com.google.android.apps.gsa.s3.producers.j.hE(PG:2)
+11-25 10:50:48.825  1714  1714 E A       : 	at com.google.android.apps.gsa.speech.k.a.g.d(PG:16)
+11-25 10:50:48.825  1714  1714 E A       : 	... 12 more
+11-25 10:50:48.827  1714  2969 I A       : [Upload] Connected
+11-25 10:50:48.829  1714  1714 W A       : Failed to sync device settings.
+11-25 10:50:48.829  1714  1714 I A       : Retrying to sync device settings.
+11-25 10:50:48.833  4905  5659 I ChimeraConfigurator: Starting update, reason: 4 urgentFeatures: vision.ocr:-1
+11-25 10:50:48.834   525  2022 W JobScheduler: Job didn't exist in JobStore: 6bcf14e #u0a132/-353 com.google.android.googlequicksearchbox/com.google.android.apps.gsa.tasks.BackgroundTasksJobService
+11-25 10:50:48.843  4905  5659 I ChimeraConfigurator: Detected pending changes for urgent request: [vision.ocr]. Pending module sets: container:2318189190800+mlkit.ocr.common,tflite_dynamite:2640104055100800+tflite_dynamite,vision_ocr:23160
+11-25 10:50:48.857  4905  5659 I GmsDebugLogger: [73] 1801
+11-25 10:50:48.860  4905  5659 W ZappDownloader: No successful module downloads for requested features [vision.ocr].
+11-25 10:50:48.860  4905  5659 I GmsDebugLogger: [30] [VisionOcrDynamite.integ:231602402100000],[TfliteDynamiteDynamite.integ:264010405100800],[MlkitOcrCommon.optional:231818100800]
+11-25 10:50:48.862  4905  5659 W ChimeraConfigService: Retry attempt was throttled. [CONTEXT service_id=264 ]
+11-25 10:50:48.862  4905  5659 I GmsDebugLogger: [83] 1 [vision.ocr]
+11-25 10:50:48.864  4905  5673 W Vision  : Request for optional module download of ocr failed. Request again.
+11-25 10:50:48.864  4905  5673 W Vision  : Would have logged:
+11-25 10:50:48.864  4905  5673 W Vision  : # dsae@37884fe7
+11-25 10:50:48.864  4905  5673 I Vision  : Schedule retrying download ocr at 84734 with backoff 20 seconds
+11-25 10:50:49.161  5626  5648 D EGL_emulation: app_time_stats: avg=33.61ms min=29.76ms max=39.00ms count=30
+11-25 10:50:49.179  5731  5731 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+11-25 10:50:49.179  5731  5731 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-25 10:50:49.187   401  1072 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=5731
+11-25 10:50:49.187   401  1072 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (246 us)
+11-25 10:50:49.202   137   137 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-25 10:50:49.202  5731  5732 I Gralloc4: mapper 4.x is not supported
+11-25 10:50:49.385     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+11-25 10:50:49.240   525   611 D ActivityManager: freezing 2134 android.process.media

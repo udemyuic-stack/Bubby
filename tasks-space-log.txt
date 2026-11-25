@@ -1,0 +1,26 @@
+11-25 10:53:16.708   834   834 I SafetyLabelChangedBroadcastReceiver: received broadcast packageName: com.example.buddy, current user: UserHandle{0}, packageChangeEvent: NEW_INSTALL, intent user: UserHandle{0}
+11-25 10:53:16.779   517  3438 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=com.example.buddy/.ui.UiActivity (has extras)} with LAUNCH_SINGLE_TOP from uid 2000 (BAL_ALLOW_PERMISSION) result code=0
+11-25 10:53:16.805   517  2133 D CoreBackPreview: Window{e46a11b u0 Splash Screen com.example.buddy}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@cc99264, mPriority=0, mIsAnimationCallback=false}
+11-25 10:53:16.843   517   549 I ActivityManager: Start proc 5001:com.example.buddy/u0a192 for next-top-activity {com.example.buddy/com.example.buddy.ui.UiActivity}
+11-25 10:53:16.958  5001  5001 V GraphicsEnvironment: ANGLE GameManagerService for com.example.buddy: false
+11-25 10:53:16.958  5001  5001 V GraphicsEnvironment: com.example.buddy is not listed in per-application setting
+11-25 10:53:17.082   517   536 V WindowManager:     info={id=6 t=CHANGE f=0x0 trk=0 r=[0@Point(0, 0)] c=[{WCT{RemoteToken{d2acbf3 Task{82bc37a #8 type=standard I=com.example.buddy/.ui.UiActivity}}} m=OPEN f=MOVE_TO_TOP leash=Surface(name=Task=8)/@0xe074ef1 sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0},{WCT{RemoteToken{64f10b0 Task{32a35e #1 type=home}}} m=TO_BACK f=SHOW_WALLPAPER leash=Surface(name=Task=1)/@0x38a3c77 sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0},{WCT{RemoteToken{edfeb29 Display{#0 state=ON size=320x640 ROTATION_0}}} m=CHANGE f=SHOW_WALLPAPER|IS_DISPLAY leash=Surface(name=WindowedMagnification:0:31)/@0x434185a sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0}]}
+11-25 10:53:17.305   517  1954 D CoreBackPreview: Window{c0cc342 u0 com.example.buddy/com.example.buddy.ui.UiActivity}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@2a8ad89, mPriority=0, mIsAnimationCallback=false}
+11-25 10:53:17.456  1611  1611 I AiAiEcho: AppFetcherImpl onPackageChanged com.example.buddy.
+11-25 10:53:17.456  1611  2523 I AiAiEcho: AppIndexer Package:[com.example.buddy] UserProfile:[0] Enabled:[true].
+11-25 10:53:17.456  1611  2523 I AiAiEcho: AppFetcherImplV2 updateApps package:[com.example.buddy], userId:[0], reason:[package is updated.].
+11-25 10:53:18.478   517   536 I ActivityTaskManager: Displayed com.example.buddy/.ui.UiActivity for user 0: +1s714ms
+11-25 10:53:18.492   517  3438 D CoreBackPreview: Window{e46a11b u0 Splash Screen com.example.buddy EXITING}: Setting back callback null
+11-25 10:53:18.495   517  3096 W InputManager-JNI: Input channel object 'e46a11b Splash Screen com.example.buddy (client)' was disposed without first being removed with the input manager!
+11-25 10:53:18.636  1442  5050 I BlockstoreStorage: Clearing Blockstore Data for package com.example.buddy [CONTEXT service_id=258 ]
+11-25 10:53:18.706  1396  4850 I ProximityAuth: [RecentAppsMediator] Package added: (user=UserHandle{0}) com.example.buddy
+11-25 10:53:18.710  1396  4854 I FontLog : Package com.example.buddy has no metadata [CONTEXT service_id=132 ]
+11-25 10:53:19.980   517   592 I ImeTracker: com.example.buddy:acfcb29c: onRequestHide at ORIGIN_SERVER_HIDE_INPUT reason HIDE_UNSPECIFIED_WINDOW
+11-25 10:53:19.981   517   592 I ImeTracker: com.example.buddy:acfcb29c: onCancelled at PHASE_SERVER_SHOULD_HIDE
+11-25 10:53:21.550  5001  5001 I com.example.buddy: Perf: native scene 11 fps
+11-25 10:53:25.553  5001  5001 I com.example.buddy: Perf: native scene 29 fps
+11-25 10:53:26.867  5389  5389 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-25 10:53:26.876  5389  5389 I AndroidRuntime: Using default boot image
+11-25 10:53:26.876  5389  5389 I AndroidRuntime: Leaving lock profiling enabled
+11-25 10:53:27.058  5389  5389 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+11-25 10:53:28.194  5389  5389 D AndroidRuntime: Shutting down VM

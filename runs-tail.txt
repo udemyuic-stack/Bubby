@@ -1,0 +1,150 @@
+11-25 10:47:49.534  4059  4526 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f9a0/lottie.json)
+11-25 10:47:49.539  4059  4188 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f440/lottie.json
+11-25 10:47:49.539  4059  4188 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f440/lottie.json)
+11-25 10:47:49.547  5039  5318 W .gms.persistent: Long monitor contention with owner netscheduler-queue-handler (5248) at void bytb.o(int)(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4) waiters=0 in int bytb.r(byps) for 17
+11-25 10:47:49.554  5120  5215 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.deidentifieddata.storevisits.StoreVisitsProcessingService.StoreVisitsProcessing is scheduled to run EVERY_6_HOURS [C
+11-25 10:47:49.555  5120  5215 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.deidentifieddata.wifi.WifiPlaceVisitProcessingService.WifiPlaceVisit is scheduled to run EVERY_DAY [CONTEXT service_
+11-25 10:47:49.555  5120  5215 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.deidentifieddata.uploads.BatchDeidentifiedDataUploadService.BatchDeidentifiedDataUpload is scheduled to run EVERY_6_
+11-25 10:47:49.556  5120  5215 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.geller.GellerCleanupService.GellerCleanup is scheduled to run EVERY_DAY [CONTEXT service_id=173 ]
+11-25 10:47:49.557  5120  5215 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.settings.LocationHistoryActiveProcessingService.LocationHistoryActiveProcessing is scheduled to run EVERY_DAY [CONTE
+11-25 10:47:49.561  4059  4526 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603644524
+11-25 10:47:49.562  5120  5215 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.pulp.PulpInferenceService.PulpInference is scheduled to run EVERY_7_DAYS [CONTEXT service_id=173 ]
+11-25 10:47:49.563  5120  5215 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.pulp.PulpMddDownloadScheduleService.PulpMddRefreshDownloadTask is scheduled to run EVERY_DAY [CONTEXT service_id=173
+11-25 10:47:49.564  5120  5215 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.pulp.PulpMddMaintenanceService.PulpMddMaintenanceTask is scheduled to run EVERY_DAY [CONTEXT service_id=173 ]
+11-25 10:47:49.564  5120  5215 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.federated.FederatedScheduleService.FederatedLocation is scheduled to run EVERY_DAY [CONTEXT service_id=173 ]
+11-25 10:47:49.564  5120  5215 W GmsTaskScheduler: com.google.android.gms.semanticlocationhistory.federated.FederatedTaskIdentityDataService is not available. This may cause the task to be lost.
+11-25 10:47:49.564  5120  5215 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.federated.FederatedTaskIdentityDataService.FederatedLocation is scheduled to run EVERY_DAY [CONTEXT service_id=173 ]
+11-25 10:47:49.564  5120  5215 W GmsTaskScheduler: com.google.android.gms.semanticlocationhistory.federated.FederatedJobHistoryService is not available. This may cause the task to be lost.
+11-25 10:47:49.564  5120  5215 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.federated.FederatedJobHistoryService.FederatedLocation is scheduled to run EVERY_DAY [CONTEXT service_id=173 ]
+11-25 10:47:49.564  5120  5215 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.db.OdlhDatabaseCleanupJob.OdlhDatabaseCleanup is scheduled to run EVERY_DAY [CONTEXT service_id=173 ]
+11-25 10:47:49.564  5120  5215 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.edit.EditMergeJob.EditMergeJob is scheduled to run EVERY_DAY [CONTEXT service_id=173 ]
+11-25 10:47:49.565  5120  5215 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.edit.EditUploadJob.EditUploadJob is scheduled to run EVERY_DAY [CONTEXT service_id=173 ]
+11-25 10:47:49.565  5120  5215 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.deidentifieddata.historicalbusyness.HistoricalBusynessProcessingService.HistoricalBusyness is scheduled to run EVERY
+11-25 10:47:49.565  5120  5215 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.db.OdlhRemovedAccountsCleanupJob.OdlhRemovedAccountsCleanup is scheduled to run EVERY_DAY [CONTEXT service_id=173 ]
+11-25 10:47:49.565  5120  5215 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.db.OdlhUserEditSyncJob.OdlhUserEditSync is scheduled to run EVERY_DAY [CONTEXT service_id=173 ]
+11-25 10:47:49.565  5120  5215 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.federated.regionfetcher.RegionMddMaintenanceService.RegionMddMaintenanceTask is scheduled to run EVERY_DAY [CONTEXT 
+11-25 10:47:49.565  5120  5215 I SemanticLocation: [Scheduler] Periodic Task com.google.android.gms.semanticlocationhistory.federated.regionfetcher.RegionMddDownloadScheduleService.RegionMddRefreshDownloadTask is scheduled to run EVERY_6_HO
+11-25 10:47:49.567   517   815 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+11-25 10:47:49.567   517   815 D PackageManager: Clear ephemeral installer activity
+11-25 10:47:49.568  4059  4188 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603644525
+11-25 10:47:49.598   517  1723 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+11-25 10:47:49.598   517  1723 D PackageManager: Clear ephemeral installer activity
+11-25 10:47:49.600  4059  4688 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f441_fe0f/lottie.json
+11-25 10:47:49.600  4059  4688 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f441_fe0f/lottie.json)
+11-25 10:47:49.604  5039  5096 I SemanticLocation: [MDD] ModelBundleMetadata: File not found [CONTEXT service_id=173 ]
+11-25 10:47:49.604  5039  5096 I SemanticLocation: java.io.FileNotFoundException: /data/user/0/com.google.android.gms/files/model_bundle_metadata.pb: open failed: ENOENT (No such file or directory)
+11-25 10:47:49.604  5039  5096 I SemanticLocation: 	at libcore.io.IoBridge.open(IoBridge.java:574)
+11-25 10:47:49.604  5039  5096 I SemanticLocation: 	at java.io.FileInputStream.<init>(FileInputStream.java:160)
+11-25 10:47:49.604  5039  5096 I SemanticLocation: 	at android.app.ContextImpl.openFileInput(ContextImpl.java:745)
+11-25 10:47:49.604  5039  5096 I SemanticLocation: 	at android.content.ContextWrapper.openFileInput(ContextWrapper.java:249)
+11-25 10:47:49.604  5039  5096 I SemanticLocation: 	at android.content.ContextWrapper.openFileInput(ContextWrapper.java:249)
+11-25 10:47:49.604  5039  5096 I SemanticLocation: 	at android.content.ContextWrapper.openFileInput(ContextWrapper.java:249)
+11-25 10:47:49.604  5039  5096 I SemanticLocation: 	at bzxt.h(:com.google.android.gms@231818047@23.18.18 (190800-535401451):1)
+11-25 10:47:49.604  5039  5096 I SemanticLocation: 	at bzxd.c(:com.google.android.gms@231818047@23.18.18 (190800-535401451):9)
+11-25 10:47:49.604  5039  5096 I SemanticLocation: 	at bzxd.<init>(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-25 10:47:49.604  5039  5096 I SemanticLocation: 	at cadn.j(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-25 10:47:49.604  5039  5096 I SemanticLocation: 	at cadn.h(:com.google.android.gms@231818047@23.18.18 (190800-535401451):36)
+11-25 10:47:49.604  5039  5096 I SemanticLocation: 	at cadn.b(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-25 10:47:49.604  5039  5096 I SemanticLocation: 	at com.google.android.gms.semanticlocation.service.SemanticLocationChimeraService.k(:com.google.android.gms@231818047@23.18.18 (190800-535401451):9)
+11-25 10:47:49.604  5039  5096 I SemanticLocation: 	at com.google.android.gms.semanticlocation.service.SemanticLocationChimeraService.h(:com.google.android.gms@231818047@23.18.18 (190800-535401451):17)
+11-25 10:47:49.604  5039  5096 I SemanticLocation: 	at cacs.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):68)
+11-25 10:47:49.604  5039  5096 I SemanticLocation: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:487)
+11-25 10:47:49.604  5039  5096 I SemanticLocation: 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+11-25 10:47:49.604  5039  5096 I SemanticLocation: 	at aced.c(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+11-25 10:47:49.604  5039  5096 I SemanticLocation: 	at aced.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):7)
+11-25 10:47:49.604  5039  5096 I SemanticLocation: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-25 10:47:49.604  5039  5096 I SemanticLocation: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-25 10:47:49.604  5039  5096 I SemanticLocation: 	at acjn.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-25 10:47:49.604  5039  5096 I SemanticLocation: 	at java.lang.Thread.run(Thread.java:1012)
+11-25 10:47:49.604  5039  5096 I SemanticLocation: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+11-25 10:47:49.604  5039  5096 I SemanticLocation: 	at libcore.io.Linux.open(Native Method)
+11-25 10:47:49.604  5039  5096 I SemanticLocation: 	at libcore.io.ForwardingOs.open(ForwardingOs.java:563)
+11-25 10:47:49.604  5039  5096 I SemanticLocation: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:274)
+11-25 10:47:49.604  5039  5096 I SemanticLocation: 	at libcore.io.ForwardingOs.open(ForwardingOs.java:563)
+11-25 10:47:49.604  5039  5096 I SemanticLocation: 	at android.app.ActivityThread$AndroidOs.open(ActivityThread.java:8063)
+11-25 10:47:49.604  5039  5096 I SemanticLocation: 	at libcore.io.IoBridge.open(IoBridge.java:560)
+11-25 10:47:49.604  5039  5096 I SemanticLocation: 	... 22 more
+11-25 10:47:49.621  4059  4188 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1fae6/lottie.json
+11-25 10:47:49.621  4059  4188 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1fae6/lottie.json)
+11-25 10:47:49.622  5120  5224 D SmartDevice: [ModuleInitializer] Module init - scheduling buffered logs cleanup task
+11-25 10:47:49.638  5120  5224 I SmartDevice: [CleanBufferedLogsService] Periodic task upload_buffered_logs_periodic scheduled!
+11-25 10:47:49.649  4059  4688 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603644526
+11-25 10:47:49.651  4059  4188 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603644527
+11-25 10:47:49.656  4059  4526 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f9bf/lottie.json
+11-25 10:47:49.656  4059  4526 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f9bf/lottie.json)
+11-25 10:47:49.660  5120  5137 I gle.android.gms: Background young concurrent copying GC freed 162022(6615KB) AllocSpace objects, 72(2372KB) LOS objects, 39% free, 12MB/20MB, paused 63us,24us total 186.281ms
+11-25 10:47:49.663  4059  4188 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f9be/lottie.json
+11-25 10:47:49.663  4059  4188 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f9be/lottie.json)
+11-25 10:47:49.686  5120  5215 I AppLinksModuleInit: onInitRuntimeState [CONTEXT service_id=244 ]
+11-25 10:47:49.689  4059  4526 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603644528
+11-25 10:47:49.693  4059  4188 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603644529
+11-25 10:47:49.701  4059  4688 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f4aa/lottie.json
+11-25 10:47:49.701  4059  4688 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f4aa/lottie.json)
+11-25 10:47:49.704  4059  4526 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f4aa_1f3fb/lottie.json
+11-25 10:47:49.704  4059  4526 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f4aa_1f3fb/lottie.json)
+11-25 10:47:49.707   517  2403 W ProcessStats: Tracking association SourceState{a45d93b android.process.acore/10085 BFgs #9690} whose proc state 4 is better than process ProcessState{2e089c7 com.google.android.contacts/10153 pkg=com.google.
+11-25 10:47:49.727  5120  5223 I ChimeraConfigurator: Starting update, reason: 4 urgentFeatures: tflite_dynamite:-1
+11-25 10:47:49.732  4059  4688 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603644530
+11-25 10:47:49.733  4059  4526 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603644531
+11-25 10:47:49.751  4059  4188 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f4aa_1f3fc/lottie.json
+11-25 10:47:49.751  4059  4188 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f4aa_1f3fc/lottie.json)
+11-25 10:47:49.766  5120  5224 I TelephonySpamInit: On boot completed TelephonySpam module initialized [CONTEXT service_id=150 ]
+11-25 10:47:49.767  5120  5224 I TelephonySpamInit: onModuleUpdated TelephonySpam module initialized [CONTEXT service_id=150 ]
+11-25 10:47:49.768  5120  5224 I SpamListSync: scheduleSyncTasks [CONTEXT service_id=150 ]
+11-25 10:47:49.768  4059  4526 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f4aa_1f3fd/lottie.json
+11-25 10:47:49.768  4059  4526 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f4aa_1f3fd/lottie.json)
+11-25 10:47:49.770  5120  5224 I SpamListSync: schedulePeriodicTask [CONTEXT service_id=150 ]
+11-25 10:47:49.774  5123  5123 I com.example.buddy: Perf: native scene 29 fps
+11-25 10:47:49.779  5120  5215 I AppLinksModuleInit: verifying requested domain links post-boot [CONTEXT service_id=244 ]
+11-25 10:47:49.784  4059  4188 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603644532
+11-25 10:47:49.784  5526  5526 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+11-25 10:47:49.785  5120  5215 I AppLinksRequestHandler: Processing 0 input requests [CONTEXT service_id=244 ]
+11-25 10:47:49.785  5526  5526 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-25 10:47:49.786  5120  5215 I AppLinksModuleInit: Rerunning all WIP verifications [CONTEXT service_id=244 ]
+11-25 10:47:49.790   398   408 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=5526
+11-25 10:47:49.791   398   408 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (1626 us)
+11-25 10:47:49.795  4059  4526 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603644533
+11-25 10:47:49.805  5120  5223 I ChimeraConfigurator: Detected pending changes for urgent request: [tflite_dynamite]. Pending module sets: container:2318189190800,tflite_dynamite:2640104055100800+tflite_dynamite
+11-25 10:47:49.805  4059  4688 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f4aa_1f3fe/lottie.json
+11-25 10:47:49.993     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+11-25 10:47:49.805  4059  4688 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f4aa_1f3fe/lottie.json)
+11-25 10:47:49.810  5120  5215 I AppLinksRequestHandler: Processing 0 WIP requests. [CONTEXT service_id=244 ]
+11-25 10:47:49.811  5120  5215 I AppLinksModuleInit: Scheduling regular retry verifications. [CONTEXT service_id=244 ]
+11-25 10:47:49.811  5120  5215 I AppLinksVerRegularRetry: Retries scheduled. [CONTEXT service_id=244 ]
+11-25 10:47:49.812  5120  5210 I ThreadNetworkModuleInit: Initializing runtime states: 2 [CONTEXT service_id=305 ]
+11-25 10:47:49.814  5120  5210 I ThreadNetworkModuleInit: Enabled component com.google.android.gms.threadnetwork.ui.ShareCredentialsActivity [CONTEXT service_id=305 ]
+11-25 10:47:49.815   134   134 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-25 10:47:49.816  5526  5527 I Gralloc4: mapper 4.x is not supported
+11-25 10:47:49.819  5120  5210 I ThreadBrSynchronizer: Scheduled periodic Border Router sync task: PeriodicBrSync [CONTEXT service_id=305 ]
+11-25 10:47:49.827  5120  5224 I SpamListSync: scheduleOneTimeTask [CONTEXT service_id=150 ]
+11-25 10:47:49.830  4059  4188 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f4aa_1f3ff/lottie.json
+11-25 10:47:49.830  4059  4188 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f4aa_1f3ff/lottie.json)
+11-25 10:47:49.832  5120  5210 I TrustedTime: Skip initializing when trusted time feature disabled. [CONTEXT service_id=326 ]
+11-25 10:47:49.849  4059  4688 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603644534
+11-25 10:47:49.858  4059  4188 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603644535
+11-25 10:47:49.868  4059  4526 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f44f/lottie.json
+11-25 10:47:49.868  4059  4526 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f44f/lottie.json)
+11-25 10:47:49.896  4059  4526 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603644536
+11-25 10:47:49.905  4059  4188 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f44f_1f3fb/lottie.json
+11-25 10:47:49.905  4059  4188 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f44f_1f3fb/lottie.json)
+11-25 10:47:49.917  5120  5214 W ActiveUnlock: Tried to set empty triggers [CONTEXT service_id=327 ]
+11-25 10:47:49.920  5120  5214 W ChimeraUtils: Module com.google.android.gms.activeunlock_primary missing resource null(0)
+11-25 10:47:49.935  4059  4188 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603644537
+11-25 10:47:49.941  5120  5214 I SystemUpdate: [Control,UpdateReminderDialogControl] Received action: android.intent.action.BOOT_COMPLETED
+11-25 10:47:49.953  5120  5223 I GmsDebugLogger: [73] 1801
+11-25 10:47:49.954  4059  4688 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f44f_1f3fc/lottie.json
+11-25 10:47:49.954  4059  4688 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f44f_1f3fc/lottie.json)
+11-25 10:47:49.957   333  5528 I resolv  : GetAddrInfoHandler::run: {100 786532 100 983140 10131 0}
+11-25 10:47:49.961  4059  4526 D cevx    : Starting download: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f44f_1f3fd/lottie.json
+11-25 10:47:49.961  4059  4526 V cevx    : Is http uri, downloading (uri: https://fonts.gstatic.com/s/e/notoemoji/16.0/1f44f_1f3fd/lottie.json)
+11-25 10:47:49.961   333  5530 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+11-25 10:47:49.961   333  5530 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7d0b15017390
+11-25 10:47:49.961   333  5530 I resolv  : doQuery: rcode=0, ancount=8, return value=264
+11-25 10:47:49.964   333  5531 I resolv  : res_nmkquery: (QUERY, IN, A)
+11-25 10:47:49.964   333  5531 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7d0a45019dd0
+11-25 10:47:49.965   333  5531 I resolv  : doQuery: rcode=0, ancount=8, return value=168
+11-25 10:47:49.966  5120  5420 D TrafficStats: tagSocket(122) with statsTag=0x30000408, statsUid=-1
+11-25 10:47:49.977  5120  5223 W ZappDownloader: No successful module downloads for requested features [tflite_dynamite].
+11-25 10:47:49.985  4059  4688 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603644538
+11-25 10:47:49.990  4059  4526 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603644539
+11-25 10:47:49.997  5120  5223 I GmsDebugLogger: [30] [TfliteDynamiteDynamite.integ:264010405100800]

@@ -1,0 +1,150 @@
+11-25 10:53:41.277  5144  5227 W GLSUser : 	at dzex.f(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-25 10:53:41.277  5144  5227 W GLSUser : 	at dzcx.d(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-25 10:53:41.277  5144  5227 W GLSUser : 	at dzcx.c(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-25 10:53:41.277  5144  5227 W GLSUser : 	at dzcx.n(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-25 10:53:41.277  5144  5227 W GLSUser : 	at avwn.h(:com.google.android.gms@231818047@23.18.18 (190800-535401451):7)
+11-25 10:53:41.277  5144  5227 W GLSUser : 	at avwn.f(:com.google.android.gms@231818047@23.18.18 (190800-535401451):1)
+11-25 10:53:41.277  5144  5227 W GLSUser : 	... 9 more
+11-25 10:53:41.280  5144  5227 W GLSUser : [DeviceKeyStore] Cannot load key: Device key file not found.
+11-25 10:53:41.337   336  5514 I resolv  : GetAddrInfoHandler::run: {100 786532 100 983140 10131 0}
+11-25 10:53:41.342   336  5516 I resolv  : res_nmkquery: (QUERY, IN, A)
+11-25 10:53:41.342   336  5516 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7ef378020850
+11-25 10:53:41.343   336  5515 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+11-25 10:53:41.343   336  5516 I resolv  : doQuery: rcode=0, ancount=8, return value=173
+11-25 10:53:41.343   336  5515 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7ef2b802f690
+11-25 10:53:41.345   336  5515 I resolv  : doQuery: rcode=0, ancount=8, return value=269
+11-25 10:53:41.352  5144  5456 D TrafficStats: tagSocket(195) with statsTag=0x34000609, statsUid=10125
+11-25 10:53:41.377  5144  5456 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+11-25 10:53:41.378  5144  5456 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-25 10:53:41.379  5144  5456 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-25 10:53:41.659  5144  5179 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.icing.proxy.IcingInternalCorporaUpdateService started execution. cause:3 exec_start_elapsed_seconds: 105 [CONTEXT service_id=218 ]
+11-25 10:53:41.661  5144  5179 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.icing.proxy.IcingInternalCorporaUpdateService finished executing. cause:3 result: 1 elapsed_millis: 164 uptime_millis: 164 exec_star
+11-25 10:53:41.800  4967  4985 D EGL_emulation: app_time_stats: avg=38.90ms min=32.89ms max=42.97ms count=26
+11-25 10:53:41.800  4967  4967 I com.example.buddy: Perf: native scene 22 fps
+11-25 10:53:41.881  5144  5456 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+11-25 10:53:41.882  5144  5456 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-25 10:53:41.885  5144  5456 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-25 10:53:41.951  1054  1054 D CarrierSvcBindHelper: onPackageModified: com.google.android.contacts
+11-25 10:53:41.952  1054  1054 D CarrierSvcBindHelper: No carrier app for: 0
+11-25 10:53:41.960  1029  1029 V MediaPlayerList: mPackageChangedBroadcastReceiver: action: android.intent.action.PACKAGE_CHANGED
+11-25 10:53:41.960  1029  1029 V MediaPlayerList: mPackageChangedBroadcastReceiver: action: android.intent.action.PACKAGE_CHANGED
+11-25 10:53:41.961   523  2191 D OomAdjuster: Not killing cached processes
+11-25 10:53:41.964   523   625 I InputReader: Reconfiguring input devices, changes=KEYBOARD_LAYOUTS
+11-25 10:53:41.967  5144  5227 W GlsClientGrpc: Voilatile gRPC failure INVALID_ARGUMENT: Application credential header not valid. Please fix the client to pass a valid application credential header. [CONTEXT service_id=6 ]
+11-25 10:53:41.967  5144  5227 W GlsClientGrpc: enms: INVALID_ARGUMENT: Application credential header not valid. Please fix the client to pass a valid application credential header.
+11-25 10:53:41.967  5144  5227 W GlsClientGrpc: 	at enmr.h(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-25 10:53:41.967  5144  5227 W GlsClientGrpc: 	at abxw.u(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-25 10:53:41.967  5144  5227 W GlsClientGrpc: 	at abxw.e(:com.google.android.gms@231818047@23.18.18 (190800-535401451):17)
+11-25 10:53:41.967  5144  5227 W GlsClientGrpc: 	at abxw.g(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-25 10:53:41.967  5144  5227 W GlsClientGrpc: 	at cyeg.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):27)
+11-25 10:53:41.967  5144  5227 W GlsClientGrpc: 	at czpd.call(:com.google.android.gms@231818047@23.18.18 (190800-535401451):78)
+11-25 10:53:41.967  5144  5227 W GlsClientGrpc: 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+11-25 10:53:41.967  5144  5227 W GlsClientGrpc: 	at aced.c(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+11-25 10:53:41.967  5144  5227 W GlsClientGrpc: 	at aced.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):7)
+11-25 10:53:41.967  5144  5227 W GlsClientGrpc: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-25 10:53:41.967  5144  5227 W GlsClientGrpc: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-25 10:53:41.967  5144  5227 W GlsClientGrpc: 	at acjn.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-25 10:53:41.967  5144  5227 W GlsClientGrpc: 	at java.lang.Thread.run(Thread.java:1012)
+11-25 10:53:41.974   845  4295 I PermissionControllerServiceImpl: Updating user sensitive for uid 10154
+11-25 10:53:41.987  1054  1344 D ImsResolver: maybeAddedImsService, packageName: com.google.android.contacts
+11-25 10:53:41.996   839   907 D StylusManager: Stylus InputDevice changed: 14 virtio_input_multi_touch_11
+11-25 10:53:41.997   839   907 D StylusManager: Stylus InputDevice changed: 12 virtio_input_multi_touch_9
+11-25 10:53:41.997   839   907 D StylusManager: Stylus InputDevice changed: 11 virtio_input_multi_touch_8
+11-25 10:53:41.999   839   907 D StylusManager: Stylus InputDevice changed: 10 virtio_input_multi_touch_7
+11-25 10:53:42.001   839   907 D StylusManager: Stylus InputDevice changed: 9 virtio_input_multi_touch_6
+11-25 10:53:42.002   839   907 D StylusManager: Stylus InputDevice changed: 8 virtio_input_multi_touch_5
+11-25 10:53:42.003   839   907 D StylusManager: Stylus InputDevice changed: 7 virtio_input_multi_touch_4
+11-25 10:53:42.004   839   907 D StylusManager: Stylus InputDevice changed: 6 virtio_input_multi_touch_3
+11-25 10:53:42.004   839   907 D StylusManager: Stylus InputDevice changed: 13 virtio_input_multi_touch_10
+11-25 10:53:42.005   839   907 D StylusManager: Stylus InputDevice changed: 4 virtio_input_multi_touch_1
+11-25 10:53:42.005   839   907 D StylusManager: Stylus InputDevice changed: 5 virtio_input_multi_touch_2
+11-25 10:53:42.019   523   606 D ActivityManager: sync unfroze 1728 com.google.android.apps.youtube.music for 6
+11-25 10:53:42.054   839   839 D ControlsListingControllerImpl: ServiceConfig reloaded, count: 0
+11-25 10:53:42.083   523  2744 D ConnectivityService: requestNetwork for uid/pid:10156/1728 activeRequest: null callbackRequest: 135 [NetworkRequest [ REQUEST id=136, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 1015
+11-25 10:53:42.087   523   765 D ConnectivityService: NetReassign [136 : null → 100] [c 0] [a 3] [i 0]
+11-25 10:53:42.091   523   758 D WifiNetworkFactory: got request NetworkRequest [ REQUEST id=136, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10156 RequestorUid: 10156 RequestorPkg: com.google.android.apps.youtube.m
+11-25 10:53:42.092   523   758 D UntrustedWifiNetworkFactory: got request NetworkRequest [ REQUEST id=136, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10156 RequestorUid: 10156 RequestorPkg: com.google.android.apps.
+11-25 10:53:42.092   523   758 D OemPaidWifiNetworkFactory: got request NetworkRequest [ REQUEST id=136, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10156 RequestorUid: 10156 RequestorPkg: com.google.android.apps.yo
+11-25 10:53:42.093   523   758 D MultiInternetWifiNetworkFactory: got request NetworkRequest [ REQUEST id=136, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10156 RequestorUid: 10156 RequestorPkg: com.google.android.a
+11-25 10:53:42.126   523   549 E system_server: No package ID 7f found for resource ID 0x7f080107.
+11-25 10:53:42.133   523   549 E system_server: No package ID 7f found for resource ID 0x7f150560.
+11-25 10:53:42.162  1619  1619 I AiAiEcho: AppFetcherImpl onPackageChanged com.google.android.contacts.
+11-25 10:53:42.163  1619  3878 I AiAiEcho: AppIndexer Package:[com.google.android.contacts] UserProfile:[0] Enabled:[true].
+11-25 10:53:42.164  1619  3878 I AiAiEcho: AppFetcherImplV2 updateApps package:[com.google.android.contacts], userId:[0], reason:[package is updated.].
+11-25 10:53:42.215  1728  2406 W YouTubeMusic: Invalid playback type; streaming data is not playable
+11-25 10:53:42.229  1728  1728 E Widget.RecentlyPlayed: Filling bundle but recently played items are EMPTY.
+11-25 10:53:42.433  4045  4196 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of bdxy@c4defe3
+11-25 10:53:42.535  5144  5399 I Fitness : OnPackageChangedOperation got intent: Intent { act=android.intent.action.PACKAGE_CHANGED dat=package: flg=0x45000010 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.PersistentIntentO
+11-25 10:53:42.549  5144  5399 I Fitness : FitCleanupIntentOperation received Intent android.intent.action.PACKAGE_CHANGED [CONTEXT service_id=17 ]
+11-25 10:53:42.772   839   839 D StatusBarIconController: ignoring old pipeline callbacks, because the new mobile icons are enabled
+11-25 10:53:42.816  4967  4985 D EGL_emulation: app_time_stats: avg=36.20ms min=31.08ms max=43.45ms count=28
+11-25 10:53:43.313  5144  5360 I NearbySharing: FastInitiation warming period has ended [CONTEXT service_id=194 ]
+11-25 10:53:43.520  5196  5258 I Icing   : Indexing com.google.android.gms-apps from com.google.android.gms
+11-25 10:53:43.521  5523  5523 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+11-25 10:53:43.522  5523  5523 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-25 10:53:43.538  5196  5258 I Icing   : Indexing done com.google.android.gms-apps
+11-25 10:53:43.705     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+11-25 10:53:43.560   135   135 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-25 10:53:43.560  5523  5524 I Gralloc4: mapper 4.x is not supported
+11-25 10:53:43.611  5196  5258 I Icing   : Indexing com.google.android.gms-internal.3p:MobileApplication from com.google.android.gms
+11-25 10:53:43.639  5196  5258 I Icing   : Indexing done com.google.android.gms-internal.3p:MobileApplication
+11-25 10:53:43.846  4967  4985 D EGL_emulation: app_time_stats: avg=37.76ms min=31.68ms max=48.73ms count=27
+11-25 10:53:43.913  2095  5525 W DiskBasedLogger: Disk-based log buffer doesn't exist, so there's nothing to clean up.
+11-25 10:53:43.920  1765  1765 I BgTaskExecutorImpl: Starting EXCLUSIVE background task INTERNAL_PERIODIC_TASK_SYNC.
+11-25 10:53:43.937  5144  5358 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-25 10:53:43.940  5144  5358 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-25 10:53:43.959  1765  1765 I BgTaskExecutorImpl: Starting PERIODIC background task ACTIVITY_LEVEL_TASK.
+11-25 10:53:43.971  1765  2481 W SearchServiceCore: Abort, client detached.
+11-25 10:53:43.982  1765  1765 I BgTaskExecutorImpl: Starting PERIODIC background task AWARE_TIP_WORKER_PROCESS_TIPS.
+11-25 10:53:43.988  1765  2481 E TipSharedPrefManager: invalid tip 40070019: tip does not need conditions checked only once
+11-25 10:53:43.988  1765  2481 E TipSharedPrefManager: invalid tip 40070055: tip does not need conditions checked only once
+11-25 10:53:43.988  1765  2481 I A       : Using proto config with mendel
+11-25 10:53:43.989  1765  2481 I A       : Using proto config with mendel
+11-25 10:53:43.989  1765  2481 I A       : Using proto config with mendel
+11-25 10:53:43.989  1765  2481 I A       : Merging legacy hotword config map with new proto.
+11-25 10:53:43.989  1765  2481 I A       : Adding from config to map. Locale: cmn-Hant-TW modelPrefix: x_google Location:4e7cae00daee30ec565c34e3aa67a51f isSpeakerIdSupported: true
+11-25 10:53:43.989  1765  2481 I A       : Adding from config to map. Locale: id-ID modelPrefix: x_google Location:cfffcc1a4c1c084c003c8eb27f73d770 isSpeakerIdSupported: true
+11-25 10:53:43.989  1765  2481 I A       : Adding from config to map. Locale: ko-KR modelPrefix: x_google Location:0b132163a2eb2c1194b202067475724b isSpeakerIdSupported: true
+11-25 10:53:43.989  1765  2481 I A       : Skipping. Expected model: 2 Found: 1
+11-25 10:53:43.989  1765  2481 I A       : Adding from config to map. Locale: zh-TW modelPrefix: x_google Location:4e7cae00daee30ec565c34e3aa67a51f isSpeakerIdSupported: true
+11-25 10:53:43.990  1765  2481 E TipSharedPrefManager: invalid tip 40070197: tip does not need conditions checked only once
+11-25 10:53:44.004  1765  2481 I A       : Using proto config with mendel
+11-25 10:53:44.006  1765  2481 I A       : Using proto config with mendel
+11-25 10:53:44.006  1765  2481 I A       : Using proto config with mendel
+11-25 10:53:44.006  1765  2481 I A       : Merging legacy hotword config map with new proto.
+11-25 10:53:44.006  1765  2481 I A       : Adding from config to map. Locale: cmn-Hant-TW modelPrefix: x_google Location:4e7cae00daee30ec565c34e3aa67a51f isSpeakerIdSupported: true
+11-25 10:53:44.006  1765  2481 I A       : Adding from config to map. Locale: id-ID modelPrefix: x_google Location:cfffcc1a4c1c084c003c8eb27f73d770 isSpeakerIdSupported: true
+11-25 10:53:44.006  1765  2481 I A       : Adding from config to map. Locale: ko-KR modelPrefix: x_google Location:0b132163a2eb2c1194b202067475724b isSpeakerIdSupported: true
+11-25 10:53:44.006  1765  2481 I A       : Skipping. Expected model: 2 Found: 1
+11-25 10:53:44.006  1765  2481 I A       : Adding from config to map. Locale: zh-TW modelPrefix: x_google Location:4e7cae00daee30ec565c34e3aa67a51f isSpeakerIdSupported: true
+11-25 10:53:44.007  1765  2481 I A       : Using proto config with mendel
+11-25 10:53:44.007  1765  2481 I A       : Using proto config with mendel
+11-25 10:53:44.007  1765  2481 I A       : Using proto config with mendel
+11-25 10:53:44.007  1765  2481 I A       : Merging legacy hotword config map with new proto.
+11-25 10:53:44.007  1765  2481 I A       : Adding from config to map. Locale: cmn-Hant-TW modelPrefix: x_google Location:4e7cae00daee30ec565c34e3aa67a51f isSpeakerIdSupported: true
+11-25 10:53:44.007  1765  2481 I A       : Adding from config to map. Locale: id-ID modelPrefix: x_google Location:cfffcc1a4c1c084c003c8eb27f73d770 isSpeakerIdSupported: true
+11-25 10:53:44.007  1765  2481 I A       : Adding from config to map. Locale: ko-KR modelPrefix: x_google Location:0b132163a2eb2c1194b202067475724b isSpeakerIdSupported: true
+11-25 10:53:44.007  1765  2481 I A       : Skipping. Expected model: 2 Found: 1
+11-25 10:53:44.007  1765  2481 I A       : Adding from config to map. Locale: zh-TW modelPrefix: x_google Location:4e7cae00daee30ec565c34e3aa67a51f isSpeakerIdSupported: true
+11-25 10:53:44.008  1765  2481 I A       : Using proto config with mendel
+11-25 10:53:44.008  1765  2481 I A       : Using proto config with mendel
+11-25 10:53:44.008  1765  2481 I A       : Using proto config with mendel
+11-25 10:53:44.008  1765  2481 I A       : Merging legacy hotword config map with new proto.
+11-25 10:53:44.008  1765  2481 I A       : Adding from config to map. Locale: cmn-Hant-TW modelPrefix: x_google Location:4e7cae00daee30ec565c34e3aa67a51f isSpeakerIdSupported: true
+11-25 10:53:44.008  1765  2481 I A       : Adding from config to map. Locale: id-ID modelPrefix: x_google Location:cfffcc1a4c1c084c003c8eb27f73d770 isSpeakerIdSupported: true
+11-25 10:53:44.008  1765  2481 I A       : Adding from config to map. Locale: ko-KR modelPrefix: x_google Location:0b132163a2eb2c1194b202067475724b isSpeakerIdSupported: true
+11-25 10:53:44.008  1765  2481 I A       : Skipping. Expected model: 2 Found: 1
+11-25 10:53:44.008  1765  2481 I A       : Adding from config to map. Locale: zh-TW modelPrefix: x_google Location:4e7cae00daee30ec565c34e3aa67a51f isSpeakerIdSupported: true
+11-25 10:53:44.010  1765  2481 E TipSharedPrefManager: invalid tip 40070251: tip does not need conditions checked only once
+11-25 10:53:44.026  1765  1765 I BgTaskExecutorImpl: Starting PERIODIC background task CHROME_EXPERIMENT_SYNC.
+11-25 10:53:44.028  1765  2481 I A       : Using proto config with mendel
+11-25 10:53:44.028  1765  2481 I A       : Using proto config with mendel
+11-25 10:53:44.028  1765  2481 I A       : Using proto config with mendel
+11-25 10:53:44.028  1765  2481 I A       : Merging legacy hotword config map with new proto.
+11-25 10:53:44.028  1765  2481 I A       : Adding from config to map. Locale: cmn-Hant-TW modelPrefix: x_google Location:4e7cae00daee30ec565c34e3aa67a51f isSpeakerIdSupported: true
+11-25 10:53:44.028  1765  2481 I A       : Adding from config to map. Locale: id-ID modelPrefix: x_google Location:cfffcc1a4c1c084c003c8eb27f73d770 isSpeakerIdSupported: true
+11-25 10:53:44.028  1765  2481 I A       : Adding from config to map. Locale: ko-KR modelPrefix: x_google Location:0b132163a2eb2c1194b202067475724b isSpeakerIdSupported: true
+11-25 10:53:44.029  1765  1765 I BgTaskExecutorImpl: Starting PERIODIC background task CLEAR_DATA_DETECTOR.
+11-25 10:53:44.029  1765  2481 I A       : Skipping. Expected model: 2 Found: 1
+11-25 10:53:44.029  1765  2481 I A       : Adding from config to map. Locale: zh-TW modelPrefix: x_google Location:4e7cae00daee30ec565c34e3aa67a51f isSpeakerIdSupported: true
+11-25 10:53:44.029  5144  5150 I .gms.persistent: Background young concurrent copying GC freed 161309(9847KB) AllocSpace objects, 0(0B) LOS objects, 39% free, 14MB/23MB, paused 37us,26us total 135.077ms

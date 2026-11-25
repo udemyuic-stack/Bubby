@@ -1,0 +1,150 @@
+11-25 10:51:33.077  4045  4169 W SubscriptionMetadataUti: 	at bdsy.h(PG:6)
+11-25 10:51:33.077  4045  4169 W SubscriptionMetadataUti: 	at bdvp.a(PG:1)
+11-25 10:51:33.077  4045  4169 W SubscriptionMetadataUti: 	at bgit.<init>(PG:1)
+11-25 10:51:33.077  4045  4169 W SubscriptionMetadataUti: 	at bgiu.a(PG:1)
+11-25 10:51:33.077  4045  4169 W SubscriptionMetadataUti: 	at awsw.ai(PG:3)
+11-25 10:51:33.077  4045  4169 W SubscriptionMetadataUti: 	at awsw.aj(PG:25)
+11-25 10:51:33.077  4045  4169 W SubscriptionMetadataUti: 	at awsw.z(PG:2)
+11-25 10:51:33.077  4045  4169 W SubscriptionMetadataUti: 	at aule.k(PG:1)
+11-25 10:51:33.077  4045  4169 W SubscriptionMetadataUti: 	at aulc.call(Unknown Source:2)
+11-25 10:51:33.077  4045  4169 W SubscriptionMetadataUti: 	at cnsg.a(PG:1)
+11-25 10:51:33.077  4045  4169 W SubscriptionMetadataUti: 	at cnpm.a(PG:3)
+11-25 10:51:33.077  4045  4169 W SubscriptionMetadataUti: 	at ctfv.a(PG:1)
+11-25 10:51:33.077  4045  4169 W SubscriptionMetadataUti: 	at ctet.run(PG:4)
+11-25 10:51:33.077  4045  4169 W SubscriptionMetadataUti: 	at ctfx.run(PG:1)
+11-25 10:51:33.077  4045  4169 W SubscriptionMetadataUti: 	at bxfd.run(PG:1)
+11-25 10:51:33.077  4045  4169 W SubscriptionMetadataUti: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-25 10:51:33.077  4045  4169 W SubscriptionMetadataUti: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-25 10:51:33.077  4045  4169 W SubscriptionMetadataUti: 	at bxef.run(PG:2)
+11-25 10:51:33.077  4045  4169 W SubscriptionMetadataUti: 	at java.lang.Thread.run(Thread.java:1012)
+11-25 10:51:33.077  4045  4169 W SubscriptionMetadataUti: 	at bxfj.run(PG:5)
+11-25 10:51:33.077  4045  4169 W SubscriptionMetadataUti: Bugle: SubscriptionMetadataUtils get: unexpected subId = -2, replacing with -1
+11-25 10:51:33.077  4045  4169 W SubscriptionMetadataUti: cpwb: FULL
+11-25 10:51:33.077  4045  4169 W SubscriptionMetadataUti: 	at bdsy.h(PG:6)
+11-25 10:51:33.077  4045  4169 W SubscriptionMetadataUti: 	at bgit.<init>(PG:2)
+11-25 10:51:33.077  4045  4169 W SubscriptionMetadataUti: 	at bgiu.a(PG:1)
+11-25 10:51:33.077  4045  4169 W SubscriptionMetadataUti: 	at awsw.ai(PG:3)
+11-25 10:51:33.077  4045  4169 W SubscriptionMetadataUti: 	at awsw.aj(PG:25)
+11-25 10:51:33.077  4045  4169 W SubscriptionMetadataUti: 	at awsw.z(PG:2)
+11-25 10:51:33.077  4045  4169 W SubscriptionMetadataUti: 	at aule.k(PG:1)
+11-25 10:51:33.077  4045  4169 W SubscriptionMetadataUti: 	at aulc.call(Unknown Source:2)
+11-25 10:51:33.077  4045  4169 W SubscriptionMetadataUti: 	at cnsg.a(PG:1)
+11-25 10:51:33.077  4045  4169 W SubscriptionMetadataUti: 	at cnpm.a(PG:3)
+11-25 10:51:33.077  4045  4169 W SubscriptionMetadataUti: 	at ctfv.a(PG:1)
+11-25 10:51:33.077  4045  4169 W SubscriptionMetadataUti: 	at ctet.run(PG:4)
+11-25 10:51:33.077  4045  4169 W SubscriptionMetadataUti: 	at ctfx.run(PG:1)
+11-25 10:51:33.077  4045  4169 W SubscriptionMetadataUti: 	at bxfd.run(PG:1)
+11-25 10:51:33.077  4045  4169 W SubscriptionMetadataUti: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-25 10:51:33.077  4045  4169 W SubscriptionMetadataUti: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-25 10:51:33.077  4045  4169 W SubscriptionMetadataUti: 	at bxef.run(PG:2)
+11-25 10:51:33.077  4045  4169 W SubscriptionMetadataUti: 	at java.lang.Thread.run(Thread.java:1012)
+11-25 10:51:33.077  4045  4169 W SubscriptionMetadataUti: 	at bxfj.run(PG:5)
+11-25 10:51:33.078  4045  4169 W SubscriptionMetadataUti: Bugle: SubscriptionMetadataUtils get: unexpected subId = -2, replacing with -1
+11-25 10:51:33.078  4045  4169 W SubscriptionMetadataUti: cpwb: FULL
+11-25 10:51:33.078  4045  4169 W SubscriptionMetadataUti: 	at bdsy.h(PG:6)
+11-25 10:51:33.078  4045  4169 W SubscriptionMetadataUti: 	at awsw.ai(PG:18)
+11-25 10:51:33.078  4045  4169 W SubscriptionMetadataUti: 	at awsw.aj(PG:25)
+11-25 10:51:33.078  4045  4169 W SubscriptionMetadataUti: 	at awsw.z(PG:2)
+11-25 10:51:33.078  4045  4169 W SubscriptionMetadataUti: 	at aule.k(PG:1)
+11-25 10:51:33.078  4045  4169 W SubscriptionMetadataUti: 	at aulc.call(Unknown Source:2)
+11-25 10:51:33.078  4045  4169 W SubscriptionMetadataUti: 	at cnsg.a(PG:1)
+11-25 10:51:33.078  4045  4169 W SubscriptionMetadataUti: 	at cnpm.a(PG:3)
+11-25 10:51:33.078  4045  4169 W SubscriptionMetadataUti: 	at ctfv.a(PG:1)
+11-25 10:51:33.078  4045  4169 W SubscriptionMetadataUti: 	at ctet.run(PG:4)
+11-25 10:51:33.078  4045  4169 W SubscriptionMetadataUti: 	at ctfx.run(PG:1)
+11-25 10:51:33.078  4045  4169 W SubscriptionMetadataUti: 	at bxfd.run(PG:1)
+11-25 10:51:33.078  4045  4169 W SubscriptionMetadataUti: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-25 10:51:33.078  4045  4169 W SubscriptionMetadataUti: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-25 10:51:33.078  4045  4169 W SubscriptionMetadataUti: 	at bxef.run(PG:2)
+11-25 10:51:33.078  4045  4169 W SubscriptionMetadataUti: 	at java.lang.Thread.run(Thread.java:1012)
+11-25 10:51:33.078  4045  4169 W SubscriptionMetadataUti: 	at bxfj.run(PG:5)
+11-25 10:51:33.078  4045  4169 I Bugle   : SubscriptionUtilsAsOfLMR1: getActiveSubscriptionInfo(): empty sub info for subscription{id:-1}
+11-25 10:51:33.078  4045  4169 I Bugle   : SubscriptionUtilsAsOfLMR1: getActiveSubscriptionInfo(): empty sub info for subscription{id:-1}
+11-25 10:51:33.078  4045  4169 W Bugle   : SubscriptionUtilsAsOfLMR1: getSelfRawNumber: subInfo is null for subscription{id:-1}
+11-25 10:51:33.082  4045  4144 I BugleRcsEngine: [41] bptz.run: SystemBindingManager: SystemBinding enabled: true
+11-25 10:51:33.082  4045  4144 I BugleRcsEngine: [41] bpua.b: System Binding updated
+11-25 10:51:33.083  4045  4154 W BugleRcsEngine: [45] bpxc.w: Unable to send diagnostic log
+11-25 10:51:33.083  4045  4173 I BugleTransport: isChatAvailable: RcsAvailability is CARRIER_SETUP_PENDING (Carrier RCS is not set up)
+11-25 10:51:33.135  1629  1663 I hbox:interactor: Background young concurrent copying GC freed 48240(2745KB) AllocSpace objects, 8(160KB) LOS objects, 29% free, 7200KB/10226KB, paused 43us,16us total 318.977ms
+11-25 10:51:33.147  2039  2109 V DownloadManager: Deleting /data/data/com.android.providers.downloads/cache/08202014-metadata.txt via provider delete
+11-25 10:51:33.170  1614  2464 W ModernMediaScanner: Failed to visit /data/data/com.android.providers.downloads/cache/08202014-metadata.txt: java.nio.file.NoSuchFileException: /data/data/com.android.providers.downloads/cache/08202014-metada
+11-25 10:51:33.182  1614  2464 I MediaProvider: Scanned internal due to REASON_DEMAND, found 0 items in 12ms, 0 inserts 0 updates 0 deletes
+11-25 10:51:33.200  2039  2109 V DownloadManager: Deleting /data/data/com.android.providers.downloads/cache/08202014-pins.txt via provider delete
+11-25 10:51:33.201  1614  2464 W ModernMediaScanner: Failed to visit /data/data/com.android.providers.downloads/cache/08202014-pins.txt: java.nio.file.NoSuchFileException: /data/data/com.android.providers.downloads/cache/08202014-pins.txt
+11-25 10:51:33.201  1614  2464 I MediaProvider: Scanned internal due to REASON_DEMAND, found 0 items in 1ms, 0 inserts 0 updates 0 deletes
+11-25 10:51:33.237  4045  4169 W BugleAction: No default number, returning empty msisdn
+11-25 10:51:33.254  4844  4844 I com.example.buddy: Perf: native scene 28 fps
+11-25 10:51:33.308  1402  2786 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.auth.account.be.legacy.AuthCronService finished executing. cause:5 result: 3 elapsed_millis: 2814 uptime_millis: 2814 exec_start_ela
+11-25 10:51:33.308  4045  4173 I BugleTransport: updateActiveTransport: refreshing chat transport
+11-25 10:51:33.334  1402  5082 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-25 10:51:33.361   519  5113 I ConfigUpdateInstallReceiver: Couldn't find current metadata, assuming first update
+11-25 10:51:33.362   519  5113 I ConfigUpdateInstallReceiver: Failed to read current content, assuming first update!
+11-25 10:51:33.362   519  5113 I ConfigUpdateInstallReceiver: Found new update, installing...
+11-25 10:51:33.383  3522  4696 I ConfigUpdater: Update downloaded, starting installation
+11-25 10:51:33.385   836   836 D StatusBarIconController: ignoring old pipeline callbacks, because the new mobile icons are enabled
+11-25 10:51:33.418   519  5113 W ContentProviderHelper: Slow operation: 57ms so far, now at getContentProviderImpl: after updateOomAdj
+11-25 10:51:33.443   519  5113 W ContentProviderHelper: Slow operation: 82ms so far, now at getContentProviderImpl: done!
+11-25 10:51:33.576  4045  4173 I BugleTransport: RCS Configuration is empty. Enabled transport is Dual Reg [CONTEXT ratelimit_period="5 SECONDS" skipped=2 ]
+11-25 10:51:33.631   519  5113 I ConfigUpdateInstallReceiver: Installation successful
+11-25 10:51:33.633  5112  5112 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+11-25 10:51:33.635  5112  5112 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-25 10:51:33.642  1402  5082 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-25 10:51:33.643   399   413 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=5112
+11-25 10:51:33.643   399   413 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (1018 us)
+11-25 10:51:33.651  4045  4092 I .apps.messaging: Background young concurrent copying GC freed 126469(5335KB) AllocSpace objects, 48(2316KB) LOS objects, 40% free, 10MB/17MB, paused 23us,41us total 977.335ms
+11-25 10:51:33.681   135   135 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-25 10:51:33.682  5112  5114 I Gralloc4: mapper 4.x is not supported
+11-25 10:51:33.876     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+11-25 10:51:33.683  3522  4696 I ConfigUpdater: doneInstall
+11-25 10:51:33.730  2039  2109 V DownloadManager: Deleting /data/data/com.android.providers.downloads/cache/ifw-empty-metadata.txt via provider delete
+11-25 10:51:33.740  1614  2464 W ModernMediaScanner: Failed to visit /data/data/com.android.providers.downloads/cache/ifw-empty-metadata.txt: java.nio.file.NoSuchFileException: /data/data/com.android.providers.downloads/cache/ifw-empty-meta
+11-25 10:51:33.752  4045  4173 I BugleTransport: refreshChatTransport: isChatAvailable: false, enabledTransport: 1, configuration: <empty>
+11-25 10:51:33.789  4844  4860 D EGL_emulation: app_time_stats: avg=33.50ms min=18.48ms max=49.41ms count=30
+11-25 10:51:33.831  1614  2464 I MediaProvider: Scanned internal due to REASON_DEMAND, found 0 items in 91ms, 0 inserts 0 updates 0 deletes
+11-25 10:51:33.837  1402  5082 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-25 10:51:33.859  1402  2786 W .gms.persistent: Long monitor contention with owner netscheduler-queue-handler (2811) at void bytb.o(int)(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4) waiters=0 in void bysy.a(bypy, int, 
+11-25 10:51:33.869  2039  2109 V DownloadManager: Deleting /data/data/com.android.providers.downloads/cache/ifw-empty.xml via provider delete
+11-25 10:51:33.881  2039  5094 D DownloadManager: [13] Finished with status SUCCESS
+11-25 10:51:33.882  2039  5096 D DownloadManager: [14] Finished with status SUCCESS
+11-25 10:51:33.883  1614  2464 W ModernMediaScanner: Failed to visit /data/data/com.android.providers.downloads/cache/ifw-empty.xml: java.nio.file.NoSuchFileException: /data/data/com.android.providers.downloads/cache/ifw-empty.xml
+11-25 10:51:33.906  1614  2464 I MediaProvider: Scanned internal due to REASON_DEMAND, found 0 items in 26ms, 0 inserts 0 updates 0 deletes
+11-25 10:51:33.946  1402  1478 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-25 10:51:33.947  1402  1478 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-25 10:51:33.948  1402  1478 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-25 10:51:33.970  4045  4173 I RcsClientLib: Connecting RcsEngineLifecycleService
+11-25 10:51:33.971  4045  4173 W RcsClientLib: No CS.apk RCS service found. Is RCS running in Bugle?
+11-25 10:51:33.983  1402  2786 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.checkin.CheckinService started execution. cause:5 exec_start_elapsed_seconds: 98 [CONTEXT service_id=218 ]
+11-25 10:51:33.992  4045  5097 W BugleRcsEngine: [113] bpxc.w: Unable to send diagnostic log
+11-25 10:51:33.997  1551  1573 I .apps.wellbeing: Background young concurrent copying GC freed 97613(4628KB) AllocSpace objects, 0(0B) LOS objects, 38% free, 6907KB/10MB, paused 25us,12us total 103.450ms
+11-25 10:51:34.003   334   366 I netd    : tetherGetStats() -> {[]} <0.31ms>
+11-25 10:51:34.004  4045  5044 I BugleRcsEngine: [111] brfq.d: (PEv2-SM-Bugle-178212139): RequestWithImsiState: event HTTP Response [1c09c8bf-e4a4-4bb9-94c4-6a0a798510f9]
+11-25 10:51:34.012  4045  5044 I BugleRcsEngine: [111] brfq.d: (PEv2-SM-Bugle-178212139): InProgressState: event HTTP Response [1c09c8bf-e4a4-4bb9-94c4-6a0a798510f9]
+11-25 10:51:34.013  4045  5044 W BugleRcsEngine: [111] bpxc.w: Unable to send diagnostic log
+11-25 10:51:34.014   334   366 I netd    : bandwidthSetGlobalAlert(2097152) <0.09ms>
+11-25 10:51:34.015  4045  5044 I BugleRcsEngine: [111] brfq.d: (PEv2-SM-Bugle-178212139): RequestWithImsiState: event HTTP 503 (Unavailable) [1c09c8bf-e4a4-4bb9-94c4-6a0a798510f9]
+11-25 10:51:34.016  4045  5044 I BugleRcsEngine: [111] brfq.d: (PEv2-SM-Bugle-178212139): InProgressState: event HTTP 503 (Unavailable) [1c09c8bf-e4a4-4bb9-94c4-6a0a798510f9]
+11-25 10:51:34.017  4045  5044 I BugleRcsEngine: [111] brfq.d: (PEv2-SM-Bugle-178212139): Connection unavailable. Retry in 1855 seconds [1c09c8bf-e4a4-4bb9-94c4-6a0a798510f9]
+11-25 10:51:34.018  4045  5044 I BugleRcsEngine: [111] brfq.d: (PEv2-SM-Bugle-178212139): transitionTo: destState=ReplayRequestState [1c09c8bf-e4a4-4bb9-94c4-6a0a798510f9]
+11-25 10:51:34.018  4045  5044 I BugleRcsEngine: [111] brfq.d: (PEv2-SM-Bugle-178212139): onTransitionRequested RequestWithImsiState [1c09c8bf-e4a4-4bb9-94c4-6a0a798510f9]
+11-25 10:51:34.019  4045  5044 I BugleRcsEngine: [111] brfq.d: (PEv2-SM-Bugle-178212139): Exit RequestWithImsiState [1c09c8bf-e4a4-4bb9-94c4-6a0a798510f9]
+11-25 10:51:34.028   334   366 I netd    : bandwidthRemoveInterfaceQuota(eth0) <0.58ms>
+11-25 10:51:34.029   334   366 I netd    : bandwidthSetInterfaceQuota(eth0, 9223372036854775807) <0.54ms>
+11-25 10:51:34.031  4045  5044 W BugleRcsEngine: [111] bpxc.w: Unable to send diagnostic log
+11-25 10:51:34.035  1629  1629 V ClearcutMetricXmitter: Transmission is done.
+11-25 10:51:34.037  4045  5044 I BugleRcsEngine: [111] brfq.d: (PEv2-SM-Bugle-178212139): Exit InProgressState [1c09c8bf-e4a4-4bb9-94c4-6a0a798510f9]
+11-25 10:51:34.038  4045  5044 W BugleRcsEngine: [111] bpxc.w: Unable to send diagnostic log
+11-25 10:51:34.039   334   366 I netd    : bandwidthRemoveInterfaceQuota(eth0) <0.47ms>
+11-25 10:51:34.039  4045  5044 I BugleRcsEngine: [111] brfq.d: (PEv2-SM-Bugle-178212139): Enter ReplayRequestState [1c09c8bf-e4a4-4bb9-94c4-6a0a798510f9]
+11-25 10:51:34.040   334   366 I netd    : bandwidthSetInterfaceQuota(eth0, 9223372036854775807) <0.56ms>
+11-25 10:51:34.045   519   835 D NetworkStatsObservers: Unregistering RequestInfo from pid/uid:519/1000(android) for DataUsageRequest [ requestId=8, networkTemplate=NetworkTemplate: matchRule=MOBILE, matchSubscriberIds=[310260...], matchWif
+11-25 10:51:34.045   519   754 D NetworkStatsObservers: Registering observer for RequestInfo from pid/uid:519/1000(android) for DataUsageRequest [ requestId=9, networkTemplate=NetworkTemplate: matchRule=MOBILE, matchSubscriberIds=[310260...
+11-25 10:51:34.051  4045  4173 I RcsClientLib: shouldUseCarrierServicesJibeService: false, CarrierServices rcs service found: false
+11-25 10:51:34.060   334   366 I netd    : tetherGetStats() -> {[]} <0.34ms>
+11-25 10:51:34.065  4045  4155 I RcsClientLib: com.google.android.rcs.client.lifecycle.RcsEngineLifecycleService connected
+11-25 10:51:34.066  4510  5108 I BugleRcsEngine: [81] RcsEngineImpl.triggerStopRcsStack: RcsEngineImpl[DUAL_REG]:[57d995a8-1f5f]: triggerStopRcsStack for msisdn:redacted-pii:phone_number[chars:0,last2:]
+11-25 10:51:34.066  4045  4161 I RcsClientLib: Disconnecting RcsEngineLifecycleService
+11-25 10:51:34.068  4510  4681 I BugleRcsEngine: [72] brqh.handleMessage: RcsEngineImpl[DUAL_REG]:[57d995a8-1f5f]>Handler: handleMessage processing message:[STOP_RCS_STACK] with [non-null]:RcsEngineImpl reference
+11-25 10:51:34.068  4510  4681 I BugleRcsEngine: [72] brqh.handleMessage: RcsEngineImpl[DUAL_REG]:[57d995a8-1f5f]>Handler: RCS engine STOP RCS stack
+11-25 10:51:34.069  4510  4681 W BugleRcsEngine: [72] RcsEngineImpl.e: RcsEngineImpl[DUAL_REG]:[57d995a8-1f5f]: imsModule is null, shutdown not required
+11-25 10:51:34.069  4510  4681 I BugleRcsEngine: [72] RcsEngineImpl.stopRcsStackInternal: RcsEngineImpl[DUAL_REG]:[57d995a8-1f5f]: skipping imsModule.stop
+11-25 10:51:34.070  4510  4681 I BugleRcsEngine: [72] brqh.handleMessage: RcsEngineImpl[DUAL_REG]:[57d995a8-1f5f]>Handler: handleMessage processing message:[NOTIFY_UPTIME_IGNORE_STATE_CHANGED] with [non-null]:RcsEngineImpl reference

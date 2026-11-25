@@ -1,0 +1,150 @@
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.appop.AppOpsService.checkOperation(AppOpsService.java:2385)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at android.app.AppOpsManager.checkOpNoThrow(AppOpsManager.java:8681)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.am.ActiveServices.shouldAllowFgsStartForegroundNoBindingCheckLocked(ActiveServices.java:7965)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.am.ActiveServices.shouldAllowFgsStartForegroundWithBindingCheckLocked(ActiveServices.java:7795)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.am.ActiveServices.setFgsRestrictionLocked(ActiveServices.java:7474)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.am.ActiveServices.bindServiceLocked(ActiveServices.java:3744)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.am.ActivityManagerService.bindServiceInstance(ActivityManagerService.java:13404)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.am.ActivityManagerService.bindServiceInstance(ActivityManagerService.java:13368)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at android.app.ContextImpl.bindServiceCommon(ContextImpl.java:2127)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at android.app.ContextImpl.bindServiceAsUser(ContextImpl.java:2040)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.ExplicitHealthCheckController.bindService(ExplicitHealthCheckController.java:345)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.ExplicitHealthCheckController.prepareServiceLocked(ExplicitHealthCheckController.java:450)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.ExplicitHealthCheckController.getRequestedPackages(ExplicitHealthCheckController.java:268)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.ExplicitHealthCheckController.lambda$syncRequests$3(ExplicitHealthCheckController.java:153)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.ExplicitHealthCheckController.$r8$lambda$e0trryK6lMIa0Oyq_R_L8I9fbPU(ExplicitHealthCheckController.java:0)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.ExplicitHealthCheckController$$ExternalSyntheticLambda0.accept(R8$$SyntheticClass:0)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.ExplicitHealthCheckController.lambda$getSupportedPackages$4(ExplicitHealthCheckController.java:251)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.ExplicitHealthCheckController.$r8$lambda$SRa9fw8RTJfzefVJ1-zsa9_9yG0(ExplicitHealthCheckController.java:0)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.ExplicitHealthCheckController$$ExternalSyntheticLambda1.onResult(R8$$SyntheticClass:0)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at android.os.RemoteCallback.sendResult(RemoteCallback.java:75)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at android.os.RemoteCallback$1.sendResult(RemoteCallback.java:52)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at android.os.IRemoteCallback$Stub.onTransact(IRemoteCallback.java:87)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at android.os.Binder.execTransactInternal(Binder.java:1344)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at android.os.Binder.execTransact(Binder.java:1275)
+11-25 10:50:39.558   520  2191 E AppOps  : Bad call made by uid 1000. Package "android" does not belong to uid 10174.
+11-25 10:50:39.558   520  2191 E AppOps  : Cannot checkOperation
+11-25 10:50:39.558   520  2191 E AppOps  : java.lang.SecurityException: Specified package "android" under uid 10174 but it is not
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.appop.AppOpsService.verifyAndGetBypass(AppOpsService.java:3886)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.appop.AppOpsService.verifyAndGetBypass(AppOpsService.java:3746)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.appop.AppOpsService.verifyAndGetBypass(AppOpsService.java:3738)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.appop.AppOpsService.checkOperationUnchecked(AppOpsService.java:2417)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.appop.AppOpsService.checkOperationImpl(AppOpsService.java:2400)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.appop.AppOpsService.-$$Nest$mcheckOperationImpl(AppOpsService.java:0)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.appop.AppOpsService$CheckOpsDelegateDispatcher.$r8$lambda$fx57Sum-uA3sXo7NCFwrI3iq4WM(AppOpsService.java:0)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.appop.AppOpsService$CheckOpsDelegateDispatcher$$ExternalSyntheticLambda9.apply(R8$$SyntheticClass:0)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.policy.AppOpsPolicy.checkOperation(AppOpsPolicy.java:221)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.appop.AppOpsService$CheckOpsDelegateDispatcher.checkOperation(AppOpsService.java:6389)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.appop.AppOpsService.checkOperation(AppOpsService.java:2385)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at android.app.AppOpsManager.checkOpNoThrow(AppOpsManager.java:8681)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.am.ActiveServices.shouldAllowFgsStartForegroundNoBindingCheckLocked(ActiveServices.java:7974)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.am.ActiveServices.shouldAllowFgsStartForegroundWithBindingCheckLocked(ActiveServices.java:7795)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.am.ActiveServices.setFgsRestrictionLocked(ActiveServices.java:7474)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.am.ActiveServices.bindServiceLocked(ActiveServices.java:3744)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.am.ActivityManagerService.bindServiceInstance(ActivityManagerService.java:13404)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.am.ActivityManagerService.bindServiceInstance(ActivityManagerService.java:13368)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at android.app.ContextImpl.bindServiceCommon(ContextImpl.java:2127)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at android.app.ContextImpl.bindServiceAsUser(ContextImpl.java:2040)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.ExplicitHealthCheckController.bindService(ExplicitHealthCheckController.java:345)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.ExplicitHealthCheckController.prepareServiceLocked(ExplicitHealthCheckController.java:450)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.ExplicitHealthCheckController.getRequestedPackages(ExplicitHealthCheckController.java:268)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.ExplicitHealthCheckController.lambda$syncRequests$3(ExplicitHealthCheckController.java:153)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.ExplicitHealthCheckController.$r8$lambda$e0trryK6lMIa0Oyq_R_L8I9fbPU(ExplicitHealthCheckController.java:0)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.ExplicitHealthCheckController$$ExternalSyntheticLambda0.accept(R8$$SyntheticClass:0)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.ExplicitHealthCheckController.lambda$getSupportedPackages$4(ExplicitHealthCheckController.java:251)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.ExplicitHealthCheckController.$r8$lambda$SRa9fw8RTJfzefVJ1-zsa9_9yG0(ExplicitHealthCheckController.java:0)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.ExplicitHealthCheckController$$ExternalSyntheticLambda1.onResult(R8$$SyntheticClass:0)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at android.os.RemoteCallback.sendResult(RemoteCallback.java:75)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at android.os.RemoteCallback$1.sendResult(RemoteCallback.java:52)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at android.os.IRemoteCallback$Stub.onTransact(IRemoteCallback.java:87)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at android.os.Binder.execTransactInternal(Binder.java:1344)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at android.os.Binder.execTransact(Binder.java:1275)
+11-25 10:50:39.558   520  2191 E AppOps  : Bad call made by uid 1000. Package "android" does not belong to uid 10174.
+11-25 10:50:39.558   520  2191 E AppOps  : Cannot checkOperation
+11-25 10:50:39.558   520  2191 E AppOps  : java.lang.SecurityException: Specified package "android" under uid 10174 but it is not
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.appop.AppOpsService.verifyAndGetBypass(AppOpsService.java:3886)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.appop.AppOpsService.verifyAndGetBypass(AppOpsService.java:3746)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.appop.AppOpsService.verifyAndGetBypass(AppOpsService.java:3738)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.appop.AppOpsService.checkOperationUnchecked(AppOpsService.java:2417)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.appop.AppOpsService.checkOperationImpl(AppOpsService.java:2400)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.appop.AppOpsService.-$$Nest$mcheckOperationImpl(AppOpsService.java:0)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.appop.AppOpsService$CheckOpsDelegateDispatcher.$r8$lambda$fx57Sum-uA3sXo7NCFwrI3iq4WM(AppOpsService.java:0)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.appop.AppOpsService$CheckOpsDelegateDispatcher$$ExternalSyntheticLambda9.apply(R8$$SyntheticClass:0)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.policy.AppOpsPolicy.checkOperation(AppOpsPolicy.java:221)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.appop.AppOpsService$CheckOpsDelegateDispatcher.checkOperation(AppOpsService.java:6389)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.appop.AppOpsService.checkOperation(AppOpsService.java:2385)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at android.app.AppOpsManager.checkOpNoThrow(AppOpsManager.java:8681)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.am.ActiveServices.shouldAllowFgsStartForegroundNoBindingCheckLocked(ActiveServices.java:7977)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.am.ActiveServices.shouldAllowFgsStartForegroundWithBindingCheckLocked(ActiveServices.java:7795)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.am.ActiveServices.setFgsRestrictionLocked(ActiveServices.java:7474)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.am.ActiveServices.bindServiceLocked(ActiveServices.java:3744)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.am.ActivityManagerService.bindServiceInstance(ActivityManagerService.java:13404)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.am.ActivityManagerService.bindServiceInstance(ActivityManagerService.java:13368)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at android.app.ContextImpl.bindServiceCommon(ContextImpl.java:2127)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at android.app.ContextImpl.bindServiceAsUser(ContextImpl.java:2040)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.ExplicitHealthCheckController.bindService(ExplicitHealthCheckController.java:345)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.ExplicitHealthCheckController.prepareServiceLocked(ExplicitHealthCheckController.java:450)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.ExplicitHealthCheckController.getRequestedPackages(ExplicitHealthCheckController.java:268)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.ExplicitHealthCheckController.lambda$syncRequests$3(ExplicitHealthCheckController.java:153)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.ExplicitHealthCheckController.$r8$lambda$e0trryK6lMIa0Oyq_R_L8I9fbPU(ExplicitHealthCheckController.java:0)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.ExplicitHealthCheckController$$ExternalSyntheticLambda0.accept(R8$$SyntheticClass:0)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.ExplicitHealthCheckController.lambda$getSupportedPackages$4(ExplicitHealthCheckController.java:251)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.ExplicitHealthCheckController.$r8$lambda$SRa9fw8RTJfzefVJ1-zsa9_9yG0(ExplicitHealthCheckController.java:0)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at com.android.server.ExplicitHealthCheckController$$ExternalSyntheticLambda1.onResult(R8$$SyntheticClass:0)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at android.os.RemoteCallback.sendResult(RemoteCallback.java:75)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at android.os.RemoteCallback$1.sendResult(RemoteCallback.java:52)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at android.os.IRemoteCallback$Stub.onTransact(IRemoteCallback.java:87)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at android.os.Binder.execTransactInternal(Binder.java:1344)
+11-25 10:50:39.558   520  2191 E AppOps  : 	at android.os.Binder.execTransact(Binder.java:1275)
+11-25 10:50:39.559   520  2191 I ExplicitHealthCheckController: Explicit health check service is bound
+11-25 10:50:39.561  1478  1478 I KeyboardModeManager: KeyboardModeManager.setInputView():356 setInputView() : entry=hwn{languageTag=en-US, variant=qwerty, hasLocalizedResources=true, conditionCacheKey=_device=phone_device_size=default_enabl
+11-25 10:50:39.573   520   520 I ExplicitHealthCheckController: Explicit health check service is connected ComponentInfo{com.google.android.ext.services/android.ext.services.watchdog.ExplicitHealthCheckServiceImpl}
+11-25 10:50:39.573   520   520 I ExplicitHealthCheckController: Service initialized, syncing requests
+11-25 10:50:39.586  1716  1782 I android.youtube: CollectorTransition concurrent copying GC freed 37729(1849KB) AllocSpace objects, 4(208KB) LOS objects, 49% free, 7268KB/14MB, paused 75us,26us total 158.156ms
+11-25 10:50:39.613  2112  4983 D TrafficStats: tagSocket(81) with statsTag=0xffffff01, statsUid=10129
+11-25 10:50:39.625  1498  1506 I gle.android.gms: Background young concurrent copying GC freed 101992(4317KB) AllocSpace objects, 70(3264KB) LOS objects, 26% free, 19MB/26MB, paused 17us,21us total 278.266ms
+11-25 10:50:39.647  4878  4905 I OpenGLRenderer: Davey! duration=4163ms; Flags=0, FrameTimelineVsyncId=4870, IntendedVsync=87671683588, Vsync=91721683426, InputEventId=0, HandleInputStart=91724694541, AnimationStart=91724694792, PerformTrav
+11-25 10:50:39.647  4878  4878 I com.example.buddy: Perf: native scene 0 fps
+11-25 10:50:39.655  1415  1425 I .gms.persistent: Background concurrent copying GC freed 778926(30MB) AllocSpace objects, 4(308KB) LOS objects, 49% free, 23MB/46MB, paused 1.575ms,19us total 1.198s
+11-25 10:50:39.675   520  1661 D OomAdjuster: Not killing cached processes
+11-25 10:50:39.679   833   833 D ControlsListingControllerImpl: ServiceConfig reloaded, count: 0
+11-25 10:50:39.740  1498  2604 I Icing   : Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0
+11-25 10:50:39.781  2112  4978 D DownloadManager: [8] Finished with status SUCCESS
+11-25 10:50:39.786   520   520 W system_server: Long monitor contention with owner android.bg (549) at boolean com.android.server.PackageWatchdog.saveToFile()(PackageWatchdog.java:1101) waiters=0 in void com.android.server.PackageWatchdog.o
+11-25 10:50:39.787   520   520 W Looper  : Slow dispatch took 214ms main h=android.app.ActivityThread$H c=android.app.LoadedApk$ServiceDispatcher$RunConnection@7952788 m=0
+11-25 10:50:39.788   520   520 I PackageWatchdog: Syncing health check requests for packages: {}
+11-25 10:50:39.788   520   520 D ExplicitHealthCheckController: Getting health check supported packages
+11-25 10:50:39.791   520  1661 I ExplicitHealthCheckController: Explicit health check supported packages [PackageConfig{com.google.android.networkstack, 86400000}]
+11-25 10:50:39.797   520  1661 D PackageWatchdog: Received supported packages [PackageConfig{com.google.android.networkstack, 86400000}]
+11-25 10:50:39.797   520  1661 D ExplicitHealthCheckController: Getting health check requested packages
+11-25 10:50:39.798   520  1661 I ExplicitHealthCheckController: Explicit health check requested packages []
+11-25 10:50:39.827   520  1661 I ExplicitHealthCheckController: No more health check requests, unbinding...
+11-25 10:50:39.828   520  1659 W PermissionManagerService: Datasource AttributionSource { uid = 10141, packageName = com.google.android.gm, attributionTag = null, token = android.os.BinderProxy@381c7d2, next = android.content.AttributionSou
+11-25 10:50:39.830  1415  3597 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+11-25 10:50:39.847  1582  1582 I GsaVoiceInteractionSrv: O received Intent { act=android.intent.action.PACKAGE_ADDED dat=package: flg=0x4000010 (has extras) }
+11-25 10:50:39.861  1415  3597 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+11-25 10:50:39.865   520  1661 I ExplicitHealthCheckController: Explicit health check service is unbound
+11-25 10:50:39.876  1415  4736 I Fitness : OnPackageChangedOperation got intent: Intent { act=android.intent.action.PACKAGE_CHANGED dat=package: flg=0x5000010 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.PersistentIntentOp
+11-25 10:50:39.892  1697  2563 W TimedProcessReaper: Scheduling killing of process to refresh configuration
+11-25 10:50:39.900  1697  2623 W SearchServiceCore: Abort, client detached.
+11-25 10:50:39.905  1697  2623 W SearchServiceCore: Abort, client detached.
+11-25 10:50:39.910  1415  3597 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-25 10:50:39.921  1415  3597 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+11-25 10:50:39.927  2112  4983 D DownloadManager: [9] Finished with status SUCCESS
+11-25 10:50:39.929  1415  3597 I NamespaceManager: Package com.android.appsearch name not found! Using module version.
+11-25 10:50:39.944  1415  3597 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+11-25 10:50:39.951  1415  3597 I NamespaceManager: Package com.android.media name not found! Using module version.
+11-25 10:50:39.955  1415  3597 I NamespaceManager: Package 1 name not found! Using module version.
+11-25 10:50:40.076  1498  1543 I PeopleGalProvider: Gal directories started.
+11-25 10:50:40.084  1498  1543 I PeopleGalProvider: Method 1 completed.
+11-25 10:50:40.085  1498  1543 I PeopleGalProvider: Method 1 finished successfully.
+11-25 10:50:40.112  1415  4736 I Fitness : FitCleanupIntentOperation received Intent android.intent.action.PACKAGE_CHANGED [CONTEXT service_id=17 ]
+11-25 10:50:40.128  1498  4611 I Auth    : [SupervisedAccountIntentOperation] onHandleIntent(): android.intent.action.PACKAGE_ADDED
+11-25 10:50:40.128  1498  4611 I Auth    : [SupervisedAccountIntentOperation] This operation is disabled
+11-25 10:50:40.137  1498  4611 I BlockstoreStorage: Clearing Blockstore Data for package com.example.buddy [CONTEXT service_id=258 ]
+11-25 10:50:40.137  1498  4611 I BlockstoreStorage: Keyless data not found or its IsLastInstallationData = false. [CONTEXT service_id=258 ]
+11-25 10:50:40.143  1498  1498 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.common.BIND_SHARED_PREFS pkg=com.google.android.gms }
+11-25 10:50:40.143  1498  1498 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.common.BIND_SHARED_PREFS pkg=com.google.android.gms }
+11-25 10:50:40.156  1498  4608 I Dck     : doesDeviceHaveSupportedWirelessCapabilities: wccSysProp:0, wccMendel:1, deviceWccOverride:false [CONTEXT service_id=289 ]
+11-25 10:50:40.156  1498  4608 I Dck     : isDckModuleEligible: isAtLeastR:true, hasWccSupport:false, downloadAllowed:false [CONTEXT service_id=289 ]
+11-25 10:50:40.156  1498  4608 W Dck     : Dck module not eligible for asynchronous downloading [CONTEXT service_id=289 ]

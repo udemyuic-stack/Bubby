@@ -1,0 +1,150 @@
+11-25 10:47:47.051   334  5649 I resolv  : GetAddrInfoHandler::run: {100 983140 100 983140 1073 1}
+11-25 10:47:47.051   334  5650 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+11-25 10:47:47.052   334  5650 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x717a26c56bd0
+11-25 10:47:47.052   334  5650 I resolv  : doQuery: rcode=0, ancount=8, return value=256
+11-25 10:47:47.052   334  5653 I resolv  : res_nmkquery: (QUERY, IN, A)
+11-25 10:47:47.053   334  5653 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x717ba6c585b0
+11-25 10:47:47.053   334  5653 I resolv  : doQuery: rcode=0, ancount=1, return value=63
+11-25 10:47:47.053   334  5652 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+11-25 10:47:47.053   334  5652 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x717ba6c570b0
+11-25 10:47:47.053   334  5652 I resolv  : doQuery: rcode=0, ancount=1, return value=75
+11-25 10:47:47.053   992  5643 D TrafficStats: tagSocket(107) with statsTag=0xffffff81, statsUid=-1
+11-25 10:47:47.055   334  5651 I resolv  : res_nmkquery: (QUERY, IN, A)
+11-25 10:47:47.055   334  5651 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x717a66c53650
+11-25 10:47:47.055   334  5651 I resolv  : doQuery: rcode=0, ancount=8, return value=160
+11-25 10:47:47.057   992  5642 D TrafficStats: tagSocket(75) with statsTag=0xffffff81, statsUid=-1
+11-25 10:47:47.067   992  5643 D NetworkMonitor/100: PROBE_HTTP http://connectivitycheck.gstatic.com/generate_204 time=16ms ret=204 request={Connection=[close], User-Agent=[Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gec
+11-25 10:47:47.070   992  5642 D NetworkMonitor/100: PROBE_HTTPS https://www.google.com/generate_204 time=25ms ret=204 request={Connection=[close], User-Agent=[Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60
+11-25 10:47:47.070   992  5641 D NetworkMonitor/100: isCaptivePortal: isSuccessful()=true isPortal()=false RedirectUrl=null isPartialConnectivity()=false Time=70ms
+11-25 10:47:47.074   520   760 D ConnectivityService: [100 WIFI] validation passed
+11-25 10:47:47.096  1085  1085 D TaplEvents: TIS / TouchInteractionService.onInputEvent: MotionEvent { action=ACTION_DOWN, actionButton=0, id[0]=0, x[0]=160.0, y[0]=480.0, toolType[0]=TOOL_TYPE_FINGER, buttonState=0, classification=NONE, me
+11-25 10:47:47.389  4163  4269 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of bdxy@cf0321e
+11-25 10:47:47.398  4819  5664 I Fitness : OnPackageChangedOperation got intent: Intent { act=android.intent.action.PACKAGE_CHANGED dat=package: flg=0x45000010 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.PersistentIntentO
+11-25 10:47:47.408  4819  5665 I Fitness : FitCleanupIntentOperation received Intent android.intent.action.PACKAGE_CHANGED [CONTEXT service_id=17 ]
+11-25 10:47:47.409  4819  4855 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-25 10:47:47.410  4819  4855 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-25 10:47:47.412  4862  4913 I Icing   : IndexChimeraService.getServiceInterface callingPackage=com.google.android.gms componentName=AppsCorpus serviceId=36
+11-25 10:47:47.419  4862  4914 I Icing   : Usage reports ok 1, Failed Usage reports 0, indexed 0, rejected 0
+11-25 10:47:47.421  4862  4914 I Icing   : Indexing com.google.android.gms-apps from com.google.android.gms
+11-25 10:47:47.422  4862  4914 I Icing   : Indexing done com.google.android.gms-apps
+11-25 10:47:47.422  4862  4914 I Icing   : Indexing com.google.android.gms-internal.3p:MobileApplication from com.google.android.gms
+11-25 10:47:47.423  4862  4914 I Icing   : Indexing done com.google.android.gms-internal.3p:MobileApplication
+11-25 10:47:47.453  1085  1085 D TaplEvents: TIS / TouchInteractionService.onInputEvent: MotionEvent { action=ACTION_UP, actionButton=0, id[0]=0, x[0]=160.0, y[0]=128.0, toolType[0]=TOOL_TYPE_FINGER, buttonState=0, classification=NONE, meta
+11-25 10:47:47.495  1085  1085 D TaplEvents: TIS / TouchInteractionService.onInputEvent: MotionEvent { action=ACTION_DOWN, actionButton=0, id[0]=0, x[0]=160.0, y[0]=480.0, toolType[0]=TOOL_TYPE_FINGER, buttonState=0, classification=NONE, me
+11-25 10:47:47.632   520   609 D ActivityManager: freezing 1040 com.android.settings
+11-25 10:47:47.676  5543  5565 D EGL_emulation: app_time_stats: avg=45.64ms min=15.66ms max=205.29ms count=24
+11-25 10:47:47.703  5543  5543 I com.example.buddy: Perf: native scene 27 fps
+11-25 10:47:47.882  4819  5633 I GMS_MM_Logger: Memory Metric Logging not allowed. Stopping.
+11-25 10:47:48.162  1085  1085 D TaplEvents: TIS / TouchInteractionService.onInputEvent: MotionEvent { action=ACTION_UP, actionButton=0, id[0]=0, x[0]=160.0, y[0]=128.0, toolType[0]=TOOL_TYPE_FINGER, buttonState=0, classification=NONE, meta
+11-25 10:47:48.530  1748  3386 W A       : [Download] response code: 400
+11-25 10:47:48.672   520   609 D ActivityManager: freezing 3798 com.google.android.gm
+11-25 10:47:48.688  5543  5565 D EGL_emulation: app_time_stats: avg=39.71ms min=19.66ms max=435.74ms count=25
+11-25 10:47:49.694  5543  5565 D EGL_emulation: app_time_stats: avg=24.96ms min=18.52ms max=35.79ms count=39
+11-25 10:47:49.987   520   919 D OomAdjuster: Not killing cached processes
+11-25 10:47:50.260  5684  5684 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+11-25 10:47:50.260  5684  5684 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-25 10:47:50.265   134   134 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-25 10:47:50.265  5684  5685 I Gralloc4: mapper 4.x is not supported
+11-25 10:47:50.442     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+11-25 10:47:50.386  1085  1085 D TaplEvents: TIS / TouchInteractionService.onInputEvent: MotionEvent { action=ACTION_DOWN, actionButton=0, id[0]=0, x[0]=160.0, y[0]=480.0, toolType[0]=TOOL_TYPE_FINGER, buttonState=0, classification=NONE, me
+11-25 10:47:50.500   829   829 D StatusBarIconController: ignoring old pipeline callbacks, because the new mobile icons are enabled
+11-25 10:47:50.696  5543  5565 D EGL_emulation: app_time_stats: avg=25.08ms min=5.60ms max=40.23ms count=38
+11-25 10:47:50.702  1085  1085 D TaplEvents: TIS / TouchInteractionService.onInputEvent: MotionEvent { action=ACTION_UP, actionButton=0, id[0]=0, x[0]=160.0, y[0]=128.0, toolType[0]=TOOL_TYPE_FINGER, buttonState=0, classification=NONE, meta
+11-25 10:47:50.721  1085  1085 D TaplEvents: TIS / TouchInteractionService.onInputEvent: MotionEvent { action=ACTION_DOWN, actionButton=0, id[0]=0, x[0]=160.0, y[0]=480.0, toolType[0]=TOOL_TYPE_FINGER, buttonState=0, classification=NONE, me
+11-25 10:47:50.943  4819  4819 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.nearby.exposurenotification.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiServiceNoInstantApps }
+11-25 10:47:51.007  4819  5015 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.tapandpay.gcmtask.TapAndPayGcmTaskService started execution. cause:4 exec_start_elapsed_seconds: 88 [CONTEXT service_id=218 ]
+11-25 10:47:51.008  4819  4885 V NFC     : this device does not have NFC support
+11-25 10:47:51.008  4819  4885 W TapAndPay: NfcAdapter is null while obtaining CardEmulation instance. [CONTEXT service_id=79 ]
+11-25 10:47:51.008  4819  4885 W TapAndPay: java.lang.NullPointerException: NfcAdapter is null
+11-25 10:47:51.008  4819  4885 W TapAndPay: 	at android.nfc.cardemulation.CardEmulation.getInstance(CardEmulation.java:152)
+11-25 10:47:51.008  4819  4885 W TapAndPay: 	at cdoy.<init>(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-25 10:47:51.008  4819  4885 W TapAndPay: 	at com.google.android.gms.tapandpay.hce.task.TapAndPayAidRegistrationTaskOperation.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):5)
+11-25 10:47:51.008  4819  4885 W TapAndPay: 	at com.google.android.gms.tapandpay.gcmtask.TapAndPayGcmTaskChimeraService.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+11-25 10:47:51.008  4819  4885 W TapAndPay: 	at avzs.call(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+11-25 10:47:51.008  4819  4885 W TapAndPay: 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+11-25 10:47:51.008  4819  4885 W TapAndPay: 	at aced.c(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+11-25 10:47:51.008  4819  4885 W TapAndPay: 	at aced.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):7)
+11-25 10:47:51.008  4819  4885 W TapAndPay: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-25 10:47:51.008  4819  4885 W TapAndPay: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-25 10:47:51.008  4819  4885 W TapAndPay: 	at acjn.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-25 10:47:51.008  4819  4885 W TapAndPay: 	at java.lang.Thread.run(Thread.java:1012)
+11-25 10:47:51.010  4819  4885 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.tapandpay.gcmtask.TapAndPayGcmTaskService finished executing. cause:4 result: 3 elapsed_millis: 6 uptime_millis: 6 exec_start_elapse
+11-25 10:47:51.017  4819  5015 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.auth.account.be.legacy.AuthCronService started execution. cause:5 exec_start_elapsed_seconds: 88 [CONTEXT service_id=218 ]
+11-25 10:47:51.035  1085  1085 D TaplEvents: TIS / TouchInteractionService.onInputEvent: MotionEvent { action=ACTION_UP, actionButton=0, id[0]=0, x[0]=160.0, y[0]=128.0, toolType[0]=TOOL_TYPE_FINGER, buttonState=0, classification=NONE, meta
+11-25 10:47:51.054   520   535 D ActivityManager: sync unfroze 3276 com.google.android.gms.unstable for 6
+11-25 10:47:51.054   520   535 W ProcessStats: Tracking association SourceState{bb2a684 com.google.android.gms.persistent/10130 BFgs #9521} whose proc state 4 is better than process ProcessState{b70f1a6 com.google.android.gms.unstable/10130
+11-25 10:47:51.072  3276  5696 W DG      : [flow devicekey] DroidGuardRunner.newVmProcessForFastSignalCollection(): Fast program not found [CONTEXT service_id=25 ]
+11-25 10:47:51.076  3276  3565 D TrafficStats: tagSocket(112) with statsTag=0x1803, statsUid=10130
+11-25 10:47:51.084  1085  1085 D TaplEvents: TIS / TouchInteractionService.onInputEvent: MotionEvent { action=ACTION_DOWN, actionButton=0, id[0]=0, x[0]=160.0, y[0]=480.0, toolType[0]=TOOL_TYPE_FINGER, buttonState=0, classification=NONE, me
+11-25 10:47:51.139   520   919 I RemoteProvisionSysSvc: getRegistration(android.hardware.security.keymint.IRemotelyProvisionedComponent/default)
+11-25 10:47:51.176   520   919 D ActivityManager: sync unfroze 3724 com.google.android.rkpdapp for 6
+11-25 10:47:51.179   520   520 I RegistrationProxy: onServiceConnected: com.android.rkpdapp.service.RemoteProvisioningService
+11-25 10:47:51.182   520   919 I RegistrationProxy: IGetRegistrationCallback.onSuccess
+11-25 10:47:51.182   520  1889 I RemoteProvisionSysSvc: Fetching key 10130 for client 71923115
+11-25 10:47:51.182   520  1889 I RegistrationProxy: getKeyAsync operation started with callback 40068104
+11-25 10:47:51.183  3724  3759 I RkpdRegistrationBinder: Key requested for : android.hardware.security.keymint.IRemotelyProvisionedComponent/default, clientUid: 1017, keyId: 10130, callback: 148245997
+11-25 10:47:51.183  3724  3759 I RkpdRegistrationBinder: Key successfully assigned to client
+11-25 10:47:51.183   520   520 I RemoteProvisionSysSvc: Successfully fetched key for client 71923115
+11-25 10:47:51.358     0     0 I servicemanager: Found android.hardware.security.keymint.IRemotelyProvisionedComponent/default in device VINTF manifest.
+11-25 10:47:51.318   334  5705 I resolv  : GetAddrInfoHandler::run: {100 786532 100 983140 10130 0}
+11-25 10:47:51.319  3276  5696 D TrafficStats: tagSocket(124) with statsTag=0x1809, statsUid=-1
+11-25 10:47:51.320  3276  5696 D TrafficStats: tagSocket(124) with statsTag=0x1809, statsUid=-1
+11-25 10:47:51.321  3276  5696 D TrafficStats: tagSocket(124) with statsTag=0x1809, statsUid=-1
+11-25 10:47:51.326  3276  5696 W SystemServiceRegistry: No service published for: persistent_data_block
+11-25 10:47:51.332  3276  5696 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+11-25 10:47:51.332  3276  5696 W libc    : Access denied finding property "service.adb.tls.port"
+11-25 10:47:51.324  3276  3276 W binder:3276_8: type=1400 audit(0.0:40): avc:  denied  { read } for  name="u:object_r:system_adbd_prop:s0" dev="tmpfs" ino=292 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:system_adbd_prop:s0 tcl
+11-25 10:47:51.328  3276  3276 W binder:3276_8: type=1400 audit(0.0:41): avc:  denied  { read } for  name="u:object_r:adbd_prop:s0" dev="tmpfs" ino=60 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:adbd_prop:s0 tclass=file permis
+11-25 10:47:51.385  1085  1085 D TaplEvents: TIS / TouchInteractionService.onInputEvent: MotionEvent { action=ACTION_UP, actionButton=0, id[0]=0, x[0]=160.0, y[0]=128.0, toolType[0]=TOOL_TYPE_FINGER, buttonState=0, classification=NONE, meta
+11-25 10:47:51.431  4819  4855 W GmsUrlRequestImpl: Content-Type header is overwritten.
+11-25 10:47:51.433   334  5706 I resolv  : GetAddrInfoHandler::run: {100 786532 100 983140 10130 0}
+11-25 10:47:51.434   334  5708 I resolv  : res_nmkquery: (QUERY, IN, A)
+11-25 10:47:51.434   334  5707 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+11-25 10:47:51.434   334  5707 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x717a26c54550
+11-25 10:47:51.434   334  5707 I resolv  : doQuery: rcode=0, ancount=8, return value=264
+11-25 10:47:51.434   334  5708 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x717b56c5adf0
+11-25 10:47:51.434   334  5708 I resolv  : doQuery: rcode=0, ancount=8, return value=168
+11-25 10:47:51.435  4819  5327 D TrafficStats: tagSocket(204) with statsTag=0x401, statsUid=10130
+11-25 10:47:51.486  4819  4855 W GLSUser : [AppCertManager] Exception while requesting key: 
+11-25 10:47:51.486  4819  4855 W GLSUser : java.util.concurrent.ExecutionException: avvw: Parse Proto Exception.
+11-25 10:47:51.486  4819  4855 W GLSUser : 	at dlnv.s(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3)
+11-25 10:47:51.486  4819  4855 W GLSUser : 	at dlnv.get(:com.google.android.gms@231818047@23.18.18 (190800-535401451):7)
+11-25 10:47:51.486  4819  4855 W GLSUser : 	at oub.b(:com.google.android.gms@231818047@23.18.18 (190800-535401451):78)
+11-25 10:47:51.486  4819  4855 W GLSUser : 	at otz.b(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+11-25 10:47:51.486  4819  4855 W GLSUser : 	at otu.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-25 10:47:51.486  4819  4855 W GLSUser : 	at otx.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+11-25 10:47:51.486  4819  4855 W GLSUser : 	at lzq.call(:com.google.android.gms@231818047@23.18.18 (190800-535401451):14)
+11-25 10:47:51.486  4819  4855 W GLSUser : 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+11-25 10:47:51.486  4819  4855 W GLSUser : 	at aced.c(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+11-25 10:47:51.486  4819  4855 W GLSUser : 	at aced.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):7)
+11-25 10:47:51.486  4819  4855 W GLSUser : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-25 10:47:51.486  4819  4855 W GLSUser : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-25 10:47:51.486  4819  4855 W GLSUser : 	at acjn.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-25 10:47:51.486  4819  4855 W GLSUser : 	at java.lang.Thread.run(Thread.java:1012)
+11-25 10:47:51.486  4819  4855 W GLSUser : Caused by: avvw: Parse Proto Exception.
+11-25 10:47:51.486  4819  4855 W GLSUser : 	at avwn.f(:com.google.android.gms@231818047@23.18.18 (190800-535401451):5)
+11-25 10:47:51.486  4819  4855 W GLSUser : 	at avxk.onSucceeded(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-25 10:47:51.486  4819  4855 W GLSUser : 	at jf.onSucceeded(:com.google.android.gms.dynamite_cronetdynamite@231818047@23.18.18 (190800-0):0)
+11-25 10:47:51.486  4819  4855 W GLSUser : 	at ie.run(:com.google.android.gms.dynamite_cronetdynamite@231818047@23.18.18 (190800-0):4)
+11-25 10:47:51.486  4819  4855 W GLSUser : 	... 6 more
+11-25 10:47:51.486  4819  4855 W GLSUser : Caused by: dzfz: Protocol message contained an invalid tag (zero).
+11-25 10:47:51.486  4819  4855 W GLSUser : 	at dzdb.k(:com.google.android.gms@231818047@23.18.18 (190800-535401451):13)
+11-25 10:47:51.486  4819  4855 W GLSUser : 	at dzha.c(:com.google.android.gms@231818047@23.18.18 (190800-535401451):47)
+11-25 10:47:51.486  4819  4855 W GLSUser : 	at dzha.h(:com.google.android.gms@231818047@23.18.18 (190800-535401451):45)
+11-25 10:47:51.486  4819  4855 W GLSUser : 	at dzfd.A(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-25 10:47:51.486  4819  4855 W GLSUser : 	at dzex.f(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-25 10:47:51.486  4819  4855 W GLSUser : 	at dzcx.d(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-25 10:47:51.486  4819  4855 W GLSUser : 	at dzcx.c(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-25 10:47:51.486  4819  4855 W GLSUser : 	at dzcx.n(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-25 10:47:51.486  4819  4855 W GLSUser : 	at avwn.h(:com.google.android.gms@231818047@23.18.18 (190800-535401451):7)
+11-25 10:47:51.486  4819  4855 W GLSUser : 	at avwn.f(:com.google.android.gms@231818047@23.18.18 (190800-535401451):1)
+11-25 10:47:51.486  4819  4855 W GLSUser : 	... 9 more
+11-25 10:47:51.490  4819  5015 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.auth.account.be.legacy.AuthCronService finished executing. cause:5 result: 3 elapsed_millis: 474 uptime_millis: 474 exec_start_elaps
+11-25 10:47:51.709  5543  5565 D EGL_emulation: app_time_stats: avg=8.68ms min=6.30ms max=18.81ms count=58
+11-25 10:47:51.735  5543  5543 I com.example.buddy: Perf: native scene 26 fps
+11-25 10:47:52.725  5543  5565 D EGL_emulation: app_time_stats: avg=14.57ms min=5.92ms max=33.79ms count=50
+11-25 10:47:53.450  5711  5711 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+11-25 10:47:53.450  5711  5711 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-25 10:47:53.633     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+11-25 10:47:53.456   134   134 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-25 10:47:53.456  5711  5712 I Gralloc4: mapper 4.x is not supported

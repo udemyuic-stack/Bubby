@@ -1,0 +1,150 @@
+11-25 10:47:40.242   521  4994 I ConfigUpdateInstallReceiver: Couldn't find current metadata, assuming first update
+11-25 10:47:40.242   521  4994 I ConfigUpdateInstallReceiver: Failed to read current content, assuming first update!
+11-25 10:47:40.242   521  4994 I ConfigUpdateInstallReceiver: Found new update, installing...
+11-25 10:47:40.266   521  4994 I ConfigUpdateInstallReceiver: Installation successful
+11-25 10:47:40.271   836   914 D EGL_emulation: app_time_stats: avg=2395.82ms min=135.46ms max=4656.19ms count=2
+11-25 10:47:40.273   521  4995 I ConfigUpdateInstallReceiver: Couldn't find current metadata, assuming first update
+11-25 10:47:40.274   521  4995 I ConfigUpdateInstallReceiver: Failed to read current content, assuming first update!
+11-25 10:47:40.277   521  4995 I ConfigUpdateInstallReceiver: Found new update, installing...
+11-25 10:47:40.330  2019  4996 D DownloadManager: [10] Starting
+11-25 10:47:40.376  1443  1454 I gle.android.gms: Background young concurrent copying GC freed 170156(7546KB) AllocSpace objects, 44(2512KB) LOS objects, 19% free, 21MB/26MB, paused 35us,25us total 639.880ms
+11-25 10:47:40.441  4857  4857 I Choreographer: Skipped 394 frames!  The application may be doing too much work on its main thread.
+11-25 10:47:40.443  4857  4857 I com.example.buddy: Perf: native scene 0 fps
+11-25 10:47:40.444  4857  4868 I OpenGLRenderer: Davey! duration=6660ms; Flags=1, FrameTimelineVsyncId=5540, IntendedVsync=88490465470, Vsync=88557132134, InputEventId=0, HandleInputStart=88563570889, AnimationStart=88563571320, PerformTrav
+11-25 10:47:40.448   521  4995 I ConfigUpdateInstallReceiver: Installation successful
+11-25 10:47:40.455   521   531 I system_server: Background young concurrent copying GC freed 575953(21MB) AllocSpace objects, 30(664KB) LOS objects, 40% free, 29MB/49MB, paused 57us,56us total 510.595ms
+11-25 10:47:40.498   521  1627 W ProcessStats: Tracking association SourceState{6c9f8c com.google.android.gms/10131 BTop #7110} whose proc state 2 is better than process ProcessState{a3338f6 com.google.android.gms.persistent/10131 pkg=com.g
+11-25 10:47:40.513  1398  2856 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-25 10:47:40.524  1398  2856 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-25 10:47:40.536  2019  4996 D TrafficStats: tagSocket(78) with statsTag=0xffffff01, statsUid=10130
+11-25 10:47:40.574  1398  4779 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-25 10:47:40.586  1398  4779 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-25 10:47:40.656  1398  4957 W PhenotypeFlagCommitter: Committing snapshot for com.google.android.gms.wearable failed, retrying
+11-25 10:47:40.656  1398  4957 W PhenotypeFlagCommitter: java.util.concurrent.TimeoutException: Timed out waiting for Task
+11-25 10:47:40.656  1398  4957 W PhenotypeFlagCommitter: 	at cfsz.o(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+11-25 10:47:40.656  1398  4957 W PhenotypeFlagCommitter: 	at bwch.j(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+11-25 10:47:40.656  1398  4957 W PhenotypeFlagCommitter: 	at bwch.h(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-25 10:47:40.656  1398  4957 W PhenotypeFlagCommitter: 	at abfh.f(:com.google.android.gms@231818047@23.18.18 (190800-535401451):12)
+11-25 10:47:40.656  1398  4957 W PhenotypeFlagCommitter: 	at com.google.android.gms.common.config.PhenotypeUpdateOperation.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):15)
+11-25 10:47:40.656  1398  4957 W PhenotypeFlagCommitter: 	at com.google.android.chimera.IntentOperation.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-25 10:47:40.656  1398  4957 W PhenotypeFlagCommitter: 	at zhv.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+11-25 10:47:40.656  1398  4957 W PhenotypeFlagCommitter: 	at hjm.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3)
+11-25 10:47:40.656  1398  4957 W PhenotypeFlagCommitter: 	at hjl.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):11)
+11-25 10:47:40.656  1398  4957 W PhenotypeFlagCommitter: 	at dfhf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-25 10:47:40.656  1398  4957 W PhenotypeFlagCommitter: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-25 10:47:40.656  1398  4957 W PhenotypeFlagCommitter: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-25 10:47:40.656  1398  4957 W PhenotypeFlagCommitter: 	at java.lang.Thread.run(Thread.java:1012)
+11-25 10:47:40.656  1398  4957 W PhenotypeCommitHelper: At PhenotypeCommitHelper commitConfiguration failed com.google.android.gms.wearable, retrying=[INVALID: format=%b, type=dnyo, value=true] [CONTEXT service_id=256 ]
+11-25 10:47:40.656  1398  4957 W PhenotypeCommitHelper: java.util.concurrent.TimeoutException: Timed out waiting for Task
+11-25 10:47:40.656  1398  4957 W PhenotypeCommitHelper: 	at cfsz.o(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+11-25 10:47:40.656  1398  4957 W PhenotypeCommitHelper: 	at bwch.j(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+11-25 10:47:40.656  1398  4957 W PhenotypeCommitHelper: 	at bwch.h(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-25 10:47:40.656  1398  4957 W PhenotypeCommitHelper: 	at abfh.f(:com.google.android.gms@231818047@23.18.18 (190800-535401451):12)
+11-25 10:47:40.656  1398  4957 W PhenotypeCommitHelper: 	at com.google.android.gms.common.config.PhenotypeUpdateOperation.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):15)
+11-25 10:47:40.656  1398  4957 W PhenotypeCommitHelper: 	at com.google.android.chimera.IntentOperation.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-25 10:47:40.656  1398  4957 W PhenotypeCommitHelper: 	at zhv.onHandleIntent(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+11-25 10:47:40.656  1398  4957 W PhenotypeCommitHelper: 	at hjm.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3)
+11-25 10:47:40.656  1398  4957 W PhenotypeCommitHelper: 	at hjl.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):11)
+11-25 10:47:40.656  1398  4957 W PhenotypeCommitHelper: 	at dfhf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-25 10:47:40.656  1398  4957 W PhenotypeCommitHelper: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-25 10:47:40.656  1398  4957 W PhenotypeCommitHelper: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-25 10:47:40.656  1398  4957 W PhenotypeCommitHelper: 	at java.lang.Thread.run(Thread.java:1012)
+11-25 10:47:40.657  1398  3221 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-25 10:47:40.676  1051  1051 D CarrierSvcBindHelper: onPackageModified: com.google.android.gms
+11-25 10:47:40.683   521   627 I InputReader: Reconfiguring input devices, changes=KEYBOARD_LAYOUTS
+11-25 10:47:40.694   521   521 V ConditionProviders: enabling condition provider for 0: ComponentInfo{com.google.android.gms/com.google.android.location.settings.DrivingConditionProvider}
+11-25 10:47:40.696   837  3967 I PermissionControllerServiceImpl: Updating user sensitive for uid 10131
+11-25 10:47:40.696   836   912 D StylusManager: Stylus InputDevice changed: 13 virtio_input_multi_touch_10
+11-25 10:47:40.699   521   521 V ConditionProviders: binding: Intent { act=android.service.notification.ConditionProviderService cmp=com.google.android.gms/com.google.android.location.settings.DrivingConditionProvider (has extras) }
+11-25 10:47:40.705  1051  1051 D CarrierSvcBindHelper: No carrier app for: 0
+11-25 10:47:40.705   836   912 D StylusManager: Stylus InputDevice changed: 11 virtio_input_multi_touch_8
+11-25 10:47:40.711   836   912 D StylusManager: Stylus InputDevice changed: 14 virtio_input_multi_touch_11
+11-25 10:47:40.720   521   615 I RoleService: Granting default roles...
+11-25 10:47:40.720   836   912 D StylusManager: Stylus InputDevice changed: 10 virtio_input_multi_touch_7
+11-25 10:47:40.726   836   912 D StylusManager: Stylus InputDevice changed: 8 virtio_input_multi_touch_5
+11-25 10:47:40.731   836   912 D StylusManager: Stylus InputDevice changed: 6 virtio_input_multi_touch_3
+11-25 10:47:40.740  1051  1328 D ImsResolver: maybeAddedImsService, packageName: com.google.android.gms
+11-25 10:47:40.746   836   912 D StylusManager: Stylus InputDevice changed: 4 virtio_input_multi_touch_1
+11-25 10:47:40.748   837  1019 E RoleControllerServiceImpl: Default/fallback role holder package doesn't qualify for the role, package: com.google.android.gms.supervision, role: android.app.role.SYSTEM_SUPERVISION
+11-25 10:47:40.754   837  1019 I Role    : com.google.android.gms not qualified for android.app.role.SYSTEM_CALL_STREAMING due to missing RequiredComponent{mIntentFilterData=IntentFilterData{mAction='android.telecom.CallStreamingService', m
+11-25 10:47:40.754   837  1019 E RoleControllerServiceImpl: Default/fallback role holder package doesn't qualify for the role, package: com.google.android.gms, role: android.app.role.SYSTEM_CALL_STREAMING
+11-25 10:47:40.755   836   912 D StylusManager: Stylus InputDevice changed: 9 virtio_input_multi_touch_6
+11-25 10:47:40.756   837  1019 W Role    : Default holder doesn't have required signing certificate: com.google.android.apps.work.clouddpc:23962F4B43B9857638EA66F4D419518EAE282491ACDA4B94707BD59003C45E58
+11-25 10:47:40.773   836   912 D StylusManager: Stylus InputDevice changed: 12 virtio_input_multi_touch_9
+11-25 10:47:40.773  2019  4999 D DownloadManager: [11] Starting
+11-25 10:47:40.782   836   912 D StylusManager: Stylus InputDevice changed: 7 virtio_input_multi_touch_4
+11-25 10:47:40.785   521   521 V ConditionProviders: 0 condition provider service connected: ComponentInfo{com.google.android.gms/com.google.android.location.settings.DrivingConditionProvider}
+11-25 10:47:40.787  4857  4857 W WindowOnBackDispatcher: sendCancelIfRunning: isInProgress=falsecallback=android.view.ViewRootImpl$$ExternalSyntheticLambda17@12a9dab
+11-25 10:47:40.789   521  2657 D CoreBackPreview: Window{7fa2887 u0 com.example.buddy/com.example.buddy.ui.UiActivity}: Setting back callback null
+11-25 10:47:40.790  1443  1478 W gle.android.gms: Long monitor contention with owner GoogleApiHandler (1724) at dlqv acea.h(java.util.concurrent.Callable, long, java.util.concurrent.TimeUnit)(:com.google.android.gms@231818047@23.18.18 (1908
+11-25 10:47:40.791   521  2080 W InputManager-JNI: Input channel object '7fa2887 com.example.buddy/com.example.buddy.ui.UiActivity (client)' was disposed without first being removed with the input manager!
+11-25 10:47:40.796   521  2080 D CompatibilityChangeReporter: Compat change id reported: 197654537; UID 10192; state: ENABLED
+11-25 10:47:40.802  1398  1398 W ChimeraUtils: Module com.google.android.gms.location__nonwearable missing resource location_module_display_name(0)
+11-25 10:47:40.803  1443  1475 W gle.android.gms: Long monitor contention with owner GoogleApiHandler (1724) at dlqv acea.h(java.util.concurrent.Callable, long, java.util.concurrent.TimeUnit)(:com.google.android.gms@231818047@23.18.18 (1908
+11-25 10:47:40.807   521  2175 D ConditionProviders: Disabling component com.google.android.gms/com.google.android.location.settings.DrivingConditionProvider
+11-25 10:47:40.817  1443  4980 I Icing   : Indexing com.google.android.gms-apps from com.google.android.gms
+11-25 10:47:40.821  1398  3221 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-25 10:47:40.832   521  1670 D CompatibilityChangeReporter: Compat change id reported: 168419799; UID 10192; state: DISABLED
+11-25 10:47:40.832   521  1670 D CompatibilityChangeReporter: Compat change id reported: 273564678; UID 10192; state: DISABLED
+11-25 10:47:40.835   521  2175 D CoreBackPreview: Window{ee939e3 u0 com.example.buddy/com.example.buddy.ui.UiActivity}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@5fd6299, mPri
+11-25 10:47:40.837   836   912 D StylusManager: Stylus InputDevice changed: 5 virtio_input_multi_touch_2
+11-25 10:47:40.854   521   551 I CredManSysServiceImpl: CredentialManagerServiceImpl constructed for: com.google.android.gms/.auth.api.credentials.credman.service.PasswordAndPasskeyService
+11-25 10:47:40.861   521   551 I CredManSysServiceImpl: newServiceInfoLocked, mInfo null, com.google.android.gms/com.google.android.gms.auth.api.credentials.credman.service.PasswordAndPasskeyService
+11-25 10:47:40.893  1398  2856 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-25 10:47:40.894  1398  2856 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-25 10:47:40.946   336  5004 I resolv  : GetAddrInfoHandler::run: {100 983140 100 983140 10087 0}
+11-25 10:47:40.952   336  5005 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+11-25 10:47:40.953   336  5005 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x751007f05c50
+11-25 10:47:40.953   336  5005 I resolv  : doQuery: rcode=0, ancount=8, return value=257
+11-25 10:47:41.021   336  5006 I resolv  : res_nmkquery: (QUERY, IN, A)
+11-25 10:47:41.023   336  5006 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x750f37f0f270
+11-25 10:47:41.024   336  5006 I resolv  : doQuery: rcode=0, ancount=8, return value=161
+11-25 10:47:41.027  1666  1666 I AiAiEcho: AppFetcherImpl onPackageChanged com.google.android.gms.
+11-25 10:47:41.028  1666  3960 I AiAiEcho: AppIndexer Package:[com.google.android.gms] UserProfile:[0] Enabled:[true].
+11-25 10:47:41.028  1666  3960 I AiAiEcho: AppFetcherImplV2 updateApps package:[com.google.android.gms], userId:[0], reason:[package is updated.].
+11-25 10:47:41.030  2019  4999 D TrafficStats: tagSocket(81) with statsTag=0xffffff01, statsUid=10130
+11-25 10:47:41.040  4886  4886 W rules.WifiRx: FenceState currentState is not true
+11-25 10:47:41.072  1398  2714 W ctxmgr  : [WorkManager] Long workInfo: pkg=com.google.android.gms, lbl=DispatcherDeliver, start=2026-11-25 10:47:35.782+0000, stop=2026-11-25 10:47:41.072+0000, durtn=5290ms [CONTEXT service_id=47 ]
+11-25 10:47:41.079  1443  4980 I Icing   : Indexing done com.google.android.gms-apps
+11-25 10:47:41.083  1398  2714 W ctxmgr  : [NetworkStateProducer] No state change for network connection context [CONTEXT service_id=47 ]
+11-25 10:47:41.133  1443  4980 I Icing   : Indexing com.google.android.gms-apps from com.google.android.gms
+11-25 10:47:41.144  1398  1398 I NearbyFastPair: DynamicSupportModule: doReceive update intent [CONTEXT service_id=265 ]
+11-25 10:47:41.155  1024  1024 V MediaPlayerList: mPackageChangedBroadcastReceiver: action: android.intent.action.PACKAGE_CHANGED
+11-25 10:47:41.155  1024  1024 V MediaPlayerList: mPackageChangedBroadcastReceiver: action: android.intent.action.PACKAGE_CHANGED
+11-25 10:47:41.158  1398  4779 I NearbyFastPair: DynamicSupportModule: onSupportStateUpdate start [CONTEXT service_id=265 ]
+11-25 10:47:41.174   836   836 D ControlsListingControllerImpl: ServiceConfig reloaded, count: 0
+11-25 10:47:41.184  1443  4082 I PeopleGalProvider: Gal directories started.
+11-25 10:47:41.185  1443  4082 I PeopleGalProvider: Method 1 completed.
+11-25 10:47:41.185  1443  4082 I PeopleGalProvider: Method 1 finished successfully.
+11-25 10:47:41.219   521   542 W Looper  : Slow dispatch took 177ms android.ui h=com.android.server.am.ActivityManagerService$UiHandler c=null m=68
+11-25 10:47:41.221   521  1657 W system_server: Long monitor contention with owner ActivityManager (552) at void com.android.server.am.BroadcastQueueModernImpl.checkPendingColdStartValidity()(BroadcastQueueModernImpl.java:551) waiters=2 in 
+11-25 10:47:41.241  1127  2033 D OneSearchSuggestProvider: Shut down the binder channel
+11-25 10:47:41.242  1127  1669 I IPCThreadState: oneway function results for code 2 on binder at 0x7c40815ac4b0 will be dropped but finished with status UNKNOWN_TRANSACTION
+11-25 10:47:41.248  1745  2754 I PBSessionCacheImpl: Deleted sessionId[7676386765480885] from persistence.
+11-25 10:47:41.253  1745  2347 W SearchServiceCore: Abort, client detached.
+11-25 10:47:41.253  1745  2347 W SearchServiceCore: Abort, client detached.
+11-25 10:47:41.253  1745  2347 W SearchServiceCore: Abort, client detached.
+11-25 10:47:41.253  1745  2347 W SearchServiceCore: Abort, client detached.
+11-25 10:47:41.254  1745  2347 W SearchServiceCore: Abort, client detached.
+11-25 10:47:41.283  1443  4980 I Icing   : Indexing done com.google.android.gms-apps
+11-25 10:47:41.283  1443  4980 I Icing   : Indexing com.google.android.gms-internal.3p:MobileApplication from com.google.android.gms
+11-25 10:47:41.287   521  2832 D CompatibilityChangeReporter: Compat change id reported: 214016041; UID 10192; state: ENABLED
+11-25 10:47:41.288   521  2832 I ImeTracker: com.example.buddy:61f79cd1: onRequestHide at ORIGIN_SERVER_HIDE_INPUT reason HIDE_UNSPECIFIED_WINDOW
+11-25 10:47:41.291   521  2832 I ImeTracker: com.example.buddy:61f79cd1: onCancelled at PHASE_SERVER_SHOULD_HIDE
+11-25 10:47:41.320  2019  5007 D DownloadManager: [12] Starting
+11-25 10:47:41.321  1537  1537 I GoogleInputMethodService: GoogleInputMethodService.onFinishInput():3227 
+11-25 10:47:41.324  1537  1537 I GoogleInputMethodService: GoogleInputMethodService.updateDeviceLockedStatus():2087 repeatCheckTimes = 0, unlocked = true
+11-25 10:47:41.324  1537  1537 I GoogleInputMethodService: GoogleInputMethodService.onStartInput():1877 onStartInput(EditorInfo{inputType=0x0(NULL) imeOptions=0x0 privateImeOptions=null actionName=UNSPECIFIED actionLabel=null actionId=0 ini
+11-25 10:47:41.324  1537  1537 I GoogleInputMethodService: GoogleInputMethodService.shouldHideHeaderOnInitialState():4008 ShouldHideHeaderOnInitialState = false
+11-25 10:47:41.345  1537  1537 I GoogleInputMethodService: GoogleInputMethodService.updateDeviceLockedStatus():2087 repeatCheckTimes = 2, unlocked = true
+11-25 10:47:41.357  2019  5007 D TrafficStats: tagSocket(87) with statsTag=0xffffff01, statsUid=10130
+11-25 10:47:41.361  1127  1149 I ImeTracker: com.google.android.apps.nexuslauncher:a6cbf01f: onRequestHide at ORIGIN_CLIENT_HIDE_SOFT_INPUT reason HIDE_SOFT_INPUT
+11-25 10:47:41.361  1127  1149 I ImeTracker: com.google.android.apps.nexuslauncher:a6cbf01f: onFailed at PHASE_CLIENT_VIEW_SERVED
+11-25 10:47:41.374  1024  1284 D BtGatt.ScanManager: uid 10131 isForeground true scanMode -1
+11-25 10:47:41.374  1024  1284 D BtGatt.ScanManager: uid 10131 isForeground true scanMode -1
+11-25 10:47:41.386  1398  4956 I Fitness : OnPackageChangedOperation got intent: Intent { act=android.intent.action.PACKAGE_CHANGED dat=package: flg=0x45000010 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.PersistentIntentO
+11-25 10:47:41.422  1398  4779 I NearbyFastPair: DynamicSupportModule: onSupportStateUpdate end [CONTEXT service_id=265 ]
+11-25 10:47:41.424  1398  5011 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-25 10:47:41.443  1398  5011 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-25 10:47:41.456  1398  2111 I HeterodyneSyncer: Removed 0 invalid users [CONTEXT service_id=51 ]
+11-25 10:47:41.485  1398  4953 I Fitness : FitCleanupIntentOperation received Intent android.intent.action.PACKAGE_CHANGED [CONTEXT service_id=17 ]

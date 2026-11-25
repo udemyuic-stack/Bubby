@@ -1,0 +1,150 @@
+11-25 10:53:08.292  5164  5533 I NearbyFastPair: TSS cancel footprints recon sync [CONTEXT service_id=265 ]
+11-25 10:53:08.293  5164  5533 I NearbyFastPair: TaskSchedulerUtils cancelTask TAG_FOOTPRINTS_RECON_SYNC_SCHEDULE success. [CONTEXT service_id=265 ]
+11-25 10:53:08.294  5164  5533 I NearbyFastPair: TSS scheduleFootprintsOneOffSync: not enable [CONTEXT service_id=265 ]
+11-25 10:53:08.297   830   830 D StatusBarIconController: ignoring old pipeline callbacks, because the new mobile icons are enabled
+11-25 10:53:08.300  5145  5145 I NearbySharing: ReceiveSurfaceService started [CONTEXT service_id=194 ]
+11-25 10:53:08.300  5164  5533 I NearbySharing: Runtime state initialization complete. Sharing is enabled. [CONTEXT service_id=194 ]
+11-25 10:53:08.301  5164  5533 W libc    : Access denied finding property "ro.hardware.chipname"
+11-25 10:53:08.306  5164  5533 W ChipsetHelper: Unknown chipset! [CONTEXT service_id=301 ]
+11-25 10:53:08.306  5164  5533 I NnApiDriverManager: Registering application with chipset 'unknown' [CONTEXT service_id=301 ]
+11-25 10:53:08.310  5164  5274 D CompatibilityChangeReporter: Compat change id reported: 3400644; UID 10131; state: DISABLED
+11-25 10:53:08.311  5164  5537 I Checkin : [CheckinOperation] Starting Checkin: Default Task Reason : 1 Force : false UserId : 0 Start time : 98539
+11-25 10:53:08.318  5164  5533 D libEGL  : loaded /vendor/lib64/egl/libEGL_emulation.so
+11-25 10:53:08.319  5164  5533 D libEGL  : loaded /vendor/lib64/egl/libGLESv1_CM_emulation.so
+11-25 10:53:08.322  5164  5533 D libEGL  : loaded /vendor/lib64/egl/libGLESv2_emulation.so
+11-25 10:53:08.323  5164  5274 I NearbySharing: onBindSlice failed since shareTargets is empty [CONTEXT service_id=194 ]
+11-25 10:53:08.323  5164  5537 I CheckinUtil: Classify the device as Phone. [CONTEXT service_id=130 ]
+11-25 10:53:08.326  5164  5274 I NearbySharing: Granted slice and Uri permissions to android [CONTEXT service_id=194 ]
+11-25 10:53:08.336  5597  5597 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+11-25 10:53:08.336  5597  5597 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-25 10:53:08.339   400  1078 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=5597
+11-25 10:53:08.340   400  1078 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (349 us)
+11-25 10:53:08.343  5145  5334 I HeterodyneSyncer: Removed 0 invalid users [CONTEXT service_id=51 ]
+11-25 10:53:08.354  5145  5217 E bwfc    : Phenotype API error. Event # edax@44328660, EventCode: 5 [CONTEXT service_id=51 ]
+11-25 10:53:08.354  5145  5217 E bwfc    : bwdx: 29501: Stale snapshot for com.google.android.libraries.consentverifier#com.google.android.gms(change count changed - expected 2  but was 1)
+11-25 10:53:08.354  5145  5217 E bwfc    : 	at bwfg.b(:com.google.android.gms@231818047@23.18.18 (190800-535401451):16)
+11-25 10:53:08.354  5145  5217 E bwfc    : 	at bwff.g(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-25 10:53:08.354  5145  5217 E bwfc    : 	at bwfc.e(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+11-25 10:53:08.354  5145  5217 E bwfc    : 	at bwfc.f(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-25 10:53:08.354  5145  5217 E bwfc    : 	at avsy.eo(:com.google.android.gms@231818047@23.18.18 (190800-535401451):1)
+11-25 10:53:08.354  5145  5217 E bwfc    : 	at avtf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):14)
+11-25 10:53:08.354  5145  5217 E bwfc    : 	at dfhf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-25 10:53:08.354  5145  5217 E bwfc    : 	at aced.c(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+11-25 10:53:08.354  5145  5217 E bwfc    : 	at aced.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):8)
+11-25 10:53:08.354  5145  5217 E bwfc    : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-25 10:53:08.354  5145  5217 E bwfc    : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-25 10:53:08.354  5145  5217 E bwfc    : 	at acjn.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-25 10:53:08.354  5145  5217 E bwfc    : 	at java.lang.Thread.run(Thread.java:1012)
+11-25 10:53:08.355  5145  5217 W AsyncOperation: operation=CommitToConfigurationOperationCall, opStatusCode=29501 [CONTEXT service_id=51 ]
+11-25 10:53:08.355  5145  5217 W AsyncOperation: OperationException[Status{statusCode=Stale snapshot for com.google.android.libraries.consentverifier#com.google.android.gms(change count changed - expected 2  but was 1), resolution=null}]
+11-25 10:53:08.355  5145  5217 W AsyncOperation: 	at bwfc.e(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+11-25 10:53:08.355  5145  5217 W AsyncOperation: 	at bwfc.f(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-25 10:53:08.355  5145  5217 W AsyncOperation: 	at avsy.eo(:com.google.android.gms@231818047@23.18.18 (190800-535401451):1)
+11-25 10:53:08.355  5145  5217 W AsyncOperation: 	at avtf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):14)
+11-25 10:53:08.355  5145  5217 W AsyncOperation: 	at dfhf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-25 10:53:08.355  5145  5217 W AsyncOperation: 	at aced.c(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+11-25 10:53:08.355  5145  5217 W AsyncOperation: 	at aced.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):8)
+11-25 10:53:08.355  5145  5217 W AsyncOperation: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-25 10:53:08.355  5145  5217 W AsyncOperation: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-25 10:53:08.355  5145  5217 W AsyncOperation: 	at acjn.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-25 10:53:08.355  5145  5217 W AsyncOperation: 	at java.lang.Thread.run(Thread.java:1012)
+11-25 10:53:08.359  5164  5274 W MobStoreFlagStore: Failed to commit due to stale snapshot for com.google.android.libraries.consentverifier#com.google.android.gms, triggering flag update. Experiments may be delayed til next app start.
+11-25 10:53:08.375   135   135 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-25 10:53:08.375  5597  5602 I Gralloc4: mapper 4.x is not supported
+11-25 10:53:08.524     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+11-25 10:53:08.399  5164  5246 I SystemUpdate: [Execution,InstallationEventIntentOperation] Handling event of type 2.
+11-25 10:53:08.402  5164  5531 I SystemUpdate: [Execution,InstallationIntentOperation] Received intent: Intent { act=com.google.android.gms.update.INSTALL_UPDATE cat=[targeted_intent_op_prefix:.update.execution.InstallationIntentOperation] 
+11-25 10:53:08.410  5164  5246 I SystemUpdate: [Execution,InstallationEventIntentOperation] Handling event of type 2.
+11-25 10:53:08.436   520   613 I RoleService: Granting default roles...
+11-25 10:53:08.441   831  5084 I PermissionControllerServiceImpl: Updating user sensitive for uid 10131
+11-25 10:53:08.459  5164  5531 I SystemUpdate: [Execution,ExecutionManager] Action finished-execution executed for 0.00 seconds.
+11-25 10:53:08.460  5145  5217 E bwfc    : Phenotype API error. Event # edax@26e19e8d, EventCode: 5 [CONTEXT service_id=51 ]
+11-25 10:53:08.460  5145  5217 E bwfc    : bwdx: 29501: Stale snapshot for com.google.android.libraries.consentverifier#com.google.android.gms(change count changed - expected 2  but was 1)
+11-25 10:53:08.460  5145  5217 E bwfc    : 	at bwfg.b(:com.google.android.gms@231818047@23.18.18 (190800-535401451):16)
+11-25 10:53:08.460  5145  5217 E bwfc    : 	at bwff.g(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-25 10:53:08.460  5145  5217 E bwfc    : 	at bwfc.e(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+11-25 10:53:08.460  5145  5217 E bwfc    : 	at bwfc.f(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-25 10:53:08.460  5145  5217 E bwfc    : 	at avsy.eo(:com.google.android.gms@231818047@23.18.18 (190800-535401451):1)
+11-25 10:53:08.460  5145  5217 E bwfc    : 	at avtf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):14)
+11-25 10:53:08.460  5145  5217 E bwfc    : 	at dfhf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-25 10:53:08.460  5145  5217 E bwfc    : 	at aced.c(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+11-25 10:53:08.460  5145  5217 E bwfc    : 	at aced.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):8)
+11-25 10:53:08.460  5145  5217 E bwfc    : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-25 10:53:08.460  5145  5217 E bwfc    : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-25 10:53:08.460  5145  5217 E bwfc    : 	at acjn.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-25 10:53:08.460  5145  5217 E bwfc    : 	at java.lang.Thread.run(Thread.java:1012)
+11-25 10:53:08.461  5145  5217 W AsyncOperation: operation=CommitToConfigurationOperationCall, opStatusCode=29501 [CONTEXT service_id=51 ]
+11-25 10:53:08.461  5145  5217 W AsyncOperation: OperationException[Status{statusCode=Stale snapshot for com.google.android.libraries.consentverifier#com.google.android.gms(change count changed - expected 2  but was 1), resolution=null}]
+11-25 10:53:08.461  5145  5217 W AsyncOperation: 	at bwfc.e(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+11-25 10:53:08.461  5145  5217 W AsyncOperation: 	at bwfc.f(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-25 10:53:08.461  5145  5217 W AsyncOperation: 	at avsy.eo(:com.google.android.gms@231818047@23.18.18 (190800-535401451):1)
+11-25 10:53:08.461  5145  5217 W AsyncOperation: 	at avtf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):14)
+11-25 10:53:08.461  5145  5217 W AsyncOperation: 	at dfhf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-25 10:53:08.461  5145  5217 W AsyncOperation: 	at aced.c(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+11-25 10:53:08.461  5145  5217 W AsyncOperation: 	at aced.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):8)
+11-25 10:53:08.461  5145  5217 W AsyncOperation: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-25 10:53:08.461  5145  5217 W AsyncOperation: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-25 10:53:08.461  5145  5217 W AsyncOperation: 	at acjn.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-25 10:53:08.461  5145  5217 W AsyncOperation: 	at java.lang.Thread.run(Thread.java:1012)
+11-25 10:53:08.461  5145  5224 W MobStoreFlagStore: Failed to commit due to stale snapshot for com.google.android.libraries.consentverifier#com.google.android.gms, triggering flag update. Experiments may be delayed til next app start.
+11-25 10:53:08.480  5145  5151 I .gms.persistent: Compiler allocated 4914KB to compile void bwhy.D(java.util.Set, java.util.List, dmtw, java.lang.String, boolean, dzew, bwhx, java.util.LinkedHashMap, dhlq, boolean, edam)
+11-25 10:53:08.487  1045  1045 D CarrierSvcBindHelper: onPackageModified: com.google.android.gms
+11-25 10:53:08.487   520   623 I InputReader: Reconfiguring input devices, changes=KEYBOARD_LAYOUTS
+11-25 10:53:08.490  5164  5533 I NnApiDriverManager: Registering application with GPU 'Android Emulator OpenGL ES Translator (Google SwiftShader)' by 'Google (Google Inc.)' [CONTEXT service_id=301 ]
+11-25 10:53:08.493  1045  1045 D CarrierSvcBindHelper: No carrier app for: 0
+11-25 10:53:08.499  1020  1020 V MediaPlayerList: mPackageChangedBroadcastReceiver: action: android.intent.action.PACKAGE_CHANGED
+11-25 10:53:08.499  1020  1020 V MediaPlayerList: mPackageChangedBroadcastReceiver: action: android.intent.action.PACKAGE_CHANGED
+11-25 10:53:08.513   831  4576 E RoleControllerServiceImpl: Default/fallback role holder package doesn't qualify for the role, package: com.google.android.gms.supervision, role: android.app.role.SYSTEM_SUPERVISION
+11-25 10:53:08.514   831  4576 I Role    : com.google.android.gms not qualified for android.app.role.SYSTEM_CALL_STREAMING due to missing RequiredComponent{mIntentFilterData=IntentFilterData{mAction='android.telecom.CallStreamingService', m
+11-25 10:53:08.514   831  4576 E RoleControllerServiceImpl: Default/fallback role holder package doesn't qualify for the role, package: com.google.android.gms, role: android.app.role.SYSTEM_CALL_STREAMING
+11-25 10:53:08.514   831  4576 W Role    : Default holder doesn't have required signing certificate: com.google.android.apps.work.clouddpc:23962F4B43B9857638EA66F4D419518EAE282491ACDA4B94707BD59003C45E58
+11-25 10:53:08.518  5080  5121 D EGL_emulation: app_time_stats: avg=33.83ms min=5.62ms max=127.68ms count=29
+11-25 10:53:08.524   830   899 D StylusManager: Stylus InputDevice changed: 13 virtio_input_multi_touch_10
+11-25 10:53:08.528   830   899 D StylusManager: Stylus InputDevice changed: 11 virtio_input_multi_touch_8
+11-25 10:53:08.529   830   899 D StylusManager: Stylus InputDevice changed: 10 virtio_input_multi_touch_7
+11-25 10:53:08.529   830   899 D StylusManager: Stylus InputDevice changed: 6 virtio_input_multi_touch_3
+11-25 10:53:08.529   830   899 D StylusManager: Stylus InputDevice changed: 8 virtio_input_multi_touch_5
+11-25 10:53:08.529   830   899 D StylusManager: Stylus InputDevice changed: 4 virtio_input_multi_touch_1
+11-25 10:53:08.533   830   830 D ControlsListingControllerImpl: ServiceConfig reloaded, count: 0
+11-25 10:53:08.536  5145  5217 E bwfc    : Phenotype API error. Event # edax@7f86ea97, EventCode: 5 [CONTEXT service_id=51 ]
+11-25 10:53:08.536  5145  5217 E bwfc    : bwdx: 29501: Stale snapshot for com.google.android.gms.auth.easyunlock(change count changed - expected 1  but was 0)
+11-25 10:53:08.536  5145  5217 E bwfc    : 	at bwfg.b(:com.google.android.gms@231818047@23.18.18 (190800-535401451):16)
+11-25 10:53:08.536  5145  5217 E bwfc    : 	at bwff.g(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-25 10:53:08.536  5145  5217 E bwfc    : 	at bwfc.e(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+11-25 10:53:08.536  5145  5217 E bwfc    : 	at bwfc.f(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-25 10:53:08.536  5145  5217 E bwfc    : 	at avsy.eo(:com.google.android.gms@231818047@23.18.18 (190800-535401451):1)
+11-25 10:53:08.536  5145  5217 E bwfc    : 	at avtf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):14)
+11-25 10:53:08.536  5145  5217 E bwfc    : 	at dfhf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-25 10:53:08.536  5145  5217 E bwfc    : 	at aced.c(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+11-25 10:53:08.536  5145  5217 E bwfc    : 	at aced.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):8)
+11-25 10:53:08.536  5145  5217 E bwfc    : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-25 10:53:08.536  5145  5217 E bwfc    : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-25 10:53:08.536  5145  5217 E bwfc    : 	at acjn.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-25 10:53:08.536  5145  5217 E bwfc    : 	at java.lang.Thread.run(Thread.java:1012)
+11-25 10:53:08.536  5145  5217 W AsyncOperation: operation=CommitToConfigurationOperationCall, opStatusCode=29501 [CONTEXT service_id=51 ]
+11-25 10:53:08.536  5145  5217 W AsyncOperation: OperationException[Status{statusCode=Stale snapshot for com.google.android.gms.auth.easyunlock(change count changed - expected 1  but was 0), resolution=null}]
+11-25 10:53:08.536  5145  5217 W AsyncOperation: 	at bwfc.e(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+11-25 10:53:08.536  5145  5217 W AsyncOperation: 	at bwfc.f(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-25 10:53:08.536  5145  5217 W AsyncOperation: 	at avsy.eo(:com.google.android.gms@231818047@23.18.18 (190800-535401451):1)
+11-25 10:53:08.536  5145  5217 W AsyncOperation: 	at avtf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):14)
+11-25 10:53:08.536  5145  5217 W AsyncOperation: 	at dfhf.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+11-25 10:53:08.536  5145  5217 W AsyncOperation: 	at aced.c(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+11-25 10:53:08.536  5145  5217 W AsyncOperation: 	at aced.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):8)
+11-25 10:53:08.536  5145  5217 W AsyncOperation: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-25 10:53:08.536  5145  5217 W AsyncOperation: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-25 10:53:08.536  5145  5217 W AsyncOperation: 	at acjn.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+11-25 10:53:08.536  5145  5217 W AsyncOperation: 	at java.lang.Thread.run(Thread.java:1012)
+11-25 10:53:08.538  5145  5224 W MobStoreFlagStore: Failed to commit due to stale snapshot for com.google.android.gms.auth.easyunlock, triggering flag update. Experiments may be delayed til next app start.
+11-25 10:53:08.539   830   899 D StylusManager: Stylus InputDevice changed: 9 virtio_input_multi_touch_6
+11-25 10:53:08.541  1045  1362 D ImsResolver: maybeAddedImsService, packageName: com.google.android.gms
+11-25 10:53:08.541   830   899 D StylusManager: Stylus InputDevice changed: 7 virtio_input_multi_touch_4
+11-25 10:53:08.544   830   899 D StylusManager: Stylus InputDevice changed: 14 virtio_input_multi_touch_11
+11-25 10:53:08.548   520   603 D ActivityManager: sync unfroze 1716 com.google.android.apps.youtube.music for 6
+11-25 10:53:08.570   830   899 D StylusManager: Stylus InputDevice changed: 12 virtio_input_multi_touch_9
+11-25 10:53:08.572   830   899 D StylusManager: Stylus InputDevice changed: 5 virtio_input_multi_touch_2
+11-25 10:53:08.583   520  2063 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+11-25 10:53:08.583   520  2063 D PackageManager: Clear ephemeral installer activity
+11-25 10:53:08.594   520   550 I CredManSysServiceImpl: CredentialManagerServiceImpl constructed for: com.google.android.gms/.auth.api.credentials.credman.service.PasswordAndPasskeyService
+11-25 10:53:08.594   520   550 I CredManSysServiceImpl: newServiceInfoLocked, mInfo null, com.google.android.gms/com.google.android.gms.auth.api.credentials.credman.service.PasswordAndPasskeyService
+11-25 10:53:08.600   520  2063 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+11-25 10:53:08.602   520  2063 D PackageManager: Clear ephemeral installer activity

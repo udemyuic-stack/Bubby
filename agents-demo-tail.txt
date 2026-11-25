@@ -1,0 +1,150 @@
+11-25 10:47:49.612  1754  2355 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.m(PG:2)
+11-25 10:47:49.612  1754  2355 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.j.a(PG:1)
+11-25 10:47:49.612  1754  2355 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.l(PG:3)
+11-25 10:47:49.612  1754  2355 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.cancel(PG:8)
+11-25 10:47:49.612  1754  2355 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.m(PG:2)
+11-25 10:47:49.612  1754  2355 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.c.a(PG:1)
+11-25 10:47:49.612  1754  2355 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.l(PG:3)
+11-25 10:47:49.612  1754  2355 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.cancel(PG:8)
+11-25 10:47:49.612  1754  2355 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.bu.cancel(PG:1)
+11-25 10:47:49.612  1754  2355 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.cancel(PG:17)
+11-25 10:47:49.612  1754  2355 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.staticplugins.bk.b.h.run(PG:2)
+11-25 10:47:49.612  1754  2355 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.bf.execute(PG:1)
+11-25 10:47:49.612  1754  2355 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.i(PG:1)
+11-25 10:47:49.612  1754  2355 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.l(PG:12)
+11-25 10:47:49.612  1754  2355 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.cancel(PG:8)
+11-25 10:47:49.612  1754  2355 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.m(PG:2)
+11-25 10:47:49.612  1754  2355 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.j.a(PG:1)
+11-25 10:47:49.612  1754  2355 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.l(PG:3)
+11-25 10:47:49.612  1754  2355 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.cancel(PG:8)
+11-25 10:47:49.612  1754  2355 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.shared.util.c.aj.a(PG:2)
+11-25 10:47:49.612  1754  2355 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.l(PG:3)
+11-25 10:47:49.612  1754  2355 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.cancel(PG:8)
+11-25 10:47:49.612  1754  2355 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.m(PG:2)
+11-25 10:47:49.612  1754  2355 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.c.a(PG:1)
+11-25 10:47:49.612  1754  2355 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.l(PG:3)
+11-25 10:47:49.612  1754  2355 E cr_CronetUrlRequestContext: 	at com.google.common.util.concurrent.d.cancel(PG:8)
+11-25 10:47:49.612  1754  2355 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.s3.o.c(PG:2)
+11-25 10:47:49.612  1754  2355 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.s3.r.a(PG:1)
+11-25 10:47:49.612  1754  2355 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.staticplugins.dc.a.c.e(PG:2)
+11-25 10:47:49.612  1754  2355 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.staticplugins.dc.a.c.c(PG:3)
+11-25 10:47:49.612  1754  2355 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.staticplugins.dc.a.e.a(PG:5)
+11-25 10:47:49.612  1754  2355 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.s3.n.hh(PG:1)
+11-25 10:47:49.612  1754  2355 E cr_CronetUrlRequestContext: 	at com.google.cd.g.a.f.e(PG:2)
+11-25 10:47:49.612  1754  2355 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.speech.k.a.g.d(PG:22)
+11-25 10:47:49.612  1754  2355 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.speech.k.a.g.ks(PG:6)
+11-25 10:47:49.612  1754  2355 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.s3.o.e(PG:14)
+11-25 10:47:49.612  1754  2355 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.s3.p.run(PG:1)
+11-25 10:47:49.612  1754  2355 E cr_CronetUrlRequestContext: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:487)
+11-25 10:47:49.612  1754  2355 E cr_CronetUrlRequestContext: 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+11-25 10:47:49.612  1754  2355 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.shared.util.c.a.e.run(PG:2)
+11-25 10:47:49.612  1754  2355 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.shared.util.c.a.bi.run(PG:1)
+11-25 10:47:49.612  1754  2355 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.shared.util.c.a.bi.run(PG:1)
+11-25 10:47:49.612  1754  2355 E cr_CronetUrlRequestContext: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-25 10:47:49.612  1754  2355 E cr_CronetUrlRequestContext: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-25 10:47:49.612  1754  2355 E cr_CronetUrlRequestContext: 	at java.lang.Thread.run(Thread.java:1012)
+11-25 10:47:49.612  1754  2355 E cr_CronetUrlRequestContext: 	at com.google.android.apps.gsa.shared.util.c.a.l.run(PG:5)
+11-25 10:47:49.613  1754  1754 E A       : onError
+11-25 10:47:49.613  1754  1754 E A       : com.google.android.apps.gsa.shared.speech.a.m: errorCode: 65561, engine: 2
+11-25 10:47:49.613  1754  1754 E A       : 	at com.google.android.apps.gsa.staticplugins.dc.a.e.a(PG:3)
+11-25 10:47:49.613  1754  1754 E A       : 	at com.google.android.apps.gsa.s3.n.hh(PG:1)
+11-25 10:47:49.613  1754  1754 E A       : 	at com.google.cd.g.a.f.e(PG:2)
+11-25 10:47:49.613  1754  1754 E A       : 	at com.google.android.apps.gsa.speech.k.a.g.d(PG:22)
+11-25 10:47:49.613  1754  1754 E A       : 	at com.google.android.apps.gsa.speech.k.a.g.ks(PG:6)
+11-25 10:47:49.613  1754  1754 E A       : 	at com.google.android.apps.gsa.s3.o.e(PG:14)
+11-25 10:47:49.613  1754  1754 E A       : 	at com.google.android.apps.gsa.s3.p.run(PG:1)
+11-25 10:47:49.613  1754  1754 E A       : 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:487)
+11-25 10:47:49.613  1754  1754 E A       : 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+11-25 10:47:49.613  1754  1754 E A       : 	at com.google.android.apps.gsa.shared.util.c.a.e.run(PG:2)
+11-25 10:47:49.613  1754  1754 E A       : 	at com.google.android.apps.gsa.shared.util.c.a.bi.run(PG:1)
+11-25 10:47:49.613  1754  1754 E A       : 	at com.google.android.apps.gsa.shared.util.c.a.bi.run(PG:1)
+11-25 10:47:49.613  1754  1754 E A       : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-25 10:47:49.613  1754  1754 E A       : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-25 10:47:49.613  1754  1754 E A       : 	at java.lang.Thread.run(Thread.java:1012)
+11-25 10:47:49.613  1754  1754 E A       : 	at com.google.android.apps.gsa.shared.util.c.a.l.run(PG:5)
+11-25 10:47:49.613  1754  1754 E A       : Caused by: com.google.android.apps.gsa.shared.speech.a.o: errorCode: 65586, engine: 2
+11-25 10:47:49.613  1754  1754 E A       : 	... 15 more
+11-25 10:47:49.613  1754  1754 E A       : Caused by: com.google.android.apps.gsa.shared.speech.a.k: errorCode: 401, engine: 2
+11-25 10:47:49.613  1754  1754 E A       : 	at com.google.android.apps.gsa.assistant.shared.n.h.a(PG:5)
+11-25 10:47:49.613  1754  1754 E A       : 	at com.google.android.apps.gsa.s3.producers.j.hE(PG:2)
+11-25 10:47:49.613  1754  1754 E A       : 	at com.google.android.apps.gsa.speech.k.a.g.d(PG:16)
+11-25 10:47:49.613  1754  1754 E A       : 	... 12 more
+11-25 10:47:49.614  1754  2878 I A       : [Upload] Connected
+11-25 10:47:49.615  1754  1754 W A       : Failed to sync device settings.
+11-25 10:47:49.615  1754  1754 I A       : Retrying to sync device settings.
+11-25 10:47:49.625   521  1364 W JobScheduler: Job didn't exist in JobStore: b6004e6 #u0a132/-353 com.google.android.googlequicksearchbox/com.google.android.apps.gsa.tasks.BackgroundTasksJobService
+11-25 10:47:49.699  1082  1082 D TaplEvents: TIS / TouchInteractionService.onInputEvent: MotionEvent { action=ACTION_UP, actionButton=0, id[0]=0, x[0]=160.0, y[0]=128.0, toolType[0]=TOOL_TYPE_FINGER, buttonState=0, classification=NONE, meta
+11-25 10:47:49.724  1082  1082 D TaplEvents: TIS / TouchInteractionService.onInputEvent: MotionEvent { action=ACTION_DOWN, actionButton=0, id[0]=0, x[0]=160.0, y[0]=480.0, toolType[0]=TOOL_TYPE_FINGER, buttonState=0, classification=NONE, me
+11-25 10:47:50.032  1082  1082 D TaplEvents: TIS / TouchInteractionService.onInputEvent: MotionEvent { action=ACTION_UP, actionButton=0, id[0]=0, x[0]=160.0, y[0]=128.0, toolType[0]=TOOL_TYPE_FINGER, buttonState=0, classification=NONE, meta
+11-25 10:47:50.049  5587  5587 I com.example.buddy: Perf: native scene 28 fps
+11-25 10:47:50.455  5587  5606 D EGL_emulation: app_time_stats: avg=12.71ms min=6.43ms max=37.24ms count=52
+11-25 10:47:51.419   521   813 D ConnectivityService: requestNetwork for uid/pid:10156/1707 activeRequest: null callbackRequest: 149 [NetworkRequest [ REQUEST id=150, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 1015
+11-25 10:47:51.420   521   755 D WifiNetworkFactory: got request NetworkRequest [ REQUEST id=150, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10156 RequestorUid: 10156 RequestorPkg: com.google.android.apps.youtube.m
+11-25 10:47:51.420   521   755 D UntrustedWifiNetworkFactory: got request NetworkRequest [ REQUEST id=150, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10156 RequestorUid: 10156 RequestorPkg: com.google.android.apps.
+11-25 10:47:51.420   521   755 D OemPaidWifiNetworkFactory: got request NetworkRequest [ REQUEST id=150, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10156 RequestorUid: 10156 RequestorPkg: com.google.android.apps.yo
+11-25 10:47:51.420   521   755 D MultiInternetWifiNetworkFactory: got request NetworkRequest [ REQUEST id=150, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10156 RequestorUid: 10156 RequestorPkg: com.google.android.a
+11-25 10:47:51.420   521   762 D ConnectivityService: NetReassign [150 : null → 100] [c 0] [a 0] [i 1]
+11-25 10:47:51.455  5587  5606 D EGL_emulation: app_time_stats: avg=25.64ms min=14.94ms max=36.52ms count=39
+11-25 10:47:51.507  1707  2649 W YouTubeMusic: Invalid playback type; streaming data is not playable
+11-25 10:47:51.509  1707  1707 E Widget.RecentlyPlayed: Filling bundle but recently played items are EMPTY.
+11-25 10:47:51.572   156   952 I keystore2: system/security/keystore2/src/watchdog.rs:319 - Watchdog thread idle -> terminating. Have a great day.
+11-25 10:47:51.621   521   762 D ConnectivityService: reportNetworkConnectivity(100, false) by 10132
+11-25 10:47:51.621   994  2922 D NetworkMonitor/100: Forcing reevaluation for UID 10132. Dns signal count: 0
+11-25 10:47:51.622   994  5780 D TrafficStats: tagSocket(68) with statsTag=0xffffff81, statsUid=-1
+11-25 10:47:51.622   994  5779 D TrafficStats: tagSocket(107) with statsTag=0xffffff81, statsUid=-1
+11-25 10:47:51.623   994  5779 D TrafficStats: tagSocket(75) with statsTag=0xffffff81, statsUid=-1
+11-25 10:47:51.623   994  5780 D TrafficStats: tagSocket(68) with statsTag=0xffffff81, statsUid=-1
+11-25 10:47:51.623   333  5781 I resolv  : ResNSendHandler::run: 0 / {100 983140 100 983140 1073 1}
+11-25 10:47:51.623   333  5781 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x76a7ca5a6810
+11-25 10:47:51.624   333  5782 I resolv  : ResNSendHandler::run: 0 / {100 983140 100 983140 1073 1}
+11-25 10:47:51.624   333  5782 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x76a8fa59c7f0
+11-25 10:47:51.625   333  5783 I resolv  : ResNSendHandler::run: 0 / {100 983140 100 983140 1073 1}
+11-25 10:47:51.625   333  5783 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x76a8fa59c390
+11-25 10:47:51.626   333  5784 I resolv  : ResNSendHandler::run: 0 / {100 983140 100 983140 1073 1}
+11-25 10:47:51.626   333  5784 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x76a91a59a8d0
+11-25 10:47:51.626   994   994 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-25 10:47:51.626   994   994 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-25 10:47:51.627   994   994 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-25 10:47:51.627   994  5780 D NetworkMonitor/100: PROBE_DNS connectivitycheck.gstatic.com 4ms OK 142.251.150.120,2001:4860:4826:7800::
+11-25 10:47:51.628   994   994 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-25 10:47:51.628   994   994 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-25 10:47:51.628   333  5785 I resolv  : GetAddrInfoHandler::run: {100 983140 100 983140 1073 1}
+11-25 10:47:51.628   994   994 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-25 10:47:51.628   994   994 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-25 10:47:51.629   994   994 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-25 10:47:51.629   333  5787 I resolv  : res_nmkquery: (QUERY, IN, A)
+11-25 10:47:51.629   994   994 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-25 10:47:51.629   333  5787 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x76a8fa59c390
+11-25 10:47:51.630   333  5787 I resolv  : doQuery: rcode=0, ancount=1, return value=63
+11-25 10:47:51.630   994   994 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-25 10:47:51.630   333  5786 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+11-25 10:47:51.630   994   994 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-25 10:47:51.630   333  5786 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x76a8fa59c7f0
+11-25 10:47:51.631   333  5786 I resolv  : doQuery: rcode=0, ancount=1, return value=75
+11-25 10:47:51.631   994   994 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-25 10:47:51.631   994   994 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-25 10:47:51.631   994  5780 D TrafficStats: tagSocket(107) with statsTag=0xffffff81, statsUid=-1
+11-25 10:47:51.632   994   994 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-25 10:47:51.634   994   994 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-25 10:47:51.634   994   994 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-25 10:47:51.634   994   994 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-25 10:47:51.635   994   994 D TrafficStats: tagSocket(68) with statsTag=0xffffffff, statsUid=-1
+11-25 10:47:51.635   994  5779 D NetworkMonitor/100: PROBE_DNS www.google.com 12ms OK 142.251.154.119,142.251.155.119,142.251.151.119,142.251.157.119,142.251.153.119,142.251.156.119,142.251.150.119,142.251.152.119,2001:4860:4826:7700::,2001
+11-25 10:47:51.636   333  5788 I resolv  : GetAddrInfoHandler::run: {100 983140 100 983140 1073 1}
+11-25 10:47:51.636   333  5790 I resolv  : res_nmkquery: (QUERY, IN, A)
+11-25 10:47:51.636   333  5790 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x76a91a59a8d0
+11-25 10:47:51.636   333  5790 I resolv  : doQuery: rcode=0, ancount=8, return value=160
+11-25 10:47:51.636   333  5789 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+11-25 10:47:51.636   333  5789 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x76a7ca5a6810
+11-25 10:47:51.636   333  5789 I resolv  : doQuery: rcode=0, ancount=8, return value=256
+11-25 10:47:51.637   994  5779 D TrafficStats: tagSocket(68) with statsTag=0xffffff81, statsUid=-1
+11-25 10:47:51.664   994  5780 D NetworkMonitor/100: PROBE_HTTP http://connectivitycheck.gstatic.com/generate_204 time=37ms ret=204 request={Connection=[close], User-Agent=[Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gec
+11-25 10:47:51.678   994  5779 D NetworkMonitor/100: PROBE_HTTPS https://www.google.com/generate_204 time=42ms ret=204 request={Connection=[close], User-Agent=[Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60
+11-25 10:47:51.678   994  5778 D NetworkMonitor/100: isCaptivePortal: isSuccessful()=true isPortal()=false RedirectUrl=null isPartialConnectivity()=false Time=57ms
+11-25 10:47:51.680   521   762 D ConnectivityService: [100 WIFI] validation passed
+11-25 10:47:52.095  5793  5793 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+11-25 10:47:52.095  5793  5793 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-25 10:47:52.098   521   611 D ActivityManager: freezing 2706 com.google.android.tts
+11-25 10:47:52.293     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+11-25 10:47:52.101   134   134 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-25 10:47:52.101  5793  5794 I Gralloc4: mapper 4.x is not supported

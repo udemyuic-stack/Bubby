@@ -1,0 +1,150 @@
+11-25 10:53:32.888  4210  4330 E ctbc    : 	at bxfd.run(PG:1)
+11-25 10:53:32.888  4210  4330 E ctbc    : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-25 10:53:32.888  4210  4330 E ctbc    : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-25 10:53:32.888  4210  4330 E ctbc    : 	at bxef.run(PG:2)
+11-25 10:53:32.888  4210  4330 E ctbc    : 	at java.lang.Thread.run(Thread.java:1012)
+11-25 10:53:32.888  4210  4330 E ctbc    : 	at bxfj.run(PG:5)
+11-25 10:53:32.888  4210  4330 E ctbc    : RuntimeException while executing runnable ctdz{cnpz@c5eb348} with executor MoreExecutors.directExecutor()
+11-25 10:53:32.888  4210  4330 E ctbc    : java.lang.NullPointerException: Attempt to read from field 'java.lang.String cayk.b' on a null object reference in method 'void ccdw.b(java.lang.Object)'
+11-25 10:53:32.888  4210  4330 E ctbc    : 	at ccdw.b(PG:2)
+11-25 10:53:32.888  4210  4330 E ctbc    : 	at cnpz.b(PG:3)
+11-25 10:53:32.888  4210  4330 E ctbc    : 	at ctdz.run(PG:6)
+11-25 10:53:32.888  4210  4330 E ctbc    : 	at ctdd.execute(PG:1)
+11-25 10:53:32.888  4210  4330 E ctbc    : 	at ctbc.o(PG:1)
+11-25 10:53:32.888  4210  4330 E ctbc    : 	at ctbc.b(PG:5)
+11-25 10:53:32.888  4210  4330 E ctbc    : 	at cteg.r(PG:2)
+11-25 10:53:32.888  4210  4330 E ctbc    : 	at cnsl.k(PG:1)
+11-25 10:53:32.888  4210  4330 E ctbc    : 	at ccdy.a(PG:15)
+11-25 10:53:32.888  4210  4330 E ctbc    : 	at atyv.a(PG:2)
+11-25 10:53:32.888  4210  4330 E ctbc    : 	at cbeo.o(PG:3)
+11-25 10:53:32.888  4210  4330 E ctbc    : 	at cbeb.a(PG:1)
+11-25 10:53:32.888  4210  4330 E ctbc    : 	at cnpq.a(PG:3)
+11-25 10:53:32.888  4210  4330 E ctbc    : 	at ctbg.d(PG:2)
+11-25 10:53:32.888  4210  4330 E ctbc    : 	at ctbi.run(PG:9)
+11-25 10:53:32.888  4210  4330 E ctbc    : 	at ctfm.run(PG:4)
+11-25 10:53:32.888  4210  4330 E ctbc    : 	at bxfd.run(PG:1)
+11-25 10:53:32.888  4210  4330 E ctbc    : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-25 10:53:32.888  4210  4330 E ctbc    : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-25 10:53:32.888  4210  4330 E ctbc    : 	at bxef.run(PG:2)
+11-25 10:53:32.888  4210  4330 E ctbc    : 	at java.lang.Thread.run(Thread.java:1012)
+11-25 10:53:32.888  4210  4330 E ctbc    : 	at bxfj.run(PG:5)
+11-25 10:53:32.888  4210  4330 E ctbc    : RuntimeException while executing runnable ctdz{cnpz@21cef06} with executor MoreExecutors.directExecutor()
+11-25 10:53:32.888  4210  4330 E ctbc    : java.lang.NullPointerException: Attempt to read from field 'java.lang.String cayk.b' on a null object reference in method 'void ccdw.b(java.lang.Object)'
+11-25 10:53:32.888  4210  4330 E ctbc    : 	at ccdw.b(PG:2)
+11-25 10:53:32.888  4210  4330 E ctbc    : 	at cnpz.b(PG:3)
+11-25 10:53:32.888  4210  4330 E ctbc    : 	at ctdz.run(PG:6)
+11-25 10:53:32.888  4210  4330 E ctbc    : 	at ctdd.execute(PG:1)
+11-25 10:53:32.888  4210  4330 E ctbc    : 	at ctbc.o(PG:1)
+11-25 10:53:32.888  4210  4330 E ctbc    : 	at ctbc.b(PG:5)
+11-25 10:53:32.888  4210  4330 E ctbc    : 	at cteg.r(PG:2)
+11-25 10:53:32.888  4210  4330 E ctbc    : 	at cnsl.k(PG:1)
+11-25 10:53:32.888  4210  4330 E ctbc    : 	at ccdy.a(PG:15)
+11-25 10:53:32.888  4210  4330 E ctbc    : 	at atyv.a(PG:2)
+11-25 10:53:32.888  4210  4330 E ctbc    : 	at cbeo.o(PG:3)
+11-25 10:53:32.888  4210  4330 E ctbc    : 	at cbeb.a(PG:1)
+11-25 10:53:32.888  4210  4330 E ctbc    : 	at cnpq.a(PG:3)
+11-25 10:53:32.888  4210  4330 E ctbc    : 	at ctbg.d(PG:2)
+11-25 10:53:32.888  4210  4330 E ctbc    : 	at ctbi.run(PG:9)
+11-25 10:53:32.888  4210  4330 E ctbc    : 	at ctfm.run(PG:4)
+11-25 10:53:32.888  4210  4330 E ctbc    : 	at bxfd.run(PG:1)
+11-25 10:53:32.888  4210  4330 E ctbc    : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-25 10:53:32.888  4210  4330 E ctbc    : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-25 10:53:32.888  4210  4330 E ctbc    : 	at bxef.run(PG:2)
+11-25 10:53:32.888  4210  4330 E ctbc    : 	at java.lang.Thread.run(Thread.java:1012)
+11-25 10:53:32.888  4210  4330 E ctbc    : 	at bxfj.run(PG:5)
+11-25 10:53:32.889  4210  4330 E MDD     : FileGroupManager: Trying to add expired group webref-model-local-index.
+11-25 10:53:32.889  4210  4330 W MDD     : MDDManager class cbkc
+11-25 10:53:32.889  4210  4330 E PhFileGroupPop: Failed to add file group
+11-25 10:53:32.889  4210  4330 E PhFileGroupPop: cbkc
+11-25 10:53:32.889  4210  4330 E PhFileGroupPop: 	at cbqx.a(PG:90)
+11-25 10:53:32.889  4210  4330 E PhFileGroupPop: 	at cnpq.a(PG:3)
+11-25 10:53:32.889  4210  4330 E PhFileGroupPop: 	at ctbg.d(PG:2)
+11-25 10:53:32.889  4210  4330 E PhFileGroupPop: 	at ctbi.run(PG:9)
+11-25 10:53:32.889  4210  4330 E PhFileGroupPop: 	at ctfm.run(PG:4)
+11-25 10:53:32.889  4210  4330 E PhFileGroupPop: 	at bxfd.run(PG:1)
+11-25 10:53:32.889  4210  4330 E PhFileGroupPop: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-25 10:53:32.889  4210  4330 E PhFileGroupPop: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-25 10:53:32.889  4210  4330 E PhFileGroupPop: 	at bxef.run(PG:2)
+11-25 10:53:32.889  4210  4330 E PhFileGroupPop: 	at java.lang.Thread.run(Thread.java:1012)
+11-25 10:53:32.889  4210  4330 E PhFileGroupPop: 	at bxfj.run(PG:5)
+11-25 10:53:32.906  4210  4330 D PhFileGroupPop: Added file groups smart_actions_grammars
+11-25 10:53:32.907  4210  4330 D PhFileGroupPop: Added file groups smart_actions_ml_models
+11-25 10:53:32.907  4210  4330 D PhFileGroupPop: Added file groups text_classifier
+11-25 10:53:32.908  4210  4330 D PhFileGroupPop: Added file groups smart_actions_emotive_models
+11-25 10:53:32.913   337   369 I netd    : tetherGetStats() -> {[]} <0.34ms>
+11-25 10:53:32.915  4210  4309 D cevx    : Starting download: https://www.gstatic.com/messages/smarts/smart_actions_ml_models/loc_spam_and_assistant_04162019.pb_1568226528414
+11-25 10:53:32.915  4210  4309 V cevx    : Is http uri, downloading (uri: https://www.gstatic.com/messages/smarts/smart_actions_ml_models/loc_spam_and_assistant_04162019.pb_1568226528414)
+11-25 10:53:32.916   337  5421 I resolv  : GetAddrInfoHandler::run: {100 786532 100 983140 10130 0}
+11-25 10:53:32.919   337   369 I netd    : bandwidthSetGlobalAlert(2097152) <0.07ms>
+11-25 10:53:32.920   337  5423 I resolv  : res_nmkquery: (QUERY, IN, A)
+11-25 10:53:32.921   337  5423 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7cac8e8cbe10
+11-25 10:53:32.921   337  5423 I resolv  : doQuery: rcode=0, ancount=8, return value=281
+11-25 10:53:32.924   337  5422 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+11-25 10:53:32.924   337  5422 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7cac5e8d6600
+11-25 10:53:32.924   337  5422 I resolv  : doQuery: rcode=0, ancount=8, return value=377
+11-25 10:53:32.932  4210  5420 D TrafficStats: tagSocket(132) with statsTag=0xffffffff, statsUid=-1
+11-25 10:53:32.933  4210  4309 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603985193_4f39c3014cba6e6046af596744453aeb5
+11-25 10:53:32.934  4210  4670 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603985630
+11-25 10:53:32.937  4210  4330 D PhFileGroupPop: Added file groups smarts_expressive_content_scoped_v1
+11-25 10:53:32.937  4210  4330 D PhFileGroupPop: Added file groups smart_actions_sensitive_classifier_models
+11-25 10:53:32.937  4210  4330 D PhFileGroupPop: Added file groups scripted_reply
+11-25 10:53:32.937  4210  4330 D PhFileGroupPop: Added file groups multitask_experiment
+11-25 10:53:32.938  4210  4330 D PhFileGroupPop: Added file groups spam_verdict_enforcement_policy_config
+11-25 10:53:32.938  4210  4330 D PhFileGroupPop: Added file groups smart_suggestion_reranker_models
+11-25 10:53:32.938  4210  4330 D PhFileGroupPop: Added file groups supersort_us_grammars
+11-25 10:53:32.938  4210  4330 D PhFileGroupPop: Added file groups nudge
+11-25 10:53:32.938  4210  4330 D PhFileGroupPop: Added file groups calendar_appointment_grammar
+11-25 10:53:32.938  4210  4330 D PhFileGroupPop: Added file groups birthday_suggestion
+11-25 10:53:32.939  4210  4330 D PhFileGroupPop: Added file groups birthday_grammars
+11-25 10:53:32.953  5419  5419 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount.
+11-25 10:53:32.953  5419  5419 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-25 10:53:32.957   401   414 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=5419
+11-25 10:53:32.957   401   414 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (128 us)
+11-25 10:53:32.970  4210  4311 D cevx    : Starting download: https://www.gstatic.com/messages/smarts/smart_actions_ml_models/multi_task_model_based_providers_config.pb_1568226528414
+11-25 10:53:32.970  4210  4311 V cevx    : Is http uri, downloading (uri: https://www.gstatic.com/messages/smarts/smart_actions_ml_models/multi_task_model_based_providers_config.pb_1568226528414)
+11-25 10:53:32.971  4210  4309 D cevx    : Starting download: https://www.gstatic.com/messages/smarts/smart_actions_ml_models/loc_spam_no_assistant_04162019_lt_055.pb_1568226528414
+11-25 10:53:32.971  4210  4309 V cevx    : Is http uri, downloading (uri: https://www.gstatic.com/messages/smarts/smart_actions_ml_models/loc_spam_no_assistant_04162019_lt_055.pb_1568226528414)
+11-25 10:53:32.988  4210  4309 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603985195_3fbcea1a6838dc9dc8c3d72dee0761133
+11-25 10:53:32.990  4210  4311 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603985194_8506a26cc08fb71a3c15905e2b85e8d80
+11-25 10:53:33.001  4210  4670 D cevx    : Starting download: https://www.gstatic.com/messages/smarts/smart_actions_ml_models/loc_spam_no_assistant_04162019_lt_085.pb_1568226528414
+11-25 10:53:33.001  4210  4670 V cevx    : Is http uri, downloading (uri: https://www.gstatic.com/messages/smarts/smart_actions_ml_models/loc_spam_no_assistant_04162019_lt_085.pb_1568226528414)
+11-25 10:53:33.003  4210  4309 D cevx    : Starting download: https://www.gstatic.com/messages/smarts/smart_actions_ml_models/loc_spam_no_assistant_04162019_lt_075.pb_1568226528414
+11-25 10:53:33.003  4210  4309 V cevx    : Is http uri, downloading (uri: https://www.gstatic.com/messages/smarts/smart_actions_ml_models/loc_spam_no_assistant_04162019_lt_075.pb_1568226528414)
+11-25 10:53:33.199     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+11-25 10:53:33.005   135   135 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-25 10:53:33.006  5419  5424 I Gralloc4: mapper 4.x is not supported
+11-25 10:53:33.018  4210  4670 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603985196_e53374c841b45c1f086170c4ed65a5073
+11-25 10:53:33.022  4210  4309 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603985197_2bc5fa3d3ff184fc294e4c5b64d3ab7e0
+11-25 10:53:33.034  4210  4311 D cevx    : Starting download: https://www.gstatic.com/messages/smarts/smart_actions_ml_models/loc_spam_no_assistant_04162019_lt_030.pb_1568226528414
+11-25 10:53:33.034  4210  4311 V cevx    : Is http uri, downloading (uri: https://www.gstatic.com/messages/smarts/smart_actions_ml_models/loc_spam_no_assistant_04162019_lt_030.pb_1568226528414)
+11-25 10:53:33.036  4210  4309 D cevx    : Starting download: https://www.gstatic.com/messages/smarts/smart_actions_ml_models/loc_spam_no_assistant_04162019_lt_020.pb_1568226528414
+11-25 10:53:33.037  4210  4309 V cevx    : Is http uri, downloading (uri: https://www.gstatic.com/messages/smarts/smart_actions_ml_models/loc_spam_no_assistant_04162019_lt_020.pb_1568226528414)
+11-25 10:53:33.073  4210  4311 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603985198_424adaefc76e4d31f3dd8baf45e30d8d3
+11-25 10:53:33.077  4210  4309 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603985199_21f9a300c2499b5ce56c9de73b2b8a6f5
+11-25 10:53:33.086  4210  4565 D cevx    : Starting download: https://www.gstatic.com/messages/smarts/smart_actions_ml_models/loc_spam_no_assistant_04162019_lt_035.pb_1568226528414
+11-25 10:53:33.086  4210  4565 V cevx    : Is http uri, downloading (uri: https://www.gstatic.com/messages/smarts/smart_actions_ml_models/loc_spam_no_assistant_04162019_lt_035.pb_1568226528414)
+11-25 10:53:33.087  4210  4311 D cevx    : Starting download: https://www.gstatic.com/messages/smarts/smart_actions_ml_models/loc_spam_no_assistant_04162019_lt_040.pb_1568226528414
+11-25 10:53:33.087  4210  4311 V cevx    : Is http uri, downloading (uri: https://www.gstatic.com/messages/smarts/smart_actions_ml_models/loc_spam_no_assistant_04162019_lt_040.pb_1568226528414)
+11-25 10:53:33.103  4210  4311 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603985201_502de87de8c49c3f9770ad8672e068836
+11-25 10:53:33.119  4210  4309 D cevx    : Starting download: https://www.gstatic.com/messages/smarts/smart_actions_ml_models/loc_spam_no_assistant_04162019_lt_050.pb_1568226528414
+11-25 10:53:33.119  4210  4309 V cevx    : Is http uri, downloading (uri: https://www.gstatic.com/messages/smarts/smart_actions_ml_models/loc_spam_no_assistant_04162019_lt_050.pb_1568226528414)
+11-25 10:53:33.119  4210  4565 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603985200_7ca0e6ec6260790858496a6f6fcb76e1f
+11-25 10:53:33.132  4210  4311 D cevx    : Starting download: https://www.gstatic.com/messages/smarts/smart_actions_ml_models/loc_spam_no_assistant_04162019_lt_095.pb_1568226528414
+11-25 10:53:33.132  4210  4311 V cevx    : Is http uri, downloading (uri: https://www.gstatic.com/messages/smarts/smart_actions_ml_models/loc_spam_no_assistant_04162019_lt_095.pb_1568226528414)
+11-25 10:53:33.133  4210  4670 I WM-WorkerWrapper: Worker result SUCCESS for Work [ id=3fbb0b0c-2b61-4573-8528-f0638cea4a58, tags={ com.google.android.libraries.mdi.download.workmanager.workers.PeriodicWorker, MDD.CELLULAR.CHARGING.PERIODIC
+11-25 10:53:33.135  4210  4309 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603985202_a11c4b87038997e3d8e1ed51ecaa7fd29
+11-25 10:53:33.140  4210  4565 D cevx    : Starting download: https://www.gstatic.com/messages/smarts/smart_actions_ml_models/sr_loc_spam_and_no_assistant_04162019.pb_1568226528414
+11-25 10:53:33.140  4210  4565 V cevx    : Is http uri, downloading (uri: https://www.gstatic.com/messages/smarts/smart_actions_ml_models/sr_loc_spam_and_no_assistant_04162019.pb_1568226528414)
+11-25 10:53:33.157  4210  4311 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603985203_83b734fff8de8314e9cb42aaafc0e86cb
+11-25 10:53:33.158  4210  4309 D cevx    : Starting download: https://www.gstatic.com/messages/smarts/smart_actions_ml_models/loc_spam_no_assistant_04162019_lt_025.pb_1568226528414
+11-25 10:53:33.158  4210  4309 V cevx    : Is http uri, downloading (uri: https://www.gstatic.com/messages/smarts/smart_actions_ml_models/loc_spam_no_assistant_04162019_lt_025.pb_1568226528414)
+11-25 10:53:33.164  4210  4565 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603985204_32270e7178ebdcd23a26a8e6bd0002c4b
+11-25 10:53:33.165  4210  4670 D cevx    : Starting download: https://www.gstatic.com//messages/smarts/smart_actions_sensitive_classifier_models/sgnn_w31c31_20200517_1596523090.tflite
+11-25 10:53:33.165  4210  4670 V cevx    : Is http uri, downloading (uri: https://www.gstatic.com//messages/smarts/smart_actions_sensitive_classifier_models/sgnn_w31c31_20200517_1596523090.tflite)
+11-25 10:53:33.179  4939  4945 I .gms.persistent: Background young concurrent copying GC freed 153246(9326KB) AllocSpace objects, 0(0B) LOS objects, 37% free, 15MB/24MB, paused 11.997ms,17us total 55.932ms
+11-25 10:53:33.183  4210  4309 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603985205_764202f4da92607d1c787a26ff73f8518
+11-25 10:53:33.189  4210  4670 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603985601
+11-25 10:53:33.201  4210  4565 D cevx    : Starting download: https://www.gstatic.com/messages/smarts/smart_actions_sensitive_classifier_models/binary3.sgnn.w31c31.20201129.tflite
+11-25 10:53:33.201  4210  4565 V cevx    : Is http uri, downloading (uri: https://www.gstatic.com/messages/smarts/smart_actions_sensitive_classifier_models/binary3.sgnn.w31c31.20201129.tflite)
+11-25 10:53:33.245  4210  4565 E MDD     : DownloadProgressMonitor: Can't find file group for uri: android://com.google.android.apps.messaging/files/datadownload/shared/public/datadownloadfile_1795603985602
+11-25 10:53:33.311  5147  5166 D EGL_emulation: app_time_stats: avg=6.96ms min=3.28ms max=16.08ms count=61
